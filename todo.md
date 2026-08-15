@@ -1,0 +1,27 @@
+# Project TODO
+
+- [x] Define and migrate the course, lesson, vocabulary, grammar, user-preference, progress, review-queue, quiz-attempt, and writing-submission data models.
+- [x] Add tests that validate the file-backed course curriculum can be consumed as 20 complete A1 lessons.
+- [x] Preserve Manus OAuth authentication and create user settings for British/American pronunciation preferences.
+- [x] Create a validated, bilingual A1 curriculum containing 500 vocabulary records across 20 lessons and 20 grammar topics.
+- [x] Build a responsive bilingual course dashboard with A1–C2 level map, lesson locks, XP, and streak tracking.
+- [x] Build the A1 lesson experience with vocabulary flip cards, Arabic explanations, IPA, phonetic respellings, and browser TTS.
+- [x] Build bilingual grammar lessons with Arabic-speaker guidance, examples, practice tasks, and speech playback.
+- [x] Implement the server-side AI Word Tutor for lesson-aware bilingual vocabulary, synonym, spelling, and sentence help.
+- [x] Implement controlled AI reading passages, comprehension questions, and Arabic feedback.
+- [x] Implement AI writing prompts, structured bilingual grading, revision, and submission history.
+- [x] Return reading-grade results through a strict structured schema and render per-question Arabic feedback in the lesson UI.
+- [x] Add writing-submission history retrieval and a lesson UI showing prior attempts, scores, and feedback timestamps.
+- [x] Implement an explicit writing revision flow that preserves each resubmission as a separate attempt.
+- [ ] Implement lesson quizzes with 80% pass gates and lesson unlocks.
+- [ ] Implement module tests every five lessons with gated module progression.
+- [ ] Implement a spaced-repetition review queue for missed vocabulary and grammar items.
+- [ ] Implement XP awards, daily streak calculation, and dashboard progress summaries.
+- [ ] Implement backend XP awards tied to lesson, quiz, and module completion, then surface the updated totals in the dashboard.
+- [ ] Complete and test daily streak updates from real learning events, and verify that the dashboard reflects the live streak values.
+- [ ] Add automated unit tests for course rules, progress gating, and AI response validation.
+- [ ] Test the full learning journey, mobile layout, accessibility, Arabic RTL support, and error states.
+- [ ] Save a final project checkpoint and provide the user with the handoff guide.
+- [ ] Complete a teaching-editor review of every Arabic translation, definition, example, and grammar explanation before opening the course to a wider audience.
+- [ ] Add server tests covering pass/fail quiz submissions, next-lesson unlocks, missed-item review scheduling, and module-test prerequisites.
+- [ ] Refresh the review-queue badge and dashboard state after assessment and warm-up activity.

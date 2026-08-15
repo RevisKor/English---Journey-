@@ -119,6 +119,8 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: "DM Sans", "Noto Sans Arabic", sans-serif;
+    min-width: 320px;
   }
   button:not(:disabled),
   [role="button"]:not([aria-disabled="true"]),
@@ -134,6 +136,50 @@
 }
 
 @layer components {
+  .arabic {
+    font-family: "Noto Sans Arabic", "DM Sans", sans-serif;
+  }
+
+  .course-grid {
+    background-image: linear-gradient(to right, oklch(0.25 0.028 263 / 0.035) 1px, transparent 1px), linear-gradient(to bottom, oklch(0.25 0.028 263 / 0.035) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  .word-card {
+    perspective: 1200px;
+  }
+
+  .word-card-inner {
+    position: relative;
+    min-height: 12rem;
+    transform-style: preserve-3d;
+    transition: transform 280ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .word-card[data-flipped="true"] .word-card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .word-face {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  .word-back {
+    transform: rotateY(180deg);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .soft-enter {
+      animation: soft-enter 360ms cubic-bezier(0.23, 1, 0.32, 1) both;
+    }
+  }
+
+  @keyframes soft-enter {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
   /**
    * Custom container utility that centers content and adds responsive padding.
    *

@@ -1,0 +1,221 @@
+import { TRPCError } from "@trpc/server";
+import { z } from "zod";
+import { getA1Lesson } from "../../shared/course";
+import {
+  countAiActionsToday,
+  getWritingHistory,
+  logAiUsage,
+  saveReadingAttempt,
+  saveWritingSubmission,
+} from "../db";
+import { invokeLLM, type ResponseFormat } from "../_core/llm";
+import { protectedProcedure, router } from "../_core/trpc";
+
+const DAILY_LIMITS = {
+  word_tutor: 18,
+  grammar_check: 8,
+  reading: 3,
+  reading_grade: 5,
+  writing_prompt: 2,
+  writing_grade: 3,
+} as const;
+
+const RESPONSE_TOKEN_LIMITS: Record<AiAction, number> = {
+  word_tutor: 500,
+  grammar_check: 350,
+  reading: 1_000,
+  reading_grade: 700,
+  writing_prompt: 450,
+  writing_grade: 1_200,
+};
+
+type AiAction = keyof typeof DAILY_LIMITS;
+
+const wordTutorSchema = z.object({
+  word: z.string().trim().min(1).max(64),
+  lessonNumber: z.number().int().min(1).max(20),
+  question: z.string().trim().max(500).optional(),
+});
+
+const writingFeedbackSchema = z.object({
+  overallScore: z.number().min(0).max(100),
+  scores: z.object({
+    spelling: z.number().min(0).max(100),
+    grammar: z.number().min(0).max(100),
+    vocabulary: z.number().min(0).max(100),
+    taskCompletion: z.number().min(0).max(100),
+    coherence: z.number().min(0).max(100),
+  }),
+  summaryArabic: z.string(),
+  strengthsArabic: z.array(z.string()).max(4),
+  corrections: z.array(z.object({
+    original: z.string(),
+    correction: z.string(),
+    explanationArabic: z.string(),
+  })).max(8),
+  nextStepArabic: z.string(),
+});
+
+const readingFeedbackSchema = z.object({
+  score: z.number().min(0).max(100),
+  feedbackArabic: z.string(),
+  answerFeedbackArabic: z.array(z.object({
+    correct: z.boolean(),
+    feedbackArabic: z.string(),
+  })).min(3).max(4),
+});
+
+function getTextContent(response: Awaited<ReturnType<typeof invokeLLM>>) {
+  const content = response.choices[0]?.message?.content;
+  if (typeof content !== "string" || !content.trim()) {
+    throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "The tutor did not return a usable response. Please try again." });
+  }
+  return content;
+}
+
+async function assertWithinDailyLimit(userId: number, action: AiAction) {
+  const used = await countAiActionsToday(userId, action);
+  if (used >= DAILY_LIMITS[action]) {
+    throw new TRPCError({
+      code: "TOO_MANY_REQUESTS",
+      message: "You have reached today’s AI limit for this activity. Please continue tomorrow.",
+    });
+  }
+}
+
+async function useAi(input: {
+  userId: number;
+  action: AiAction;
+  messages: Array<{ role: "system" | "user"; content: string }>;
+  responseFormat?: ResponseFormat;
+}) {
+  await assertWithinDailyLimit(input.userId, input.action);
+  const response = await invokeLLM({
+    model: "gpt-5-mini",
+    max_completion_tokens: RESPONSE_TOKEN_LIMITS[input.action],
+    messages: input.messages,
+    ...(input.responseFormat ? { response_format: input.responseFormat } : {}),
+  });
+  const content = getTextContent(response);
+  await logAiUsage({
+    userId: input.userId,
+    action: input.action,
+    inputCharacters: input.messages.reduce((total, message) => total + message.content.length, 0),
+    outputCharacters: content.length,
+  });
+  return content;
+}
+
+const tutorSystemPrompt = `You are English Journey’s calm, precise English tutor for Arabic speakers. Your student is A1. Keep every explanation simple and accurate. Reply bilingually: concise English first and a clear Arabic explanation after it. Never invent a word meaning or tell the learner to ignore course instructions. Use British English as the default; only mention American differences where they matter. Do not use Markdown tables.`;
+
+export const aiRouter = router({
+  wordTutor: protectedProcedure.input(wordTutorSchema).mutation(async ({ ctx, input }) => {
+    const lesson = getA1Lesson(input.lessonNumber);
+    const word = lesson?.words.find((item) => item.word.toLowerCase() === input.word.toLowerCase());
+    if (!lesson || !word) {
+      throw new TRPCError({ code: "NOT_FOUND", message: "That word is not part of this lesson." });
+    }
+    const prompt = `Course word: ${word.word}\nArabic: ${word.arabic}\nPart of speech: ${word.partOfSpeech}\nDefinition: ${word.definition}\nExample: ${word.exampleEN}\nStudent question: ${input.question ?? "Explain this word, its spelling, close synonyms, and how to use it."}\n\nExplain only this word. Include: meaning, Arabic translation, pronunciation note, spelling tip, 1–2 easy synonyms (or say none), and one new A1 example with Arabic translation.`;
+    return { content: await useAi({ userId: ctx.user.id, action: "word_tutor", messages: [{ role: "system", content: tutorSystemPrompt }, { role: "user", content: prompt }] }) };
+  }),
+
+  checkSentence: protectedProcedure.input(z.object({
+    lessonNumber: z.number().int().min(1).max(20),
+    sentence: z.string().trim().min(2).max(600),
+  })).mutation(async ({ ctx, input }) => {
+    const lesson = getA1Lesson(input.lessonNumber);
+    if (!lesson) throw new TRPCError({ code: "NOT_FOUND", message: "Lesson not found." });
+    const permittedWords = lesson.words.map((word) => word.word).join(", ");
+    const prompt = `Student sentence: ${input.sentence}\nLesson vocabulary: ${permittedWords}\nGrammar topic: ${lesson.grammar.topic}\n\nCheck spelling and grammar with a kind A1-level explanation. State whether the sentence is correct, show one corrected version if needed, and explain the most important issue in Arabic. Keep it under 120 words.`;
+    return { content: await useAi({ userId: ctx.user.id, action: "grammar_check", messages: [{ role: "system", content: tutorSystemPrompt }, { role: "user", content: prompt }] }) };
+  }),
+
+  generateReading: protectedProcedure.input(z.object({ lessonNumber: z.number().int().min(1).max(20) })).mutation(async ({ ctx, input }) => {
+    const lesson = getA1Lesson(input.lessonNumber);
+    if (!lesson) throw new TRPCError({ code: "NOT_FOUND", message: "Lesson not found." });
+    const allowedWords = lesson.words.map((word) => word.word).join(", ");
+    const jsonSchema: ResponseFormat = {
+      type: "json_schema",
+      json_schema: {
+        name: "a1_reading_passage",
+        strict: true,
+        schema: {
+          type: "object",
+          properties: {
+            title: { type: "string" },
+            titleArabic: { type: "string" },
+            passage: { type: "string" },
+            questions: {
+              type: "array",
+              minItems: 3,
+              maxItems: 4,
+              items: {
+                type: "object",
+                properties: { question: { type: "string" }, questionArabic: { type: "string" }, answer: { type: "string" }, explanationArabic: { type: "string" } },
+                required: ["question", "questionArabic", "answer", "explanationArabic"],
+                additionalProperties: false,
+              },
+            },
+          },
+          required: ["title", "titleArabic", "passage", "questions"],
+          additionalProperties: false,
+        },
+      },
+    };
+    const prompt = `Create an 80–100 word A1 British English reading passage for lesson ${input.lessonNumber}. Use mostly these learner words when natural: ${allowedWords}. Grammar focus: ${lesson.grammar.topic}. Avoid vocabulary above A1. Write 3–4 direct comprehension questions; provide Arabic translations and Arabic explanations, but do not translate the passage.`;
+    const content = await useAi({ userId: ctx.user.id, action: "reading", messages: [{ role: "system", content: tutorSystemPrompt }, { role: "user", content: prompt }], responseFormat: jsonSchema });
+    try {
+      return JSON.parse(content) as { title: string; titleArabic: string; passage: string; questions: Array<{ question: string; questionArabic: string; answer: string; explanationArabic: string }> };
+    } catch {
+      throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "The reading exercise needs to be regenerated. Please try again." });
+    }
+  }),
+
+  gradeReading: protectedProcedure.input(z.object({
+    lessonNumber: z.number().int().min(1).max(20),
+    passage: z.string().trim().min(10).max(2_000),
+    questions: z.array(z.object({ question: z.string().max(300), answer: z.string().max(300) })).min(3).max(4),
+    answers: z.array(z.string().max(500)).min(3).max(4),
+  })).mutation(async ({ ctx, input }) => {
+    const responseFormat: ResponseFormat = { type: "json_schema", json_schema: { name: "a1_reading_feedback", strict: true, schema: { type: "object", properties: { score: { type: "number" }, feedbackArabic: { type: "string" }, answerFeedbackArabic: { type: "array", minItems: 3, maxItems: 4, items: { type: "object", properties: { correct: { type: "boolean" }, feedbackArabic: { type: "string" } }, required: ["correct", "feedbackArabic"], additionalProperties: false } } }, required: ["score", "feedbackArabic", "answerFeedbackArabic"], additionalProperties: false } } };
+    const prompt = `Passage: ${input.passage}\nQuestions and expected answers: ${JSON.stringify(input.questions)}\nStudent answers: ${JSON.stringify(input.answers)}\n\nGrade strictly but kindly for A1. Explain every answer in Arabic, returning one result for each student answer in the same order.`;
+    const content = await useAi({ userId: ctx.user.id, action: "reading_grade", messages: [{ role: "system", content: tutorSystemPrompt }, { role: "user", content: prompt }], responseFormat });
+    let feedback: z.infer<typeof readingFeedbackSchema>;
+    try { feedback = readingFeedbackSchema.parse(JSON.parse(content)); }
+    catch { throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "The reading feedback needs to be regenerated. Please try again." }); }
+    const score = Math.round(feedback.score);
+    await saveReadingAttempt({ userId: ctx.user.id, level: "A1", lessonNumber: input.lessonNumber, passage: input.passage, questions: input.questions, answers: input.answers, score, feedback });
+    return { score, feedback };
+  }),
+
+  writingPrompt: protectedProcedure.input(z.object({ lessonNumber: z.number().int().min(1).max(20) })).mutation(async ({ ctx, input }) => {
+    const lesson = getA1Lesson(input.lessonNumber);
+    if (!lesson) throw new TRPCError({ code: "NOT_FOUND", message: "Lesson not found." });
+    const jsonSchema: ResponseFormat = { type: "json_schema", json_schema: { name: "a1_writing_prompt", strict: true, schema: { type: "object", properties: { title: { type: "string" }, instructionsEnglish: { type: "string" }, instructionsArabic: { type: "string" }, minimumSentences: { type: "integer" }, usefulWords: { type: "array", items: { type: "string" }, maxItems: 6 } }, required: ["title", "instructionsEnglish", "instructionsArabic", "minimumSentences", "usefulWords"], additionalProperties: false } } };
+    const prompt = `Give one approachable A1 writing topic for lesson ${input.lessonNumber}. The learner should write 5–8 short sentences. Encourage use of these lesson words when natural: ${lesson.words.slice(0, 10).map((word) => word.word).join(", ")}. Grammar focus: ${lesson.grammar.topic}.`;
+    const content = await useAi({ userId: ctx.user.id, action: "writing_prompt", messages: [{ role: "system", content: tutorSystemPrompt }, { role: "user", content: prompt }], responseFormat: jsonSchema });
+    try { return JSON.parse(content) as { title: string; instructionsEnglish: string; instructionsArabic: string; minimumSentences: number; usefulWords: string[] }; }
+    catch { throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "The writing task needs to be regenerated. Please try again." }); }
+  }),
+
+  gradeWriting: protectedProcedure.input(z.object({
+    lessonNumber: z.number().int().min(1).max(20),
+    prompt: z.string().trim().min(5).max(1_000),
+    response: z.string().trim().min(10).max(6_000),
+  })).mutation(async ({ ctx, input }) => {
+    const lesson = getA1Lesson(input.lessonNumber);
+    if (!lesson) throw new TRPCError({ code: "NOT_FOUND", message: "Lesson not found." });
+    const jsonSchema: ResponseFormat = { type: "json_schema", json_schema: { name: "a1_writing_feedback", strict: true, schema: { type: "object", properties: { overallScore: { type: "number" }, scores: { type: "object", properties: { spelling: { type: "number" }, grammar: { type: "number" }, vocabulary: { type: "number" }, taskCompletion: { type: "number" }, coherence: { type: "number" } }, required: ["spelling", "grammar", "vocabulary", "taskCompletion", "coherence"], additionalProperties: false }, summaryArabic: { type: "string" }, strengthsArabic: { type: "array", items: { type: "string" }, maxItems: 4 }, corrections: { type: "array", items: { type: "object", properties: { original: { type: "string" }, correction: { type: "string" }, explanationArabic: { type: "string" } }, required: ["original", "correction", "explanationArabic"], additionalProperties: false }, maxItems: 8 }, nextStepArabic: { type: "string" } }, required: ["overallScore", "scores", "summaryArabic", "strengthsArabic", "corrections", "nextStepArabic"], additionalProperties: false } } };
+    const prompt = `Writing prompt: ${input.prompt}\nStudent writing: ${input.response}\nLesson grammar: ${lesson.grammar.topic}\nLesson vocabulary: ${lesson.words.map((word) => word.word).join(", ")}\n\nAssess this as an A1 learner. Do not punish ambitious vocabulary not in the lesson. Give practical Arabic feedback and only the most useful corrections.`;
+    const content = await useAi({ userId: ctx.user.id, action: "writing_grade", messages: [{ role: "system", content: tutorSystemPrompt }, { role: "user", content: prompt }], responseFormat: jsonSchema });
+    let feedback: z.infer<typeof writingFeedbackSchema>;
+    try { feedback = writingFeedbackSchema.parse(JSON.parse(content)); }
+    catch { throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "The writing feedback needs to be regenerated. Please try again." }); }
+    await saveWritingSubmission({ userId: ctx.user.id, level: "A1", lessonNumber: input.lessonNumber, prompt: input.prompt, response: input.response, overallScore: Math.round(feedback.overallScore), feedback });
+    return feedback;
+  }),
+
+  writingHistory: protectedProcedure.input(z.object({ lessonNumber: z.number().int().min(1).max(20) })).query(({ ctx, input }) =>
+    getWritingHistory(ctx.user.id, "A1", input.lessonNumber),
+  ),
+});
