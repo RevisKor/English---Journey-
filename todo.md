@@ -60,5 +60,9 @@
 - [ ] Improve the server-side AI tutor’s level-specific prompting, response schemas, latency safeguards, and quality validation without exposing API credentials to learners.
 - [ ] Test complete A1–C2 navigation, gated progression, personalized assessments, learner feedback, responsive UI, keyboard use, Arabic-support behavior, and automated rules.
 - [ ] Document the expanded course architecture, save a verified final checkpoint, and provide a full user handoff.
-- [ ] Grant the project owner administrator status after authentication is verified and protect admin-only content operations server-side.
-- [ ] Build an administrator content-review area for browsing stored level, module, topic, lesson, practice, and assessment-bank content before release.
+- [x] Explicitly confirm the owner administrator-role grant with database evidence and retain protected API coverage.
+- [x] Build an administrator content-review area for browsing stored level, module, topic, lesson, practice, and assessment-bank content before release.
+- [x] Give the project owner immediate review-mode access to all completed A1, A2, B1, and B2 lesson content, including practice tasks and assessment items.
+- [ ] Verify in an authenticated session that the direct protected review URL loads the catalog and selected-lesson detail successfully.
+- [ ] Fix the administrator review detail request so the selected lesson resolves instead of remaining in a loading state.
+- [x] Correct sidebar level navigation, active-level state, labels, and desktop/mobile behaviour so available course content is easy to inspect.
