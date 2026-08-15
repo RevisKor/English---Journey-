@@ -6,8 +6,7 @@ describe("A2 assessment definitions", () => {
     for (let lessonNumber = 1; lessonNumber <= 20; lessonNumber += 1) {
       const quiz = buildA2LessonQuiz(lessonNumber);
       expect(quiz).toHaveLength(8);
-      expect(quiz.filter((question) => question.type === "meaning")).toHaveLength(5);
-      expect(quiz.filter((question) => question.type === "spelling")).toHaveLength(2);
+      expect(quiz.filter((question) => question.type === "context")).toHaveLength(7);
       expect(quiz.filter((question) => question.type === "grammar")).toHaveLength(1);
     }
   });

@@ -38,6 +38,16 @@
 - [x] Make the application sidebar independently scrollable and add a keyboard-accessible collapse control.
 - [x] Repair responsive layout and navigation issues across the learner dashboard and lesson workspaces.
 - [x] Add regression coverage for lesson-aware external-AI prompt builders and include client tests in the Vitest suite.
+- [x] Redesign A1–B2 quiz banks to test correctly spelled vocabulary, contextual meaning, collocation, learned-word retrieval, and grammar-in-context without spelling traps.
+- [x] Add automated quality checks that reject misspelled distractors and verify vocabulary plus grammar coverage in each revised lesson bank.
+- [x] Add explicit A1–B2 regression coverage for contextual meaning and collocation questions, and encode their assessment purpose in persisted question-bank data.
+- [x] Add an A2–B2 mentor-guided in-lesson guidance layer with level-appropriate openings, transitions, technical purpose, and reflective encouragement.
+- [x] Replace section-jumping lesson workspaces with a continuous mentor-led guided flow that naturally moves learners from vocabulary to grammar, contextual quizzes, reading, writing, and the next step.
+- [x] Make lesson URL parameters open the requested A2–B2 guided lesson directly so mentor-led journey links are reviewable and shareable.
+- [x] Add and verify A2–B2 mentor previews on the course map before learners enter a lesson.
+- [x] Capture authenticated desktop and mobile evidence that A2, B1, and B2 course maps render the bilingual mentor preview before lesson entry.
+- [x] Add focused regression coverage for the A2–B2 course-map mentor preview content and lesson-entry call to action.
+- [ ] Extend the mentor-guidance model and continuous lesson journey to C1 and C2 after those levels are authored.
 - [ ] Capture authenticated owner-session evidence that direct review dispatches successful catalog and lesson-detail requests after page load.
 - [ ] Add UI-level regression coverage for direct review entry, catalog rendering, and selected-lesson detail resolution.
 - [ ] Author, integrate, and validate 20 C1 lessons across four cumulative modules with nuanced, source-aware reading and writing tasks.

@@ -69,6 +69,22 @@ export type LessonPracticeBrief = {
   writingPrompt: string;
 };
 
+export type MentorMomentId = "welcome" | "vocabulary" | "grammar" | "practice" | "reading" | "writing" | "check";
+
+export type MentorMoment = {
+  id: MentorMomentId;
+  title: string;
+  titleArabic: string;
+  message: string;
+  messageArabic: string;
+};
+
+export type LessonMentorGuide = {
+  level: Exclude<CefrLevel, "A1">;
+  lessonTitle: string;
+  moments: MentorMoment[];
+};
+
 export type LexicalNetwork = {
   id: string;
   theme: string;

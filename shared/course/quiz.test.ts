@@ -1,18 +1,23 @@
 import { describe, expect, it } from "vitest";
+import { A1_LESSONS } from "./a1";
 import { buildLessonQuiz, buildModuleTest, withoutAnswers } from "./quiz";
 
 describe("A1 gated assessments", () => {
-  it("builds an eight-question lesson quiz that covers vocabulary, spelling, and grammar", () => {
+  it("builds an eight-question lesson quiz that covers contextual vocabulary and grammar", () => {
     const questions = buildLessonQuiz(1);
     expect(questions).toHaveLength(8);
-    expect(new Set(questions.map((question) => question.type))).toEqual(new Set(["meaning", "spelling", "grammar"]));
+    expect(new Set(questions.map((question) => question.type))).toEqual(new Set(["context", "grammar"]));
     expect(questions.every((question) => question.choices.includes(question.answer))).toBe(true);
   });
 
   it("builds a fifteen-question module test from all five lessons", () => {
     const questions = buildModuleTest(1);
     expect(questions).toHaveLength(15);
-    expect(new Set(questions.map((question) => question.id.split("-")[0]))).toEqual(new Set(["l1", "l2", "l3", "l4", "l5"]));
+    expect(new Set(questions.map((question) => A1_LESSONS.find((lesson) => (
+      lesson.grammar.id === question.reviewItemKey || lesson.words.some((word) => word.id === question.reviewItemKey)
+    ))?.lessonNumber))).toEqual(
+      new Set(A1_LESSONS.filter((lesson) => lesson.moduleNumber === 1).map((lesson) => lesson.lessonNumber)),
+    );
   });
 
   it("removes answers from question payloads sent to learners and enforces an 80 percent pass score", () => {
