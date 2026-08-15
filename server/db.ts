@@ -99,9 +99,10 @@ export function passesAssessment(score: number) {
 export function hasCompletedModuleLessons(
   lessons: Array<{ lessonNumber: number; status: string }>,
   moduleNumber: number,
+  lessonsPerModule = 5,
 ) {
-  const firstLesson = moduleNumber * 5 - 4;
-  return Array.from({ length: 5 }, (_, index) =>
+  const firstLesson = moduleNumber * lessonsPerModule - (lessonsPerModule - 1);
+  return Array.from({ length: lessonsPerModule }, (_, index) =>
     lessons.some((lesson) => lesson.lessonNumber === firstLesson + index && lesson.status === "completed"),
   ).every(Boolean);
 }

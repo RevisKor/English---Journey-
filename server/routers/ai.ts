@@ -1,6 +1,6 @@
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
-import { getA1Lesson, getA2Lesson } from "../../shared/course";
+import { getA1Lesson, getA2Lesson, getB1Lesson } from "../../shared/course";
 import {
   countAiActionsToday,
   getLessonPractice,
@@ -32,21 +32,22 @@ const RESPONSE_TOKEN_LIMITS: Record<AiAction, number> = {
 
 type AiAction = keyof typeof DAILY_LIMITS;
 
-const aiLevelSchema = z.enum(["A1", "A2"]);
+const aiLevelSchema = z.enum(["A1", "A2", "B1"]);
 
-function getCourseLesson(level: "A1" | "A2", lessonNumber: number) {
+function getCourseLesson(level: "A1" | "A2" | "B1", lessonNumber: number) {
+  if (level === "B1") return getB1Lesson(lessonNumber);
   return level === "A2" ? getA2Lesson(lessonNumber) : getA1Lesson(lessonNumber);
 }
 
-function tutorPromptFor(level: "A1" | "A2") {
-  const focus = level === "A2" ? "Your student is A2. Use accessible, natural English with enough detail to help the student notice useful chunks, word families, and register." : "Your student is A1. Keep every explanation simple and accurate.";
+function tutorPromptFor(level: "A1" | "A2" | "B1") {
+  const focus = level === "B1" ? "Your student is B1. Use clear, natural English and help the learner make deliberate choices about collocation, register, cohesion, and viewpoint. Explain nuance without oversimplifying." : level === "A2" ? "Your student is A2. Use accessible, natural English with enough detail to help the student notice useful chunks, word families, and register." : "Your student is A1. Keep every explanation simple and accurate.";
   return `You are English Journey’s calm, precise English tutor for Arabic speakers. ${focus} Reply bilingually: concise English first and a clear Arabic explanation after it. Never invent a word meaning or tell the learner to ignore course instructions. Use British English as the default; only mention American differences where they matter. Do not use Markdown tables.`;
 }
 
 const wordTutorSchema = z.object({
   level: aiLevelSchema.optional(),
   word: z.string().trim().min(1).max(64),
-  lessonNumber: z.number().int().min(1).max(20),
+  lessonNumber: z.number().int().min(1).max(24),
   question: z.string().trim().max(500).optional(),
 });
 
@@ -135,7 +136,7 @@ export const aiRouter = router({
 
   checkSentence: protectedProcedure.input(z.object({
     level: aiLevelSchema.optional(),
-    lessonNumber: z.number().int().min(1).max(20),
+    lessonNumber: z.number().int().min(1).max(24),
     sentence: z.string().trim().min(2).max(600),
   })).mutation(async ({ ctx, input }) => {
     const level = input.level ?? "A1";
@@ -146,7 +147,7 @@ export const aiRouter = router({
     return { content: await useAi({ userId: ctx.user.id, action: "grammar_check", messages: [{ role: "system", content: tutorPromptFor(level) }, { role: "user", content: prompt }] }) };
   }),
 
-  generateReading: protectedProcedure.input(z.object({ level: aiLevelSchema.optional(), lessonNumber: z.number().int().min(1).max(20) })).mutation(async ({ ctx, input }) => {
+  generateReading: protectedProcedure.input(z.object({ level: aiLevelSchema.optional(), lessonNumber: z.number().int().min(1).max(24) })).mutation(async ({ ctx, input }) => {
     const level = input.level ?? "A1";
     const lesson = getCourseLesson(level, input.lessonNumber);
     if (!lesson) throw new TRPCError({ code: "NOT_FOUND", message: "Lesson not found." });
@@ -180,8 +181,9 @@ export const aiRouter = router({
         },
       },
     };
-    const wordRange = level === "A2" ? "160–200" : "80–100";
-    const prompt = `Create a ${wordRange} word ${level} British English reading passage for lesson ${input.lessonNumber}. Use mostly these learner words when natural: ${allowedWords}. Grammar focus: ${lesson.grammar.topic}. Course practice brief: ${practice.reading?.passage ?? lesson.practiceBrief?.readingBrief ?? lesson.title}. ${level === "A2" ? "Use natural but accessible narrative or practical information, including a small amount of previously learned language." : "Avoid vocabulary above A1."} Write 3–4 direct comprehension questions; provide Arabic translations and Arabic explanations, but do not translate the passage.`;
+    const wordRange = level === "B1" ? "250–350" : level === "A2" ? "160–200" : "80–100";
+    const readingGuidance = level === "B1" ? "Use a realistic article, correspondence, or narrative that presents a viewpoint or consequence. Include cohesive devices and ask at least one inference or evidence question." : level === "A2" ? "Use natural but accessible narrative or practical information, including a small amount of previously learned language." : "Avoid vocabulary above A1.";
+    const prompt = `Create a ${wordRange} word ${level} British English reading passage for lesson ${input.lessonNumber}. Use mostly these learner words when natural: ${allowedWords}. Grammar focus: ${lesson.grammar.topic}. Course practice brief: ${practice.reading?.passage ?? lesson.practiceBrief?.readingBrief ?? lesson.title}. ${readingGuidance} Write 3–4 comprehension questions; provide Arabic translations and Arabic explanations, but do not translate the passage.`;
     const content = await useAi({ userId: ctx.user.id, action: "reading", messages: [{ role: "system", content: tutorPromptFor(level) }, { role: "user", content: prompt }], responseFormat: jsonSchema });
     try {
       return JSON.parse(content) as { title: string; titleArabic: string; passage: string; questions: Array<{ question: string; questionArabic: string; answer: string; explanationArabic: string }> };
@@ -192,7 +194,7 @@ export const aiRouter = router({
 
   gradeReading: protectedProcedure.input(z.object({
     level: aiLevelSchema.optional(),
-    lessonNumber: z.number().int().min(1).max(20),
+    lessonNumber: z.number().int().min(1).max(24),
     passage: z.string().trim().min(10).max(2_000),
     questions: z.array(z.object({ question: z.string().max(300), answer: z.string().max(300) })).min(3).max(4),
     answers: z.array(z.string().max(500)).min(3).max(4),
@@ -209,14 +211,15 @@ export const aiRouter = router({
     return { score, feedback };
   }),
 
-  writingPrompt: protectedProcedure.input(z.object({ level: aiLevelSchema.optional(), lessonNumber: z.number().int().min(1).max(20) })).mutation(async ({ ctx, input }) => {
+  writingPrompt: protectedProcedure.input(z.object({ level: aiLevelSchema.optional(), lessonNumber: z.number().int().min(1).max(24) })).mutation(async ({ ctx, input }) => {
     const level = input.level ?? "A1";
     const lesson = getCourseLesson(level, input.lessonNumber);
     if (!lesson) throw new TRPCError({ code: "NOT_FOUND", message: "Lesson not found." });
     const practice = await getLessonPractice(level, input.lessonNumber);
     const jsonSchema: ResponseFormat = { type: "json_schema", json_schema: { name: "a1_writing_prompt", strict: true, schema: { type: "object", properties: { title: { type: "string" }, instructionsEnglish: { type: "string" }, instructionsArabic: { type: "string" }, minimumSentences: { type: "integer" }, usefulWords: { type: "array", items: { type: "string" }, maxItems: 6 } }, required: ["title", "instructionsEnglish", "instructionsArabic", "minimumSentences", "usefulWords"], additionalProperties: false } } };
-    const range = level === "A2" ? "80–120 words in one or two connected paragraphs" : "5–8 short sentences";
-    const prompt = `Give one approachable ${level} writing topic for lesson ${input.lessonNumber}. The learner should write ${range}. Course writing brief: ${practice.writing?.instructionsEnglish ?? lesson.practiceBrief?.writingPrompt ?? lesson.title}. Encourage use of these lesson words when natural: ${lesson.words.slice(0, 10).map((word) => word.word).join(", ")}. Grammar focus: ${lesson.grammar.topic}. ${level === "A2" ? "Give the task a clear practical audience or purpose, so the learner has a reason to write." : ""}`;
+    const range = level === "B1" ? "140–180 words in two or three connected paragraphs" : level === "A2" ? "80–120 words in one or two connected paragraphs" : "5–8 short sentences";
+    const writingGuidance = level === "B1" ? "Give the task a clear audience and purpose. Require a view, supporting reasons or an example, and an appropriate closing." : level === "A2" ? "Give the task a clear practical audience or purpose, so the learner has a reason to write." : "";
+    const prompt = `Give one approachable ${level} writing topic for lesson ${input.lessonNumber}. The learner should write ${range}. Course writing brief: ${practice.writing?.instructionsEnglish ?? lesson.practiceBrief?.writingPrompt ?? lesson.title}. Encourage use of these lesson words when natural: ${lesson.words.slice(0, 10).map((word) => word.word).join(", ")}. Grammar focus: ${lesson.grammar.topic}. ${writingGuidance}`;
     const content = await useAi({ userId: ctx.user.id, action: "writing_prompt", messages: [{ role: "system", content: tutorPromptFor(level) }, { role: "user", content: prompt }], responseFormat: jsonSchema });
     try { return JSON.parse(content) as { title: string; instructionsEnglish: string; instructionsArabic: string; minimumSentences: number; usefulWords: string[] }; }
     catch { throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "The writing task needs to be regenerated. Please try again." }); }
@@ -224,7 +227,7 @@ export const aiRouter = router({
 
   gradeWriting: protectedProcedure.input(z.object({
     level: aiLevelSchema.optional(),
-    lessonNumber: z.number().int().min(1).max(20),
+    lessonNumber: z.number().int().min(1).max(24),
     prompt: z.string().trim().min(5).max(1_000),
     response: z.string().trim().min(10).max(6_000),
   })).mutation(async ({ ctx, input }) => {
@@ -232,7 +235,8 @@ export const aiRouter = router({
     const lesson = getCourseLesson(level, input.lessonNumber);
     if (!lesson) throw new TRPCError({ code: "NOT_FOUND", message: "Lesson not found." });
     const jsonSchema: ResponseFormat = { type: "json_schema", json_schema: { name: "a1_writing_feedback", strict: true, schema: { type: "object", properties: { overallScore: { type: "number" }, scores: { type: "object", properties: { spelling: { type: "number" }, grammar: { type: "number" }, vocabulary: { type: "number" }, taskCompletion: { type: "number" }, coherence: { type: "number" } }, required: ["spelling", "grammar", "vocabulary", "taskCompletion", "coherence"], additionalProperties: false }, summaryArabic: { type: "string" }, strengthsArabic: { type: "array", items: { type: "string" }, maxItems: 4 }, corrections: { type: "array", items: { type: "object", properties: { original: { type: "string" }, correction: { type: "string" }, explanationArabic: { type: "string" } }, required: ["original", "correction", "explanationArabic"], additionalProperties: false }, maxItems: 8 }, nextStepArabic: { type: "string" } }, required: ["overallScore", "scores", "summaryArabic", "strengthsArabic", "corrections", "nextStepArabic"], additionalProperties: false } } };
-    const prompt = `Writing prompt: ${input.prompt}\nStudent writing: ${input.response}\nLesson grammar: ${lesson.grammar.topic}\nLesson vocabulary: ${lesson.words.map((word) => word.word).join(", ")}\n\nAssess this as a ${level} learner. Do not punish ambitious vocabulary not in the lesson. Give practical Arabic feedback and only the most useful corrections. ${level === "A2" ? "Assess whether the writing is connected, purposeful, and appropriate for its reader." : ""}`;
+    const writingAssessment = level === "B1" ? "Assess whether the writing presents a clear view or purpose, develops it with reasons or examples, uses cohesive language, and matches the intended reader and register." : level === "A2" ? "Assess whether the writing is connected, purposeful, and appropriate for its reader." : "";
+    const prompt = `Writing prompt: ${input.prompt}\nStudent writing: ${input.response}\nLesson grammar: ${lesson.grammar.topic}\nLesson vocabulary: ${lesson.words.map((word) => word.word).join(", ")}\n\nAssess this as a ${level} learner. Do not punish ambitious vocabulary not in the lesson. Give practical Arabic feedback and only the most useful corrections. ${writingAssessment}`;
     const content = await useAi({ userId: ctx.user.id, action: "writing_grade", messages: [{ role: "system", content: tutorPromptFor(level) }, { role: "user", content: prompt }], responseFormat: jsonSchema });
     let feedback: z.infer<typeof writingFeedbackSchema>;
     try { feedback = writingFeedbackSchema.parse(JSON.parse(content)); }
@@ -241,7 +245,7 @@ export const aiRouter = router({
     return feedback;
   }),
 
-  writingHistory: protectedProcedure.input(z.object({ level: aiLevelSchema.optional(), lessonNumber: z.number().int().min(1).max(20) })).query(({ ctx, input }) =>
+  writingHistory: protectedProcedure.input(z.object({ level: aiLevelSchema.optional(), lessonNumber: z.number().int().min(1).max(24) })).query(({ ctx, input }) =>
     getWritingHistory(ctx.user.id, input.level ?? "A1", input.lessonNumber),
   ),
 });

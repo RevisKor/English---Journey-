@@ -98,6 +98,28 @@ describe("AI course procedures", () => {
     expect(invokeLLM).toHaveBeenCalledWith(expect.objectContaining({ messages: expect.arrayContaining([expect.objectContaining({ content: expect.stringContaining("Write a short note about your family.") })]) }));
   });
 
+  it("uses B1 lesson context and a higher-demand reading brief for the 24-lesson course", async () => {
+    getLessonPractice.mockResolvedValueOnce({ reading: { passage: "Read an opinion article about a community decision." }, writing: undefined });
+    invokeLLM.mockResolvedValue(modelResponse(JSON.stringify({
+      title: "A Community Choice", titleArabic: "خيار مجتمعي", passage: "A local group discussed a proposal and explained why the decision could affect daily life for several residents.",
+      questions: [
+        { question: "What proposal did the group discuss?", questionArabic: "ما المقترح الذي ناقشته المجموعة؟", answer: "A local proposal", explanationArabic: "ينص النص على وجود مقترح محلي." },
+        { question: "Why could the decision matter?", questionArabic: "لماذا قد يهم القرار؟", answer: "It could affect residents", explanationArabic: "يشرح النص أن القرار قد يؤثر في السكان." },
+        { question: "What evidence supports this view?", questionArabic: "ما الدليل الذي يدعم هذا الرأي؟", answer: "The described daily-life impact", explanationArabic: "يشير النص إلى أثر القرار في الحياة اليومية." },
+      ],
+    })));
+    const caller = aiRouter.createCaller(createContext());
+
+    await expect(caller.generateReading({ level: "B1", lessonNumber: 24 })).resolves.toMatchObject({ title: "A Community Choice" });
+
+    expect(getLessonPractice).toHaveBeenCalledWith("B1", 24);
+    expect(invokeLLM).toHaveBeenCalledWith(expect.objectContaining({ messages: expect.arrayContaining([
+      expect.objectContaining({ content: expect.stringContaining("250–350") }),
+      expect.objectContaining({ content: expect.stringContaining("inference or evidence question") }),
+      expect.objectContaining({ content: expect.stringContaining("Read an opinion article about a community decision.") }),
+    ]) }));
+  });
+
   it("validates and persists structured writing feedback", async () => {
     invokeLLM.mockResolvedValue(modelResponse(JSON.stringify({
       overallScore: 80,

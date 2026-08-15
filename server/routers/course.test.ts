@@ -96,9 +96,9 @@ describe("course assessment mutations", () => {
     mocks.hasCompletedModuleLessons.mockReturnValue(false);
     const caller = courseRouter.createCaller(createContext());
 
-    await expect(caller.moduleTest({ moduleNumber: 1 })).rejects.toThrow("Complete all five module lessons");
-    await expect(caller.moduleTest({ level: "A2", moduleNumber: 1 })).rejects.toThrow("Complete all five module lessons");
-    await expect(caller.submitModuleTest({ moduleNumber: 1, assessmentInstanceId: 106, answers: {} })).rejects.toThrow("Complete all five module lessons");
+    await expect(caller.moduleTest({ moduleNumber: 1 })).rejects.toThrow("Complete all 5 module lessons");
+    await expect(caller.moduleTest({ level: "A2", moduleNumber: 1 })).rejects.toThrow("Complete all 5 module lessons");
+    await expect(caller.submitModuleTest({ moduleNumber: 1, assessmentInstanceId: 106, answers: {} })).rejects.toThrow("Complete all 5 module lessons");
   });
 
   it("persists warm-up review answers and records eligible daily activity", async () => {

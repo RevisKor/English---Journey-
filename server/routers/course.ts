@@ -11,16 +11,17 @@ import {
 } from "../db";
 import { getOrCreateAssessmentInstance, gradeAssessmentInstance } from "../assessment-instances";
 import {
-  A1_GRAMMAR, A1_VOCABULARY, A2_GRAMMAR, A2_VOCABULARY,
-  buildA2LessonQuiz, buildA2ModuleTest, buildLessonQuiz, buildModuleTest,
+  A1_COURSE, A1_GRAMMAR, A1_VOCABULARY, A2_COURSE, A2_GRAMMAR, A2_VOCABULARY, B1_COURSE, B1_GRAMMAR, B1_VOCABULARY,
+  buildA2LessonQuiz, buildA2ModuleTest, buildB1LessonQuiz, buildB1ModuleTest, buildLessonQuiz, buildModuleTest,
 } from "../../shared/course";
 import { protectedProcedure, router } from "../_core/trpc";
 
 const levelSchema = z.enum(["A1", "A2", "B1", "B2", "C1", "C2"]);
 
 function materialForLevel(level: "A1" | "A2" | "B1" | "B2" | "C1" | "C2") {
-  if (level === "A2") return { vocabulary: A2_VOCABULARY, grammar: A2_GRAMMAR, lessonQuiz: buildA2LessonQuiz, moduleTest: buildA2ModuleTest };
-  return { vocabulary: A1_VOCABULARY, grammar: A1_GRAMMAR, lessonQuiz: buildLessonQuiz, moduleTest: buildModuleTest };
+  if (level === "A2") return { course: A2_COURSE, vocabulary: A2_VOCABULARY, grammar: A2_GRAMMAR, lessonQuiz: buildA2LessonQuiz, moduleTest: buildA2ModuleTest };
+  if (level === "B1") return { course: B1_COURSE, vocabulary: B1_VOCABULARY, grammar: B1_GRAMMAR, lessonQuiz: buildB1LessonQuiz, moduleTest: buildB1ModuleTest };
+  return { course: A1_COURSE, vocabulary: A1_VOCABULARY, grammar: A1_GRAMMAR, lessonQuiz: buildLessonQuiz, moduleTest: buildModuleTest };
 }
 
 export const courseRouter = router({
@@ -43,8 +44,10 @@ export const courseRouter = router({
 
   recordActivity: protectedProcedure.mutation(({ ctx }) => recordLearnerActivity(ctx.user.id)),
 
-  lessonQuiz: protectedProcedure.input(z.object({ level: levelSchema.optional(), lessonNumber: z.number().int().min(1).max(20) })).query(async ({ ctx, input }) => {
+  lessonQuiz: protectedProcedure.input(z.object({ level: levelSchema.optional(), lessonNumber: z.number().int().min(1).max(24) })).query(async ({ ctx, input }) => {
     const level = input.level ?? "A1";
+    const material = materialForLevel(level);
+    if (input.lessonNumber > material.course.totalLessons) throw new Error("Lesson not found for this level.");
     const progress = await getLearnerProgress(ctx.user.id, level);
     const isAvailable = input.lessonNumber === 1 || progress.lessons.some((lesson) => lesson.lessonNumber === input.lessonNumber && lesson.status !== "locked") || progress.lessons.some((lesson) => lesson.lessonNumber === input.lessonNumber - 1 && lesson.status === "completed");
     if (!isAvailable) throw new Error("Complete the previous lesson before taking this quiz.");
@@ -52,11 +55,13 @@ export const courseRouter = router({
   }),
 
   submitLessonQuiz: protectedProcedure.input(z.object({
-    level: levelSchema.optional(), lessonNumber: z.number().int().min(1).max(20),
+    level: levelSchema.optional(), lessonNumber: z.number().int().min(1).max(24),
     assessmentInstanceId: z.number().int().positive(),
     answers: z.record(z.string(), z.string()),
   })).mutation(async ({ ctx, input }) => {
     const level = input.level ?? "A1";
+    const material = materialForLevel(level);
+    if (input.lessonNumber > material.course.totalLessons) throw new Error("Lesson not found for this level.");
     const graded = await gradeAssessmentInstance({
       userId: ctx.user.id,
       assessmentInstanceId: input.assessmentInstanceId,
@@ -68,9 +73,10 @@ export const courseRouter = router({
 
   moduleTest: protectedProcedure.input(z.object({ level: levelSchema.optional(), moduleNumber: z.number().int().min(1).max(4) })).query(async ({ ctx, input }) => {
     const level = input.level ?? "A1";
+    const material = materialForLevel(level);
     const progress = await getLearnerProgress(ctx.user.id, level);
-    const allLessonsComplete = hasCompletedModuleLessons(progress.lessons, input.moduleNumber);
-    if (!allLessonsComplete) throw new Error("Complete all five module lessons before taking this test.");
+    const allLessonsComplete = hasCompletedModuleLessons(progress.lessons, input.moduleNumber, material.course.lessonsPerModule);
+    if (!allLessonsComplete) throw new Error(`Complete all ${material.course.lessonsPerModule} module lessons before taking this test.`);
     return getOrCreateAssessmentInstance(ctx.user.id, { level, assessmentType: "module_test", moduleNumber: input.moduleNumber });
   }),
 
@@ -80,15 +86,16 @@ export const courseRouter = router({
     answers: z.record(z.string(), z.string()),
   })).mutation(async ({ ctx, input }) => {
     const level = input.level ?? "A1";
+    const material = materialForLevel(level);
     const progress = await getLearnerProgress(ctx.user.id, level);
-    if (!hasCompletedModuleLessons(progress.lessons, input.moduleNumber)) throw new Error("Complete all five module lessons before taking this test.");
+    if (!hasCompletedModuleLessons(progress.lessons, input.moduleNumber, material.course.lessonsPerModule)) throw new Error(`Complete all ${material.course.lessonsPerModule} module lessons before taking this test.`);
     const graded = await gradeAssessmentInstance({
       userId: ctx.user.id,
       assessmentInstanceId: input.assessmentInstanceId,
       scope: { level, assessmentType: "module_test", moduleNumber: input.moduleNumber },
       answers: input.answers,
     });
-    return submitLessonAssessment({ userId: ctx.user.id, level, lessonNumber: input.moduleNumber * 5, assessmentType: "module_test", assessmentInstanceId: input.assessmentInstanceId, score: graded.score, answers: input.answers, missedItemKeys: graded.missedItemKeys });
+    return submitLessonAssessment({ userId: ctx.user.id, level, lessonNumber: input.moduleNumber * material.course.lessonsPerModule, assessmentType: "module_test", assessmentInstanceId: input.assessmentInstanceId, score: graded.score, answers: input.answers, missedItemKeys: graded.missedItemKeys });
   }),
 
   warmup: protectedProcedure.input(z.object({ level: levelSchema.optional() }).optional()).query(async ({ ctx, input }) => {

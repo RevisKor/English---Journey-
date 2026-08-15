@@ -12,7 +12,7 @@ type ReadingExercise = {
 };
 
 export function CourseReadingPractice({ lesson }: { lesson: LessonDefinition }) {
-  const level = lesson.level === "A2" ? "A2" : "A1";
+  const level = lesson.level as "A1" | "A2" | "B1";
   const [exercise, setExercise] = useState<ReadingExercise | null>(null);
   const [answers, setAnswers] = useState<string[]>([]);
   const readingMutation = trpc.ai.generateReading.useMutation({
@@ -22,7 +22,7 @@ export function CourseReadingPractice({ lesson }: { lesson: LessonDefinition }) 
     },
   });
   const gradeMutation = trpc.ai.gradeReading.useMutation();
-  const target = level === "A2" ? "160–200" : "80–100";
+  const target = level === "A1" ? "80–100" : level === "A2" ? "160–200" : "250–350";
 
   if (!exercise) {
     return (

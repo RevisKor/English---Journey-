@@ -10,7 +10,7 @@ import {
   lessonVocabulary,
   lessonWritingTasks,
 } from "../drizzle/schema";
-import { A1_COURSE, A2_COURSE } from "../shared/course";
+import { A1_COURSE, A2_COURSE, B1_COURSE } from "../shared/course";
 
 const state = vi.hoisted(() => ({
   inserts: [] as Array<{ table: unknown; values: unknown }>,
@@ -63,11 +63,13 @@ describe("curriculum catalog practice persistence", () => {
     state.lessonId = 100;
   });
 
-  it("inserts reading and writing records for every A1/A2 lesson, then updates those same rows on focused practice sync", async () => {
+  it("inserts reading and writing records for every integrated lesson, then updates those same rows on focused practice sync", async () => {
     await ensureCurriculumCatalog();
 
-    expect(state.inserts.filter((entry) => entry.table === lessonReadings)).toHaveLength(40);
-    expect(state.inserts.filter((entry) => entry.table === lessonWritingTasks)).toHaveLength(40);
+    const integratedCourses = [A1_COURSE, A2_COURSE, B1_COURSE];
+    const integratedLessonCount = integratedCourses.reduce((total, course) => total + course.lessons.length, 0);
+    expect(state.inserts.filter((entry) => entry.table === lessonReadings)).toHaveLength(integratedLessonCount);
+    expect(state.inserts.filter((entry) => entry.table === lessonWritingTasks)).toHaveLength(integratedLessonCount);
     expect(state.inserts.some((entry) => entry.table === lessonVocabulary)).toBe(true);
     expect(state.inserts.some((entry) => entry.table === lessonGrammar)).toBe(true);
     expect(state.inserts.some((entry) => entry.table === assessmentQuestionBank)).toBe(true);
@@ -75,7 +77,7 @@ describe("curriculum catalog practice persistence", () => {
     state.practiceRowsExist = true;
     await syncStructuredPracticeCatalog();
 
-    const expectedLessons = [A1_COURSE, A2_COURSE].flatMap((course) => course.lessons.map((lesson) => ({ course, lesson })));
+    const expectedLessons = integratedCourses.flatMap((course) => course.lessons.map((lesson) => ({ course, lesson })));
     const expectedReadingUpdates = expectedLessons.map(({ course, lesson }) => {
       const reading = structuredReading(course, lesson);
       return { titleArabic: reading.titleArabic, passage: reading.passage, questions: reading.questions, contentVersion: 1 };

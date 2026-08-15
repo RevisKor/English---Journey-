@@ -2,6 +2,7 @@ import { and, eq } from "drizzle-orm";
 import {
   A1_COURSE,
   A2_COURSE,
+  B1_COURSE,
   type CefrLevel,
   type CourseDefinition,
   type LessonDefinition,
@@ -20,7 +21,7 @@ import {
 } from "../drizzle/schema";
 import { getDb } from "./db";
 
-const LEGACY_COURSES: CourseDefinition[] = [A1_COURSE, A2_COURSE];
+const LEGACY_COURSES: CourseDefinition[] = [A1_COURSE, A2_COURSE, B1_COURSE];
 const SYNC_VERSION = 1;
 let syncPromise: Promise<void> | null = null;
 
@@ -106,7 +107,7 @@ export function structuredWriting(course: CourseDefinition, lesson: LessonDefini
     title: `Writing: ${lesson.title}`,
     instructionsEnglish: lesson.practiceBrief?.writingPrompt ?? `Write a short ${course.level} text to show that you can ${outcome}. Use ${lesson.grammar.topic} and at least three of these words when natural: ${usefulWords}.`,
     instructionsArabic: `اكتب نصاً قصيراً لتثبت أنك تستطيع ${lesson.learningPlan?.outcome.canDoArabic ?? `استخدام قاعدة ${lesson.grammar.arabicName}`}. استخدم القاعدة وثلاث كلمات من الدرس على الأقل عندما يكون ذلك طبيعياً.`,
-    minimumWords: course.level === "A1" ? 35 : 80,
+    minimumWords: course.level === "A1" ? 35 : course.level === "A2" ? 80 : 140,
     successCriteria: ["Use the lesson grammar accurately.", "Use at least three lesson words naturally.", "Make the purpose clear to the reader."],
   };
 }
@@ -256,7 +257,7 @@ async function syncCourse(course: CourseDefinition) {
             assessmentType,
             objectiveKey: question.reviewItemKey,
             itemType: question.type,
-            difficulty: course.level === "A1" ? 1 : 2,
+            difficulty: course.level === "A1" ? 1 : course.level === "A2" ? 2 : 3,
             questionData: question as unknown as Record<string, unknown>,
             reviewItemKey: question.reviewItemKey,
             contentVersion: SYNC_VERSION,
