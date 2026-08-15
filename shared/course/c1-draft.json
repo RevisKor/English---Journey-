@@ -2489,5 +2489,2014 @@
     },
     "readingBrief": "Read a 600-word original policy extract written for a civic-design journal that argues for establishing a permanent deliberative forum to manage contested redevelopment. The extract includes: (a) a short evidence summary from a recent municipal evaluation, (b) a statement of anticipated benefits (inclusion, legitimacy), and (c) a candid section on risks and resource implications. Your task is source-aware: identify the author's perspective and any institutional interests, evaluate the strength and limits of the evidence cited (sample size, timeframe, stakeholders represented), and note at least two areas where the author hedges or fails to acknowledge plausible counterarguments. Prepare marginal notes that you will later integrate into your proposal to the council.",
     "writingPrompt": "Write 320–420 words addressed to the city council and community stakeholder committee. Take a clear, defensible position on whether the council should adopt a permanent deliberative forum, a time-limited pilot, or an alternative approach. Your piece must: (1) synthesise at least two perspectives from the reading (for instance, the policy extract and an implied community concern), (2) include one diplomatic rebuttal to a likely counterargument, and (3) propose two concrete procedural recommendations with measurable evaluation metrics. Success criteria: maintain a formal, mixed register appropriate for officials and civic actors; use hedged persuasion judiciously (showing confidence without closing dissent); achieve cohesion with clear signposting and logical progression; be precise in recommendations (who, what, timeline, and metric); and attribute claims responsibly to the sources you used (e.g., 'the policy extract notes…'). Aim for 320–420 words. Responsible attribution and balanced consideration of alternatives are required for a passing response."
+  },
+  {
+    "lessonNumber": 12,
+    "title": "An argument with a memory",
+    "titleArabic": "حجة لها سياق",
+    "outcome": {
+      "canDo": "I can evaluate competing historical claims, reference sources allusively and precisely, and write a concise formal proposal that balances precedent, interpretation and contemporary consequence.",
+      "canDoArabic": "أستطيع تقييم الادعاءات التاريخية المتنافسة، والإشارة إلى المصادر بشكل ضمني ودقيق، وكتابة مقترح رسمى موجز يوازن بين السوابق والتأويل والنتائج المعاصرة.",
+      "scenario": "You are preparing a briefing and formal recommendation for a city heritage committee deciding whether to remove, reinterpret, or retain a controversial monument. You must synthesise archival documents, a recent scholarly article, and a public petition to present a defensible proposal.",
+      "scenarioArabic": "أنت تقوم بإعداد إحاطة وتوصية رسمية للجنة التراث البلدى التى ستقرر ما إذا كانت ستنقل نصبًا جدليًا أم تعيد تفسيره أم تحتفظ به. عليك أن تلخّص وثائق أرشيفية ومقالًا أكاديمياً حديثًا وعريضة عامة لصياغة مقترح يمكن الدفاع عنه."
+    },
+    "retrieval": [
+      {
+        "language": "English",
+        "prompt": "Evidence (repurposed): In 60–80 words list two types of archival evidence (e.g. council minutes, private correspondence), explain one strength and one limitation of each for establishing motive.",
+        "purpose": "Push learners to distinguish kinds of primary sources and assess reliability for historical motive."
+      },
+      {
+        "language": "Arabic",
+        "prompt": "الأدلة (مُعزَّزة): في 60–80 كلمة، اذكر نوعين من الأدلة الأرشيفية (مثل محاضر المجلس، مراسلات خاصة)، وشرح ميزة واحدة وقيْدًا واحدًا لكلٍ منها لتثبيت الدافع.",
+        "purpose": "توجيه المتعلمين لتمييز أنواع المصادر الأولية وتقييم مصداقيتها بشأن النوايا التاريخية."
+      },
+      {
+        "language": "English",
+        "prompt": "Counterargument (repurposed): Draft a 40–60-word counterargument that concedes a plausible point from the opposing side but explains why that concession doesn't overturn your main claim.",
+        "purpose": "Practise qualified rebuttal and strategic concession at C1."
+      },
+      {
+        "language": "Arabic",
+        "prompt": "الحُجّة المُعاكِسة (مُعزَّزة): صِغ حجة معاكِسة من 40–60 كلمة تُقِرُّ بنقطة مقبولة لدى الجانب المقابل وتشرح لماذا ذلك القبول لا يطيحُ بحُكمك الرئيسى.",
+        "purpose": "تمرين على الإقرار المنضبط والرد الاستراتيجى بمستوى C1."
+      }
+    ],
+    "network": {
+      "theme": "history, precedent, interpretation",
+      "themeArabic": "التاريخ، السّابقة، التفسير",
+      "anchor": "precedent",
+      "relatedWords": [
+        "precedent",
+        "archival",
+        "provenance",
+        "interpretation",
+        "contextualise",
+        "contestation",
+        "credibility"
+      ],
+      "chunks": [
+        "in light of the archival record",
+        "against this backdrop",
+        "it is worth noting that",
+        "on balance",
+        "a closer reading suggests",
+        "this invites the question",
+        "with the benefit of hindsight"
+      ],
+      "collocations": [
+        "establish precedent",
+        "cast doubt on",
+        "lend weight to",
+        "raise questions about",
+        "trace the lineage of",
+        "offer a measured response",
+        "situate X within Y"
+      ],
+      "register": "mixed",
+      "priorLevelLinks": [
+        "B2: evidence",
+        "B2: counterargument",
+        "B2: register",
+        "B2: consequence",
+        "B2: evaluation",
+        "B2: proposal"
+      ],
+      "learningNote": "At C1 focus on disciplined allusive reference (hinting at sources rather than over-citing), on tight temporal framing (precise dating and sequence), and on stance management: concede where necessary, hedge where appropriate, and foreground the most reliable evidence.",
+      "learningNoteArabic": "على مستوى C1 ركّز على الإشارة المنضبطة للمراجع (اللمح للمصادر بدل الإفراط فى الاقتباس)، والتأطير الزمنى الدقيق (تحديد التواريخ والتسلسل)، وإدارة الموقف: الاعتراف عند الضرورة، واستخدام التحفّظ المناسب، وإبراز الأدلة الأكثر موثوقية.",
+      "wordFamilies": [
+        {
+          "headword": "invoke",
+          "forms": [
+            "invoke",
+            "invocation",
+            "invoked",
+            "invoking"
+          ],
+          "note": "Common in formal argument: 'invoke precedent', 'invoke the record'. Use to indicate purposeful appeal to a source or principle.",
+          "noteArabic": "شائع فى الحُجج الرسمية: 'استدعاء سابقة'، 'الاستناد إلى السجل'. يُستخدم للدلالة على الاستناد المقصود إلى مصدر أو مبدأ."
+        },
+        {
+          "headword": "interpret",
+          "forms": [
+            "interpret",
+            "interpretation",
+            "interpretive",
+            "misinterpret"
+          ],
+          "note": "Useful for discussing competing accounts and analytical stance; pair with hedging for nuance (e.g. 'one plausible interpretation is…').",
+          "noteArabic": "مفيد لمناقشة الروايات المتنافسة والموقف التحليلى؛ يُقترَن غالبًا بالتحفّظ لإضفاء الدقة (مثل: 'تفسير معقول واحد هو…')."
+        },
+        {
+          "headword": "archive",
+          "forms": [
+            "archive",
+            "archival",
+            "archivist",
+            "archiving"
+          ],
+          "note": "Focus on provenance and preservation vocabulary when weighing source reliability.",
+          "noteArabic": "ركز على مفردات النَّسب والحفظ عند تقييم موثوقية المصادر."
+        }
+      ]
+    },
+    "vocabulary": [
+      {
+        "word": "to invoke precedent",
+        "arabic": "استدعاء سابقة",
+        "partOfSpeech": "verb phrase",
+        "definition": "to appeal to an earlier decision, event or practice as justification for a current position",
+        "exampleEN": "The committee invoked precedent from the 1978 deliberations when arguing for reinterpretation.",
+        "exampleAR": "استندت اللجنة إلى سابقة من مداولات 1978 عند الحُجّة لصالح إعادة التفسير."
+      },
+      {
+        "word": "selective reading (of the record)",
+        "arabic": "قراءة انتقائية (للسجل)",
+        "partOfSpeech": "noun phrase",
+        "definition": "the practice of emphasising some documents or facts while ignoring others to support a claim",
+        "exampleEN": "Accusing critics of a selective reading of the record, she pointed out the overlooked minutes.",
+        "exampleAR": "اتهمتُ النقّادَ بالقراءة الانتقائية للسجل، وأشرت إلى محاضر لم تُؤخذ فى الاعتبار."
+      },
+      {
+        "word": "historical contingency",
+        "arabic": "الاحتمالية التاريخية",
+        "partOfSpeech": "noun",
+        "definition": "the idea that events are shaped by specific, often unpredictable circumstances rather than inevitable forces",
+        "exampleEN": "Acknowledging historical contingency helps avoid teleological readings of the past.",
+        "exampleAR": "الاعتراف بالاحتمالية التاريخية يساعد على تجنُّب قراءة الماضي كأنه قدَر محتوم."
+      },
+      {
+        "word": "to frame the narrative",
+        "arabic": "تأطير السرد",
+        "partOfSpeech": "verb phrase",
+        "definition": "to shape how a story or argument is presented, emphasising certain aspects over others",
+        "exampleEN": "How you frame the narrative will determine whether the monument appears as commemoration or coercion.",
+        "exampleAR": "كيفية تأطير السرد ستحدد ما إذا كان النصب يظهر كتخليد أم كقسر."
+      },
+      {
+        "word": "buried in the footnotes",
+        "arabic": "مدفون فى الحواشي السفلية",
+        "partOfSpeech": "idiom",
+        "definition": "refers to important details that are hidden in less prominent parts of a text",
+        "exampleEN": "A key directive was effectively buried in the footnotes of the report.",
+        "exampleAR": "توجيه رئيسى كان مدفونًا فعليًا فى حواشى التقرير."
+      },
+      {
+        "word": "competing interpretations",
+        "arabic": "تفسيرات متنافسة",
+        "partOfSpeech": "noun phrase",
+        "definition": "different, often conflicting ways of understanding the same evidence or event",
+        "exampleEN": "The dossier reveals competing interpretations of the founder's intentions.",
+        "exampleAR": "الملف يكشف عن تفسيرات متنافسة لنيات المؤسس."
+      },
+      {
+        "word": "authoritative account",
+        "arabic": "رواية موثوقة/سلطوية",
+        "partOfSpeech": "noun phrase",
+        "definition": "an account considered trustworthy because of the source's credibility or evidence provided",
+        "exampleEN": "No single authoritative account exists; historians still debate the sequence of events.",
+        "exampleAR": "لا توجد رواية موثوقة واحدة؛ المؤرخون ما زالوا يناقشون تسلسل الأحداث."
+      },
+      {
+        "word": "layered chronology",
+        "arabic": "تسلسل زمنى متعدد المستويات",
+        "partOfSpeech": "noun phrase",
+        "definition": "a timeline that recognises overlapping periods and evolving meanings rather than a single linear story",
+        "exampleEN": "A layered chronology shows how the monument's meaning shifted across decades.",
+        "exampleAR": "يُظهر التسلسل الزمنى متعدد المستويات كيف تغيّر معنى النصب عبر عقود."
+      },
+      {
+        "word": "temporal framing",
+        "arabic": "التأطير الزمنى",
+        "partOfSpeech": "noun phrase",
+        "definition": "the way time references (dates, periods, sequences) shape interpretation",
+        "exampleEN": "Careful temporal framing prevented readers from assuming causation where there was only coincidence.",
+        "exampleAR": "منع التأطير الزمنى الدقيق القراء من افتراض علاقة سببية حيث كانت هناك مصادفة فقط."
+      },
+      {
+        "word": "archival provenance",
+        "arabic": "أصل الوثيقة الأرشيفية",
+        "partOfSpeech": "noun phrase",
+        "definition": "the origin and custody history of a document, which affects its reliability and meaning",
+        "exampleEN": "The memorandum's archival provenance revealed it was a draft, not a final policy statement.",
+        "exampleAR": "كشف أصل المذكرة الأرشيفى أنها كانت مسودة، وليست بيانًا سياسىًا نهائياً."
+      },
+      {
+        "word": "to weigh the evidence",
+        "arabic": "موازنة الأدلة",
+        "partOfSpeech": "verb phrase",
+        "definition": "to assess different pieces of evidence and judge their relative importance and reliability",
+        "exampleEN": "Weighed together, the testimonies and ledgers suggest a more complicated motive.",
+        "exampleAR": "عند موازنة الشهادات وسجلات الدفاتر، تشير الدلائل إلى دافع أكثر تعقيدًا."
+      },
+      {
+        "word": "hedged assertion",
+        "arabic": "إدعاء مُحتَفَظ به/مُقَيَّد",
+        "partOfSpeech": "noun phrase",
+        "definition": "a claim expressed with cautious language to allow for uncertainty or qualification",
+        "exampleEN": "The report offers a hedged assertion that the decision likely reflected political pressure.",
+        "exampleAR": "التقرير يقدم ادعاءً مقيدًا بأن القرار ربما عكس ضغوطًا سياسية."
+      }
+    ],
+    "grammar": {
+      "topic": "Allusive reference and nuanced temporal framing",
+      "arabicName": "الإشارة الضمنية والتأطير الزمنى الدقيق",
+      "concept": "Allusive reference means referring to sources, events or documents indirectly (by hint or phrase) rather than full citation; nuanced temporal framing uses precise temporal markers and sequences to control implication about causation and continuity.",
+      "arabicComparison": "فى العربية، الاعتماد على الإشارة الضمنية يمكن أن يكون أقوى عند القرائن الأُخرى (مثل الأسماء أو التواريخ)، بينما التأطير الزمنى يعتمد على أدوات مثل 'منذ'، 'حتى'، 'فى أعقاب'. الإنجليزية على مستوى C1 تفضّل التوازن بين الإحالة الضمنية والدقة لتجنُّب التعميم.",
+      "structure": "Useful patterns: 'By invoking [source/event], X implies that…'; 'Had X occurred earlier, Y might have…' ; 'Not until [date/event] did [interpretation] gain traction.' ; temporal adjuncts: 'as early as', 'stretching back to', 'in the wake of', 'subsequently'.",
+      "commonError": "Overly vague allusion (e.g. 'records show') without enough specification; or misplaced temporal adjuncts that make sequences unclear (e.g. 'After 1950, which happened earlier, the law…').",
+      "exampleEN": "By invoking the council minutes of 1952, the proposal implies a pattern of official endorsement; not until the 1980s, however, did popular commemoration solidify.",
+      "exampleAR": "بإشارة ضمنية إلى محاضر المجلس لعام 1952، يوحى المقترح بوجود نمط من التأييد الرسمي؛ ومع ذلك، لم تتبلور التعبيرات الشعبية للتخليد إلا فى ثمانينيات القرن العشرين."
+    },
+    "readingBrief": "Read an original 550–700-word paired-source dossier: a 320–380-word archival summary (extracts from a 1952 council minute and a private memorandum) paired with a 230–320-word critical feature that contextualises those extracts and highlights scholarly disagreement. The dossier's explicit purpose is source-awareness: you must note provenance (who created each extract and when), identify three ways the sources support different interpretations, and assess their relative reliability. Expect to annotate examples of selective reading, implicit temporal claims, and authoritative vs. contested accounts.",
+    "writingPrompt": "Write a 320–420-word formal recommendation addressed to the City Heritage Committee. Audience: committee members and the city legal adviser (formal register). Task: take a clear, defensible position on whether the monument should be removed, reinterpreted in situ, or retained unchanged. Your proposal must be informed by at least two perspectives drawn from the dossier (e.g. archival evidence vs contemporary public petition), explain the likely consequences of your recommendation, and propose one concrete next step (e.g. a panel review, interpretive plaque, redaction of official records). Success criteria: (1) Precision — name specific sources and dates (no vague 'documents say'); (2) Cohesion — logical progression from assessment to recommendation with signposting (e.g. 'Firstly', 'Consequently'); (3) Register — maintain a formal, impartial tone suitable for committee members and legal adviser; (4) Responsible attribution — clearly attribute claims to sources and acknowledge uncertainty where evidence is inconclusive. Cite sources succinctly within the text (e.g. '1952 council minute') and indicate if further verification is needed."
+  },
+  {
+    "lessonNumber": 13,
+    "title": "Culture in motion",
+    "titleArabic": "ثقافة في حركة",
+    "outcome": {
+      "canDo": "Analyse how cultural change is described across sources, use metaphors and qualification to present a balanced proposal, and adapt register for different public audiences.",
+      "canDoArabic": "تحليل كيفية وصف التغيير الثقافي عبر مصادر مختلفة، واستخدام الاستعارات والتأهيل لتقديم مقترح متوازن، وتكييف النبرة (الريجيستر) لجمهور عام أو جهات صنع قرار.",
+      "scenario": "You are advising a city cultural office on a programme to support emerging hybrid cultural practices. Prepare a short formal proposal (320–420 words) that synthesises arguments from a 600-word paired dossier, qualifies claims with appropriate hedging, and proposes two practical measures with anticipated consequences and sources attributed.",
+      "scenarioArabic": "أنت مستشار لمكتب ثقافي في مدينة بشأن برنامج لدعم ممارسات ثقافية هجينة ناشئة. أعد مقترحًا رسميًا قصيرًا (320–420 كلمة) يدمج الحجج من ملف مكون من مصدرين بطول 600 كلمة، يؤهّل فيه الادعاءات بِلُطْفٍ لغوي مناسب، ويقترح إجراءين عمليين مع عواقب متوقعة ونسب المصادر."
+    },
+    "retrieval": [
+      {
+        "language": "evidence",
+        "prompt": "From two short sources, list the three strongest pieces of evidence that support expansion of community cultural spaces and explain, in one sentence each, how each piece of evidence relates to policy aims.",
+        "purpose": "Train learners to extract and link relevant evidence to policy objectives—move beyond description to targeted synthesis."
+      },
+      {
+        "language": "counterargument",
+        "prompt": "Identify one plausible counterargument to the proposal in the dossier and craft a one-paragraph rebuttal that concedes a valid point, qualifies the main claim, and offers mitigation.",
+        "purpose": "Practice disciplined concession and rebuttal suitable for formal proposals and public consultations."
+      },
+      {
+        "language": "register",
+        "prompt": "Rewrite a single key recommendation from the dossier in two registers: (a) an email to community leaders (informal but respectful), (b) a memorandum to the council (formal, policy tone).",
+        "purpose": "Develop sensitivity to register shifts and the lexical choices they require."
+      },
+      {
+        "language": "consequence",
+        "prompt": "Outline two plausible short-term and two long-term consequences—positive or negative—if the city adopts the recommended pilot, and indicate the degree of certainty for each consequence.",
+        "purpose": "Encourage calibrated forecasting and explicit expression of certainty/uncertainty in policy writing."
+      }
+    ],
+    "network": {
+      "theme": "adaptation, belonging, change",
+      "themeArabic": "التكيُّف، الانتماء، التغيير",
+      "anchor": "culture in motion",
+      "relatedWords": [
+        "culture",
+        "identity",
+        "integration",
+        "hybridity",
+        "policy",
+        "adaptation",
+        "displacement",
+        "continuity",
+        "memory"
+      ],
+      "chunks": [
+        "sense of belonging",
+        "cultural repertoire",
+        "negotiate identity",
+        "metaphorical framing",
+        "register shift",
+        "hybrid cultural practices",
+        "entrenched norms",
+        "anticipated consequences",
+        "evidence-based proposal"
+      ],
+      "collocations": [
+        "entrenched norms",
+        "cultural repertoire",
+        "policy intervention",
+        "public consultation",
+        "community-led initiative",
+        "qualify a claim",
+        "foreground evidence"
+      ],
+      "register": "mixed",
+      "priorLevelLinks": [
+        "Module 2 Lesson 5: argument structures and hedging",
+        "Module 2 Lesson 9: source evaluation and bias",
+        "Module 3 Lesson 8: identity and community vocabulary"
+      ],
+      "learningNote": "At C1 we shift from listing words to combining lexical chunks, hedging language, and strategic register changes; practise qualifying claims (hedges, boosters, concessions) and choosing metaphors deliberately rather than ornamentally.",
+      "learningNoteArabic": "في مستوى C1 نتجه من سرد القواعد إلى دمج المقاطع اللغوية، ولغة التأهيل، وتغييرات الريجيستر الاستراتيجية؛ درّب على تأهيل الادعاءات (عبارات التحفظ والتقوية والتنازلات) واختيار الاستعارات بعناية لا لمجرد الزينة.",
+      "wordFamilies": [
+        {
+          "headword": "assimilate",
+          "forms": [
+            "assimilate",
+            "assimilation",
+            "assimilated",
+            "assimilative"
+          ],
+          "note": "Verbs and nouns used when discussing pressure or choice to adopt host-culture practices; at C1 contrast with 'integrate' and 'accommodate'.",
+          "noteArabic": "أفعال وأسماء تُستعمل عند مناقشة الضغط أو الاختيار لتبنّي ممارسات ثقافة المضيف؛ على مستوى C1 قارنها مع 'الاندماج' و'الاستيعاب'."
+        },
+        {
+          "headword": "migrate",
+          "forms": [
+            "migrate",
+            "migration",
+            "migrant",
+            "migratory"
+          ],
+          "note": "Useful for discussing flows of people and cultural influence; pair with precise verbs (e.g., 'settle', 'circulate').",
+          "noteArabic": "مفيدة لمناقشة تدفقات الناس والتأثير الثقافي؛ اقترن بها أفعال دقيقة (مثل 'استقرّ'، 'تداول')."
+        },
+        {
+          "headword": "resilient",
+          "forms": [
+            "resilient",
+            "resilience",
+            "resiliency",
+            "resiliently"
+          ],
+          "note": "Use to evaluate communities or practices that adapt without losing identity; beware overuse as a blanket praise.",
+          "noteArabic": "تستخدم لتقييم المجتمعات أو الممارسات التي تتكيّف دون فقدان الهوية؛ انتبه لفرط الاستخدام كمدح عام."
+        },
+        {
+          "headword": "amalgamate",
+          "forms": [
+            "amalgamate",
+            "amalgamation",
+            "amalgamated",
+            "amalgam"
+          ],
+          "note": "Describes blending of cultural elements; contrast with 'hybrid' to mark degrees of integration.",
+          "noteArabic": "يصف مزيج العناصر الثقافية؛ قارنها مع 'هجينة' لتحديد درجات الدمج."
+        }
+      ]
+    },
+    "vocabulary": [
+      {
+        "word": "cultural repertoire",
+        "arabic": "الترسانة الثقافية",
+        "partOfSpeech": "noun phrase",
+        "definition": "The set of practices, expressions and resources a person or community draws on in different contexts.",
+        "exampleEN": "Her cultural repertoire includes traditional song, contemporary dance and online storytelling.",
+        "exampleAR": "تشمل ترسانتها الثقافية الأغاني التقليدية والرقص المعاصر وسرد القصص عبر الإنترنت."
+      },
+      {
+        "word": "sense of belonging",
+        "arabic": "إحساس بالانتماء",
+        "partOfSpeech": "noun phrase",
+        "definition": "A feeling of acceptance and connection to a community or place.",
+        "exampleEN": "Community festivals can strengthen newcomers’ sense of belonging.",
+        "exampleAR": "يمكن للمهرجانات المجتمعية أن تعزز إحساس القادمين الجدد بالانتماء."
+      },
+      {
+        "word": "negotiate identity",
+        "arabic": "التفاوض على الهوية",
+        "partOfSpeech": "verb phrase",
+        "definition": "To actively manage and reconcile different aspects of personal or group identity.",
+        "exampleEN": "Second-generation migrants often negotiate identity between family norms and school culture.",
+        "exampleAR": "يتفاوض المهاجرون من الجيل الثاني غالبًا على هويتهم بين أعراف العائلة وثقافة المدرسة."
+      },
+      {
+        "word": "metaphorical framing",
+        "arabic": "التأطير الاستعماري الاستعاري",
+        "partOfSpeech": "noun phrase",
+        "definition": "Using metaphors to shape how an issue is perceived and discussed.",
+        "exampleEN": "The article’s metaphorical framing—describing culture as 'a river'—encourages thinking about flow and change.",
+        "exampleAR": "يشجّع التأطير الاستعاري في المقال—الذي يصف الثقافة بـ'نهر'—على التفكير في التدفق والتغيير."
+      },
+      {
+        "word": "register shift",
+        "arabic": "تحول الريجيستر (النبرة)",
+        "partOfSpeech": "noun phrase",
+        "definition": "A deliberate change in tone and lexical choices to suit a different audience or purpose.",
+        "exampleEN": "A register shift from conversational to formal is necessary when translating a community argument into policy language.",
+        "exampleAR": "يكون تحول الريجيستر من محادثي إلى رسمي ضروريًا عند تحويل حجة مجتمعية إلى لغة سياسية."
+      },
+      {
+        "word": "hybrid cultural practices",
+        "arabic": "ممارسات ثقافية هجينة",
+        "partOfSpeech": "noun phrase",
+        "definition": "New cultural forms that combine elements from different traditions or contexts.",
+        "exampleEN": "The festival showcased hybrid cultural practices: flamenco fused with electronic music.",
+        "exampleAR": "عرض المهرجان ممارسات ثقافية هجينة: الفلامنكو ممزوجًا بالموسيقى الإلكترونية."
+      },
+      {
+        "word": "entrenched norms",
+        "arabic": "أعراف راسخة",
+        "partOfSpeech": "noun phrase",
+        "definition": "Established behaviours or beliefs that are resistant to change.",
+        "exampleEN": "Entrenched norms about property use can hinder community cultural initiatives.",
+        "exampleAR": "يمكن أن تعيق الأعراف الراسخة حول استخدام الممتلكات المبادرات الثقافية المجتمعية."
+      },
+      {
+        "word": "migration-induced change",
+        "arabic": "تغيير ناتج عن الهجرة",
+        "partOfSpeech": "noun phrase",
+        "definition": "Cultural, social or economic shifts that occur as a result of migration flows.",
+        "exampleEN": "Migration-induced change often alters local cuisines, languages and public rituals.",
+        "exampleAR": "يغيّر التغيير الناتج عن الهجرة غالبًا المطابخ المحلية واللغات والطقوس العامة."
+      },
+      {
+        "word": "amalgamate",
+        "arabic": "يُدْمِج / يدمج",
+        "partOfSpeech": "verb",
+        "definition": "To combine or unite to form one entity or mixture.",
+        "exampleEN": "Local artists are trying to amalgamate traditional motifs with contemporary design.",
+        "exampleAR": "يحاول الفنانون المحليون دمج الزخارف التقليدية مع التصميم المعاصر."
+      },
+      {
+        "word": "diaspora",
+        "arabic": "الشتات",
+        "partOfSpeech": "noun",
+        "definition": "A dispersed population originating from a common homeland.",
+        "exampleEN": "Diaspora networks often sustain cultural practices across borders.",
+        "exampleAR": "تدعم شبكات الشتات في كثير من الأحيان الممارسات الثقافية عبر الحدود."
+      },
+      {
+        "word": "assimilation",
+        "arabic": "الاستيعاب / الاندماج الثقافي",
+        "partOfSpeech": "noun",
+        "definition": "The process by which individuals or groups adopt the cultural traits of another group.",
+        "exampleEN": "Critics argue assimilation can erase minority languages if pursued without care.",
+        "exampleAR": "يجادل النقاد أن الاستيعاب قد يمحو اللغات الأقلية إذا تم السعي إليه دون حذر."
+      },
+      {
+        "word": "plurality",
+        "arabic": "التعددية",
+        "partOfSpeech": "noun",
+        "definition": "The existence of multiple, coexisting cultural identities or perspectives within a space.",
+        "exampleEN": "A policy that acknowledges plurality supports multiple forms of cultural expression.",
+        "exampleAR": "سياسة تعترف بالتعددية تدعم أشكالًا متعددة من التعبير الثقافي."
+      }
+    ],
+    "grammar": {
+      "topic": "Metaphor, qualification, and register shifts",
+      "arabicName": "الاستعارة، التأهيل، وتحولات الريجيستر",
+      "concept": "At C1, rhetorical effect depends on deliberate metaphor selection, precise qualification (hedges, boosters, concessions), and controlled register shifts. Metaphors frame argumentation; qualification manages claim strength; register shifts tailor the same content for different audiences.",
+      "arabicComparison": "في العربية، تستخدم أيضاً الاستعارة والتأهيل، لكن أشكال التهيئة (مثل كلمات التحفظ) قد تختلف؛ مثلاً 'قد' أو 'من الممكن' تعمل كأدوات تأهيل. في الريجيستر الرسمي العربي تميل البنود إلى الإفصاح المباشر مع صياغات احترامية أكثر.",
+      "structure": "Metaphor: introduce metaphor + explain literal limits. Qualification: hedge (might/could), quantifier (some/many), concession (while X, Y). Register shift: vary pronouns, modality and lexical density (younger audience → contractions/colloquial lexis; officials → formal nouns/nominalisation).",
+      "commonError": "Overusing mixed metaphors, failing to qualify strong claims (e.g., making universal statements without evidence), or applying an informal register in an official proposal.",
+      "exampleEN": "Metaphor + qualification: 'Culture is a living archive, but that metaphor should not imply fixed boundaries; it suggests continual renewal.'",
+      "exampleAR": "مثال بالعربية: «الثقافة أرشيف حي، لكن لا ينبغي أن يوحي هذا التشبيه بحدود ثابتة؛ بل يوحى بالتجدد المستمر.»"
+    },
+    "readingBrief": "Read a paired-source dossier totalling approximately 600 words (feature + policy extract). The dossier consists of a 420–440-word feature article that profiles an emergent community-led cultural venue and uses vivid metaphors to describe cultural mixing, followed by a 160–180-word municipal policy extract that outlines budget constraints and objectives for cultural inclusion. Your purpose: (1) identify the authors' perspectives and source bases, (2) analyse how metaphorical framing and register differences shape reader response, and (3) synthesise evidence and reservations to inform a short formal proposal. Pay attention to what each source foregrounds and omits; note any unacknowledged assumptions.",
+    "writingPrompt": "Audience: Municipal Cultural Officer and a panel of community leaders. Task: Write a 320–420-word formal proposal recommending two specific measures to support hybrid cultural practices in the city, drawing on and citing (by author/source) evidence and concerns from the paired dossier. Your position must be defensible and informed by at least two perspectives from the dossier (e.g., practitioner viewpoint and policy constraints). Use qualification where claims are uncertain and anticipate one counterargument with a mitigation. Success criteria: (1) Precision—each claim linked to a source or clearly marked as inference; (2) Cohesion—logical sequencing with topic sentences and linking phrases; (3) Register—consistently formal, policy-appropriate language; (4) Responsible attribution—cite sources for evidence, state degrees of certainty for forecasts, and avoid overstated generalisations. Length: 320–420 words."
+  },
+  {
+    "lessonNumber": 14,
+    "title": "The limits of expertise",
+    "titleArabic": "حدود الخبرة",
+    "outcome": {
+      "canDo": "I can evaluate claims made by experts, weigh competing sources, and write a concise formal proposal that acknowledges uncertainty and attributes responsibly.",
+      "canDoArabic": "أستطيع تقييم مزاعم الخبراء، وموازنة المصادر المتنافسة، وكتابة اقتراح رسمي موجز يعترف بعدم اليقين وينسب المعلومات بمسؤولية.",
+      "scenario": "You are preparing a formal briefing for a municipal oversight committee that must decide whether to accept technical recommendations from a commissioned expert panel. The committee expects a synthesis of the panel's claims, independent critique, and a clear, justified recommendation that recognises limits of knowledge and potential consequences.",
+      "scenarioArabic": "أنت تُعد إحاطة رسمية للجنة رقابية بلدية عليها أن تقرر قبول توصيات تقنية من لجنة خبراء مكلفة. تتوقع اللجنة تلخيصاً لمزاعم اللجنة، ونقداً مستقلّاً، وتوصية واضحة مبرّرة تعترف بحدود المعرفة والعواقب المحتملة."
+    },
+    "retrieval": [
+      {
+        "language": "English",
+        "prompt": "Recall the B2 term 'evidence'. Now list three types of evidence you would cite in a formal briefing and note one limitation of each.",
+        "purpose": "Repurpose a familiar term into C1 source-awareness: classify and criticise forms of proof."
+      },
+      {
+        "language": "English",
+        "prompt": "Take the B2 word 'counterargument'. Draft one concise counterargument you might include against an expert claim, using hedging language.",
+        "purpose": "Move from simple opposition to a nuanced, hedged rebuttal suitable for formal assessment."
+      },
+      {
+        "language": "English",
+        "prompt": "Use the B2 item 'register'. Identify the register expected in a municipal briefing and rewrite a colloquial sentence into that register.",
+        "purpose": "Adapt tone from B2 awareness to C1 register control."
+      },
+      {
+        "language": "English",
+        "prompt": "From the B2 concept 'consequence', outline two likely consequences (one intended, one unintended) of adopting an expert recommendation.",
+        "purpose": "Expand a basic idea into a balanced risk–benefit appraisal."
+      }
+    ],
+    "network": {
+      "theme": "authority, evidence, uncertainty",
+      "themeArabic": "السلطة، الأدلة، وعدم اليقين",
+      "anchor": "expertise",
+      "relatedWords": [
+        "authority",
+        "credibility",
+        "bias",
+        "methodology",
+        "transparency",
+        "accountability"
+      ],
+      "chunks": [
+        "appeal to expertise",
+        "weight of evidence",
+        "beyond the scope",
+        "qualified endorsement",
+        "express scepticism",
+        "admit uncertainty",
+        "invoke precedent",
+        "corroborating evidence",
+        "methodological limitation",
+        "hedging language",
+        "post-hoc rationalisation",
+        "expert consensus"
+      ],
+      "collocations": [
+        "scrutinise data",
+        "issue a caveat",
+        "lend credibility",
+        "undermine confidence",
+        "independent verification",
+        "qualify a claim",
+        "open the door to"
+      ],
+      "register": "formal",
+      "priorLevelLinks": [
+        "evidence",
+        "counterargument",
+        "register",
+        "consequence",
+        "evaluation",
+        "proposal"
+      ],
+      "learningNote": "Focus on stance verbs (suggest, concede, qualify) and hedging phrases (appears to, is consistent with) so you can report others accurately while signalling your own judgment.",
+      "learningNoteArabic": "ركّز على أفعال الموقف (يقترح، يعترف، يؤهل) وعبارات التخفيف (يبدو أن، يتسق مع) لتتمكن من نقل مواقف الآخرين بدقة مع إظهار حكمك الخاص.",
+      "wordFamilies": [
+        {
+          "headword": "scrutinise",
+          "forms": [
+            "scrutinise",
+            "scrutiny",
+            "scrutinising"
+          ],
+          "note": "Use to describe careful, critical examination of methods or data.",
+          "noteArabic": "تستخدم لوصف الفحص النقدي الدقيق للمنهج أو البيانات."
+        },
+        {
+          "headword": "endorse",
+          "forms": [
+            "endorse",
+            "endorsement",
+            "endorsed"
+          ],
+          "note": "Useful when indicating support that may be partial or conditional.",
+          "noteArabic": "مفيدة للإشارة إلى دعم قد يكون جزئياً أو مشروطاً."
+        },
+        {
+          "headword": "evidence",
+          "forms": [
+            "evidence",
+            "evident",
+            "evidential"
+          ],
+          "note": "Distinguish raw data (evidence) from what it shows (evident) and from its use in argument (evidential).",
+          "noteArabic": "ميِّز بين البيانات الخام (دليل)، وما تشير إليه (ظاهر)، وبين استخدامها في الحجة (دلالي)."
+        }
+      ]
+    },
+    "vocabulary": [
+      {
+        "word": "claim of authority",
+        "arabic": "ادعاء السلطة",
+        "partOfSpeech": "noun phrase",
+        "definition": "An assertion presented primarily on the basis of the speaker's position or credentials rather than on publicly available evidence.",
+        "exampleEN": "The consultant made a claim of authority when she insisted her experience alone settled the matter.",
+        "exampleAR": "قدّمت المستشارة ادعاء سلطة عندما أصرت على أن خبرتها وحدها تحسم الأمر."
+      },
+      {
+        "word": "appeal to expertise",
+        "arabic": "الاستناد إلى الخبرة",
+        "partOfSpeech": "noun phrase",
+        "definition": "Using an expert's status to support a claim; acceptable when accompanied by verifiable evidence.",
+        "exampleEN": "An appeal to expertise can be persuasive, but the committee asked for data to back it up.",
+        "exampleAR": "يمكن أن يكون الاستناد إلى الخبرة مقنعاً، لكن اللجنة طلبت بيانات تدعمه."
+      },
+      {
+        "word": "weight of evidence",
+        "arabic": "ثِقَل الأدلة",
+        "partOfSpeech": "noun phrase",
+        "definition": "The balance of all available evidence considered together when judging a claim.",
+        "exampleEN": "We must consider the weight of evidence rather than isolated findings.",
+        "exampleAR": "يجب أن نأخذ في الحسبان ثِقَل الأدلة بدلاً من النتائج المعزولة."
+      },
+      {
+        "word": "beyond the scope",
+        "arabic": "خارج نطاق",
+        "partOfSpeech": "phrase",
+        "definition": "Referring to matters not covered by a report, mandate, or study.",
+        "exampleEN": "The panel's remit did not include long-term ecological effects; that is beyond the scope of this report.",
+        "exampleAR": "لم يشمل اختصاص اللجنة الآثار البيئية طويلة المدى؛ فذلك خارج نطاق هذا التقرير."
+      },
+      {
+        "word": "qualified endorsement",
+        "arabic": "تأييد مشروط",
+        "partOfSpeech": "noun phrase",
+        "definition": "Support that comes with reservations or specified limits.",
+        "exampleEN": "The regulator gave a qualified endorsement: it approved the plan provided further monitoring was put in place.",
+        "exampleAR": "قدّم المنظم تأييداً مشروطاً: أقر الخطة بشرط وضع مزيد من المراقبة."
+      },
+      {
+        "word": "express scepticism",
+        "arabic": "التعبير عن الشك",
+        "partOfSpeech": "verb phrase",
+        "definition": "To state doubt about the validity of a claim or the sufficiency of the evidence.",
+        "exampleEN": "Several residents expressed scepticism about the projected cost savings.",
+        "exampleAR": "عبّر عدة سكان عن شكوكهم بشأن الوفورات المتوقعة في التكلفة."
+      },
+      {
+        "word": "admit uncertainty",
+        "arabic": "الاعتراف بعدم اليقين",
+        "partOfSpeech": "verb phrase",
+        "definition": "To acknowledge limits in what is known or proven.",
+        "exampleEN": "A credible expert will admit uncertainty where the data are inconclusive.",
+        "exampleAR": "الخبير الموثوق سيعترف بعدم اليقين حيث تكون البيانات غير حاسمة."
+      },
+      {
+        "word": "invoke precedent",
+        "arabic": "الاستناد إلى سابقة",
+        "partOfSpeech": "verb phrase",
+        "definition": "To cite previous cases or decisions as justification for a present choice.",
+        "exampleEN": "The advisor invoked precedent from neighbouring cities to justify the proposal.",
+        "exampleAR": "استند المستشار إلى سابقة من مدن مجاورة لتبرير الاقتراح."
+      },
+      {
+        "word": "methodological limitation",
+        "arabic": "قيد منهجي",
+        "partOfSpeech": "noun phrase",
+        "definition": "A constraint in the design or execution of a study that affects the reliability or generalisability of findings.",
+        "exampleEN": "We should flag the study's methodological limitations before adopting its recommendations.",
+        "exampleAR": "ينبغي أن نشير إلى القيود المنهجية للدراسة قبل اعتماد توصياتها."
+      },
+      {
+        "word": "corroborating evidence",
+        "arabic": "أدلة مؤيدة",
+        "partOfSpeech": "noun phrase",
+        "definition": "Additional information that supports and strengthens an initial claim.",
+        "exampleEN": "The committee requested corroborating evidence from an independent laboratory.",
+        "exampleAR": "طلبت اللجنة أدلة مؤيدة من مختبر مستقل."
+      },
+      {
+        "word": "hedging language",
+        "arabic": "لغة التحفّظ",
+        "partOfSpeech": "noun phrase",
+        "definition": "Words and phrases (e.g. may, appears to, suggest) used to soften claims and indicate caution.",
+        "exampleEN": "Use hedging language when reporting provisional findings to avoid overstating certainty.",
+        "exampleAR": "استخدم لغة التحفّظ عند نقل نتائج موقتة لتجنب المبالغة في اليقين."
+      },
+      {
+        "word": "post-hoc rationalisation",
+        "arabic": "التبرير اللاحق",
+        "partOfSpeech": "noun phrase",
+        "definition": "An explanation created after an event to justify a decision, rather than a reason that actually caused it.",
+        "exampleEN": "Be wary of post-hoc rationalisation when an expert account changes after outcomes are known.",
+        "exampleAR": "كن حذِراً من التبرير اللاحق عندما يَتغيّر سرد الخبير بعد معرفة النتائج."
+      }
+    ],
+    "grammar": {
+      "topic": "Reported stance and critical appraisal",
+      "arabicName": "نقل الموقف والتقييم النقدي",
+      "concept": "How to report others' claims accurately while embedding critical appraisal: use reporting verbs with appropriate force (claim, suggest, concede), hedging, and clauses that signal doubt or limitation.",
+      "arabicComparison": "في العربية يُستخدم غالباً بناء مثلية وإيضاح القائل، بينما في الإنجليزية نحتاج أصلاً لاختيار فعل نقل الموقف الصحيح وإضافة عبارات التحفّظ.",
+      "structure": "Reporting verb + (that) + clause; or Noun phrase + be + hedged assessment. Templates: 'X suggested that...', 'X conceded that...', 'According to X, ... ; however, X acknowledged that ...', 'The report asserts X, but offers limited evidence for Y.'",
+      "commonError": "Using 'said' for all attributions (loses nuance) or removing hedges and thereby misrepresenting experts' certainty.",
+      "exampleEN": "The panel suggested that emissions may decline, but the authors conceded that longer-term data are lacking.",
+      "exampleAR": "اقتَرَحَت اللجنة أن الانبعاثات قد تنخفض، لكن المؤلفين اعترفوا بأن البيانات طويلة الأمد مفقودة."
+    },
+    "readingBrief": "Read a 650-word paired-source dossier created for this lesson. It comprises a 370-word policy extract from a municipal technical report recommending immediate infrastructure changes, and a 280-word critical commentary by an independent analyst highlighting methodological limits and alternative interpretations. Your purpose is source-aware: identify each source's stance, evaluate the evidence each uses, note what is beyond their scope, and prepare to integrate both perspectives into a single formal recommendation.",
+    "writingPrompt": "Write a formal briefing of 360 words for the municipal oversight committee (expert and policy-making audience). State a clear, defensible recommendation about whether to accept, modify, or delay the expert panel's technical recommendations. Your position must be informed by at least two perspectives (the panel and the independent commentary) and should: (a) attribute claims responsibly to each source, (b) highlight key methodological limitations and at least one unintended consequence, (c) use hedging language where appropriate, and (d) propose a specific, practical next step. Success criteria: precision (facts and attributions accurate and specific), cohesion (ideas connected with clear signalling of stance), appropriate formal register (professional, policy-style English), and responsible attribution (every expert claim you rely on is clearly sourced)."
+  },
+  {
+    "lessonNumber": 15,
+    "title": "A review with consequences",
+    "titleArabic": "مراجعة لها تبعات",
+    "outcome": {
+      "canDo": "I can synthesise two or more sources, weigh likely consequences, and produce a concise formal recommendation that balances criticism and concession.",
+      "canDoArabic": "أستطيع تلخيص مصدرين أو أكثر، وموازنة التبعات المحتملة، وتقديم توصية رسمية موجزة توازن بين النقد والاعتراف بالاعتراض.",
+      "scenario": "You are preparing a formal recommendation for a local authority after reading a paired-source dossier (a policy extract and an opinion feature). You must identify which claims are best supported, concede plausible counterarguments, anticipate unintended consequences, and recommend a precise course of action with monitoring measures.",
+      "scenarioArabic": "أنت بصدد إعداد توصية رسمية للسلطة المحلية بعد قراءة ملف ذو مصدرين (مقتطف سياسة ومقال رأي). يجب أن تحدد أي الادعاءات مدعومة أفضل، وأن تعترف بالاعتراضات المعقولة، وتتوقع العواقب غير المقصودة، وتقترح مسار عمل دقيق مع إجراءات للمتابعة."
+    },
+    "retrieval": [
+      {
+        "language": "English",
+        "prompt": "Evidence — List two different types of evidence you remember from B2 tasks (e.g., statistics, expert testimony). For this lesson, say which type you would prioritise when making a formal recommendation and why.",
+        "purpose": "Activate the basic concept of 'evidence' and push students to evaluate relative reliability in a C1 task."
+      },
+      {
+        "language": "English",
+        "prompt": "Counterargument — Recall the B2 idea of mentioning a counterargument. Now write one brief concession sentence that weakens your own position but strengthens your overall credibility.",
+        "purpose": "Repurpose the B2 skill of acknowledging counterarguments into a higher-level concessive move."
+      },
+      {
+        "language": "English",
+        "prompt": "Register — Remember the notion of 'register' at B2. Identify three lexical choices that shift tone from informal to formal and explain which you would use in a council report.",
+        "purpose": "Make register awareness operational for a formal public document."
+      },
+      {
+        "language": "English",
+        "prompt": "Consequence — From B2, you know 'consequence' means result. Now predict two plausible unintended consequences of a proposed policy and prioritise them by likelihood and impact.",
+        "purpose": "Extend simple consequence-spotting into a structured risk evaluation."
+      }
+    ],
+    "network": {
+      "theme": "criticism, recommendation, and public influence",
+      "themeArabic": "النقد، التوصية، والتأثير العام",
+      "anchor": "critique",
+      "relatedWords": [
+        "critique",
+        "recommendation",
+        "stakeholder",
+        "evaluation",
+        "concession",
+        "bias",
+        "consequence",
+        "evidence"
+      ],
+      "chunks": [
+        "weigh the evidence",
+        "deliver a measured critique",
+        "issue a caveat",
+        "evidence-based recommendation",
+        "in the public interest",
+        "balance benefits and harms",
+        "address unintended consequences"
+      ],
+      "collocations": [
+        "carry weight",
+        "pose a risk",
+        "acknowledge limitations",
+        "make a recommendation",
+        "monitor outcomes",
+        "stakeholder engagement",
+        "rigorous analysis"
+      ],
+      "register": "formal",
+      "priorLevelLinks": [
+        "evidence",
+        "counterargument",
+        "register",
+        "consequence",
+        "evaluation",
+        "proposal"
+      ],
+      "learningNote": "At C1, aim for a concessive balance: concede plausible points briefly, then direct attention to stronger evidence and a precise, implementable recommendation. Avoid vague hedges that blur responsibility.",
+      "learningNoteArabic": "على مستوى C1، استهدف توازناً اقرارياً: اعترف بالنقاط المعقولة باختصار ثم وجه الانتباه إلى الأدلة الأقوى وتوصية قابلة للتنفيذ. تجنب التعميم الذي يخفف المسؤولية.",
+      "wordFamilies": [
+        {
+          "headword": "evaluate",
+          "forms": [
+            "evaluate",
+            "evaluation",
+            "evaluative",
+            "evaluator"
+          ],
+          "note": "Use 'evaluation' for the process and 'evaluative' as an adjective to qualify language (evaluative language/remarks).",
+          "noteArabic": "استخدم 'evaluation' للدلالة على العملية و'evaluative' كصفة لوصف اللغة أو الملاحظات."
+        },
+        {
+          "headword": "recommend",
+          "forms": [
+            "recommend",
+            "recommendation",
+            "recommended",
+            "recommending"
+          ],
+          "note": "A clear recommendation needs a verb (recommend) + a noun phrase specifying action and actor.",
+          "noteArabic": "التوصية الواضحة تحتاج إلى فعل (recommend) متبوعًا بعبارة اسمية تحدد الإجراء والجهة."
+        },
+        {
+          "headword": "critic/critique",
+          "forms": [
+            "criticise",
+            "criticism",
+            "critique",
+            "critical"
+          ],
+          "note": "Differentiate between constructive critique (aims to improve) and dismissive criticism (negative without solution).",
+          "noteArabic": "فَرّق بين النقد البناء (يهدف إلى التحسين) والنقد الهدام (سلبي دون حل)."
+        }
+      ]
+    },
+    "vocabulary": [
+      {
+        "word": "weigh the evidence",
+        "arabic": "موازنة الأدلة",
+        "partOfSpeech": "verb phrase",
+        "definition": "to consider different pieces of evidence and judge their relative importance",
+        "exampleEN": "Before recommending the scheme, we must weigh the evidence from the survey and the financial report.",
+        "exampleAR": "قبل التوصية بالمخطط، يجب علينا موازنة الأدلة المستقاة من الاستبيان والتقرير المالي."
+      },
+      {
+        "word": "address unintended consequences",
+        "arabic": "التعامل مع العواقب غير المقصودة",
+        "partOfSpeech": "verb phrase",
+        "definition": "to identify and propose measures for side effects that were not the original aim",
+        "exampleEN": "The proposal should address unintended consequences such as displacement of local traders.",
+        "exampleAR": "ينبغي أن يتناول الاقتراح العواقب غير المقصودة مثل تهجير التجار المحليين."
+      },
+      {
+        "word": "deliver a measured critique",
+        "arabic": "تقديم نقد متوازن",
+        "partOfSpeech": "verb phrase",
+        "definition": "to offer criticism that is calm, proportionate and evidence-based",
+        "exampleEN": "She delivered a measured critique that highlighted method flaws without dismissing the study entirely.",
+        "exampleAR": "قدمت نقدًا متوازنًا سلط الضوء على عيوب المنهج دون رفض الدراسة تمامًا."
+      },
+      {
+        "word": "issue a caveat",
+        "arabic": "إصدار تحذير/تنبيه",
+        "partOfSpeech": "verb phrase",
+        "definition": "to give a warning or note a limitation before making a claim",
+        "exampleEN": "I must issue a caveat: the data are preliminary and subject to revision.",
+        "exampleAR": "يجب أن أُصدر تحذيرًا: البيانات أولية وقد تُراجع."
+      },
+      {
+        "word": "evidence-based recommendation",
+        "arabic": "توصية قائمة على الأدلة",
+        "partOfSpeech": "noun phrase",
+        "definition": "a suggestion for action that is explicitly grounded in analysed evidence",
+        "exampleEN": "The committee produced an evidence-based recommendation to increase pedestrian zones.",
+        "exampleAR": "قدمت اللجنة توصية قائمة على الأدلة لزيادة مناطق المشاة."
+      },
+      {
+        "word": "in the public interest",
+        "arabic": "في المصلحة العامة",
+        "partOfSpeech": "prepositional phrase",
+        "definition": "benefitting society as a whole and justifying public action",
+        "exampleEN": "Any restriction must be justified as being in the public interest.",
+        "exampleAR": "يجب تبرير أي تقييد بأنه في المصلحة العامة."
+      },
+      {
+        "word": "balance benefits and harms",
+        "arabic": "موازنة المنافع والأضرار",
+        "partOfSpeech": "verb phrase",
+        "definition": "to assess positive and negative outcomes before deciding",
+        "exampleEN": "Policy-makers should balance benefits and harms and prioritise the most vulnerable groups.",
+        "exampleAR": "ينبغي لصانعي السياسات موازنة المنافع والأضرار وإعطاء أولوية للفئات الأكثر ضعفًا."
+      },
+      {
+        "word": "concede the point",
+        "arabic": "الاعتراف بالمغزى/النقطة",
+        "partOfSpeech": "verb phrase",
+        "definition": "to acknowledge that another's argument has merit",
+        "exampleEN": "I concede the point that short-term costs may rise, but long-term gains justify the investment.",
+        "exampleAR": "أعترف بمغزى القول إن التكاليف قصيرة الأجل قد ترتفع، لكن المكاسب طويلة الأجل تبرر الاستثمار."
+      },
+      {
+        "word": "rigorous",
+        "arabic": "دقيق/صارم",
+        "partOfSpeech": "adjective",
+        "definition": "extremely thorough and accurate in analysis or method",
+        "exampleEN": "We need a more rigorous impact assessment before proceeding.",
+        "exampleAR": "نحتاج إلى تقييم أثر أكثر دقة قبل المضي قدمًا."
+      },
+      {
+        "word": "stakeholder",
+        "arabic": "أصحاب المصلحة",
+        "partOfSpeech": "noun",
+        "definition": "a person or group with an interest or concern in a policy or project",
+        "exampleEN": "Engage stakeholders early to surface practical concerns and buy-in.",
+        "exampleAR": "اشركوا أصحاب المصلحة مبكرًا لإبراز المخاوف العملية والحصول على الدعم."
+      },
+      {
+        "word": "register",
+        "arabic": "اللغة الرسمية/السجل اللغوي",
+        "partOfSpeech": "noun",
+        "definition": "the level of formality appropriate to a text or situation",
+        "exampleEN": "Maintain a formal register in your recommendation to council members.",
+        "exampleAR": "حافظ على سجل لغوي رسمي في توصيتك لأعضاء المجلس."
+      },
+      {
+        "word": "concession",
+        "arabic": "اعتراف/تنازل",
+        "partOfSpeech": "noun",
+        "definition": "an acknowledgement of a counterargument or limitation",
+        "exampleEN": "Include a brief concession to show you have considered alternatives.",
+        "exampleAR": "أدرج اعترافًا موجزًا لتظهر أنك أخذت البدائل في الاعتبار."
+      }
+    ],
+    "grammar": {
+      "topic": "Concessive balance, evaluative lexis and precise recommendation",
+      "arabicName": "التوازن الاعتراضي، اللغة التقييمية والتوصية الدقيقة",
+      "concept": "Combine concessive clauses (although, while, despite) with evaluative language (strong/weak evidence, robust, questionable) and clear recommendation verbs (recommend, propose, advise) plus concrete implementation details.",
+      "arabicComparison": "في العربية، تُستخدم أدوات اعتراضية مماثلة لكن غالبًا توضع الجملة الاعتراضية قبل الجملة الرئيسية؛ في الإنجليزية، جملة الاعتراض يمكن أن تؤدي وظيفة تليين الأسلوب أو إبراز الحجة المضادة.",
+      "structure": "Although + [counter-evidence], [evaluative summary]; therefore/ nonetheless/ we recommend + [specific action] + [actor] + [timeframe/metric]. Example: 'Although the initial survey shows limited appetite, the evidence has methodological limits; nonetheless we recommend piloting the scheme for twelve months with quarterly monitoring of footfall.'",
+      "commonError": "Over-hedging (too many vague qualifiers) that prevents a clear recommendation, or failing to follow a concession with a concrete action.",
+      "exampleEN": "Although uptake has been modest, the data quality is inconsistent; on balance, we recommend a targeted six-month pilot, monitored by monthly user surveys and clear success metrics.",
+      "exampleAR": "على الرغم من أن الإقبال كان ضعيفًا، إلا أن جودة البيانات غير متسقة؛ وبالنظر إلى ذلك نوصي بتجربة موجهة لمدة ستة أشهر تُراقب بمسوحات شهرية ومقاييس نجاح محددة."
+    },
+    "readingBrief": "Read an original 620-word paired-source dossier: a 360-word city council policy extract proposing a traffic-management pilot and a 260-word critical feature by a local commentator. Purpose: identify which claims are supported by evidence, detect authorial stance and potential bias, compare proposed mitigations, and note any unaddressed consequences. You will use this dossier to draft a source-aware recommendation that weighs trade-offs and attributes claims responsibly.",
+    "writingPrompt": "Write 320–420 words for city councillors and local stakeholder groups. Postion: take a clear, defensible stance on whether to proceed with the proposed traffic-management pilot. Your brief must: 1) identify the strongest two pieces of evidence and explain why they carry weight; 2) concede one plausible counterargument and show how it alters (or does not alter) your recommendation; 3) state a single precise recommendation (who should do what, by when) and one concrete monitoring metric; 4) anticipate one unintended consequence and propose a mitigation. Success criteria: precision — avoid vague verbs; use evaluative lexis and specify actors, timeframes and metrics; cohesion — use concessive linking and logical sequencing to balance critique and recommendation; register — maintain a formal, professional tone suitable for council papers; responsible attribution — paraphrase or attribute at least two claims to their source(s) (e.g., 'the council report notes…', 'the commentator argues…') and comment on their reliability."
+  },
+  {
+    "lessonNumber": 16,
+    "title": "Making complexity readable",
+    "titleArabic": "جعل التعقيد قابلاً للقراءة",
+    "outcome": {
+      "canDo": "I can transform specialist material into a concise, audience-appropriate brief that preserves key uncertainty, trade-offs and evidence weight, and submit a formal proposal recommending a course of action.",
+      "canDoArabic": "أستطيع تحويل مواد تخصصية إلى موجز موجز مناسب للجمهور يحافظ على عدم اليقين والمحاور والموازنة بين الأدلة، وتقديم اقتراح رسمي يوصي بإجراء.",
+      "scenario": "You have two source texts about a proposed pedestrianisation scheme for a city centre: a 600-word municipal policy extract that emphasises long-term benefits, and a 600-word critique from a local business coalition highlighting short-term economic risks. Prepare a 320–420-word formal proposal to the city council that synthesises both sources, states a defensible position, spells out trade-offs, and recommends a mitigated implementation plan.",
+      "scenarioArabic": "لديك نصان حول مشروع تحويل وسط المدينة إلى منطقة للمشاة: مقتطف سياسة بلدية بطول 600 كلمة يؤكد الفوائد الطويلة الأمد، ومقال نقدي بطول 600 كلمة من ائتلاف تجارى محلى يبرز مخاطر اقتصادية قصيرة الأجل. حضّر اقتراحًا رسميًا إلى مجلس المدينة يتراوح بين 320 و420 كلمة يركّب بين المصدرين، ويعرض موقفًا مبررًا، ويبيّن مقايضات القرار، ويوصي بخطة تنفيذ مخففة."
+    },
+    "retrieval": [
+      {
+        "language": "evidence",
+        "prompt": "Recast the B2 task 'identify evidence' as a C1 activity: rank the sources' claims by evidential weight (direct data, methodology transparency, expert consensus), note missing evidence, and assign a confidence label (high/medium/low) with justification.",
+        "purpose": "Train advanced source-evaluation and justified uncertainty statements for policy writing."
+      },
+      {
+        "language": "counterargument",
+        "prompt": "Turn 'present a counterargument' into a C1 move: present the strongest counterargument to your recommendation, attribute it to its source, then refute or revise your proposal where necessary.",
+        "purpose": "Promote intellectual honesty and resilient persuasive strategy."
+      },
+      {
+        "language": "register",
+        "prompt": "Use 'register' to calibrate language for dual audiences: draft two one-sentence summaries (one for council members, one for the public) that differ in lexical choice and tone but convey the same core finding.",
+        "purpose": "Develop audience calibration and register shifting while keeping content constant."
+      },
+      {
+        "language": "consequence",
+        "prompt": "Elevate 'identify consequences' to C1 level: map immediate, medium-term and long-term consequences, indicating probability and the likely affected stakeholders.",
+        "purpose": "Improve structured risk communication and policy foresight."
+      }
+    ],
+    "network": {
+      "theme": "explanation, audience, accessibility",
+      "themeArabic": "الشرح، الجمهور، إمكانية الوصول",
+      "anchor": "clarity",
+      "relatedWords": [
+        "precision",
+        "nuance",
+        "audience",
+        "evidence",
+        "trade-off",
+        "accessibility"
+      ],
+      "chunks": [
+        "layperson's terms",
+        "distil complex data",
+        "frame the issue",
+        "signal uncertainty",
+        "balance brevity and nuance",
+        "tease out implications",
+        "contextualise findings",
+        "audience calibration"
+      ],
+      "collocations": [
+        "evidence-based recommendation",
+        "clear signal",
+        "tight summary",
+        "risk–benefit analysis",
+        "transparent methodology",
+        "mitigated implementation"
+      ],
+      "register": "mixed",
+      "priorLevelLinks": [
+        "Module 3 Lesson 8: Argument structure and claim support",
+        "Module 4 Lesson 12: Audience-aware tone",
+        "Module 2 Lesson 5: Summarising and paraphrasing"
+      ],
+      "learningNote": "Controlled simplification keeps necessary complexity: prioritise critical variables, label uncertainty, and choose concrete examples rather than broad generalisations. Use structured signposting (what, why, so what) and progressive disclosure (summary then detail).",
+      "learningNoteArabic": "التبسيط المتحكّم يحافظ على التعقيد الضرورى: ركّز على المتغيرات الحرجة، صف عدم اليقين، واستخدم أمثلة محددة بدلاً من تعميمات واسعة. استخدم إشارات بنيوية (ما، لماذا، ما النتيجة) والكشف التدريجى (المُلخّص ثم التفاصيل).",
+      "wordFamilies": [
+        {
+          "headword": "synthesize",
+          "forms": [
+            "synthesize",
+            "synthesise",
+            "synthesis",
+            "synthesising",
+            "synthesised"
+          ],
+          "note": "At C1, synthesise means to integrate multiple sources, noting agreements and tensions rather than merely listing points.",
+          "noteArabic": "عند مستوى C1، تعني «التركيب» دمج مصادر متعددة مع ملاحظة الاتفاقات والتوترات بدلًا من مجرد سرد النقاط."
+        },
+        {
+          "headword": "contextualise",
+          "forms": [
+            "context",
+            "contextualise",
+            "contextualisation",
+            "contextualised"
+          ],
+          "note": "Contextualise locates a claim within relevant background (temporal, social, methodological) to explain its scope and limits.",
+          "noteArabic": "«إضفاء السياق» يضع الحُجّة ضمن الخلفية الملائمة (زمنية، اجتماعية، منهجية) لشرح نطاقها وحدودها."
+        },
+        {
+          "headword": "evaluate",
+          "forms": [
+            "evaluate",
+            "evaluation",
+            "evaluative",
+            "evaluated",
+            "evaluating"
+          ],
+          "note": "Evaluation at C1 requires criteria-based judgment (relevance, validity, reliability) and explicit weighting of factors.",
+          "noteArabic": "التقييم بمستوى C1 يتطلب أحكامًا مستندة إلى معايير (الملاءمة، الصحة، الموثوقية) وتحديد أوزان العوامل صراحة."
+        }
+      ]
+    },
+    "vocabulary": [
+      {
+        "word": "layperson's terms",
+        "arabic": "مصطلحات مفهومة لغير المتخصص",
+        "partOfSpeech": "noun phrase",
+        "definition": "language that conveys specialist concepts in plain, non-technical words for a general audience.",
+        "exampleEN": "Explain the traffic-modelling results in layperson's terms so residents can understand likely disruptions.",
+        "exampleAR": "اشرح نتائج نمذجة حركة المرور بمصطلحات مفهومة لغير المتخصصين حتى يتمكن السكان من فهم الاضطرابات المتوقعة."
+      },
+      {
+        "word": "distil complex data",
+        "arabic": "تقطير بيانات معقدة",
+        "partOfSpeech": "verb phrase",
+        "definition": "to extract the most important patterns or conclusions from dense technical information.",
+        "exampleEN": "The analyst must distil complex data into three headline points for the briefing note.",
+        "exampleAR": "على المحلل أن يقطّر البيانات المعقدة إلى ثلاث نقاط رئيسية لمذكرة الإحاطة."
+      },
+      {
+        "word": "frame the issue",
+        "arabic": "تصياغة القضية",
+        "partOfSpeech": "verb phrase",
+        "definition": "to present a problem in a particular light that highlights certain aspects and downplays others.",
+        "exampleEN": "How you frame the issue—safety or convenience—will shape public reaction.",
+        "exampleAR": "طريقة صياغتك للقضية—بمصطلحات السلامة أو الراحة—ستشكل رد فعل الجمهور."
+      },
+      {
+        "word": "signal uncertainty",
+        "arabic": "الإشارة إلى عدم اليقين",
+        "partOfSpeech": "verb phrase",
+        "definition": "to communicate the degree and source of doubt in claims or data.",
+        "exampleEN": "Good reports signal uncertainty by giving confidence ranges and alternative scenarios.",
+        "exampleAR": "التقارير الجيدة تشير إلى عدم اليقين بتقديم نطاقات ثقة وسيناريوهات بديلة."
+      },
+      {
+        "word": "balance brevity and nuance",
+        "arabic": "الموازنة بين الإيجاز والدقة الفروق",
+        "partOfSpeech": "verb phrase",
+        "definition": "to keep text short while preserving important qualifications and subtleties.",
+        "exampleEN": "The executive summary must balance brevity and nuance so councillors get a usable recommendation.",
+        "exampleAR": "يجب أن يوازن الملخّص التنفيذي بين الإيجاز والدقة الفروق حتى يحصل أعضاء المجلس على توصية قابلة للتطبيق."
+      },
+      {
+        "word": "tease out implications",
+        "arabic": "استخراج التداعيات",
+        "partOfSpeech": "verb phrase",
+        "definition": "to carefully draw out the consequences or meanings that are not immediately obvious.",
+        "exampleEN": "Tease out implications for small businesses before finalising the proposal.",
+        "exampleAR": "استخرج تداعيات على الأعمال الصغيرة قبل الانتهاء من الاقتراح."
+      },
+      {
+        "word": "contextualise findings",
+        "arabic": "إضفاء سياق على النتائج",
+        "partOfSpeech": "verb phrase",
+        "definition": "to place results within relevant background so their applicability and limits are clear.",
+        "exampleEN": "Contextualise findings by comparing them with similar schemes in comparable cities.",
+        "exampleAR": "أضف سياقاً إلى النتائج بمقارنتها بمشاريع مماثلة في مدن ذات خصائص مماثلة."
+      },
+      {
+        "word": "audience calibration",
+        "arabic": "معايرة الجمهور",
+        "partOfSpeech": "noun phrase",
+        "definition": "adjusting tone, detail and terminology to suit a specific audience's knowledge and concerns.",
+        "exampleEN": "Audience calibration meant giving councillors technical appendices while keeping the main text clear.",
+        "exampleAR": "معايرة الجمهور تعني تزويد الأعضاء بالملاحق الفنية مع الحفاظ على وضوح النص الرئيسى."
+      },
+      {
+        "word": "trade-off",
+        "arabic": "مقايضة/تبادل تناقضات",
+        "partOfSpeech": "noun",
+        "definition": "a situation where gaining one benefit entails accepting another cost or loss.",
+        "exampleEN": "The proposal must explain the trade-off between pedestrian space and short-term parking revenue.",
+        "exampleAR": "يجب أن يوضح الاقتراح المقايضة بين مساحة المشاة وإيرادات مواقف السيارات قصيرة الأجل."
+      },
+      {
+        "word": "jargon-free",
+        "arabic": "خالي من المصطلحات المتخصصة",
+        "partOfSpeech": "adjective",
+        "definition": "language deliberately stripped of specialist terms to aid comprehension.",
+        "exampleEN": "Produce a jargon-free summary for the local press pack.",
+        "exampleAR": "أعد ملخّصًا خاليًا من المصطلحات المتخصصة لحزمة الصحافة المحلية."
+      },
+      {
+        "word": "heuristic",
+        "arabic": "القاعدة الإرشادية/الطريقة الاستكشافية",
+        "partOfSpeech": "noun",
+        "definition": "a practical method or rule-of-thumb used to make judgements or solve problems quickly.",
+        "exampleEN": "Use a simple heuristic—'do no net harm'—to screen immediate proposals.",
+        "exampleAR": "استخدم قاعدة إرشادية بسيطة—«لا تلحق ضررًا صافياً»—لفحص المقترحات العاجلة."
+      },
+      {
+        "word": "synthesize sources",
+        "arabic": "تركيب المصادر",
+        "partOfSpeech": "verb phrase",
+        "definition": "to integrate information from multiple documents, highlighting agreements and contradictions.",
+        "exampleEN": "Synthesize sources to produce a concise evidence table for the council report.",
+        "exampleAR": "ركّب المصادر لإنتاج جدول أدلة موجز لتقرير المجلس."
+      }
+    ],
+    "grammar": {
+      "topic": "Controlled simplification and information structure",
+      "arabicName": "التبسيط المتحكّم وبنية المعلومات",
+      "concept": "Techniques for reducing surface complexity while preserving necessary qualifications: chunking ideas into labelled units, using signposting phrases (In brief; The risk is; The evidence shows), and progressive disclosure (summary then supporting detail). Emphasise clear grammatical structures (active verbs, noun phrases for technical terms) and explicit hedging where uncertainty exists.",
+      "arabicComparison": "يشابه في العربية استخدام «أولاً، ثانياً» وتحديد الصيغة المباشرة، مع إضافة أدوات التحفظ مثل «قد» أو «من المرجح» لتوضيح عدم اليقين.",
+      "structure": "Lead (one-sentence summary) → Key points (3 bullet-style chunks with labels) → Evidence and uncertainty (short qualifiers) → Recommendation (action + rationale). Use signposts: 'In short', 'However', 'The implication is'.",
+      "commonError": "Over-simplifying by removing essential qualifiers (e.g. deleting 'may' or confidence ranges) or over-condensing into ambiguous generalities.",
+      "exampleEN": "In short: the pedestrianisation will likely reduce traffic (medium confidence). Key point 1 — economic impact: short-term loss for some retailers; mitigation: temporary delivery bays. Recommendation: phased trial with fortnightly evaluation.",
+      "exampleAR": "باختصار: من المرجح أن يقلل تحوّل الشوارع للمشاة من حركة المرور (ثقة متوسطة). النقطة الأساسية 1—الأثر الاقتصادي: خسارة قصيرة الأجل لبعض المتاجر؛ التخفيف: مواقف تسليم مؤقتة. التوصية: تجربة مرحلية مع تقييم كل أسبوعين."
+    },
+    "readingBrief": "Paired-source dossier: two original pieces, each 600 words (total 1200): (A) a municipal policy extract that presents the proposed pedestrianisation with projected long-term health, environmental and urban-regeneration benefits and a summary of the supporting traffic model; (B) a critical feature written by a local business coalition that emphasises short-term economic disruption, gaps in the model (limited small-business data), and call for compensation measures. Purpose: students must assess source reliability, identify what each text simplifies or omits, and prepare a synthesis that preserves key uncertainties and trade-offs for a policymaker audience.",
+    "writingPrompt": "Write a 320–420-word formal proposal to the city council (audience: elected councillors and city planning officers). Take a clear, defensible position about whether to proceed with the pedestrianisation pilot, synthesising both dossier sources. Your proposal must: (1) open with a one-sentence summary of your recommendation; (2) present two weighed pieces of evidence from each source with confidence notes; (3) explicate the main trade-offs and at least one mitigation measure; (4) conclude with an actionable, time-bound recommendation. Success criteria: precise language (no vague generalities), coherent organisation (signposted summary, evidence, trade-offs, recommendation), appropriate mixed register (formal but accessible—jargon-free where possible), and responsible attribution (name sources and acknowledge uncertainties and gaps)."
+  },
+  {
+    "lessonNumber": 17,
+    "title": "A proposal under pressure",
+    "titleArabic": "مقترح تحت الضغط",
+    "outcome": {
+      "canDo": "Can produce a concise formal proposal that defends a recommended course of action under time pressure, integrating multiple sources, stating clear conditions, and setting contingency measures.",
+      "canDoArabic": "يمكنه/يمكنها إعداد مقترح رسمي موجز يدافع عن خيار موصى به في ظل ضيق الوقت، يدمج مصادر متعددة، يحدد الشروط بوضوح ويضع إجراءات طارئة.",
+      "scenario": "You are a project lead asked to submit a firm proposal within 72 hours to implement a pilot programme for rapid-response community services. Stakeholders (local authority, service users, funders) disagree on scope and risk. Produce a formal proposal that weighs feasibility, allocates responsibilities, and includes conditional approvals and contingency planning.",
+      "scenarioArabic": "أنت/أنتِ قائد/قائدة مشروع مطلوب منك تقديم مقترح نهائي خلال 72 ساعة لتنفيذ برنامج تجريبي لخدمات الاستجابة السريعة للمجتمع. أصحاب المصلحة (السلطة المحلية، المستفيدون، الممولون) يختلفون حول النطاق والمخاطر. اكتب مقترحًا رسميًا يوازن بين الجدوى، يحدد المسؤوليات، ويتضمن موافقات موقوتة وخطة طوارئ."
+    },
+    "retrieval": [
+      {
+        "language": "English",
+        "prompt": "Evidence (B2 → C1): Identify three different types of evidence across two given sources (statistical data, testimonial, policy precedent). For each, evaluate source credibility and explain how you would weight that evidence in a tightly argued proposal under uncertainty.",
+        "purpose": "Upgrade simple identification of evidence to critical source evaluation and weighting for high-stakes decision-making."
+      },
+      {
+        "language": "English",
+        "prompt": "Counterargument (B2 → C1): Draft two concise counterarguments to your preferred option and write a one-paragraph rebuttal to each that uses hedging language and conditionals to acknowledge uncertainty.",
+        "purpose": "Move from naming counterarguments to rhetorically managing them with stance and precision."
+      },
+      {
+        "language": "English",
+        "prompt": "Register (B2 → C1): Prepare two brief opening lines for the same proposal: one for an expert procurement board, one for a public consultation leaflet. Annotate each line with two reasons for your register choices.",
+        "purpose": "Develop fine-grained register control appropriate to different audiences."
+      },
+      {
+        "language": "English",
+        "prompt": "Consequence (B2 → C1): Map three plausible short-term and long-term consequences of the pilot, indicating probability and at least one measurable indicator you would use to monitor each consequence.",
+        "purpose": "Turn a basic listing of consequences into a probabilistic, monitorable risk/benefit assessment."
+      }
+    ],
+    "network": {
+      "theme": "implementation, stakeholders, feasibility",
+      "themeArabic": "التنفيذ، أصحاب المصلحة، الجدوى",
+      "anchor": "Subject to successful due diligence and stakeholder buy‑in, proceed with a time‑limited pilot and an explicit contingency plan.",
+      "relatedWords": [
+        "implementation",
+        "stakeholder",
+        "feasibility",
+        "contingency",
+        "due diligence",
+        "procurement",
+        "accountability",
+        "risk register"
+      ],
+      "chunks": [
+        "carry out due diligence",
+        "gain stakeholder buy‑in",
+        "mitigate risks",
+        "contingency plan",
+        "pressing time constraints",
+        "in‑principle approval",
+        "feasibility study",
+        "table a proposal",
+        "put forward a proposal",
+        "close consultation with",
+        "red flag",
+        "scale‑up potential",
+        "cost–benefit analysis",
+        "pragmatic compromise"
+      ],
+      "collocations": [
+        "implement a pilot",
+        "allocate responsibility",
+        "subject to approval",
+        "high likelihood",
+        "reasonable timeframe",
+        "clear accountability",
+        "robust evidence"
+      ],
+      "register": "formal",
+      "priorLevelLinks": [
+        "evidence (B2): identifying sources and basic relevance",
+        "counterargument (B2): stating objections",
+        "register (B2): distinguishing formal/informal tone",
+        "consequence (B2): listing potential outcomes",
+        "evaluation (B2): making simple judgements",
+        "proposal (B2): putting forward an idea"
+      ],
+      "learningNote": "Focus on multi‑word professional chunks (e.g., 'carry out due diligence', 'subject to approval') and on stance language for proposals (hedging, conditionality, and commitment verbs). Practise combining clauses that set conditions and outline contingencies: these are essential for formal, high‑stakes documents.",
+      "learningNoteArabic": "ركز على التعبيرات المهنية متعددة الكلمات (مثل «إجراء العناية الواجبة»، «رهناً بالموافقة») ولغة الموقف في المقترحات (التأني، الشرطية، وأفعال الالتزام). تمرّن على ربط الجمل التي تحدد الشروط وتوضح الأحكام الطارئة: هذه ضرورية للوثائق الرسمية ذات المخاطر العالية.",
+      "wordFamilies": [
+        {
+          "headword": "propose",
+          "forms": [
+            "propose",
+            "proposal",
+            "proposed",
+            "proposer"
+          ],
+          "note": "Use 'propose' for the act; 'proposal' for the document or plan; 'proposed' as an adjective in conditional clauses.",
+          "noteArabic": "استخدم «propose» للفعل، و«proposal» للوثيقة أو الخطة، و«proposed» كصفة في عبارات الشرط."
+        },
+        {
+          "headword": "implement",
+          "forms": [
+            "implement",
+            "implementation",
+            "implementable",
+            "implementer"
+          ],
+          "note": "Distinguish between the decision to implement and the practical 'implementation' phase; 'implementable' describes feasibility.",
+          "noteArabic": "ميز بين قرار التنفيذ ومرحلة 'implementation' العملية؛ 'implementable' تصف القابلية للتنفيذ."
+        },
+        {
+          "headword": "assess",
+          "forms": [
+            "assess",
+            "assessment",
+            "assessor",
+            "reassess"
+          ],
+          "note": "Assessment language is key for evaluating feasibility and risk; 'reassess' signals responsiveness to new evidence.",
+          "noteArabic": "لغة التقييم أساسية لتقدير الجدوى والمخاطر؛ 'reassess' تشير إلى الاستجابة لأدلة جديدة."
+        }
+      ]
+    },
+    "vocabulary": [
+      {
+        "word": "carry out due diligence",
+        "arabic": "إجراء العناية الواجبة",
+        "partOfSpeech": "verb phrase",
+        "definition": "to perform a thorough appraisal of risks, background, and compliance before committing to an action",
+        "exampleEN": "Before signing, the team must carry out due diligence on the proposed supplier.",
+        "exampleAR": "قبل التوقيع، يجب على الفريق إجراء العناية الواجبة على المورد المقترح."
+      },
+      {
+        "word": "gain stakeholder buy‑in",
+        "arabic": "كسب موافقة أصحاب المصلحة",
+        "partOfSpeech": "verb phrase",
+        "definition": "to obtain commitment or acceptance from key parties affected by or needed for a project",
+        "exampleEN": "The pilot will only proceed if we can gain stakeholder buy‑in from both funders and community representatives.",
+        "exampleAR": "لن يمضي التجريب قدماً ما لم نتمكن من كسب موافقة أصحاب المصلحة من الممولين وممثلي المجتمع."
+      },
+      {
+        "word": "mitigate risks",
+        "arabic": "التخفيف من المخاطر",
+        "partOfSpeech": "verb phrase",
+        "definition": "to take actions that reduce the likelihood or impact of potential problems",
+        "exampleEN": "We propose a phased rollout to mitigate risks associated with scale.",
+        "exampleAR": "نقترح إطلاقاً مرحلياً للتخفيف من المخاطر المرتبطة بالتوسع."
+      },
+      {
+        "word": "contingency plan",
+        "arabic": "خطة طوارئ",
+        "partOfSpeech": "noun phrase",
+        "definition": "a predefined set of steps to follow if key assumptions fail or unexpected events occur",
+        "exampleEN": "Include a contingency plan that specifies triggers for suspension and alternative providers.",
+        "exampleAR": "أدرج خطة طوارئ تحدد محركات الإيقاف ومقدمي الخدمة البدلاء."
+      },
+      {
+        "word": "pressing time constraints",
+        "arabic": "قيود زمنية ملحة",
+        "partOfSpeech": "noun phrase",
+        "definition": "urgent limits on time available to make decisions or take action",
+        "exampleEN": "Given pressing time constraints, we recommend a short, focused feasibility study.",
+        "exampleAR": "نظراً لقيود زمنية ملحة، نوصي بإجراء دراسة جدوى قصيرة ومركزة."
+      },
+      {
+        "word": "in‑principle approval",
+        "arabic": "موافقة مبدئية",
+        "partOfSpeech": "noun phrase",
+        "definition": "a conditional agreement to proceed, subject to specified checks or conditions",
+        "exampleEN": "The board gave in‑principle approval, provided final budgetary checks are completed.",
+        "exampleAR": "منح المجلس موافقة مبدئية بشرط استكمال الفحوصات النهائية للميزانية."
+      },
+      {
+        "word": "feasibility study",
+        "arabic": "دراسة الجدوى",
+        "partOfSpeech": "noun phrase",
+        "definition": "a systematic analysis of practicability, costs, benefits and risks of a proposed project",
+        "exampleEN": "Commission a rapid feasibility study focused on user needs and delivery constraints.",
+        "exampleAR": "كلّف بدراسة جدوى سريعة تركز على احتياجات المستخدمين وقيود التنفيذ."
+      },
+      {
+        "word": "table a proposal",
+        "arabic": "عرض مقترح (للنقاش)",
+        "partOfSpeech": "phrasal verb",
+        "definition": "to present a proposal formally for discussion or decision",
+        "exampleEN": "I'll table a proposal at the next procurement meeting outlining the phased approach.",
+        "exampleAR": "سأعرض مقترحاً في اجتماع الشراء القادم يحدد النهج المرحلي."
+      },
+      {
+        "word": "put forward a proposal",
+        "arabic": "تقديم مقترح",
+        "partOfSpeech": "verb phrase",
+        "definition": "to submit a plan or suggestion for consideration",
+        "exampleEN": "The consortium put forward a proposal that prioritised vulnerable users.",
+        "exampleAR": "قدّم التحالف مقترحاً أعطى أولوية للمستخدمين الضعفاء."
+      },
+      {
+        "word": "close consultation with",
+        "arabic": "مشاورات وثيقة مع",
+        "partOfSpeech": "noun phrase",
+        "definition": "working directly and continuously with specified parties to inform decisions",
+        "exampleEN": "Policy changes will be implemented only after close consultation with frontline staff.",
+        "exampleAR": "لن تُنفّذ تغييرات السياسة إلا بعد مشاورات وثيقة مع العاملين في الخطوط الأمامية."
+      },
+      {
+        "word": "red flag",
+        "arabic": "علم أحمر/إشارة تحذير",
+        "partOfSpeech": "noun",
+        "definition": "a warning sign indicating potential serious problems",
+        "exampleEN": "A consistent pattern of delayed reporting is a red flag for governance issues.",
+        "exampleAR": "نمط متكرر من التأخير في التقارير يعد إشارة تحذير لمشكلات الحوكمة."
+      },
+      {
+        "word": "scale‑up potential",
+        "arabic": "إمكانية التوسيع",
+        "partOfSpeech": "noun phrase",
+        "definition": "the likelihood that a pilot or small project can be expanded effectively to greater scope",
+        "exampleEN": "Assess the scale‑up potential before committing long‑term funding.",
+        "exampleAR": "قيّم إمكانية التوسيع قبل الالتزام بتمويل طويل الأجل."
+      }
+    ],
+    "grammar": {
+      "topic": "formal proposals, conditions, and contingency planning",
+      "arabicName": "المقترحات الرسمية والشروط والتخطيط الطارئ",
+      "concept": "Use conditional clauses, modal verbs for obligation/possibility, and subordinators to express dependencies and contingency. Common patterns: 'Subject to X, Y will…', 'In the event that X occurs, Y shall…', 'Provided that/Unless/If… then…', and hedging with modals (may, might, should) to indicate uncertainty.",
+      "arabicComparison": "في العربية تُستخدم أدوات الشرط مثل «إذا» و«طالما» و«بشرط أن»، بينما في الإنجليزية نركز على تراكيب شرطية متعددة مع أفعال الحالة (may/should/will) لتحديد الدرجة التأكيدية.",
+      "structure": "Conditional + main clause patterns: (1) Zero/real: If X happens, Y will happen. (2) Formal proviso: Subject to X, Y will be implemented. (3) Contingency clause: In the event that X occurs, Y shall/may be activated. Use modals to calibrate commitment: 'must'/'shall' for obligations; 'may'/'should' for recommendations.",
+      "commonError": "Overusing 'will' in contingency clauses (sounds too categorical) or mixing informal conditionals (e.g., 'if not') with formal phrasing. Another mistake is omitting clear triggers for contingencies.",
+      "exampleEN": "Subject to the completion of a rapid feasibility study, the pilot will commence within four weeks. In the event that the provider fails to meet key performance indicators, the contingency plan may involve temporary service transfer to an alternative provider.",
+      "exampleAR": "رهناً باستكمال دراسة جدوى سريعة، سيبدأ البرنامج التجريبي خلال أربعة أسابيع. في حال فشل المزود في تحقيق مؤشرات الأداء الرئيسية، قد تتضمن خطة الطوارئ نقل الخدمة مؤقتاً إلى مزود بديل."
+    },
+    "readingBrief": "Read a paired‑source dossier (total 600–650 words) comprising: (1) a 320–350‑word policy extract from the local authority outlining objectives, budget caps, and procurement constraints; and (2) a 280–300‑word critical commentary by a sector NGO challenging assumptions about capacity and equity. Your task: identify points of agreement and conflict, annotate the sources for evidence type and credibility, and prepare annotated notes that indicate where further evidence is needed to make a defensible implementation recommendation. Emphasise source‑awareness: record author perspective, purpose, and limitations.",
+    "writingPrompt": "Write a formal proposal of 320–420 words addressed to the City Council Procurement Board (expert audience). You must: (a) recommend a single, defensible course of action for a 12‑week pilot to deliver rapid‑response community services; (b) integrate at least two perspectives from the dossier and one additional plausible stakeholder concern; (c) include a short conditions section (what approvals or checks are required) and a contingency clause (what happens if a key assumption fails); (d) provide one concise cost–benefit note and a brief stakeholder engagement plan. Success criteria: precision — use specific conditional language and at least two professional chunks from this lesson; cohesion — logical linking of feasibility, conditions and contingency using formal connectors; register — consistently formal and suitable for procurement experts; responsible attribution — explicitly cite the dossier sources when using their claims or data and flag any evidence gaps. Aim for a clear, authoritative tone that acknowledges uncertainty and limits of evidence."
+  },
+  {
+    "lessonNumber": 18,
+    "title": "The case against certainty",
+    "titleArabic": "الحجة ضد اليقين",
+    "outcome": {
+      "canDo": "I can interrogate contested claims, qualify my own assertions with layered hedges and boosters, and produce a formal proposal that argues for epistemic humility in public communication.",
+      "canDoArabic": "أستطيع فحص الادعاءات المتنازع عليها، وتأهيل تصريحاتي بتدرّج من التحفّظات والتعزيزات، وإعداد مقترح رسمي يدعو إلى التواضع المعرفي في التواصل العام.",
+      "scenario": "You are preparing a policy proposal for the City Council’s Public Information Committee arguing for new guidelines that require scientists and public officials to adopt explicit qualification strategies when communicating uncertain findings (e.g. pandemic projections, environmental risk). You must synthesise two sources — a policy extract and a critical commentary — assess their credibility, and recommend a practical protocol that balances clarity with intellectual humility.",
+      "scenarioArabic": "أنت تُعِدّ مقترحًا سياسياً للجنة المعلومات العامة في مجلس المدينة يطالب بوضع إرشاداتٍ جديدة تلزم العلماء والمسؤولين العموميين باستخدام استراتيجيات تأهيل صريحة عند نقل نتائج غير مؤكّدة (مثل توقعات الوباء أو مخاطر البيئة). يجب عليك دمج مصدرين — مقتطف سياسِي وتعليق نقدي — وتقييم مصداقيتهما، ثم التوصية ببروتوكول عملي يوازن بين الوضوح والتواضع المعرفي."
+    },
+    "retrieval": [
+      {
+        "language": "English",
+        "prompt": "Collect explicit statements of evidence from the policy extract and the commentary; list each piece of evidence, its source, and a brief credibility note.",
+        "purpose": "evidence — teach learners to locate and judge the provenance and weight of claims."
+      },
+      {
+        "language": "English",
+        "prompt": "Extract one strong counterargument from the critic’s piece and paraphrase it in neutral language.",
+        "purpose": "counterargument — practise identifying and summarising opposing positions accurately before responding."
+      },
+      {
+        "language": "English",
+        "prompt": "Note any shifts of register in both sources (e.g. technical, public-facing, advisory), and explain how register affects the authority of each claim.",
+        "purpose": "register — show how tone and audience shape rhetorical authority and perceived certainty."
+      },
+      {
+        "language": "English",
+        "prompt": "List two possible consequences if the Council adopts a blanket certainty rhetoric vs two consequences if it adopts formal qualification protocols.",
+        "purpose": "consequence — anticipate practical outcomes to inform a balanced recommendation."
+      }
+    ],
+    "network": {
+      "theme": "assumptions, doubt, intellectual humility",
+      "themeArabic": "الافتراضات والشك والتواضع المعرفي",
+      "anchor": "epistemic humility",
+      "relatedWords": [
+        "assumption",
+        "hedge",
+        "booster",
+        "burden of proof",
+        "provisional",
+        "credibility",
+        "source provenance",
+        "fallibility"
+      ],
+      "chunks": [
+        "epistemic humility",
+        "provisional conclusion",
+        "hedge your claims",
+        "qualify the claim",
+        "concede the point",
+        "preponderance of evidence",
+        "burden of proof",
+        "weigh the evidence",
+        "give due credit",
+        "make explicit caveats"
+      ],
+      "collocations": [
+        "cast doubt on",
+        "bolster confidence in",
+        "issue a caveat",
+        "sustain a claim",
+        "subject to revision",
+        "restate a premise",
+        "mount a critique"
+      ],
+      "register": "mixed",
+      "priorLevelLinks": [
+        "Module 3 Lesson 9: Argument structure and claims",
+        "Module 2 Lesson 4: Evaluating sources and bias",
+        "Module 4 Lesson 12: Persuasive registers in public discourse"
+      ],
+      "learningNote": "At C1 learners should not only hedge but do so strategically: layer hedges (softening language) with selective boosters (where confidence is justified), attribute claims to sources, and flag the limits of evidence. This creates credible, responsible authority.",
+      "learningNoteArabic": "عند مستوى C1 يجب ألا يقتصر المتعلم على التحفّظ فقط بل استخدام التحفّظات بشكل استراتيجى: تدرّج التحفّظات مع تعزيزات انتقائية، ونسب الادعاءات إلى مصادرها، وتوضيح حدود الأدلة — مما يبنى سلطة موثوقة ومسؤولة.",
+      "wordFamilies": [
+        {
+          "headword": "assume",
+          "forms": [
+            "assume",
+            "assumes",
+            "assumed",
+            "assuming",
+            "assumption",
+            "assumptive"
+          ],
+          "note": "Use 'assume' to flag an underlying premise; explicit recognition of assumptions invites re-examination.",
+          "noteArabic": "استخدم 'assume' لتحديد فرضية أساسية؛ الاعتراف بها صراحة يدعو إلى إعادة فحصها."
+        },
+        {
+          "headword": "evaluate",
+          "forms": [
+            "evaluate",
+            "evaluates",
+            "evaluated",
+            "evaluating",
+            "evaluation",
+            "evaluative"
+          ],
+          "note": "Evaluation focuses on credibility and relevance of evidence; pair with provenance comments (who, when, why).",
+          "noteArabic": "تركز التقييمات على مصداقية وصلة الأدلة؛ اربطها بتعليقات حول الأصل (من، متى، لماذا)."
+        },
+        {
+          "headword": "propose",
+          "forms": [
+            "propose",
+            "proposes",
+            "proposed",
+            "proposing",
+            "proposal",
+            "propositional"
+          ],
+          "note": "Proposals need both a defensible claim and acknowledgement of limits; include actionable steps.",
+          "noteArabic": "المقترحات تحتاج إلى ادعاء يمكن الدفاع عنه والاعتراف بالحدود؛ أدرج خطوات قابلة للتنفيذ."
+        }
+      ]
+    },
+    "vocabulary": [
+      {
+        "word": "hedge your claims",
+        "arabic": "تأهيل ادعاءاتك/التريث في التصريحات",
+        "partOfSpeech": "multi-word expression",
+        "definition": "to add language that makes an assertion less absolute (e.g. 'suggests', 'appears to', 'likely')",
+        "exampleEN": "When presenting early data, hedge your claims: say 'the evidence suggests' rather than 'this proves'.",
+        "exampleAR": "عند عرض بيانات مبكرة، قوّم تأهيل ادعاءاتك: قل «تشير الأدلة إلى» بدلاً من «يثبت هذا»."
+      },
+      {
+        "word": "epistemic humility",
+        "arabic": "التواضع المعرفي",
+        "partOfSpeech": "noun phrase",
+        "definition": "the attitude of recognising the limits of one’s knowledge and being open to revision",
+        "exampleEN": "Epistemic humility requires acknowledging uncertainty in forecasts and updating recommendations as evidence changes.",
+        "exampleAR": "التواضع المعرفي يتطلب الاعتراف بعدم اليقين في التنبؤات وتحديث التوصيات مع تغير الأدلة."
+      },
+      {
+        "word": "provisional conclusion",
+        "arabic": "استنتاج مبدئي/مؤقت",
+        "partOfSpeech": "noun phrase",
+        "definition": "a conclusion offered tentatively, subject to further evidence or revision",
+        "exampleEN": "The committee reached a provisional conclusion pending further trials.",
+        "exampleAR": "توصلت اللجنة إلى استنتاج مبدئي في انتظار مزيد من التجارب."
+      },
+      {
+        "word": "burden of proof",
+        "arabic": "عبء الإثبات",
+        "partOfSpeech": "noun phrase",
+        "definition": "the obligation to provide evidence for a claim, especially in debates or policy discussions",
+        "exampleEN": "Policymakers must decide who bears the burden of proof when new regulations are proposed.",
+        "exampleAR": "يجب على صانعي السياسات أن يقرروا من يتحمل عبء الإثبات عند اقتراح تنظيمات جديدة."
+      },
+      {
+        "word": "preponderance of evidence",
+        "arabic": "غلبة الأدلة/أغلبية الأدلة",
+        "partOfSpeech": "noun phrase",
+        "definition": "the condition in which most evidence points in a particular direction, but not conclusively",
+        "exampleEN": "There is a preponderance of evidence linking pollution to the observed decline, though causality is complex.",
+        "exampleAR": "هناك غلبة الأدلة التي تربط التلوث بالتراجع الملحوظ، رغم أن السببية معقدة."
+      },
+      {
+        "word": "concede the point",
+        "arabic": "الاعتراف بمسألة/الإقرار بنقطة ما",
+        "partOfSpeech": "multi-word expression",
+        "definition": "to accept an opponent’s valid point while maintaining one's overall position",
+        "exampleEN": "She conceded the point about data limitations but argued the overall trend remained clear.",
+        "exampleAR": "أقرت بمسألة حدود البيانات لكنها جادلت بأن الاتجاه العام ظل واضحًا."
+      },
+      {
+        "word": "qualify the claim",
+        "arabic": "تأهيل الادعاء",
+        "partOfSpeech": "multi-word expression",
+        "definition": "to modify a claim with limiting language to reflect nuance or uncertainty",
+        "exampleEN": "To avoid misleading readers, qualify the claim by adding the study’s sample size and context.",
+        "exampleAR": "لتجنب تضليل القراء، قم بتأهيل الادعاء بإضافة حجم العينة وسياق الدراسة."
+      },
+      {
+        "word": "scepticism",
+        "arabic": "الشك/التحفّظ",
+        "partOfSpeech": "noun",
+        "definition": "an attitude of doubting claims until evidence is adequate",
+        "exampleEN": "Reasonable scepticism is vital when early results are based on small samples.",
+        "exampleAR": "الشك المعقول ضروري عندما تستند النتائج المبكرة إلى عينات صغيرة."
+      },
+      {
+        "word": "corroborate",
+        "arabic": "يؤكد/يوثّق",
+        "partOfSpeech": "verb",
+        "definition": "to provide additional evidence that supports a claim or hypothesis",
+        "exampleEN": "Independent studies must corroborate the initial finding before policy changes are made.",
+        "exampleAR": "يجب أن تؤكد دراسات مستقلة النتيجة الأولية قبل إجراء تغييرات في السياسات."
+      },
+      {
+        "word": "counterargument",
+        "arabic": "حجة مضادة",
+        "partOfSpeech": "noun",
+        "definition": "a reasoned objection that challenges a claim or proposal",
+        "exampleEN": "Addressing a counterargument strengthens your proposal by showing you’ve considered alternatives.",
+        "exampleAR": "معالجة حجة مضادة تقوّي مقترحك بإظهار أنك قد نظرت في البدائل."
+      },
+      {
+        "word": "the stakes",
+        "arabic": "الرهانات/ما هو على المحك",
+        "partOfSpeech": "noun phrase",
+        "definition": "what is at risk or to be gained/lost in a decision or debate",
+        "exampleEN": "In risk communication the stakes are high: public trust and safety are both affected.",
+        "exampleAR": "في التواصل المتعلق بالمخاطر تكون الرهانات عالية: يتأثر كل من ثقة الجمهور والسلامة."
+      },
+      {
+        "word": "nuance",
+        "arabic": "فروق دقيقة/تفاصيل دقيقة",
+        "partOfSpeech": "noun",
+        "definition": "a subtle distinction or variation in meaning, tone, or judgment",
+        "exampleEN": "Good public messaging retains nuance rather than reducing complex research to slogans.",
+        "exampleAR": "تحافظ الرسائل العامة الجيدة على الفروق الدقيقة بدلًا من تقليص أبحاث معقدة إلى شعارات."
+      }
+    ],
+    "grammar": {
+      "topic": "rhetorical control and layered qualification",
+      "arabicName": "السيطرة البلاغية والتأهيل الطبقي",
+      "concept": "Combine hedges (may, might, appears), boosters (clearly, substantially, demonstrably), attribution (according to X), and concessive moves (admittedly, although) in structured layers to express calibrated confidence.",
+      "arabicComparison": "في العربية تُستخدم صيغ مثل 'من المرجح' أو 'على الأرجح' للتأهيل؛ على مستوى C1 نربط هذه الصيغ الإنجليزية بصياغات مصدرية وتراكيب تنازلية لبناء مصداقية.",
+      "structure": "[Booster/claim] + [attribution] + [hedge/caveat] + [concession/limit]. Example frame: 'The data clearly indicate X, according to the 2025 survey, although this conclusion remains provisional pending larger samples.'",
+      "commonError": "Either over-hedging (so vague the message loses force) or inconsistent layering (mixing colloquial boosters with hyper-formal attributions) which confuses register.",
+      "exampleEN": "The evidence strongly indicates a rise in cases, according to the municipal health report, although this assessment remains provisional until further sampling is completed.",
+      "exampleAR": "تشير الأدلة بقوة إلى ارتفاع الحالات، وفقًا لتقرير الصحة البلدية، رغم أن هذا التقييم يظل مؤقتًا حتى اكتمال المزيد من العينات."
+    },
+    "readingBrief": "Learners will read a 650-word paired-source dossier composed of (a) a 420-word policy extract from a municipal guidance draft that recommends communication standards for uncertain scientific findings and (b) a 230-word critical commentary by an independent analyst questioning the draft’s rhetoric. The purpose is source-awareness: annotate each claim with its provenance, identify hedging or booster language, evaluate the relative credibility of each source (author position, data backing, potential bias), and prepare synthesis notes that will feed the proposal. Focus on where each source assumes certainty, what evidence supports those assumptions, and how language choices would affect public perception.",
+    "writingPrompt": "Write a 320–420-word formal proposal to the City Council’s Public Information Committee. Your audience is a mixed expert-policy body (policy advisers, senior scientists, and committee members). Take a defensible position: either endorse the draft guidance with specified revisions to increase epistemic humility, or propose an alternative protocol that balances clarity and accountability. Your response must be informed by at least two perspectives drawn from the dossier (cite each source parenthetically with author/year), acknowledge one credible counterargument, and recommend two concrete, implementable steps (e.g. a standard disclaimer template; a two-tier messaging protocol). Success criteria: (1) precision—use layered qualification correctly and limit vague over-hedging; (2) cohesion—logical flow with clear linking of evidence to recommendation; (3) register—maintain a formal, advisory tone appropriate for council business; (4) responsible attribution—explicitly name and briefly evaluate at least two sources when making claims. Marks depend on meeting all four criteria and staying within the word limit."
+  },
+  {
+    "lessonNumber": 19,
+    "title": "A voice in a crowded debate",
+    "titleArabic": "صوت في نقاش مزدحم",
+    "outcome": {
+      "canDo": "I can produce a concise, source-aware intervention that foregrounds a defensible position in a contested public debate, using strategic emphasis and cohesive argument architecture to guide a mixed audience of stakeholders and decision-makers.",
+      "canDoArabic": "أستطيع صياغة تدخل موجز معتمد على مصادر يوضح موقفًا مدافعًا عنه في نقاش عام متنازع عليه، مستخدماً تقنيات التركيز الاستراتيجي وبناء الحجة المتماسك لتوجيه جمهور مختلط من أصحاب المصلحة وصانعي القرار.",
+      "scenario": "You are preparing a formal policy brief (or open letter) responding to a proposed Community Media Charter circulated by the local council. You must synthesise competing evidence (campaign data, council minutes, independent survey), evaluate sources, present a clear recommendation and signal the consequences and trade-offs to different stakeholder groups.",
+      "scenarioArabic": "أنت تقوم بإعداد ملخص سياساتي رسمي (أو رسالة مفتوحة) رداً على ميثاق الإعلام المجتمعي المقترح الذي وزعته المجلس المحلي. يجب أن تندمج بين أدلة متنافسة (بيانات الحملة، محاضر المجلس، استطلاع مستقل)، وتقوّم المصادر، وتعرض توصية واضحة وتبيّن العواقب والمفاضلات لمختلف مجموعات أصحاب المصلحة."
+    },
+    "retrieval": [
+      {
+        "language": "English",
+        "prompt": "Evidence — From the reading, list three types of evidence used (e.g. official minutes, social-media metrics, independent survey). For each, state one strength and one limitation and rank them by reliability.",
+        "purpose": "Prompts learners to move from recalling 'evidence' (B2) to critically appraising and ranking sources (C1)."
+      },
+      {
+        "language": "English",
+        "prompt": "Counterargument — Identify one plausible counterargument to your provisional position and draft a concise concession plus rebuttal (two sentences).",
+        "purpose": "Transforms the B2 notion of 'counterargument' into a C1 practice of disciplined concession and targeted rebuttal."
+      },
+      {
+        "language": "English",
+        "prompt": "Register — Decide the most appropriate register (formal policy brief, public op-ed, social-media statement) and list three vocabulary or structural choices that realise that register.",
+        "purpose": "Moves 'register' from label to concrete lexico-grammatical choices suitable for the audience."
+      },
+      {
+        "language": "English",
+        "prompt": "Consequence — For your chosen recommendation, outline two likely practical consequences and indicate who benefits and who may lose out.",
+        "purpose": "Asks learners to operationalise 'consequence' into stakeholder-aware impact assessment."
+      }
+    ],
+    "network": {
+      "theme": "media, attention, intervention",
+      "themeArabic": "الإعلام، الانتباه، التدخل",
+      "anchor": "voice",
+      "relatedWords": [
+        "media",
+        "attention",
+        "intervention",
+        "framing",
+        "credibility",
+        "stakeholder",
+        "amplification",
+        "source"
+      ],
+      "chunks": [
+        "foreground a point",
+        "amplify a voice",
+        "garner attention",
+        "weigh the trade-offs",
+        "evidence-based claim",
+        "operationalise a proposal",
+        "scrutinise claims",
+        "register shift"
+      ],
+      "collocations": [
+        "stakeholder engagement",
+        "consequential framing",
+        "counterargument concession",
+        "sifting of sources",
+        "discursive architecture"
+      ],
+      "register": "formal",
+      "priorLevelLinks": [
+        "Module 4 Lesson 12: Media framing in public discourse",
+        "Module 4 Lesson 14: Summarising sources and evaluation",
+        "Module 3 Lesson 8: Constructing persuasive proposals"
+      ],
+      "learningNote": "At C1, emphasis is strategic: choose one or two focal moves (fronting, clefting, metadiscourse) and design the argument architecture so each paragraph advances a distinct function—claim, evidence, implication, stakeholder consequence.",
+      "learningNoteArabic": "عند مستوى C1 يكون التركيز استراتيجياً: اختر حركة أو اثنتين مركزيتين (التقديم، الجملة المشدّدة، التعليقات الميتا) وصمّم بنية الحُجة بحيث يقدّم كل فقرة وظيفة مميزة—الادعاء، الدليل، النتيجة، أثر على أصحاب المصلحة.",
+      "wordFamilies": [
+        {
+          "headword": "intervene",
+          "forms": [
+            "intervene",
+            "intervention",
+            "interventionist",
+            "intervening"
+          ],
+          "note": "Use 'intervention' for the act/policy and 'interventionist' as an adjective or critique of active interference.",
+          "noteArabic": "تُستخدم 'intervention' للدلالة على الفعل/السياسة و'interventionist' كصفة أو نقد للتدخّل المفرط."
+        },
+        {
+          "headword": "attend",
+          "forms": [
+            "attend",
+            "attention",
+            "attentive",
+            "attentional"
+          ],
+          "note": "Pair verbs like 'garner attention' with adjectives like 'attentive' to link action and reception.",
+          "noteArabic": "اجمع الأفعال مثل 'garner attention' مع الصفات مثل 'attentive' لربط الفعل وتلقيه."
+        },
+        {
+          "headword": "assess",
+          "forms": [
+            "assess",
+            "assessment",
+            "assessor",
+            "assessable"
+          ],
+          "note": "At C1, 'assess' should be followed by criteria—e.g., 'assess X against Y'—not vague hedges.",
+          "noteArabic": "عند مستوى C1 يجب أن يلي 'assess' معايير محددة—مثل 'assess X against Y'—بدلاً من عبارات غامضة."
+        }
+      ]
+    },
+    "vocabulary": [
+      {
+        "word": "stakeholder engagement",
+        "arabic": "مشاركة أصحاب المصلحة",
+        "partOfSpeech": "noun phrase",
+        "definition": "Planned processes to consult, inform or involve people or groups affected by a decision.",
+        "exampleEN": "The draft charter includes mandatory stakeholder engagement before any licensing changes.",
+        "exampleAR": "يتضمن مسوَّد الميثاق اشتراط مشاركة أصحاب المصلحة قبل أي تغييرات في الترخيص."
+      },
+      {
+        "word": "foreground a point",
+        "arabic": "إبراز نقطة",
+        "partOfSpeech": "verb phrase",
+        "definition": "To deliberately make a specific argument or detail more prominent in discourse.",
+        "exampleEN": "She foregrounded the ethical implications in the opening paragraph to set the tone.",
+        "exampleAR": "أبرزت التداعيات الأخلاقية في الفقرة الافتتاحية لتحدد النبرة."
+      },
+      {
+        "word": "register shift",
+        "arabic": "تغيّر المستوى اللغوي/السجل",
+        "partOfSpeech": "noun phrase",
+        "definition": "A deliberate change in formality or tone to suit a different audience or rhetorical purpose.",
+        "exampleEN": "A brief register shift to a more personal tone helped the speaker connect with residents.",
+        "exampleAR": "ساعد تغيير السجل القصير إلى نبرة أكثر شخصية المتحدّث على التواصل مع السكان."
+      },
+      {
+        "word": "evidence-based claim",
+        "arabic": "ادعاء قائم على أدلة",
+        "partOfSpeech": "noun phrase",
+        "definition": "A statement backed by identifiable, verifiable data or sources.",
+        "exampleEN": "The committee accepted the evidence-based claim citing the independent survey results.",
+        "exampleAR": "قبلت اللجنة الادعاء القائم على الأدلة الذي استشهد بنتائج الاستطلاع المستقل."
+      },
+      {
+        "word": "weigh the trade-offs",
+        "arabic": "موازنة المفاضلات",
+        "partOfSpeech": "verb phrase",
+        "definition": "To consider advantages and disadvantages before reaching a decision.",
+        "exampleEN": "Policy-makers must weigh the trade-offs between access and regulation.",
+        "exampleAR": "يجب على صانعي السياسات موازنة المفاضلات بين الوصول والتنظيم."
+      },
+      {
+        "word": "counterargument concession",
+        "arabic": "تنازل عن الحجة المضادة",
+        "partOfSpeech": "noun phrase",
+        "definition": "A brief acknowledgement of a valid point from the opposing view, often followed by a rebuttal.",
+        "exampleEN": "Her brief counterargument concession strengthened the overall credibility of the brief.",
+        "exampleAR": "عزّز تنازلها القصير عن الحجة المضادة مصداقية الملخص بشكل عام."
+      },
+      {
+        "word": "suppress dissent",
+        "arabic": "قمع المعارضة/الاعتراض",
+        "partOfSpeech": "verb phrase",
+        "definition": "To limit or silence opposing views, intentionally or through policy design.",
+        "exampleEN": "Critics argued the charter might suppress dissent by limiting community broadcasting licences.",
+        "exampleAR": "جادل النقّاد أن الميثاق قد يقمع المعارضة من خلال تقييد تراخيص البث المجتمعي."
+      },
+      {
+        "word": "garner attention",
+        "arabic": "جذب الانتباه",
+        "partOfSpeech": "verb phrase",
+        "definition": "To attract notice or interest, often strategically.",
+        "exampleEN": "The campaign used data visualisations to garner attention from local media.",
+        "exampleAR": "استخدمت الحملة رسومًا بيانية لجذب انتباه وسائل الإعلام المحلية."
+      },
+      {
+        "word": "amplify a voice",
+        "arabic": "تكبير صوت/إعطاء صوت أقوى",
+        "partOfSpeech": "verb phrase",
+        "definition": "To increase the reach or influence of an individual or group's perspective.",
+        "exampleEN": "Partnering with established outlets helped amplify the campaign's voice.",
+        "exampleAR": "ساعد التعاون مع وسائل معروفة على تكبير صوت الحملة."
+      },
+      {
+        "word": "sifting of sources",
+        "arabic": "غربلة المصادر",
+        "partOfSpeech": "noun phrase",
+        "definition": "A careful process of evaluating and selecting reliable sources from many candidates.",
+        "exampleEN": "Effective sifting of sources revealed inconsistencies in the campaign's timeline.",
+        "exampleAR": "كشفت غربلة فعّالة للمصادر عن تناقضات في جدول الحملة الزمني."
+      },
+      {
+        "word": "discursive architecture",
+        "arabic": "بنية الخطاب/الخطابي",
+        "partOfSpeech": "noun phrase",
+        "definition": "The organised structure of arguments and rhetorical strategies across a text or debate.",
+        "exampleEN": "Map the discursive architecture before drafting: where will you place your concession, evidence and implication?",
+        "exampleAR": "خطط البنية الخطابية قبل الصياغة: أين ستضع تنازلك والأدلة والنتيجة؟"
+      },
+      {
+        "word": "operationalise a proposal",
+        "arabic": "تفعيل/تطبيق اقتراح",
+        "partOfSpeech": "verb phrase",
+        "definition": "To turn a policy idea into specific, implementable steps and measures.",
+        "exampleEN": "The brief must show how to operationalise the proposal within existing budgets.",
+        "exampleAR": "يجب أن يوضّح الملخص كيفية تفعيل الاقتراح ضمن الميزانيات الحالية."
+      }
+    ],
+    "grammar": {
+      "topic": "Strategic emphasis and cohesive argument architecture",
+      "arabicName": "التأكيد الاستراتيجي وبناء الحجة المتماسكة",
+      "concept": "Use structural moves (fronting, clefting, thematic progression, metadiscourse) and cohesive sequencing so each paragraph has a clear function (claim → evidence → implication → stakeholder consequence). Strategic emphasis is achieved by positioning key information and by grammatical focus devices (cleft sentences, fronting, contrastive connectors).",
+      "arabicComparison": "في العربية، يمكن تحقيق التأكيد عبر تقديم المسند أو الإضافة باستخدام 'إنّ' أو البناء الإنشائي؛ الإنجليزية تعتمد أكثر على ترتيب الجمل، الجمل المشددة (clefts) ومقارنات ربطية.",
+      "structure": "Typical paragraph architecture: Topic sentence (claim + foregrounding) → supporting evidence (source + brief evaluation) → implication (consequence or trade-off) → mini-conclusion or transition. Use metadiscourse: 'Importantly', 'Crucially', 'This suggests that...'.",
+      "commonError": "Overloading a paragraph with multiple claims or excessive hedging (e.g. too many 'may'/'could') that dilutes emphasis.",
+      "exampleEN": "Cleft emphasis: 'What the independent survey found was a marked preference for local ownership.' Topic progression: 'Firstly...; Secondly...; Consequently...'.",
+      "exampleAR": "مثال توضيحي بالإنجليزية: 'What the independent survey found was a marked preference for local ownership.' وتقدم الفقرات: 'Firstly...; Secondly...; Consequently...'."
+    },
+    "readingBrief": "Read an original ~620-word feature that examines a recent local campaign which sought to influence a Council's draft Community Media Charter. The feature summarises three distinct sources: (1) council meeting minutes and proposed draft clauses, (2) a series of campaign social-media posts and engagement metrics, and (3) an independent survey conducted by a local university. Your task while reading is source-awareness: note each source's provenance, intended audience, possible bias, and the rhetorical moves used to foreground different claims. Pay attention to which evidence is quantified, which relies on anecdote, and where the discursive architecture privileges certain stakeholders. Prepare concise marginal notes that (a) rate each source's reliability on a three-point scale, (b) identify one example of strategic emphasis, and (c) suggest one follow-up question you would ask each source.",
+    "writingPrompt": "Write a formal policy brief of 320–420 words addressed to the Council Leader and named stakeholder groups (local broadcasters, community activists, regulator). Take a defensible position either supporting, opposing, or recommending modification to the proposed Community Media Charter. Your brief must: (1) synthesize at least two different perspectives from the reading, (2) evaluate the reliability of at least one source, (3) state clear, implementable recommendations, and (4) signpost consequences for at least two stakeholder groups. Success criteria: Precision — use specific evidence (cite source type, e.g. 'independent survey'; do not use vague references); Cohesion — organise with clear claim→evidence→implication moves and use metadiscourse to guide the reader; Register — maintain formal, policy-appropriate language throughout (avoid colloquialisms); Responsible attribution — explicitly acknowledge source limitations and avoid overstating what the evidence proves. Aim for policy clarity and a persuasive, source-aware architecture in 320–420 words."
+  },
+  {
+    "lessonNumber": 20,
+    "title": "Synthesis with integrity",
+    "titleArabic": "تركيب الأفكار بنزاهة",
+    "outcome": {
+      "canDo": "I can integrate multiple sources to produce an original, source-aware judgement and a formal proposal, using precise attribution and register-appropriate phrasing.",
+      "canDoArabic": "أستطيع دمج مصادر متعددة لصياغة حكم أصلي واعتماد رسمي مدعوم بالمصادر، مستخدماً عبارات عزو دقيقة وسجل لغوي مناسب.",
+      "scenario": "You must prepare a short formal proposal for a municipal advisory panel that reconciles evidence from a policy extract and a critical commentary, explains trade-offs, and recommends a single defensible course of action.",
+      "scenarioArabic": "يجب عليك إعداد اقتراح رسمي قصير لجنة استشارية بلدية يجمع بين أدلة من مقتطف سياسِي وتعليق نقدي، ويشرح المقايضات، ويوصي بخطوة عملية واحدة يمكن الدفاع عنها."
+    },
+    "retrieval": [
+      {
+        "language": "English",
+        "prompt": "Evidence: Extract and summarise the three strongest pieces of evidence from both sources, tagging each item with its origin and level of reliability (high/medium/low).",
+        "purpose": "Train source-aware selection rather than general recall."
+      },
+      {
+        "language": "English",
+        "prompt": "Counterargument: Identify one plausible counterargument to your likely recommendation and draft a concise rebuttal that cites at least one source and admits genuine uncertainty.",
+        "purpose": "Practice balanced reasoning and responsible concession."
+      },
+      {
+        "language": "English",
+        "prompt": "Register: Transform a paragraph of your synthesis into two versions — formal (for the panel) and public-facing (for a community leaflet) — keeping content equivalent while adjusting tone and wording.",
+        "purpose": "Develop flexible register control in synthesis."
+      },
+      {
+        "language": "English",
+        "prompt": "Consequence: List the short-term and medium-term consequences of two alternative proposals, attributing each predicted effect to a specific source or logical inference.",
+        "purpose": "Link claims to sources and causal reasoning."
+      }
+    ],
+    "network": {
+      "theme": "multiple sources, original judgement, responsible conclusion",
+      "themeArabic": "مصادر متعددة، حكم أصلي، نتيجة مسؤولة",
+      "anchor": "synthesis",
+      "relatedWords": [
+        "attribution",
+        "corroborate",
+        "qualification",
+        "concession",
+        "evaluation",
+        "register"
+      ],
+      "chunks": [
+        "weigh the evidence",
+        "taken together",
+        "it is important to note",
+        "while acknowledging",
+        "the weight of evidence suggests",
+        "this warrants caution",
+        "to reconcile X with Y"
+      ],
+      "collocations": [
+        "robust evidence",
+        "responsible attribution",
+        "make a provisional judgement",
+        "acknowledge limitations",
+        "draw a clear distinction",
+        "strike a balance",
+        "register-appropriate phrasing"
+      ],
+      "register": "mixed",
+      "priorLevelLinks": [
+        "evidence (B2): identify and summarise",
+        "counterargument (B2): present and respond",
+        "evaluation (B2): judge claims",
+        "proposal (B2): suggest solutions",
+        "consequence (B2): predict effects",
+        "register (B2): formal vs informal"
+      ],
+      "learningNote": "At C1 synthesis you must do more than list sources: integrate their claims, qualify limits, and attribute precisely (e.g., 'according to X', 'X argues that', 'Y's data suggests') while controlling register for your audience.",
+      "learningNoteArabic": "عند مستوى C1، يجب أكثر من سرد المصادر: ادمج ادعاءاتها، وحدد حدودها، وعزو النتائج بدقة (مثل «وفقًا لـ X»، «يؤكد X أن») مع ضبط الدرجة اللغة وفق الجمهور.",
+      "wordFamilies": [
+        {
+          "headword": "synthesise",
+          "forms": [
+            "synthesise",
+            "synthesis",
+            "synthesiser"
+          ],
+          "note": "synthesise (v) = combine disparate sources into a coherent whole; synthesis (n) = the result.",
+          "noteArabic": "synthesise (فعل) = دمج مصادر مختلفة في كل متماسك؛ synthesis (اسم) = النتيجة."
+        },
+        {
+          "headword": "attribute",
+          "forms": [
+            "attribute",
+            "attribution",
+            "attributable"
+          ],
+          "note": "attribute (v) = link a claim or evidence to a source; attribution (n) = the act of specifying source.",
+          "noteArabic": "attribute (فعل) = ربط ادعاء بمصدر؛ attribution (اسم) = فعل تحديد المصدر."
+        },
+        {
+          "headword": "evaluate",
+          "forms": [
+            "evaluate",
+            "evaluation",
+            "evaluative"
+          ],
+          "note": "evaluate = assess the strength/limitations of claims or data; use evaluative language (e.g., 'limited', 'compelling').",
+          "noteArabic": "evaluate = تقييم قوة أو حدود الادعاءات أو البيانات؛ استخدم لغة تقييمية مثل «محدود» أو «مقنع»."
+        }
+      ]
+    },
+    "vocabulary": [
+      {
+        "word": "synthesis",
+        "arabic": "تركيب/توليف",
+        "partOfSpeech": "noun",
+        "definition": "A coherent integration of ideas, data, or arguments from multiple sources into an original whole.",
+        "exampleEN": "Her synthesis of the report and the review highlighted a shared methodological flaw.",
+        "exampleAR": "أظهر تركيبها للتقرير والمراجعة وجود عيب منهجي مشترك."
+      },
+      {
+        "word": "weigh the evidence",
+        "arabic": "موازنة الأدلة",
+        "partOfSpeech": "multi-word verb phrase",
+        "definition": "To consider the relative strength and relevance of different pieces of evidence before drawing a conclusion.",
+        "exampleEN": "Before recommending a course of action, weigh the evidence from both studies and note contradictions.",
+        "exampleAR": "قبل التوصية بخطة عمل، وزّن الأدلة من الدراستين وحدد التناقضات."
+      },
+      {
+        "word": "responsible attribution",
+        "arabic": "عزو مسؤول",
+        "partOfSpeech": "noun phrase",
+        "definition": "Explicitly linking claims to their sources, including specifying limits and uncertainties where appropriate.",
+        "exampleEN": "Responsible attribution requires naming the author and indicating the study's scope and limitations.",
+        "exampleAR": "العزو المسؤول يتطلب ذكر الكاتب وتوضيح نطاق وحدود الدراسة."
+      },
+      {
+        "word": "acknowledge limitations",
+        "arabic": "الاعتراف بالقيود",
+        "partOfSpeech": "verb phrase",
+        "definition": "To openly state the weaknesses or boundaries of evidence or argumentation.",
+        "exampleEN": "In the conclusion she acknowledged limitations in the sample size and called for further research.",
+        "exampleAR": "في الخاتمة اعترفت بالقيود المتعلقة بحجم العينة ودعت لمزيد من البحث."
+      },
+      {
+        "word": "draw a distinction",
+        "arabic": "رسم تمييز/تمييز بين",
+        "partOfSpeech": "verb phrase",
+        "definition": "To make a clear difference between two related concepts, causes or sets of evidence.",
+        "exampleEN": "The author draws a distinction between correlation and causation early in the piece.",
+        "exampleAR": "يسلط الكاتب الضوء مبكراً على التمييز بين العلاقة المتزامنة والسببية."
+      },
+      {
+        "word": "make a provisional judgement",
+        "arabic": "إبداء حكم مبدئي",
+        "partOfSpeech": "phrase",
+        "definition": "To offer a temporary, evidence-contingent conclusion that remains open to revision.",
+        "exampleEN": "Given incomplete data, the panel made a provisional judgement pending further tests.",
+        "exampleAR": "نظرًا لعدم اكتمال البيانات، أصدرت اللجنة حكماً مبدئياً بانتظار مزيد من الفحوص."
+      },
+      {
+        "word": "strike a balance",
+        "arabic": "تحقيق توازن",
+        "partOfSpeech": "verb phrase",
+        "definition": "To find an acceptable compromise between competing priorities or values.",
+        "exampleEN": "The proposal aims to strike a balance between economic growth and environmental protection.",
+        "exampleAR": "يهدف الاقتراح إلى تحقيق توازن بين النمو الاقتصادي وحماية البيئة."
+      },
+      {
+        "word": "robust evidence",
+        "arabic": "أدلة قوية",
+        "partOfSpeech": "noun phrase",
+        "definition": "Evidence that is reliable, replicable and sufficiently supported by methodology.",
+        "exampleEN": "Policy-makers prioritised recommendations supported by robust evidence over speculative claims.",
+        "exampleAR": "فضّل صانعو السياسات التوصيات المدعومة بأدلة قوية على الادعاءات التكهنية."
+      },
+      {
+        "word": "qualify a claim",
+        "arabic": "تقييد/تأهيل ادعاء",
+        "partOfSpeech": "verb phrase",
+        "definition": "To add conditions or limits to a claim so it accurately reflects the evidence.",
+        "exampleEN": "She qualified her claim about success rates by citing the narrow demographic of the sample.",
+        "exampleAR": "أقامت قيدًا على ادعائها بشأن معدلات النجاح بالإشارة إلى ضيق الفئة السكانية للعينة."
+      },
+      {
+        "word": "counterargument",
+        "arabic": "حجة مضادة",
+        "partOfSpeech": "noun",
+        "definition": "An argument offered in opposition to another argument, often acknowledged and addressed in a synthesis.",
+        "exampleEN": "A strong synthesis anticipates the main counterargument and addresses it transparently.",
+        "exampleAR": "التوليف القوي يتوقع الحجة المضادة الرئيسة ويتعامل معها بشفافية."
+      },
+      {
+        "word": "corroborate",
+        "arabic": "يؤكد/يدعم",
+        "partOfSpeech": "verb",
+        "definition": "To confirm or support a statement or finding with additional evidence.",
+        "exampleEN": "Two independent surveys corroborated the initial finding about public concern.",
+        "exampleAR": "أكدت استطلاعاتان مستقلتان النتيجة الأولية المتعلقة بقلق الجمهور."
+      },
+      {
+        "word": "endorse/endorsement",
+        "arabic": "يؤيّد/تأييد",
+        "partOfSpeech": "verb/noun",
+        "definition": "To publicly support a course of action or to state formal approval; endorsement is the act of supporting.",
+        "exampleEN": "The expert group endorsed the proposal but suggested phased implementation.",
+        "exampleAR": "أيّدت مجموعة الخبراء الاقتراح لكنها اقترحت تنفيذاً مرحلياً."
+      }
+    ],
+    "grammar": {
+      "topic": "Integrated C1 synthesis: citation-aware attribution and flexible register",
+      "arabicName": "التركيب المتكامل مع عزو مدرك للسياق وتعدد السجل",
+      "concept": "Combine multiple source frames using attributive clauses, qualification markers, concessions, and evaluative language while shifting register appropriately for target audiences.",
+      "arabicComparison": "ادمج وجهات نظر متعددة باستخدام عبارات العزو، وأدوات التأهيل، والاعتراف بالتنازلات، ولغة تقييمية مع تعديل السجل حسب الجمهور.",
+      "structure": "[Signpost + synthesis statement (taken together) + paraphrase(s) with attribution (according to X; X argues that) + evaluative marker (compelling/limited) + concession (while/admitting that) + provisional or definite recommendation (therefore/it is advisable)],",
+      "commonError": "Mixing informal and formal registers within the same clause (e.g., starting formally then using colloquial tags), overgeneralising from a single source, or failing to attribute specific claims to their origins.",
+      "exampleEN": "Signpost: 'Taken together, the studies suggest a modest effect.' Attribution: 'According to the policy extract (Ministry report, 2024), the sample is restricted to urban areas.' Evaluation + concession: 'This provides useful insight, but the evidence is limited and thus only supports a provisional recommendation.'",
+      "exampleAR": "مقدمة: «مجملاً، تشير الدراسات إلى أثر محدود.» العزو: «وفقًا لمقتطف السياسة (تقرير الوزارة، ٢٠٢٤)، العينة مقتصرة على المناطق الحضرية.» تقييم + تنازل: «يوفر هذا رؤية مفيدة، لكن الأدلة محدودة وبالتالي تدعم توصية مبدئية فقط.»"
+    },
+    "readingBrief": "Read an original paired-source dossier of approximately 600 words (total). The dossier comprises a 320–360-word policy extract from a recent municipal planning note and a 240–280-word critical commentary by an independent analyst. Your purpose is source-aware: identify the policy's core claims, the analyst's key critiques, points of corroboration and contradiction, and prepare to synthesize these into a single formal recommendation. Focus on provenance (who produced each source), methodology (how claims are supported), limitations, and practical implications for local decision-making.",
+    "writingPrompt": "Write a formal proposal of 320–420 words addressed to the municipal advisory panel and civil-society stakeholders. Present one defensible recommendation that reconciles the policy extract and the critical commentary. You must: a) attribute at least two specific claims to their original sources (using phrases such as 'according to' or 'the analyst notes that'); b) weigh evidence and acknowledge at least one limitation or counterargument; c) explain short- and medium-term consequences and recommend a clear implementation step. Success criteria: precision (refer to specific evidence, dates or figures where given), cohesion (logical sequencing and explicit signposting such as 'taken together' or 'however'), register (formal and policy-appropriate throughout), and responsible attribution (every claim derived from the dossier must be clearly linked to its source)."
   }
 ]

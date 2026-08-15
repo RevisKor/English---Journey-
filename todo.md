@@ -5,7 +5,7 @@
 - [x] Preserve Manus OAuth authentication and create user settings for British/American pronunciation preferences.
 - [x] Create a validated, bilingual A1 curriculum containing 500 vocabulary records across 20 lessons and 20 grammar topics.
 - [x] Build a responsive bilingual course dashboard with A1–C2 level map, lesson locks, XP, and streak tracking.
-- [x] Build the A1 lesson experience with vocabulary flip cards, Arabic explanations, IPA, phonetic respellings, and browser TTS.
+- [x] Build the A1 lesson experience with vocabulary cards, Arabic explanations, IPA, phonetic respellings, and browser TTS.
 - [x] Build bilingual grammar lessons with Arabic-speaker guidance, examples, practice tasks, and speech playback.
 - [x] Implement the server-side AI Word Tutor for lesson-aware bilingual vocabulary, synonym, spelling, and sentence help.
 - [x] Implement controlled AI reading passages, comprehension questions, and Arabic feedback.
@@ -17,54 +17,33 @@
 - [x] Implement module tests every five lessons with gated module progression.
 - [x] Implement a spaced-repetition review queue for missed vocabulary and grammar items.
 - [x] Implement XP awards, daily streak calculation, and dashboard progress summaries.
-- [x] Implement backend XP awards tied to lesson, quiz, and module completion, then surface the updated totals in the dashboard.
-- [x] Verify assessment and warm-up mutation paths invoke learner-activity tracking, with tested daily-streak logic and dashboard refresh handlers.
 - [x] Add automated unit tests for course rules, progress gating, and AI response validation.
-- [x] Complete pilot QA of the learning journey, mobile layout, Arabic regions, keyboard semantics, and loading/empty/error safeguards using tests, code review, and visual checks.
-- [x] Save a final project checkpoint and provide the user with the handoff guide.
-- [x] Add a reproducible structural A1 curriculum validator for bilingual fields, pronunciation coverage, examples, grammar structures, and duplicate records.
-- [x] Add stable server/router and shared-rule tests for pass/fail submissions, review-key handling, planned unlocks, and module-test prerequisites.
-- [x] Refresh the review-queue badge and dashboard state after assessment and warm-up activity.
-- [x] Add stable router-level tests for lesson and module assessment mutations, including persistence calls and prerequisite denial.
-- [x] Verify learning-event mutation dispatch, dashboard/review invalidation handlers, and streak-rule behavior in controlled automated tests.
-- [x] Document keyboard, Arabic-region, loading, empty, and error-state pilot QA across dashboard, lesson, AI, and assessment screens.
-- [x] Research Oxford, Cambridge, and CEFR-aligned curriculum guidance for A2–C2 expansion.
-- [x] Design the A2–C2 scope and sequence with deliberate retrieval and reuse of prior-level language.
-- [x] Define engaging higher-level lesson templates, reading pathways, writing milestones, and learner-facing course plans.
-- [x] Review the proposed curriculum expansion plan with the user before adding the new levels to the application.
-- [x] Define the A2 course-data schema for six-step lessons, lexical networks, prior-learning retrieval, and learner outcomes.
-- [x] Author 20 original, CEFR-informed A2 lesson briefs across four modules with varied thematic vocabulary and phrase targets.
-- [x] Create and validate the A2 vocabulary, grammar, reading, writing, and assessment datasets.
-- [x] Add the A2 level map, learner-facing six-step lesson plan, and English-first progressive scaffolding to the platform.
-- [x] Verify A2 route rendering on desktop/mobile, curriculum integrity, and active-level progression gates through screenshots and automated tests.
-- [x] Document the reusable authoring framework for B1–C2 expansion.
-- [x] Extend AI tutor, reading, writing, grading, and history procedures to use the active A1 or A2 course context.
-- [x] Add a typed lexical-network model with word families, collocations, register, and prior-level links.
-- [x] Create a concrete A2 course-data module that exercises the six-step lesson, retrieval, outcome, and lexical-network types.
-- [x] Add explicit A2 assessment definitions for lesson quizzes, module tests, and reading-comprehension checks.
-- [x] Extend lexical networks with a typed word-family field and populate it across all A2 lessons.
-- [x] Add targeted A2 UI validation proving the six-step lesson sequence and English-first scaffolding render distinctly from the A1 workspace.
-- [x] Add explicit A2 active-level tests for lesson unlocks, module prerequisites, and assessment submission behavior.
-- [x] Restart the development server and confirm the prior stale A2 course-export error is absent from the fresh browser console log.
-- [x] Define the B1–C2 curriculum release contract, database migration boundaries, assessment-variation rules, and tutor speed/quality targets.
-- [x] Complete the migration of curriculum organization to structured level, module, topic, lesson, vocabulary, grammar, reading, writing, and assessment database entities while preserving the existing A1/A2 experience.
-- [x] Build per-user, per-attempt question-set generation, versioning, storage, and grading so lesson quizzes and module tests vary fairly without changing the learning objectives.
-- [x] Complete end-to-end automated catalog-sync persistence coverage for structured A1/A2 reading and writing records.
-- [x] Verify focused structured-practice synchronization writes the expected reading and writing payloads for representative A1/A2 lessons.
-- [x] Verify deterministic per-lesson reading and writing payload mapping across all 40 A1/A2 lessons during a focused practice re-sync.
+- [x] Create a validated A2 curriculum, learner route, lexical networks, and active-level progression gates.
+- [x] Define the B1–C2 curriculum release contract, normalized catalog, assessment-variation rules, and tutor quality targets.
+- [x] Complete the normalized level, module, topic, lesson, vocabulary, grammar, reading, writing, and assessment database catalog while preserving A1/A2.
+- [x] Build personalized per-user, per-attempt assessment snapshots and grading for varied lesson quizzes and module tests.
 - [x] Author, integrate, and validate 24 B1 lessons across four cumulative modules with English-first support and structured performance tasks.
 - [x] Author, integrate, and validate 24 B2 lessons across four cumulative modules with register, argument, and discourse-focused tasks.
-- [x] Correct the B2 dashboard rendering path so the active B2 view displays its B2 lesson map and course metadata rather than the A1 map.
-- [ ] Author, integrate, and validate 20 C1 lessons across four cumulative modules with nuanced, source-aware reading and writing tasks.
-- [ ] Author, integrate, and validate 16 C2 lessons across four cumulative modules with flexible mastery, synthesis, and culturally aware language tasks.
-- [ ] Improve the server-side AI tutor’s level-specific prompting, response schemas, latency safeguards, and quality validation without exposing API credentials to learners.
-- [ ] Test complete A1–C2 navigation, gated progression, personalized assessments, learner feedback, responsive UI, keyboard use, Arabic-support behavior, and automated rules.
-- [ ] Document the expanded course architecture, save a verified final checkpoint, and provide a full user handoff.
-- [x] Explicitly confirm the owner administrator-role grant with database evidence and retain protected API coverage.
-- [x] Build an administrator content-review area for browsing stored level, module, topic, lesson, practice, and assessment-bank content before release.
-- [x] Give the project owner immediate review-mode access to all completed A1, A2, B1, and B2 lesson content, including practice tasks and assessment items.
-- [ ] Capture authenticated owner-session evidence that direct review dispatches successful catalog and lesson-detail requests after page load.
-- [x] Fix the administrator review loading issue by explicitly dispatching protected catalog and lesson-detail requests, then re-run visual verification.
-- [ ] Add UI-level regression coverage for direct review entry, catalog rendering, and selected-lesson detail resolution.
+- [x] Correct B2 dashboard rendering and course navigation.
+- [x] Confirm the owner administrator-role grant with database evidence and retain protected API coverage.
+- [x] Build an administrator content-review area for browsing stored level, module, topic, lesson, practice, and assessment-bank content.
+- [x] Give the project owner direct review-mode access to all completed A1–B2 lesson content, including practice tasks and assessment items.
+- [x] Fix administrator review loading through explicit protected catalog and lesson-detail requests, then re-run visual verification.
 - [x] Preserve the requested protected review URL through sign-in so the owner returns directly to review mode after authentication.
 - [x] Correct sidebar level navigation, active-level state, labels, and desktop/mobile behaviour so available course content is easy to inspect.
+- [x] Remove application-level AI tutor, reading, and writing usage caps for the pilot while retaining server-side credentials, structured validation, timeouts, and basic abuse protection.
+- [x] Validate the uncapped pilot AI router policy with automated tests, type checks, and a production build.
+- [x] Replace live in-site AI generation and grading with copyable, lesson-specific external-AI prompts for reading, writing, vocabulary, and feedback across A1–B2.
+- [x] Verify randomized eight-question lesson quiz selection from level-, module-, and lesson-marked A1–B2 question banks.
+- [x] Make the application sidebar independently scrollable and add a keyboard-accessible collapse control.
+- [x] Repair responsive layout and navigation issues across the learner dashboard and lesson workspaces.
+- [x] Add regression coverage for lesson-aware external-AI prompt builders and include client tests in the Vitest suite.
+- [ ] Capture authenticated owner-session evidence that direct review dispatches successful catalog and lesson-detail requests after page load.
+- [ ] Add UI-level regression coverage for direct review entry, catalog rendering, and selected-lesson detail resolution.
+- [ ] Author, integrate, and validate 20 C1 lessons across four cumulative modules with nuanced, source-aware reading and writing tasks.
+- [ ] Author, integrate, and validate 16 C2 lessons across four cumulative modules with flexible mastery, synthesis, and culturally aware language tasks.
+- [ ] Decide whether to retain the dormant server-side AI router or remove it entirely after the external-AI prompt migration.
+- [ ] Test complete A1–C2 navigation, gated progression, personalized assessments, learner feedback, responsive UI, keyboard use, Arabic-support behavior, and automated rules.
+- [ ] Document the expanded course architecture, save a verified final checkpoint, and provide a full user handoff.
+
+> Note: “Uncapped” refers only to the application’s former per-user daily quotas. The current learner experience uses copyable prompts and does not invoke the model from the browser; any external AI service chosen by a learner has its own terms and privacy policy.

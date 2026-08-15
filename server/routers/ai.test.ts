@@ -49,7 +49,7 @@ describe("AI course procedures", () => {
     getWritingHistory.mockResolvedValue([]);
   });
 
-  it("keeps the word tutor lesson-aware and applies the low completion cap", async () => {
+  it("keeps the word tutor lesson-aware and applies a bounded response size", async () => {
     invokeLLM.mockResolvedValue(modelResponse("Meaning in English\nالمعنى بالعربية"));
     const caller = aiRouter.createCaller(createContext());
 
@@ -58,12 +58,13 @@ describe("AI course procedures", () => {
     expect(logAiUsage).toHaveBeenCalledWith(expect.objectContaining({ userId: 7, action: "word_tutor" }));
   });
 
-  it("rejects an AI action once its per-user daily allowance is exhausted", async () => {
+  it("allows a learner action even when historical AI activity is high during the uncapped pilot", async () => {
     countAiActionsToday.mockResolvedValue(18);
+    invokeLLM.mockResolvedValue(modelResponse("Meaning in English\nالمعنى بالعربية"));
     const caller = aiRouter.createCaller(createContext());
 
-    await expect(caller.wordTutor({ lessonNumber: 1, word: "a" })).rejects.toMatchObject({ code: "TOO_MANY_REQUESTS" });
-    expect(invokeLLM).not.toHaveBeenCalled();
+    await expect(caller.wordTutor({ lessonNumber: 1, word: "a" })).resolves.toEqual({ content: "Meaning in English\nالمعنى بالعربية" });
+    expect(invokeLLM).toHaveBeenCalledOnce();
   });
 
   it("returns a controlled reading exercise from structured model content", async () => {

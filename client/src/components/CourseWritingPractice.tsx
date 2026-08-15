@@ -1,24 +1,39 @@
-import { Button } from "@/components/ui/button";
-import { trpc } from "@/lib/trpc";
+import { ExternalAiPromptPanel } from "@/components/ExternalAiPromptPanel";
+import { buildWritingFeedbackPrompt, writingTaskFor } from "@/lib/external-ai-prompts";
 import type { LessonDefinition } from "@shared/course";
-import { useEffect, useState } from "react";
-
-type WritingPrompt = { title: string; titleArabic: string; prompt: string; promptArabic: string; guidance: string[] };
+import { useEffect, useMemo, useState } from "react";
 
 export function CourseWritingPractice({ lesson }: { lesson: LessonDefinition }) {
-  const level = lesson.level as "A1" | "A2" | "B1" | "B2";
-  const targetLength = level === "A1" ? "35–60 words" : level === "A2" ? "80–120 words" : level === "B1" ? "140–180 words" : "200–260 words";
-  const minimumDraftWords = level === "A1" ? 10 : level === "A2" ? 30 : level === "B1" ? 110 : 170;
-  const [task, setTask] = useState<WritingPrompt | null>(null);
   const [draft, setDraft] = useState("");
-  const promptMutation = trpc.ai.writingPrompt.useMutation({ onSuccess: (data) => setTask({ title: data.title, titleArabic: data.title, prompt: data.instructionsEnglish, promptArabic: data.instructionsArabic, guidance: [`Write at least ${data.minimumSentences} connected sentences.`, ...data.usefulWords.map((word) => `Try to use: ${word}`)] }) });
-  const rawGradeMutation = trpc.ai.gradeWriting.useMutation();
-  const gradeMutation = { ...rawGradeMutation, data: rawGradeMutation.data ? { feedback: rawGradeMutation.data } : undefined };
-  const historyQuery = trpc.ai.writingHistory.useQuery({ level, lessonNumber: lesson.lessonNumber });
+  const task = useMemo(() => writingTaskFor(lesson), [lesson]);
 
-  useEffect(() => { setTask(null); setDraft(""); }, [lesson.lessonNumber, level]);
+  useEffect(() => { setDraft(""); }, [lesson.lessonNumber, lesson.level]);
 
-  if (!task) return <section className="rounded-2xl bg-[#fff0bd] p-6 sm:p-8"><p className="text-xs font-bold uppercase tracking-[.16em] text-[#8d6415]">AI writing studio · {level}</p><h3 className="mt-3 max-w-xl text-2xl font-bold text-[#45371b]">Write for a real purpose, not just for a score.</h3><p className="mt-3 max-w-2xl text-sm leading-7 text-[#715d2b]">Your tutor will set an original {level} task connected to today’s lesson. Aim for {targetLength} in connected, purposeful writing.</p><p dir="rtl" className="arabic mt-2 text-right text-sm leading-7 text-[#715d2b]">ستكتب لهدف واضح ولشخص حقيقي، ثم تحصل على ملاحظات عملية بالعربية.</p><Button disabled={promptMutation.isPending} onClick={() => promptMutation.mutate({ level, lessonNumber: lesson.lessonNumber })} className="mt-6 rounded-xl bg-[#253453] text-white hover:bg-[#35476d]">{promptMutation.isPending ? "Creating your task…" : "Give me a writing task"}</Button>{promptMutation.error && <p className="mt-3 text-sm text-red-700">{promptMutation.error.message}</p>}</section>;
+  return (
+    <section className="space-y-5">
+      <div className="rounded-2xl bg-[#fff0bd] p-5 sm:p-7">
+        <p className="text-xs font-bold uppercase tracking-[.16em] text-[#8d6415]">Writing studio · {lesson.level}</p>
+        <h3 className="mt-2 text-xl font-bold text-[#5d491d]">{task.title}</h3>
+        <p className="mt-5 font-medium leading-7 text-[#44391d]">{task.instructions}</p>
+        <p dir="rtl" className="arabic mt-2 text-right text-sm leading-7 text-[#725d2b]">{task.instructionsArabic}</p>
+        <div className="mt-4 flex flex-wrap gap-2">
+          <span className="rounded-full bg-white/70 px-3 py-1.5 text-xs font-bold text-[#715d2b]">Target: {task.targetLength}</span>
+          {task.usefulWords.map((word) => <span key={word} className="rounded-full bg-white/70 px-3 py-1.5 text-xs font-bold text-[#715d2b]">{word}</span>)}
+        </div>
+      </div>
 
-  return <section className="space-y-5"><div className="rounded-2xl bg-[#fff0bd] p-5 sm:p-7"><p className="text-xs font-bold uppercase tracking-[.16em] text-[#8d6415]">{task.title}</p><h3 dir="rtl" className="arabic mt-2 text-right text-xl font-bold text-[#5d491d]">{task.titleArabic}</h3><p className="mt-5 font-medium leading-7 text-[#44391d]">{task.prompt}</p><p dir="rtl" className="arabic mt-2 text-right text-sm leading-7 text-[#725d2b]">{task.promptArabic}</p><ul className="mt-4 list-disc space-y-1 pl-5 text-sm text-[#715d2b]">{task.guidance.map((item) => <li key={item}>{item}</li>)}</ul></div><textarea value={draft} onChange={(event) => setDraft(event.target.value)} placeholder="Write your response in English…" className="min-h-64 w-full rounded-2xl border border-[#e3d3a7] bg-[#fffef9] p-5 leading-7 outline-none focus:border-[#bf7f2f]" /><div className="flex flex-wrap gap-3"><Button disabled={gradeMutation.isPending || draft.trim().split(/\s+/).length < minimumDraftWords} onClick={() => gradeMutation.mutate({ level, lessonNumber: lesson.lessonNumber, prompt: task.prompt, response: draft })} className="rounded-xl bg-[#253453] text-white hover:bg-[#35476d]">{gradeMutation.isPending ? "Your tutor is reviewing…" : "Get feedback"}</Button><span className="self-center text-xs text-[#7c6e4a]">{draft.trim() ? draft.trim().split(/\s+/).length : 0} words</span></div>{gradeMutation.data && <div dir="rtl" className="arabic rounded-2xl bg-[#eef4eb] p-5 text-right text-sm leading-7 text-[#3f624e]"><p className="font-bold">النتيجة: {gradeMutation.data.feedback.overallScore}/100</p><p className="mt-2">{gradeMutation.data.feedback.summaryArabic}</p></div>}{gradeMutation.error && <p className="text-sm text-red-700">{gradeMutation.error.message}</p>}{historyQuery.data && historyQuery.data.length > 0 && <div className="rounded-2xl border border-[#e6ddcc] p-5"><p className="text-sm font-bold">Your previous drafts</p><div className="mt-3 space-y-2">{historyQuery.data.slice(0, 3).map((item) => <button key={item.id} onClick={() => setDraft(item.response)} className="block w-full rounded-xl bg-[#f8f4eb] px-4 py-3 text-left text-sm hover:bg-[#f1eadb]">Score {item.overallScore}/100 · {new Date(item.createdAt).toLocaleDateString()} · Load draft</button>)}</div></div>}</section>;
+      <div>
+        <label htmlFor="external-ai-writing-draft" className="text-sm font-bold text-[#34425b]">Your draft</label>
+        <textarea id="external-ai-writing-draft" value={draft} onChange={(event) => setDraft(event.target.value)} placeholder="Write your response in English…" className="mt-3 min-h-64 w-full rounded-2xl border border-[#e3d3a7] bg-[#fffef9] p-5 leading-7 outline-none focus:border-[#bf7f2f]" />
+        <p className="mt-2 text-xs text-[#7c6e4a]">{draft.trim() ? draft.trim().split(/\s+/).length : 0} words · Your draft stays in this browser until you copy it yourself.</p>
+      </div>
+
+      <ExternalAiPromptPanel
+        title="Ask an external AI for writing feedback"
+        description="Your current draft is included in the prompt. Copy it only when you are ready to share the draft with the AI service you choose."
+        descriptionArabic="يتضمن الطلب مسودتك الحالية. انسخه فقط عندما تكون مستعداً لمشاركة المسودة مع خدمة الذكاء الاصطناعي التي تختارها."
+        prompt={buildWritingFeedbackPrompt({ lesson, draft })}
+      />
+    </section>
+  );
 }

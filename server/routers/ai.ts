@@ -2,7 +2,6 @@ import { TRPCError } from "@trpc/server";
 import { z } from "zod";
 import { getA1Lesson, getA2Lesson, getB1Lesson, getB2Lesson } from "../../shared/course";
 import {
-  countAiActionsToday,
   getLessonPractice,
   getWritingHistory,
   logAiUsage,
@@ -11,15 +10,6 @@ import {
 } from "../db";
 import { invokeLLM, type ResponseFormat } from "../_core/llm";
 import { protectedProcedure, router } from "../_core/trpc";
-
-const DAILY_LIMITS = {
-  word_tutor: 18,
-  grammar_check: 8,
-  reading: 3,
-  reading_grade: 5,
-  writing_prompt: 2,
-  writing_grade: 3,
-} as const;
 
 const RESPONSE_TOKEN_LIMITS: Record<AiAction, number> = {
   word_tutor: 500,
@@ -30,7 +20,7 @@ const RESPONSE_TOKEN_LIMITS: Record<AiAction, number> = {
   writing_grade: 1_200,
 };
 
-type AiAction = keyof typeof DAILY_LIMITS;
+type AiAction = "word_tutor" | "grammar_check" | "reading" | "reading_grade" | "writing_prompt" | "writing_grade";
 
 const aiLevelSchema = z.enum(["A1", "A2", "B1", "B2"]);
 
@@ -88,23 +78,12 @@ function getTextContent(response: Awaited<ReturnType<typeof invokeLLM>>) {
   return content;
 }
 
-async function assertWithinDailyLimit(userId: number, action: AiAction) {
-  const used = await countAiActionsToday(userId, action);
-  if (used >= DAILY_LIMITS[action]) {
-    throw new TRPCError({
-      code: "TOO_MANY_REQUESTS",
-      message: "You have reached today’s AI limit for this activity. Please continue tomorrow.",
-    });
-  }
-}
-
 async function useAi(input: {
   userId: number;
   action: AiAction;
   messages: Array<{ role: "system" | "user"; content: string }>;
   responseFormat?: ResponseFormat;
 }) {
-  await assertWithinDailyLimit(input.userId, input.action);
   const response = await invokeLLM({
     model: "gpt-5-mini",
     max_completion_tokens: RESPONSE_TOKEN_LIMITS[input.action],
