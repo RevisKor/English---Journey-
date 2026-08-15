@@ -21,7 +21,7 @@
 - [x] Verify assessment and warm-up mutation paths invoke learner-activity tracking, with tested daily-streak logic and dashboard refresh handlers.
 - [x] Add automated unit tests for course rules, progress gating, and AI response validation.
 - [x] Complete pilot QA of the learning journey, mobile layout, Arabic regions, keyboard semantics, and loading/empty/error safeguards using tests, code review, and visual checks.
-- [ ] Save a final project checkpoint and provide the user with the handoff guide.
+- [x] Save a final project checkpoint and provide the user with the handoff guide.
 - [x] Add a reproducible structural A1 curriculum validator for bilingual fields, pronunciation coverage, examples, grammar structures, and duplicate records.
 - [x] Add stable server/router and shared-rule tests for pass/fail submissions, review-key handling, planned unlocks, and module-test prerequisites.
 - [x] Refresh the review-queue badge and dashboard state after assessment and warm-up activity.
