@@ -22,7 +22,7 @@ vi.mock("@/components/A2LessonWorkspace", () => ({
   StructuredLessonWorkspace: ({ lesson }: { lesson: { title: string } }) => React.createElement("div", null, `Guided lesson workspace: ${lesson.title}`),
 }));
 
-import { AppShell, CourseDashboard, resolveDirectLesson, resolveLearnerEntry } from "./Home";
+import { AppShell, CourseDashboard, resolveDirectLesson, resolveLearnerEntry, tutorialCopy } from "./Home";
 
 describe("Home learner entry routing", () => {
   beforeEach(() => {
@@ -56,6 +56,14 @@ describe("Home learner entry routing", () => {
     expect(entry.mentorPreview?.title).toBe("Your mentor is here");
     expect(entry.mentorPreview?.messageArabic).toContain("C1");
     expect(C1_LESSONS).toHaveLength(20);
+  });
+
+  it("keeps the course guide reachable on mobile and provides Arabic beginner scaffolding", () => {
+    const html = renderToStaticMarkup(<AppShell initialSearch="?level=A1" />);
+    expect(html).toContain('aria-label="Open course guide"');
+    expect(tutorialCopy.A1.introArabic).toContain("رحلة الإنجليزية");
+    expect(tutorialCopy.A1.steps.every((step) => step.bodyArabic)).toBe(true);
+    expect(tutorialCopy.A2.steps.every((step) => step.bodyArabic)).toBe(true);
   });
 
   it("keeps a level-only course URL in the course-map state", () => {

@@ -58,10 +58,10 @@
 - [x] Author, integrate, and validate 16 C2 lessons across four cumulative modules with flexible mastery, synthesis, and culturally aware language tasks.
 - [ ] Decide whether to retain the dormant server-side AI router or remove it entirely after the external-AI prompt migration.
 - [ ] Test complete A1–C2 navigation, gated progression, personalized assessments, learner feedback, responsive UI, keyboard use, Arabic-support behavior, and automated rules.
-- [ ] Present lesson quizzes in a modal session after study, with score review, right/wrong explanations, clear pass/fail actions, and an unlocked next-lesson action only after passing.
-- [ ] Add an Arabic sentence-explanation hint action during contextual quiz questions without revealing the answer.
+- [x] Present lesson quizzes in a modal session after study, with score review, right/wrong explanations, clear pass/fail actions, and an unlocked next-lesson action only after passing.
+- [x] Add an Arabic sentence-explanation hint action during contextual quiz questions without revealing the answer.
 - [x] Apply mentor-guided A1 lesson introductions and transitions while preserving the beginner bilingual experience.
-- [ ] Add longer milestone quizzes at level-appropriate checkpoints for every available level, plus cumulative module tests covering each level’s full learned curriculum.
+- [x] Add longer milestone quizzes at level-appropriate checkpoints for every available level, plus cumulative module tests covering each level’s full learned curriculum.
 - [x] Add first-use course tutorial guidance for every available level and a reusable help button to reopen it when a learner is stuck.
 - [ ] Document the expanded course architecture, save a verified final checkpoint, and provide a full user handoff.
 
@@ -73,8 +73,8 @@
 - [x] Implement reusable first-use tutorial state and a reopenable help action across every authored level.
 - [x] Author and integrate the 16-lesson C2 curriculum with catalog synchronization, mentor flow, and validation.
 - [x] Remove the remaining LessonMentorGuide level cast and validate the shared contract.
-- [ ] Separate milestone assessments from gated cumulative module tests so lesson 5/10/15/20 checkpoints work correctly at every authored level.
-- [ ] Make the tutorial reopen action available on mobile and add regression coverage for first-open and manual reopen behavior.
+- [x] Separate milestone assessments from gated cumulative module tests so lesson 5/10/15/20 checkpoints work correctly at every authored level.
+- [x] Make the tutorial reopen action available on mobile and add regression coverage for first-open and manual reopen behavior.
 - [x] Research and document CEFR-aligned skill progression and leading-course design references for the expanded curriculum.
 - [x] Author and integrate C1 content with richer reading, writing, pronunciation, grammar, vocabulary, and mentor-led lesson sequencing.
 - [x] Author and integrate 16 C2 lessons with advanced reading, writing, pronunciation, grammar, vocabulary, and mentor-led sequencing.
@@ -84,7 +84,7 @@
 - [x] Prioritize C1 curriculum authoring and integration before broad lower-level content expansion.
 - [x] Prioritize C2 curriculum authoring and integration immediately after C1, including the final 16-lesson sequence.
 - [x] Restructure authored levels into richer named modules with coherent lesson arcs and varied skill strands.
-- [ ] Increase Arabic scaffolding in the first-use tutorial and early-level lessons, explanations, transitions, and learner prompts; preserve gradual English-first progression at higher levels.
+- [x] Increase Arabic scaffolding in the first-use tutorial and early-level lessons, explanations, transitions, and learner prompts; preserve gradual English-first progression at higher levels.
 - [x] Add C1 and C2 mentor-guidance regression coverage proving bilingual mentor guides and course-map previews.
 - [x] Run and document a C1-specific catalog sync verification asserting four persisted modules and 20 persisted lessons.
 - [x] Capture or automate C1 course-map mentor-preview and direct guided-lesson entry evidence.
@@ -97,3 +97,16 @@
 - [x] Add authenticated Home/App-level regression coverage for C1 mentor preview, query parsing, and direct lesson workspace entry before the next checkpoint.
 - [x] Include client `.test.tsx` files in Vitest discovery and execute an authenticated Home/App render regression for C1 mentor preview and direct lesson entry.
 - [x] Add a Vitest UI regression that mounts the authenticated Home/AppShell with mocked auth and tRPC state, verifies the C1 mentor preview, and confirms `?level=C1&lesson=1` opens the guided workspace.
+- [x] Generate milestone question-bank records through the normal catalog synchronization pipeline with explicit checkpoint scoping per authored level instead of relying on SQL backfill.
+- [x] Add persisted-bank regression coverage for milestone sourcing, question counts, and checkpoint gating across A1, A2, B1, B2, C1, and C2.
+- [x] Define consistent checkpoint locations for shorter authored levels such as C2 and encode the rule in shared assessment contracts and tests.
+- [x] Update milestone assessment upserts to restore module and checkpoint lesson foreign keys on duplicate question keys, then verify stale rows are inactive.
+- [x] Finish catalog synchronization so active milestone banks exist at every module-final checkpoint for all authored levels: A1/A2/C1 5/10/15/20, B1/B2 6/12/18/24, and C2 4/8/12/16.
+- [x] Add a persisted-bank regression test that inspects synchronized milestone rows per level and module, including question counts and checkpoint lesson provenance.
+- [x] Investigate incomplete later-module checkpoint rows for A1, A2, B1, B2, and C1, then rerun and verify the database state.
+- [x] Add an interactive client regression that verifies the tutorial auto-opens on first visit and can be reopened manually on mobile.
+- [x] Extend Arabic scaffolding beyond tutorial copy into A1/A2 lesson/workspace explanations, mentor transitions, and learner-facing prompts, with tests covering the new bilingual content.
+- [x] Add an automated persistence regression for milestone banks asserting per-level/per-module checkpoint lesson numbers, active row presence, and question-count provenance after synchronization.
+- [x] Add the explicit React runtime import required by the structured lesson workspace when rendered under Vitest.
+- [ ] Mount the real Home/AppShell with mocked authenticated state to verify the tutorial dialog auto-opens for unseen storage and the mobile Guide button reopens it.
+- [x] Add explicit A2 workspace and learner-prompt Arabic regression coverage alongside the existing A1 workspace render test.

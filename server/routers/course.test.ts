@@ -110,3 +110,37 @@ describe("course assessment mutations", () => {
     expect(mocks.recordLearnerActivity).toHaveBeenCalledWith(12);
   });
 });
+
+
+describe("milestone assessment routing", () => {
+  beforeEach(() => {
+    vi.resetAllMocks();
+    mocks.getLearnerProgress.mockResolvedValue({ lessons: [{ lessonNumber: 3, status: "completed" }], modules: [] });
+    mocks.submitLessonAssessment.mockResolvedValue({ passed: true, firstPass: true, xpAwarded: 25, profile: { totalXp: 25 } });
+    assessmentMocks.getOrCreateAssessmentInstance.mockResolvedValue({ assessmentInstanceId: 207, questions: [{ id: "milestone-q" }] });
+    assessmentMocks.gradeAssessmentInstance.mockResolvedValue({ level: "C2", lessonNumber: 4, moduleNumber: 1, assessmentType: "milestone_quiz", score: 92, missedItemKeys: [] });
+  });
+
+  it("creates a distinct milestone instance for the C2 checkpoint", async () => {
+    const caller = courseRouter.createCaller(createContext());
+    const assessment = await caller.milestoneQuiz({ level: "C2", lessonNumber: 4 });
+    expect(assessment).toEqual(expect.objectContaining({ assessmentInstanceId: 207 }));
+    expect(assessmentMocks.getOrCreateAssessmentInstance).toHaveBeenCalledWith(12, {
+      level: "C2",
+      assessmentType: "milestone_quiz",
+      lessonNumber: 4,
+      moduleNumber: 1,
+    });
+  });
+
+  it("submits a milestone checkpoint without converting it into a cumulative module test", async () => {
+    const caller = courseRouter.createCaller(createContext());
+    await caller.submitMilestoneQuiz({ level: "C2", lessonNumber: 4, assessmentInstanceId: 207, answers: { "milestone-q": "answer" } });
+    expect(assessmentMocks.gradeAssessmentInstance).toHaveBeenCalledWith(expect.objectContaining({
+      scope: { level: "C2", assessmentType: "milestone_quiz", lessonNumber: 4, moduleNumber: 1 },
+    }));
+    expect(mocks.submitLessonAssessment).toHaveBeenCalledWith(expect.objectContaining({
+      level: "C2", assessmentType: "milestone_quiz", lessonNumber: 4, moduleNumber: 1,
+    }));
+  });
+});

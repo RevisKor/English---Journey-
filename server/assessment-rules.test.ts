@@ -35,8 +35,8 @@ describe("assessment progression rules", () => {
   it("uses longer milestone quizzes and cumulative module tests for every CEFR level", () => {
     for (const level of ["A1", "A2", "B1", "B2", "C1", "C2"]) {
       expect(assessmentTargetCount({ level, assessmentType: "lesson_quiz", lessonNumber: 4 })).toBe(8);
-      expect(assessmentTargetCount({ level, assessmentType: "lesson_quiz", lessonNumber: 5 })).toBe(15);
-      expect(assessmentTargetCount({ level, assessmentType: "lesson_quiz", lessonNumber: 20 })).toBe(15);
+      expect(assessmentTargetCount({ level, assessmentType: "milestone_quiz", moduleNumber: 1 })).toBe(15);
+      expect(assessmentTargetCount({ level, assessmentType: "milestone_quiz", moduleNumber: 4 })).toBe(15);
       expect(assessmentTargetCount({ level, assessmentType: "module_test", moduleNumber: 1 })).toBe(20);
     }
   });

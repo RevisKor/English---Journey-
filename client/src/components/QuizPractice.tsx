@@ -36,11 +36,16 @@ export function QuizPractice({ lesson, level = "A1" }: { lesson: LessonDefinitio
   const utils = trpc.useUtils();
   const [open, setOpen] = useState(false);
   const [moduleMode, setModuleMode] = useState(false);
+  const [milestoneMode, setMilestoneMode] = useState(false);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [hints, setHints] = useState<Record<string, boolean>>({});
   const lessonQuery = trpc.course.lessonQuiz.useQuery(
     { level, lessonNumber: lesson.lessonNumber },
-    { enabled: open && !moduleMode },
+    { enabled: open && !moduleMode && !milestoneMode },
+  );
+  const milestoneQuery = trpc.course.milestoneQuiz.useQuery(
+    { level, lessonNumber: lesson.lessonNumber },
+    { enabled: open && milestoneMode },
   );
   const moduleQuery = trpc.course.moduleTest.useQuery(
     { level, moduleNumber: lesson.moduleNumber },
@@ -48,26 +53,36 @@ export function QuizPractice({ lesson, level = "A1" }: { lesson: LessonDefinitio
   );
   const refreshLearningState = () => Promise.all([utils.course.dashboard.invalidate(), utils.course.warmup.invalidate()]);
   const submitLesson = trpc.course.submitLessonQuiz.useMutation({ onSuccess: refreshLearningState });
+  const submitMilestone = trpc.course.submitMilestoneQuiz.useMutation({ onSuccess: refreshLearningState });
   const submitModule = trpc.course.submitModuleTest.useMutation({ onSuccess: refreshLearningState });
-  const assessment = (moduleMode ? moduleQuery.data : lessonQuery.data) as Assessment | undefined;
-  const result = (moduleMode ? submitModule.data : submitLesson.data) as AssessmentResult | undefined;
+  const assessment = (moduleMode ? moduleQuery.data : milestoneMode ? milestoneQuery.data : lessonQuery.data) as Assessment | undefined;
+  const result = (moduleMode ? submitModule.data : milestoneMode ? submitMilestone.data : submitLesson.data) as AssessmentResult | undefined;
   const questions = assessment?.questions ?? [];
-  const busy = submitLesson.isPending || submitModule.isPending;
-  const loading = moduleMode ? moduleQuery.isLoading : lessonQuery.isLoading;
-  const error = moduleMode ? moduleQuery.error : lessonQuery.error;
+  const busy = submitLesson.isPending || submitMilestone.isPending || submitModule.isPending;
+  const loading = moduleMode ? moduleQuery.isLoading : milestoneMode ? milestoneQuery.isLoading : lessonQuery.isLoading;
+  const error = moduleMode ? moduleQuery.error : milestoneMode ? milestoneQuery.error : lessonQuery.error;
   const resetSession = () => {
     setAnswers({});
     setHints({});
     submitLesson.reset();
+    submitMilestone.reset();
     submitModule.reset();
   };
   const startLessonQuiz = () => {
     setModuleMode(false);
+    setMilestoneMode(false);
+    resetSession();
+    setOpen(true);
+  };
+  const startMilestoneQuiz = () => {
+    setModuleMode(false);
+    setMilestoneMode(true);
     resetSession();
     setOpen(true);
   };
   const startModuleTest = () => {
     setModuleMode(true);
+    setMilestoneMode(false);
     resetSession();
     setOpen(true);
   };
@@ -77,6 +92,13 @@ export function QuizPractice({ lesson, level = "A1" }: { lesson: LessonDefinitio
       submitModule.mutate({
         level,
         moduleNumber: lesson.moduleNumber,
+        assessmentInstanceId: assessment.assessmentInstanceId,
+        answers,
+      });
+    } else if (milestoneMode) {
+      submitMilestone.mutate({
+        level,
+        lessonNumber: lesson.lessonNumber,
         assessmentInstanceId: assessment.assessmentInstanceId,
         answers,
       });
@@ -104,14 +126,14 @@ export function QuizPractice({ lesson, level = "A1" }: { lesson: LessonDefinitio
           <Button onClick={startLessonQuiz} className="rounded-xl bg-[#253453] text-white hover:bg-[#35476d]">Take lesson quiz</Button>
         </DialogTrigger>
         {isMilestone && (
-          <Button onClick={startModuleTest} variant="outline" className="rounded-xl border-[#bf7f2f] bg-[#fff8e8] text-[#765618] hover:bg-[#fff0bd]">
-            Take milestone test
+          <Button onClick={startMilestoneQuiz} variant="outline" className="rounded-xl border-[#bf7f2f] bg-[#fff8e8] text-[#765618] hover:bg-[#fff0bd]">
+            Take milestone checkpoint · 15 questions
           </Button>
         )}
       </div>
       <DialogContent className="max-h-[92vh] max-w-3xl overflow-hidden border-[#e5ddcf] bg-[#fffdf7] p-0 text-[#253453]">
         <DialogHeader className="border-b border-[#e7decf] bg-[#253453] px-6 py-5 text-left text-white">
-          <DialogTitle className="text-2xl font-bold">{moduleMode ? `Module ${lesson.moduleNumber} milestone test` : `Lesson ${lesson.lessonNumber} checkpoint`}</DialogTitle>
+          <DialogTitle className="text-2xl font-bold">{moduleMode ? `Module ${lesson.moduleNumber} cumulative test` : milestoneMode ? `Lesson ${lesson.lessonNumber} milestone checkpoint` : `Lesson ${lesson.lessonNumber} checkpoint`}</DialogTitle>
           <DialogDescription className="text-[#d4deef]">Choose the answer that best fits the context. You need 80% to pass.</DialogDescription>
           <p dir="rtl" className="arabic text-right text-sm text-[#f5d678]">اختر الإجابة الأنسب للسياق. تحتاج إلى ٨٠٪ للنجاح.</p>
         </DialogHeader>
@@ -167,7 +189,7 @@ export function QuizPractice({ lesson, level = "A1" }: { lesson: LessonDefinitio
                   <div className="mt-4 grid gap-2 sm:grid-cols-2">{question.choices.map((choice) => <button key={choice} type="button" onClick={() => setAnswers((current) => ({ ...current, [question.id]: choice }))} className={cn("rounded-xl border p-3 text-left text-sm font-semibold transition", answers[question.id] === choice ? "border-[#bf7f2f] bg-[#fff0bd] text-[#765618]" : "border-[#e6ddcc] bg-[#fffdfa] hover:border-[#d4ba84]")}>{choice}</button>)}</div>
                 </article>
               ))}
-              {!!questions.length && <Button onClick={submit} disabled={busy || !answeredAll} className="w-full rounded-xl bg-[#253453] text-white hover:bg-[#35476d]">{busy ? "Checking your answers…" : moduleMode ? "Submit milestone test" : "Submit quiz"}</Button>}
+              {!!questions.length && <Button onClick={submit} disabled={busy || !answeredAll} className="w-full rounded-xl bg-[#253453] text-white hover:bg-[#35476d]">{busy ? "Checking your answers…" : moduleMode ? "Submit cumulative test" : milestoneMode ? "Submit milestone checkpoint" : "Submit quiz"}</Button>}
             </div>
           )}
         </div>

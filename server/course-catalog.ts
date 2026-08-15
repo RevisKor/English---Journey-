@@ -10,6 +10,7 @@ import {
   type CourseDefinition,
   type LessonDefinition,
   type QuizQuestion,
+  isMilestoneLesson,
 } from "../shared/course";
 import {
   assessmentQuestionBank,
@@ -22,6 +23,7 @@ import {
   lessonVocabulary,
   lessonWritingTasks,
 } from "../drizzle/schema";
+import { inArray } from "drizzle-orm";
 import { getDb } from "./db";
 import { buildAssessmentVariants } from "../shared/course/assessment-questions";
 import { moduleTheme } from "../shared/course/module-guidance";
@@ -129,7 +131,7 @@ async function syncCourse(course: CourseDefinition) {
     await db.update(assessmentQuestionBank).set({ active: 0 }).where(and(
       eq(assessmentQuestionBank.levelId, level.id),
       eq(assessmentQuestionBank.moduleId, module.id),
-      eq(assessmentQuestionBank.assessmentType, "module_test"),
+      inArray(assessmentQuestionBank.assessmentType, ["module_test", "milestone_quiz"]),
     ));
 
     for (const lesson of moduleLessons) {
@@ -215,10 +217,13 @@ async function syncCourse(course: CourseDefinition) {
       await syncLessonPractice(savedLesson.id, course, lesson);
 
       const variants = assessmentVariants(course, lesson);
-      for (const assessmentType of ["lesson_quiz", "module_test"] as const) {
-        const scopedVariants = assessmentType === "lesson_quiz" ? variants : variants.filter((_, index) => index % 4 === 0 || index >= variants.length - 3);
+      const assessmentTypes = isMilestoneLesson(course, lesson.lessonNumber)
+        ? ["lesson_quiz", "milestone_quiz", "module_test"] as const
+        : ["lesson_quiz", "module_test"] as const;
+      for (const assessmentType of assessmentTypes) {
+        const scopedVariants = assessmentType === "lesson_quiz" || assessmentType === "milestone_quiz" ? variants : variants.filter((_, index) => index % 4 === 0 || index >= variants.length - 3);
         for (const question of scopedVariants) {
-          const questionKey = `${course.level}:${assessmentType}:${assessmentType === "lesson_quiz" ? lesson.lessonNumber : moduleNumber}:${question.id}`;
+          const questionKey = `${course.level}:${assessmentType}:${assessmentType === "lesson_quiz" ? lesson.lessonNumber : moduleNumber}:${assessmentType === "milestone_quiz" ? lesson.lessonNumber : "module"}:${question.id}`;
           await db.insert(assessmentQuestionBank).values({
             questionKey,
             levelId: level.id,
@@ -232,6 +237,8 @@ async function syncCourse(course: CourseDefinition) {
             reviewItemKey: question.reviewItemKey,
             contentVersion: SYNC_VERSION,
           }).onDuplicateKeyUpdate({ set: {
+            moduleId: module.id,
+            lessonId: assessmentType === "lesson_quiz" || assessmentType === "milestone_quiz" ? savedLesson.id : null,
             questionData: question as unknown as Record<string, unknown>,
             reviewItemKey: question.reviewItemKey,
             active: 1,
@@ -275,6 +282,11 @@ export async function syncAssessmentQuestionBanks() {
         eq(assessmentQuestionBank.moduleId, module.id),
         eq(assessmentQuestionBank.assessmentType, "module_test"),
       ));
+      await db.update(assessmentQuestionBank).set({ active: 0 }).where(and(
+        eq(assessmentQuestionBank.levelId, level.id),
+        eq(assessmentQuestionBank.moduleId, module.id),
+        eq(assessmentQuestionBank.assessmentType, "milestone_quiz"),
+      ));
 
       for (const lesson of course.lessons.filter((item) => item.moduleNumber === moduleNumber)) {
         const savedLesson = await selectOne(
@@ -288,10 +300,10 @@ export async function syncAssessmentQuestionBanks() {
         ));
 
         const variants = assessmentVariants(course, lesson);
-        for (const assessmentType of ["lesson_quiz", "module_test"] as const) {
-          const scopedVariants = assessmentType === "lesson_quiz" ? variants : variants.filter((_, index) => index % 4 === 0 || index >= variants.length - 3);
+        for (const assessmentType of ["lesson_quiz", "milestone_quiz", "module_test"] as const) {
+          const scopedVariants = assessmentType === "lesson_quiz" ? variants : assessmentType === "milestone_quiz" ? variants : variants.filter((_, index) => index % 4 === 0 || index >= variants.length - 3);
           for (const question of scopedVariants) {
-            const questionKey = `${course.level}:${assessmentType}:${assessmentType === "lesson_quiz" ? lesson.lessonNumber : moduleNumber}:${question.id}`;
+            const questionKey = `${course.level}:${assessmentType}:${assessmentType === "lesson_quiz" ? lesson.lessonNumber : moduleNumber}:${assessmentType === "milestone_quiz" ? lesson.lessonNumber : "module"}:${question.id}`;
             await db.insert(assessmentQuestionBank).values({
               questionKey,
               levelId: level.id,

@@ -11,3 +11,4 @@ export * from "./c2";
 export * from "./c2-quiz";
 export * from "./quiz";
 export * from "./types";
+export * from "./assessment-scope";

@@ -281,7 +281,7 @@ export async function submitLessonAssessment(input: {
   userId: number;
   level: string;
   lessonNumber: number;
-  assessmentType: "lesson_quiz" | "module_test";
+  assessmentType: "lesson_quiz" | "milestone_quiz" | "module_test";
   assessmentInstanceId: number;
   score: number;
   answers: Record<string, string>;
@@ -293,6 +293,12 @@ export async function submitLessonAssessment(input: {
   if (!db) throw new Error("Database unavailable");
   const now = new Date();
   await db.insert(quizAttempts).values({ ...input, passed: passesAssessment(input.score) ? 1 : 0 });
+  if (input.assessmentType === "milestone_quiz") {
+    if (input.missedItemKeys.length) await queueMissedReviewItems(input.userId, input.level, input.lessonNumber, input.missedItemKeys);
+    const profile = await addXp(input.userId, passesAssessment(input.score) ? 25 : 0);
+    await recordLearnerActivity(input.userId);
+    return { passed: passesAssessment(input.score), firstPass: true, xpAwarded: passesAssessment(input.score) ? 25 : 0, profile };
+  }
   if (input.assessmentType === "lesson_quiz") {
     const existing = await db.select().from(lessonProgress).where(and(eq(lessonProgress.userId, input.userId), eq(lessonProgress.level, input.level), eq(lessonProgress.lessonNumber, input.lessonNumber))).limit(1);
     const plan = lessonAssessmentPlan(input.score, Boolean(existing[0]?.quizPassedAt));

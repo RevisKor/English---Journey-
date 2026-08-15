@@ -13,7 +13,7 @@ import { getDb } from "./db";
 
 export type AssessmentScope = {
   level: string;
-  assessmentType: "lesson_quiz" | "module_test";
+  assessmentType: "lesson_quiz" | "milestone_quiz" | "module_test";
   lessonNumber?: number;
   moduleNumber?: number;
 };
@@ -21,7 +21,8 @@ export type AssessmentScope = {
 /** Keep every level on the same assessment contract while making checkpoints richer at milestones. */
 export function assessmentTargetCount(scope: AssessmentScope) {
   if (scope.assessmentType === "module_test") return 20;
-  return scope.lessonNumber && scope.lessonNumber % 5 === 0 ? 15 : 8;
+  if (scope.assessmentType === "milestone_quiz") return 15;
+  return 8;
 }
 
 type PublicQuestion = Omit<QuizQuestion, "answer" | "reviewItemKey" | "reviewItemType">;
@@ -122,7 +123,7 @@ export async function getOrCreateAssessmentInstance(userId: number, scope: Asses
     userId,
     level: scope.level,
     lessonNumber: scope.assessmentType === "lesson_quiz" ? scope.lessonNumber! : null,
-    moduleNumber: scope.assessmentType === "module_test" ? scope.moduleNumber! : null,
+    moduleNumber: scope.assessmentType === "lesson_quiz" ? null : scope.moduleNumber!,
     assessmentType: scope.assessmentType,
     seed,
   });

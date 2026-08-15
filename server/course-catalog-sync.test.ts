@@ -10,13 +10,15 @@ import {
   lessonVocabulary,
   lessonWritingTasks,
 } from "../drizzle/schema";
-import { A1_COURSE, A2_COURSE, B1_COURSE, B2_COURSE, C1_COURSE, C2_COURSE } from "../shared/course";
+import { A1_COURSE, A2_COURSE, B1_COURSE, B2_COURSE, C1_COURSE, C2_COURSE, milestoneLessonNumbers } from "../shared/course";
 
 const state = vi.hoisted(() => ({
   inserts: [] as Array<{ table: unknown; values: unknown }>,
   updates: [] as Array<{ table: unknown; values: unknown }>,
+  upserts: [] as Array<{ table: unknown; values: unknown }>,
   practiceRowsExist: false,
   courseLevelLookups: 0,
+  moduleLookups: 0,
   lessonId: 100,
 }));
 
@@ -30,7 +32,8 @@ const fakeDb = {
             return [{ id: state.courseLevelLookups }];
           }
           if (table === courseLessons) return [{ id: ++state.lessonId }];
-          if (table === courseModules || table === courseTopics) return [{ id: 1 }];
+          if (table === courseModules) return [{ id: ++state.moduleLookups }];
+          if (table === courseTopics) return [{ id: 1 }];
           if (table === lessonReadings || table === lessonWritingTasks) return state.practiceRowsExist ? [{ id: 1 }] : [];
           return [];
         },
@@ -39,8 +42,15 @@ const fakeDb = {
   }),
   insert: (table: unknown) => ({
     values: (values: unknown) => {
-      state.inserts.push({ table, values });
-      return { onDuplicateKeyUpdate: async () => undefined };
+      const persistedValues = table === assessmentQuestionBank && typeof values === "object" && values !== null
+        ? { ...(values as Record<string, unknown>), active: 1 }
+        : values;
+      state.inserts.push({ table, values: persistedValues });
+      return {
+        onDuplicateKeyUpdate: async ({ set }: { set: unknown }) => {
+          state.upserts.push({ table, values: set });
+        },
+      };
     },
   }),
   update: (table: unknown) => ({
@@ -52,14 +62,16 @@ const fakeDb = {
 
 vi.mock("./db", () => ({ getDb: async () => fakeDb }));
 
-import { ensureCurriculumCatalog, structuredReading, structuredWriting, syncStructuredPracticeCatalog } from "./course-catalog";
+import { assessmentVariants, ensureCurriculumCatalog, structuredReading, structuredWriting, syncStructuredPracticeCatalog } from "./course-catalog";
 
 describe("curriculum catalog practice persistence", () => {
   beforeEach(() => {
     state.inserts.length = 0;
     state.updates.length = 0;
+    state.upserts.length = 0;
     state.practiceRowsExist = false;
     state.courseLevelLookups = 0;
+    state.moduleLookups = 0;
     state.lessonId = 100;
   });
 
@@ -77,6 +89,39 @@ describe("curriculum catalog practice persistence", () => {
     expect(state.inserts.some((entry) => entry.table === lessonVocabulary)).toBe(true);
     expect(state.inserts.some((entry) => entry.table === lessonGrammar)).toBe(true);
     expect(state.inserts.some((entry) => entry.table === assessmentQuestionBank)).toBe(true);
+
+    const milestoneRows = state.inserts
+      .filter((entry) => entry.table === assessmentQuestionBank)
+      .map((entry) => entry.values as { questionKey: string; levelId: number; moduleId: number; assessmentType: string; active?: number })
+      .filter((row) => row.assessmentType === "milestone_quiz");
+    expect(milestoneRows.length).toBeGreaterThan(0);
+    for (const [index, course] of integratedCourses.entries()) {
+      const levelRows = milestoneRows.filter((row) => row.levelId === index + 1);
+      const checkpoints = milestoneLessonNumbers(course);
+      const checkpointRows = new Map<number, typeof milestoneRows>();
+      for (const row of levelRows) {
+        const lessonNumber = Number(row.questionKey.split(":")[3]);
+        checkpointRows.set(lessonNumber, [...(checkpointRows.get(lessonNumber) ?? []), row]);
+      }
+      expect([...checkpointRows.keys()].sort((a, b) => a - b)).toEqual(checkpoints);
+      expect([...checkpointRows.values()].every((rows) => rows.length === assessmentVariants(course, course.lessons.find((lesson) => lesson.lessonNumber === Number(rows[0].questionKey.split(":")[3])))!.length)).toBe(true);
+      expect([...checkpointRows.values()].every((rows) => rows.every((row) => row.active === 1))).toBe(true);
+      const moduleIdsByNumber = new Map<number, number>();
+      for (const rows of checkpointRows.values()) {
+        const moduleNumber = Number(rows[0].questionKey.split(":")[2]);
+        const moduleIds = new Set(rows.map((row) => row.moduleId));
+        expect(moduleIds.size).toBe(1);
+        expect([...moduleIds][0]).toBeGreaterThan(0);
+        moduleIdsByNumber.set(moduleNumber, [...moduleIds][0]);
+      }
+      expect(moduleIdsByNumber.size).toBe(checkpoints.length);
+      expect(new Set(moduleIdsByNumber.values()).size).toBe(checkpoints.length);
+    }
+    const restoredMilestoneLessonKeys = state.upserts
+      .filter((entry) => entry.table === assessmentQuestionBank)
+      .map((entry) => entry.values as { lessonId?: number | null })
+      .filter((values) => values.lessonId !== null && values.lessonId !== undefined);
+    expect(restoredMilestoneLessonKeys.length).toBeGreaterThanOrEqual(milestoneRows.length);
 
     state.practiceRowsExist = true;
     await syncStructuredPracticeCatalog();

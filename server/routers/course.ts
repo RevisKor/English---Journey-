@@ -11,10 +11,11 @@ import {
 } from "../db";
 import { getOrCreateAssessmentInstance, gradeAssessmentInstance } from "../assessment-instances";
 import {
-  A1_COURSE, A1_GRAMMAR, A1_VOCABULARY, A2_COURSE, A2_GRAMMAR, A2_VOCABULARY, B1_COURSE, B1_GRAMMAR, B1_VOCABULARY, B2_COURSE, B2_GRAMMAR, B2_VOCABULARY, C1_COURSE, C1_GRAMMAR, C1_VOCABULARY,
-  buildA2LessonQuiz, buildA2ModuleTest, buildB1LessonQuiz, buildB1ModuleTest, buildB2LessonQuiz, buildB2ModuleTest, buildC1LessonQuiz, buildC1ModuleTest, buildLessonQuiz, buildModuleTest,
+  A1_COURSE, A1_GRAMMAR, A1_VOCABULARY, A2_COURSE, A2_GRAMMAR, A2_VOCABULARY, B1_COURSE, B1_GRAMMAR, B1_VOCABULARY, B2_COURSE, B2_GRAMMAR, B2_VOCABULARY, C1_COURSE, C1_GRAMMAR, C1_VOCABULARY, C2_COURSE, C2_GRAMMAR, C2_VOCABULARY,
+  buildA2LessonQuiz, buildA2ModuleTest, buildB1LessonQuiz, buildB1ModuleTest, buildB2LessonQuiz, buildB2ModuleTest, buildC1LessonQuiz, buildC1ModuleTest, buildC2LessonQuiz, buildC2ModuleTest, buildLessonQuiz, buildModuleTest,
 } from "../../shared/course";
 import { protectedProcedure, router } from "../_core/trpc";
+import { isMilestoneLesson, moduleNumberForLesson } from "../../shared/course";
 
 const levelSchema = z.enum(["A1", "A2", "B1", "B2", "C1", "C2"]);
 
@@ -23,6 +24,7 @@ function materialForLevel(level: "A1" | "A2" | "B1" | "B2" | "C1" | "C2") {
   if (level === "B1") return { course: B1_COURSE, vocabulary: B1_VOCABULARY, grammar: B1_GRAMMAR, lessonQuiz: buildB1LessonQuiz, moduleTest: buildB1ModuleTest };
   if (level === "B2") return { course: B2_COURSE, vocabulary: B2_VOCABULARY, grammar: B2_GRAMMAR, lessonQuiz: buildB2LessonQuiz, moduleTest: buildB2ModuleTest };
   if (level === "C1") return { course: C1_COURSE, vocabulary: C1_VOCABULARY, grammar: C1_GRAMMAR, lessonQuiz: buildC1LessonQuiz, moduleTest: buildC1ModuleTest };
+  if (level === "C2") return { course: C2_COURSE, vocabulary: C2_VOCABULARY, grammar: C2_GRAMMAR, lessonQuiz: buildC2LessonQuiz, moduleTest: buildC2ModuleTest };
   return { course: A1_COURSE, vocabulary: A1_VOCABULARY, grammar: A1_GRAMMAR, lessonQuiz: buildLessonQuiz, moduleTest: buildModuleTest };
 }
 
@@ -54,6 +56,29 @@ export const courseRouter = router({
     const isAvailable = input.lessonNumber === 1 || progress.lessons.some((lesson) => lesson.lessonNumber === input.lessonNumber && lesson.status !== "locked") || progress.lessons.some((lesson) => lesson.lessonNumber === input.lessonNumber - 1 && lesson.status === "completed");
     if (!isAvailable) throw new Error("Complete the previous lesson before taking this quiz.");
     return getOrCreateAssessmentInstance(ctx.user.id, { level, assessmentType: "lesson_quiz", lessonNumber: input.lessonNumber });
+  }),
+
+  milestoneQuiz: protectedProcedure.input(z.object({ level: levelSchema.optional(), lessonNumber: z.number().int().min(1).max(24) })).query(async ({ ctx, input }) => {
+    const level = input.level ?? "A1";
+    const material = materialForLevel(level);
+    if (input.lessonNumber > material.course.totalLessons || !isMilestoneLesson(material.course, input.lessonNumber)) throw new Error("Milestone checkpoints are available at the final lesson of each module.");
+    const progress = await getLearnerProgress(ctx.user.id, level);
+    const isAvailable = progress.lessons.some((lesson) => lesson.lessonNumber === input.lessonNumber && lesson.status !== "locked") || progress.lessons.some((lesson) => lesson.lessonNumber === input.lessonNumber - 1 && lesson.status === "completed");
+    if (!isAvailable) throw new Error("Complete the previous lesson before taking this milestone checkpoint.");
+    return getOrCreateAssessmentInstance(ctx.user.id, { level, assessmentType: "milestone_quiz", lessonNumber: input.lessonNumber, moduleNumber: moduleNumberForLesson(material.course, input.lessonNumber) });
+  }),
+
+  submitMilestoneQuiz: protectedProcedure.input(z.object({
+    level: levelSchema.optional(), lessonNumber: z.number().int().min(1).max(24),
+    assessmentInstanceId: z.number().int().positive(),
+    answers: z.record(z.string(), z.string()),
+  })).mutation(async ({ ctx, input }) => {
+    const level = input.level ?? "A1";
+    const material = materialForLevel(level);
+    if (input.lessonNumber > material.course.totalLessons || !isMilestoneLesson(material.course, input.lessonNumber)) throw new Error("Milestone checkpoints are available at the final lesson of each module.");
+    const graded = await gradeAssessmentInstance({ userId: ctx.user.id, assessmentInstanceId: input.assessmentInstanceId, scope: { level, assessmentType: "milestone_quiz", lessonNumber: input.lessonNumber, moduleNumber: moduleNumberForLesson(material.course, input.lessonNumber) }, answers: input.answers });
+    const saved = await submitLessonAssessment({ userId: ctx.user.id, level, lessonNumber: input.lessonNumber, assessmentType: "milestone_quiz", assessmentInstanceId: input.assessmentInstanceId, score: graded.score, answers: input.answers, missedItemKeys: graded.missedItemKeys, moduleNumber: moduleNumberForLesson(material.course, input.lessonNumber), lessonsPerModule: material.course.lessonsPerModule });
+    return { ...saved, score: graded.score, questionReview: graded.questionReview };
   }),
 
   submitLessonQuiz: protectedProcedure.input(z.object({
