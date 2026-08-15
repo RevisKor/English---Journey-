@@ -1,0 +1,40 @@
+import { describe, expect, it } from "vitest";
+import { A1_COURSE, A2_COURSE, B1_COURSE, B2_COURSE, C1_COURSE, C2_COURSE } from "./index";
+
+const courses = [A1_COURSE, A2_COURSE, B1_COURSE, B2_COURSE, C1_COURSE, C2_COURSE];
+
+describe("all-level lesson activity plans", () => {
+  it("enrich every authored lesson without changing its route identity", () => {
+    for (const course of courses) {
+      expect(course.lessons).toHaveLength(course.totalLessons);
+      for (const lesson of course.lessons) {
+        expect(lesson.level).toBe(course.level);
+        expect(lesson.lessonType).toBeDefined();
+        expect(lesson.activities).toHaveLength(3);
+        expect(lesson.progression).toEqual([
+          "introduction",
+          "explanation",
+          "guided-practice",
+          "independent-practice",
+          "real-context",
+          "review",
+          "assessment",
+        ]);
+        expect(lesson.activities?.every((activity) => activity.vocabularyIds?.length)).toBe(true);
+        expect(lesson.activities?.every((activity) => activity.grammarIds?.length)).toBe(true);
+        expect(lesson.grammar.teachingGuide).toEqual(expect.objectContaining({ whatItIs: expect.any(String), whyWeUseIt: expect.any(String), positiveExamples: expect.any(Array), negativeExamples: expect.any(Array), questionExamples: expect.any(Array), shortAnswerExamples: expect.any(Array), whenToUse: expect.any(Array), arabicSpeakerNotes: expect.any(Array) }));
+      }
+    }
+  });
+
+  it("provides the appropriate multimodal payload for each generated focus family", () => {
+    for (const course of courses) {
+      const byType = new Map(course.lessons.map((lesson) => [lesson.lessonType, lesson]));
+      expect(byType.get("visual-vocabulary")?.activities?.some((activity) => Boolean(activity.visualItems?.length && activity.visualItems.every((item) => item.imageUrl?.startsWith("data:image/svg+xml") && item.altText)))).toBe(true);
+      expect(byType.get("interaction")?.activities?.some((activity) => Boolean(activity.interactionTurns?.length))).toBe(true);
+      expect(byType.get("speaking")?.activities?.some((activity) => Boolean(activity.speakingLines?.length))).toBe(true);
+      expect(byType.get("reading")?.activities?.some((activity) => Boolean(activity.readingText && activity.readingChecks?.length))).toBe(true);
+      expect(byType.get("writing")?.activities?.some((activity) => Boolean(activity.writingPrompt && activity.suggestedVocabulary?.length))).toBe(true);
+    }
+  });
+});

@@ -1,4 +1,6 @@
 import type { CourseDefinition, GrammarTopic, LessonDefinition, LessonStep, VocabularyItem } from "./types";
+import { enrichLesson } from "./activity-plan";
+import { buildModuleDefinitions } from "./module-definitions";
 
 const STEPS: LessonStep[] = [
   { id: "start", title: "Enter the question", titleArabic: "ادخل إلى السؤال", purpose: "Connect the theme to a real decision, tension, or intellectual problem.", estimatedMinutes: 10 },
@@ -129,13 +131,13 @@ const CURRICULUM_SPECS = SPECS.filter((_, index) => ![4, 11, 13].includes(index)
 export const C2_LESSONS: LessonDefinition[] = CURRICULUM_SPECS.map((spec, index) => {
   const lessonNumber = index + 1;
   const moduleNumber = Math.ceil(lessonNumber / 4);
-  const prior = lessonNumber <= 4 ? "C1" : "C1";
-  return { level: "C2", lessonNumber, moduleNumber, title: spec.title, titleArabic: spec.titleArabic, words: vocabulary(spec, lessonNumber), grammar: grammar(spec, lessonNumber), learningPlan: { outcome: { canDo: spec.outcome[0], canDoArabic: spec.outcome[1], scenario: spec.outcome[2], scenarioArabic: spec.outcome[3] }, steps: STEPS, retrieval: [{ sourceLevel: prior, language: "English", prompt: `Retrieve a C1 idea that helps you enter the theme of ${spec.theme}.`, purpose: `استدعِ فكرة من C1 تساعدك على دخول موضوع ${spec.themeArabic}.` }], englishFirst: true, studio: "Precision & Mediation Studio" }, lexicalNetworks: [{ id: `c2-network-${lessonNumber}`, theme: spec.theme, themeArabic: spec.themeArabic, anchor: spec.anchor, wordFamilies: spec.words.slice(0, 3).map(([word]) => ({ headword: word, forms: [word], note: `Use ${word} precisely in this theme.`, noteArabic: `استخدم ${word} بدقة في هذا الموضوع.` })), relatedWords: spec.related, chunks: spec.chunks, collocations: spec.collocations, register: spec.register, priorLevelLinks: ["evidence", "perspective", "consequence", "evaluation"], learningNote: "At C2, lexical knowledge becomes a choice about precision, audience, and effect.", learningNoteArabic: "في C2 تصبح المعرفة المعجمية اختياراً يتعلق بالدقة والجمهور والأثر." }], practiceBrief: { readingBrief: `${spec.reading} Track the writer's assumptions, evidence, and uncertainty before you respond.`, writingPrompt: `${spec.writing} Address a defined audience, make your evidence and qualifications visible, and revise once for precision, coherence, and reader effort.` } };
-});
+  const prior = "C1" as const;
+  return { level: "C2" as const, lessonNumber, moduleNumber, title: spec.title, titleArabic: spec.titleArabic, words: vocabulary(spec, lessonNumber), grammar: grammar(spec, lessonNumber), learningPlan: { outcome: { canDo: spec.outcome[0], canDoArabic: spec.outcome[1], scenario: spec.outcome[2], scenarioArabic: spec.outcome[3] }, steps: STEPS, retrieval: [{ sourceLevel: prior, language: "English", prompt: `Retrieve a C1 idea that helps you enter the theme of ${spec.theme}.`, purpose: `استدعِ فكرة من C1 تساعدك على دخول موضوع ${spec.themeArabic}.` }], englishFirst: true, studio: "Precision & Mediation Studio" }, lexicalNetworks: [{ id: `c2-network-${lessonNumber}`, theme: spec.theme, themeArabic: spec.themeArabic, anchor: spec.anchor, wordFamilies: spec.words.slice(0, 3).map(([word]) => ({ headword: word, forms: [word], note: `Use ${word} precisely in this theme.`, noteArabic: `استخدم ${word} بدقة في هذا الموضوع.` })), relatedWords: spec.related, chunks: spec.chunks, collocations: spec.collocations, register: spec.register, priorLevelLinks: ["evidence", "perspective", "consequence", "evaluation"], learningNote: "At C2, lexical knowledge becomes a choice about precision, audience, and effect.", learningNoteArabic: "في C2 تصبح المعرفة المعجمية اختياراً يتعلق بالدقة والجمهور والأثر." }], practiceBrief: { readingBrief: `${spec.reading} Track the writer's assumptions, evidence, and uncertainty before you respond.`, writingPrompt: `${spec.writing} Address a defined audience, make your evidence and qualifications visible, and revise once for precision, coherence, and reader effort.` } };
+}).map(enrichLesson);
 
 export const C2_VOCABULARY = C2_LESSONS.flatMap((lesson) => lesson.words);
 export const C2_GRAMMAR = C2_LESSONS.map((lesson) => lesson.grammar);
-export const C2_COURSE: CourseDefinition = { level: "C2", title: "Precision, mediation, and independent judgement", titleArabic: "الدقة والوساطة والحكم المستقل", totalLessons: 16, lessonsPerModule: 4, estimatedMinutes: 16 * 141, lessons: C2_LESSONS };
+export const C2_COURSE: CourseDefinition = { level: "C2", title: "Precision, mediation, and independent judgement", titleArabic: "الدقة والوساطة والحكم المستقل", totalLessons: 16, lessonsPerModule: 4, estimatedMinutes: 16 * 141, lessons: C2_LESSONS, modules: buildModuleDefinitions("C2", C2_LESSONS) };
 export function getC2Lesson(lessonNumber: number) { return C2_LESSONS.find((lesson) => lesson.lessonNumber === lessonNumber); }
 export const C2_LESSON_COUNT = C2_LESSONS.length;
 export const C2_MODULE_COUNT = 4;

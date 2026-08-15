@@ -1,6 +1,8 @@
 import rawDraft from "./a2-draft.json";
 import rawWordFamilies from "./a2-word-families.json";
 import type { CourseDefinition, GrammarTopic, LessonDefinition, LessonStep, VocabularyItem } from "./types";
+import { enrichLesson } from "./activity-plan";
+import { buildModuleDefinitions } from "./module-definitions";
 
 type DraftVocabulary = {
   word: string;
@@ -94,7 +96,7 @@ function asGrammarTopic(lesson: DraftLesson): GrammarTopic {
 }
 
 export const A2_LESSONS: LessonDefinition[] = (rawDraft as DraftLesson[]).map((draft) => ({
-  level: "A2",
+  level: "A2" as const,
   lessonNumber: draft.lessonNumber,
   moduleNumber: Math.ceil(draft.lessonNumber / 5),
   title: draft.title,
@@ -104,7 +106,7 @@ export const A2_LESSONS: LessonDefinition[] = (rawDraft as DraftLesson[]).map((d
   learningPlan: {
     outcome: draft.outcome,
     steps: STEPS,
-    retrieval: draft.retrieval.map((item) => ({ sourceLevel: "A1", language: item.language, prompt: item.prompt, purpose: item.purpose })),
+    retrieval: draft.retrieval.map((item) => ({ sourceLevel: "A1" as const, language: item.language, prompt: item.prompt, purpose: item.purpose })),
     englishFirst: true,
     studio: "Life Lab",
   },
@@ -123,7 +125,7 @@ export const A2_LESSONS: LessonDefinition[] = (rawDraft as DraftLesson[]).map((d
     learningNoteArabic: draft.network.learningNoteArabic,
   }],
   practiceBrief: { readingBrief: draft.readingBrief, writingPrompt: draft.writingPrompt },
-}));
+})).map(enrichLesson);
 
 export const A2_VOCABULARY = A2_LESSONS.flatMap((lesson) => lesson.words);
 export const A2_GRAMMAR = A2_LESSONS.map((lesson) => lesson.grammar);
@@ -136,6 +138,7 @@ export const A2_COURSE: CourseDefinition = {
   lessonsPerModule: 5,
   estimatedMinutes: 200 * 60,
   lessons: A2_LESSONS,
+  modules: buildModuleDefinitions("A2", A2_LESSONS),
 };
 
 export function getA2Lesson(lessonNumber: number) {

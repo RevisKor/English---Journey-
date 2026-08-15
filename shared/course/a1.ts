@@ -1,6 +1,8 @@
 import rawGrammar from "./a1-grammar.json";
 import rawVocabulary from "./a1-vocabulary.json";
 import type { CourseDefinition, GrammarTopic, LessonDefinition, VocabularyItem } from "./types";
+import { enrichLesson } from "./activity-plan";
+import { buildModuleDefinitions } from "./module-definitions";
 
 export const A1_VOCABULARY = rawVocabulary as VocabularyItem[];
 export const A1_GRAMMAR = rawGrammar as GrammarTopic[];
@@ -22,7 +24,7 @@ export const A1_LESSONS: LessonDefinition[] = Array.from({ length: 20 }, (_, ind
   const lessonNumber = index + 1;
   const [title, titleArabic] = lessonTitles[index];
   return {
-    level: "A1",
+    level: "A1" as const,
     lessonNumber,
     moduleNumber: Math.ceil(lessonNumber / 5),
     title,
@@ -30,7 +32,7 @@ export const A1_LESSONS: LessonDefinition[] = Array.from({ length: 20 }, (_, ind
     words: A1_VOCABULARY.slice(index * 25, (index + 1) * 25),
     grammar: A1_GRAMMAR[index],
   };
-});
+}).map(enrichLesson);
 
 export const A1_COURSE: CourseDefinition = {
   level: "A1",
@@ -40,6 +42,7 @@ export const A1_COURSE: CourseDefinition = {
   lessonsPerModule: 5,
   estimatedMinutes: 100 * 60,
   lessons: A1_LESSONS,
+  modules: buildModuleDefinitions("A1", A1_LESSONS),
 };
 
 export function getA1Lesson(lessonNumber: number) {

@@ -20,7 +20,8 @@ const assessmentMocks = vi.hoisted(() => ({
 vi.mock("../db", () => mocks);
 vi.mock("../assessment-instances", () => assessmentMocks);
 
-import { courseRouter } from "./course";
+import { courseRouter, assertLessonInCourse, assertModuleInCourse } from "./course";
+import { A1_COURSE } from "../../shared/course";
 
 function createContext(): TrpcContext {
   return {
@@ -29,6 +30,26 @@ function createContext(): TrpcContext {
     res: {} as TrpcContext["res"],
   };
 }
+
+describe("dynamic course range validation", () => {
+  const extendedCourse = {
+    ...A1_COURSE,
+    totalLessons: 30,
+    lessonsPerModule: 5,
+    lessons: Array.from({ length: 30 }, (_, index) => ({
+      ...A1_COURSE.lessons[0],
+      lessonNumber: index + 1,
+      moduleNumber: Math.ceil((index + 1) / 5),
+    })),
+  };
+
+  it("accepts expanded lesson and module ranges and rejects only the derived bounds", () => {
+    expect(() => assertLessonInCourse(extendedCourse, 30)).not.toThrow();
+    expect(() => assertModuleInCourse(extendedCourse, 6)).not.toThrow();
+    expect(() => assertLessonInCourse(extendedCourse, 31)).toThrow("Lesson not found");
+    expect(() => assertModuleInCourse(extendedCourse, 7)).toThrow("Module not found");
+  });
+});
 
 describe("course assessment mutations", () => {
   beforeEach(() => {

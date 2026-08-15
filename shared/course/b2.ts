@@ -1,5 +1,7 @@
 import rawDraft from "./b2-draft.json";
 import type { CourseDefinition, GrammarTopic, LessonDefinition, LessonStep, VocabularyItem } from "./types";
+import { enrichLesson } from "./activity-plan";
+import { buildModuleDefinitions } from "./module-definitions";
 
 type DraftVocabulary = { word: string; arabic: string; partOfSpeech: string; definition: string; exampleEN: string; exampleAR: string };
 type DraftLesson = {
@@ -39,14 +41,14 @@ function asGrammarTopic(lesson: DraftLesson): GrammarTopic {
 }
 
 export const B2_LESSONS: LessonDefinition[] = (rawDraft as DraftLesson[]).map((draft) => ({
-  level: "B2", lessonNumber: draft.lessonNumber, moduleNumber: Math.ceil(draft.lessonNumber / 6), title: draft.title, titleArabic: draft.titleArabic,
+  level: "B2" as const, lessonNumber: draft.lessonNumber, moduleNumber: Math.ceil(draft.lessonNumber / 6), title: draft.title, titleArabic: draft.titleArabic,
   words: draft.vocabulary.map((item, index) => asVocabularyItem(item, draft.lessonNumber, index)), grammar: asGrammarTopic(draft),
-  learningPlan: { outcome: draft.outcome, steps: STEPS, retrieval: draft.retrieval.map((item) => ({ sourceLevel: "B1", language: item.language, prompt: item.prompt, purpose: item.purpose })), englishFirst: true, studio: "Evidence & Influence Studio" },
+  learningPlan: { outcome: draft.outcome, steps: STEPS, retrieval: draft.retrieval.map((item) => ({ sourceLevel: "B1" as const, language: item.language, prompt: item.prompt, purpose: item.purpose })), englishFirst: true, studio: "Evidence & Influence Studio" },
   lexicalNetworks: [{ id: `b2-network-${draft.lessonNumber}`, theme: draft.network.theme, themeArabic: draft.network.themeArabic, anchor: draft.network.anchor, wordFamilies: draft.network.wordFamilies, relatedWords: draft.network.relatedWords, chunks: draft.network.chunks, collocations: draft.network.collocations, register: draft.network.register, priorLevelLinks: draft.network.priorLevelLinks, learningNote: draft.network.learningNote, learningNoteArabic: draft.network.learningNoteArabic }],
   practiceBrief: { readingBrief: draft.readingBrief, writingPrompt: draft.writingPrompt },
-}));
+})).map(enrichLesson);
 
 export const B2_VOCABULARY = B2_LESSONS.flatMap((lesson) => lesson.words);
 export const B2_GRAMMAR = B2_LESSONS.map((lesson) => lesson.grammar);
-export const B2_COURSE: CourseDefinition = { level: "B2", title: "Evidence, influence, and informed judgement", titleArabic: "الأدلة والتأثير والحكم الواعي", totalLessons: 24, lessonsPerModule: 6, estimatedMinutes: 380 * 60, lessons: B2_LESSONS };
+export const B2_COURSE: CourseDefinition = { level: "B2", title: "Evidence, influence, and informed judgement", titleArabic: "الأدلة والتأثير والحكم الواعي", totalLessons: 24, lessonsPerModule: 6, estimatedMinutes: 380 * 60, lessons: B2_LESSONS, modules: buildModuleDefinitions("B2", B2_LESSONS) };
 export function getB2Lesson(lessonNumber: number) { return B2_LESSONS.find((lesson) => lesson.lessonNumber === lessonNumber); }

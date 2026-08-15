@@ -75,5 +75,7 @@ describe("Home learner entry routing", () => {
   it("still renders the isolated dashboard contract used by the map component", () => {
     const html = renderToStaticMarkup(<CourseDashboard level="C1" lessons={C1_LESSONS} completedLessons={new Set()} profile={{ totalXp: 20, currentStreak: 1, longestStreak: 1 }} canEnter={(lessonNumber) => lessonNumber === 1} openLesson={() => undefined} unlocked />);
     expect(html).toContain("C1 · Guided learning route");
+    expect(html).toContain("Module word bank");
+    expect(html).toContain("Review + play");
   });
 });

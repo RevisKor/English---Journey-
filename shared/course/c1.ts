@@ -1,5 +1,7 @@
 import rawDraft from "./c1-draft.json";
 import type { CourseDefinition, GrammarTopic, LessonDefinition, LessonStep, VocabularyItem } from "./types";
+import { enrichLesson } from "./activity-plan";
+import { buildModuleDefinitions } from "./module-definitions";
 
 type DraftVocabulary = { word: string; arabic: string; partOfSpeech: string; definition: string; exampleEN: string; exampleAR: string };
 type DraftLesson = {
@@ -42,16 +44,16 @@ function asGrammarTopic(lesson: DraftLesson): GrammarTopic {
 }
 
 export const C1_LESSONS: LessonDefinition[] = (rawDraft as DraftLesson[]).map((draft) => ({
-  level: "C1", lessonNumber: draft.lessonNumber, moduleNumber: Math.ceil(draft.lessonNumber / 5), title: draft.title, titleArabic: draft.titleArabic,
+  level: "C1" as const, lessonNumber: draft.lessonNumber, moduleNumber: Math.ceil(draft.lessonNumber / 5), title: draft.title, titleArabic: draft.titleArabic,
   words: draft.vocabulary.map((item, index) => asVocabularyItem(item, draft.lessonNumber, index)), grammar: asGrammarTopic(draft),
-  learningPlan: { outcome: draft.outcome, steps: STEPS, retrieval: draft.retrieval.map((item) => ({ sourceLevel: "B2", language: item.language, prompt: item.prompt, purpose: item.purpose })), englishFirst: true, studio: "Ideas & Evidence Studio" },
+  learningPlan: { outcome: draft.outcome, steps: STEPS, retrieval: draft.retrieval.map((item) => ({ sourceLevel: "B2" as const, language: item.language, prompt: item.prompt, purpose: item.purpose })), englishFirst: true, studio: "Ideas & Evidence Studio" },
   lexicalNetworks: [{ id: `c1-network-${draft.lessonNumber}`, theme: draft.network.theme, themeArabic: draft.network.themeArabic, anchor: draft.network.anchor, wordFamilies: draft.network.wordFamilies, relatedWords: draft.network.relatedWords, chunks: draft.network.chunks, collocations: draft.network.collocations, register: draft.network.register, priorLevelLinks: draft.network.priorLevelLinks, learningNote: draft.network.learningNote, learningNoteArabic: draft.network.learningNoteArabic }],
   practiceBrief: { readingBrief: draft.readingBrief, writingPrompt: draft.writingPrompt },
-}));
+})).map(enrichLesson);
 
 export const C1_VOCABULARY = C1_LESSONS.flatMap((lesson) => lesson.words);
 export const C1_GRAMMAR = C1_LESSONS.map((lesson) => lesson.grammar);
-export const C1_COURSE: CourseDefinition = { level: "C1", title: "Nuance, evidence, and responsible judgement", titleArabic: "الدقة والأدلة والحكم المسؤول", totalLessons: 20, lessonsPerModule: 5, estimatedMinutes: 420 * 60, lessons: C1_LESSONS };
+export const C1_COURSE: CourseDefinition = { level: "C1", title: "Nuance, evidence, and responsible judgement", titleArabic: "الدقة والأدلة والحكم المسؤول", totalLessons: 20, lessonsPerModule: 5, estimatedMinutes: 420 * 60, lessons: C1_LESSONS, modules: buildModuleDefinitions("C1", C1_LESSONS) };
 export function getC1Lesson(lessonNumber: number) { return C1_LESSONS.find((lesson) => lesson.lessonNumber === lessonNumber); }
 
 export default C1_COURSE;

@@ -34,6 +34,24 @@ describe("guided workspace Arabic scaffolding", () => {
     }
   });
 
+  it("renders explicit multimodal controls for speaking, interaction, and reading activities", () => {
+    const speakingLesson = A1_LESSONS.find((lesson) => lesson.activities?.some((activity) => activity.kind === "speaking"));
+    const interactionLesson = A1_LESSONS.find((lesson) => lesson.activities?.some((activity) => activity.kind === "interaction"));
+    const readingLesson = A1_LESSONS.find((lesson) => lesson.activities?.some((activity) => activity.kind === "reading"));
+    const visualLesson = A1_LESSONS.find((lesson) => lesson.activities?.some((activity) => activity.kind === "visual-vocabulary"));
+    expect(speakingLesson).toBeDefined();
+    expect(interactionLesson).toBeDefined();
+    expect(readingLesson).toBeDefined();
+    expect(visualLesson).toBeDefined();
+    expect(renderToStaticMarkup(<StructuredLessonWorkspace lesson={visualLesson!} accent="british" onBack={() => undefined} />)).toContain("Reveal example");
+    expect(renderToStaticMarkup(<StructuredLessonWorkspace lesson={visualLesson!} accent="british" onBack={() => undefined} />)).toContain("Mark reviewed");
+    expect(renderToStaticMarkup(<StructuredLessonWorkspace lesson={visualLesson!} accent="british" onBack={() => undefined} />)).toContain(visualLesson!.words[0].exampleEN);
+    expect(renderToStaticMarkup(<StructuredLessonWorkspace lesson={speakingLesson!} accent="british" onBack={() => undefined} />)).toContain("Next sentence");
+    expect(renderToStaticMarkup(<StructuredLessonWorkspace lesson={speakingLesson!} accent="british" onBack={() => undefined} />)).toContain("Replay sentence");
+    expect(renderToStaticMarkup(<StructuredLessonWorkspace lesson={interactionLesson!} accent="british" onBack={() => undefined} />)).toContain("Play complete dialogue");
+    expect(renderToStaticMarkup(<StructuredLessonWorkspace lesson={readingLesson!} accent="british" onBack={() => undefined} />)).toContain("main idea");
+  });
+
   it("renders Arabic mentor transitions and prompt guidance for A2", () => {
     const lesson = A2_LESSONS[0];
     const guide = buildMentorGuide(lesson);

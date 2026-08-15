@@ -56,7 +56,7 @@
 - [x] Author, integrate, and validate 20 C1 lessons across four cumulative modules with nuanced, source-aware reading and writing tasks.
 - [x] Add C1 to the authenticated learner dashboard, level navigation, guided lesson dispatcher, progress queries, and mentor preview route.
 - [x] Author, integrate, and validate 16 C2 lessons across four cumulative modules with flexible mastery, synthesis, and culturally aware language tasks.
-- [ ] Decide whether to retain the dormant server-side AI router or remove it entirely after the external-AI prompt migration.
+- [x] Decide whether to retain the dormant server-side AI router or remove it entirely after the external-AI prompt migration.
 - [ ] Test complete A1–C2 navigation, gated progression, personalized assessments, learner feedback, responsive UI, keyboard use, Arabic-support behavior, and automated rules.
 - [x] Present lesson quizzes in a modal session after study, with score review, right/wrong explanations, clear pass/fail actions, and an unlocked next-lesson action only after passing.
 - [x] Add an Arabic sentence-explanation hint action during contextual quiz questions without revealing the answer.
@@ -110,3 +110,34 @@
 - [x] Add the explicit React runtime import required by the structured lesson workspace when rendered under Vitest.
 - [ ] Mount the real Home/AppShell with mocked authenticated state to verify the tutorial dialog auto-opens for unseen storage and the mobile Guide button reopens it.
 - [x] Add explicit A2 workspace and learner-prompt Arabic regression coverage alongside the existing A1 workspace render test.
+
+# Curriculum & Lesson System Overhaul
+
+- [x] Expand the curriculum contract to support approximately 6–7 modules per level and substantially longer modules without breaking existing A1–C2 routes.
+- [x] Add explicit lesson-type metadata and varied activity contracts for standard, visual vocabulary, real-life interaction, speaking/repeat-after-me, writing, and reading lessons.
+- [ ] Deepen A1 from absolute beginner foundations through everyday domains with coherent vocabulary progression and Arabic scaffolding.
+- [x] Expand grammar content and rendering with plain-language terminology, structure, positive/negative/question forms, short answers, use cases, Arabic-speaker mistakes, exceptions, examples, and progressive practice.
+- [x] Add genuine visual vocabulary lesson support for category-based word learning with image, English, Arabic, pronunciation, example, and interaction fields.
+- [x] Add speaking lesson support for listen, repeat, replay, next sentence, and complete-dialogue practice.
+- [x] Add dedicated writing and reading lesson structures with level-aware prompts, target language, guidance, examples, and comprehension activities.
+- [x] Expand first-use onboarding to explain levels, modules, lesson types, navigation, progress, assessments, word banks, review, prompts, feedback, and normal study flow.
+- [x] Add per-module word-bank aggregation and learner review behavior tied to lesson progress.
+- [ ] Validate synchronization, gated progression, varied assessments, Arabic support, responsive accessibility, and the expanded lesson experiences across A1–C2.
+- [ ] Document the expanded course architecture and save a verified checkpoint for the overhaul.
+
+> Scope note: The overhaul brief requests a materially larger curriculum and new activity families. Existing authored content and learner routes will be preserved while the new contracts are introduced incrementally, with validation after each phase.
+- [x] Apply the new lesson-type, multimodal activity, detailed grammar, word-bank, reinforcement, and onboarding contracts consistently across every authored A1, A2, B1, B2, C1, and C2 module, with CEFR-appropriate complexity.
+- [x] Remove hardcoded module and lesson caps from course procedures and derive valid ranges from the selected course definition.
+- [x] Add regressions proving courses with more than four modules and more than twenty-four lessons can route, gate, and request assessments while existing A1–C2 behavior remains unchanged.
+- [x] Wire dynamic course module metadata into server and client consumers so expanded module counts are first-class rather than documentation-only.
+- [x] Implement explicit speaking-lesson controls for replay, next-sentence sequencing, and complete-dialogue practice, with regression tests.
+- [x] Render reading comprehension activities from readingChecks in the learner UI and add tests proving level-aware reading/writing structures include prompts, guidance, examples, and checks.
+- [x] Render grammar terminology, short-answer patterns, and positive/negative/question example groups from teachingGuide in the lesson UI, with regression tests.
+- [x] Replace universal hardcoded short-answer text and mistake-derived negative examples with grammar-topic-appropriate generated examples.
+- [x] Add regression coverage proving every authored lesson exposes complete grammar teaching content in the rendered workspace.
+- [x] Add a dedicated module word-bank review experience with pronunciation playback, revisit/practice actions, and clear reviewed state.
+- [x] Track word-bank review state from actual learner interactions rather than deriving familiarity only from lesson completion.
+- [x] Add regression coverage proving the word-bank review UI exposes actions and updates its reviewed state.
+- [x] Replace placeholder SVG initial-letter mnemonics with a genuine visual-vocabulary asset strategy for category-based words across authored lessons.
+- [x] Render English and Arabic example sentences inside visual-vocabulary cards.
+- [x] Add explicit visual-vocabulary reveal, listen, and review controls with regression coverage for image, English, Arabic, pronunciation, example, and interaction fields.
