@@ -3,6 +3,7 @@ import { z } from "zod";
 import { getA1Lesson, getA2Lesson } from "../../shared/course";
 import {
   countAiActionsToday,
+  getLessonPractice,
   getWritingHistory,
   logAiUsage,
   saveReadingAttempt,
@@ -149,6 +150,7 @@ export const aiRouter = router({
     const level = input.level ?? "A1";
     const lesson = getCourseLesson(level, input.lessonNumber);
     if (!lesson) throw new TRPCError({ code: "NOT_FOUND", message: "Lesson not found." });
+    const practice = await getLessonPractice(level, input.lessonNumber);
     const allowedWords = lesson.words.map((word) => word.word).join(", ");
     const jsonSchema: ResponseFormat = {
       type: "json_schema",
@@ -179,7 +181,7 @@ export const aiRouter = router({
       },
     };
     const wordRange = level === "A2" ? "160–200" : "80–100";
-    const prompt = `Create a ${wordRange} word ${level} British English reading passage for lesson ${input.lessonNumber}. Use mostly these learner words when natural: ${allowedWords}. Grammar focus: ${lesson.grammar.topic}. ${level === "A2" ? "Use natural but accessible narrative or practical information, including a small amount of previously learned language." : "Avoid vocabulary above A1."} Write 3–4 direct comprehension questions; provide Arabic translations and Arabic explanations, but do not translate the passage.`;
+    const prompt = `Create a ${wordRange} word ${level} British English reading passage for lesson ${input.lessonNumber}. Use mostly these learner words when natural: ${allowedWords}. Grammar focus: ${lesson.grammar.topic}. Course practice brief: ${practice.reading?.passage ?? lesson.practiceBrief?.readingBrief ?? lesson.title}. ${level === "A2" ? "Use natural but accessible narrative or practical information, including a small amount of previously learned language." : "Avoid vocabulary above A1."} Write 3–4 direct comprehension questions; provide Arabic translations and Arabic explanations, but do not translate the passage.`;
     const content = await useAi({ userId: ctx.user.id, action: "reading", messages: [{ role: "system", content: tutorPromptFor(level) }, { role: "user", content: prompt }], responseFormat: jsonSchema });
     try {
       return JSON.parse(content) as { title: string; titleArabic: string; passage: string; questions: Array<{ question: string; questionArabic: string; answer: string; explanationArabic: string }> };
@@ -211,9 +213,10 @@ export const aiRouter = router({
     const level = input.level ?? "A1";
     const lesson = getCourseLesson(level, input.lessonNumber);
     if (!lesson) throw new TRPCError({ code: "NOT_FOUND", message: "Lesson not found." });
+    const practice = await getLessonPractice(level, input.lessonNumber);
     const jsonSchema: ResponseFormat = { type: "json_schema", json_schema: { name: "a1_writing_prompt", strict: true, schema: { type: "object", properties: { title: { type: "string" }, instructionsEnglish: { type: "string" }, instructionsArabic: { type: "string" }, minimumSentences: { type: "integer" }, usefulWords: { type: "array", items: { type: "string" }, maxItems: 6 } }, required: ["title", "instructionsEnglish", "instructionsArabic", "minimumSentences", "usefulWords"], additionalProperties: false } } };
     const range = level === "A2" ? "80–120 words in one or two connected paragraphs" : "5–8 short sentences";
-    const prompt = `Give one approachable ${level} writing topic for lesson ${input.lessonNumber}. The learner should write ${range}. Encourage use of these lesson words when natural: ${lesson.words.slice(0, 10).map((word) => word.word).join(", ")}. Grammar focus: ${lesson.grammar.topic}. ${level === "A2" ? "Give the task a clear practical audience or purpose, so the learner has a reason to write." : ""}`;
+    const prompt = `Give one approachable ${level} writing topic for lesson ${input.lessonNumber}. The learner should write ${range}. Course writing brief: ${practice.writing?.instructionsEnglish ?? lesson.practiceBrief?.writingPrompt ?? lesson.title}. Encourage use of these lesson words when natural: ${lesson.words.slice(0, 10).map((word) => word.word).join(", ")}. Grammar focus: ${lesson.grammar.topic}. ${level === "A2" ? "Give the task a clear practical audience or purpose, so the learner has a reason to write." : ""}`;
     const content = await useAi({ userId: ctx.user.id, action: "writing_prompt", messages: [{ role: "system", content: tutorPromptFor(level) }, { role: "user", content: prompt }], responseFormat: jsonSchema });
     try { return JSON.parse(content) as { title: string; instructionsEnglish: string; instructionsArabic: string; minimumSentences: number; usefulWords: string[] }; }
     catch { throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "The writing task needs to be regenerated. Please try again." }); }

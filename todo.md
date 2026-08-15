@@ -46,3 +46,16 @@
 - [x] Add targeted A2 UI validation proving the six-step lesson sequence and English-first scaffolding render distinctly from the A1 workspace.
 - [x] Add explicit A2 active-level tests for lesson unlocks, module prerequisites, and assessment submission behavior.
 - [x] Restart the development server and confirm the prior stale A2 course-export error is absent from the fresh browser console log.
+- [x] Define the B1–C2 curriculum release contract, database migration boundaries, assessment-variation rules, and tutor speed/quality targets.
+- [x] Complete the migration of curriculum organization to structured level, module, topic, lesson, vocabulary, grammar, reading, writing, and assessment database entities while preserving the existing A1/A2 experience.
+- [x] Build per-user, per-attempt question-set generation, versioning, storage, and grading so lesson quizzes and module tests vary fairly without changing the learning objectives.
+- [x] Complete end-to-end automated catalog-sync persistence coverage for structured A1/A2 reading and writing records.
+- [x] Verify focused structured-practice synchronization writes the expected reading and writing payloads for representative A1/A2 lessons.
+- [x] Verify deterministic per-lesson reading and writing payload mapping across all 40 A1/A2 lessons during a focused practice re-sync.
+- [ ] Author, integrate, and validate 24 B1 lessons across four cumulative modules with English-first support and structured performance tasks.
+- [ ] Author, integrate, and validate 24 B2 lessons across four cumulative modules with register, argument, and discourse-focused tasks.
+- [ ] Author, integrate, and validate 20 C1 lessons across four cumulative modules with nuanced, source-aware reading and writing tasks.
+- [ ] Author, integrate, and validate 16 C2 lessons across four cumulative modules with flexible mastery, synthesis, and culturally aware language tasks.
+- [ ] Improve the server-side AI tutor’s level-specific prompting, response schemas, latency safeguards, and quality validation without exposing API credentials to learners.
+- [ ] Test complete A1–C2 navigation, gated progression, personalized assessments, learner feedback, responsive UI, keyboard use, Arabic-support behavior, and automated rules.
+- [ ] Document the expanded course architecture, save a verified final checkpoint, and provide a full user handoff.

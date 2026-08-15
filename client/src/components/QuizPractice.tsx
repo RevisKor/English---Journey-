@@ -6,6 +6,7 @@ import { CheckCircle2, Trophy } from "lucide-react";
 import { useState } from "react";
 
 type Question = { id: string; type: string; prompt: string; promptArabic: string; choices: string[] };
+type Assessment = { assessmentInstanceId: number; questions: Question[] };
 
 export function QuizPractice({ lesson, level = "A1" }: { lesson: LessonDefinition; level?: CefrLevel }) {
   const utils = trpc.useUtils();
@@ -16,13 +17,15 @@ export function QuizPractice({ lesson, level = "A1" }: { lesson: LessonDefinitio
   const refreshLearningState = () => Promise.all([utils.course.dashboard.invalidate(), utils.course.warmup.invalidate()]);
   const submitLesson = trpc.course.submitLessonQuiz.useMutation({ onSuccess: refreshLearningState });
   const submitModule = trpc.course.submitModuleTest.useMutation({ onSuccess: refreshLearningState });
-  const questions = (moduleMode ? moduleQuery.data : lessonQuery.data) as Question[] | undefined;
+  const assessment = (moduleMode ? moduleQuery.data : lessonQuery.data) as Assessment | undefined;
+  const questions = assessment?.questions;
   const result = moduleMode ? submitModule.data : submitLesson.data;
   const busy = submitLesson.isPending || submitModule.isPending;
   const submit = () => {
     if (!questions) return;
-    if (moduleMode) submitModule.mutate({ level, moduleNumber: lesson.moduleNumber, answers });
-    else submitLesson.mutate({ level, lessonNumber: lesson.lessonNumber, answers });
+    if (!assessment) return;
+    if (moduleMode) submitModule.mutate({ level, moduleNumber: lesson.moduleNumber, assessmentInstanceId: assessment.assessmentInstanceId, answers });
+    else submitLesson.mutate({ level, lessonNumber: lesson.lessonNumber, assessmentInstanceId: assessment.assessmentInstanceId, answers });
   };
   if (lessonQuery.isLoading || (moduleMode && moduleQuery.isLoading)) return <div className="rounded-2xl bg-[#f4efe3] p-6 text-sm text-[#64718a]">Preparing your assessment…</div>;
   if (lessonQuery.error) return <div className="rounded-2xl bg-[#fff4e4] p-6 text-sm text-[#8a5a18]">{lessonQuery.error.message}</div>;

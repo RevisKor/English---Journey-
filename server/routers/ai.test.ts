@@ -1,8 +1,9 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import type { TrpcContext } from "../_core/context";
 
-const { countAiActionsToday, getWritingHistory, logAiUsage, saveReadingAttempt, saveWritingSubmission, invokeLLM } = vi.hoisted(() => ({
+const { countAiActionsToday, getLessonPractice, getWritingHistory, logAiUsage, saveReadingAttempt, saveWritingSubmission, invokeLLM } = vi.hoisted(() => ({
   countAiActionsToday: vi.fn(),
+  getLessonPractice: vi.fn(),
   getWritingHistory: vi.fn(),
   logAiUsage: vi.fn(),
   saveReadingAttempt: vi.fn(),
@@ -12,6 +13,7 @@ const { countAiActionsToday, getWritingHistory, logAiUsage, saveReadingAttempt, 
 
 vi.mock("../db", () => ({
   countAiActionsToday,
+  getLessonPractice,
   getWritingHistory,
   logAiUsage,
   saveReadingAttempt,
@@ -40,6 +42,7 @@ describe("AI course procedures", () => {
   beforeEach(() => {
     vi.resetAllMocks();
     countAiActionsToday.mockResolvedValue(0);
+    getLessonPractice.mockResolvedValue({ reading: undefined, writing: undefined });
     logAiUsage.mockResolvedValue(undefined);
     saveReadingAttempt.mockResolvedValue(undefined);
     saveWritingSubmission.mockResolvedValue(undefined);
@@ -64,6 +67,7 @@ describe("AI course procedures", () => {
   });
 
   it("returns a controlled reading exercise from structured model content", async () => {
+    getLessonPractice.mockResolvedValueOnce({ reading: { passage: "A stored reading brief about greetings." }, writing: undefined });
     invokeLLM.mockResolvedValue(modelResponse(JSON.stringify({
       title: "A Small Hello", titleArabic: "تحية صغيرة", passage: "Hello. I am Ali. I am at home with my family.",
       questions: [
@@ -77,6 +81,21 @@ describe("AI course procedures", () => {
     const result = await caller.generateReading({ lessonNumber: 1 });
     expect(result.questions).toHaveLength(3);
     expect(invokeLLM).toHaveBeenCalledWith(expect.objectContaining({ max_completion_tokens: 1000, response_format: expect.objectContaining({ type: "json_schema" }) }));
+    expect(getLessonPractice).toHaveBeenCalledWith("A1", 1);
+    expect(invokeLLM).toHaveBeenCalledWith(expect.objectContaining({ messages: expect.arrayContaining([expect.objectContaining({ content: expect.stringContaining("A stored reading brief about greetings.") })]) }));
+  });
+
+  it("uses the stored writing brief when generating a learner-facing writing task", async () => {
+    getLessonPractice.mockResolvedValueOnce({ reading: undefined, writing: { instructionsEnglish: "Write a short note about your family." } });
+    invokeLLM.mockResolvedValue(modelResponse(JSON.stringify({
+      title: "A family note", instructionsEnglish: "Write about your family.", instructionsArabic: "اكتب عن عائلتك.", minimumSentences: 5, usefulWords: ["family", "happy"],
+    })));
+    const caller = aiRouter.createCaller(createContext());
+
+    await caller.writingPrompt({ lessonNumber: 1 });
+
+    expect(getLessonPractice).toHaveBeenCalledWith("A1", 1);
+    expect(invokeLLM).toHaveBeenCalledWith(expect.objectContaining({ messages: expect.arrayContaining([expect.objectContaining({ content: expect.stringContaining("Write a short note about your family.") })]) }));
   });
 
   it("validates and persists structured writing feedback", async () => {

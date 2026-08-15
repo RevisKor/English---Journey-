@@ -3,7 +3,11 @@ import { drizzle } from "drizzle-orm/mysql2";
 import {
   InsertUser,
   learningProfiles,
+  courseLevels,
+  courseLessons,
   lessonProgress,
+  lessonReadings,
+  lessonWritingTasks,
   moduleProgress,
   quizAttempts,
   reviewQueue,
@@ -150,6 +154,24 @@ export async function getLearnerProgress(userId: number, level = "A1") {
   return { lessons, modules };
 }
 
+/** Fetch the static, versioned practice records associated with one course lesson. */
+export async function getLessonPractice(level: string, lessonNumber: number) {
+  const db = await getDb();
+  if (!db) return { reading: undefined, writing: undefined };
+  const courseLevel = await db.select().from(courseLevels).where(eq(courseLevels.code, level)).limit(1);
+  if (!courseLevel[0]) return { reading: undefined, writing: undefined };
+  const lesson = await db.select().from(courseLessons).where(and(
+    eq(courseLessons.levelId, courseLevel[0].id),
+    eq(courseLessons.lessonNumber, lessonNumber),
+  )).limit(1);
+  if (!lesson[0]) return { reading: undefined, writing: undefined };
+  const [reading, writing] = await Promise.all([
+    db.select().from(lessonReadings).where(eq(lessonReadings.lessonId, lesson[0].id)).limit(1),
+    db.select().from(lessonWritingTasks).where(eq(lessonWritingTasks.lessonId, lesson[0].id)).limit(1),
+  ]);
+  return { reading: reading[0], writing: writing[0] };
+}
+
 export async function countAiActionsToday(userId: number, action: typeof aiUsageEvents.$inferInsert.action) {
   const db = await getDb();
   if (!db) throw new Error("Database unavailable");
@@ -259,6 +281,7 @@ export async function submitLessonAssessment(input: {
   level: string;
   lessonNumber: number;
   assessmentType: "lesson_quiz" | "module_test";
+  assessmentInstanceId: number;
   score: number;
   answers: Record<string, string>;
   missedItemKeys: string[];
