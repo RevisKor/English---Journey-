@@ -11,8 +11,8 @@ import {
 } from "../db";
 import { getOrCreateAssessmentInstance, gradeAssessmentInstance } from "../assessment-instances";
 import {
-  A1_COURSE, A1_GRAMMAR, A1_VOCABULARY, A2_COURSE, A2_GRAMMAR, A2_VOCABULARY, B1_COURSE, B1_GRAMMAR, B1_VOCABULARY, B2_COURSE, B2_GRAMMAR, B2_VOCABULARY,
-  buildA2LessonQuiz, buildA2ModuleTest, buildB1LessonQuiz, buildB1ModuleTest, buildB2LessonQuiz, buildB2ModuleTest, buildLessonQuiz, buildModuleTest,
+  A1_COURSE, A1_GRAMMAR, A1_VOCABULARY, A2_COURSE, A2_GRAMMAR, A2_VOCABULARY, B1_COURSE, B1_GRAMMAR, B1_VOCABULARY, B2_COURSE, B2_GRAMMAR, B2_VOCABULARY, C1_COURSE, C1_GRAMMAR, C1_VOCABULARY,
+  buildA2LessonQuiz, buildA2ModuleTest, buildB1LessonQuiz, buildB1ModuleTest, buildB2LessonQuiz, buildB2ModuleTest, buildC1LessonQuiz, buildC1ModuleTest, buildLessonQuiz, buildModuleTest,
 } from "../../shared/course";
 import { protectedProcedure, router } from "../_core/trpc";
 
@@ -22,6 +22,7 @@ function materialForLevel(level: "A1" | "A2" | "B1" | "B2" | "C1" | "C2") {
   if (level === "A2") return { course: A2_COURSE, vocabulary: A2_VOCABULARY, grammar: A2_GRAMMAR, lessonQuiz: buildA2LessonQuiz, moduleTest: buildA2ModuleTest };
   if (level === "B1") return { course: B1_COURSE, vocabulary: B1_VOCABULARY, grammar: B1_GRAMMAR, lessonQuiz: buildB1LessonQuiz, moduleTest: buildB1ModuleTest };
   if (level === "B2") return { course: B2_COURSE, vocabulary: B2_VOCABULARY, grammar: B2_GRAMMAR, lessonQuiz: buildB2LessonQuiz, moduleTest: buildB2ModuleTest };
+  if (level === "C1") return { course: C1_COURSE, vocabulary: C1_VOCABULARY, grammar: C1_GRAMMAR, lessonQuiz: buildC1LessonQuiz, moduleTest: buildC1ModuleTest };
   return { course: A1_COURSE, vocabulary: A1_VOCABULARY, grammar: A1_GRAMMAR, lessonQuiz: buildLessonQuiz, moduleTest: buildModuleTest };
 }
 

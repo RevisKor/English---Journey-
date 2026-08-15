@@ -4,6 +4,7 @@ import {
   A2_COURSE,
   B1_COURSE,
   B2_COURSE,
+  C1_COURSE,
   type CefrLevel,
   type CourseDefinition,
   type LessonDefinition,
@@ -23,7 +24,7 @@ import {
 import { getDb } from "./db";
 import { buildAssessmentVariants } from "../shared/course/assessment-questions";
 
-const LEGACY_COURSES: CourseDefinition[] = [A1_COURSE, A2_COURSE, B1_COURSE, B2_COURSE];
+const LEGACY_COURSES: CourseDefinition[] = [A1_COURSE, A2_COURSE, B1_COURSE, B2_COURSE, C1_COURSE];
 const SYNC_VERSION = 2;
 let syncPromise: Promise<void> | null = null;
 
