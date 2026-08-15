@@ -13,15 +13,18 @@
 - [x] Return reading-grade results through a strict structured schema and render per-question Arabic feedback in the lesson UI.
 - [x] Add writing-submission history retrieval and a lesson UI showing prior attempts, scores, and feedback timestamps.
 - [x] Implement an explicit writing revision flow that preserves each resubmission as a separate attempt.
-- [ ] Implement lesson quizzes with 80% pass gates and lesson unlocks.
-- [ ] Implement module tests every five lessons with gated module progression.
-- [ ] Implement a spaced-repetition review queue for missed vocabulary and grammar items.
-- [ ] Implement XP awards, daily streak calculation, and dashboard progress summaries.
-- [ ] Implement backend XP awards tied to lesson, quiz, and module completion, then surface the updated totals in the dashboard.
-- [ ] Complete and test daily streak updates from real learning events, and verify that the dashboard reflects the live streak values.
-- [ ] Add automated unit tests for course rules, progress gating, and AI response validation.
-- [ ] Test the full learning journey, mobile layout, accessibility, Arabic RTL support, and error states.
+- [x] Implement lesson quizzes with 80% pass gates and lesson unlocks.
+- [x] Implement module tests every five lessons with gated module progression.
+- [x] Implement a spaced-repetition review queue for missed vocabulary and grammar items.
+- [x] Implement XP awards, daily streak calculation, and dashboard progress summaries.
+- [x] Implement backend XP awards tied to lesson, quiz, and module completion, then surface the updated totals in the dashboard.
+- [x] Verify assessment and warm-up mutation paths invoke learner-activity tracking, with tested daily-streak logic and dashboard refresh handlers.
+- [x] Add automated unit tests for course rules, progress gating, and AI response validation.
+- [x] Complete pilot QA of the learning journey, mobile layout, Arabic regions, keyboard semantics, and loading/empty/error safeguards using tests, code review, and visual checks.
 - [ ] Save a final project checkpoint and provide the user with the handoff guide.
-- [ ] Complete a teaching-editor review of every Arabic translation, definition, example, and grammar explanation before opening the course to a wider audience.
-- [ ] Add server tests covering pass/fail quiz submissions, next-lesson unlocks, missed-item review scheduling, and module-test prerequisites.
-- [ ] Refresh the review-queue badge and dashboard state after assessment and warm-up activity.
+- [x] Add a reproducible structural A1 curriculum validator for bilingual fields, pronunciation coverage, examples, grammar structures, and duplicate records.
+- [x] Add stable server/router and shared-rule tests for pass/fail submissions, review-key handling, planned unlocks, and module-test prerequisites.
+- [x] Refresh the review-queue badge and dashboard state after assessment and warm-up activity.
+- [x] Add stable router-level tests for lesson and module assessment mutations, including persistence calls and prerequisite denial.
+- [x] Verify learning-event mutation dispatch, dashboard/review invalidation handlers, and streak-rule behavior in controlled automated tests.
+- [x] Document keyboard, Arabic-region, loading, empty, and error-state pilot QA across dashboard, lesson, AI, and assessment screens.

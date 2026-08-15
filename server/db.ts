@@ -102,6 +102,24 @@ export function hasCompletedModuleLessons(
   ).every(Boolean);
 }
 
+export function nextDailyStreak(currentStreak: number, lastActivityDate: string | null, date = new Date()) {
+  const today = utcDateKey(date);
+  if (lastActivityDate === today) return currentStreak;
+  return lastActivityDate === previousUtcDateKey(date) ? currentStreak + 1 : 1;
+}
+
+export function lessonAssessmentPlan(score: number, hadPassedBefore: boolean) {
+  const passed = passesAssessment(score);
+  const firstPass = passed && !hadPassedBefore;
+  return { passed, firstPass, shouldUnlockNextLesson: passed, shouldScheduleReview: true, xpAwarded: firstPass ? 20 : 0 };
+}
+
+export function moduleAssessmentPlan(score: number, hadPassedBefore: boolean) {
+  const passed = passesAssessment(score);
+  const firstPass = passed && !hadPassedBefore;
+  return { passed, firstPass, shouldScheduleReview: true, xpAwarded: firstPass ? 80 : 0 };
+}
+
 /** Register one eligible learning day and return the refreshed learner profile. */
 export async function recordLearnerActivity(userId: number) {
   const db = await getDb();
@@ -111,9 +129,7 @@ export async function recordLearnerActivity(userId: number) {
 
   const today = utcDateKey();
   if (profile.lastActivityDate !== today) {
-    const newStreak = profile.lastActivityDate === previousUtcDateKey()
-      ? profile.currentStreak + 1
-      : 1;
+    const newStreak = nextDailyStreak(profile.currentStreak, profile.lastActivityDate);
     await db.update(learningProfiles).set({
       currentStreak: newStreak,
       longestStreak: Math.max(profile.longestStreak, newStreak),
@@ -249,34 +265,35 @@ export async function submitLessonAssessment(input: {
 }) {
   const db = await getDb();
   if (!db) throw new Error("Database unavailable");
-  const passed = passesAssessment(input.score);
   const now = new Date();
-  await db.insert(quizAttempts).values({ ...input, passed: passed ? 1 : 0 });
+  await db.insert(quizAttempts).values({ ...input, passed: passesAssessment(input.score) ? 1 : 0 });
   if (input.assessmentType === "lesson_quiz") {
     const existing = await db.select().from(lessonProgress).where(and(eq(lessonProgress.userId, input.userId), eq(lessonProgress.level, input.level), eq(lessonProgress.lessonNumber, input.lessonNumber))).limit(1);
-    const firstPass = passed && !existing[0]?.quizPassedAt;
+    const plan = lessonAssessmentPlan(input.score, Boolean(existing[0]?.quizPassedAt));
+    const { passed, firstPass } = plan;
     if (existing[0]) await db.update(lessonProgress).set({ status: passed ? "completed" : existing[0].status === "locked" ? "available" : existing[0].status, quizBestScore: Math.max(existing[0].quizBestScore, input.score), quizPassedAt: passed ? (existing[0].quizPassedAt ?? now) : existing[0].quizPassedAt, completedAt: passed ? (existing[0].completedAt ?? now) : existing[0].completedAt }).where(eq(lessonProgress.id, existing[0].id));
     else await db.insert(lessonProgress).values({ userId: input.userId, level: input.level, lessonNumber: input.lessonNumber, status: passed ? "completed" : "available", quizBestScore: input.score, quizPassedAt: passed ? now : null, completedAt: passed ? now : null });
-    if (passed) {
+    if (plan.shouldUnlockNextLesson) {
       const nextLesson = input.lessonNumber + 1;
       const next = await db.select({ id: lessonProgress.id }).from(lessonProgress).where(and(eq(lessonProgress.userId, input.userId), eq(lessonProgress.level, input.level), eq(lessonProgress.lessonNumber, nextLesson))).limit(1);
       if (!next[0]) await db.insert(lessonProgress).values({ userId: input.userId, level: input.level, lessonNumber: nextLesson, status: "available" });
     }
-    if (input.missedItemKeys.length) await queueMissedReviewItems(input.userId, input.level, input.lessonNumber, input.missedItemKeys);
-    const profile = await addXp(input.userId, firstPass ? 20 : 0);
+    if (plan.shouldScheduleReview && input.missedItemKeys.length) await queueMissedReviewItems(input.userId, input.level, input.lessonNumber, input.missedItemKeys);
+    const profile = await addXp(input.userId, plan.xpAwarded);
     await recordLearnerActivity(input.userId);
-    return { passed, firstPass, xpAwarded: firstPass ? 20 : 0, profile };
+    return { passed, firstPass, xpAwarded: plan.xpAwarded, profile };
   }
   const moduleNumber = Math.ceil(input.lessonNumber / 5);
   const moduleLessons = await db.select().from(lessonProgress).where(and(eq(lessonProgress.userId, input.userId), eq(lessonProgress.level, input.level)));
   const allLessonsComplete = hasCompletedModuleLessons(moduleLessons, moduleNumber);
   if (!allLessonsComplete) throw new Error("Complete all five module lessons before taking this test.");
   const existingModule = await db.select().from(moduleProgress).where(and(eq(moduleProgress.userId, input.userId), eq(moduleProgress.level, input.level), eq(moduleProgress.moduleNumber, moduleNumber))).limit(1);
-  const firstPass = passed && !existingModule[0]?.testPassedAt;
+  const plan = moduleAssessmentPlan(input.score, Boolean(existingModule[0]?.testPassedAt));
+  const { passed, firstPass } = plan;
   if (existingModule[0]) await db.update(moduleProgress).set({ status: passed ? "completed" : "available", testBestScore: Math.max(existingModule[0].testBestScore, input.score), testPassedAt: passed ? (existingModule[0].testPassedAt ?? now) : existingModule[0].testPassedAt, completedAt: passed ? (existingModule[0].completedAt ?? now) : existingModule[0].completedAt }).where(eq(moduleProgress.id, existingModule[0].id));
   else await db.insert(moduleProgress).values({ userId: input.userId, level: input.level, moduleNumber, status: passed ? "completed" : "available", testBestScore: input.score, testPassedAt: passed ? now : null, completedAt: passed ? now : null });
-  if (input.missedItemKeys.length) await queueMissedReviewItems(input.userId, input.level, input.lessonNumber, input.missedItemKeys);
-  const profile = await addXp(input.userId, firstPass ? 80 : 0);
+  if (plan.shouldScheduleReview && input.missedItemKeys.length) await queueMissedReviewItems(input.userId, input.level, input.lessonNumber, input.missedItemKeys);
+  const profile = await addXp(input.userId, plan.xpAwarded);
   await recordLearnerActivity(input.userId);
-  return { passed, firstPass, xpAwarded: firstPass ? 80 : 0, profile };
+  return { passed, firstPass, xpAwarded: plan.xpAwarded, profile };
 }

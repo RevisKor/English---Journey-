@@ -13,8 +13,9 @@ export function QuizPractice({ lesson }: { lesson: LessonDefinition }) {
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const lessonQuery = trpc.course.lessonQuiz.useQuery({ lessonNumber: lesson.lessonNumber });
   const moduleQuery = trpc.course.moduleTest.useQuery({ moduleNumber: lesson.moduleNumber }, { enabled: moduleMode });
-  const submitLesson = trpc.course.submitLessonQuiz.useMutation({ onSuccess: () => utils.course.dashboard.invalidate() });
-  const submitModule = trpc.course.submitModuleTest.useMutation({ onSuccess: () => utils.course.dashboard.invalidate() });
+  const refreshLearningState = () => Promise.all([utils.course.dashboard.invalidate(), utils.course.warmup.invalidate()]);
+  const submitLesson = trpc.course.submitLessonQuiz.useMutation({ onSuccess: refreshLearningState });
+  const submitModule = trpc.course.submitModuleTest.useMutation({ onSuccess: refreshLearningState });
   const questions = (moduleMode ? moduleQuery.data : lessonQuery.data) as Question[] | undefined;
   const result = moduleMode ? submitModule.data : submitLesson.data;
   const busy = submitLesson.isPending || submitModule.isPending;

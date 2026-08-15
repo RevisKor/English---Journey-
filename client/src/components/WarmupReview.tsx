@@ -4,7 +4,8 @@ import { Brain, CheckCircle2, RotateCcw } from "lucide-react";
 
 export function WarmupReview({ onContinue }: { onContinue: () => void }) {
   const reviewQuery = trpc.course.warmup.useQuery();
-  const submit = trpc.course.submitWarmup.useMutation({ onSuccess: () => reviewQuery.refetch() });
+  const utils = trpc.useUtils();
+  const submit = trpc.course.submitWarmup.useMutation({ onSuccess: () => Promise.all([reviewQuery.refetch(), utils.course.dashboard.invalidate(), utils.course.warmup.invalidate()]) });
   const item = reviewQuery.data?.[0];
   if (reviewQuery.isLoading) return <div className="mx-auto max-w-2xl px-5 py-10 text-sm text-[#64718a]">Preparing your review…</div>;
   if (!item) return null;
