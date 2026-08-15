@@ -16,58 +16,78 @@ const tabs: Array<{ id: ReviewTab; label: string; icon: React.ReactNode }> = [
 ];
 
 export function ContentReview({ onOpenCourse }: { onOpenCourse: (level: ReviewLevel, lessonNumber: number) => void }) {
-  const catalogQuery = trpc.admin.catalog.useQuery();
+  const utils = trpc.useUtils();
+  const [catalog, setCatalog] = useState<any[] | null>(null);
+  const [catalogError, setCatalogError] = useState(false);
   const [selectedLevel, setSelectedLevel] = useState<ReviewLevel>("A1");
   const [selectedLesson, setSelectedLesson] = useState(1);
   const [tab, setTab] = useState<ReviewTab>("overview");
-  const detailQuery = trpc.admin.lesson.useQuery(
-    { level: selectedLevel, lessonNumber: selectedLesson },
-  );
+  const [detail, setDetail] = useState<ReviewDetail | null>(null);
+  const [detailLoading, setDetailLoading] = useState(true);
+
+  useEffect(() => {
+    let cancelled = false;
+    setCatalogError(false);
+    utils.admin.catalog.fetch()
+      .then(data => { if (!cancelled) setCatalog(data); })
+      .catch(() => { if (!cancelled) setCatalogError(true); });
+    return () => { cancelled = true; };
+  }, [utils]);
+
+  useEffect(() => {
+    let cancelled = false;
+    setDetailLoading(true);
+    setDetail(null);
+    utils.admin.lesson.fetch({ level: selectedLevel, lessonNumber: selectedLesson })
+      .then(data => { if (!cancelled) setDetail(data); })
+      .catch(() => { if (!cancelled) setDetail(null); })
+      .finally(() => { if (!cancelled) setDetailLoading(false); });
+    return () => { cancelled = true; };
+  }, [selectedLesson, selectedLevel, utils]);
 
   const activeLevel = useMemo(
-    () => catalogQuery.data?.find(level => level.code === selectedLevel),
-    [catalogQuery.data, selectedLevel],
+    () => catalog?.find(level => level.code === selectedLevel),
+    [catalog, selectedLevel],
   );
 
   useEffect(() => {
-    if (!catalogQuery.data?.length) return;
+    if (!catalog?.length) return;
     if (!activeLevel) {
-      const first = catalogQuery.data[0];
+      const first = catalog[0];
       setSelectedLevel(first.code as ReviewLevel);
       setSelectedLesson(first.modules[0]?.lessons[0]?.lessonNumber ?? 1);
     }
-  }, [activeLevel, catalogQuery.data]);
+  }, [activeLevel, catalog]);
 
   const chooseLevel = (level: ReviewLevel) => {
-    const item = catalogQuery.data?.find(candidate => candidate.code === level);
+    const item = catalog?.find(candidate => candidate.code === level);
     setSelectedLevel(level);
     setSelectedLesson(item?.modules[0]?.lessons[0]?.lessonNumber ?? 1);
     setTab("overview");
   };
 
-  if (catalogQuery.isLoading) return <LoadingReview />;
-  if (catalogQuery.isError) return <ReviewNotice title="Content review is unavailable" copy="Your administrator account is recognized, but the curriculum catalog could not be loaded. Please refresh once the server is ready." />;
+  if (!catalog && !catalogError) return <LoadingReview />;
+  if (catalogError) return <ReviewNotice title="Content review is unavailable" copy="Your administrator account is recognized, but the curriculum catalog could not be loaded. Please refresh once the server is ready." />;
 
-  const detail = detailQuery.data;
   return (
     <div className="course-grid mx-auto max-w-[1500px] px-5 py-7 lg:px-9 lg:py-10">
       <section className="rounded-[1.7rem] bg-[#253453] px-6 py-7 text-white shadow-[0_18px_45px_rgba(37,52,83,.14)] sm:px-8">
         <p className="text-xs font-bold uppercase tracking-[.18em] text-[#e7b84a]">Administrator · curriculum review</p>
         <div className="mt-3 flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div><h2 className="text-3xl font-bold tracking-[-.045em] sm:text-4xl">Inspect every completed lesson.</h2><p className="mt-3 max-w-2xl text-sm leading-7 text-[#cbd6eb]">Browse the current A1–B2 course catalog exactly as it is structured for learners: modules, lesson briefs, language targets, reading and writing practice, and reusable assessment questions.</p><p dir="rtl" className="arabic mt-2 max-w-2xl text-right text-sm text-[#cbd6eb]">يمكنك هنا مراجعة المحتوى المنشور حالياً قبل متابعة التوسّع إلى المستويات الأعلى.</p></div>
-          <div className="rounded-2xl bg-white/8 px-4 py-3 text-sm text-[#d9e4f5]"><strong className="block text-lg text-white">{catalogQuery.data?.reduce((sum, level) => sum + level.totalLessons, 0) ?? 0}</strong> completed course lessons in review</div>
+          <div className="rounded-2xl bg-white/8 px-4 py-3 text-sm text-[#d9e4f5]"><strong className="block text-lg text-white">{catalog?.reduce((sum, level) => sum + level.totalLessons, 0) ?? 0}</strong> completed course lessons in review</div>
         </div>
       </section>
 
       <div className="mt-6 grid gap-5 xl:grid-cols-[320px_minmax(0,1fr)]">
         <aside className="rounded-[1.5rem] border border-[#e2d8c5] bg-[#fffdf7] p-4 xl:sticky xl:top-24 xl:max-h-[calc(100vh-7rem)] xl:overflow-y-auto">
           <p className="px-2 text-xs font-bold uppercase tracking-[.16em] text-[#a2732c]">Completed levels</p>
-          <div className="mt-3 grid grid-cols-2 gap-2 xl:grid-cols-1">{catalogQuery.data?.map(level => <button key={level.code} onClick={() => chooseLevel(level.code as ReviewLevel)} className={cn("rounded-xl border px-3 py-3 text-left transition", selectedLevel === level.code ? "border-[#bf7f2f] bg-[#fff3ce] text-[#253453]" : "border-[#e8dfd0] bg-white hover:border-[#d8c7a8]")}><span className="text-sm font-bold">{level.code} · {level.title}</span><span dir="rtl" className="arabic mt-1 block text-xs text-[#68758a]">{level.titleArabic}</span><span className="mt-2 block text-xs text-[#7d899c]">{level.totalLessons} lessons · {level.modules.length} modules</span></button>)}</div>
-          {activeLevel && <div className="mt-6 border-t border-[#ebe3d5] pt-5">{activeLevel.modules.map(module => <div key={module.id} className="mb-4"><p className="px-2 text-[10px] font-bold uppercase tracking-[.16em] text-[#9a7743]">Module {module.moduleNumber} · {module.title}</p><div className="mt-2 space-y-1">{module.lessons.map(lesson => <button key={lesson.id} onClick={() => { setSelectedLesson(lesson.lessonNumber); setTab("overview"); }} className={cn("w-full rounded-lg px-2.5 py-2 text-left text-sm transition", selectedLesson === lesson.lessonNumber ? "bg-[#253453] text-white" : "hover:bg-[#f6f0e5]")}><span className="mr-2 text-xs opacity-70">{String(lesson.lessonNumber).padStart(2, "0")}</span>{lesson.title}</button>)}</div></div>)}</div>}
+          <div className="mt-3 grid grid-cols-2 gap-2 xl:grid-cols-1">{catalog?.map(level => <button key={level.code} onClick={() => chooseLevel(level.code as ReviewLevel)} className={cn("rounded-xl border px-3 py-3 text-left transition", selectedLevel === level.code ? "border-[#bf7f2f] bg-[#fff3ce] text-[#253453]" : "border-[#e8dfd0] bg-white hover:border-[#d8c7a8]")}><span className="text-sm font-bold">{level.code} · {level.title}</span><span dir="rtl" className="arabic mt-1 block text-xs text-[#68758a]">{level.titleArabic}</span><span className="mt-2 block text-xs text-[#7d899c]">{level.totalLessons} lessons · {level.modules.length} modules</span></button>)}</div>
+          {activeLevel && <div className="mt-6 border-t border-[#ebe3d5] pt-5">{activeLevel.modules.map((module: any) => <div key={module.id} className="mb-4"><p className="px-2 text-[10px] font-bold uppercase tracking-[.16em] text-[#9a7743]">Module {module.moduleNumber} · {module.title}</p><div className="mt-2 space-y-1">{module.lessons.map((lesson: any) => <button key={lesson.id} onClick={() => { setSelectedLesson(lesson.lessonNumber); setTab("overview"); }} className={cn("w-full rounded-lg px-2.5 py-2 text-left text-sm transition", selectedLesson === lesson.lessonNumber ? "bg-[#253453] text-white" : "hover:bg-[#f6f0e5]")}><span className="mr-2 text-xs opacity-70">{String(lesson.lessonNumber).padStart(2, "0")}</span>{lesson.title}</button>)}</div></div>)}</div>}
         </aside>
 
         <section className="min-w-0 rounded-[1.5rem] border border-[#e2d8c5] bg-[#fffdf7] p-5 sm:p-7">
-          {detailQuery.isLoading ? <LoadingReview /> : !detail ? <ReviewNotice title="Select a lesson" copy="Choose any lesson in the completed A1–B2 catalog to inspect its full stored content." /> : <>
+          {detailLoading ? <LoadingReview /> : !detail ? <ReviewNotice title="Select a lesson" copy="Choose any lesson in the completed A1–B2 catalog to inspect its full stored content." /> : <>
             <div className="flex flex-col gap-4 border-b border-[#ebe3d5] pb-6 sm:flex-row sm:items-start sm:justify-between"><div><p className="text-xs font-bold uppercase tracking-[.16em] text-[#a2732c]">{selectedLevel} · Lesson {String(selectedLesson).padStart(2, "0")}{detail.topic ? ` · ${detail.topic.title}` : ""}</p><h2 className="mt-2 text-2xl font-bold tracking-[-.04em] text-[#253453]">{detail.lesson.title}</h2><p dir="rtl" className="arabic mt-1 text-right text-base text-[#68758a]">{detail.lesson.titleArabic}</p></div><Button onClick={() => onOpenCourse(selectedLevel, selectedLesson)} className="rounded-xl bg-[#253453] text-white hover:bg-[#35476d]">Open learner view</Button></div>
             <div className="mt-5 flex gap-2 overflow-x-auto pb-1">{tabs.map(item => <button key={item.id} onClick={() => setTab(item.id)} className={cn("flex shrink-0 items-center gap-2 rounded-full px-3 py-2 text-xs font-bold transition", tab === item.id ? "bg-[#e7b84a] text-[#253453]" : "bg-[#f2ede2] text-[#59677d] hover:bg-[#e7dfcf]")}><span className="[&>svg]:h-3.5 [&>svg]:w-3.5">{item.icon}</span>{item.label}</button>)}</div>
             <div className="mt-6">{tab === "overview" && <Overview detail={detail} />}{tab === "language" && <Language detail={detail} />}{tab === "practice" && <Practice detail={detail} />}{tab === "assessment" && <Assessment detail={detail} />}</div>

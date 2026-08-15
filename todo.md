@@ -63,6 +63,8 @@
 - [x] Explicitly confirm the owner administrator-role grant with database evidence and retain protected API coverage.
 - [x] Build an administrator content-review area for browsing stored level, module, topic, lesson, practice, and assessment-bank content before release.
 - [x] Give the project owner immediate review-mode access to all completed A1, A2, B1, and B2 lesson content, including practice tasks and assessment items.
-- [ ] Verify in an authenticated session that the direct protected review URL loads the catalog and selected-lesson detail successfully.
-- [ ] Fix the administrator review detail request so the selected lesson resolves instead of remaining in a loading state.
+- [ ] Capture authenticated owner-session evidence that direct review dispatches successful catalog and lesson-detail requests after page load.
+- [x] Fix the administrator review loading issue by explicitly dispatching protected catalog and lesson-detail requests, then re-run visual verification.
+- [ ] Add UI-level regression coverage for direct review entry, catalog rendering, and selected-lesson detail resolution.
+- [x] Preserve the requested protected review URL through sign-in so the owner returns directly to review mode after authentication.
 - [x] Correct sidebar level navigation, active-level state, labels, and desktop/mobile behaviour so available course content is easy to inspect.

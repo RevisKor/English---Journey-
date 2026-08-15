@@ -1,6 +1,8 @@
 import { OAUTH_STATE_COOKIE, encodeOAuthState } from "@shared/const";
+import { POST_LOGIN_RETURN_KEY } from "@shared/auth-navigation";
 
 export { COOKIE_NAME, ONE_YEAR_MS } from "@shared/const";
+export { POST_LOGIN_RETURN_KEY, resolvePostLoginReturnPath } from "@shared/auth-navigation";
 
 // Start the Manus OAuth login. Call this from an event handler or effect at the
 // moment you want to navigate, e.g. `onClick={() => startLogin()}`.
@@ -16,6 +18,10 @@ export const startLogin = () => {
   const oauthPortalUrl = import.meta.env.VITE_OAUTH_PORTAL_URL;
   const appId = import.meta.env.VITE_APP_ID;
   const redirectUri = `${window.location.origin}/api/oauth/callback`;
+
+  try {
+    sessionStorage.setItem(POST_LOGIN_RETURN_KEY, `${window.location.pathname}${window.location.search}`);
+  } catch {}
 
   const nonce = crypto.randomUUID();
   document.cookie = `${OAUTH_STATE_COOKIE}=${nonce}; Path=/; Max-Age=600; SameSite=None; Secure`;

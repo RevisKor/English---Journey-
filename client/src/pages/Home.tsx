@@ -1,5 +1,5 @@
 import { useAuth } from "@/_core/hooks/useAuth";
-import { startLogin } from "@/const";
+import { POST_LOGIN_RETURN_KEY, resolvePostLoginReturnPath, startLogin } from "@/const";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { trpc } from "@/lib/trpc";
@@ -135,6 +135,17 @@ function AppShell() {
   const currentLesson = courseLessons.find((lesson) => !completedLessons.has(lesson.lessonNumber)) ?? courseLessons[0];
 
   useEffect(() => { if (isAuthenticated && !activeLesson) activityMutation.mutate(); }, [isAuthenticated]);
+
+  useEffect(() => {
+    if (!isAuthenticated) return;
+    try {
+      const returnPath = sessionStorage.getItem(POST_LOGIN_RETURN_KEY);
+      const currentPath = `${window.location.pathname}${window.location.search}`;
+      sessionStorage.removeItem(POST_LOGIN_RETURN_KEY);
+      const safeReturnPath = resolvePostLoginReturnPath(returnPath, currentPath);
+      if (safeReturnPath) window.location.replace(safeReturnPath);
+    } catch {}
+  }, [isAuthenticated]);
 
   if (!isAuthenticated) return <PublicHome />;
 
