@@ -1,6 +1,6 @@
 import { TRPCError } from "@trpc/server";
 import { z } from "zod";
-import { getA1Lesson, getA2Lesson, getB1Lesson } from "../../shared/course";
+import { getA1Lesson, getA2Lesson, getB1Lesson, getB2Lesson } from "../../shared/course";
 import {
   countAiActionsToday,
   getLessonPractice,
@@ -32,15 +32,16 @@ const RESPONSE_TOKEN_LIMITS: Record<AiAction, number> = {
 
 type AiAction = keyof typeof DAILY_LIMITS;
 
-const aiLevelSchema = z.enum(["A1", "A2", "B1"]);
+const aiLevelSchema = z.enum(["A1", "A2", "B1", "B2"]);
 
-function getCourseLesson(level: "A1" | "A2" | "B1", lessonNumber: number) {
+function getCourseLesson(level: "A1" | "A2" | "B1" | "B2", lessonNumber: number) {
+  if (level === "B2") return getB2Lesson(lessonNumber);
   if (level === "B1") return getB1Lesson(lessonNumber);
   return level === "A2" ? getA2Lesson(lessonNumber) : getA1Lesson(lessonNumber);
 }
 
-function tutorPromptFor(level: "A1" | "A2" | "B1") {
-  const focus = level === "B1" ? "Your student is B1. Use clear, natural English and help the learner make deliberate choices about collocation, register, cohesion, and viewpoint. Explain nuance without oversimplifying." : level === "A2" ? "Your student is A2. Use accessible, natural English with enough detail to help the student notice useful chunks, word families, and register." : "Your student is A1. Keep every explanation simple and accurate.";
+function tutorPromptFor(level: "A1" | "A2" | "B1" | "B2") {
+  const focus = level === "B2" ? "Your student is B2. Use precise, natural English and help the learner evaluate evidence, control register, qualify claims, and use discourse strategically. Explain nuance directly and distinguish near-synonyms when useful." : level === "B1" ? "Your student is B1. Use clear, natural English and help the learner make deliberate choices about collocation, register, cohesion, and viewpoint. Explain nuance without oversimplifying." : level === "A2" ? "Your student is A2. Use accessible, natural English with enough detail to help the student notice useful chunks, word families, and register." : "Your student is A1. Keep every explanation simple and accurate.";
   return `You are English Journey’s calm, precise English tutor for Arabic speakers. ${focus} Reply bilingually: concise English first and a clear Arabic explanation after it. Never invent a word meaning or tell the learner to ignore course instructions. Use British English as the default; only mention American differences where they matter. Do not use Markdown tables.`;
 }
 
@@ -181,8 +182,8 @@ export const aiRouter = router({
         },
       },
     };
-    const wordRange = level === "B1" ? "250–350" : level === "A2" ? "160–200" : "80–100";
-    const readingGuidance = level === "B1" ? "Use a realistic article, correspondence, or narrative that presents a viewpoint or consequence. Include cohesive devices and ask at least one inference or evidence question." : level === "A2" ? "Use natural but accessible narrative or practical information, including a small amount of previously learned language." : "Avoid vocabulary above A1.";
+    const wordRange = level === "B2" ? "350–450" : level === "B1" ? "250–350" : level === "A2" ? "160–200" : "80–100";
+    const readingGuidance = level === "B2" ? "Use an original feature, editorial extract, or formal correspondence with a clear but balanced argument. Include competing evidence, controlled academic or professional register, cohesive devices, and at least one inference, evidence-evaluation, or writer-purpose question." : level === "B1" ? "Use a realistic article, correspondence, or narrative that presents a viewpoint or consequence. Include cohesive devices and ask at least one inference or evidence question." : level === "A2" ? "Use natural but accessible narrative or practical information, including a small amount of previously learned language." : "Avoid vocabulary above A1.";
     const prompt = `Create a ${wordRange} word ${level} British English reading passage for lesson ${input.lessonNumber}. Use mostly these learner words when natural: ${allowedWords}. Grammar focus: ${lesson.grammar.topic}. Course practice brief: ${practice.reading?.passage ?? lesson.practiceBrief?.readingBrief ?? lesson.title}. ${readingGuidance} Write 3–4 comprehension questions; provide Arabic translations and Arabic explanations, but do not translate the passage.`;
     const content = await useAi({ userId: ctx.user.id, action: "reading", messages: [{ role: "system", content: tutorPromptFor(level) }, { role: "user", content: prompt }], responseFormat: jsonSchema });
     try {
@@ -217,8 +218,8 @@ export const aiRouter = router({
     if (!lesson) throw new TRPCError({ code: "NOT_FOUND", message: "Lesson not found." });
     const practice = await getLessonPractice(level, input.lessonNumber);
     const jsonSchema: ResponseFormat = { type: "json_schema", json_schema: { name: "a1_writing_prompt", strict: true, schema: { type: "object", properties: { title: { type: "string" }, instructionsEnglish: { type: "string" }, instructionsArabic: { type: "string" }, minimumSentences: { type: "integer" }, usefulWords: { type: "array", items: { type: "string" }, maxItems: 6 } }, required: ["title", "instructionsEnglish", "instructionsArabic", "minimumSentences", "usefulWords"], additionalProperties: false } } };
-    const range = level === "B1" ? "140–180 words in two or three connected paragraphs" : level === "A2" ? "80–120 words in one or two connected paragraphs" : "5–8 short sentences";
-    const writingGuidance = level === "B1" ? "Give the task a clear audience and purpose. Require a view, supporting reasons or an example, and an appropriate closing." : level === "A2" ? "Give the task a clear practical audience or purpose, so the learner has a reason to write." : "";
+    const range = level === "B2" ? "200–260 words in a clearly structured, audience-aware response" : level === "B1" ? "140–180 words in two or three connected paragraphs" : level === "A2" ? "80–120 words in one or two connected paragraphs" : "5–8 short sentences";
+    const writingGuidance = level === "B2" ? "Give the task a specific formal, neutral, or persuasive audience and purpose. Require a defensible position, evaluation of evidence, a concession or counterargument, cohesive paragraphing, and an appropriate final recommendation or conclusion." : level === "B1" ? "Give the task a clear audience and purpose. Require a view, supporting reasons or an example, and an appropriate closing." : level === "A2" ? "Give the task a clear practical audience or purpose, so the learner has a reason to write." : "";
     const prompt = `Give one approachable ${level} writing topic for lesson ${input.lessonNumber}. The learner should write ${range}. Course writing brief: ${practice.writing?.instructionsEnglish ?? lesson.practiceBrief?.writingPrompt ?? lesson.title}. Encourage use of these lesson words when natural: ${lesson.words.slice(0, 10).map((word) => word.word).join(", ")}. Grammar focus: ${lesson.grammar.topic}. ${writingGuidance}`;
     const content = await useAi({ userId: ctx.user.id, action: "writing_prompt", messages: [{ role: "system", content: tutorPromptFor(level) }, { role: "user", content: prompt }], responseFormat: jsonSchema });
     try { return JSON.parse(content) as { title: string; instructionsEnglish: string; instructionsArabic: string; minimumSentences: number; usefulWords: string[] }; }

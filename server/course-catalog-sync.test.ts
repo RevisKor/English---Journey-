@@ -10,7 +10,7 @@ import {
   lessonVocabulary,
   lessonWritingTasks,
 } from "../drizzle/schema";
-import { A1_COURSE, A2_COURSE, B1_COURSE } from "../shared/course";
+import { A1_COURSE, A2_COURSE, B1_COURSE, B2_COURSE } from "../shared/course";
 
 const state = vi.hoisted(() => ({
   inserts: [] as Array<{ table: unknown; values: unknown }>,
@@ -66,7 +66,7 @@ describe("curriculum catalog practice persistence", () => {
   it("inserts reading and writing records for every integrated lesson, then updates those same rows on focused practice sync", async () => {
     await ensureCurriculumCatalog();
 
-    const integratedCourses = [A1_COURSE, A2_COURSE, B1_COURSE];
+    const integratedCourses = [A1_COURSE, A2_COURSE, B1_COURSE, B2_COURSE];
     const integratedLessonCount = integratedCourses.reduce((total, course) => total + course.lessons.length, 0);
     expect(state.inserts.filter((entry) => entry.table === lessonReadings)).toHaveLength(integratedLessonCount);
     expect(state.inserts.filter((entry) => entry.table === lessonWritingTasks)).toHaveLength(integratedLessonCount);

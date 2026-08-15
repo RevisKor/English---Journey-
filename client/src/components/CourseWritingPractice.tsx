@@ -6,9 +6,9 @@ import { useEffect, useState } from "react";
 type WritingPrompt = { title: string; titleArabic: string; prompt: string; promptArabic: string; guidance: string[] };
 
 export function CourseWritingPractice({ lesson }: { lesson: LessonDefinition }) {
-  const level = lesson.level as "A1" | "A2" | "B1";
-  const targetLength = level === "A1" ? "35–60 words" : level === "A2" ? "80–120 words" : "140–180 words";
-  const minimumDraftWords = level === "A1" ? 10 : level === "A2" ? 30 : 110;
+  const level = lesson.level as "A1" | "A2" | "B1" | "B2";
+  const targetLength = level === "A1" ? "35–60 words" : level === "A2" ? "80–120 words" : level === "B1" ? "140–180 words" : "200–260 words";
+  const minimumDraftWords = level === "A1" ? 10 : level === "A2" ? 30 : level === "B1" ? 110 : 170;
   const [task, setTask] = useState<WritingPrompt | null>(null);
   const [draft, setDraft] = useState("");
   const promptMutation = trpc.ai.writingPrompt.useMutation({ onSuccess: (data) => setTask({ title: data.title, titleArabic: data.title, prompt: data.instructionsEnglish, promptArabic: data.instructionsArabic, guidance: [`Write at least ${data.minimumSentences} connected sentences.`, ...data.usefulWords.map((word) => `Try to use: ${word}`)] }) });

@@ -53,7 +53,8 @@
 - [x] Verify focused structured-practice synchronization writes the expected reading and writing payloads for representative A1/A2 lessons.
 - [x] Verify deterministic per-lesson reading and writing payload mapping across all 40 A1/A2 lessons during a focused practice re-sync.
 - [x] Author, integrate, and validate 24 B1 lessons across four cumulative modules with English-first support and structured performance tasks.
-- [ ] Author, integrate, and validate 24 B2 lessons across four cumulative modules with register, argument, and discourse-focused tasks.
+- [x] Author, integrate, and validate 24 B2 lessons across four cumulative modules with register, argument, and discourse-focused tasks.
+- [x] Correct the B2 dashboard rendering path so the active B2 view displays its B2 lesson map and course metadata rather than the A1 map.
 - [ ] Author, integrate, and validate 20 C1 lessons across four cumulative modules with nuanced, source-aware reading and writing tasks.
 - [ ] Author, integrate, and validate 16 C2 lessons across four cumulative modules with flexible mastery, synthesis, and culturally aware language tasks.
 - [ ] Improve the server-side AI tutor’s level-specific prompting, response schemas, latency safeguards, and quality validation without exposing API credentials to learners.

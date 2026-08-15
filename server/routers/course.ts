@@ -11,8 +11,8 @@ import {
 } from "../db";
 import { getOrCreateAssessmentInstance, gradeAssessmentInstance } from "../assessment-instances";
 import {
-  A1_COURSE, A1_GRAMMAR, A1_VOCABULARY, A2_COURSE, A2_GRAMMAR, A2_VOCABULARY, B1_COURSE, B1_GRAMMAR, B1_VOCABULARY,
-  buildA2LessonQuiz, buildA2ModuleTest, buildB1LessonQuiz, buildB1ModuleTest, buildLessonQuiz, buildModuleTest,
+  A1_COURSE, A1_GRAMMAR, A1_VOCABULARY, A2_COURSE, A2_GRAMMAR, A2_VOCABULARY, B1_COURSE, B1_GRAMMAR, B1_VOCABULARY, B2_COURSE, B2_GRAMMAR, B2_VOCABULARY,
+  buildA2LessonQuiz, buildA2ModuleTest, buildB1LessonQuiz, buildB1ModuleTest, buildB2LessonQuiz, buildB2ModuleTest, buildLessonQuiz, buildModuleTest,
 } from "../../shared/course";
 import { protectedProcedure, router } from "../_core/trpc";
 
@@ -21,6 +21,7 @@ const levelSchema = z.enum(["A1", "A2", "B1", "B2", "C1", "C2"]);
 function materialForLevel(level: "A1" | "A2" | "B1" | "B2" | "C1" | "C2") {
   if (level === "A2") return { course: A2_COURSE, vocabulary: A2_VOCABULARY, grammar: A2_GRAMMAR, lessonQuiz: buildA2LessonQuiz, moduleTest: buildA2ModuleTest };
   if (level === "B1") return { course: B1_COURSE, vocabulary: B1_VOCABULARY, grammar: B1_GRAMMAR, lessonQuiz: buildB1LessonQuiz, moduleTest: buildB1ModuleTest };
+  if (level === "B2") return { course: B2_COURSE, vocabulary: B2_VOCABULARY, grammar: B2_GRAMMAR, lessonQuiz: buildB2LessonQuiz, moduleTest: buildB2ModuleTest };
   return { course: A1_COURSE, vocabulary: A1_VOCABULARY, grammar: A1_GRAMMAR, lessonQuiz: buildLessonQuiz, moduleTest: buildModuleTest };
 }
 
@@ -95,7 +96,7 @@ export const courseRouter = router({
       scope: { level, assessmentType: "module_test", moduleNumber: input.moduleNumber },
       answers: input.answers,
     });
-    return submitLessonAssessment({ userId: ctx.user.id, level, lessonNumber: input.moduleNumber * material.course.lessonsPerModule, assessmentType: "module_test", assessmentInstanceId: input.assessmentInstanceId, score: graded.score, answers: input.answers, missedItemKeys: graded.missedItemKeys });
+    return submitLessonAssessment({ userId: ctx.user.id, level, lessonNumber: input.moduleNumber * material.course.lessonsPerModule, assessmentType: "module_test", assessmentInstanceId: input.assessmentInstanceId, score: graded.score, answers: input.answers, missedItemKeys: graded.missedItemKeys, moduleNumber: input.moduleNumber, lessonsPerModule: material.course.lessonsPerModule });
   }),
 
   warmup: protectedProcedure.input(z.object({ level: levelSchema.optional() }).optional()).query(async ({ ctx, input }) => {

@@ -286,6 +286,8 @@ export async function submitLessonAssessment(input: {
   score: number;
   answers: Record<string, string>;
   missedItemKeys: string[];
+  moduleNumber?: number;
+  lessonsPerModule?: number;
 }) {
   const db = await getDb();
   if (!db) throw new Error("Database unavailable");
@@ -307,10 +309,11 @@ export async function submitLessonAssessment(input: {
     await recordLearnerActivity(input.userId);
     return { passed, firstPass, xpAwarded: plan.xpAwarded, profile };
   }
-  const moduleNumber = Math.ceil(input.lessonNumber / 5);
+  const lessonsPerModule = input.lessonsPerModule ?? 5;
+  const moduleNumber = input.moduleNumber ?? Math.ceil(input.lessonNumber / lessonsPerModule);
   const moduleLessons = await db.select().from(lessonProgress).where(and(eq(lessonProgress.userId, input.userId), eq(lessonProgress.level, input.level)));
-  const allLessonsComplete = hasCompletedModuleLessons(moduleLessons, moduleNumber);
-  if (!allLessonsComplete) throw new Error("Complete all five module lessons before taking this test.");
+  const allLessonsComplete = hasCompletedModuleLessons(moduleLessons, moduleNumber, lessonsPerModule);
+  if (!allLessonsComplete) throw new Error(`Complete all ${lessonsPerModule} module lessons before taking this test.`);
   const existingModule = await db.select().from(moduleProgress).where(and(eq(moduleProgress.userId, input.userId), eq(moduleProgress.level, input.level), eq(moduleProgress.moduleNumber, moduleNumber))).limit(1);
   const plan = moduleAssessmentPlan(input.score, Boolean(existingModule[0]?.testPassedAt));
   const { passed, firstPass } = plan;

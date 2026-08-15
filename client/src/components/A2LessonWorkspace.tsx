@@ -26,8 +26,8 @@ export function StructuredLessonWorkspace({ lesson, accent, onBack }: { lesson: 
   const sentenceMutation = { ...rawSentenceMutation, data: rawSentenceMutation.data ? { feedbackArabic: rawSentenceMutation.data.content, correctedSentence: rawSentenceMutation.data.content } : undefined };
   const network = lesson.lexicalNetworks?.[0];
   const routeSteps = lesson.learningPlan?.steps?.map((item, index) => ({ id: (index + 1) as Step, title: item.title, arabic: item.titleArabic, minutes: `${item.estimatedMinutes} min` })) ?? fallbackSteps;
-  const isB1 = lesson.level === "B1";
-  const aiLevel = lesson.level as "A1" | "A2" | "B1";
+  const isB1 = lesson.level === "B1" || lesson.level === "B2";
+  const aiLevel = lesson.level as "A1" | "A2" | "B1" | "B2";
   const speak = (text: string) => {
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = accent === "british" ? "en-GB" : "en-US";
