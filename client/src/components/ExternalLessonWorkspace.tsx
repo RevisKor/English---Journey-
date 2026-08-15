@@ -7,7 +7,7 @@ import { buildSentenceReviewPrompt, buildWordHelpPrompt } from "@/lib/external-a
 import { cn } from "@/lib/utils";
 import type { CefrLevel, LessonDefinition, VocabularyItem } from "@shared/course";
 import { ArrowLeft, BookOpen, Headphones, Languages, PenLine, Trophy, Volume2 } from "lucide-react";
-import { useState } from "react";
+import React, { useState } from "react";
 
 type Accent = "british" | "american";
 type Tab = "words" | "grammar" | "speak" | "reading" | "writing" | "quiz";

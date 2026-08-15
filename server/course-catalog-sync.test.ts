@@ -10,7 +10,7 @@ import {
   lessonVocabulary,
   lessonWritingTasks,
 } from "../drizzle/schema";
-import { A1_COURSE, A2_COURSE, B1_COURSE, B2_COURSE, C1_COURSE } from "../shared/course";
+import { A1_COURSE, A2_COURSE, B1_COURSE, B2_COURSE, C1_COURSE, C2_COURSE } from "../shared/course";
 
 const state = vi.hoisted(() => ({
   inserts: [] as Array<{ table: unknown; values: unknown }>,
@@ -27,7 +27,7 @@ const fakeDb = {
         limit: async () => {
           if (table === courseLevels) {
             state.courseLevelLookups += 1;
-            return [{ id: state.courseLevelLookups === 1 ? 1 : 2 }];
+            return [{ id: state.courseLevelLookups }];
           }
           if (table === courseLessons) return [{ id: ++state.lessonId }];
           if (table === courseModules || table === courseTopics) return [{ id: 1 }];
@@ -66,10 +66,14 @@ describe("curriculum catalog practice persistence", () => {
   it("inserts reading and writing records for every integrated lesson, then updates those same rows on focused practice sync", async () => {
     await ensureCurriculumCatalog();
 
-    const integratedCourses = [A1_COURSE, A2_COURSE, B1_COURSE, B2_COURSE, C1_COURSE];
+    const integratedCourses = [A1_COURSE, A2_COURSE, B1_COURSE, B2_COURSE, C1_COURSE, C2_COURSE];
     const integratedLessonCount = integratedCourses.reduce((total, course) => total + course.lessons.length, 0);
     expect(state.inserts.filter((entry) => entry.table === lessonReadings)).toHaveLength(integratedLessonCount);
     expect(state.inserts.filter((entry) => entry.table === lessonWritingTasks)).toHaveLength(integratedLessonCount);
+    const persistedC1Modules = state.inserts.filter((entry) => entry.table === courseModules && (entry.values as { levelId?: number }).levelId === 5);
+    const persistedC1Lessons = state.inserts.filter((entry) => entry.table === courseLessons && (entry.values as { levelId?: number }).levelId === 5);
+    expect(persistedC1Modules).toHaveLength(4);
+    expect(persistedC1Lessons).toHaveLength(20);
     expect(state.inserts.some((entry) => entry.table === lessonVocabulary)).toBe(true);
     expect(state.inserts.some((entry) => entry.table === lessonGrammar)).toBe(true);
     expect(state.inserts.some((entry) => entry.table === assessmentQuestionBank)).toBe(true);

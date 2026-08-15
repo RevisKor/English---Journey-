@@ -80,7 +80,7 @@ export type MentorMoment = {
 };
 
 export type LessonMentorGuide = {
-  level: Exclude<CefrLevel, "A1">;
+  level: CefrLevel;
   lessonTitle: string;
   moments: MentorMoment[];
 };

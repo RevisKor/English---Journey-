@@ -36,6 +36,8 @@ import { C1_COURSE, C1_LESSONS } from "./c1";
       expect(lesson.learningPlan?.retrieval.every((item) => item.sourceLevel === "B2")).toBe(true);
       expect(lesson.practiceBrief?.readingBrief.length).toBeGreaterThan(90);
       expect(lesson.practiceBrief?.writingPrompt.length).toBeGreaterThan(90);
+      expect(lesson.practiceBrief?.readingBrief).toMatch(/source|evidence|claim|perspective|assumption|context|inference/i);
+      expect(lesson.practiceBrief?.writingPrompt).toMatch(/argue|evaluate|synthesi|justify|propose|critique|evidence|audience/i);
     }
   });
 });

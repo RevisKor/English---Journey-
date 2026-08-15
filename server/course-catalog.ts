@@ -5,6 +5,7 @@ import {
   B1_COURSE,
   B2_COURSE,
   C1_COURSE,
+  C2_COURSE,
   type CefrLevel,
   type CourseDefinition,
   type LessonDefinition,
@@ -23,8 +24,9 @@ import {
 } from "../drizzle/schema";
 import { getDb } from "./db";
 import { buildAssessmentVariants } from "../shared/course/assessment-questions";
+import { moduleTheme } from "../shared/course/module-guidance";
 
-const LEGACY_COURSES: CourseDefinition[] = [A1_COURSE, A2_COURSE, B1_COURSE, B2_COURSE, C1_COURSE];
+const LEGACY_COURSES: CourseDefinition[] = [A1_COURSE, A2_COURSE, B1_COURSE, B2_COURSE, C1_COURSE, C2_COURSE];
 const SYNC_VERSION = 2;
 let syncPromise: Promise<void> | null = null;
 
@@ -111,15 +113,16 @@ async function syncCourse(course: CourseDefinition) {
 
   for (let moduleNumber = 1; moduleNumber <= Math.ceil(course.totalLessons / course.lessonsPerModule); moduleNumber += 1) {
     const moduleLessons = course.lessons.filter((lesson) => lesson.moduleNumber === moduleNumber);
-    const moduleTitle = `Module ${moduleNumber}: ${moduleLessons[0]?.title ?? "Course practice"}`;
-    const moduleTitleArabic = `الوحدة ${moduleNumber}: ${moduleLessons[0]?.titleArabic ?? "تطبيقات الدورة"}`;
+    const theme = moduleTheme(course.level, moduleNumber);
+    const moduleTitle = `${theme.title}`;
+    const moduleTitleArabic = `${theme.titleArabic}`;
     await db.insert(courseModules).values({
       levelId: level.id,
       moduleNumber,
       title: moduleTitle,
       titleArabic: moduleTitleArabic,
-      overview: `A cumulative ${course.level} module connecting vocabulary, grammar, reading, and writing through practical tasks.`,
-      overviewArabic: `وحدة تراكمية في مستوى ${course.level} تربط المفردات والقواعد والقراءة والكتابة بمهام عملية.`,
+      overview: theme.overview,
+      overviewArabic: theme.overviewArabic,
     }).onDuplicateKeyUpdate({ set: { title: moduleTitle, titleArabic: moduleTitleArabic } });
     const module = await selectOne(db.select().from(courseModules).where(and(eq(courseModules.levelId, level.id), eq(courseModules.moduleNumber, moduleNumber))).limit(1), `Module ${moduleNumber} was not saved.`) as typeof courseModules.$inferSelect;
 
@@ -224,7 +227,7 @@ async function syncCourse(course: CourseDefinition) {
             assessmentType,
             objectiveKey: question.reviewItemKey,
             itemType: question.assessmentFocus,
-            difficulty: course.level === "A1" ? 1 : course.level === "A2" ? 2 : course.level === "B1" ? 3 : 4,
+            difficulty: course.level === "A1" ? 1 : course.level === "A2" ? 2 : course.level === "B1" ? 3 : course.level === "B2" ? 4 : course.level === "C1" ? 5 : 6,
             questionData: question as unknown as Record<string, unknown>,
             reviewItemKey: question.reviewItemKey,
             contentVersion: SYNC_VERSION,
@@ -297,7 +300,7 @@ export async function syncAssessmentQuestionBanks() {
               assessmentType,
               objectiveKey: question.reviewItemKey,
               itemType: question.assessmentFocus,
-              difficulty: course.level === "A1" ? 1 : course.level === "A2" ? 2 : course.level === "B1" ? 3 : 4,
+              difficulty: course.level === "A1" ? 1 : course.level === "A2" ? 2 : course.level === "B1" ? 3 : course.level === "B2" ? 4 : course.level === "C1" ? 5 : 6,
               questionData: question as unknown as Record<string, unknown>,
               reviewItemKey: question.reviewItemKey,
               contentVersion: SYNC_VERSION,

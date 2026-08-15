@@ -47,13 +47,53 @@
 - [x] Add and verify A2–B2 mentor previews on the course map before learners enter a lesson.
 - [x] Capture authenticated desktop and mobile evidence that A2, B1, and B2 course maps render the bilingual mentor preview before lesson entry.
 - [x] Add focused regression coverage for the A2–B2 course-map mentor preview content and lesson-entry call to action.
-- [ ] Extend the mentor-guidance model and continuous lesson journey to C1 and C2 after those levels are authored.
+- [x] Extend the mentor-guidance model and continuous lesson journey to C1 and C2 after those levels are authored.
+- [x] Verify all 20 C1 lessons contain nuanced, source-aware reading passages and writing tasks.
+- [x] Run a successful C1 catalog synchronization and verify four persisted modules and 20 persisted lessons.
+- [x] Capture authenticated C1 course-map mentor-preview and guided-lesson evidence.
 - [ ] Capture authenticated owner-session evidence that direct review dispatches successful catalog and lesson-detail requests after page load.
 - [ ] Add UI-level regression coverage for direct review entry, catalog rendering, and selected-lesson detail resolution.
-- [ ] Author, integrate, and validate 20 C1 lessons across four cumulative modules with nuanced, source-aware reading and writing tasks.
-- [ ] Author, integrate, and validate 16 C2 lessons across four cumulative modules with flexible mastery, synthesis, and culturally aware language tasks.
+- [x] Author, integrate, and validate 20 C1 lessons across four cumulative modules with nuanced, source-aware reading and writing tasks.
+- [x] Add C1 to the authenticated learner dashboard, level navigation, guided lesson dispatcher, progress queries, and mentor preview route.
+- [x] Author, integrate, and validate 16 C2 lessons across four cumulative modules with flexible mastery, synthesis, and culturally aware language tasks.
 - [ ] Decide whether to retain the dormant server-side AI router or remove it entirely after the external-AI prompt migration.
 - [ ] Test complete A1–C2 navigation, gated progression, personalized assessments, learner feedback, responsive UI, keyboard use, Arabic-support behavior, and automated rules.
+- [ ] Present lesson quizzes in a modal session after study, with score review, right/wrong explanations, clear pass/fail actions, and an unlocked next-lesson action only after passing.
+- [ ] Add an Arabic sentence-explanation hint action during contextual quiz questions without revealing the answer.
+- [x] Apply mentor-guided A1 lesson introductions and transitions while preserving the beginner bilingual experience.
+- [ ] Add longer milestone quizzes at level-appropriate checkpoints for every available level, plus cumulative module tests covering each level’s full learned curriculum.
+- [x] Add first-use course tutorial guidance for every available level and a reusable help button to reopen it when a learner is stuck.
 - [ ] Document the expanded course architecture, save a verified final checkpoint, and provide a full user handoff.
 
 > Note: “Uncapped” refers only to the application’s former per-user daily quotas. The current learner experience uses copyable prompts and does not invoke the model from the browser; any external AI service chosen by a learner has its own terms and privacy policy.
+- [x] Wire A1 lessons into the mentor-guided workspace or render all A1 mentor moments inside the beginner lesson workspace.
+- [x] Update the shared LessonMentorGuide contract so A1 is an official supported level without a type cast.
+- [x] Add UI-facing regression coverage proving the A1 lesson route renders mentor introduction and transition content.
+- [x] Implement longer milestone and cumulative assessment behavior for every authored level with coverage for question counts and gates.
+- [x] Implement reusable first-use tutorial state and a reopenable help action across every authored level.
+- [x] Author and integrate the 16-lesson C2 curriculum with catalog synchronization, mentor flow, and validation.
+- [x] Remove the remaining LessonMentorGuide level cast and validate the shared contract.
+- [ ] Separate milestone assessments from gated cumulative module tests so lesson 5/10/15/20 checkpoints work correctly at every authored level.
+- [ ] Make the tutorial reopen action available on mobile and add regression coverage for first-open and manual reopen behavior.
+- [x] Research and document CEFR-aligned skill progression and leading-course design references for the expanded curriculum.
+- [x] Author and integrate C1 content with richer reading, writing, pronunciation, grammar, vocabulary, and mentor-led lesson sequencing.
+- [x] Author and integrate 16 C2 lessons with advanced reading, writing, pronunciation, grammar, vocabulary, and mentor-led sequencing.
+- [x] Expand A1–C2 course architecture toward named thematic modules with vocabulary-centered lessons and varied skill strands.
+- [x] Add themed content such as animals, professions, and everyday domains at appropriate CEFR levels without weakening progression gates.
+- [ ] Validate the expanded A1–C2 catalog, database sync, question banks, mentor previews, mobile layout, Arabic support, and personalized assessments.
+- [x] Prioritize C1 curriculum authoring and integration before broad lower-level content expansion.
+- [x] Prioritize C2 curriculum authoring and integration immediately after C1, including the final 16-lesson sequence.
+- [x] Restructure authored levels into richer named modules with coherent lesson arcs and varied skill strands.
+- [ ] Increase Arabic scaffolding in the first-use tutorial and early-level lessons, explanations, transitions, and learner prompts; preserve gradual English-first progression at higher levels.
+- [x] Add C1 and C2 mentor-guidance regression coverage proving bilingual mentor guides and course-map previews.
+- [x] Run and document a C1-specific catalog sync verification asserting four persisted modules and 20 persisted lessons.
+- [x] Capture or automate C1 course-map mentor-preview and direct guided-lesson entry evidence.
+- [x] Add direct C2 curriculum and assessment-builder regression coverage to the shared test suite.
+- [x] Add explicit curriculum and assessment coverage for animals, professions, and everyday-domain themes at appropriate levels.
+- [x] Add a C1-focused persistence mock asserting exactly four module rows and twenty lesson rows after synchronization.
+- [x] Add UI-level C1 course-map mentor-preview and direct guided-lesson route coverage.
+- [x] Reflect named thematic modules in learner-facing course-map rendering and lesson arcs, not only persisted metadata.
+- [x] Add automated UI-level coverage for C1 course-map mentor preview and direct `?level=C1&lesson=1` guided-workspace entry.
+- [x] Add authenticated Home/App-level regression coverage for C1 mentor preview, query parsing, and direct lesson workspace entry before the next checkpoint.
+- [x] Include client `.test.tsx` files in Vitest discovery and execute an authenticated Home/App render regression for C1 mentor preview and direct lesson entry.
+- [x] Add a Vitest UI regression that mounts the authenticated Home/AppShell with mocked auth and tRPC state, verifies the C1 mentor preview, and confirms `?level=C1&lesson=1` opens the guided workspace.

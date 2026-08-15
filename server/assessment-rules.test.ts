@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { hasCompletedModuleLessons, lessonAssessmentPlan, moduleAssessmentPlan, nextDailyStreak, passesAssessment } from "./db";
+import { assessmentTargetCount } from "./assessment-instances";
 
 describe("assessment progression rules", () => {
   it("requires at least 80 percent to pass", () => {
@@ -29,5 +30,14 @@ describe("assessment progression rules", () => {
   it("awards module XP only on the first successful module test", () => {
     expect(moduleAssessmentPlan(90, false)).toMatchObject({ passed: true, firstPass: true, xpAwarded: 80 });
     expect(moduleAssessmentPlan(90, true)).toMatchObject({ passed: true, firstPass: false, xpAwarded: 0 });
+  });
+
+  it("uses longer milestone quizzes and cumulative module tests for every CEFR level", () => {
+    for (const level of ["A1", "A2", "B1", "B2", "C1", "C2"]) {
+      expect(assessmentTargetCount({ level, assessmentType: "lesson_quiz", lessonNumber: 4 })).toBe(8);
+      expect(assessmentTargetCount({ level, assessmentType: "lesson_quiz", lessonNumber: 5 })).toBe(15);
+      expect(assessmentTargetCount({ level, assessmentType: "lesson_quiz", lessonNumber: 20 })).toBe(15);
+      expect(assessmentTargetCount({ level, assessmentType: "module_test", moduleNumber: 1 })).toBe(20);
+    }
   });
 });

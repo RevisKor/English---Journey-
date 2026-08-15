@@ -1,11 +1,11 @@
-export type AvailableCourseLevel = "A1" | "A2" | "B1" | "B2";
+export type AvailableCourseLevel = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
 
 export type CourseRoute = {
   level: AvailableCourseLevel;
   lessonNumber: number | null;
 };
 
-const availableLevels = new Set<AvailableCourseLevel>(["A1", "A2", "B1", "B2"]);
+const availableLevels = new Set<AvailableCourseLevel>(["A1", "A2", "B1", "B2", "C1", "C2"]);
 
 export function resolveCourseRoute(search: string): CourseRoute {
   const params = new URLSearchParams(search);

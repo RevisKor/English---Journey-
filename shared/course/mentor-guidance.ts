@@ -1,8 +1,16 @@
 import type { LessonDefinition, LessonMentorGuide, MentorMoment } from "./types";
 
-type SupportedLevel = Exclude<LessonDefinition["level"], "A1" | "C1" | "C2"> | "C1" | "C2";
+type SupportedLevel = LessonDefinition["level"];
 
 const levelVoice: Record<SupportedLevel, { opening: string; openingArabic: string; grammar: string; grammarArabic: string; check: string; checkArabic: string }> = {
+  A1: {
+    opening: "Welcome to your first English steps. We will move slowly and kindly: meet a few useful words, notice one small pattern, and use it before we add something new.",
+    openingArabic: "مرحباً بك في خطواتك الأولى في الإنجليزية. سنتقدم بهدوء وبطريقة لطيفة: نتعرّف على كلمات مفيدة، ونلاحظ قاعدة صغيرة، ثم نستخدمها قبل أن نضيف شيئاً جديداً.",
+    grammar: "Grammar is a small frame that helps your new words stand together. Look at the example, say it aloud, and then change one part to make it yours.",
+    grammarArabic: "القواعد إطار صغير يساعد كلماتك الجديدة على الوقوف معاً. انظر إلى المثال، وانطقه بصوت عالٍ، ثم غيّر جزءاً واحداً ليصبح التعبير خاصاً بك.",
+    check: "This check is a friendly practice, not a judgement. Choose what fits the sentence, and use any mistake as a sign showing you what to practise next.",
+    checkArabic: "هذا الاختبار تدريب ودّي وليس حكماً عليك. اختر ما يناسب الجملة، واعتبر الخطأ إشارة توضّح لك ما الذي تتدرّب عليه بعد ذلك.",
+  },
   A2: {
     opening: "At A2, small choices begin to make your English sound connected and useful. We are not rushing through a list; we are building language you can recognise and use again.",
     openingArabic: "في مستوى A2، تبدأ الخيارات الصغيرة في جعل لغتك الإنجليزية مترابطة ومفيدة. نحن لا نمر سريعاً على قائمة، بل نبني لغة تتعرّف عليها وتستخدمها من جديد.",
@@ -46,7 +54,6 @@ const levelVoice: Record<SupportedLevel, { opening: string; openingArabic: strin
 };
 
 function guideForLevel(lesson: LessonDefinition) {
-  if (lesson.level === "A1") return null;
   return levelVoice[lesson.level];
 }
 
@@ -109,7 +116,7 @@ export function buildMentorGuide(lesson: LessonDefinition): LessonMentorGuide | 
       messageArabic: voice.checkArabic,
     },
   ];
-  return { level: lesson.level as LessonMentorGuide["level"], lessonTitle: lesson.title, moments };
+  return { level: lesson.level, lessonTitle: lesson.title, moments };
 }
 
 export function buildCourseMapMentorPreview(lesson: LessonDefinition) {

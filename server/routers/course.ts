@@ -70,7 +70,8 @@ export const courseRouter = router({
       scope: { level, assessmentType: "lesson_quiz", lessonNumber: input.lessonNumber },
       answers: input.answers,
     });
-    return submitLessonAssessment({ userId: ctx.user.id, level, lessonNumber: input.lessonNumber, assessmentType: "lesson_quiz", assessmentInstanceId: input.assessmentInstanceId, score: graded.score, answers: input.answers, missedItemKeys: graded.missedItemKeys });
+    const saved = await submitLessonAssessment({ userId: ctx.user.id, level, lessonNumber: input.lessonNumber, assessmentType: "lesson_quiz", assessmentInstanceId: input.assessmentInstanceId, score: graded.score, answers: input.answers, missedItemKeys: graded.missedItemKeys });
+    return { ...saved, score: graded.score, questionReview: graded.questionReview };
   }),
 
   moduleTest: protectedProcedure.input(z.object({ level: levelSchema.optional(), moduleNumber: z.number().int().min(1).max(4) })).query(async ({ ctx, input }) => {
@@ -97,7 +98,8 @@ export const courseRouter = router({
       scope: { level, assessmentType: "module_test", moduleNumber: input.moduleNumber },
       answers: input.answers,
     });
-    return submitLessonAssessment({ userId: ctx.user.id, level, lessonNumber: input.moduleNumber * material.course.lessonsPerModule, assessmentType: "module_test", assessmentInstanceId: input.assessmentInstanceId, score: graded.score, answers: input.answers, missedItemKeys: graded.missedItemKeys, moduleNumber: input.moduleNumber, lessonsPerModule: material.course.lessonsPerModule });
+    const saved = await submitLessonAssessment({ userId: ctx.user.id, level, lessonNumber: input.moduleNumber * material.course.lessonsPerModule, assessmentType: "module_test", assessmentInstanceId: input.assessmentInstanceId, score: graded.score, answers: input.answers, missedItemKeys: graded.missedItemKeys, moduleNumber: input.moduleNumber, lessonsPerModule: material.course.lessonsPerModule });
+    return { ...saved, score: graded.score, questionReview: graded.questionReview };
   }),
 
   warmup: protectedProcedure.input(z.object({ level: levelSchema.optional() }).optional()).query(async ({ ctx, input }) => {

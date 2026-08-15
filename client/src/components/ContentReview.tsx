@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { trpc } from "@/lib/trpc";
 import { BookOpen, ClipboardList, FileText, Languages, Loader2, PenLine, ScrollText } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 export type ReviewLevel = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
 type ReviewTab = "overview" | "language" | "practice" | "assessment";

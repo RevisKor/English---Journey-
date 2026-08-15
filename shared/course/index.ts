@@ -7,5 +7,7 @@ export * from "./b2";
 export * from "./b2-quiz";
 export * from "./c1";
 export * from "./c1-quiz";
+export * from "./c2";
+export * from "./c2-quiz";
 export * from "./quiz";
 export * from "./types";

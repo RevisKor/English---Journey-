@@ -18,6 +18,12 @@ export type AssessmentScope = {
   moduleNumber?: number;
 };
 
+/** Keep every level on the same assessment contract while making checkpoints richer at milestones. */
+export function assessmentTargetCount(scope: AssessmentScope) {
+  if (scope.assessmentType === "module_test") return 20;
+  return scope.lessonNumber && scope.lessonNumber % 5 === 0 ? 15 : 8;
+}
+
 type PublicQuestion = Omit<QuizQuestion, "answer" | "reviewItemKey" | "reviewItemType">;
 
 function stableNumber(value: string) {
@@ -106,7 +112,7 @@ export async function getOrCreateAssessmentInstance(userId: number, scope: Asses
       .map((item) => item.questionKey))
     : new Set<string>();
   const seed = randomUUID();
-  const targetCount = scope.assessmentType === "lesson_quiz" ? 8 : 15;
+  const targetCount = assessmentTargetCount(scope);
   const selected = [...candidates].sort((left, right) => {
     const seenDifference = Number(previouslySeen.has(left.questionKey)) - Number(previouslySeen.has(right.questionKey));
     return seenDifference || stableNumber(`${seed}:${left.questionKey}`) - stableNumber(`${seed}:${right.questionKey}`);
@@ -177,5 +183,17 @@ export async function gradeAssessmentInstance(input: {
     assessmentType: instance[0].assessmentType,
     score,
     missedItemKeys: items.filter((item) => !correct.includes(item)).map((item) => item.reviewItemKey),
+    questionReview: items.map((item) => {
+      const question = item.questionSnapshot as unknown as QuizQuestion;
+      const selected = input.answers[question.id] ?? "";
+      return {
+        questionId: question.id,
+        prompt: question.prompt,
+        promptArabic: question.promptArabic,
+        selected,
+        correctAnswer: item.answerSnapshot,
+        isCorrect: selected.trim().toLowerCase() === item.answerSnapshot.trim().toLowerCase(),
+      };
+    }),
   };
 }
