@@ -34,6 +34,61 @@ export type GrammarTopic = {
   practice: GrammarPractice[];
 };
 
+export type LessonStep = {
+  id: "start" | "explore" | "notice" | "build" | "respond" | "prove";
+  title: string;
+  titleArabic: string;
+  purpose: string;
+  estimatedMinutes: number;
+};
+
+export type RetrievalTarget = {
+  sourceLevel: CefrLevel;
+  language: string;
+  prompt: string;
+  purpose: string;
+};
+
+export type LessonOutcome = {
+  canDo: string;
+  canDoArabic: string;
+  scenario: string;
+  scenarioArabic: string;
+};
+
+export type LessonLearningPlan = {
+  outcome: LessonOutcome;
+  steps: LessonStep[];
+  retrieval: RetrievalTarget[];
+  englishFirst: boolean;
+  studio: string;
+};
+
+export type LessonPracticeBrief = {
+  readingBrief: string;
+  writingPrompt: string;
+};
+
+export type LexicalNetwork = {
+  id: string;
+  theme: string;
+  themeArabic: string;
+  anchor: string;
+  wordFamilies: Array<{
+    headword: string;
+    forms: string[];
+    note: string;
+    noteArabic: string;
+  }>;
+  relatedWords: string[];
+  chunks: string[];
+  collocations: string[];
+  register: "neutral" | "informal" | "formal" | "mixed";
+  priorLevelLinks: string[];
+  learningNote: string;
+  learningNoteArabic: string;
+};
+
 export type LessonDefinition = {
   level: CefrLevel;
   lessonNumber: number;
@@ -42,6 +97,9 @@ export type LessonDefinition = {
   titleArabic: string;
   words: VocabularyItem[];
   grammar: GrammarTopic;
+  learningPlan?: LessonLearningPlan;
+  lexicalNetworks?: LexicalNetwork[];
+  practiceBrief?: LessonPracticeBrief;
 };
 
 export type CourseDefinition = {

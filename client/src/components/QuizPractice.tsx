@@ -1,18 +1,18 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { trpc } from "@/lib/trpc";
-import type { LessonDefinition } from "@shared/course";
+import type { CefrLevel, LessonDefinition } from "@shared/course";
 import { CheckCircle2, Trophy } from "lucide-react";
 import { useState } from "react";
 
 type Question = { id: string; type: string; prompt: string; promptArabic: string; choices: string[] };
 
-export function QuizPractice({ lesson }: { lesson: LessonDefinition }) {
+export function QuizPractice({ lesson, level = "A1" }: { lesson: LessonDefinition; level?: CefrLevel }) {
   const utils = trpc.useUtils();
   const [moduleMode, setModuleMode] = useState(false);
   const [answers, setAnswers] = useState<Record<string, string>>({});
-  const lessonQuery = trpc.course.lessonQuiz.useQuery({ lessonNumber: lesson.lessonNumber });
-  const moduleQuery = trpc.course.moduleTest.useQuery({ moduleNumber: lesson.moduleNumber }, { enabled: moduleMode });
+  const lessonQuery = trpc.course.lessonQuiz.useQuery({ level, lessonNumber: lesson.lessonNumber });
+  const moduleQuery = trpc.course.moduleTest.useQuery({ level, moduleNumber: lesson.moduleNumber }, { enabled: moduleMode });
   const refreshLearningState = () => Promise.all([utils.course.dashboard.invalidate(), utils.course.warmup.invalidate()]);
   const submitLesson = trpc.course.submitLessonQuiz.useMutation({ onSuccess: refreshLearningState });
   const submitModule = trpc.course.submitModuleTest.useMutation({ onSuccess: refreshLearningState });
@@ -21,8 +21,8 @@ export function QuizPractice({ lesson }: { lesson: LessonDefinition }) {
   const busy = submitLesson.isPending || submitModule.isPending;
   const submit = () => {
     if (!questions) return;
-    if (moduleMode) submitModule.mutate({ moduleNumber: lesson.moduleNumber, answers });
-    else submitLesson.mutate({ lessonNumber: lesson.lessonNumber, answers });
+    if (moduleMode) submitModule.mutate({ level, moduleNumber: lesson.moduleNumber, answers });
+    else submitLesson.mutate({ level, lessonNumber: lesson.lessonNumber, answers });
   };
   if (lessonQuery.isLoading || (moduleMode && moduleQuery.isLoading)) return <div className="rounded-2xl bg-[#f4efe3] p-6 text-sm text-[#64718a]">Preparing your assessment…</div>;
   if (lessonQuery.error) return <div className="rounded-2xl bg-[#fff4e4] p-6 text-sm text-[#8a5a18]">{lessonQuery.error.message}</div>;

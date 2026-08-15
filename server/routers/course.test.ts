@@ -1,5 +1,5 @@
 import type { TrpcContext } from "../_core/context";
-import { buildLessonQuiz, buildModuleTest } from "../../shared/course";
+import { buildA2LessonQuiz, buildLessonQuiz, buildModuleTest } from "../../shared/course";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const mocks = vi.hoisted(() => ({
@@ -64,6 +64,22 @@ describe("course assessment mutations", () => {
     expect(result).toEqual(expect.objectContaining({ passed: false, xpAwarded: 0 }));
   });
 
+  it("uses A2 questions and persists the active level for A2 lesson submission", async () => {
+    const questions = buildA2LessonQuiz(1);
+    const answers = Object.fromEntries(questions.map((question) => [question.id, question.answer]));
+    const caller = courseRouter.createCaller(createContext());
+
+    await caller.submitLessonQuiz({ level: "A2", lessonNumber: 1, answers });
+
+    expect(mocks.submitLessonAssessment).toHaveBeenCalledWith(expect.objectContaining({
+      level: "A2",
+      lessonNumber: 1,
+      assessmentType: "lesson_quiz",
+      score: 100,
+      missedItemKeys: [],
+    }));
+  });
+
   it("passes complete module answers to the persistent module-test flow", async () => {
     const questions = buildModuleTest(1);
     const answers = Object.fromEntries(questions.map((question) => [question.id, question.answer]));
@@ -84,6 +100,13 @@ describe("course assessment mutations", () => {
     const caller = courseRouter.createCaller(createContext());
 
     await expect(caller.moduleTest({ moduleNumber: 1 })).rejects.toThrow("Complete all five module lessons");
+  });
+
+  it("applies the same module prerequisite gate to the A2 route", async () => {
+    mocks.hasCompletedModuleLessons.mockReturnValue(false);
+    const caller = courseRouter.createCaller(createContext());
+
+    await expect(caller.moduleTest({ level: "A2", moduleNumber: 1 })).rejects.toThrow("Complete all five module lessons");
   });
 
   it("persists warm-up review answers and records eligible daily activity", async () => {

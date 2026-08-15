@@ -28,3 +28,21 @@
 - [x] Add stable router-level tests for lesson and module assessment mutations, including persistence calls and prerequisite denial.
 - [x] Verify learning-event mutation dispatch, dashboard/review invalidation handlers, and streak-rule behavior in controlled automated tests.
 - [x] Document keyboard, Arabic-region, loading, empty, and error-state pilot QA across dashboard, lesson, AI, and assessment screens.
+- [x] Research Oxford, Cambridge, and CEFR-aligned curriculum guidance for A2–C2 expansion.
+- [x] Design the A2–C2 scope and sequence with deliberate retrieval and reuse of prior-level language.
+- [x] Define engaging higher-level lesson templates, reading pathways, writing milestones, and learner-facing course plans.
+- [x] Review the proposed curriculum expansion plan with the user before adding the new levels to the application.
+- [x] Define the A2 course-data schema for six-step lessons, lexical networks, prior-learning retrieval, and learner outcomes.
+- [x] Author 20 original, CEFR-informed A2 lesson briefs across four modules with varied thematic vocabulary and phrase targets.
+- [x] Create and validate the A2 vocabulary, grammar, reading, writing, and assessment datasets.
+- [x] Add the A2 level map, learner-facing six-step lesson plan, and English-first progressive scaffolding to the platform.
+- [x] Verify A2 route rendering on desktop/mobile, curriculum integrity, and active-level progression gates through screenshots and automated tests.
+- [x] Document the reusable authoring framework for B1–C2 expansion.
+- [x] Extend AI tutor, reading, writing, grading, and history procedures to use the active A1 or A2 course context.
+- [x] Add a typed lexical-network model with word families, collocations, register, and prior-level links.
+- [x] Create a concrete A2 course-data module that exercises the six-step lesson, retrieval, outcome, and lexical-network types.
+- [x] Add explicit A2 assessment definitions for lesson quizzes, module tests, and reading-comprehension checks.
+- [x] Extend lexical networks with a typed word-family field and populate it across all A2 lessons.
+- [x] Add targeted A2 UI validation proving the six-step lesson sequence and English-first scaffolding render distinctly from the A1 workspace.
+- [x] Add explicit A2 active-level tests for lesson unlocks, module prerequisites, and assessment submission behavior.
+- [x] Restart the development server and confirm the prior stale A2 course-export error is absent from the fresh browser console log.

@@ -1,0 +1,4117 @@
+[
+  {
+    "lessonNumber": 1,
+    "title": "Routines that work",
+    "titleArabic": "عادات وروتين مفيد",
+    "outcome": {
+      "canDo": "I can describe my daily routine and simple habits, using the present simple and frequency words.",
+      "canDoArabic": "أستطيع وصف روتيني اليومي وعادات بسيطة باستخدام زمن المضارع البسيط وكلمات التكرار.",
+      "scenario": "You tell a teacher or friend about your day and one habit you want to change or start.",
+      "scenarioArabic": "تخبر معلمك أو صديقك عن يومك وعن عادة تريد تغييرها أو البدء بها."
+    },
+    "retrieval": [
+      {
+        "language": "English",
+        "prompt": "What time do you get up? (Use time words: seven, eight, half past, etc.)",
+        "purpose": "Recall simple time and numbers you already know."
+      },
+      {
+        "language": "English",
+        "prompt": "Where do you go after breakfast? (home, work, school, shop, park)",
+        "purpose": "Connect places to morning routines."
+      },
+      {
+        "language": "English",
+        "prompt": "Who do you see in the morning? (family, friend, teacher, boss)",
+        "purpose": "Recall people vocabulary in a routine context."
+      },
+      {
+        "language": "English",
+        "prompt": "What do you eat or drink in the morning? (tea, coffee, bread, fruit, water)",
+        "purpose": "Use food and drink words in a simple sentence."
+      }
+    ],
+    "network": {
+      "theme": "habits, wellbeing, frequency",
+      "themeArabic": "العادات، الرفاهية، التكرار",
+      "anchor": "Small daily choices that help your day",
+      "relatedWords": [
+        "morning",
+        "evening",
+        "sleep",
+        "health",
+        "water",
+        "walk",
+        "exercise",
+        "phone",
+        "breakfast",
+        "work"
+      ],
+      "chunks": [
+        "wake up early",
+        "have breakfast",
+        "make time for",
+        "go for a walk",
+        "drink water"
+      ],
+      "collocations": [
+        "daily routine",
+        "good habit",
+        "take a break",
+        "get enough sleep",
+        "switch off devices"
+      ],
+      "register": "neutral",
+      "priorLevelLinks": [
+        "time",
+        "places",
+        "people",
+        "food",
+        "go",
+        "want",
+        "like",
+        "can",
+        "yesterday",
+        "tomorrow"
+      ],
+      "learningNote": "Focus on the position of short frequency adverbs (always, usually, often, sometimes, rarely, never) before the main verb and after the verb to be. Teach common multi-word routine phrases as chunks.",
+      "learningNoteArabic": "ركز على موقع أحرف التكرار القصيرة (مثل always، usually) قبل الفعل الأساسي وبعد فعْل be. علّم عبارات الروتين متعددة الكلمات ككتل ثابتة."
+    },
+    "vocabulary": [
+      {
+        "word": "wake up early",
+        "arabic": "الاستيقاظ مبكراً",
+        "partOfSpeech": "verb phrase",
+        "definition": "get out of bed near the start of the day",
+        "exampleEN": "I wake up early on weekdays to have time for exercise.",
+        "exampleAR": "أستيقظ مبكراً أيام الأسبوع لأجد وقتاً للتمارين."
+      },
+      {
+        "word": "have breakfast",
+        "arabic": "تناول الفطور",
+        "partOfSpeech": "verb phrase",
+        "definition": "eat the first meal of the day",
+        "exampleEN": "She usually has breakfast at 7:30 before work.",
+        "exampleAR": "عادةً ما تتناول الفطور في الساعة 7:30 قبل العمل."
+      },
+      {
+        "word": "make time for",
+        "arabic": "إيجاد وقت لـ",
+        "partOfSpeech": "phrasal chunk",
+        "definition": "create a period in your day to do something important",
+        "exampleEN": "Try to make time for a short walk every day.",
+        "exampleAR": "حاول إيجاد وقت للمشي القصير كل يوم."
+      },
+      {
+        "word": "go for a walk",
+        "arabic": "الذهاب للمشي",
+        "partOfSpeech": "verb phrase",
+        "definition": "leave the house to walk for exercise or fresh air",
+        "exampleEN": "He goes for a walk after lunch to feel better.",
+        "exampleAR": "يذهب للمشي بعد الغداء ليشعر بتحسن."
+      },
+      {
+        "word": "drink water",
+        "arabic": "شرب الماء",
+        "partOfSpeech": "verb phrase",
+        "definition": "consume water to stay hydrated",
+        "exampleEN": "Drink water often during the day to stay healthy.",
+        "exampleAR": "اشرب الماء كثيراً خلال اليوم لتبقى بصحة جيدة."
+      },
+      {
+        "word": "sleep well",
+        "arabic": "النوم جيداً",
+        "partOfSpeech": "verb phrase",
+        "definition": "have enough comfortable sleep",
+        "exampleEN": "I sleep well when I switch off my phone before bed.",
+        "exampleAR": "أنام جيداً عندما أطفئ هاتفي قبل النوم."
+      },
+      {
+        "word": "routine",
+        "arabic": "روتين",
+        "partOfSpeech": "noun",
+        "definition": "a regular set of actions you do most days",
+        "exampleEN": "A morning routine helps me start the day calmly.",
+        "exampleAR": "يساعدني روتين الصباح على بدء اليوم بهدوء."
+      },
+      {
+        "word": "habit",
+        "arabic": "عادة",
+        "partOfSpeech": "noun",
+        "definition": "something you do often, sometimes without thinking",
+        "exampleEN": "Checking my phone at night is a bad habit I want to stop.",
+        "exampleAR": "التحقق من هاتفي في الليل عادة سيئة أريد إيقافها."
+      },
+      {
+        "word": "often",
+        "arabic": "غالباً",
+        "partOfSpeech": "adverb",
+        "definition": "many times; frequently",
+        "exampleEN": "I often walk to the shop after work.",
+        "exampleAR": "أمشي غالباً إلى المتجر بعد العمل."
+      },
+      {
+        "word": "always",
+        "arabic": "دائماً",
+        "partOfSpeech": "adverb",
+        "definition": "at all times; every time",
+        "exampleEN": "She always drinks a glass of water when she wakes up.",
+        "exampleAR": "هي دائماً تشرب كوب ماء عندما تستيقظ."
+      },
+      {
+        "word": "sometimes",
+        "arabic": "أحياناً",
+        "partOfSpeech": "adverb",
+        "definition": "on some days but not all",
+        "exampleEN": "Sometimes I read for ten minutes before sleep.",
+        "exampleAR": "أحياناً أقرأ لعشر دقائق قبل النوم."
+      },
+      {
+        "word": "rarely",
+        "arabic": "نادراً",
+        "partOfSpeech": "adverb",
+        "definition": "not often; almost never",
+        "exampleEN": "He rarely eats fast food because he prefers healthy choices.",
+        "exampleAR": "نادراً ما يأكل الوجبات السريعة لأنه يفضل الخيارات الصحية."
+      },
+      {
+        "word": "healthy",
+        "arabic": "صحي",
+        "partOfSpeech": "adjective",
+        "definition": "good for your body and mind",
+        "exampleEN": "A healthy snack is fruit or a small handful of nuts.",
+        "exampleAR": "الوجبة الخفيفة الصحية هي الفاكهة أو حفنة صغيرة من المكسرات."
+      },
+      {
+        "word": "relax",
+        "arabic": "الاسترخاء",
+        "partOfSpeech": "verb",
+        "definition": "rest and stop feeling worried or stressed",
+        "exampleEN": "I relax by listening to calm music after work.",
+        "exampleAR": "أسترخي بالاستماع إلى موسيقى هادئة بعد العمل."
+      },
+      {
+        "word": "switch off",
+        "arabic": "إيقاف تشغيل / الابتعاد عن الأجهزة",
+        "partOfSpeech": "phrasal verb",
+        "definition": "turn off a device or stop thinking about work to rest",
+        "exampleEN": "Switch off your phone for an hour and relax.",
+        "exampleAR": "أطفئ هاتفك لمدة ساعة واسترح."
+      }
+    ],
+    "grammar": {
+      "topic": "Present simple and adverbs of frequency",
+      "arabicName": "المضارع البسيط وأحرف التكرار",
+      "concept": "Use the present simple to talk about routines and habits. Use frequency adverbs (always, usually, often, sometimes, rarely, never) to show how often actions happen.",
+      "arabicComparison": "في العربية نستخدم المضارع أيضاً لوصف العادات، لكن ترتيب كلمات التكرار قد يختلف (غالباً يوضع بعد الفعل). الأفعال تتغير بناءً على الضمائر في العربية أيضاً.",
+      "structure": "Subject + (adverb of frequency) + main verb (e.g. I usually drink water). For the verb to be: Subject + be + (adverb) (e.g. She is always tired). For negatives use do/does + not + verb.",
+      "commonError": "Placing the adverb after the main verb (I go sometimes to the park) or using do/does with 'be' (She does not is).",
+      "exampleEN": "I often go for a walk. He doesn't drink coffee. She is usually busy in the morning.",
+      "exampleAR": "أنا غالباً أذهب للمشي. هو لا يشرب القهوة. هي عادةً مشغولة في الصباح."
+    },
+    "readingBrief": "A short original passage (about 130–160 words) that follows one person's simple daily routine and small wellbeing habits. The text describes morning and evening actions (wake up early, have breakfast, drink water, go for a walk), uses present simple and several adverbs of frequency (always, usually, sometimes, never), and mentions one habit the person wants to change. The passage is clear, learner-friendly, and gives a small personal detail to invite learners to compare with their own routines.",
+    "writingPrompt": "Write a short message (60–90 words) to your English teacher describing your daily routine and one habit you want to start or stop. Include at least three frequency words (always, usually, sometimes, never, often) and one time (e.g. 7:00 or in the evening). Purpose: to explain your routine and set a simple goal. Audience: your teacher."
+  },
+  {
+    "lessonNumber": 2,
+    "title": "Small changes, real results",
+    "titleArabic": "تغييرات صغيرة ونتائج حقيقية",
+    "outcome": {
+      "canDo": "I can describe small, ongoing changes and compare results using simple comparatives and the present continuous.",
+      "canDoArabic": "أستطيع وصف تغييرات صغيرة مستمرة ومقارنة النتائج باستخدام الصفات المقارنة والزمن المستمر.",
+      "scenario": "You talk about personal progress (work, study, health) and say how small changes are helping you improve.",
+      "scenarioArabic": "تتحدث عن تقدمك الشخصي (العمل، الدراسة، الصحة) وتقول كيف تساعدك تغييرات صغيرة على التحسن."
+    },
+    "retrieval": [
+      {
+        "language": "English",
+        "prompt": "What did you do yesterday? Where did you go?",
+        "purpose": "Recall simple past actions and places to connect with new time expressions."
+      },
+      {
+        "language": "English",
+        "prompt": "Tell me about a person you like. What can they do well?",
+        "purpose": "Retrieve basic ability verbs (can) and people vocabulary."
+      },
+      {
+        "language": "English",
+        "prompt": "What food do you want tomorrow? Do you like it now?",
+        "purpose": "Use common words (food, want, like, tomorrow, now) to warm up preferences and future plans."
+      },
+      {
+        "language": "Arabic",
+        "prompt": "متى تذهب إلى العمل عادةً؟ أتحب المكان؟",
+        "purpose": "تنشيط معلومات عن الوقت والأماكن والعادات قبل تعلّم التغيرات المستمرة."
+      }
+    ],
+    "network": {
+      "theme": "change, progress, comparison",
+      "themeArabic": "التغير، التقدّم، المقارنة",
+      "anchor": "Small, steady actions make a big difference.",
+      "relatedWords": [
+        "goal",
+        "habit",
+        "improve",
+        "measure",
+        "steady",
+        "adjust",
+        "progress"
+      ],
+      "chunks": [
+        "take small steps",
+        "make a change",
+        "track progress",
+        "set a goal",
+        "on average"
+      ],
+      "collocations": [
+        "steady progress",
+        "make progress",
+        "less time",
+        "more energy",
+        "get better"
+      ],
+      "register": "mixed",
+      "priorLevelLinks": [
+        "Module 1, Lesson 1: simple present and common verbs (go, want, like, can)",
+        "A1: describing people and places with simple adjectives",
+        "A1: telling short stories about yesterday and tomorrow"
+      ],
+      "learningNote": "Teach comparatives (-er/more) alongside the present continuous (am/is/are + -ing). Use short real examples about daily habits. Encourage learners to compare now and before (My walking is better than last month; I am walking more each week).",
+      "learningNoteArabic": "علّم الصفات المقارنة (-er / more) مع الزمن المستمر (am/is/are + -ing). استخدم أمثلة قصيرة عن العادات اليومية. شجّع المتعلّم على المقارنة بين الآن والماضي (المشي أفضل من الشهر الماضي؛ أنا أمشي أكثر كل أسبوع)."
+    },
+    "vocabulary": [
+      {
+        "word": "gradual",
+        "arabic": "تَدْرِيجِيّ",
+        "partOfSpeech": "adjective",
+        "definition": "happening slowly over time",
+        "exampleEN": "She sees gradual improvements in her English.",
+        "exampleAR": "ترى تحسّنًا تدريجيًا في لغتها الإنجليزية."
+      },
+      {
+        "word": "habit",
+        "arabic": "عَادَة",
+        "partOfSpeech": "noun",
+        "definition": "something you do regularly",
+        "exampleEN": "A morning habit is to drink water first.",
+        "exampleAR": "عادة الصباح هي شرب الماء أولاً."
+      },
+      {
+        "word": "goal",
+        "arabic": "هَدَف",
+        "partOfSpeech": "noun",
+        "definition": "something you want to achieve",
+        "exampleEN": "Her goal is to read one book a month.",
+        "exampleAR": "هدفها قراءة كتاب واحد في الشهر."
+      },
+      {
+        "word": "steady",
+        "arabic": "مُسْتَمِرّ / ثابِت",
+        "partOfSpeech": "adjective",
+        "definition": "slow but regular and reliable",
+        "exampleEN": "He has steady progress with practice.",
+        "exampleAR": "لديه تقدم ثابت مع الممارسة."
+      },
+      {
+        "word": "improve",
+        "arabic": "يَتَحَسَّن",
+        "partOfSpeech": "verb",
+        "definition": "to get better",
+        "exampleEN": "If you practise, you will improve.",
+        "exampleAR": "إذا تمرّنت، ستتحسّن."
+      },
+      {
+        "word": "measure",
+        "arabic": "يُقَيِّم / قِياس",
+        "partOfSpeech": "verb / noun",
+        "definition": "to check progress or amount",
+        "exampleEN": "Measure your time each week to see progress.",
+        "exampleAR": "قَيِّم وقتك كل أسبوع لرؤية التقدّم."
+      },
+      {
+        "word": "adjust",
+        "arabic": "يُعَدِّل",
+        "partOfSpeech": "verb",
+        "definition": "to change a little to make better",
+        "exampleEN": "Adjust your schedule if it's too busy.",
+        "exampleAR": "عدّل جدولك إذا كان مزدحمًا جدًا."
+      },
+      {
+        "word": "shift",
+        "arabic": "تَحَوُّل / يَتَحَوَّل",
+        "partOfSpeech": "noun / verb",
+        "definition": "a small change in direction or focus",
+        "exampleEN": "A small shift in sleep helps energy.",
+        "exampleAR": "تحول صغير في النوم يساعد الطاقة."
+      },
+      {
+        "word": "take small steps",
+        "arabic": "اتِّخاذ خُطوات صَغِيرة",
+        "partOfSpeech": "phrase",
+        "definition": "do little actions that add up",
+        "exampleEN": "Take small steps to build a new habit.",
+        "exampleAR": "اتخذ خطوات صغيرة لبناء عادة جديدة."
+      },
+      {
+        "word": "track progress",
+        "arabic": "مُتابَعَة التَّقدُّم",
+        "partOfSpeech": "phrase",
+        "definition": "watch and record how you improve",
+        "exampleEN": "Use an app to track progress each day.",
+        "exampleAR": "استخدم تطبيقًا لمتابعة التقدم كل يوم."
+      },
+      {
+        "word": "make a change",
+        "arabic": "إجراء تَغْييِر",
+        "partOfSpeech": "phrase",
+        "definition": "do something different to improve",
+        "exampleEN": "Make a change: walk five minutes more.",
+        "exampleAR": "اجري تغييرًا: امشِ خمس دقائق أكثر."
+      },
+      {
+        "word": "less",
+        "arabic": "أَقَلّ",
+        "partOfSpeech": "determiner / adverb",
+        "definition": "not as much",
+        "exampleEN": "I spend less time on my phone now.",
+        "exampleAR": "أقضي وقتًا أقل على هاتفي الآن."
+      },
+      {
+        "word": "more",
+        "arabic": "أَكْثَر",
+        "partOfSpeech": "determiner / adverb",
+        "definition": "a greater amount",
+        "exampleEN": "I have more energy after sleeping well.",
+        "exampleAR": "لدي طاقة أكبر بعد النوم جيدًا."
+      },
+      {
+        "word": "on average",
+        "arabic": "في المُتَوَسِّط",
+        "partOfSpeech": "phrase",
+        "definition": "usually; generally when you measure",
+        "exampleEN": "On average, I study thirty minutes a day.",
+        "exampleAR": "في المتوسط، أدرس ثلاثين دقيقة في اليوم."
+      },
+      {
+        "word": "get better",
+        "arabic": "يَتَحَسَّن",
+        "partOfSpeech": "phrasal verb",
+        "definition": "improve or become better over time",
+        "exampleEN": "With practice, your pronunciation will get better.",
+        "exampleAR": "بالممارسة، سيتحسن نطقك."
+      }
+    ],
+    "grammar": {
+      "topic": "Comparatives and Present Continuous",
+      "arabicName": "الصفات المقارنة والزمن المستمر",
+      "concept": "Use comparatives to say how two things are different (e.g., smaller, more comfortable). Use the present continuous (am/is/are + -ing) to talk about actions happening now or changes that are in progress.",
+      "arabicComparison": "في العربية نستعمل أحيانًا صيغة المضارع مع كلمات مثل الآن أو ما زال للتعبير عن الفعل الجاري. أما في الإنجليزية فنستخدم am/is/are + الفعل مع -ing للزمن المستمر، ونستخدم -er أو more + صفة للمقارنة.",
+      "structure": "Comparative: adjective + -er + than (short adjectives) or more + adjective + than (long adjectives). Present continuous: subject + am/is/are + verb(-ing). Example combined: 'She is getting faster than before.'",
+      "commonError": "Students often say 'more better' or forget to use -ing with the present continuous (e.g., 'I am improve' instead of 'I am improving'). Also check irregular comparatives (good → better).",
+      "exampleEN": "Short comparative: 'This exam is easier than the last one.' Present continuous: 'I am studying more each week.' Combined: 'My reading is getting better than last month.'",
+      "exampleAR": "مقارنة قصيرة: 'هذا الاختبار أسهل من السابق.' الزمن المستمر: 'أنا أدرس أكثر كل أسبوع.' مزيج: 'قرائتي تتحسن عن الشهر الماضي.'"
+    },
+    "readingBrief": "A 130–160-word passage about Maria, who makes small lifestyle changes over three months. The text shows step-by-step adjustments: she sets a goal, takes small steps, and tracks progress. It uses comparatives (e.g., 'It is easier than I thought') and present continuous verbs to show ongoing change (e.g., 'I am walking more'). The passage includes simple time markers (last month, now, every week) and practical details (sleep, short walks, study time). Learners will find clear examples of comparatives and continuous actions in everyday contexts to model their own sentences.",
+    "writingPrompt": "Write 60–90 words to a friend describing one small change you are making and the progress you see. Use at least one comparative (e.g., more, less, -er) and one present continuous sentence (I am ...ing). Say your goal and ask a short question for advice. Audience: a friend. Purpose: share progress and ask for help or tips."
+  },
+  {
+    "lessonNumber": 3,
+    "title": "Food, energy, and choices",
+    "titleArabic": "الطعام والطاقة والاختيارات",
+    "outcome": {
+      "canDo": "I can talk about food and drinks, describe amounts, and say simple choices about health and energy.",
+      "canDoArabic": "أستطيع التحدث عن الطعام والشراب، وصف الكميات، وذكر اختيارات بسيطة حول الصحة والطاقة.",
+      "scenario": "You are planning a simple healthy lunch and explaining how much of each food you want.",
+      "scenarioArabic": "أنت تخطط لغداء صحي بسيط وتشرح مقدار كل نوع من الطعام الذي تريده."
+    },
+    "retrieval": [
+      {
+        "language": "English",
+        "prompt": "What did you eat yesterday? Say one food and one drink.",
+        "purpose": "Activate memory of food vocabulary and past simple / yesterday"
+      },
+      {
+        "language": "English",
+        "prompt": "Where do you go to buy food? Name one place.",
+        "purpose": "Recall places and simple shopping words like 'shop, market'"
+      },
+      {
+        "language": "English",
+        "prompt": "Who do you eat with? Say one person (family, friend).",
+        "purpose": "Connect food with people vocabulary"
+      },
+      {
+        "language": "English",
+        "prompt": "Do you like fruit or vegetables? Say: I like / I don't like.",
+        "purpose": "Practice simple verbs like like/want/can with food choices"
+      }
+    ],
+    "network": {
+      "theme": "food choices, health, quantity",
+      "themeArabic": "اختيارات الطعام، الصحة، الكمية",
+      "anchor": "I want a small portion of rice and a glass of milk.",
+      "relatedWords": [
+        "energy",
+        "portion",
+        "calorie",
+        "protein",
+        "fat",
+        "vitamin",
+        "sugar",
+        "salt"
+      ],
+      "chunks": [
+        "a glass of",
+        "a slice of",
+        "a handful of",
+        "healthy choice",
+        "packed lunch"
+      ],
+      "collocations": [
+        "eat a balanced meal",
+        "cut down on sugar",
+        "have a snack",
+        "drink water",
+        "small portion",
+        "high in energy"
+      ],
+      "register": "mixed",
+      "priorLevelLinks": [
+        "A1: Names of common foods (fruit, bread, milk)",
+        "A1: Simple likes and dislikes (I like / I don't like)",
+        "A1: Present simple for routines (I eat, I drink)"
+      ],
+      "learningNote": "Focus on distinguishing countable and uncountable nouns with clear examples. Teach common quantifiers with visuals (many/much, a few/a little, some/any) and practise with food items.",
+      "learningNoteArabic": "ركّز على تمييز الأسماء المعدودة وغير المعدودة مع أمثلة واضحة. درّس الأعداد والكميات الشائعة باستخدام صور (many/much, a few/a little, some/any) وتدرّب عليها مع عناصر الطعام."
+    },
+    "vocabulary": [
+      {
+        "word": "fruit",
+        "arabic": "فاكهة",
+        "partOfSpeech": "noun (uncountable / collective)",
+        "definition": "food like apples, oranges, or bananas; often eaten fresh",
+        "exampleEN": "I eat fruit after lunch.",
+        "exampleAR": "آكل فاكهة بعد الغداء."
+      },
+      {
+        "word": "vegetables",
+        "arabic": "خضروات",
+        "partOfSpeech": "noun (plural / countable items)",
+        "definition": "plants for food such as carrots, tomatoes, or lettuce",
+        "exampleEN": "She cooks vegetables every day.",
+        "exampleAR": "هي تطبخ الخضروات كل يوم."
+      },
+      {
+        "word": "rice",
+        "arabic": "أرز",
+        "partOfSpeech": "noun (uncountable)",
+        "definition": "small white or brown grains used as a staple food",
+        "exampleEN": "A small portion of rice is fine.",
+        "exampleAR": "جزء صغير من الأرز يكفي."
+      },
+      {
+        "word": "bread",
+        "arabic": "خبز",
+        "partOfSpeech": "noun (uncountable)",
+        "definition": "baked food made from flour, used for sandwiches or with meals",
+        "exampleEN": "I have bread for breakfast.",
+        "exampleAR": "أتناول خبزًا على الفطار."
+      },
+      {
+        "word": "milk",
+        "arabic": "حليب",
+        "partOfSpeech": "noun (uncountable)",
+        "definition": "white drink from cows or plants used with cereal or on its own",
+        "exampleEN": "He drinks a glass of milk every morning.",
+        "exampleAR": "هو يشرب كوبًا من الحليب كل صباح."
+      },
+      {
+        "word": "portion",
+        "arabic": "حصة / مقدار",
+        "partOfSpeech": "noun (countable)",
+        "definition": "the amount of food served for one person",
+        "exampleEN": "She serves a small portion of pasta.",
+        "exampleAR": "هي تقدم حصة صغيرة من المعكرونة."
+      },
+      {
+        "word": "calorie",
+        "arabic": "سعرة حرارية",
+        "partOfSpeech": "noun (countable)",
+        "definition": "a unit that shows how much energy food gives you",
+        "exampleEN": "This snack has few calories.",
+        "exampleAR": "هذا الوجبة الخفيفة تحتوي على سعرات حرارية قليلة."
+      },
+      {
+        "word": "snack",
+        "arabic": "وجبة خفيفة",
+        "partOfSpeech": "noun (countable)",
+        "definition": "a small amount of food eaten between meals",
+        "exampleEN": "I eat a snack at 4pm.",
+        "exampleAR": "أتناول وجبة خفيفة في الساعة الرابعة مساءً."
+      },
+      {
+        "word": "sugar",
+        "arabic": "سكر",
+        "partOfSpeech": "noun (uncountable)",
+        "definition": "sweet white substance used in food and drinks",
+        "exampleEN": "Too much sugar is unhealthy.",
+        "exampleAR": "الإفراط في السكر غير صحي."
+      },
+      {
+        "word": "a glass of",
+        "arabic": "كوب من / كأس من",
+        "partOfSpeech": "chunk",
+        "definition": "used to say a drink amount in a glass",
+        "exampleEN": "I want a glass of orange juice.",
+        "exampleAR": "أريد كوبًا من عصير البرتقال."
+      },
+      {
+        "word": "a slice of",
+        "arabic": "شريحة من",
+        "partOfSpeech": "chunk",
+        "definition": "one thin piece cut from bread, cake, cheese, etc.",
+        "exampleEN": "Can I have a slice of bread?",
+        "exampleAR": "هل أستطيع الحصول على شريحة من الخبز؟"
+      },
+      {
+        "word": "a handful of",
+        "arabic": "حفنة من",
+        "partOfSpeech": "chunk",
+        "definition": "an amount you can hold in your hand",
+        "exampleEN": "Add a handful of nuts to the salad.",
+        "exampleAR": "أضف حفنة من المكسرات إلى السلطة."
+      },
+      {
+        "word": "healthy choice",
+        "arabic": "خيار صحي",
+        "partOfSpeech": "chunk / noun phrase",
+        "definition": "a food or action that is good for your health",
+        "exampleEN": "Choosing water is a healthy choice.",
+        "exampleAR": "اختيار الماء خيار صحي."
+      },
+      {
+        "word": "packed lunch",
+        "arabic": "غداء مُحضّر (معك)",
+        "partOfSpeech": "noun phrase",
+        "definition": "a meal you prepare and bring from home, often in a box",
+        "exampleEN": "I made a packed lunch for work.",
+        "exampleAR": "حضرت غداءً مُحضرًا للعمل."
+      },
+      {
+        "word": "cut down on",
+        "arabic": "يقلل من / يخفّض",
+        "partOfSpeech": "phrasal verb",
+        "definition": "to eat or use less of something (often unhealthy)",
+        "exampleEN": "I try to cut down on salty snacks.",
+        "exampleAR": "أحاول أن أقلل من الوجبات المالحة."
+      }
+    ],
+    "grammar": {
+      "topic": "Countable and uncountable nouns; quantifiers",
+      "arabicName": "الأسماء المعدودة وغير المعدودة؛ أدوات الكمية",
+      "concept": "Countable nouns have plural forms (apple, apples). Uncountable nouns do not usually have a plural form (rice, milk). Use different quantifiers: many/few with countable; much/a little with uncountable; some/any with both in positive/negative/questions.",
+      "arabicComparison": "في العربية يوجد جمع للأسماء المعدودة وزمن الجمع، وللكميات تستخدم كلمات مثل 'قليل' و'قليل من' و'بعض'. هنا نستخدم 'many' مع المعدودات و'much' مع غير المعدودات، بينما 'some' و'any' تستخدم مع النوعين.",
+      "structure": "Positive: many + plural countable (many apples). much + uncountable (much rice). some + plural/uncountable (some vegetables, some water). Negative/questions: any (Do you have any milk?). a few (positive, countable), a little (positive, uncountable).",
+      "commonError": "Learners often use 'much' with countable nouns (much apples) or forget plural forms (one apple, two apple). Another error is using 'a few' for uncountable nouns instead of 'a little'.",
+      "exampleEN": "I have a few apples. / I have a little rice. / Do you have any milk? / She eats many vegetables.",
+      "exampleAR": "لدي قليل من التفاحات. / لدي قليل من الأرز. / هل لديك أي حليب؟ / هي تأكل الكثير من الخضروات."
+    },
+    "readingBrief": "A 130–160-word original passage describing one person's weekday meals and energy levels. The text explains what they eat for breakfast, lunch and a small snack, using countable and uncountable nouns with simple quantifiers (a glass of, a slice of, a few, a little, some). It mentions a healthy choice and a less healthy snack and links food amounts to how they feel during the afternoon (more or less energy). The language is clear and suitable for A2 learners.",
+    "writingPrompt": "Write 60–90 words to a friend describing your typical lunch and one snack this week. Explain the amounts (use at least two quantifiers: some/a few/a little/a slice of/a glass of), say if it is a healthy choice, and say how it gives you energy. Audience: a friend. Purpose: share information and a simple opinion."
+  },
+  {
+    "lessonNumber": 4,
+    "title": "Free time and priorities",
+    "titleArabic": "وقت الفراغ والأولويات",
+    "outcome": {
+      "canDo": "I can talk about my free time, say what I like or would like to do, and say what I prefer when I have two activities.",
+      "canDoArabic": "أستطيع التحدث عن وقت فراغي، أن أقول ما أحبه أو أود فعله، وأن أقول ما أفضل عندما تكون هناك أنشِطة اثنتان.",
+      "scenario": "You are organising your weekend. You tell a friend what you like, what you would like to try, and which activity you prefer and why.",
+      "scenarioArabic": "أنت تنظم عطلة نهاية الأسبوع. تخبر صديقًا بما تحب، وما تودّ تجربته، وأي نشاط تفضله ولماذا."
+    },
+    "retrieval": [
+      {
+        "language": "EN",
+        "prompt": "What did you do yesterday evening?",
+        "purpose": "Activate simple past and common free-time words (yesterday, evening, watch, go, meet)."
+      },
+      {
+        "language": "EN",
+        "prompt": "Do you have free time tomorrow?",
+        "purpose": "Activate present/future plans (tomorrow, can, want, go)."
+      },
+      {
+        "language": "EN",
+        "prompt": "Who do you like to spend time with — friends or family?",
+        "purpose": "Activate people vocabulary (friends, family) and like/want language."
+      },
+      {
+        "language": "EN",
+        "prompt": "What time do you usually eat dinner on weekdays?",
+        "purpose": "Activate time and daily routine vocabulary (time, eat, usually)."
+      }
+    ],
+    "network": {
+      "theme": "Hobbies, preferences, time",
+      "themeArabic": "الهوايات، التفضيلات، الوقت",
+      "anchor": "Free time and priorities / وقت الفراغ والأولويات",
+      "relatedWords": [
+        "weekend",
+        "plan",
+        "relax",
+        "activity",
+        "choice",
+        "schedule",
+        "family"
+      ],
+      "chunks": [
+        "free time",
+        "make time for",
+        "spend time on",
+        "go for a walk",
+        "watch a film",
+        "meet friends",
+        "at the weekend",
+        "rather than"
+      ],
+      "collocations": [
+        "make time for + noun",
+        "spend time on + noun/gerund",
+        "prefer X to Y",
+        "would like to + verb",
+        "like + -ing / like + noun"
+      ],
+      "register": "neutral",
+      "priorLevelLinks": [
+        "A1: days of the week",
+        "A1: present simple (I like, I go)",
+        "A1: basic time words (today, tomorrow, yesterday)"
+      ],
+      "learningNote": "Focus on meaning first: 'like' is a general preference, 'would like' is for a specific wish or polite request, and 'prefer' compares two options. Give short speaking practice with choices (e.g. tea or coffee) and then extend to free-time activities.",
+      "learningNoteArabic": "ركّز على المعنى أولًا: «like» تعبر عن تفضيل عام، «would like» تعبر عن رغبة محددة أو طلب مهذب، و«prefer» للمقارنة بين خيارين. قدّم تدريبات تحدث قصيرة مع اختيارات ثم انتقل إلى أنشطة وقت الفراغ."
+    },
+    "vocabulary": [
+      {
+        "word": "free time",
+        "arabic": "وقت الفراغ",
+        "partOfSpeech": "noun phrase",
+        "definition": "time when you are not working or studying",
+        "exampleEN": "I read books in my free time.",
+        "exampleAR": "أقرأ كتبًا في وقت الفراغ."
+      },
+      {
+        "word": "hobby",
+        "arabic": "هواية",
+        "partOfSpeech": "noun",
+        "definition": "an activity you enjoy doing regularly",
+        "exampleEN": "My hobby is painting on weekends.",
+        "exampleAR": "هوايتي هي الرسم في عطلة نهاية الأسبوع."
+      },
+      {
+        "word": "prefer",
+        "arabic": "يفضّل",
+        "partOfSpeech": "verb",
+        "definition": "to like one thing more than another",
+        "exampleEN": "I prefer tea to coffee.",
+        "exampleAR": "أفضّل الشاي على القهوة."
+      },
+      {
+        "word": "like",
+        "arabic": "يحب",
+        "partOfSpeech": "verb",
+        "definition": "to enjoy something or feel happy with it",
+        "exampleEN": "She likes listening to music.",
+        "exampleAR": "هي تحب الاستماع إلى الموسيقى."
+      },
+      {
+        "word": "would like",
+        "arabic": "يريد / يودّ",
+        "partOfSpeech": "phrase",
+        "definition": "used to say you want something in a polite or specific way",
+        "exampleEN": "I would like to try kayaking next month.",
+        "exampleAR": "أودّ تجربة التجديف بالشراع الشهر المقبل."
+      },
+      {
+        "word": "make time for",
+        "arabic": "يخصّص وقتًا لـ",
+        "partOfSpeech": "phrasal chunk",
+        "definition": "to arrange your schedule so you have time to do something",
+        "exampleEN": "I make time for a short walk every day.",
+        "exampleAR": "أخصّص وقتًا للمشي القصير كل يوم."
+      },
+      {
+        "word": "spend time on",
+        "arabic": "يقضي الوقت في",
+        "partOfSpeech": "phrasal chunk",
+        "definition": "to use time doing an activity",
+        "exampleEN": "He spends a lot of time on his hobby.",
+        "exampleAR": "يقضي وقتًا طويلًا في هوايته."
+      },
+      {
+        "word": "go for a walk",
+        "arabic": "يذهب للتنزّه",
+        "partOfSpeech": "verb phrase",
+        "definition": "to walk somewhere for exercise or pleasure",
+        "exampleEN": "We go for a walk in the park after dinner.",
+        "exampleAR": "نذهب للتنزّه في الحديقة بعد العشاء."
+      },
+      {
+        "word": "watch a film",
+        "arabic": "يشاهد فيلما",
+        "partOfSpeech": "verb phrase",
+        "definition": "to look at a movie on a screen",
+        "exampleEN": "They watch a film on Saturday night.",
+        "exampleAR": "يشاهدون فيلما ليلة السبت."
+      },
+      {
+        "word": "meet friends",
+        "arabic": "يلتقي بالأصدقاء",
+        "partOfSpeech": "verb phrase",
+        "definition": "to see friends, usually for social reasons",
+        "exampleEN": "I meet friends for coffee on Sundays.",
+        "exampleAR": "ألتقي بالأصدقاء لشرب القهوة يوم الأحد."
+      },
+      {
+        "word": "relax",
+        "arabic": "يستريح / يسترخى",
+        "partOfSpeech": "verb",
+        "definition": "to rest and be calm after work or stress",
+        "exampleEN": "After work, she relaxes with music.",
+        "exampleAR": "بعد العمل، تسترخي مع الموسيقى."
+      },
+      {
+        "word": "a priority",
+        "arabic": "أولوية",
+        "partOfSpeech": "noun",
+        "definition": "something that is more important than other things",
+        "exampleEN": "Family is my top priority this weekend.",
+        "exampleAR": "الأسرة هي أولويتي الكبرى هذا الأسبوع."
+      },
+      {
+        "word": "rather than",
+        "arabic": "بدلًا من",
+        "partOfSpeech": "phrase",
+        "definition": "used to show a preference for one thing instead of another",
+        "exampleEN": "I will read a book rather than watch TV.",
+        "exampleAR": "سأقرأ كتابًا بدلًا من مشاهدة التلفاز."
+      },
+      {
+        "word": "sometimes",
+        "arabic": "أحيانًا",
+        "partOfSpeech": "adverb",
+        "definition": "on some occasions but not always",
+        "exampleEN": "Sometimes I go to the gym in the morning.",
+        "exampleAR": "أحيانًا أذهب إلى الصالة الرياضية في الصباح."
+      },
+      {
+        "word": "at the weekend",
+        "arabic": "في عطلة نهاية الأسبوع",
+        "partOfSpeech": "time phrase",
+        "definition": "during Saturday and Sunday",
+        "exampleEN": "We visit our grandparents at the weekend.",
+        "exampleAR": "نزور أجدادنا في عطلة نهاية الأسبوع."
+      }
+    ],
+    "grammar": {
+      "topic": "like, would like, prefer",
+      "arabicName": "like، would like، prefer",
+      "concept": "Use 'like' for general preferences, 'would like' for a specific wish or polite request, and 'prefer' to compare two or more options.",
+      "arabicComparison": "تستخدم «like» للتعبير عن التفضيل العام، «would like» للرغبة المحددة أو الطلب المهذب، و«prefer» للمقارنة بين خيارين أو أكثر.",
+      "structure": "Like: I like + noun / I like + -ing. Would like: I would like to + base verb. Question: Would you like to + verb? Prefer: I prefer + noun / I prefer + -ing / I prefer X to Y.",
+      "commonError": "Mixing 'like' and 'would like' (e.g. saying 'I like to a coffee' instead of 'I would like a coffee') and forgetting to use -ing after 'prefer' when comparing activities (e.g. 'I prefer play' instead of 'I prefer playing').",
+      "exampleEN": "I like cycling. I would like to try cycling in the countryside. I prefer cycling to running.",
+      "exampleAR": "أحب ركوب الدراجة. أودّ تجربة ركوب الدراجة في الريف. أفضل ركوب الدراجة على الركض."
+    },
+    "readingBrief": "A short 130–160-word first-person passage about planning a weekend. The writer lists two or three hobbies (for example: reading, walking, watching films), explains how they make time for activities, and describes a choice between meeting friends or staying home with family. The text uses simple time words (tomorrow, at the weekend), and examples of like, would like, and prefer. It shows reasons for a decision (time, cost, family) and ends with a clear plan for Saturday or Sunday.",
+    "writingPrompt": "Write an email (60–90 words) to a friend to explain your plans for the weekend. Say what you like doing in your free time, what you would like to try, and which activity you prefer and why. The audience is a friend; the purpose is to make a plan and explain your priorities."
+  },
+  {
+    "lessonNumber": 5,
+    "title": "People who help us",
+    "titleArabic": "الأشخاص الذين يساعدوننا",
+    "outcome": {
+      "canDo": "I can describe people who help me using adjectives and a basic relative clause.",
+      "canDoArabic": "أستطيع وصف الأشخاص الذين يساعدونني باستخدام الصفات وجملة وصفية بسيطة.",
+      "scenario": "You will talk about helpers at home, school and in the neighbourhood and say why they are important.",
+      "scenarioArabic": "ستتحدث عن الأشخاص الذين يساعدونك في البيت والمدرسة وفي الحي وتقول لماذا هم مهمون."
+    },
+    "retrieval": [
+      {
+        "language": "EN",
+        "prompt": "What time did you meet a friend yesterday? Where did you go?",
+        "purpose": "Activate simple past with time and places (yesterday, time, go)."
+      },
+      {
+        "language": "EN",
+        "prompt": "Who can help you if you want advice about food or health?",
+        "purpose": "Recall people and simple verbs (want, can, people, food)."
+      },
+      {
+        "language": "EN",
+        "prompt": "Do you like to ask your family for help or a neighbour? Why?",
+        "purpose": "Use basic verbs and people vocabulary (like, ask, family, neighbour)."
+      },
+      {
+        "language": "EN",
+        "prompt": "Can you go to the doctor tomorrow or do you want to call first?",
+        "purpose": "Practice modal can and simple future idea (tomorrow, want, call)."
+      }
+    ],
+    "network": {
+      "theme": "relationships, personality, support",
+      "themeArabic": "العلاقات، الشخصية، الدعم",
+      "anchor": "help",
+      "relatedWords": [
+        "kind",
+        "help",
+        "trust",
+        "support",
+        "care",
+        "reliable",
+        "neighbour",
+        "family"
+      ],
+      "chunks": [
+        "give advice",
+        "look after",
+        "ask for help",
+        "family member",
+        "be good at",
+        "call for help"
+      ],
+      "collocations": [
+        "provide support",
+        "help someone",
+        "make a difference",
+        "trust someone"
+      ],
+      "register": "neutral",
+      "priorLevelLinks": [
+        "Module 1 Lesson 1: People and places",
+        "Module 1 Lesson 2: Daily routines",
+        "Module 1 Lesson 3: Simple descriptions"
+      ],
+      "learningNote": "Focus on easy adjectives (kind, patient, reliable) and form one short relative clause with who/that. Encourage students to keep adjective order simple: opinion before noun.",
+      "learningNoteArabic": "ركز على صفات بسيطة (لطيف، صبور، موثوق) وصغ جملة وصفية واحدة بسيطة ب who/that. شجّع الطلاب على وضع الصفات قبل الاسم."
+    },
+    "vocabulary": [
+      {
+        "word": "nurse",
+        "arabic": "ممرضة / ممرض",
+        "partOfSpeech": "noun",
+        "definition": "A person who cares for sick people in a hospital or clinic.",
+        "exampleEN": "The nurse checks the patient's temperature.",
+        "exampleAR": "تفحص الممرضة حرارة المريض."
+      },
+      {
+        "word": "neighbour",
+        "arabic": "جار / جارة",
+        "partOfSpeech": "noun",
+        "definition": "A person who lives near your home.",
+        "exampleEN": "My neighbour helped me carry my bags.",
+        "exampleAR": "ساعدني جاري في حمل الحقائب."
+      },
+      {
+        "word": "social worker",
+        "arabic": "عامل اجتماعي",
+        "partOfSpeech": "noun phrase",
+        "definition": "A trained person who helps people with problems in life and family.",
+        "exampleEN": "The social worker visits families who need support.",
+        "exampleAR": "يزور العامل الاجتماعي الأسر التي تحتاج إلى دعم."
+      },
+      {
+        "word": "give advice",
+        "arabic": "يقدّم نصيحة",
+        "partOfSpeech": "verb phrase",
+        "definition": "To tell someone what you think they should do.",
+        "exampleEN": "My teacher gives advice about studying.",
+        "exampleAR": "يقدّم معلمي نصائح عن المذاكرة."
+      },
+      {
+        "word": "support",
+        "arabic": "دعم",
+        "partOfSpeech": "noun",
+        "definition": "Help or assistance when someone needs it.",
+        "exampleEN": "Friends can give emotional support.",
+        "exampleAR": "يمكن للأصدقاء تقديم الدعم العاطفي."
+      },
+      {
+        "word": "caring",
+        "arabic": "مُهتم / عطوف",
+        "partOfSpeech": "adjective",
+        "definition": "Showing kindness and concern for others.",
+        "exampleEN": "She is a caring person who listens carefully.",
+        "exampleAR": "هي شخص مُهتم يستمع بعناية."
+      },
+      {
+        "word": "reliable",
+        "arabic": "موثوق",
+        "partOfSpeech": "adjective",
+        "definition": "Someone you can trust to do what they say.",
+        "exampleEN": "He is reliable; he arrives on time.",
+        "exampleAR": "هو شخص موثوق؛ يصل في الوقت المحدد."
+      },
+      {
+        "word": "emergency services",
+        "arabic": "خدمات الطوارئ",
+        "partOfSpeech": "noun phrase",
+        "definition": "Police, ambulance, and fire services for urgent help.",
+        "exampleEN": "Call the emergency services in serious accidents.",
+        "exampleAR": "اتصل بخدمات الطوارئ في الحوادث الخطيرة."
+      },
+      {
+        "word": "look after",
+        "arabic": "يعتني بـ",
+        "partOfSpeech": "phrasal verb",
+        "definition": "To take care of someone or something.",
+        "exampleEN": "Can you look after my cat while I am away?",
+        "exampleAR": "هل يمكنك الاعتناء بقطتي أثناء غيابي؟"
+      },
+      {
+        "word": "family member",
+        "arabic": "عضو في العائلة",
+        "partOfSpeech": "noun phrase",
+        "definition": "A person in your family (mother, father, sister…).",
+        "exampleEN": "A family member can help with childcare.",
+        "exampleAR": "يمكن لأحد أفراد العائلة المساعدة في رعاية الأطفال."
+      },
+      {
+        "word": "patient",
+        "arabic": "مريض",
+        "partOfSpeech": "noun",
+        "definition": "A person receiving medical care.",
+        "exampleEN": "The patient waited for the doctor.",
+        "exampleAR": "انتظر المريض الطبيب."
+      },
+      {
+        "word": "listen to",
+        "arabic": "يستمع إلى",
+        "partOfSpeech": "phrasal verb",
+        "definition": "To pay attention to what someone says.",
+        "exampleEN": "Good helpers listen to people's problems.",
+        "exampleAR": "المساعدون الجيدون يستمعون لمشكلات الآخرين."
+      },
+      {
+        "word": "trust",
+        "arabic": "يثق / ثقة",
+        "partOfSpeech": "verb / noun",
+        "definition": "To believe someone will do what they promise / the belief itself.",
+        "exampleEN": "I trust my friend to keep my secret.",
+        "exampleAR": "أثق بصديقي أن يحتفظ بسرّي."
+      },
+      {
+        "word": "helpful",
+        "arabic": "مفيد / مساعد",
+        "partOfSpeech": "adjective",
+        "definition": "Willing to help and useful.",
+        "exampleEN": "The librarian is helpful when I search for books.",
+        "exampleAR": "المكتبي مفيد عندما أبحث عن كتب."
+      },
+      {
+        "word": "call for help",
+        "arabic": "يستنجد / يطلب المساعدة",
+        "partOfSpeech": "verb phrase",
+        "definition": "To ask for urgent help, often in an emergency.",
+        "exampleEN": "If there is a fire, call for help immediately.",
+        "exampleAR": "إذا كان هناك حريق، اطلب المساعدة فوراً."
+      }
+    ],
+    "grammar": {
+      "topic": "Adjectives and basic relative clauses",
+      "arabicName": "الصفات والجمل الوصفية البسيطة",
+      "concept": "Use adjectives before nouns to describe people (a kind friend). Use a simple relative clause with who/that to add information about a person: The teacher who helps me is patient.",
+      "arabicComparison": "في العربية نستخدم أداة الوصل مثل الذي/التي بعد الاسم (مثال: المعلم الذي يساعدني). في الإنجليزية تكون الصفة قبل الاسم، أما الجملة الوصفية فتستخدم who/that بعد الاسم.",
+      "structure": "Adjective + noun: a kind neighbour.   Noun + relative clause: the neighbour who helps me / the person that I trust.",
+      "commonError": "Placing the adjective after the noun (e.g. 'a neighbour kind') or omitting the relative pronoun in formal speech. A common learner error is to use Arabic word order for adjectives.",
+      "exampleEN": "The doctor who works at the clinic is reliable. She is a caring doctor.",
+      "exampleAR": "الطبيب الذي يعمل في العيادة موثوق. إنها طبيبة عطوفة."
+    },
+    "readingBrief": "A 130–160-word original passage describing three people who help in a small community: a nurse at the health centre, a neighbour who looks after an elderly person, and a volunteer who organises food for families. The text uses simple adjectives (kind, reliable, busy) and includes one or two basic relative clauses with who/that. Learners practise reading for specific information (who does what) and notice the adjectives and the structure of the short relative clauses.",
+    "writingPrompt": "Write a short message (60–90 words) to a friend describing one person who helps you in your life (for example a teacher, neighbour or family member). Say three adjectives about them and include one relative clause with who or that (for example: who helps me). Purpose: to describe and thank the person. Audience: your friend."
+  },
+  {
+    "lessonNumber": 6,
+    "title": "A neighbourhood worth knowing",
+    "titleArabic": "حي يستحق أن تعرفه",
+    "outcome": {
+      "canDo": "I can say what is in a neighbourhood and give simple places and directions using there is/are and place prepositions.",
+      "canDoArabic": "أستطيع أن أقول ما يوجد في الحي وأن أعطي أماكن واتجاهات بسيطة باستخدام there is/are وحروف جر المكان.",
+      "scenario": "You meet a new neighbour and tell them where the shops and services are and how to get to the bus stop and park.",
+      "scenarioArabic": "تلتقي بجار جديد وتخبره أين تقع المتاجر والخدمات وكيف يصل إلى موقف الحافلات والحديقة."
+    },
+    "retrieval": [
+      {
+        "language": "time, yesterday, tomorrow",
+        "prompt": "Tell your partner: Where did you go yesterday? Where will you go tomorrow?",
+        "purpose": "Activate simple past/future time words and short answers."
+      },
+      {
+        "language": "places, go, like",
+        "prompt": "Name three places in your town you like and say why.",
+        "purpose": "Recall common places and give short reasons."
+      },
+      {
+        "language": "people, can",
+        "prompt": "Ask a classmate: Can you show me the way to the nearest shop?",
+        "purpose": "Practice asking for help with simple modal can."
+      },
+      {
+        "language": "food, want",
+        "prompt": "Say what food you want to buy at the supermarket this week.",
+        "purpose": "Use simple shopping vocabulary and want + noun."
+      }
+    ],
+    "network": {
+      "theme": "towns, services, places",
+      "themeArabic": "المدن، الخدمات، الأماكن",
+      "anchor": "neighbourhood",
+      "relatedWords": [
+        "city centre",
+        "park",
+        "library",
+        "post office",
+        "bus stop",
+        "café",
+        "supermarket",
+        "traffic light",
+        "street"
+      ],
+      "chunks": [
+        "on the corner",
+        "next to",
+        "take the bus",
+        "open late",
+        "go straight",
+        "turn left"
+      ],
+      "collocations": [
+        "busy street",
+        "quiet street",
+        "close to",
+        "a short walk"
+      ],
+      "register": "mixed",
+      "priorLevelLinks": [
+        "time",
+        "places",
+        "people",
+        "go",
+        "want",
+        "like",
+        "can",
+        "yesterday",
+        "tomorrow"
+      ],
+      "learningNote": "Focus on there is/are for saying what exists, and simple prepositions (in, on, next to, behind, between, at) to show where things are. Use short natural phrases for directions like 'go straight' and 'turn left.' Practise matching singular/plural with there is/are.",
+      "learningNoteArabic": "ركز على there is/are لبيان ما يوجد وحروف الجر البسيطة (in، on، next to، behind، between، at) لتحديد أماكن الأشياء. استخدم عبارات قصيرة وطبيعية للإتجاهات مثل 'go straight' و 'turn left'. مرن على مطابقة المفرد والجمع مع there is/are."
+    },
+    "vocabulary": [
+      {
+        "word": "neighbourhood",
+        "arabic": "حيّ",
+        "partOfSpeech": "noun",
+        "definition": "a small area of a town where people live and work",
+        "exampleEN": "My neighbourhood has a small park and two shops.",
+        "exampleAR": "حيّي يحتوي على حديقة صغيرة ومتجرين."
+      },
+      {
+        "word": "city centre",
+        "arabic": "وسط المدينة",
+        "partOfSpeech": "noun phrase",
+        "definition": "the main part of a town with shops and offices",
+        "exampleEN": "The city centre is busy on Saturdays.",
+        "exampleAR": "وسط المدينة مزدحم يوم السبت."
+      },
+      {
+        "word": "park",
+        "arabic": "حديقة",
+        "partOfSpeech": "noun",
+        "definition": "a public green area with trees and grass",
+        "exampleEN": "Children play in the park after school.",
+        "exampleAR": "يلعب الأطفال في الحديقة بعد المدرسة."
+      },
+      {
+        "word": "library",
+        "arabic": "مكتبة",
+        "partOfSpeech": "noun",
+        "definition": "a building where you can borrow books",
+        "exampleEN": "There is a small library next to the school.",
+        "exampleAR": "توجد مكتبة صغيرة بجانب المدرسة."
+      },
+      {
+        "word": "post office",
+        "arabic": "مكتب بريد",
+        "partOfSpeech": "noun phrase",
+        "definition": "a place to send letters and buy stamps",
+        "exampleEN": "I need to go to the post office to send a parcel.",
+        "exampleAR": "أحتاج إلى الذهاب إلى مكتب البريد لإرسال طرد."
+      },
+      {
+        "word": "bus stop",
+        "arabic": "موقف الحافلات",
+        "partOfSpeech": "noun phrase",
+        "definition": "the place where buses stop to pick up people",
+        "exampleEN": "The bus stop is on the corner of Baker Street.",
+        "exampleAR": "موقف الحافلات في زاوية شارع بيكر."
+      },
+      {
+        "word": "café",
+        "arabic": "مقهى",
+        "partOfSpeech": "noun",
+        "definition": "a small shop where you can buy coffee and light food",
+        "exampleEN": "Let's meet at the café near the library.",
+        "exampleAR": "لنلتقِ في المقهى بالقرب من المكتبة."
+      },
+      {
+        "word": "supermarket",
+        "arabic": "سوبرماركت",
+        "partOfSpeech": "noun",
+        "definition": "a large shop where you buy food and household items",
+        "exampleEN": "The supermarket is open late on Fridays.",
+        "exampleAR": "السوبرماركت يفتح حتى وقت متأخر أيام الجمعة."
+      },
+      {
+        "word": "busy street",
+        "arabic": "شارع مزدحم",
+        "partOfSpeech": "noun phrase (collocation)",
+        "definition": "a road with a lot of traffic and people",
+        "exampleEN": "Be careful when you cross the busy street.",
+        "exampleAR": "كن حذراً عند عبور الشارع المزدحم."
+      },
+      {
+        "word": "quiet street",
+        "arabic": "شارع هادئ",
+        "partOfSpeech": "noun phrase (collocation)",
+        "definition": "a calm road with little traffic",
+        "exampleEN": "We live on a quiet street behind the school.",
+        "exampleAR": "نعيش في شارع هادئ خلف المدرسة."
+      },
+      {
+        "word": "traffic light",
+        "arabic": "إشارة مرور",
+        "partOfSpeech": "noun phrase",
+        "definition": "a light that controls traffic at a road junction",
+        "exampleEN": "Wait at the traffic light before you cross.",
+        "exampleAR": "انتظر عند إشارة المرور قبل أن تعبر."
+      },
+      {
+        "word": "on the corner",
+        "arabic": "على الزاوية",
+        "partOfSpeech": "prepositional phrase",
+        "definition": "at the place where two streets meet",
+        "exampleEN": "There is a bakery on the corner of High Street.",
+        "exampleAR": "يوجد مخبز على زاوية شارع هاي."
+      },
+      {
+        "word": "next to",
+        "arabic": "بجوار",
+        "partOfSpeech": "preposition phrase",
+        "definition": "very close to something or someone",
+        "exampleEN": "The café is next to the library.",
+        "exampleAR": "المقهى بجوار المكتبة."
+      },
+      {
+        "word": "take the bus",
+        "arabic": "أخذ الحافلة",
+        "partOfSpeech": "verb phrase",
+        "definition": "to travel by bus",
+        "exampleEN": "I take the bus to work every day.",
+        "exampleAR": "أركب الحافلة إلى العمل كل يوم."
+      },
+      {
+        "word": "open late",
+        "arabic": "يفتح حتى وقت متأخر",
+        "partOfSpeech": "adjective phrase/collocation",
+        "definition": "to stay open until late in the evening",
+        "exampleEN": "The supermarket opens late on Fridays.",
+        "exampleAR": "السوبرماركت يفتح حتى وقت متأخر أيام الجمعة."
+      }
+    ],
+    "grammar": {
+      "topic": "there is / there are and place prepositions",
+      "arabicName": "There is / There are وحروف الجر للمكان",
+      "concept": "Use there is for one thing and there are for more than one. Use prepositions (in, on, at, next to, behind, between, in front of, on the corner) to say where something is.",
+      "arabicComparison": "في الإنجليزية نستخدم there is/there are للقول بوجود شيء، بينما في العربية نستخدم 'يوجد' أو 'هناك'. حروف الجر مثل in، on، next to تقابل في العربية في، على، بجوار.",
+      "structure": "There is + singular noun / There are + plural noun. Negative: There isn't / There aren't. Short answer: Yes, there is. No, there aren't. Preposition examples: in the park, on the corner, next to the shop, behind the library, between the bank and the café.",
+      "commonError": "Using 'there is' with plural nouns (wrong: There is two shops). Choosing the wrong preposition (wrong: The bus stop is in the corner → correct: on the corner).",
+      "exampleEN": "There is a café next to the library. There are two banks on the high street.",
+      "exampleAR": "هناك مقهى بجوار المكتبة. يوجد مصرفان في الشارع الرئيسي."
+    },
+    "readingBrief": "A 130–160-word friendly guide written by a local resident describing one neighbourhood. The short passage lists five key places (park, supermarket, library, café, post office), mentions approximate locations with prepositions (next to, on the corner, behind), and gives two short directions using 'go straight' and 'turn left'. The text uses several examples of there is/there are and highlights opening times (open late). The tone is informal and useful for a new neighbour.",
+    "writingPrompt": "Write a 60–90-word note to a new neighbour to tell them about three helpful places in your area (for example: supermarket, bus stop, park) and give simple directions using there is/are and place prepositions. Audience: new neighbour. Purpose: help them find places and invite them to meet for a walk."
+  },
+  {
+    "lessonNumber": 7,
+    "title": "Getting there",
+    "titleArabic": "الوصول إلى هناك",
+    "outcome": {
+      "canDo": "I can ask and give simple directions and talk about short journeys using buses, trains and walking.",
+      "canDoArabic": "أستطيع أن أطلب وأعطي اتجاهات بسيطة وأتحدث عن رحلات قصيرة بالحافلة والقطار والمشي.",
+      "scenario": "You arrive in a new neighbourhood and need to explain to a friend how to get to the café and the station.",
+      "scenarioArabic": "تصل إلى حي جديد وتحتاج أن تشرح لصديق كيف يصل إلى المقهى والمحطة."
+    },
+    "retrieval": [
+      {
+        "language": "English",
+        "prompt": "What time do you usually go to work or class?",
+        "purpose": "Recall common time words and 'go' in sentences."
+      },
+      {
+        "language": "English",
+        "prompt": "Name three places you like in your town (for example: shop, park, school).",
+        "purpose": "Activate A1 place vocabulary to connect with transport."
+      },
+      {
+        "language": "English",
+        "prompt": "Who can help you if you are lost? (person or place)",
+        "purpose": "Use simple people words (friend, police, receptionist) in a travel context."
+      },
+      {
+        "language": "English",
+        "prompt": "What did you do yesterday? Use 'went' once.",
+        "purpose": "Practice past-time language and movement verbs in a short sentence."
+      }
+    ],
+    "network": {
+      "theme": "transport, directions, movement",
+      "themeArabic": "المواصلات، الاتجاهات، الحركة",
+      "anchor": "Getting there / الوصول إلى هناك",
+      "relatedWords": [
+        "bus",
+        "train",
+        "walk",
+        "station",
+        "stop",
+        "taxi",
+        "map",
+        "ticket"
+      ],
+      "chunks": [
+        "go straight on",
+        "turn left",
+        "turn right",
+        "get on",
+        "get off",
+        "around the corner",
+        "follow the signs",
+        "take the next bus"
+      ],
+      "collocations": [
+        "buy a ticket",
+        "change trains",
+        "catch the bus",
+        "check the route"
+      ],
+      "register": "neutral",
+      "priorLevelLinks": [
+        "Module 1: Asking for help",
+        "Module 2 Lesson 3: Places in town",
+        "Module 2 Lesson 5: Using a map"
+      ],
+      "learningNote": "Teach imperatives with clear gestures and simple maps. Use short, natural commands (Turn left. Go straight on.) Practise positive and negative imperatives and show how prepositions (at, next to, opposite) work in short direction phrases.",
+      "learningNoteArabic": "علّم الأوامر بصور واضحة وخرائط بسيطة. استخدم أوامر قصيرة وطبيعية (انعطف يسارًا. اذهب مباشرة). درّب الأوامر الموجبة والسالبة وأوضح كيف تعمل حروف الجر (عند، بجانب، أمام) في عبارات الاتجاه القصيرة."
+    },
+    "vocabulary": [
+      {
+        "word": "bus stop",
+        "arabic": "موقف الحافلة",
+        "partOfSpeech": "noun (phrase)",
+        "definition": "the place where a bus stops to pick up or drop off people",
+        "exampleEN": "Wait at the bus stop near the corner.",
+        "exampleAR": "انتظر في موقف الحافلة قرب الزاوية."
+      },
+      {
+        "word": "get on",
+        "arabic": "اصعد (في وسيلة نقل)",
+        "partOfSpeech": "phrasal verb",
+        "definition": "to go onto a bus, train, or other vehicle",
+        "exampleEN": "We get on the train at nine o'clock.",
+        "exampleAR": "نصعد القطار في الساعة التاسعة."
+      },
+      {
+        "word": "get off",
+        "arabic": "انزل (من وسيلة نقل)",
+        "partOfSpeech": "phrasal verb",
+        "definition": "to leave a bus, train, or other vehicle",
+        "exampleEN": "Get off at the second stop.",
+        "exampleAR": "انزل عند المحطة الثانية."
+      },
+      {
+        "word": "change trains",
+        "arabic": "غيّر القطار / قم بالتبديل بين القطارات",
+        "partOfSpeech": "verb phrase",
+        "definition": "to leave one train and travel on another to continue a journey",
+        "exampleEN": "You must change trains at Central Station.",
+        "exampleAR": "يجب أن تغيّر القطار في المحطة المركزية."
+      },
+      {
+        "word": "ticket",
+        "arabic": "تذكرة",
+        "partOfSpeech": "noun",
+        "definition": "a paper or electronic pass that allows you to travel on transport",
+        "exampleEN": "Buy a ticket before you get on the bus.",
+        "exampleAR": "اشترِ تذكرة قبل أن تصعد الحافلة."
+      },
+      {
+        "word": "fare",
+        "arabic": "أجرة",
+        "partOfSpeech": "noun",
+        "definition": "the money you pay to travel on public transport",
+        "exampleEN": "The bus fare is cheaper in the morning.",
+        "exampleAR": "أجرة الحافلة أرخص في الصباح."
+      },
+      {
+        "word": "platform",
+        "arabic": "رصيف / منصة انتظار القطار",
+        "partOfSpeech": "noun",
+        "definition": "a raised area at a station where passengers get on or off trains",
+        "exampleEN": "The train to Bristol leaves from platform 4.",
+        "exampleAR": "يغادر القطار إلى بريستول من الرصيف رقم 4."
+      },
+      {
+        "word": "map",
+        "arabic": "خريطة",
+        "partOfSpeech": "noun",
+        "definition": "a drawing that shows streets and places to help you find a way",
+        "exampleEN": "Open the map to find the café.",
+        "exampleAR": "افتح الخريطة لتجد المقهى."
+      },
+      {
+        "word": "go straight on",
+        "arabic": "امشِ مباشرة",
+        "partOfSpeech": "phrase",
+        "definition": "to continue in the same direction without turning",
+        "exampleEN": "Go straight on for two blocks, then turn right.",
+        "exampleAR": "امشِ مباشرة لمسافتين، ثم انعطف يمينًا."
+      },
+      {
+        "word": "turn left",
+        "arabic": "انعطف يسارًا",
+        "partOfSpeech": "phrase",
+        "definition": "to change direction to the left",
+        "exampleEN": "Turn left at the traffic lights.",
+        "exampleAR": "انعطف يسارًا عند إشارة المرور."
+      },
+      {
+        "word": "turn right",
+        "arabic": "انعطف يمينًا",
+        "partOfSpeech": "phrase",
+        "definition": "to change direction to the right",
+        "exampleEN": "Turn right after the shop.",
+        "exampleAR": "انعطف يمينًا بعد المتجر."
+      },
+      {
+        "word": "around the corner",
+        "arabic": "على بعد زاوية / خلف الزاوية",
+        "partOfSpeech": "phrase",
+        "definition": "a short distance away, just after the next turn",
+        "exampleEN": "The bakery is just around the corner.",
+        "exampleAR": "المخبز بجوار الزاوية مباشرة."
+      },
+      {
+        "word": "route",
+        "arabic": "مسار / طريق الرحلة",
+        "partOfSpeech": "noun",
+        "definition": "the path or road you follow to get from one place to another",
+        "exampleEN": "This route takes you along the river.",
+        "exampleAR": "هذا المسار يأخذك على طول النهر."
+      },
+      {
+        "word": "journey",
+        "arabic": "رحلة",
+        "partOfSpeech": "noun",
+        "definition": "the act of travelling from one place to another",
+        "exampleEN": "The journey to the station takes twenty minutes by foot.",
+        "exampleAR": "تستغرق الرحلة إلى المحطة عشرين دقيقة سيرًا على الأقدام."
+      },
+      {
+        "word": "take the next bus",
+        "arabic": "استقل الحافلة التالية",
+        "partOfSpeech": "verb phrase",
+        "definition": "to get on the bus that comes after the current one",
+        "exampleEN": "If you miss this one, take the next bus.",
+        "exampleAR": "إذا فاتتك هذه، استقل الحافلة التالية."
+      }
+    ],
+    "grammar": {
+      "topic": "Imperatives and direction phrases",
+      "arabicName": "الأوامر وعبارات الاتجاه",
+      "concept": "Use the base verb to give short commands (imperatives) and combine them with simple direction phrases (go straight on, turn left) and prepositions (at, next to, opposite) to tell someone how to get somewhere.",
+      "arabicComparison": "في الإنجليزية نستخدم الفعل في صورته الأساسية للأوامر (اِذهب، انعطف) بينما في العربية نستخدم صيغة فعل الأمر. جهز الطالب للتعرف على الاختلاف في ترتيب الكلمات ووجود حروف الجر بالإنجليزية مثل 'at' و'next to'.",
+      "structure": "Imperative: [Base verb] + [direction phrase]. Examples: 'Turn left.' 'Go straight on.' 'Don't run.' For locations: '[Place] is [preposition] the [landmark].' Example: 'The café is next to the bank.'",
+      "commonError": "Learners often add 'to' after the base verb (say 'to go straight' instead of 'go straight') or forget prepositions ('the café next the bank' instead of 'next to the bank').",
+      "exampleEN": "Turn left at the lights, then go straight on. The station is opposite the library.",
+      "exampleAR": "انعطف يسارًا عند الإشارات، ثم امشِ مباشرة. المحطة مقابل المكتبة."
+    },
+    "readingBrief": "A short, 130–160-word passage describing a simple trip across town. The text follows a young visitor who gets off a train, checks a small map, and walks to a café. It includes clear direction phrases (turn left, go straight on, around the corner), transport words (train, bus, platform, ticket) and a short exchange asking for help. The passage models imperatives and polite questions (Excuse me, where is ...? Can you tell me?), uses present and simple past verbs, and finishes with the speaker arriving at the café and describing the view. The tone is practical and friendly for A2 readers.",
+    "writingPrompt": "Audience: a friend who will visit your neighbourhood. Purpose: write 60–90 words giving simple directions from the station to your favourite café. Include one transport word, two direction phrases (e.g. turn left, go straight on), and a short polite sentence offering help if needed."
+  },
+  {
+    "lessonNumber": 8,
+    "title": "Staying somewhere new",
+    "titleArabic": "الإقامة في مكان جديد",
+    "outcome": {
+      "canDo": "I can ask politely for help, report simple problems in my room, and understand short replies at reception.",
+      "canDoArabic": "أستطيع أن أطلب المساعدة بأدب، وأبلغ عن مشاكل بسيطة في غرفتي، وأفهم ردودًا قصيرة في مكتب الاستقبال.",
+      "scenario": "You arrive at a guesthouse. You need to check in, ask for the Wi-Fi password, and tell reception that your heater is not working.",
+      "scenarioArabic": "تصل إلى دار ضيافة. تحتاج إلى تسجيل الوصول، وطلب كلمة مرور الواي فاي، وإخبار مكتب الاستقبال أن السخان لا يعمل."
+    },
+    "retrieval": [
+      {
+        "language": "English",
+        "prompt": "What time can you check in tomorrow?",
+        "purpose": "practice time + can for arrangements"
+      },
+      {
+        "language": "English",
+        "prompt": "Where do people go to eat when they are hungry?",
+        "purpose": "use places and food in a simple question"
+      },
+      {
+        "language": "English",
+        "prompt": "Who can help you with a problem in your room?",
+        "purpose": "use people and can for offers of help"
+      },
+      {
+        "language": "English",
+        "prompt": "Do you like the place you stayed yesterday?",
+        "purpose": "simple past idea with yesterday and like"
+      }
+    ],
+    "network": {
+      "theme": "Accommodation, requests, problems",
+      "themeArabic": "الإقامة، الطلبات، المشاكل",
+      "anchor": "Staying somewhere new / Asking for help at reception",
+      "relatedWords": [
+        "hotel",
+        "guesthouse",
+        "room",
+        "staff",
+        "booking",
+        "clean",
+        "bathroom",
+        "noise",
+        "service"
+      ],
+      "chunks": [
+        "check in",
+        "check out",
+        "make a reservation",
+        "make a request",
+        "change rooms",
+        "call reception",
+        "turn on the heater"
+      ],
+      "collocations": [
+        "book a room",
+        "ask for help",
+        "file a complaint",
+        "room service",
+        "late check-out"
+      ],
+      "register": "mixed",
+      "priorLevelLinks": [
+        "Module 2 Lesson 1: Rooms and furniture",
+        "Module 2 Lesson 3: Daily routines and time",
+        "Module 1 Lesson 5: Speaking to people politely"
+      ],
+      "learningNote": "Teach polite language with can and could alongside practical vocabulary (reception, key card, noisy, leak). Model short phrases students will use at a desk or on the phone.",
+      "learningNoteArabic": "علّم اللغة المهذبة باستخدام can و could مع مفردات عملية (الاستقبال، بطاقة الغرفة، الضوضاء، التسرب). قدّم عبارات قصيرة يستخدمها المتعلمون عند المكتب أو على الهاتف."
+    },
+    "vocabulary": [
+      {
+        "word": "reception",
+        "arabic": "الاستقبال",
+        "partOfSpeech": "noun",
+        "definition": "The desk or area where guests check in and ask for help",
+        "exampleEN": "I went to reception to get the Wi-Fi password.",
+        "exampleAR": "ذهبت إلى الاستقبال لأخذ كلمة مرور الواي فاي."
+      },
+      {
+        "word": "reservation",
+        "arabic": "حجز",
+        "partOfSpeech": "noun",
+        "definition": "An arrangement to keep a room or seat for you",
+        "exampleEN": "She made a reservation online for two nights.",
+        "exampleAR": "قامت بعمل حجز عن طريق الإنترنت لليلتين."
+      },
+      {
+        "word": "check in",
+        "arabic": "تسجيل الوصول",
+        "partOfSpeech": "phrasal verb",
+        "definition": "To tell the hotel you have arrived and get your room key",
+        "exampleEN": "We checked in at 3 pm and went to our room.",
+        "exampleAR": "قمنا بتسجيل الوصول الساعة الثالثة وذهبنا إلى غرفتنا."
+      },
+      {
+        "word": "check out",
+        "arabic": "تسجيل المغادرة",
+        "partOfSpeech": "phrasal verb",
+        "definition": "To pay and leave the hotel at the end of your stay",
+        "exampleEN": "Please check out before 11 am.",
+        "exampleAR": "يرجى تسجيل المغادرة قبل الساعة الحادية عشرة صباحًا."
+      },
+      {
+        "word": "key card",
+        "arabic": "بطاقة الغرفة",
+        "partOfSpeech": "noun",
+        "definition": "A card used to open a hotel room door",
+        "exampleEN": "The receptionist gave me a new key card.",
+        "exampleAR": "أعطاني موظف الاستقبال بطاقة غرفة جديدة."
+      },
+      {
+        "word": "ensuite",
+        "arabic": "حمام داخلي",
+        "partOfSpeech": "adjective",
+        "definition": "A room with its own private bathroom",
+        "exampleEN": "We chose a room with an ensuite bathroom.",
+        "exampleAR": "اخترنا غرفة بها حمام داخلي."
+      },
+      {
+        "word": "single room",
+        "arabic": "غرفة مفردة",
+        "partOfSpeech": "noun phrase",
+        "definition": "A room for one person",
+        "exampleEN": "He booked a single room for one night.",
+        "exampleAR": "حجز غرفة مفردة لليلة واحدة."
+      },
+      {
+        "word": "double room",
+        "arabic": "غرفة مزدوجة",
+        "partOfSpeech": "noun phrase",
+        "definition": "A room for two people, usually with one double bed or two single beds",
+        "exampleEN": "We stayed in a double room with a nice view.",
+        "exampleAR": "أقمنا في غرفة مزدوجة بإطلالة جميلة."
+      },
+      {
+        "word": "bed linen",
+        "arabic": "أغطية السرير",
+        "partOfSpeech": "noun phrase",
+        "definition": "Sheets and covers for a bed",
+        "exampleEN": "The bed linen looked clean and fresh.",
+        "exampleAR": "بدا أن أغطية السرير نظيفة ومنتعشة."
+      },
+      {
+        "word": "noisy",
+        "arabic": "صاخب",
+        "partOfSpeech": "adjective",
+        "definition": "Making a lot of sound; not quiet",
+        "exampleEN": "The street was noisy at night and I could not sleep.",
+        "exampleAR": "كان الشارع صاخبًا في الليل ولم أستطع النوم."
+      },
+      {
+        "word": "heater",
+        "arabic": "سخان",
+        "partOfSpeech": "noun",
+        "definition": "A device that makes a room warm",
+        "exampleEN": "Please turn on the heater; it is very cold.",
+        "exampleAR": "من فضلك شغّل السخان؛ الجو بارد جدًا."
+      },
+      {
+        "word": "leak",
+        "arabic": "تسرب",
+        "partOfSpeech": "noun",
+        "definition": "Water or liquid coming through where it should not",
+        "exampleEN": "There is a leak under the sink in my bathroom.",
+        "exampleAR": "هناك تسرب تحت الحوض في حمامي."
+      },
+      {
+        "word": "Wi-Fi password",
+        "arabic": "كلمة مرور الواي فاي",
+        "partOfSpeech": "noun phrase",
+        "definition": "The code you use to connect to the hotel's internet",
+        "exampleEN": "May I have the Wi-Fi password, please?",
+        "exampleAR": "هل أستطيع الحصول على كلمة مرور الواي فاي، من فضلك؟"
+      },
+      {
+        "word": "make a request",
+        "arabic": "تقديم طلب",
+        "partOfSpeech": "verb phrase",
+        "definition": "To ask for something you need or want",
+        "exampleEN": "I will make a request for extra towels.",
+        "exampleAR": "سأقدم طلبًا لمناشف إضافية."
+      },
+      {
+        "word": "fix",
+        "arabic": "يصلح / إصلاح",
+        "partOfSpeech": "verb",
+        "definition": "To repair something that is broken",
+        "exampleEN": "The staff will fix the heater this afternoon.",
+        "exampleAR": "سيقوم الموظفون بإصلاح السخان هذا الظهر."
+      }
+    ],
+    "grammar": {
+      "topic": "can / could for requests",
+      "arabicName": "استخدام can و could لطلب المساعدة",
+      "concept": "Use can for informal requests and could for more polite or formal requests. Both forms ask someone to do something. 'Could' is softer and often better with strangers or staff.",
+      "arabicComparison": "نستخدم can للطلبات العادية مع الأصدقاء، و could عندما نريد أن نكون أكثر مؤدبين، خاصة مع أشخاص لا نعرفهم أو الموظفين.",
+      "structure": "Can / Could + subject + verb (base form)? + please (optional).",
+      "commonError": "Students say 'Can you to fix the heater?' — do not use 'to' after can/could. Also avoid using could for past ability (different meaning).",
+      "exampleEN": "Can you help me with the Wi-Fi? / Could you please change my room? ",
+      "exampleAR": "هل يمكنك مساعدتي في الواي فاي؟ / هل يمكنك من فضلك تغيير غرفتي؟"
+    },
+    "readingBrief": "A 130–160-word passage describing a short stay at a small guesthouse. The guest explains checking in at reception, asking for the Wi‑Fi password, and reporting two problems: a noisy street and a slow shower with low hot water. The text shows a short dialogue with the receptionist who says they can move the guest to another room or send someone to fix the shower. It highlights polite requests using can and could, and gives simple reactions for the guest (thank you, that helps). The passage models useful phrases students can use when they stay somewhere new.",
+    "writingPrompt": "Write a short email (60–90 words) to the hotel reception. Audience: hotel reception. Purpose: politely ask to change to a quieter room because your current room is noisy at night and to request a late check-out at 1 pm. Use can or could for your requests and include a thank you."
+  },
+  {
+    "lessonNumber": 9,
+    "title": "Shopping with a purpose",
+    "titleArabic": "تسوّق لهدف",
+    "outcome": {
+      "canDo": "I can compare products and explain why I will buy something using too/enough and simple comparisons.",
+      "canDoArabic": "أستطيع مقارنة المنتجات وشرح سبب شرائي باستخدام too / enough والمقارنات البسيطة.",
+      "scenario": "You need to buy one item for a clear purpose (e.g., a warm coat, a school bag, a phone). You make a short list, compare options, and decide within a budget.",
+      "scenarioArabic": "تحتاج إلى شراء سلعة لغرض واضح (مثل معطف دافئ أو حقيبة مدرسية أو هاتف). تكتب قائمة قصيرة، تقارن الخيارات، وتقرر ضمن ميزانية."
+    },
+    "retrieval": [
+      {
+        "language": "English",
+        "prompt": "What did you buy yesterday?",
+        "purpose": "Warm-up: recall shopping vocabulary and past events."
+      },
+      {
+        "language": "English",
+        "prompt": "Where do you usually go for food or clothes?",
+        "purpose": "Activate places and routine vocabulary relevant to shopping."
+      },
+      {
+        "language": "English",
+        "prompt": "How much money do you have for a small purchase today?",
+        "purpose": "Use numbers and money language to prepare for budgeting."
+      },
+      {
+        "language": "English",
+        "prompt": "Can you pay by card or do you need cash?",
+        "purpose": "Prompt use of payment vocabulary in a real context."
+      }
+    ],
+    "network": {
+      "theme": "products, money, value",
+      "themeArabic": "المنتجات، المال، القيمة",
+      "anchor": "Choose a product that fits your need and budget",
+      "relatedWords": [
+        "budget",
+        "cost",
+        "save",
+        "buy",
+        "sell",
+        "wallet",
+        "quality"
+      ],
+      "chunks": [
+        "price tag",
+        "pay by card",
+        "try on",
+        "return policy",
+        "good value",
+        "on sale",
+        "price range"
+      ],
+      "collocations": [
+        "save money",
+        "high quality",
+        "low price",
+        "make a list",
+        "stick to a budget",
+        "compare prices"
+      ],
+      "register": "neutral",
+      "priorLevelLinks": [
+        "Module 1 Lesson 2: Numbers and prices",
+        "Module 1 Lesson 5: Shops and places",
+        "Core verbs: want, need, like"
+      ],
+      "learningNote": "Focus on simple comparisons (X is cheaper than Y) and using too/enough to explain suitability. Encourage real choices (budget, purpose) rather than only vocabulary lists.",
+      "learningNoteArabic": "ركّز على المقارنات البسيطة (X أرخص من Y) واستخدام too / enough لشرح الملاءمة. شجّع الاختيارات الحقيقية (الميزانية، الهدف) بدلاً من قوائم كلمات فقط."
+    },
+    "vocabulary": [
+      {
+        "word": "affordable",
+        "arabic": "ميسور التكلفة",
+        "partOfSpeech": "adjective",
+        "definition": "not too expensive; you can pay for it",
+        "exampleEN": "This coat is affordable for my budget.",
+        "exampleAR": "هذا المعطف ميسور التكلفة بالنسبة لميزانيتي."
+      },
+      {
+        "word": "price tag",
+        "arabic": "ملصق السعر",
+        "partOfSpeech": "noun (chunk)",
+        "definition": "a small label that shows how much something costs",
+        "exampleEN": "Check the price tag before you decide.",
+        "exampleAR": "افحص ملصق السعر قبل أن تقرر."
+      },
+      {
+        "word": "receipt",
+        "arabic": "إيصال",
+        "partOfSpeech": "noun",
+        "definition": "a paper that shows what you bought and how much you paid",
+        "exampleEN": "Keep the receipt in case you need to return the item.",
+        "exampleAR": "احتفظ بالإيصال إذا احتجت إلى إرجاع السلعة."
+      },
+      {
+        "word": "discount",
+        "arabic": "خصم",
+        "partOfSpeech": "noun",
+        "definition": "a reduction in the normal price",
+        "exampleEN": "There is a 10% discount on school bags this week.",
+        "exampleAR": "هناك خصم 10% على حقائب المدرسة هذا الأسبوع."
+      },
+      {
+        "word": "bargain",
+        "arabic": "صفقة جيدة",
+        "partOfSpeech": "noun",
+        "definition": "something you buy for much less than usual",
+        "exampleEN": "I found a bargain at the market.",
+        "exampleAR": "وجدت صفقة جيدة في السوق."
+      },
+      {
+        "word": "brand",
+        "arabic": "علامة تجارية",
+        "partOfSpeech": "noun",
+        "definition": "the company name of a product (e.g., a maker of clothes or phones)",
+        "exampleEN": "I like this brand because it lasts longer.",
+        "exampleAR": "أحب هذه العلامة التجارية لأنها تدوم أطول."
+      },
+      {
+        "word": "quality",
+        "arabic": "جودة",
+        "partOfSpeech": "noun",
+        "definition": "how good or well made something is",
+        "exampleEN": "Good quality shoes may cost more but last longer.",
+        "exampleAR": "الأحذية ذات الجودة الجيدة قد تكون أغلى لكنها تدوم أطول."
+      },
+      {
+        "word": "durable",
+        "arabic": "متين",
+        "partOfSpeech": "adjective",
+        "definition": "strong and long-lasting",
+        "exampleEN": "I need a durable bag for daily use.",
+        "exampleAR": "أحتاج حقيبة متينة للاستخدام اليومي."
+      },
+      {
+        "word": "second-hand",
+        "arabic": "مستعمل",
+        "partOfSpeech": "adjective",
+        "definition": "used before by someone else; not new",
+        "exampleEN": "A second-hand phone can be a good way to save money.",
+        "exampleAR": "الهاتف المستعمل قد يكون وسيلة جيدة لتوفير المال."
+      },
+      {
+        "word": "on sale",
+        "arabic": "بِسعرٍ مُنخفض",
+        "partOfSpeech": "phrase",
+        "definition": "available at a lower price than usual",
+        "exampleEN": "The winter coats are on sale now.",
+        "exampleAR": "معاطف الشتاء معروضة بسعرٍ مُنخفض الآن."
+      },
+      {
+        "word": "pay by card",
+        "arabic": "يدفع بالبطاقة",
+        "partOfSpeech": "verb phrase",
+        "definition": "to use a bank or credit card to pay",
+        "exampleEN": "Can I pay by card, or is it cash only?",
+        "exampleAR": "هل أستطيع الدفع بالبطاقة أم النقد فقط؟"
+      },
+      {
+        "word": "try on",
+        "arabic": "يجرب (الملابس)",
+        "partOfSpeech": "phrasal verb",
+        "definition": "to put clothes on to see if they fit",
+        "exampleEN": "I will try on the jacket before I buy it.",
+        "exampleAR": "سأجرب المعطف قبل أن أشتريه."
+      },
+      {
+        "word": "return policy",
+        "arabic": "سياسة الإرجاع",
+        "partOfSpeech": "noun (chunk)",
+        "definition": "the rules a shop has about returning items",
+        "exampleEN": "Read the return policy in case the size is wrong.",
+        "exampleAR": "اقرأ سياسة الإرجاع في حالة كان المقاس خاطئاً."
+      },
+      {
+        "word": "good value",
+        "arabic": "قيمة جيدة",
+        "partOfSpeech": "phrase",
+        "definition": "worth the price; gives you what you need for the money",
+        "exampleEN": "This phone is good value for students.",
+        "exampleAR": "هذا الهاتف ذو قيمة جيدة للطلاب."
+      },
+      {
+        "word": "price range",
+        "arabic": "نطاق السعر",
+        "partOfSpeech": "noun (chunk)",
+        "definition": "the low and high amounts that a product can cost",
+        "exampleEN": "Choose a laptop in your price range.",
+        "exampleAR": "اختر حاسوباً محمولاً ضمن نطاق سعرك."
+      }
+    ],
+    "grammar": {
+      "topic": "too / enough, comparisons",
+      "arabicName": "too / enough، والمقارنات",
+      "concept": "Use comparatives to say which item is bigger/cheaper/more useful. Use 'too' to say something is not suitable and 'enough' to say something meets the need.",
+      "arabicComparison": "في العربية نستخدم كلمات مثل 'أكثر' أو إضافة صيغة التفضيل، وترتيب الكلمات يختلف. 'إنه كبير جدًا' مقابل 'كبير بما يكفي' تشابهان الاستخدام الإنجليزي لكن الترتيب يختلف.",
+      "structure": "Comparatives: adjective + -er + than (cheaper than) OR more + adjective + than (more expensive than). Too/enough: too + adjective (too small); adjective + enough (big enough).",
+      "commonError": "Students often say 'more cheaper' (wrong) or put 'enough' before a noun (wrong: 'enough money' is correct, but not 'money enough' in English).",
+      "exampleEN": "This bag is cheaper than that one. The coat is too small. The coat is big enough for winter.",
+      "exampleAR": "هذه الحقيبة أرخص من تلك. المعطف صغير جداً. المعطف كبير بما يكفي للشتاء."
+    },
+    "readingBrief": "A 130–160-word passage in simple English about a person who needs one specific item (a warm coat for a cold trip). The text shows three options: a cheap new coat, a more expensive high-quality coat, and a second-hand coat on sale. The writer compares price, quality, and durability, and uses comparatives and 'too'/'enough' to explain why they choose the middle option. The passage practices skimming for main idea, scanning for numbers and prices, and identifying comparative language.",
+    "writingPrompt": "Write a 60–90 word email to a friend explaining what you plan to buy and why. Say what your budget is, compare two options (use one comparative) and use too or enough once. Ask your friend for short advice (one question). Audience: a friend. Purpose: get opinion and make a decision."
+  },
+  {
+    "lessonNumber": 10,
+    "title": "The people around you",
+    "titleArabic": "الأشخاص من حولك",
+    "outcome": {
+      "canDo": "I can describe people I know: their appearance and character, and give extra information using who/which/that clauses.",
+      "canDoArabic": "أستطيع وصف الأشخاص الذين أعرفهم: مظهرهم وشخصيتهم، وإعطاء معلومات إضافية باستخدام جمل الوصل who/which/that.",
+      "scenario": "You write short descriptions of neighbours, friends and colleagues for a class profile board.",
+      "scenarioArabic": "تكتب وصفاً قصيراً للجيران والأصدقاء والزملاء لملف تعريفي في الصف."
+    },
+    "retrieval": [
+      {
+        "language": "English",
+        "prompt": "Tell me about people you like. Use the words: like, can, want.",
+        "purpose": "Activate simple verbs and people vocabulary to prepare for descriptions."
+      },
+      {
+        "language": "English",
+        "prompt": "Say where you go on the weekend and name a person who goes with you (use 'who').",
+        "purpose": "Reuse places and people while practising the relative word who."
+      },
+      {
+        "language": "English",
+        "prompt": "Talk about what you did yesterday with a friend and what you will do tomorrow.",
+        "purpose": "Connect time words (yesterday, tomorrow) with people vocabulary."
+      },
+      {
+        "language": "Arabic",
+        "prompt": "اكتب عن شخصٍ تعرفه: أين يذهب، ماذا يريد، ماذا يأكل (use simple A1 words like: مكان، طعام، يريد).",
+        "purpose": "تفعيل كلمات A1 في سياق وصف شخص."
+      }
+    ],
+    "network": {
+      "theme": "appearance, character, community",
+      "themeArabic": "المظهر، الشخصية، المجتمع",
+      "anchor": "people",
+      "relatedWords": [
+        "neighbour",
+        "family",
+        "smile",
+        "polite",
+        "patient",
+        "helpful",
+        "meet",
+        "introduce"
+      ],
+      "chunks": [
+        "close friend",
+        "get on well with",
+        "have a good sense of humour",
+        "small talk",
+        "look like"
+      ],
+      "collocations": [
+        "make a good impression",
+        "get on well with",
+        "look like a model",
+        "have a kind voice"
+      ],
+      "register": "neutral",
+      "priorLevelLinks": [
+        "A1: family and friends",
+        "A1: basic adjectives (tall, short, friendly)",
+        "A1: simple present questions and answers"
+      ],
+      "learningNote": "Focus on short relative clauses with who/which/that. Teach one clause at a time: start with people (who), then things (which/that). Use chunks like 'get on well with' in example sentences.",
+      "learningNoteArabic": "ركِّز على جمل الوصل القصيرة باستخدام who للأشخاص و which/that للأشياء. علِّم جملة واحدة في كل مرة واستخدم تعابير مثل «get on well with» في أمثلة."
+    },
+    "vocabulary": [
+      {
+        "word": "neighbour",
+        "arabic": "جار / جارة",
+        "partOfSpeech": "noun",
+        "definition": "a person who lives near you",
+        "exampleEN": "My neighbour who lives next door is kind.",
+        "exampleAR": "جارِي الذي يعيش بجانبنا لطيف."
+      },
+      {
+        "word": "appearance",
+        "arabic": "المظهر",
+        "partOfSpeech": "noun",
+        "definition": "how someone looks to other people",
+        "exampleEN": "Her appearance is friendly and tidy.",
+        "exampleAR": "مظهرها ودود ومرتب."
+      },
+      {
+        "word": "character",
+        "arabic": "الشخصية",
+        "partOfSpeech": "noun",
+        "definition": "the way a person usually thinks and behaves",
+        "exampleEN": "He has a calm character and he helps others.",
+        "exampleAR": "له شخصية هادئة ويُساعد الآخرين."
+      },
+      {
+        "word": "tall",
+        "arabic": "طويل",
+        "partOfSpeech": "adjective",
+        "definition": "using more height than average",
+        "exampleEN": "My cousin is tall and plays basketball.",
+        "exampleAR": "ابن عمي طويل ويلعب كرة السلة."
+      },
+      {
+        "word": "friendly",
+        "arabic": "ودود",
+        "partOfSpeech": "adjective",
+        "definition": "kind and pleasant to other people",
+        "exampleEN": "The teacher is friendly and helpful.",
+        "exampleAR": "المعلّم ودود ويعاون الطلاب."
+      },
+      {
+        "word": "quiet",
+        "arabic": "هادئ",
+        "partOfSpeech": "adjective",
+        "definition": "not loud; calm and not speaking much",
+        "exampleEN": "Our neighbour is quiet but polite.",
+        "exampleAR": "جارنا هادئ لكنه مؤدب."
+      },
+      {
+        "word": "shy",
+        "arabic": "خجول",
+        "partOfSpeech": "adjective",
+        "definition": "not comfortable talking to new people",
+        "exampleEN": "She is shy at first but friendly later.",
+        "exampleAR": "هي خجولة في البداية لكنها ودودة بعد ذلك."
+      },
+      {
+        "word": "outgoing",
+        "arabic": "منفتح / اجتماعي",
+        "partOfSpeech": "adjective",
+        "definition": "enjoying meeting and talking to people",
+        "exampleEN": "An outgoing person likes to join events.",
+        "exampleAR": "الشخص المنفتح يحب حضور الفعاليات."
+      },
+      {
+        "word": "curly hair",
+        "arabic": "شعر مجعّد",
+        "partOfSpeech": "phrase",
+        "definition": "hair that has many small curves or ringlets",
+        "exampleEN": "The woman who has curly hair works at the shop.",
+        "exampleAR": "المرأة التي تملك شعرًا مجعدًا تعمل في المتجر."
+      },
+      {
+        "word": "have a good sense of humour",
+        "arabic": "يتمتع بحسٍّ فكاهيٍ جيد",
+        "partOfSpeech": "phrase",
+        "definition": "to be good at making people laugh or see the funny side",
+        "exampleEN": "I like my friend who has a good sense of humour.",
+        "exampleAR": "أحب صديقي الذي يتمتع بحس فكاهي جيد."
+      },
+      {
+        "word": "close friend",
+        "arabic": "صديق مقرب",
+        "partOfSpeech": "noun phrase",
+        "definition": "a friend you trust and see often",
+        "exampleEN": "Maria is a close friend who knows my family.",
+        "exampleAR": "ماريا صديقة مقربة تعرف عائلتي."
+      },
+      {
+        "word": "get on well with",
+        "arabic": "يتفاهم مع / ينسجم مع",
+        "partOfSpeech": "phrasal verb",
+        "definition": "to have a friendly relationship with someone",
+        "exampleEN": "I get on well with the neighbours who help me.",
+        "exampleAR": "أتفاهم مع الجيران الذين يساعدونني."
+      },
+      {
+        "word": "small talk",
+        "arabic": "حديث بسيط / مجاملات قصيرة",
+        "partOfSpeech": "noun",
+        "definition": "short, polite conversation about simple topics",
+        "exampleEN": "We made small talk with the new neighbour.",
+        "exampleAR": "جرينا حديثًا بسيطًا مع الجار الجديد."
+      },
+      {
+        "word": "reliable",
+        "arabic": "موثوق / يعتمد عليه",
+        "partOfSpeech": "adjective",
+        "definition": "someone you can trust to do what they say",
+        "exampleEN": "He is reliable: he always arrives on time.",
+        "exampleAR": "هو شخص يمكن الاعتماد عليه: يصل دائمًا في الموعد."
+      },
+      {
+        "word": "look like",
+        "arabic": "يبدو مثل / يشبه",
+        "partOfSpeech": "phrasal verb",
+        "definition": "to have the same appearance as someone or something",
+        "exampleEN": "You look like your sister who lives in London.",
+        "exampleAR": "تبدو مثل أختك التي تعيش في لندن."
+      }
+    ],
+    "grammar": {
+      "topic": "who / which / that clauses",
+      "arabicName": "جمل الوصل: who / which / that",
+      "concept": "Use who for people and which/that for things to add extra information about a noun. The clause comes after the noun it describes. Keep clauses short at A2.",
+      "arabicComparison": "في العربية نستخدم الذي/التي/الذين لوصل المعلومات (مثلاً: الرجل الذي يساعدني). ترتيب الكلمات يختلف قليلاً لكن الفكرة نفسها: جملة تشرح الاسم.",
+      "structure": "noun + who/which/that + subject + verb. Example patterns: 'a person who lives next door', 'a dog that barks'.",
+      "commonError": "Using which for people (wrong) or leaving out the relative word in spoken A2 English. Also, do not add extra verbs: 'who he is' inside a noun phrase is often wrong.",
+      "exampleEN": "My neighbour, who is kind, helps me with shopping. I have a bike that is blue.",
+      "exampleAR": "جارِي، الذي لطيف، يساعدني في التسوق. لدي دراجة التي لونها أزرق."
+    },
+    "readingBrief": "A 130–160-word original passage about three people in a small neighbourhood. The text introduces a neighbour, a shopkeeper and a friend, describing their appearance and character with simple present tense. It uses short relative clauses with who/which/that to give extra details (for example, 'the neighbour who helps us' and 'the shop which sells fresh bread'). The passage includes several target chunks (close friend, get on well with, small talk) and uses learner vocabulary from this lesson. Tone is friendly and clear, suitable for A2 readers who are practising description and relative clauses.",
+    "writingPrompt": "Write 60–90 words to your teacher describing three people you know in your neighbourhood or community. Use who/which/that clauses to add details (for example: 'a neighbour who...'), and include at least two chunks from the lesson (for example: close friend, get on well with). Purpose: introduce these people and explain one thing you like or how you get on with them. / اكتب 60–90 كلمة إلى معلمك تصف فيها ثلاثة أشخاص تعرفهم في الحي أو المجتمع، واستخدم جمل الوصل who/which/that وعبارتين على الأقل من الدرس."
+  },
+  {
+    "lessonNumber": 11,
+    "title": "A day I will remember",
+    "titleArabic": "يوم لن أنساه",
+    "outcome": {
+      "canDo": "I can tell a short story about an event in the past using past simple verbs and sequencing words.",
+      "canDoArabic": "أستطيع أن أحكي قصة قصيرة عن حدث في الماضي باستخدام أفعال الماضي البسيط وكلمات ترتيب الأحداث.",
+      "scenario": "You are telling a friend about a special day you will always remember (who was there, what happened, how you felt).",
+      "scenarioArabic": "أنت تخبر صديقًا عن يوم مميز ستتذكره دائمًا (من كان هناك، ماذا حدث، وكيف شعرت)."
+    },
+    "retrieval": [
+      {
+        "language": "English",
+        "prompt": "Tell me where you went yesterday and one thing you ate.",
+        "purpose": "Warm-up recall of time, places and food in the past."
+      },
+      {
+        "language": "Arabic",
+        "prompt": "أخبرني عن شخص قابلته أمس وماذا فعلتما.",
+        "purpose": "تذكير بالمفردات الأساسية: people, go, do, yesterday."
+      },
+      {
+        "language": "English",
+        "prompt": "Say one place you like and why you like it (use like).",
+        "purpose": "Activate present likes to connect to past memories."
+      },
+      {
+        "language": "Arabic",
+        "prompt": "اكتب جملة قصيرة عن طعام تحبه ومتى أكلته آخر مرة.",
+        "purpose": "تكرار كلمات الطعام والزمان: food, time, yesterday."
+      }
+    ],
+    "network": {
+      "theme": "events, memories, feelings",
+      "themeArabic": "الأحداث، الذكريات، المشاعر",
+      "anchor": "remember",
+      "relatedWords": [
+        "memory",
+        "event",
+        "surprised",
+        "celebrate",
+        "nervous",
+        "crowd",
+        "diary",
+        "remind"
+      ],
+      "chunks": [
+        "take part in",
+        "make a speech",
+        "feel proud",
+        "take a photo",
+        "last for",
+        "close friend",
+        "get home"
+      ],
+      "collocations": [
+        "feel proud",
+        "make a speech",
+        "take part in",
+        "lasted for",
+        "close friend"
+      ],
+      "register": "neutral",
+      "priorLevelLinks": [
+        "use of past simple: I went, I saw (Module 2)",
+        "talking about time words: yesterday, last week (Module 1)",
+        "basic feelings: happy, sad (Module 2)"
+      ],
+      "learningNote": "Focus on sequencing words (first, then, after that, finally) to tell events clearly. Keep past verbs regular or irregular simple forms (went, saw, felt).",
+      "learningNoteArabic": "ركز على كلمات ترتيب الأحداث (أولاً، ثم، بعد ذلك، أخيرًا) لسرد الأحداث بوضوح. استخدم أفعال الماضي البسيط بصيغ بسيطة (went, saw, felt)."
+    },
+    "vocabulary": [
+      {
+        "word": "memory",
+        "arabic": "ذكرى",
+        "partOfSpeech": "noun",
+        "definition": "a thing that you remember from the past",
+        "exampleEN": "I have a happy memory of that day.",
+        "exampleAR": "لدي ذكرى سعيدة من ذلك اليوم."
+      },
+      {
+        "word": "event",
+        "arabic": "حدث",
+        "partOfSpeech": "noun",
+        "definition": "a planned activity or important thing that happens",
+        "exampleEN": "The event was in the park.",
+        "exampleAR": "الحدث كان في الحديقة."
+      },
+      {
+        "word": "surprised",
+        "arabic": "مندهش",
+        "partOfSpeech": "adjective",
+        "definition": "feeling something unexpected happened",
+        "exampleEN": "I was surprised by the cake.",
+        "exampleAR": "كنت مندهشًا من الكعكة."
+      },
+      {
+        "word": "celebrate",
+        "arabic": "يحتفل",
+        "partOfSpeech": "verb",
+        "definition": "to do something special because of an important event",
+        "exampleEN": "We celebrated with music and food.",
+        "exampleAR": "احتفلنا بالموسيقى والطعام."
+      },
+      {
+        "word": "prepare",
+        "arabic": "يستعد / يحضّر",
+        "partOfSpeech": "verb",
+        "definition": "to make ready before something happens",
+        "exampleEN": "She prepared a short speech.",
+        "exampleAR": "حضّرت خطابًا قصيرًا."
+      },
+      {
+        "word": "take part in",
+        "arabic": "يشارك في",
+        "partOfSpeech": "verb phrase",
+        "definition": "to join an activity or be involved",
+        "exampleEN": "I took part in the school play.",
+        "exampleAR": "شاركت في مسرحية المدرسة."
+      },
+      {
+        "word": "make a speech",
+        "arabic": "يلقي خطابًا",
+        "partOfSpeech": "verb phrase",
+        "definition": "to speak to a group at a formal moment",
+        "exampleEN": "He made a speech at the ceremony.",
+        "exampleAR": "ألقى خطابًا في الحفل."
+      },
+      {
+        "word": "feel proud",
+        "arabic": "يشعر بالفخر",
+        "partOfSpeech": "verb phrase",
+        "definition": "to have a happy feeling because of an achievement",
+        "exampleEN": "I felt proud when my friend clapped.",
+        "exampleAR": "شعرت بالفخر عندما صفق صديقي."
+      },
+      {
+        "word": "take a photo",
+        "arabic": "يلتقط صورة",
+        "partOfSpeech": "verb phrase",
+        "definition": "to use a camera to record a moment",
+        "exampleEN": "They took a photo after the performance.",
+        "exampleAR": "التقطوا صورة بعد العرض."
+      },
+      {
+        "word": "last for",
+        "arabic": "استمر لـ",
+        "partOfSpeech": "phrasal verb",
+        "definition": "to continue for a period of time",
+        "exampleEN": "The concert lasted for two hours.",
+        "exampleAR": "استمر الحفل لمدة ساعتين."
+      },
+      {
+        "word": "close friend",
+        "arabic": "صديق مقرب",
+        "partOfSpeech": "noun phrase",
+        "definition": "a person you trust and know well",
+        "exampleEN": "My close friend came to the party.",
+        "exampleAR": "جاء صديقي المقرب إلى الحفلة."
+      },
+      {
+        "word": "crowd",
+        "arabic": "حشد",
+        "partOfSpeech": "noun",
+        "definition": "a large group of people in one place",
+        "exampleEN": "The crowd cheered loudly.",
+        "exampleAR": "هتف الحشد بصوت عالٍ."
+      },
+      {
+        "word": "diary",
+        "arabic": "دفتر يوميات",
+        "partOfSpeech": "noun",
+        "definition": "a book where you write personal events and feelings",
+        "exampleEN": "She wrote the story in her diary.",
+        "exampleAR": "كتبت القصة في دفتر يومياتها."
+      },
+      {
+        "word": "nervous",
+        "arabic": "متوتر",
+        "partOfSpeech": "adjective",
+        "definition": "worried or anxious before something important",
+        "exampleEN": "He was nervous before he spoke.",
+        "exampleAR": "كان متوترًا قبل أن يتحدث."
+      },
+      {
+        "word": "remind",
+        "arabic": "يذكّر",
+        "partOfSpeech": "verb",
+        "definition": "to make someone remember something",
+        "exampleEN": "This photo reminds me of that day.",
+        "exampleAR": "تذكرني هذه الصورة بذلك اليوم."
+      }
+    ],
+    "grammar": {
+      "topic": "Past simple narrative and sequencing",
+      "arabicName": "الماضي البسيط وسرد الأحداث",
+      "concept": "Use past simple verbs to tell what happened and sequencing words (first, then, after that, finally) to show the order of events.",
+      "arabicComparison": "اللغة العربية تستخدم فعل الماضي بنفس طريقة سرد الأحداث، لكن كلمات الترتيب (أولًا، ثم، بعد ذلك، أخيرًا) تأتي قبل أو بعد الجملة حسب السياق. حافظ على فعل الماضي للفعل الرئيسي.",
+      "structure": "Subject + past simple verb (+ object). Use sequencing words: First..., Then..., After that..., Finally....",
+      "commonError": "Mixing past and present tenses (e.g., 'I go to the party and then I saw...') or forgetting irregular past forms (e.g., say → said, go → went).",
+      "exampleEN": "First I woke up early. Then I went to the hall. After that I made a speech. Finally, we celebrated with cake.",
+      "exampleAR": "أولًا استيقظت مبكرًا. ثم ذهبت إلى القاعة. بعد ذلك ألقيت خطابًا. أخيرًا احتفلنا بالكعكة."
+    },
+    "readingBrief": "A 130–160-word original passage that tells a true-feeling story about one memorable day. The passage describes who was there, the sequence of events, simple actions in past simple (went, saw, felt), and the writer's feelings. It uses clear sequencing words (first, then, after that, finally) and includes at least one short dialogue or direct reaction (e.g., 'I was surprised!'). The text is suitable for A2 learners and shows practical vocabulary from the lesson.",
+    "writingPrompt": "Write 60–90 words to a friend describing a day you will always remember. Say who was there, what happened (use at least three past simple verbs), and how you felt. Use sequencing words (first, then, after that, finally). Audience: a close friend. Purpose: to share your memory and feelings."
+  },
+  {
+    "lessonNumber": 12,
+    "title": "Things I have done",
+    "titleArabic": "أشياء قمت بها",
+    "outcome": {
+      "canDo": "I can talk about life experiences and short travel stories using the present perfect with ever / never / already / yet.",
+      "canDoArabic": "أستطيع التحدث عن تجارب حياتية وقصص سفر قصيرة باستخدام المضارع التام مع ever / never / already / yet.",
+      "scenario": "You tell a friend about things you have done in your life and ask about their experiences.",
+      "scenarioArabic": "تخبر صديقًا عن أشياء قمت بها في حياتك وتسأله عن تجاربه."
+    },
+    "retrieval": [
+      {
+        "language": "English",
+        "prompt": "Think of one place you went yesterday. Say the place and one thing you did there.",
+        "purpose": "Activate past/time vocabulary (yesterday, places, go)."
+      },
+      {
+        "language": "English",
+        "prompt": "Name one food you like and say if you have eaten it this week.",
+        "purpose": "Recall food and like; connect present perfect to recent events."
+      },
+      {
+        "language": "English",
+        "prompt": "Tell the name of one person (friend or family) you can call when you travel.",
+        "purpose": "Use simple people vocabulary and can for ability/permission."
+      },
+      {
+        "language": "English",
+        "prompt": "What time did you leave home yesterday? Say the time and where you went.",
+        "purpose": "Use time words and past simple to contrast with present perfect later."
+      }
+    ],
+    "network": {
+      "theme": "life experience, travel, achievement",
+      "themeArabic": "تجارب الحياة، السفر، الإنجازات",
+      "anchor": "Things I have done",
+      "relatedWords": [
+        "experience",
+        "memory",
+        "journey",
+        "ticket",
+        "photo",
+        "plan",
+        "guide",
+        "story"
+      ],
+      "chunks": [
+        "have you ever",
+        "I've never",
+        "climb a mountain",
+        "visit a museum",
+        "try local food",
+        "see a live concert",
+        "learn a new skill"
+      ],
+      "collocations": [
+        "have experience",
+        "gain experience",
+        "take a trip",
+        "plan a trip",
+        "make memories",
+        "reach a goal",
+        "pack a backpack"
+      ],
+      "register": "neutral",
+      "priorLevelLinks": [
+        "A1: talk about yesterday and last week",
+        "A1: describe places and people",
+        "A1: use can / can’t for ability",
+        "A1: ask simple yes/no and wh- questions"
+      ],
+      "learningNote": "Use the present perfect to link past actions to now. Use 'ever' in questions (Have you ever...?), 'never' for negative experiences, 'already' for something done sooner than expected, and 'yet' in questions/negatives. Do not use time words like 'yesterday' with present perfect.",
+      "learningNoteArabic": "استخدم المضارع التام لربط فعل ماضٍ بالحاضر. استخدم 'ever' في الأسئلة (Have you ever...؟)، و 'never' للنفي، و 'already' لشيء تمّ بالفعل، و 'yet' في الأسئلة/النفي. لا تَستخدم كلمات زمنية مثل 'yesterday' مع المضارع التام."
+    },
+    "vocabulary": [
+      {
+        "word": "experience",
+        "arabic": "تجربة / خبرة",
+        "partOfSpeech": "noun",
+        "definition": "Something that happens to you that you remember or learn from.",
+        "exampleEN": "I have good experience of travelling alone.",
+        "exampleAR": "لدي خبرة جيدة في السفر بمفردي."
+      },
+      {
+        "word": "travel",
+        "arabic": "يسافر / سفر",
+        "partOfSpeech": "verb / noun",
+        "definition": "To go from one place to another, usually a long way.",
+        "exampleEN": "She has travelled to Ireland twice.",
+        "exampleAR": "سافرت إلى أيرلندا مرتين."
+      },
+      {
+        "word": "achievement",
+        "arabic": "إنجاز",
+        "partOfSpeech": "noun",
+        "definition": "Something important you succeed in doing.",
+        "exampleEN": "Finishing the course was a big achievement for him.",
+        "exampleAR": "إنهاء الدورة كان إنجازًا كبيرًا له."
+      },
+      {
+        "word": "have you ever",
+        "arabic": "هل سبق أن...؟",
+        "partOfSpeech": "phrase",
+        "definition": "A question way to ask about someone's life experience.",
+        "exampleEN": "Have you ever been to a national park?",
+        "exampleAR": "هل سبق أن زرت حديقة وطنية؟"
+      },
+      {
+        "word": "I've never",
+        "arabic": "لم يسبق لي / لم أفعل أبدًا",
+        "partOfSpeech": "phrase",
+        "definition": "A short negative phrase to say you have no experience of something.",
+        "exampleEN": "I've never tried surfing.",
+        "exampleAR": "لم أجرب ركوب الأمواج أبدًا."
+      },
+      {
+        "word": "already",
+        "arabic": "بالفعل",
+        "partOfSpeech": "adverb",
+        "definition": "Used to say something has happened before now, often sooner than expected.",
+        "exampleEN": "I've already packed my bag.",
+        "exampleAR": "لقد حزمت حقيبتي بالفعل."
+      },
+      {
+        "word": "yet",
+        "arabic": "بعد / حتى الآن",
+        "partOfSpeech": "adverb",
+        "definition": "Used in questions and negatives to talk about something expected that has not happened.",
+        "exampleEN": "Have you bought a ticket yet?",
+        "exampleAR": "هل اشتريت تذكرة حتى الآن؟"
+      },
+      {
+        "word": "climb a mountain",
+        "arabic": "يتسلق جبلًا",
+        "partOfSpeech": "verb phrase",
+        "definition": "To go up to the top of a mountain.",
+        "exampleEN": "They have climbed a mountain on their trip.",
+        "exampleAR": "تسلقوا جبلًا في رحلتهم."
+      },
+      {
+        "word": "visit a museum",
+        "arabic": "يزور متحفًا",
+        "partOfSpeech": "verb phrase",
+        "definition": "To go to a museum to see exhibits.",
+        "exampleEN": "We have visited a museum every summer.",
+        "exampleAR": "زرنا متحفًا كل صيف."
+      },
+      {
+        "word": "try local food",
+        "arabic": "يجرب الطعام المحلي",
+        "partOfSpeech": "verb phrase",
+        "definition": "To taste dishes typical of the place you are visiting.",
+        "exampleEN": "Have you ever tried local food in Turkey?",
+        "exampleAR": "هل سبق أن جربت الطعام المحلي في تركيا؟"
+      },
+      {
+        "word": "see a live concert",
+        "arabic": "يشاهد حفلة موسيقية حية",
+        "partOfSpeech": "verb phrase",
+        "definition": "To watch musicians perform in front of an audience.",
+        "exampleEN": "I've seen a live concert in the city park.",
+        "exampleAR": "شاهدت حفلة موسيقية حية في حديقة المدينة."
+      },
+      {
+        "word": "learn a new skill",
+        "arabic": "يتعلم مهارة جديدة",
+        "partOfSpeech": "verb phrase",
+        "definition": "To practise and get better at something new, like cooking or a language.",
+        "exampleEN": "She has learned a new skill: basic photography.",
+        "exampleAR": "تعلمت مهارة جديدة: التصوير الفوتوغرافي الأساسي."
+      },
+      {
+        "word": "memory",
+        "arabic": "ذكرى",
+        "partOfSpeech": "noun",
+        "definition": "A thing you remember from the past.",
+        "exampleEN": "I have a great memory of that day at the beach.",
+        "exampleAR": "لدي ذكرى رائعة لذلك اليوم على الشاطئ."
+      },
+      {
+        "word": "personal",
+        "arabic": "شخصي",
+        "partOfSpeech": "adjective",
+        "definition": "Connected to one person rather than general; private.",
+        "exampleEN": "He shared a personal story about his first trip.",
+        "exampleAR": "شارك قصة شخصية عن رحلته الأولى."
+      },
+      {
+        "word": "backpack",
+        "arabic": "حقيبة ظهر",
+        "partOfSpeech": "noun",
+        "definition": "A bag you carry on your back, useful for trips.",
+        "exampleEN": "I've packed my backpack for the weekend.",
+        "exampleAR": "حزمت حقيبة ظهري لعطلة نهاية الأسبوع."
+      }
+    ],
+    "grammar": {
+      "topic": "Present perfect with ever / never / already / yet",
+      "arabicName": "المضارع التام مع ever / never / already / yet",
+      "concept": "Use the present perfect (have/has + past participle) to talk about life experiences and actions that connect the past with now. Use 'ever' in questions to ask about experience, 'never' for no experience, 'already' for something done earlier than expected, and 'yet' in negatives/questions when something is expected but not finished.",
+      "arabicComparison": "في الإنجليزية، يُستخدم المضارع التام لربط حدث ماضٍ بالحاضر. في العربية غالبًا يُستخدم الماضي للإشارة إلى أفعال منتهية. لذلك بدلاً من قول 'ذهبت أمس' مع المضارع التام، نستخدمه للسؤال عن الخبرات (هل سبق أن...؟).",
+      "structure": "Affirmative: Subject + have/has + past participle (+ already). Negative: Subject + have/has + not + past participle OR Subject + have/has + never + past participle. Question: Have/Has + subject + past participle? (Have you ever...?) Use 'yet' in questions/negatives: Have you finished yet? / I haven't finished yet.",
+      "commonError": "Using specific past time words (yesterday, last year) with the present perfect. Example error: 'I have visited Paris yesterday.'",
+      "exampleEN": "Have you ever climbed a mountain? / I haven't climbed one yet. / I've already visited two countries this year.",
+      "exampleAR": "هل سبق أن تسلّقت جبلًا؟ / لم أتسلّق واحدًا بعد. / لقد زرت بلدين بالفعل هذا العام."
+    },
+    "readingBrief": "A 130–160-word original personal account by an adult traveller who lists several life experiences and small achievements. The writer uses the present perfect to connect past events to the present: visiting museums, trying local food, learning a new skill, and a memorable trip with friends. The passage shows questions with 'have you ever', negatives with 'never', and examples of 'already' and 'yet'. It ends with a short reflection: how these experiences changed the writer and a question inviting the reader to share their experiences.",
+    "writingPrompt": "Write 60–90 words to a friend telling three things you have done in your life or on holiday. Use the present perfect (have/has + past participle) at least three times and include ever, never, already or yet. Keep a friendly tone and ask one question to invite your friend to reply."
+  },
+  {
+    "lessonNumber": 13,
+    "title": "Making plans together",
+    "titleArabic": "وضع خطط معاً",
+    "outcome": {
+      "canDo": "I can invite someone, make and change simple plans, and say when and where we will meet using 'going to' and the present continuous.",
+      "canDoArabic": "أستطيع دعوة شخص، ووضع وتغيير خطط بسيطة، وذكر متى وأين سنلتقي باستخدام »going to« والحاضر المستمر.",
+      "scenario": "Two friends decide what to do at the weekend. They offer ideas, choose a time and place, and confirm the plan.",
+      "scenarioArabic": "صديقان يقرران ماذا يفعلان في عطلة نهاية الأسبوع. يعرضان أفكارًا، يحددان وقتًا ومكانًا، ويؤكدان الخطة."
+    },
+    "retrieval": [
+      {
+        "language": "English",
+        "prompt": "What time do you usually go to the market? (time, go, places)",
+        "purpose": "Activate simple time and place words."
+      },
+      {
+        "language": "English",
+        "prompt": "Who do you like to meet at the café? (people, like, places)",
+        "purpose": "Recall people and place vocabulary."
+      },
+      {
+        "language": "English",
+        "prompt": "What food do you want for lunch tomorrow? (food, want, tomorrow)",
+        "purpose": "Link food words with future time."
+      },
+      {
+        "language": "English",
+        "prompt": "Can you come tonight or tomorrow morning? (can, tonight, tomorrow morning)",
+        "purpose": "Practice saying availability."
+      }
+    ],
+    "network": {
+      "theme": "invitations, arrangements, future time",
+      "themeArabic": "الدعوات، الترتيبات، زمن المستقبل",
+      "anchor": "Making plans with friends",
+      "relatedWords": [
+        "invite",
+        "accept",
+        "decline",
+        "arrange",
+        "plan",
+        "confirm",
+        "cancel",
+        "schedule",
+        "meet",
+        "suggestion"
+      ],
+      "chunks": [
+        "meet up",
+        "make a plan",
+        "set a time",
+        "see you at",
+        "book a table",
+        "this evening",
+        "tomorrow morning"
+      ],
+      "collocations": [
+        "confirm the plan",
+        "change plans",
+        "agree on a time",
+        "offer an idea"
+      ],
+      "register": "mixed",
+      "priorLevelLinks": [
+        "Asking and answering about time (A1)",
+        "Basic verbs for daily activities (A1)",
+        "Using can for ability and permission (A1)"
+      ],
+      "learningNote": "Use the present continuous for definite arrangements with a time or place (e.g., I'm meeting Sam on Saturday). Use 'going to' for intentions or plans you decided to do but not yet arranged (e.g., I'm going to call Sam later).",
+      "learningNoteArabic": "استخدم الحاضر المستمر للترتيبات المؤكدة مع وقت أو مكان (مثال: I’m meeting Sam on Saturday). استخدم »going to« للنية أو الخطط التي قررتها ولكن لم ترتبها بعد (مثال: I’m going to call Sam later)."
+    },
+    "vocabulary": [
+      {
+        "word": "invite",
+        "arabic": "يدعو/دعوة",
+        "partOfSpeech": "verb / noun",
+        "definition": "to ask someone to come to an event or meeting",
+        "exampleEN": "I will invite Maya to the cinema on Saturday.",
+        "exampleAR": "سأدعو مايا إلى السينما يوم السبت."
+      },
+      {
+        "word": "accept",
+        "arabic": "يقبل",
+        "partOfSpeech": "verb",
+        "definition": "to say yes to an invitation or offer",
+        "exampleEN": "She accepted the invitation to the party.",
+        "exampleAR": "قبلت الدعوة إلى الحفلة."
+      },
+      {
+        "word": "decline",
+        "arabic": "يرفض/يعتذر",
+        "partOfSpeech": "verb",
+        "definition": "to say no politely to an invitation",
+        "exampleEN": "He declined because he had to work.",
+        "exampleAR": "اعتذر لأنه كان عليه العمل."
+      },
+      {
+        "word": "arrange",
+        "arabic": "يرتب",
+        "partOfSpeech": "verb",
+        "definition": "to organize the details of a plan or meeting",
+        "exampleEN": "They arranged to meet at 6 pm.",
+        "exampleAR": "رتبوا أن يلتقوا في الساعة السادسة مساءً."
+      },
+      {
+        "word": "plan",
+        "arabic": "خطة / يخطط",
+        "partOfSpeech": "noun / verb",
+        "definition": "an idea of what you will do in the future; to decide this idea",
+        "exampleEN": "Our plan is to go for a walk after lunch.",
+        "exampleAR": "خطتنا هي أن نذهب لنزهة بعد الغداء."
+      },
+      {
+        "word": "meet up",
+        "arabic": "يلتقي / يلتقون",
+        "partOfSpeech": "phrasal verb",
+        "definition": "to meet someone, usually casually",
+        "exampleEN": "Let's meet up at the station at 5.",
+        "exampleAR": "دعنا نلتقي في المحطة الساعة الخامسة."
+      },
+      {
+        "word": "make a plan",
+        "arabic": "يضع خطة",
+        "partOfSpeech": "phrase",
+        "definition": "to decide what to do and when",
+        "exampleEN": "We need to make a plan for Saturday.",
+        "exampleAR": "نحتاج إلى وضع خطة ليوم السبت."
+      },
+      {
+        "word": "set a time",
+        "arabic": "يحدد وقتًا",
+        "partOfSpeech": "phrase",
+        "definition": "to choose the exact time for a meeting",
+        "exampleEN": "Can we set a time for the call?",
+        "exampleAR": "هل يمكننا تحديد وقت للمكالمة؟"
+      },
+      {
+        "word": "confirm",
+        "arabic": "يؤكد",
+        "partOfSpeech": "verb",
+        "definition": "to say that something is definite or correct",
+        "exampleEN": "Please confirm the meeting by Friday.",
+        "exampleAR": "من فضلك أكد الاجتماع قبل يوم الجمعة."
+      },
+      {
+        "word": "cancel",
+        "arabic": "يلغي",
+        "partOfSpeech": "verb",
+        "definition": "to decide that something will not happen",
+        "exampleEN": "They cancelled the picnic because of rain.",
+        "exampleAR": "ألغوا النزهة بسبب المطر."
+      },
+      {
+        "word": "book a table",
+        "arabic": "يحجز طاولة",
+        "partOfSpeech": "phrase",
+        "definition": "to reserve a table at a restaurant",
+        "exampleEN": "I'll book a table for four at 7 pm.",
+        "exampleAR": "سأحجز طاولة لأربعة في الساعة السابعة مساءً."
+      },
+      {
+        "word": "suggestion",
+        "arabic": "اقتراح",
+        "partOfSpeech": "noun",
+        "definition": "an idea you offer for others to consider",
+        "exampleEN": "Do you have a suggestion for where to eat?",
+        "exampleAR": "هل لديك اقتراح لأين نأكل؟"
+      },
+      {
+        "word": "this evening",
+        "arabic": "هذا المساء",
+        "partOfSpeech": "time phrase",
+        "definition": "the period of time later today, after the afternoon",
+        "exampleEN": "I'm free this evening if you want to meet.",
+        "exampleAR": "أنا متاح هذا المساء إن أردت اللقاء."
+      },
+      {
+        "word": "tomorrow morning",
+        "arabic": "صباح الغد",
+        "partOfSpeech": "time phrase",
+        "definition": "the morning of the next day",
+        "exampleEN": "They're coming tomorrow morning at 9.",
+        "exampleAR": "سيأتون صباح الغد في الساعة التاسعة."
+      },
+      {
+        "word": "see you at",
+        "arabic": "أراك في",
+        "partOfSpeech": "phrase / collocation",
+        "definition": "used to say where you will meet someone",
+        "exampleEN": "See you at the bus stop at 8.",
+        "exampleAR": "أراك في موقف الحافلة الساعة الثامنة."
+      }
+    ],
+    "grammar": {
+      "topic": "going to, present continuous for arrangements",
+      "arabicName": "going to والحاضر المستمر للترتيبات",
+      "concept": "Use 'be going to + verb' for intentions or plans you decide to do. Use the present continuous (be + verb-ing) for definite arrangements with a stated time or place.",
+      "arabicComparison": "»going to« تستخدم للنية أو الخطة العامة. الحاضر المستمر يستخدم للترتيبات المؤكدة مع وقت أو مكان.",
+      "structure": "going to: subject + be + going to + base verb. Present continuous: subject + be + verb-ing (+ time/place).",
+      "commonError": "Mixing forms: using 'will' for fixed arrangements or using base verb after 'going to' without 'to' (e.g., I going to go). Also forgetting the -ing after be in present continuous.",
+      "exampleEN": "I'm going to call Tom later. / I'm meeting Tom on Saturday at 3 pm.",
+      "exampleAR": "سأتصل بتوم لاحقًا (I’m going to call Tom later). / سألتقي بتوم يوم السبت الساعة الثالثة مساءً (I’m meeting Tom on Saturday at 3 pm)."
+    },
+    "readingBrief": "A 130–160-word original passage: a short dialogue between two friends making plans for a Saturday afternoon. They start with a few ideas (a walk, a cafe, a small market), use 'going to' to show intentions and the present continuous to confirm the time and place. They practise offering suggestions, accepting and changing plans, and end by confirming the meeting time and how they will travel. The passage shows natural, simple sentences useful for A2 learners practicing invitations and arrangements.",
+    "writingPrompt": "Write a 60–90-word message to a friend to arrange a meeting this weekend. Include two possible activities, suggest a time and place, use 'going to' and the present continuous for at least one sentence each, and ask your friend to confirm. Purpose: organise the meeting; Audience: a friend."
+  },
+  {
+    "lessonNumber": 14,
+    "title": "When plans go wrong",
+    "titleArabic": "عندما لا تسير الخطط كما نريد",
+    "outcome": {
+      "canDo": "I can apologise for small problems, explain what went wrong and give simple advice with should.",
+      "canDoArabic": "أستطيع الاعتذار عن مشاكل صغيرة وشرح ما حدث وإعطاء نصيحة بسيطة باستخدام should.",
+      "scenario": "You organised a small meeting or trip but something went wrong (e.g. delay, cancellation or missing things). You need to apologise, explain, and suggest a practical solution.",
+      "scenarioArabic": "نظمت اجتماعًا أو رحلة صغيرة لكن حدثت مشكلة (مثل تأخير، إلغاء أو نسيان أشياء). تحتاج إلى الاعتذار والشرح واقتراح حل عملي."
+    },
+    "retrieval": [
+      {
+        "language": "English",
+        "prompt": "What time did you get up yesterday?",
+        "purpose": "Recall 'yesterday' and time words."
+      },
+      {
+        "language": "English",
+        "prompt": "Name three places you like to go (shop, park, work).",
+        "purpose": "Recall common places and 'go'."
+      },
+      {
+        "language": "English",
+        "prompt": "Who do you call when you need help?",
+        "purpose": "Recall people and the verb 'call'."
+      },
+      {
+        "language": "English",
+        "prompt": "What food do you want to eat tomorrow?",
+        "purpose": "Use 'want' and 'tomorrow' in a simple sentence."
+      }
+    ],
+    "network": {
+      "theme": "problems, apologies, solutions",
+      "themeArabic": "مشاكل، اعتذارات، حلول",
+      "anchor": "problem",
+      "relatedWords": [
+        "apologise",
+        "delay",
+        "cancel",
+        "plan",
+        "solution",
+        "fix",
+        "unexpected",
+        "cost",
+        "call",
+        "late"
+      ],
+      "chunks": [
+        "make a plan",
+        "change your mind",
+        "run out of",
+        "offer a solution",
+        "be late",
+        "call ahead",
+        "cover the cost"
+      ],
+      "collocations": [
+        "cancel a meeting",
+        "delay the trip",
+        "fix the problem",
+        "say sorry"
+      ],
+      "register": "mixed",
+      "priorLevelLinks": [
+        "Module 2 Lesson 3: Talking about past and future (yesterday, tomorrow)",
+        "Module 3 Lesson 5: Making simple plans and invitations",
+        "Module 1: Simple verbs (go, want, like, can)"
+      ],
+      "learningNote": "Focus on simple, polite language. Teach should for basic advice (+ base verb), and model common apology phrases (I'm sorry, I apologise). Practice with short role-plays: one person explains the problem, the other apologises and suggests a solution.",
+      "learningNoteArabic": "ركّز على لغة بسيطة ومؤدبة. درّس should للنصيحة البسيطة (should + فعل أساسي)، واطرح عبارات شائعة للاعتذار (I'm sorry, I apologise). مارس ذلك بحوارات قصيرة: شخص يشرح المشكلة والآخر يعتذر ويقترح حلاً."
+    },
+    "vocabulary": [
+      {
+        "word": "apologise",
+        "arabic": "يعتذر / يعتذر عن",
+        "partOfSpeech": "verb",
+        "definition": "to say you are sorry for something you did or for a problem",
+        "exampleEN": "I must apologise for the late reply.",
+        "exampleAR": "يجب أن أعتذر عن الرد المتأخر."
+      },
+      {
+        "word": "apology",
+        "arabic": "اعتذار",
+        "partOfSpeech": "noun",
+        "definition": "a statement saying you are sorry",
+        "exampleEN": "She gave a quick apology for the mistake.",
+        "exampleAR": "قدمت اعتذارًا سريعًا عن الخطأ."
+      },
+      {
+        "word": "sorry",
+        "arabic": "آسف / آسفة",
+        "partOfSpeech": "adjective",
+        "definition": "used to express sadness or to apologise",
+        "exampleEN": "I'm sorry — I forgot the tickets.",
+        "exampleAR": "أنا آسف — نسيت التذاكر."
+      },
+      {
+        "word": "delay",
+        "arabic": "تأخير",
+        "partOfSpeech": "noun",
+        "definition": "when something happens later than planned",
+        "exampleEN": "There was a delay at the station because of the weather.",
+        "exampleAR": "كان هناك تأخير في المحطة بسبب الطقس."
+      },
+      {
+        "word": "cancel",
+        "arabic": "يلغي / إلغاء",
+        "partOfSpeech": "verb",
+        "definition": "to stop an event or plan from happening",
+        "exampleEN": "They had to cancel the trip because of the storm.",
+        "exampleAR": "اضطروا إلى إلغاء الرحلة بسبب العاصفة."
+      },
+      {
+        "word": "unexpected",
+        "arabic": "غير متوقع",
+        "partOfSpeech": "adjective",
+        "definition": "not planned or predicted",
+        "exampleEN": "We had an unexpected problem with the car.",
+        "exampleAR": "واجهنا مشكلة غير متوقعة في السيارة."
+      },
+      {
+        "word": "run out of",
+        "arabic": "ينفد من",
+        "partOfSpeech": "phrasal verb",
+        "definition": "to have no more of something",
+        "exampleEN": "We ran out of coffee during the meeting.",
+        "exampleAR": "نفد القهوة أثناء الاجتماع."
+      },
+      {
+        "word": "be late",
+        "arabic": "يتأخر",
+        "partOfSpeech": "phrase",
+        "definition": "to arrive after the expected time",
+        "exampleEN": "Sorry I'm late — the bus was slow.",
+        "exampleAR": "آسف لأنني تأخرت — الحافلة كانت بطيئة."
+      },
+      {
+        "word": "plan",
+        "arabic": "خطة / يخطط",
+        "partOfSpeech": "noun / verb",
+        "definition": "a set of ideas for what to do; to decide in advance",
+        "exampleEN": "We have a simple plan for Saturday.",
+        "exampleAR": "لدينا خطة بسيطة ليوم السبت."
+      },
+      {
+        "word": "make a plan",
+        "arabic": "يخطط / يضع خطة",
+        "partOfSpeech": "phrase",
+        "definition": "to decide what to do in the future",
+        "exampleEN": "Let's make a plan for next week.",
+        "exampleAR": "لِنضع خطة للأسبوع القادم."
+      },
+      {
+        "word": "change your mind",
+        "arabic": "يغيّر رأيه",
+        "partOfSpeech": "phrase",
+        "definition": "to decide something different from before",
+        "exampleEN": "She changed her mind about the restaurant.",
+        "exampleAR": "غيرت رأيها بشأن المطعم."
+      },
+      {
+        "word": "offer a solution",
+        "arabic": "يقترح حلًا",
+        "partOfSpeech": "collocation",
+        "definition": "to suggest a way to fix a problem",
+        "exampleEN": "He offered a solution to save time.",
+        "exampleAR": "اقتراح حل لتوفير الوقت."
+      },
+      {
+        "word": "fix",
+        "arabic": "يصلّح / يصلح",
+        "partOfSpeech": "verb",
+        "definition": "to repair or correct something that is wrong",
+        "exampleEN": "Can you fix the broken chair?",
+        "exampleAR": "هل يمكنك إصلاح الكرسي المكسور؟"
+      },
+      {
+        "word": "call ahead",
+        "arabic": "يتصل مسبقًا",
+        "partOfSpeech": "phrasal verb",
+        "definition": "to telephone before you go somewhere",
+        "exampleEN": "Please call ahead if you are late.",
+        "exampleAR": "من فضلك اتصل مسبقًا إذا كنت متأخرًا."
+      },
+      {
+        "word": "cover the cost",
+        "arabic": "يغطي التكلفة",
+        "partOfSpeech": "collocation",
+        "definition": "to pay the money needed for something",
+        "exampleEN": "The company will cover the cost of the repair.",
+        "exampleAR": "ستقوم الشركة بتغطية تكلفة الإصلاح."
+      }
+    ],
+    "grammar": {
+      "topic": "Advice with should and polite apologies",
+      "arabicName": "النصيحة باستخدام should والاعتذارات بأدب",
+      "concept": "Use should + base verb to give simple advice (You should leave early). Use 'I'm sorry' or 'I apologise' + reason (for + -ing / for + noun) to apologise politely.",
+      "arabicComparison": "في العربية نستخدم عبارات مثل 'من الأفضل أن' للنصيحة و'أعتذر عن...' للاعتذار. should لا يترجم حرفيًا دائماً، وغالبًا يستخدم 'من الأفضل' أو 'ينبغي'.",
+      "structure": "Advice: Subject + should + base verb. Apology: I'm sorry / I apologise + (for + noun or for + verb-ing). Example: You should call ahead. I'm sorry for being late.",
+      "commonError": "Using 'should' for past apologies (wrong: I should arrived late). Also confusing 'sorry' + infinitive vs 'sorry' + -ing (correct: Sorry for being late / Sorry I was late).",
+      "exampleEN": "You should check the bus times. I'm sorry for the delay.",
+      "exampleAR": "يجب أن تتحقق من مواعيد الحافلة. أعتذر عن التأخير."
+    },
+    "readingBrief": "A short original passage (about 130–160 words) set at a small weekday picnic that goes wrong. The text describes three small problems: the train was delayed, someone forgot the food, and it started to rain. Each person explains what happened, gives a brief apology (I'm sorry / I apologise) and another person offers a solution using should (You should wait; We should buy food; We should move under the shelter). The passage practices simple past and present language, polite phrases, and shows how to move from problem to solution in everyday English.",
+    "writingPrompt": "Write a short message (60–90 words) to a friend who missed your planned meeting. Apologise for the mistake or problem, explain briefly what went wrong, and suggest a new plan using should. Audience: a friend. Purpose: apologise and arrange a new time."
+  },
+  {
+    "lessonNumber": 15,
+    "title": "Celebrations and traditions",
+    "titleArabic": "الاحتفالات والتقاليد",
+    "outcome": {
+      "canDo": "I can talk about past celebrations, describe traditions, and invite or respond to invitations using past habits and time words.",
+      "canDoArabic": "أستطيع التحدث عن احتفالات سابقة، وصف التقاليد، ودعوة أو الرد على دعوات باستخدام عادات الماضي وكلمات الزمن.",
+      "scenario": "You describe a family festival you attended when you were younger, explain what everyone usually did, and invite a friend to a small celebration next weekend.",
+      "scenarioArabic": "تصف مهرجاناً عائلياً حضرته عندما كنت أصغر، تشرح ما كان يفعله الناس عادةً، وتدعو صديقاً إلى احتفال صغير نهاية الأسبوع القادم."
+    },
+    "retrieval": [
+      {
+        "language": "English",
+        "prompt": "What time did you eat yesterday?",
+        "purpose": "Activate simple past time words (yesterday, time) and memory of recent actions."
+      },
+      {
+        "language": "English",
+        "prompt": "Who did you see at the park? (people)",
+        "purpose": "Recall people vocabulary and past actions."
+      },
+      {
+        "language": "English",
+        "prompt": "Where did you go last weekend? (places)",
+        "purpose": "Connect places vocabulary with past tense for events."
+      },
+      {
+        "language": "English",
+        "prompt": "Did you like the food? What food did you eat? (food)",
+        "purpose": "Activate food words and opinions in the past."
+      }
+    ],
+    "network": {
+      "theme": "culture, events, invitations",
+      "themeArabic": "الثقافة، الفعاليات، الدعوات",
+      "anchor": "past celebrations and traditions",
+      "relatedWords": [
+        "family",
+        "friend",
+        "music",
+        "dance",
+        "gift",
+        "plan"
+      ],
+      "chunks": [
+        "accept an invitation",
+        "decline politely",
+        "get together",
+        "make a speech",
+        "special dish"
+      ],
+      "collocations": [
+        "light candles",
+        "share food",
+        "send invitations",
+        "organise a party"
+      ],
+      "register": "mixed",
+      "priorLevelLinks": [
+        "Module 2 Lesson 3: Simple past regular verbs",
+        "Module 2 Lesson 6: Time expressions (yesterday, last week)",
+        "Module 1 Lesson 8: Talking about family",
+        "Module 2 Lesson 9: Asking and answering about places"
+      ],
+      "learningNote": "Focus on repeated past actions with 'used to' and 'would' plus clear time words (when I was a child, every year, in the past). Teach polite phrases for invitations and refusals.",
+      "learningNoteArabic": "ركّز على الأفعال المتكررة في الماضي باستخدام 'used to' و'would' مع كلمات زمنية واضحة (عندما كنت صغيراً، كل سنة، في الماضي). علّم عبارات مهذبة للدعوات والرفض."
+    },
+    "vocabulary": [
+      {
+        "word": "celebration",
+        "arabic": "احتفال",
+        "partOfSpeech": "noun",
+        "definition": "a special event to mark something happy",
+        "exampleEN": "We had a big celebration for my sister’s graduation.",
+        "exampleAR": "أقمنا احتفالاً كبيراً لتخرُّج أختي."
+      },
+      {
+        "word": "invitation",
+        "arabic": "دعوة",
+        "partOfSpeech": "noun",
+        "definition": "a message asking someone to come to an event",
+        "exampleEN": "She sent an invitation to all her neighbours.",
+        "exampleAR": "أرسلت دعوة إلى جميع جيرانها."
+      },
+      {
+        "word": "accept an invitation",
+        "arabic": "قبول دعوة",
+        "partOfSpeech": "phrase",
+        "definition": "to say yes to an invitation",
+        "exampleEN": "I accepted the invitation and promised to bring a dessert.",
+        "exampleAR": "قبلت الدعوة ووعدت بإحضار حلوى."
+      },
+      {
+        "word": "decline politely",
+        "arabic": "رفض بأدب",
+        "partOfSpeech": "phrase",
+        "definition": "to say no to an invitation in a polite way",
+        "exampleEN": "He declined politely because he was busy that evening.",
+        "exampleAR": "رفض بأدب لأنه كان مشغولاً في تلك الأمسية."
+      },
+      {
+        "word": "guest",
+        "arabic": "ضيف",
+        "partOfSpeech": "noun",
+        "definition": "a person who is invited to an event",
+        "exampleEN": "The guests arrived with small presents.",
+        "exampleAR": "وصل الضيوف ومعهم هدايا صغيرة."
+      },
+      {
+        "word": "host",
+        "arabic": "مضيف / منظم الحفل",
+        "partOfSpeech": "noun",
+        "definition": "a person who organises and welcomes people at an event",
+        "exampleEN": "The host put chairs and plates on the table.",
+        "exampleAR": "وضع المضيف الكراسي والأطباق على الطاولة."
+      },
+      {
+        "word": "tradition",
+        "arabic": "تقليد",
+        "partOfSpeech": "noun",
+        "definition": "a custom or way of doing something for a long time",
+        "exampleEN": "Our tradition is to sing together on New Year’s Eve.",
+        "exampleAR": "تقليدنا هو الغناء معاً في ليلة رأس السنة."
+      },
+      {
+        "word": "costume",
+        "arabic": "زي تقليدي / زي خاص",
+        "partOfSpeech": "noun",
+        "definition": "special clothes for a celebration or event",
+        "exampleEN": "Children wore bright costumes at the parade.",
+        "exampleAR": "ارتدى الأطفال أزياء زاهية في العرض."
+      },
+      {
+        "word": "parade",
+        "arabic": "عرض / موكب",
+        "partOfSpeech": "noun",
+        "definition": "a public march or display for celebration",
+        "exampleEN": "There was a small parade with music in the town square.",
+        "exampleAR": "كان هناك موكب صغير مع موسيقى في ساحة المدينة."
+      },
+      {
+        "word": "fireworks",
+        "arabic": "ألعاب نارية",
+        "partOfSpeech": "noun",
+        "definition": "bright lights and colours in the sky for celebrations",
+        "exampleEN": "We watched the fireworks at midnight.",
+        "exampleAR": "شاهدنا الألعاب النارية عند منتصف الليل."
+      },
+      {
+        "word": "make a speech",
+        "arabic": "إلقاء كلمة",
+        "partOfSpeech": "phrase",
+        "definition": "to talk to the guests in front of everyone",
+        "exampleEN": "The mayor made a short speech about the festival.",
+        "exampleAR": "ألقى العمدة كلمة قصيرة عن المهرجان."
+      },
+      {
+        "word": "get together",
+        "arabic": "التجمّع / الاجتماع",
+        "partOfSpeech": "phrase",
+        "definition": "to meet with friends or family for a social time",
+        "exampleEN": "We get together every year for a big lunch.",
+        "exampleAR": "نتجمّع كل سنة على غداء كبير."
+      },
+      {
+        "word": "special dish",
+        "arabic": "طبق خاص",
+        "partOfSpeech": "noun phrase",
+        "definition": "a particular meal cooked for an event",
+        "exampleEN": "My grandmother always made a special dish for holidays.",
+        "exampleAR": "كانت جدتي دائماً تعد طبقاً خاصاً للعطلات."
+      },
+      {
+        "word": "decorate",
+        "arabic": "يزين / يزيّن",
+        "partOfSpeech": "verb",
+        "definition": "to put things to make a place look nice for an event",
+        "exampleEN": "We decorate the hall with lights and flowers.",
+        "exampleAR": "نزين القاعة بالأضواء والزهور."
+      },
+      {
+        "word": "share food",
+        "arabic": "تقاسم الطعام",
+        "partOfSpeech": "verb phrase",
+        "definition": "to give portions of food to others at an event",
+        "exampleEN": "At the party we shared food with our neighbours.",
+        "exampleAR": "في الحفل شاركنا الطعام مع جيراننا."
+      }
+    ],
+    "grammar": {
+      "topic": "Past habits and time expressions",
+      "arabicName": "عادات الماضي وعبارات الزمن",
+      "concept": "We use 'used to' and 'would' to talk about actions we did regularly in the past. Time expressions (when I was a child, every year, often, in the past) help show these repeated actions. Use the past simple for single completed events.",
+      "arabicComparison": "في العربية نستخدم غالباً الماضي البسيط مع ظروف زمنية (مثلاً: عندما كنت صغيراً، كل سنة). أحياناً نضيف 'كان' مع الفعل المضارع للدلالة على عادة في الماضي (كان + يفعل)، لكن في الإنجليزية نستخدم 'used to' أو 'would' للأفعال المتكررة.",
+      "structure": "Affirmative: subject + used to + base verb (I used to dance). / Also: subject + would + base verb (for repeated actions) (We would sing). Negative: subject + didn't use to + base verb (I didn't use to cook). Question: Did + subject + use to + base verb? (Did you use to visit?). Time words: when I was a child, every year, often, last summer.",
+      "commonError": "Students often say 'I used to went' or use present tense 'I go' instead of 'I used to go'. Also confuse 'used to' (past habit) with past simple (single events). In Arabic, learners sometimes translate directly and say the present form.",
+      "exampleEN": "When I was young, I used to visit my grandparents every summer and we would light candles together.",
+      "exampleAR": "عندما كنت صغيراً، كنت أزور أجدادي كل صيف وكنا نضيء الشموع معاً."
+    },
+    "readingBrief": "A 130–160-word original passage about a woman who remembers the annual village festival from her childhood. The text describes the usual routine: neighbours decorating the square, families bringing a special dish, children wearing costumes, and the local band playing music. It includes past-habit language (used to, would) and clear time expressions (every year, when I was a child, after dinner). The passage shows invitations and polite refusals from relatives and ends with the writer saying how the tradition changed recently.",
+    "writingPrompt": "Write a 60–90-word message to a friend describing one tradition you used to have in your family and inviting them to a small get-together next weekend. Include at least one past-habit phrase (used to or would) and one time expression (e.g. last year, every summer). Purpose: invite and inform; Audience: a close friend."
+  },
+  {
+    "lessonNumber": 16,
+    "title": "Study, work, and goals",
+    "titleArabic": "الدراسة والعمل والأهداف",
+    "outcome": {
+      "canDo": "I can say what I have to do, what I need to do, and what I can do to reach my study and work goals.",
+      "canDoArabic": "أستطيع أن أقول ما يجب أن أفعله، وما أحتاج أن أفعله، وما أستطيع فعله للوصول إلى أهدافي الدراسية والعملية.",
+      "scenario": "You talk with a teacher or colleague about plans for study and work and make a short plan for the week.",
+      "scenarioArabic": "تتحدث مع مدرس أو زميل عن خطط الدراسة والعمل وتضع خطة قصيرة للأسبوع."
+    },
+    "retrieval": [
+      {
+        "language": "English",
+        "prompt": "Think about yesterday: what time did you go to school or work?",
+        "purpose": "Activate simple past time words and routine vocabulary (yesterday, time, go)."
+      },
+      {
+        "language": "English",
+        "prompt": "Name three places you will go tomorrow (for example: home, shop, school).",
+        "purpose": "Use common places and future plans (tomorrow, go, places)."
+      },
+      {
+        "language": "English",
+        "prompt": "Who are three people you can ask for help (friend, teacher, manager)?",
+        "purpose": "Recall people vocabulary and asking for help (people, can, ask)."
+      },
+      {
+        "language": "English",
+        "prompt": "What food do you like before you study or work?",
+        "purpose": "Connect daily routine words (food, like, study, work)."
+      }
+    ],
+    "network": {
+      "theme": "learning, work, ambition",
+      "themeArabic": "التعلم والعمل والطموح",
+      "anchor": "plans and options for study and work",
+      "relatedWords": [
+        "study",
+        "exam",
+        "job",
+        "schedule",
+        "CV",
+        "interview",
+        "tutor",
+        "boss",
+        "training",
+        "salary"
+      ],
+      "chunks": [
+        "set a goal",
+        "apply for a job",
+        "part-time job",
+        "manage time",
+        "work experience"
+      ],
+      "collocations": [
+        "study for an exam",
+        "get a degree",
+        "look for work",
+        "gain experience",
+        "set realistic goals"
+      ],
+      "register": "mixed",
+      "priorLevelLinks": [
+        "A1: talking about daily routine and time",
+        "A1: saying where you go and who you see",
+        "learningNote"
+      ],
+      "learningNote": "Focus on small, clear steps: use have to for rules and obligations, need to for personal priorities or things you must arrange, and can for ability or permission. Teach short model sentences and practise swapping verbs (study, work, apply).",
+      "learningNoteArabic": "ركز على خطوات صغيرة وواضحة: استخدم 'have to' للالتزامات والقواعد، و'need to' للأولويات الشخصية أو الأشياء التي يجب ترتيبها، و'can' للقدرة أو الإذن. درّب على جمل بسيطة واستبدال الأفعال (study, work, apply)."
+    },
+    "vocabulary": [
+      {
+        "word": "set a goal",
+        "arabic": "يحدد هدفًا",
+        "partOfSpeech": "verb phrase",
+        "definition": "decide what you want to achieve in a period of time",
+        "exampleEN": "I set a goal to pass my English test this term.",
+        "exampleAR": "حددت هدفًا أن أنجح في اختبار اللغة الإنجليزية هذا الفصل."
+      },
+      {
+        "word": "plan",
+        "arabic": "يخطط / خطة",
+        "partOfSpeech": "verb",
+        "definition": "think about and arrange activities that will help you reach something",
+        "exampleEN": "I plan my week on Sunday evening.",
+        "exampleAR": "أخطط لأسبوعي مساء الأحد."
+      },
+      {
+        "word": "deadline",
+        "arabic": "الموعد النهائي",
+        "partOfSpeech": "noun",
+        "definition": "the last day or time to finish something",
+        "exampleEN": "The deadline for the homework is Friday.",
+        "exampleAR": "الموعد النهائي للواجب هو يوم الجمعة."
+      },
+      {
+        "word": "part-time job",
+        "arabic": "عمل بدوام جزئي",
+        "partOfSpeech": "noun phrase",
+        "definition": "work with fewer hours than a full-time job",
+        "exampleEN": "She has a part-time job in a café after class.",
+        "exampleAR": "لديها عمل بدوام جزئي في مقهى بعد الدرس."
+      },
+      {
+        "word": "apply for a job",
+        "arabic": "يتقدم لوظيفة",
+        "partOfSpeech": "verb phrase",
+        "definition": "send papers or information to ask for a job",
+        "exampleEN": "I will apply for a job at the library.",
+        "exampleAR": "سأتقدم لوظيفة في المكتبة."
+      },
+      {
+        "word": "work experience",
+        "arabic": "خبرة عمل",
+        "partOfSpeech": "noun phrase",
+        "definition": "practical time spent working to learn a job",
+        "exampleEN": "Volunteering gave me good work experience.",
+        "exampleAR": "التطوع أعطاني خبرة عمل جيدة."
+      },
+      {
+        "word": "skills",
+        "arabic": "مهارات",
+        "partOfSpeech": "noun",
+        "definition": "abilities you have that help you do tasks well",
+        "exampleEN": "Computer skills are useful for many jobs.",
+        "exampleAR": "المهارات الحاسوبية مفيدة للعديد من الوظائف."
+      },
+      {
+        "word": "improve",
+        "arabic": "يحسّن",
+        "partOfSpeech": "verb",
+        "definition": "make something better",
+        "exampleEN": "I want to improve my English speaking.",
+        "exampleAR": "أريد أن أحسن المحادثة بالإنجليزية."
+      },
+      {
+        "word": "manage time",
+        "arabic": "يدير الوقت",
+        "partOfSpeech": "verb phrase",
+        "definition": "use your time well to do important things",
+        "exampleEN": "To finish coursework, I must manage time well.",
+        "exampleAR": "لإنهاء الأعمال، يجب أن أدير الوقت جيدًا."
+      },
+      {
+        "word": "ambition",
+        "arabic": "طموح",
+        "partOfSpeech": "noun",
+        "definition": "a strong wish to achieve something important",
+        "exampleEN": "Her ambition is to become a teacher.",
+        "exampleAR": "طموحها أن تصبح معلمة."
+      },
+      {
+        "word": "volunteer",
+        "arabic": "يتطوع / متطوع",
+        "partOfSpeech": "verb",
+        "definition": "do work without pay to help others or gain experience",
+        "exampleEN": "He volunteers at the local community centre.",
+        "exampleAR": "هو يتطوع في مركز المجتمع المحلي."
+      },
+      {
+        "word": "degree",
+        "arabic": "درجة علمية",
+        "partOfSpeech": "noun",
+        "definition": "a certificate from a university showing you studied a subject",
+        "exampleEN": "She wants a degree in business.",
+        "exampleAR": "ترغب في الحصول على درجة علمية في الأعمال."
+      },
+      {
+        "word": "career",
+        "arabic": "مهنة / مسار وظيفي",
+        "partOfSpeech": "noun",
+        "definition": "the type of work you do over many years",
+        "exampleEN": "He is building a career in IT.",
+        "exampleAR": "يبني مسارًا وظيفيًا في تكنولوجيا المعلومات."
+      },
+      {
+        "word": "have to",
+        "arabic": "يجب أن",
+        "partOfSpeech": "modal phrase",
+        "definition": "show obligation or rules",
+        "exampleEN": "I have to attend the meeting on Monday.",
+        "exampleAR": "يجب أن أحضر الاجتماع يوم الإثنين."
+      },
+      {
+        "word": "need to",
+        "arabic": "يحتاج إلى",
+        "partOfSpeech": "modal phrase",
+        "definition": "show necessity or personal requirement",
+        "exampleEN": "I need to study more for the exam.",
+        "exampleAR": "أحتاج أن أدرس أكثر للامتحان."
+      }
+    ],
+    "grammar": {
+      "topic": "have to, need to, can",
+      "arabicName": "have to، need to، can",
+      "concept": "have to is for obligations or external rules, need to is for necessities or personal priorities, and can shows ability or permission.",
+      "arabicComparison": "have to للالتزام أو القواعد الخارجية، need to للحاجة أو الأولوية الشخصية، وcan للقدرة أو الإذن.",
+      "structure": "Affirmative: subject + have to/need to/can + base verb. Negative: subject + don't have to/don't need to/can't + base verb. Question: Do you have to...? Can you...?",
+      "commonError": "Confusing don't have to (no obligation) with mustn't (not allowed), or saying 'I must to' instead of 'I have to' or 'I need to'.",
+      "exampleEN": "I have to finish the report. / I need to talk to my tutor. / I can come to class on Friday.",
+      "exampleAR": "يجب أن أنهي التقرير. / أحتاج أن أتحدث مع مدرّسي. / أستطيع الحضور إلى الصف يوم الجمعة."
+    },
+    "readingBrief": "A 130–160-word first-person passage about a student who balances studying and a part-time job. The text describes the student's short-term goals (pass an exam, get more work experience), what they have to do because of rules or work hours, what they need to arrange (study time, sleep), and what they can do to improve (use evening study, ask for help). It includes simple time references (yesterday, tomorrow, this week) and uses have to, need to and can several times. The language is clear, A2 level, and the passage ends with one practical plan for the next seven days.",
+    "writingPrompt": "Write a short email (60–90 words) to your tutor explaining your study and work goals. Say one thing you have to do this week, one thing you need to change, and one thing you can do to improve. Ask one question for advice. Audience: your tutor. Purpose: inform and ask for help."
+  },
+  {
+    "lessonNumber": 17,
+    "title": "Technology in daily life",
+    "titleArabic": "التقنية في الحياة اليومية",
+    "outcome": {
+      "canDo": "I can talk about common devices, say how I use them and make simple future plans using the first conditional.",
+      "canDoArabic": "أستطيع التحدث عن الأجهزة الشائعة، وشرح كيف أستخدمها، وصياغة خطط بسيطة للمستقبل باستخدام شرط النوع الأول.",
+      "scenario": "You explain to a classmate what devices you use, how you communicate with friends and family, and one change you will make if a problem continues.",
+      "scenarioArabic": "تشرح لزميل/زميلة في الصف الأجهزة التي تستخدمها، وكيف تتواصل مع الأصدقاء والعائلة، وتذكر تغييرًا واحدًا ستقوم به إذا استمرّ مشكلة."
+    },
+    "retrieval": [
+      {
+        "language": "English",
+        "prompt": "Talk about yesterday: What time did you get up, where did you go, and who did you see? Use simple words like time, places, people.",
+        "purpose": "Activate very basic past-time and places vocabulary and speech fluency."
+      },
+      {
+        "language": "English",
+        "prompt": "Say what you want and can do tomorrow with technology: I want to check email, I can make a video call, I will go online.",
+        "purpose": "Retrieve common verbs and near-future expressions in an A2 context."
+      },
+      {
+        "language": "English",
+        "prompt": "List three places you use a phone (home, work, shop) and one food place where you order online.",
+        "purpose": "Connect places and simple shopping/food vocabulary with device use."
+      },
+      {
+        "language": "English",
+        "prompt": "Describe who you like to contact and how: friends, family; do you send a message, call, or video call?",
+        "purpose": "Bring in people and basic communication verbs for speaking practice."
+      }
+    ],
+    "network": {
+      "theme": "devices, communication, online habits",
+      "themeArabic": "الأجهزة، التواصل، العادات عبر الإنترنت",
+      "anchor": "device",
+      "relatedWords": [
+        "phone",
+        "battery",
+        "Wi-Fi",
+        "app",
+        "message",
+        "screen time",
+        "notification",
+        "password"
+      ],
+      "chunks": [
+        "video call",
+        "online banking",
+        "log in",
+        "screen time",
+        "turn off notifications",
+        "charge your phone",
+        "send a message",
+        "keep your password safe"
+      ],
+      "collocations": [
+        "check email",
+        "make a call",
+        "save a file",
+        "update an app",
+        "stream music"
+      ],
+      "register": "mixed",
+      "priorLevelLinks": [
+        "Module 1: daily routines (present simple)",
+        "Module 2: past actions (past simple)",
+        "Module 3: asking questions and wants"
+      ],
+      "learningNote": "Focus on real, small changes learners can make with technology (e.g., charge phone, turn off notifications). Teach the form 'If + present, ... will ...' with clear, everyday examples.",
+      "learningNoteArabic": "ركّز على تغييرات واقعية وصغيرة يمكن للمتعلمين القيام بها مع التكنولوجيا (مثل شحن الهاتف، إيقاف الإشعارات). علّم صيغة 'إذا + المضارع، ... سوف/سي ...' بأمثلة يومية وواضحة."
+    },
+    "vocabulary": [
+      {
+        "word": "smartphone",
+        "arabic": "هاتف ذكي",
+        "partOfSpeech": "noun",
+        "definition": "A small computer you carry that makes calls and runs apps.",
+        "exampleEN": "I check the map on my smartphone when I go to a new place.",
+        "exampleAR": "أتحقق من الخريطة على هاتفي الذكي عندما أذهب إلى مكان جديد."
+      },
+      {
+        "word": "tablet",
+        "arabic": "جهاز لوحي",
+        "partOfSpeech": "noun",
+        "definition": "A small flat computer with a touch screen, bigger than a phone.",
+        "exampleEN": "She reads books on her tablet on the bus.",
+        "exampleAR": "هي تقرأ الكتب على جهازها اللوحي في الحافلة."
+      },
+      {
+        "word": "charger",
+        "arabic": "شاحن",
+        "partOfSpeech": "noun",
+        "definition": "A cable or device that gives power to a phone or tablet.",
+        "exampleEN": "My charger is at home, so my phone is low on battery.",
+        "exampleAR": "شاحني في المنزل، لذلك بطارية هاتفي منخفضة."
+      },
+      {
+        "word": "app",
+        "arabic": "تطبيق",
+        "partOfSpeech": "noun",
+        "definition": "A small program on a phone or tablet for a task, like maps or messages.",
+        "exampleEN": "I use a translation app when I travel.",
+        "exampleAR": "أستخدم تطبيق ترجمة عندما أسافر."
+      },
+      {
+        "word": "message",
+        "arabic": "رسالة (إلكترونية)",
+        "partOfSpeech": "noun",
+        "definition": "A short written note sent on the phone or online.",
+        "exampleEN": "She sent me a message about the meeting time.",
+        "exampleAR": "أرسلت لي رسالة عن وقت الاجتماع."
+      },
+      {
+        "word": "notification",
+        "arabic": "إشعار",
+        "partOfSpeech": "noun",
+        "definition": "A short alert from an app that gives new information.",
+        "exampleEN": "My phone gives a notification when I have a new email.",
+        "exampleAR": "هاتفي يعطي إشعارًا عندما لدي بريد إلكتروني جديد."
+      },
+      {
+        "word": "social media",
+        "arabic": "وسائل التواصل الاجتماعي",
+        "partOfSpeech": "noun",
+        "definition": "Websites and apps where people share posts and talk.",
+        "exampleEN": "He spends an hour on social media after work.",
+        "exampleAR": "يقضي ساعة على وسائل التواصل الاجتماعي بعد العمل."
+      },
+      {
+        "word": "video call",
+        "arabic": "مكالمة فيديو",
+        "partOfSpeech": "noun phrase",
+        "definition": "A call where you can see and hear the other person on a screen.",
+        "exampleEN": "We make a video call with my parents every Sunday.",
+        "exampleAR": "نجري مكالمة فيديو مع والديّ كل يوم أحد."
+      },
+      {
+        "word": "online banking",
+        "arabic": "الخدمات المصرفية عبر الإنترنت",
+        "partOfSpeech": "noun phrase",
+        "definition": "Using the bank website or app to check money and pay bills.",
+        "exampleEN": "I pay bills with online banking because it is fast.",
+        "exampleAR": "أدفع الفواتير عبر الخدمات المصرفية عبر الإنترنت لأنها سريعة."
+      },
+      {
+        "word": "password",
+        "arabic": "كلمة مرور",
+        "partOfSpeech": "noun",
+        "definition": "A secret word or code to keep an account safe.",
+        "exampleEN": "Choose a strong password and do not share it.",
+        "exampleAR": "اختر كلمة مرور قوية ولا تشاركها."
+      },
+      {
+        "word": "log in",
+        "arabic": "تسجيل الدخول",
+        "partOfSpeech": "phrasal verb",
+        "definition": "To enter your username and password to use an account.",
+        "exampleEN": "I log in to my email every morning.",
+        "exampleAR": "أسجّل الدخول إلى بريدي الإلكتروني كل صباح."
+      },
+      {
+        "word": "username",
+        "arabic": "اسم المستخدم",
+        "partOfSpeech": "noun",
+        "definition": "The public name you use to open an online account.",
+        "exampleEN": "Her username is her full name on the learning site.",
+        "exampleAR": "اسم المستخدم الخاص بها هو اسمها الكامل على موقع التعلم."
+      },
+      {
+        "word": "stream music",
+        "arabic": "بث الموسيقى",
+        "partOfSpeech": "verb phrase",
+        "definition": "To play music from the internet without saving the file.",
+        "exampleEN": "I stream music while I cook dinner.",
+        "exampleAR": "أبث الموسيقى أثناء طهي العشاء."
+      },
+      {
+        "word": "download",
+        "arabic": "تنزيل",
+        "partOfSpeech": "verb",
+        "definition": "To copy a file from the internet to your device.",
+        "exampleEN": "Please download the map before you go offline.",
+        "exampleAR": "الرجاء تنزيل الخريطة قبل أن تكون بدون اتصال."
+      },
+      {
+        "word": "screen time",
+        "arabic": "وقت الشاشة",
+        "partOfSpeech": "noun phrase",
+        "definition": "The amount of time you spend looking at a screen each day.",
+        "exampleEN": "He tries to reduce his screen time in the evening.",
+        "exampleAR": "يحاول تقليل وقت الشاشة في المساء."
+      }
+    ],
+    "grammar": {
+      "topic": "First conditional introduction",
+      "arabicName": "الشرط النوع الأول",
+      "concept": "We use the first conditional to talk about real possible situations in the future. Use if + present simple, and will + base verb for the result.",
+      "arabicComparison": "في العربية نستخدم أداة 'إذا' مع فعل في الزمن الحاضر للتحدث عن نتيجة مستقبلية محتملة، ويمكن أن نستخدم المستقبل أو المضارع للفعل الثاني حسب السياق.",
+      "structure": "If + present simple, ... will + base verb (If + subject + verb(s), subject + will + verb).",
+      "commonError": "Learners often use 'will' in both parts (If I will ...), or they use the present continuous where the present simple is needed.",
+      "exampleEN": "If I charge my phone tonight, I will use it all day tomorrow.",
+      "exampleAR": "إذا شحنت هاتفي الليلة، فسأستخدمه طوال اليوم غدًا."
+    },
+    "readingBrief": "A 130–160-word original passage where a young person describes a typical day with technology: waking up to a notification, using a smartphone and tablet for work and study, making a video call to family, and checking social media. The text includes simple facts (devices, apps, times) and one clear first conditional sentence about a future change (for example: If I turn off notifications, I will sleep better). The passage shows habits and one plan to improve online balance, with everyday vocabulary and short sentences suitable for A2 learners.",
+    "writingPrompt": "Write 60–90 words to a friend explaining two habits you will change this week to use technology more safely or happily. Start with one If sentence (first conditional) to show a plan (for example: If I turn off notifications, I will sleep better). Audience: a friend. Purpose: to inform and make a small plan."
+  },
+  {
+    "lessonNumber": 18,
+    "title": "Media and simple opinions",
+    "titleArabic": "الإعلام والآراء البسيطة",
+    "outcome": {
+      "canDo": "I can talk about films and news and give simple opinions with reasons using because, so and although.",
+      "canDoArabic": "أستطيع التحدث عن الأفلام والأخبار وإعطاء آراء بسيطة مع أسباب باستخدام لأن، لذلك، وبالرغم من.",
+      "scenario": "You tell a friend about a film you watched and explain why you liked it or not, and you talk about a short news item and your opinion.",
+      "scenarioArabic": "تخبر صديقاً عن فيلم شاهدته وتشرح لماذا أعجبك أو لم يعجبك، وتتحدث عن خبر قصير ورأيك فيه."
+    },
+    "retrieval": [
+      {
+        "language": "English",
+        "prompt": "Yesterday I went to the cinema. Tell me about a time you saw a film.",
+        "purpose": "Activate past-time vocabulary and simple descriptions (yesterday, saw, like)."
+      },
+      {
+        "language": "English",
+        "prompt": "I like pizza and I go to the town on Saturday. Say what you like and where you go this weekend.",
+        "purpose": "Retrieve likes and places vocabulary (like, go, town, weekend)."
+      },
+      {
+        "language": "English",
+        "prompt": "Can you tell me who is in your family and one thing they do? (e.g. my brother works).",
+        "purpose": "Bring out people and simple present verbs (people, can, work)."
+      },
+      {
+        "language": "English",
+        "prompt": "I want news about the weather tomorrow. Say one sentence about tomorrow.",
+        "purpose": "Use simple future/time words (want, tomorrow, weather)."
+      }
+    ],
+    "network": {
+      "theme": "Films, news and expressing preference",
+      "themeArabic": "الأفلام والأخبار والتعبير عن التفضيل",
+      "anchor": "media",
+      "relatedWords": [
+        "film",
+        "news",
+        "review",
+        "actor",
+        "director",
+        "watch",
+        "prefer",
+        "headline",
+        "scene"
+      ],
+      "chunks": [
+        "watch a film",
+        "turn on the TV",
+        "breaking news",
+        "write a review"
+      ],
+      "collocations": [
+        "prefer A to B",
+        "short news item",
+        "main character",
+        "box office"
+      ],
+      "register": "neutral",
+      "priorLevelLinks": [
+        "Module 3: Past simple (saw, watched)",
+        "Module 2: Talking about likes and dislikes",
+        "Module 1: Time words (yesterday, tomorrow)"
+      ],
+      "learningNote": "At A2, focus on short, clear reasons. Teach because for reasons, so for results, and although for small contrasts. Give model sentences and short practice: one reason, one contrast.",
+      "learningNoteArabic": "في مستوى A2 ركّز على أسباب قصيرة وواضحة. علّم لأن لذكر السبب، لذلك للنتيجة، وبالرغم من لإظهار التباين. قدّم جمل نموذجية وممارسة قصيرة: سبب واحد وتباين واحد."
+    },
+    "vocabulary": [
+      {
+        "word": "film",
+        "arabic": "فيلم",
+        "partOfSpeech": "noun",
+        "definition": "A story shown on a screen in a cinema or on TV.",
+        "exampleEN": "We saw a funny film last night.",
+        "exampleAR": "شاهدنا فيلماً مضحكاً الليلة الماضية."
+      },
+      {
+        "word": "actor",
+        "arabic": "ممثل",
+        "partOfSpeech": "noun",
+        "definition": "A person who plays a part in a film, play or TV show.",
+        "exampleEN": "The actor played the hero in the film.",
+        "exampleAR": "لعب الممثل دور البطل في الفيلم."
+      },
+      {
+        "word": "director",
+        "arabic": "مخرج",
+        "partOfSpeech": "noun",
+        "definition": "The person who controls how a film is made.",
+        "exampleEN": "The director chose the music for the scene.",
+        "exampleAR": "اختار المخرج الموسيقى للمشهد."
+      },
+      {
+        "word": "plot",
+        "arabic": "حبكة",
+        "partOfSpeech": "noun",
+        "definition": "The main events of a story in a film or book.",
+        "exampleEN": "The plot was easy to follow.",
+        "exampleAR": "كانت الحبكة سهلة المتابعة."
+      },
+      {
+        "word": "scene",
+        "arabic": "مشهد",
+        "partOfSpeech": "noun",
+        "definition": "A short part of a film or play with action in one place.",
+        "exampleEN": "My favourite scene is the last one.",
+        "exampleAR": "مشهد النهاية هو المفضل لدي."
+      },
+      {
+        "word": "genre",
+        "arabic": "نوع (العمل الفني)",
+        "partOfSpeech": "noun",
+        "definition": "A type of film or book, such as comedy or horror.",
+        "exampleEN": "I prefer the comedy genre to horror.",
+        "exampleAR": "أفضل نوع الكوميديا على الرعب."
+      },
+      {
+        "word": "news",
+        "arabic": "أخبار",
+        "partOfSpeech": "noun",
+        "definition": "Information about recent events on TV, radio or online.",
+        "exampleEN": "I read the news in the morning.",
+        "exampleAR": "أقرأ الأخبار في الصباح."
+      },
+      {
+        "word": "breaking news",
+        "arabic": "أخبار عاجلة",
+        "partOfSpeech": "phrase",
+        "definition": "Very new and important news that is just happening.",
+        "exampleEN": "Breaking news: there is a big traffic problem in the city.",
+        "exampleAR": "أخبار عاجلة: هناك مشكلة مرورية كبيرة في المدينة."
+      },
+      {
+        "word": "headline",
+        "arabic": "عنوان الخبر",
+        "partOfSpeech": "noun",
+        "definition": "The main title of a news story.",
+        "exampleEN": "The headline was about a sports win.",
+        "exampleAR": "كان عنوان الخبر عن فوز رياضي."
+      },
+      {
+        "word": "review",
+        "arabic": "مراجعة / تقييم",
+        "partOfSpeech": "noun",
+        "definition": "A short text or talk that says if a film or book is good.",
+        "exampleEN": "I read a review before I saw the film.",
+        "exampleAR": "قرأت مراجعة قبل أن أشاهد الفيلم."
+      },
+      {
+        "word": "movie review",
+        "arabic": "مراجعة فيلم",
+        "partOfSpeech": "collocation",
+        "definition": "A short opinion about a film that tells if it is good or not.",
+        "exampleEN": "She wrote a short movie review for the school blog.",
+        "exampleAR": "كتبت مراجعة فيلم قصيرة لمدونة المدرسة."
+      },
+      {
+        "word": "prefer",
+        "arabic": "يفضل",
+        "partOfSpeech": "verb",
+        "definition": "To like one thing more than another.",
+        "exampleEN": "I prefer comedies to horror films.",
+        "exampleAR": "أفضل الكوميديا على أفلام الرعب."
+      },
+      {
+        "word": "watch a film",
+        "arabic": "يشاهد فيلماً / مشاهدة فيلم",
+        "partOfSpeech": "phrase",
+        "definition": "To look at a film on a screen for its full length.",
+        "exampleEN": "Do you want to watch a film tonight?",
+        "exampleAR": "هل تريد مشاهدة فيلم الليلة؟"
+      },
+      {
+        "word": "turn on the TV",
+        "arabic": "يشغّل التلفاز",
+        "partOfSpeech": "phrase",
+        "definition": "To make the television start working so you can watch it.",
+        "exampleEN": "Please turn on the TV; the news starts now.",
+        "exampleAR": "من فضلك شغّل التلفاز؛ تبدأ الأخبار الآن."
+      },
+      {
+        "word": "because",
+        "arabic": "لأن",
+        "partOfSpeech": "conjunction",
+        "definition": "Used to give a reason for something.",
+        "exampleEN": "I liked the film because it was funny.",
+        "exampleAR": "أعجبني الفيلم لأنه كان مضحكاً."
+      }
+    ],
+    "grammar": {
+      "topic": "because, so, although",
+      "arabicName": "لأن، لذلك، بالرغم من",
+      "concept": "Use because to give a reason, so to show a result, and although to give a contrast. These connectors help make short opinions with reasons and small surprises.",
+      "arabicComparison": "لأن تعطي سبباً، لذلك تظهر نتيجة، وبالرغم من تشير إلى تناقض أو مفاجأة. الترتيب في اللغة الإنجليزية عادة: main clause + connector + clause أو connector + clause + main clause.",
+      "structure": "Because + reason (clause). / So + result (clause). / Although + opposite idea (clause). Example: I liked the film because the story was clear. The story was clear, so I enjoyed it. Although it was long, it was interesting.",
+      "commonError": "Students often use 'so' when they need 'because', or place 'because' at the end with wrong word order. Also 'although' sometimes needs a comma if it starts a sentence.",
+      "exampleEN": "I prefer comedies because they make me laugh, so I felt happy after the film. Although the film was slow, the acting was excellent.",
+      "exampleAR": "أفضل الكوميديا لأنها تجعلني أضحك، لذا شعرت بالسعادة بعد الفيلم. بالرغم من أن الفيلم كان بطيئاً، إلا أن التمثيل كان ممتازاً."
+    },
+    "readingBrief": "A short original passage (about 130–160 words) that describes a person’s weekend with a film and a news story. The writer says which film they watched, gives one clear reason using because, explains a result with so, and adds a small contrast with although. The text uses simple past and present language, mentions a short news headline and the writer's opinion about it, and models useful phrases like 'watch a film' and 'breaking news'. The passage is friendly and suitable for A2 learners.",
+    "writingPrompt": "Write a 60–90 word message to a friend telling them about a film you watched this week. Say whether you liked it and give one reason with because, one result with so, and one contrast with although. Include a recommendation (yes or no). Audience: a friend. Purpose: inform and give your opinion."
+  },
+  {
+    "lessonNumber": 19,
+    "title": "Solving everyday problems",
+    "titleArabic": "حل المشكلات اليومية",
+    "outcome": {
+      "canDo": "I can explain a problem, ask for help, accept offers and suggest simple solutions to fix everyday services or repairs.",
+      "canDoArabic": "أستطيع شرح المشكلة، طلب المساعدة، قبول العروض واقتراح حلول بسيطة لإصلاح الخدمات أو الأشياء اليومية.",
+      "scenario": "You have a broken appliance and need to contact customer service, arrange a repair, and ask for a refund or a discount if needed.",
+      "scenarioArabic": "لديك جهاز معطل وتحتاج للاتصال بخدمة العملاء، ترتيب إصلاح، وطلب استرداد الأموال أو خصم إذا لزم الأمر."
+    },
+    "retrieval": [
+      {
+        "language": "English",
+        "prompt": "Yesterday the washing machine stopped. What time did it break and who was at home?",
+        "purpose": "Recall simple past time words and people (yesterday, time, people)."
+      },
+      {
+        "language": "English",
+        "prompt": "I want to go to the shop. Where is the nearest place to buy food?",
+        "purpose": "Use places and want/go in a practical question."
+      },
+      {
+        "language": "English",
+        "prompt": "Can you call someone to help? I can explain the problem to them.",
+        "purpose": "Use 'can' and people in a request context."
+      },
+      {
+        "language": "Arabic",
+        "prompt": "غدًا لدي موعد مع الفني. في أي وقت يناسبك؟",
+        "purpose": "استدعاء كلمات مستوى A1 مثل غدًا وموعد ووقت في سياق A2."
+      }
+    ],
+    "network": {
+      "theme": "services, complaints, repair, support",
+      "themeArabic": "الخدمات، الشكاوى، الإصلاح، الدعم",
+      "anchor": "customer service and simple repairs",
+      "relatedWords": [
+        "service centre",
+        "warranty",
+        "charge",
+        "booking",
+        "fault",
+        "helpdesk",
+        "repairman"
+      ],
+      "chunks": [
+        "make a complaint",
+        "call customer service",
+        "speak to a manager",
+        "fix the problem",
+        "arrange an appointment"
+      ],
+      "collocations": [
+        "broken appliance",
+        "faulty item",
+        "emergency repair",
+        "refund request"
+      ],
+      "register": "mixed",
+      "priorLevelLinks": [
+        "Module 1: Shops and places",
+        "Module 2: Daily routines and time",
+        "Module 3: Talking about problems (basic)"
+      ],
+      "learningNote": "Teach polite modals (can, could, would) and short offers (I can…, Would you like …) with role plays. Focus on clear steps: describe problem, ask for help, agree a time, note next steps.",
+      "learningNoteArabic": "علّم أساليب الأدب مثل can و could و would وعبارات العرض القصيرة (I can..., Would you like...) من خلال تمارين الأدوار. ركّز على خطوات واضحة: وصف المشكلة، طلب المساعدة، الاتفاق على الوقت، وتدوين الخطوات التالية."
+    },
+    "vocabulary": [
+      {
+        "word": "complaint",
+        "arabic": "شكوى",
+        "partOfSpeech": "noun",
+        "definition": "a statement that something is wrong or not acceptable",
+        "exampleEN": "I made a complaint about the late delivery.",
+        "exampleAR": "قدمت شكوى بشأن التأخير في التوصيل."
+      },
+      {
+        "word": "repair",
+        "arabic": "إصلاح / يصلح",
+        "partOfSpeech": "verb",
+        "definition": "to fix something that is broken",
+        "exampleEN": "They will repair the heater tomorrow.",
+        "exampleAR": "سيصلحون المدفأة غدًا."
+      },
+      {
+        "word": "broken",
+        "arabic": "معطل / مكسور",
+        "partOfSpeech": "adjective",
+        "definition": "not working or damaged",
+        "exampleEN": "The kettle is broken; it won't boil.",
+        "exampleAR": "الإبريق معطل؛ لا يغلي الماء."
+      },
+      {
+        "word": "leak",
+        "arabic": "تسريب",
+        "partOfSpeech": "noun",
+        "definition": "a place where water or gas comes out from somewhere it should not",
+        "exampleEN": "There is a small leak under the sink.",
+        "exampleAR": "هناك تسريب صغير تحت الحوض."
+      },
+      {
+        "word": "customer service",
+        "arabic": "خدمة العملاء",
+        "partOfSpeech": "noun phrase",
+        "definition": "the department that helps customers with problems",
+        "exampleEN": "Call customer service for a refund.",
+        "exampleAR": "اتصل بخدمة العملاء للحصول على استرداد."
+      },
+      {
+        "word": "offer",
+        "arabic": "عرض / يعرض",
+        "partOfSpeech": "verb",
+        "definition": "to say you will give help or do something",
+        "exampleEN": "The company offered to send a technician today.",
+        "exampleAR": "عرضت الشركة إرسال فني اليوم."
+      },
+      {
+        "word": "suggest",
+        "arabic": "يقترح",
+        "partOfSpeech": "verb",
+        "definition": "to give an idea or plan for someone to think about",
+        "exampleEN": "I suggest we check the warranty first.",
+        "exampleAR": "أقترح أن نتحقق من الضمان أولاً."
+      },
+      {
+        "word": "appointment",
+        "arabic": "موعد",
+        "partOfSpeech": "noun",
+        "definition": "an arranged time to meet someone or get a service",
+        "exampleEN": "I booked an appointment for 3 pm.",
+        "exampleAR": "حجزت موعدًا الساعة الثالثة مساءً."
+      },
+      {
+        "word": "technician",
+        "arabic": "فني",
+        "partOfSpeech": "noun",
+        "definition": "a skilled person who repairs machines or equipment",
+        "exampleEN": "The technician fixed the oven quickly.",
+        "exampleAR": "أصلح الفني الفرن بسرعة."
+      },
+      {
+        "word": "guarantee",
+        "arabic": "ضمان",
+        "partOfSpeech": "noun",
+        "definition": "a promise that a product will be fixed or replaced if it breaks within a time",
+        "exampleEN": "The phone has a two-year guarantee.",
+        "exampleAR": "الهاتف لديه ضمان لمدة سنتين."
+      },
+      {
+        "word": "refund",
+        "arabic": "استرداد الأموال",
+        "partOfSpeech": "noun",
+        "definition": "money given back when a product or service is not satisfactory",
+        "exampleEN": "She asked for a refund for the faulty item.",
+        "exampleAR": "طلبت استرداد الأموال عن المنتج المعيب."
+      },
+      {
+        "word": "make a complaint",
+        "arabic": "تقديم شكوى",
+        "partOfSpeech": "chunk",
+        "definition": "to tell a company formally that you are unhappy about something",
+        "exampleEN": "If the repair is late, make a complaint by email.",
+        "exampleAR": "إذا تأخر الإصلاح، قدّم شكوى عبر البريد الإلكتروني."
+      },
+      {
+        "word": "speak to a manager",
+        "arabic": "التحدث إلى المدير",
+        "partOfSpeech": "chunk",
+        "definition": "to ask to talk with the person in charge",
+        "exampleEN": "I want to speak to a manager about this charge.",
+        "exampleAR": "أريد التحدث إلى المدير بشأن هذه الرسوم."
+      },
+      {
+        "word": "faulty item",
+        "arabic": "منتج معيب",
+        "partOfSpeech": "collocation",
+        "definition": "a product that does not work correctly",
+        "exampleEN": "Return the faulty item to the shop for a replacement.",
+        "exampleAR": "أعد المنتج المعيب إلى المتجر للحصول على بديل."
+      },
+      {
+        "word": "emergency repair",
+        "arabic": "إصلاح الطوارئ",
+        "partOfSpeech": "chunk",
+        "definition": "a fast repair service for urgent problems",
+        "exampleEN": "They offer emergency repair for gas leaks.",
+        "exampleAR": "يقدمون إصلاح الطوارئ في حالات تسريب الغاز."
+      }
+    ],
+    "grammar": {
+      "topic": "Requests, offers and suggestions",
+      "arabicName": "الطلبات والعروض والاقتراحات",
+      "concept": "Use modal verbs and set phrases to make polite requests (Can/Could/Would you...), offers (I can..., Shall I...?), and suggestions (Let's..., How about...?). Choose language that is clear and polite for services and repairs.",
+      "arabicComparison": "في العربية نستخدم عبارات مثل هل يمكنك؟ أو من فضلك + فعل لطلب المساعدة، وتستخدم كلمات مثل أقترح أو هل نريد لعرض اقتراح. التركيب الإنجليزي يعتمد على أدوات مساعدة مثل can و could و would مع صيغة المصدر.",
+      "structure": "Requests: Can/Could/Would you + base verb?  Offers: I can + base verb / Would you like me to + base verb?  Suggestions: Let's + base verb / How about + -ing? / Why don't we + base verb?",
+      "commonError": "Learners often use 'can I' when they mean 'can you' (I can = permission for self). Also forgetting 'to' after 'ask' in phrases like 'ask (someone) to do something'.",
+      "exampleEN": "Could you send a technician on Friday?  I can stay at home.  How about scheduling the repair at 10 am?",
+      "exampleAR": "هل يمكنك إرسال فني يوم الجمعة؟ أستطيع البقاء في المنزل. ماذا عن جدولة الإصلاح الساعة العاشرة صباحًا؟"
+    },
+    "readingBrief": "A 130–160-word original passage about a tenant whose heating stopped working in winter. The text explains how they describe the problem on the phone, speak to customer service, accept an offer for an emergency repair, and ask about a refund because the heater was under warranty. The passage shows short polite requests, an offer from the company, and a final plan for the appointment and follow-up.",
+    "writingPrompt": "Write a 60–90-word email to a repair company. Audience: customer service. Purpose: explain a recent problem with a broken appliance, request an appointment for repair, and ask politely about a refund or replacement if the item is under guarantee. Use polite requests and one suggestion for a time."
+  },
+  {
+    "lessonNumber": 20,
+    "title": "My next step",
+    "titleArabic": "خطوتي التالية",
+    "outcome": {
+      "canDo": "I can review my recent progress, set simple goals and describe my next steps with confidence.",
+      "canDoArabic": "أستطيع مراجعة تقدمي الأخير، تحديد أهداف بسيطة ووصف خطوتي التالية بثقة.",
+      "scenario": "You tell your tutor or a friend what you will do next to study English and ask for simple advice.",
+      "scenarioArabic": "تخبر مدرسك أو صديقك بما ستفعله لاحقاً لدراسة اللغة الإنجليزية وتطلب نصيحة بسيطة."
+    },
+    "retrieval": [
+      {
+        "language": "English",
+        "prompt": "Say what you did yesterday and what you will do tomorrow. Use simple words: yesterday, today, tomorrow.",
+        "purpose": "Activate past and future time words."
+      },
+      {
+        "language": "English",
+        "prompt": "Name three places you go to learn English (class, library, online).",
+        "purpose": "Recall common places and study contexts."
+      },
+      {
+        "language": "English",
+        "prompt": "Talk about people who help you learn (teacher, friend, parent).",
+        "purpose": "Activate vocabulary for people and support."
+      },
+      {
+        "language": "English",
+        "prompt": "Say what food or drink helps you study (coffee, water, a snack).",
+        "purpose": "Warm up with familiar nouns and likes."
+      }
+    ],
+    "network": {
+      "theme": "review, goals, confidence",
+      "themeArabic": "مراجعة، أهداف، ثقة",
+      "anchor": "next step",
+      "relatedWords": [
+        "goal",
+        "plan",
+        "review",
+        "confidence",
+        "practice",
+        "support"
+      ],
+      "chunks": [
+        "set a deadline",
+        "take a step",
+        "make progress",
+        "practise every day"
+      ],
+      "collocations": [
+        "short-term goal",
+        "long-term plan",
+        "feel more confident",
+        "ask for feedback"
+      ],
+      "register": "mixed",
+      "priorLevelLinks": [
+        "present simple (routines)",
+        "past simple (completed actions)",
+        "present continuous for arrangements",
+        "'going to' for plans",
+        "modal can (ability)"
+      ],
+      "learningNote": "This lesson reviews familiar grammar and focuses on short, clear goals. Encourage students to use small steps (take a step) and time phrases (next week, tomorrow). Practising aloud increases confidence.",
+      "learningNoteArabic": "تراجع هذه الحصة قواعد معروفة وتركز على أهداف قصيرة وواضحة. شجع الطلاب على اتخاذ خطوات صغيرة (خذ خطوة) واستخدام كلمات زمنية (الأسبوع القادم، غداً). الممارسة الشفوية تزيد الثقة."
+    },
+    "vocabulary": [
+      {
+        "word": "goal",
+        "arabic": "هدف",
+        "partOfSpeech": "noun",
+        "definition": "Something you want to achieve.",
+        "exampleEN": "My goal is to speak for two minutes without stopping.",
+        "exampleAR": "هدفي أن أتحدث لمدة دقيقتين دون توقف."
+      },
+      {
+        "word": "short-term goal",
+        "arabic": "هدف قصير الأمد",
+        "partOfSpeech": "noun phrase",
+        "definition": "A goal you want to reach soon.",
+        "exampleEN": "A short-term goal is to learn ten new words this week.",
+        "exampleAR": "الهدف قصير الأمد هو تعلم عشرة كلمات جديدة هذا الأسبوع."
+      },
+      {
+        "word": "long-term plan",
+        "arabic": "خطة طويلة الأمد",
+        "partOfSpeech": "noun phrase",
+        "definition": "A plan for a longer time, like months or years.",
+        "exampleEN": "My long-term plan is to take an English test next year.",
+        "exampleAR": "خطتي طويلة الأمد أن أحضر اختبار إنجليزي العام القادم."
+      },
+      {
+        "word": "confidence",
+        "arabic": "ثقة",
+        "partOfSpeech": "noun",
+        "definition": "Feeling sure about yourself.",
+        "exampleEN": "Practising small talks gives me more confidence.",
+        "exampleAR": "الممارسة في المحادثات الصغيرة تمنحني ثقة أكبر."
+      },
+      {
+        "word": "improve",
+        "arabic": "يحسّن / يتحسّن",
+        "partOfSpeech": "verb",
+        "definition": "To get better at something.",
+        "exampleEN": "I practise speaking to improve my pronunciation.",
+        "exampleAR": "أمارس التحدث لتحسين النطق."
+      },
+      {
+        "word": "practise every day",
+        "arabic": "مارس كل يوم",
+        "partOfSpeech": "verb phrase",
+        "definition": "Do a short study activity each day.",
+        "exampleEN": "If I practise every day, I remember words faster.",
+        "exampleAR": "إذا مارست كل يوم، أتذكر الكلمات أسرع."
+      },
+      {
+        "word": "take a step",
+        "arabic": "اتخذ خطوة",
+        "partOfSpeech": "verb phrase",
+        "definition": "Do one small action toward a goal.",
+        "exampleEN": "Today I will take a step and write one paragraph.",
+        "exampleAR": "اليوم سأتخذ خطوة وأكتب فقرة واحدة."
+      },
+      {
+        "word": "make progress",
+        "arabic": "يُحرز تقدماً",
+        "partOfSpeech": "verb phrase",
+        "definition": "Move forward towards better ability.",
+        "exampleEN": "I can make progress if I listen and repeat.",
+        "exampleAR": "أستطيع إحراز تقدّم إذا استمعت وكررت."
+      },
+      {
+        "word": "review",
+        "arabic": "مراجعة",
+        "partOfSpeech": "noun / verb",
+        "definition": "Look again at what you learned.",
+        "exampleEN": "I will review last week's notes before class.",
+        "exampleAR": "سأراجع ملاحظات الأسبوع الماضي قبل الحصة."
+      },
+      {
+        "word": "challenge",
+        "arabic": "تحدٍ",
+        "partOfSpeech": "noun",
+        "definition": "Something difficult but useful to try.",
+        "exampleEN": "A good challenge is to speak with a new person.",
+        "exampleAR": "تحدٍ مفيد هو التحدث مع شخص جديد."
+      },
+      {
+        "word": "possible",
+        "arabic": "مُمكن",
+        "partOfSpeech": "adjective",
+        "definition": "Able to happen or be done.",
+        "exampleEN": "It is possible to improve a little every day.",
+        "exampleAR": "من الممكن التحسن قليلاً كل يوم."
+      },
+      {
+        "word": "support",
+        "arabic": "دعم",
+        "partOfSpeech": "noun / verb",
+        "definition": "Help from someone or something.",
+        "exampleEN": "My friend gives me support when I practise.",
+        "exampleAR": "صديقي يقدم لي دعماً عندما أتمرن."
+      },
+      {
+        "word": "plan B",
+        "arabic": "خطة بديلة",
+        "partOfSpeech": "noun phrase",
+        "definition": "A second idea if the first one does not work.",
+        "exampleEN": "If I cannot go to the class, my plan B is to study online.",
+        "exampleAR": "إذا لم أستطع الذهاب إلى الحصة، خطتي البديلة هي الدراسة عبر الإنترنت."
+      },
+      {
+        "word": "feel more confident",
+        "arabic": "أشعر بثقة أكبر",
+        "partOfSpeech": "verb phrase",
+        "definition": "Start to feel more sure and calm in abilities.",
+        "exampleEN": "When I finish a small task, I feel more confident.",
+        "exampleAR": "عندما أنجز مهمة صغيرة، أشعر بثقة أكبر."
+      },
+      {
+        "word": "set a deadline",
+        "arabic": "حدد موعداً نهائياً",
+        "partOfSpeech": "verb phrase",
+        "definition": "Choose a date by which you will finish something.",
+        "exampleEN": "I will set a deadline to learn these verbs by Friday.",
+        "exampleAR": "سأحدد موعداً نهائياً لتعلم هذه الأفعال بحلول يوم الجمعة."
+      }
+    ],
+    "grammar": {
+      "topic": "Talking about future plans: going to, present continuous, will",
+      "arabicName": "التحدث عن خطط المستقبل: going to و present continuous و will",
+      "concept": "Use 'going to' for intentions or plans you already decided. Use the present continuous (I am meeting) for arrangements with a time or place. Use 'will' for quick decisions, offers, or simple predictions.",
+      "arabicComparison": "'going to' للنية المخططة، present continuous للترتيبات المحددة، 'will' للقرارات الفورية أو التنبؤات البسيطة.",
+      "structure": "Subject + am/is/are + going to + verb; Subject + am/is/are + verb-ing (present continuous); Subject + will + verb.",
+      "commonError": "Students often use 'will' for planned arrangements (e.g. 'I will meet her at 6') instead of present continuous: 'I am meeting her at 6.'",
+      "exampleEN": "I am going to study tonight. / I am meeting my tutor on Monday. / I will help you with vocabulary.",
+      "exampleAR": "أنا سأنوي أن أدرس الليلة. / سألتقي بمدرّسي يوم الاثنين. / سأساعدك في المفردات."
+    },
+    "readingBrief": "A 130–160-word first-person paragraph about a learner who reviews recent progress and chooses a clear next step. The text mentions what the learner practised last week (speaking with a friend, reviewing notes), how they felt (more confident, a little nervous), and one short-term goal (speak for two minutes) plus a long-term plan (prepare for a test next year). It describes specific small actions (practise every day, set a deadline, ask a friend for support) and uses present continuous and 'going to' for plans. The tone is encouraging and honest; useful for reading practice of goal vocabulary and simple future forms.",
+    "writingPrompt": "Write 60–90 words to your English tutor explaining your next step. Say (1) one short-term goal, (2) one action you will do this week, and (3) how you want to feel. Ask one simple question for advice. Purpose: plan your study and request feedback."
+  }
+]
