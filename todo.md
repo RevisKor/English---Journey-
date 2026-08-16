@@ -323,3 +323,8 @@
 # Safe Vercel Environment Template
 - [x] Create a placeholder-only environment template with variable names but no real credentials.
 - [x] Explain private replacement and Vercel Import .env usage without committing the filled file.
+
+# Vercel Deployment Error Investigation
+- [x] Inspect the attached deployment log without exposing secret values.
+- [x] Identify the root cause against the prepared adapter and Vercel configuration.
+- [x] Apply and validate the minimal safe fix, or provide exact user-side remediation if the issue is account configuration.

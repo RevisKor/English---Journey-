@@ -32,4 +32,16 @@ describe("Vercel hosting adapter", () => {
     expect(entry).not.toContain("ensureCurrentCurriculumCatalog");
     expect(entry).not.toContain("listen(");
   });
+
+  it("uses a Vercel-safe client build and does not require optional analytics variables", () => {
+    const packageJson = JSON.parse(readFileSync("package.json", "utf8")) as {
+      scripts: { build: string };
+    };
+    const html = readFileSync("client/index.html", "utf8");
+
+    expect(packageJson.scripts.build).toBe("vite build");
+    expect(packageJson.scripts.build).not.toContain("server/_core/index.ts");
+    expect(html).not.toContain("%VITE_ANALYTICS_ENDPOINT%");
+    expect(html).not.toContain("%VITE_ANALYTICS_WEBSITE_ID%");
+  });
 });
