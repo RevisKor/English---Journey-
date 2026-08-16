@@ -365,3 +365,7 @@
 - [x] Diagnose why production quizzes report that the requested course level has not been synchronized.
 - [x] Repair the shared curriculum catalog loading or synchronization path for all quiz levels.
 - [x] Validate representative quizzes and publish the recovery.
+
+# Multi-owner Authorization
+- [x] Support exact-match authorization for both configured owner email addresses, preserving the existing owner.
+- [x] Add regression coverage, update Vercel configuration guidance, and publish the multi-owner change.

@@ -7,6 +7,10 @@ export const ENV = {
   googleClientId: optional("GOOGLE_CLIENT_ID"),
   googleClientSecret: optional("GOOGLE_CLIENT_SECRET"),
   ownerEmail: optional("OWNER_EMAIL").toLowerCase(),
+  ownerEmails: (process.env.OWNER_EMAILS ?? optional("OWNER_EMAIL"))
+    .split(",")
+    .map(email => email.trim().toLowerCase())
+    .filter(Boolean),
   isProduction: process.env.NODE_ENV === "production",
 } as const;
 

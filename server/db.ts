@@ -48,7 +48,9 @@ export async function upsertUser(user: InsertUser) {
       updateSet[field] = user[field] ?? null;
     }
   }
-  values.role = user.role ?? (user.email?.toLowerCase() === ENV.ownerEmail.toLowerCase() ? "admin" : "user");
+  const normalizedEmail = user.email?.trim().toLowerCase();
+  const isConfiguredOwner = Boolean(normalizedEmail && ENV.ownerEmails.includes(normalizedEmail));
+  values.role = user.role ?? (isConfiguredOwner ? "admin" : "user");
   updateSet.role = values.role;
   const saved = await db.insert(users).values(values).onConflictDoUpdate({ target: users.openId, set: updateSet }).returning();
   return saved[0];

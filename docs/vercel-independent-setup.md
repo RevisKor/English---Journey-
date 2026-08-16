@@ -26,7 +26,8 @@ In **Vercel → English Journey → Settings → Environment Variables**, create
 | `GOOGLE_CLIENT_ID` | Google Cloud OAuth client | The Client ID for the replacement Web application credential. |
 | `GOOGLE_CLIENT_SECRET` | Google Cloud OAuth client | Keep private. The credential must not be the one exposed in the earlier screenshot. |
 | `JWT_SECRET` | Generate locally | Use `openssl rand -base64 48`; do not rotate after users begin signing in unless sessions should be invalidated. |
-| `OWNER_EMAIL` | Your administrator Google email | The matching signed-in user is promoted to the application admin role on first login. |
+| `OWNER_EMAILS` | Comma-separated administrator Google emails | Exact email matches are promoted to the application admin role on first login, for example `revissskor@gmail.com,Yahya205080@gmail.com`. |
+| `OWNER_EMAIL` | One administrator Google email (legacy) | Still supported when `OWNER_EMAILS` is absent. |
 
 The independent runtime does **not** need `OAUTH_SERVER_URL`, `VITE_OAUTH_PORTAL_URL`, `VITE_APP_ID`, `BUILT_IN_FORGE_*`, `VITE_FRONTEND_FORGE_*`, or `VERCEL_TOKEN`.
 
@@ -54,7 +55,7 @@ After adding or changing environment variables, redeploy the latest Git commit. 
 
 1. The homepage opens without Manus OAuth or invalid-URL errors.
 2. Selecting Sign in opens Google consent and returns to `/api/auth/callback/google`.
-3. The signed-in user appears in the application and is an admin when their email equals `OWNER_EMAIL`.
+3. The signed-in user appears in the application and is an admin when their email exactly matches one of the configured `OWNER_EMAILS` values.
 4. Completing a small lesson activity creates saved progress.
 5. Refreshing and signing in again preserves the same progress.
 
