@@ -328,3 +328,14 @@
 - [x] Inspect the attached deployment log without exposing secret values.
 - [x] Identify the root cause against the prepared adapter and Vercel configuration.
 - [x] Apply and validate the minimal safe fix, or provide exact user-side remediation if the issue is account configuration.
+
+# Vercel Redeploy Follow-up
+- [x] Confirm whether Vercel is building the corrected checkpoint or an older GitHub commit.
+- [x] Reconcile the repository build script and Vercel project build override so Vercel stops invoking the obsolete server esbuild command.
+- [x] Validate the corrected commit and provide the exact redeploy action.
+
+# Authorized GitHub Push
+- [x] Push the validated checkpoint to `RevisKor/English---Journey-` main.
+- [x] Verify the remote branch contains `drizzle/schema.ts`, the Vercel adapter, and the corrected `vite build` script.
+- [x] Provide the exact Vercel redeploy action after remote verification.
+- [x] Retry the prepared push after GitHub write access was granted.
