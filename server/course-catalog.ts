@@ -155,7 +155,7 @@ export async function syncCourse(course: CourseDefinition) {
     lessonsPerModule: course.lessonsPerModule,
     estimatedMinutes: course.estimatedMinutes,
     contentVersion: SYNC_VERSION,
-  }).onDuplicateKeyUpdate({ set: {
+  }).onConflictDoUpdate({ target: courseLevels.code, set: {
     title: course.title,
     titleArabic: course.titleArabic,
     totalLessons: course.totalLessons,
@@ -177,7 +177,7 @@ export async function syncCourse(course: CourseDefinition) {
       titleArabic: moduleTitleArabic,
       overview: theme.overview,
       overviewArabic: theme.overviewArabic,
-    }).onDuplicateKeyUpdate({ set: { title: moduleTitle, titleArabic: moduleTitleArabic } });
+    }).onConflictDoUpdate({ target: [courseModules.levelId, courseModules.moduleNumber], set: { title: moduleTitle, titleArabic: moduleTitleArabic } });
     const module = await selectOne(db.select().from(courseModules).where(and(eq(courseModules.levelId, level.id), eq(courseModules.moduleNumber, moduleNumber))).limit(1), `Module ${moduleNumber} was not saved.`) as typeof courseModules.$inferSelect;
 
     for (const lesson of moduleLessons) {
@@ -189,7 +189,7 @@ export async function syncCourse(course: CourseDefinition) {
         titleArabic: lesson.titleArabic,
         description: lesson.learningPlan?.outcome.canDo ?? `Use the language introduced in ${lesson.title}.`,
         descriptionArabic: lesson.learningPlan?.outcome.canDoArabic ?? `استخدم اللغة المقدمة في درس ${lesson.titleArabic}.`,
-      }).onDuplicateKeyUpdate({ set: { title: lesson.title, titleArabic: lesson.titleArabic } });
+      }).onConflictDoUpdate({ target: [courseTopics.moduleId, courseTopics.topicNumber], set: { title: lesson.title, titleArabic: lesson.titleArabic } });
       const topic = await selectOne(db.select().from(courseTopics).where(and(eq(courseTopics.moduleId, module.id), eq(courseTopics.topicNumber, topicNumber))).limit(1), `Topic ${lesson.lessonNumber} was not saved.`) as typeof courseTopics.$inferSelect;
 
       await db.insert(courseLessons).values({
@@ -203,7 +203,7 @@ export async function syncCourse(course: CourseDefinition) {
         lexicalNetworks: lesson.lexicalNetworks as unknown as Array<Record<string, unknown>> | undefined,
         practiceBrief: lesson.practiceBrief as unknown as Record<string, unknown> | undefined,
         contentVersion: SYNC_VERSION,
-      }).onDuplicateKeyUpdate({ set: {
+      }).onConflictDoUpdate({ target: [courseLessons.levelId, courseLessons.lessonNumber], set: {
         moduleId: module.id,
         topicId: topic.id,
         title: lesson.title,
@@ -424,7 +424,7 @@ export async function syncAssessmentQuestionBanks() {
               questionData: question as unknown as Record<string, unknown>,
               reviewItemKey: question.reviewItemKey,
               contentVersion: SYNC_VERSION,
-            }).onDuplicateKeyUpdate({ set: {
+            }).onConflictDoUpdate({ target: assessmentQuestionBank.questionKey, set: {
               questionData: question as unknown as Record<string, unknown>,
               reviewItemKey: question.reviewItemKey,
               active: 1,

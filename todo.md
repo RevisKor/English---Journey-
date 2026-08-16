@@ -329,13 +329,14 @@
 - [x] Identify the root cause against the prepared adapter and Vercel configuration.
 - [x] Apply and validate the minimal safe fix, or provide exact user-side remediation if the issue is account configuration.
 
-# Vercel Redeploy Follow-up
-- [x] Confirm whether Vercel is building the corrected checkpoint or an older GitHub commit.
-- [x] Reconcile the repository build script and Vercel project build override so Vercel stops invoking the obsolete server esbuild command.
-- [x] Validate the corrected commit and provide the exact redeploy action.
-
-# Authorized GitHub Push
-- [x] Push the validated checkpoint to `RevisKor/English---Journey-` main.
-- [x] Verify the remote branch contains `drizzle/schema.ts`, the Vercel adapter, and the corrected `vite build` script.
-- [x] Provide the exact Vercel redeploy action after remote verification.
-- [x] Retry the prepared push after GitHub write access was granted.
+# Vercel-Only Runtime Migration
+- [x] Audit all Manus OAuth, Forge, and managed-database dependencies in the application runtime.
+- [x] Design a Vercel-compatible replacement for authentication and persisted learner progress.
+- [x] Convert the Drizzle schema and database access layer from MySQL to Vercel-connected Postgres.
+- [x] Replace Manus OAuth with Google OAuth and signed local sessions using secure runtime secrets.
+- [x] Remove Manus-specific runtime service calls while preserving browser-native pronunciation and external learner-owned AI prompts.
+- [x] Add migration-focused regression coverage and validate the Vercel-compatible production build.
+- [x] Provision and connect Vercel Postgres for Production and Preview environments.
+- [ ] Apply the generated Postgres initialization migration to the connected Vercel database.
+- [ ] Add the independent runtime secrets to Vercel and validate Google sign-in and persisted learner progress.
+- [x] Document the user-controlled Google OAuth, database migration, and redeployment steps.

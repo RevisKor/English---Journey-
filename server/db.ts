@@ -1,5 +1,6 @@
 import { and, count, desc, eq, lte } from "drizzle-orm";
-import { drizzle } from "drizzle-orm/mysql2";
+import { drizzle } from "drizzle-orm/node-postgres";
+import { Pool } from "pg";
 import {
   InsertUser,
   learningProfiles,
@@ -19,11 +20,13 @@ import {
 import { ENV } from "./_core/env";
 
 let _db: ReturnType<typeof drizzle> | null = null;
+let _pool: Pool | null = null;
 
 export async function getDb() {
   if (!_db && process.env.DATABASE_URL) {
     try {
-      _db = drizzle(process.env.DATABASE_URL);
+      _pool = new Pool({ connectionString: process.env.DATABASE_URL });
+      _db = drizzle({ client: _pool });
     } catch (error) {
       console.warn("[Database] Failed to connect:", error);
       _db = null;
@@ -32,10 +35,10 @@ export async function getDb() {
   return _db;
 }
 
-export async function upsertUser(user: InsertUser): Promise<void> {
+export async function upsertUser(user: InsertUser) {
   if (!user.openId) throw new Error("User openId is required for upsert");
   const db = await getDb();
-  if (!db) return;
+  if (!db) throw new Error("Database is unavailable. Set DATABASE_URL before signing in.");
 
   const values: InsertUser = { openId: user.openId, lastSignedIn: new Date() };
   const updateSet: Record<string, unknown> = { lastSignedIn: new Date() };
@@ -45,9 +48,10 @@ export async function upsertUser(user: InsertUser): Promise<void> {
       updateSet[field] = user[field] ?? null;
     }
   }
-  values.role = user.role ?? (user.openId === ENV.ownerOpenId ? "admin" : "user");
+  values.role = user.role ?? (user.email?.toLowerCase() === ENV.ownerEmail.toLowerCase() ? "admin" : "user");
   updateSet.role = values.role;
-  await db.insert(users).values(values).onDuplicateKeyUpdate({ set: updateSet });
+  const saved = await db.insert(users).values(values).onConflictDoUpdate({ target: users.openId, set: updateSet }).returning();
+  return saved[0];
 }
 
 export async function getUserByOpenId(openId: string) {
@@ -60,7 +64,8 @@ export async function getUserByOpenId(openId: string) {
 export async function ensureLearningProfile(userId: number) {
   const db = await getDb();
   if (!db) return undefined;
-  await db.insert(learningProfiles).values({ userId }).onDuplicateKeyUpdate({
+  await db.insert(learningProfiles).values({ userId }).onConflictDoUpdate({
+    target: learningProfiles.userId,
     set: { updatedAt: new Date() },
   });
   const result = await db.select().from(learningProfiles).where(eq(learningProfiles.userId, userId)).limit(1);
@@ -270,7 +275,10 @@ export async function queueMissedReviewItems(userId: number, level: string, less
   const now = new Date();
   await Promise.all(Array.from(new Set(itemKeys)).map(async (itemKey) => {
     const itemType = itemKey.startsWith("grammar-") ? "grammar" as const : "vocabulary" as const;
-    await db.insert(reviewQueue).values({ userId, level, lessonNumber, itemType, itemKey, dueAt: now }).onDuplicateKeyUpdate({ set: { dueAt: now, repetition: 0, intervalDays: 1 } });
+    await db.insert(reviewQueue).values({ userId, level, lessonNumber, itemType, itemKey, dueAt: now }).onConflictDoUpdate({
+      target: [reviewQueue.userId, reviewQueue.level, reviewQueue.itemType, reviewQueue.itemKey],
+      set: { dueAt: now, repetition: 0, intervalDays: 1, updatedAt: now },
+    });
   }));
 }
 

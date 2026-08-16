@@ -1,3 +1,0 @@
-ALTER TABLE `assessmentInstances` MODIFY COLUMN `assessmentType` enum('lesson_quiz','milestone_quiz','module_test') NOT NULL;--> statement-breakpoint
-ALTER TABLE `assessmentQuestionBank` MODIFY COLUMN `assessmentType` enum('lesson_quiz','milestone_quiz','module_test') NOT NULL;--> statement-breakpoint
-ALTER TABLE `quizAttempts` MODIFY COLUMN `assessmentType` enum('lesson_quiz','milestone_quiz','module_test','warm_up') NOT NULL;
