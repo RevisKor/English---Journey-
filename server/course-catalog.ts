@@ -36,6 +36,35 @@ let syncPromise: Promise<void> | null = null;
 
 type CatalogQuestion = QuizQuestion & { id: string };
 
+type PersistedCourseLevelSnapshot = {
+  contentVersion: number;
+};
+
+type PersistedLessonSnapshot = {
+  contentVersion: number;
+};
+
+/**
+ * A level-version write happens before its module and lesson upserts. If a
+ * development restart or deployment interruption occurs mid-refresh, a simple
+ * version comparison would incorrectly treat that partial catalog as current.
+ * Keep the completion invariant explicit: version, module count, lesson count,
+ * and lesson content versions must all agree with the source course.
+ */
+export function courseNeedsCatalogSynchronization(
+  course: CourseDefinition,
+  level: PersistedCourseLevelSnapshot | undefined,
+  persistedModuleCount: number,
+  persistedLessons: PersistedLessonSnapshot[],
+) {
+  const expectedModuleCount = Math.ceil(course.totalLessons / course.lessonsPerModule);
+  return !level
+    || level.contentVersion !== SYNC_VERSION
+    || persistedModuleCount !== expectedModuleCount
+    || persistedLessons.length !== course.totalLessons
+    || persistedLessons.some((lesson) => lesson.contentVersion !== SYNC_VERSION);
+}
+
 function rotate<T>(items: T[], offset: number) {
   const start = items.length ? offset % items.length : 0;
   return [...items.slice(start), ...items.slice(0, start)];
@@ -277,8 +306,16 @@ export async function ensureCurrentCurriculumCatalog() {
   const db = await getDb();
   if (!db) return;
   const persistedLevels = await db.select().from(courseLevels);
-  const versionByCode = new Map(persistedLevels.map((level) => [level.code, level.contentVersion]));
-  const needsSync = LEGACY_COURSES.some((course) => versionByCode.get(course.level) !== SYNC_VERSION);
+  const levelByCode = new Map(persistedLevels.map((level) => [level.code, level]));
+  const needsSync = (await Promise.all(LEGACY_COURSES.map(async (course) => {
+    const level = levelByCode.get(course.level);
+    if (!level) return true;
+    const [persistedModules, persistedLessons] = await Promise.all([
+      db.select().from(courseModules).where(eq(courseModules.levelId, level.id)),
+      db.select().from(courseLessons).where(eq(courseLessons.levelId, level.id)),
+    ]);
+    return courseNeedsCatalogSynchronization(course, level, persistedModules.length, persistedLessons);
+  }))).some(Boolean);
   if (needsSync) await ensureCurriculumCatalog();
 }
 

@@ -232,3 +232,8 @@
 - [x] Add a regression that proves rendered vocabulary identifiers are unique even when a word recurs across source lessons.
 - [x] Refine the course navigation layout and enlarge the word-bank action without causing desktop or mobile overflow.
 - [x] Run regression, type, build, desktop, and mobile checks for the recovery changes.
+
+# Word-Bank Table Readability Refinement
+- [x] Increase the full word-bank dialog and column layout so vocabulary rows do not feel compressed.
+- [x] Preserve a readable mobile fallback with horizontal table scrolling where necessary.
+- [x] Validate the revised word-bank layout at desktop and mobile breakpoints, then create a checkpoint.

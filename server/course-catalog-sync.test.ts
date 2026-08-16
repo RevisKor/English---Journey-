@@ -66,7 +66,7 @@ const fakeDb = {
 
 vi.mock("./db", () => ({ getDb: async () => fakeDb }));
 
-import { assessmentVariants, ensureCurriculumCatalog, structuredReading, structuredWriting, syncStructuredPracticeCatalog } from "./course-catalog";
+import { assessmentVariants, courseNeedsCatalogSynchronization, ensureCurriculumCatalog, structuredReading, structuredWriting, syncStructuredPracticeCatalog } from "./course-catalog";
 
 describe("curriculum catalog practice persistence", () => {
   beforeEach(() => {
@@ -78,6 +78,15 @@ describe("curriculum catalog practice persistence", () => {
     state.courseLevelLookups = 0;
     state.moduleLookups = 0;
     state.lessonId = 100;
+  });
+
+  it("treats an interrupted versioned A2 refresh as incomplete until all nine modules and 135 current lessons exist", () => {
+    const partialLessons = Array.from({ length: 20 }, () => ({ contentVersion: 3 }));
+    const completeLessons = Array.from({ length: A2_COURSE.totalLessons }, () => ({ contentVersion: 3 }));
+
+    expect(courseNeedsCatalogSynchronization(A2_COURSE, { contentVersion: 3 }, 4, partialLessons)).toBe(true);
+    expect(courseNeedsCatalogSynchronization(A2_COURSE, { contentVersion: 3 }, 9, completeLessons)).toBe(false);
+    expect(courseNeedsCatalogSynchronization(A2_COURSE, { contentVersion: 2 }, 9, completeLessons)).toBe(true);
   });
 
   it("inserts reading and writing records for every integrated lesson, then updates those same rows on focused practice sync", async () => {

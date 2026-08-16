@@ -26,7 +26,7 @@ vi.mock("@/components/A2LessonWorkspace", () => ({
   StructuredLessonWorkspace: ({ lesson }: { lesson: { title: string } }) => React.createElement("div", null, `Guided lesson workspace: ${lesson.title}`),
 }));
 
-import { AppShell, CourseDashboard, resolveDirectLesson, resolveLearnerEntry, tutorialCopy } from "./Home";
+import { AppShell, CourseDashboard, resolveDirectLesson, resolveLearnerEntry, tutorialCopy, WORD_BANK_DIALOG_LAYOUT_CLASS, WORD_BANK_TABLE_LAYOUT_CLASS, WORD_BANK_TABLE_SCROLL_CLASS } from "./Home";
 
 describe("Home learner entry routing", () => {
   it("renders resolved owner-review catalog modules and selected lesson detail", () => {
@@ -130,6 +130,12 @@ describe("Home learner entry routing", () => {
     expect(html).toContain("C1 · Guided learning route");
     expect(html).toContain("Open word bank");
     expect(html).not.toContain("Module word bank");
+  });
+
+  it("reserves a wider, scrollable word-bank table so vocabulary rows remain readable", () => {
+    expect(WORD_BANK_DIALOG_LAYOUT_CLASS).toContain("1280px");
+    expect(WORD_BANK_TABLE_LAYOUT_CLASS).toContain("min-w-[1040px]");
+    expect(WORD_BANK_TABLE_SCROLL_CLASS).toContain("overflow-auto");
   });
 
 });
