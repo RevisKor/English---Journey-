@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { A1_COURSE, B1_COURSE, C2_COURSE } from "./index";
+import { A1_COURSE, A2_COURSE, B1_COURSE, C2_COURSE } from "./index";
 import { buildImmersiveModuleWordBank, buildModuleWordBank, summarizeWordBank } from "./word-bank";
 
 describe("module word banks", () => {
@@ -17,6 +17,20 @@ describe("module word banks", () => {
 
     expect(new Set(renderedIdentities).size).toBe(entries.length);
     expect(entries.every((entry) => entry.introducedLessonNumber >= 1 && entry.introducedLessonNumber <= 15)).toBe(true);
+  });
+
+  it("deduplicates lesson-scoped A2 retrieval vocabulary into one learner row per word", () => {
+    const firstModuleLessons = A2_COURSE.lessons.filter((lesson) => lesson.moduleNumber === 1);
+    const repeatedSourceWord = firstModuleLessons
+      .flatMap((lesson) => lesson.words)
+      .find((word, index, words) => words.findIndex((candidate) => candidate.word.toLowerCase() === word.word.toLowerCase() && candidate.partOfSpeech === word.partOfSpeech) !== index);
+
+    expect(repeatedSourceWord).toBeDefined();
+    const entries = buildModuleWordBank(A2_COURSE, 1, new Set([1, 2, 3]));
+    const matchingEntries = entries.filter((entry) => entry.word.toLowerCase() === repeatedSourceWord!.word.toLowerCase() && entry.partOfSpeech === repeatedSourceWord!.partOfSpeech);
+
+    expect(matchingEntries).toHaveLength(1);
+    expect(matchingEntries[0].reviewCount).toBeGreaterThanOrEqual(1);
   });
 
   it("connects A1 Meeting People vocabulary to repeated immersive exposures", () => {

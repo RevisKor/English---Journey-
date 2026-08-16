@@ -25,6 +25,13 @@ describe("A2 cumulative curriculum", () => {
     }
   });
 
+  it("uses a distinct lesson-scoped persistence key for every A2 vocabulary occurrence", () => {
+    const vocabularyIds = A2_LESSONS.flatMap((lesson) => lesson.words.map((word) => word.id));
+
+    expect(new Set(vocabularyIds).size).toBe(vocabularyIds.length);
+    expect(vocabularyIds.every((id) => /^a2-lesson-\d+-/.test(id))).toBe(true);
+  });
+
   it("makes prior learning visible through a six-step, English-first learning journey", () => {
     for (const lesson of A2_LESSONS) {
       expect(lesson.learningPlan?.englishFirst).toBe(true);

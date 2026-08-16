@@ -237,3 +237,8 @@
 - [x] Increase the full word-bank dialog and column layout so vocabulary rows do not feel compressed.
 - [x] Preserve a readable mobile fallback with horizontal table scrolling where necessary.
 - [x] Validate the revised word-bank layout at desktop and mobile breakpoints, then create a checkpoint.
+
+# Course Header Positioning Refinement
+- [x] Raise the course header slightly so nearby text does not overlap or visually compete with its content.
+- [x] Preserve responsive spacing and header readability on desktop and mobile.
+- [x] Validate the refinement and create a checkpoint.

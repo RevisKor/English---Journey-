@@ -125,6 +125,12 @@ async function selectOne<T>(query: Promise<T[]>, message: string): Promise<T> {
 export async function syncCourse(course: CourseDefinition) {
   const db = await getDb();
   if (!db) return;
+  const savedLessonSources: Array<{
+    lesson: LessonDefinition;
+    moduleNumber: number;
+    moduleId: number;
+    lessonId: number;
+  }> = [];
 
   await db.insert(courseLevels).values({
     code: course.level,
@@ -158,12 +164,6 @@ export async function syncCourse(course: CourseDefinition) {
       overviewArabic: theme.overviewArabic,
     }).onDuplicateKeyUpdate({ set: { title: moduleTitle, titleArabic: moduleTitleArabic } });
     const module = await selectOne(db.select().from(courseModules).where(and(eq(courseModules.levelId, level.id), eq(courseModules.moduleNumber, moduleNumber))).limit(1), `Module ${moduleNumber} was not saved.`) as typeof courseModules.$inferSelect;
-
-    await db.update(assessmentQuestionBank).set({ active: 0 }).where(and(
-      eq(assessmentQuestionBank.levelId, level.id),
-      eq(assessmentQuestionBank.moduleId, module.id),
-      inArray(assessmentQuestionBank.assessmentType, ["module_test", "milestone_quiz"]),
-    ));
 
     for (const lesson of moduleLessons) {
       const topicNumber = lesson.lessonNumber - ((moduleNumber - 1) * course.lessonsPerModule);
@@ -200,100 +200,103 @@ export async function syncCourse(course: CourseDefinition) {
       } });
       const savedLesson = await selectOne(db.select().from(courseLessons).where(and(eq(courseLessons.levelId, level.id), eq(courseLessons.lessonNumber, lesson.lessonNumber))).limit(1), `Lesson ${lesson.lessonNumber} was not saved.`) as typeof courseLessons.$inferSelect;
 
-      await db.update(assessmentQuestionBank).set({ active: 0 }).where(and(
-        eq(assessmentQuestionBank.levelId, level.id),
-        eq(assessmentQuestionBank.lessonId, savedLesson.id),
-        eq(assessmentQuestionBank.assessmentType, "lesson_quiz"),
-      ));
-
-      // A content refresh can replace or reorder a lesson's complete word set.
-      // The table protects both stable word IDs and per-lesson positions, so clear
-      // the old synchronized snapshot before storing the new ordered snapshot.
-      await db.delete(lessonVocabulary).where(eq(lessonVocabulary.lessonId, savedLesson.id));
-
-      for (const [position, word] of Array.from(lesson.words.entries())) {
-        await db.insert(lessonVocabulary).values({
-          lessonId: savedLesson.id,
-          itemKey: word.id,
-          position,
-          word: word.word,
-          arabic: word.arabic,
-          ipa: word.ipa,
-          phoneticRespelling: word.phoneticRespelling,
-          partOfSpeech: word.partOfSpeech,
-          definition: word.definition,
-          exampleEN: word.exampleEN,
-          exampleAR: word.exampleAR,
-        }).onDuplicateKeyUpdate({ set: {
-          lessonId: savedLesson.id,
-          position,
-          word: word.word,
-          arabic: word.arabic,
-          ipa: word.ipa,
-          phoneticRespelling: word.phoneticRespelling,
-          partOfSpeech: word.partOfSpeech,
-          definition: word.definition,
-          exampleEN: word.exampleEN,
-          exampleAR: word.exampleAR,
-        } });
-      }
-
-      await db.insert(lessonGrammar).values({
-        lessonId: savedLesson.id,
-        itemKey: lesson.grammar.id,
-        topic: lesson.grammar.topic,
-        arabicName: lesson.grammar.arabicName,
-        grammarData: lesson.grammar as unknown as Record<string, unknown>,
-      }).onDuplicateKeyUpdate({ set: {
-        lessonId: savedLesson.id,
-        topic: lesson.grammar.topic,
-        arabicName: lesson.grammar.arabicName,
-        grammarData: lesson.grammar as unknown as Record<string, unknown>,
-      } });
-      await syncLessonPractice(savedLesson.id, course, lesson);
-
-      const variants = assessmentVariants(course, lesson);
-      const assessmentTypes = isMilestoneLesson(course, lesson.lessonNumber)
-        ? ["lesson_quiz", "milestone_quiz", "module_test"] as const
-        : ["lesson_quiz", "module_test"] as const;
-      for (const assessmentType of assessmentTypes) {
-        const scopedVariants = assessmentType === "lesson_quiz" || assessmentType === "milestone_quiz" ? variants : variants.filter((_, index) => index % 4 === 0 || index >= variants.length - 3);
-        for (const question of scopedVariants) {
-          const questionKey = `${course.level}:${assessmentType}:${assessmentType === "lesson_quiz" ? lesson.lessonNumber : moduleNumber}:${assessmentType === "milestone_quiz" ? lesson.lessonNumber : "module"}:${question.id}`;
-          await db.insert(assessmentQuestionBank).values({
-            questionKey,
-            levelId: level.id,
-            moduleId: module.id,
-            lessonId: assessmentType === "lesson_quiz" ? savedLesson.id : null,
-            assessmentType,
-            objectiveKey: question.reviewItemKey,
-            itemType: question.assessmentFocus,
-            difficulty: course.level === "A1" ? 1 : course.level === "A2" ? 2 : course.level === "B1" ? 3 : course.level === "B2" ? 4 : course.level === "C1" ? 5 : 6,
-            questionData: question as unknown as Record<string, unknown>,
-            reviewItemKey: question.reviewItemKey,
-            contentVersion: SYNC_VERSION,
-          }).onDuplicateKeyUpdate({ set: {
-            moduleId: module.id,
-            lessonId: assessmentType === "lesson_quiz" || assessmentType === "milestone_quiz" ? savedLesson.id : null,
-            questionData: question as unknown as Record<string, unknown>,
-            reviewItemKey: question.reviewItemKey,
-            active: 1,
-            contentVersion: SYNC_VERSION,
-          } });
-        }
-      }
+      savedLessonSources.push({ lesson, moduleNumber, moduleId: module.id, lessonId: savedLesson.id });
     }
   }
+
+  const lessonIds = savedLessonSources.map((source) => source.lessonId);
+  if (!lessonIds.length) return;
+  const batches = <T,>(items: T[], size = 200) => Array.from(
+    { length: Math.ceil(items.length / size) },
+    (_, index) => items.slice(index * size, (index + 1) * size),
+  );
+
+  // Preserve learner progress rows while rebuilding only the immutable catalog
+  // snapshot for this approved course version.
+  await Promise.all([
+    db.delete(lessonVocabulary).where(inArray(lessonVocabulary.lessonId, lessonIds)),
+    db.delete(lessonGrammar).where(inArray(lessonGrammar.lessonId, lessonIds)),
+    db.delete(lessonReadings).where(inArray(lessonReadings.lessonId, lessonIds)),
+    db.delete(lessonWritingTasks).where(inArray(lessonWritingTasks.lessonId, lessonIds)),
+    db.delete(assessmentQuestionBank).where(eq(assessmentQuestionBank.levelId, level.id)),
+  ]);
+
+  const vocabularyRows = savedLessonSources.flatMap(({ lesson, lessonId }) => lesson.words.map((word, position) => ({
+    lessonId,
+    itemKey: word.id,
+    position,
+    word: word.word,
+    arabic: word.arabic,
+    ipa: word.ipa,
+    phoneticRespelling: word.phoneticRespelling,
+    partOfSpeech: word.partOfSpeech,
+    definition: word.definition,
+    exampleEN: word.exampleEN,
+    exampleAR: word.exampleAR,
+  })));
+  const grammarRows = savedLessonSources.map(({ lesson, lessonId }) => ({
+    lessonId,
+    itemKey: lesson.grammar.id,
+    topic: lesson.grammar.topic,
+    arabicName: lesson.grammar.arabicName,
+    grammarData: lesson.grammar as unknown as Record<string, unknown>,
+  }));
+  const readingRows = savedLessonSources.map(({ lesson, lessonId }) => ({
+    lessonId,
+    ...structuredReading(course, lesson),
+    contentVersion: SYNC_VERSION,
+  }));
+  const writingRows = savedLessonSources.map(({ lesson, lessonId }) => ({
+    lessonId,
+    ...structuredWriting(course, lesson),
+    contentVersion: SYNC_VERSION,
+  }));
+  const questionRows = savedLessonSources.flatMap(({ lesson, moduleNumber, moduleId, lessonId }) => {
+    const variants = assessmentVariants(course, lesson);
+    const assessmentTypes = isMilestoneLesson(course, lesson.lessonNumber)
+      ? ["lesson_quiz", "milestone_quiz", "module_test"] as const
+      : ["lesson_quiz", "module_test"] as const;
+    return assessmentTypes.flatMap((assessmentType) => {
+      const scopedVariants = assessmentType === "lesson_quiz" || assessmentType === "milestone_quiz"
+        ? variants
+        : variants.filter((_, index) => index % 4 === 0 || index >= variants.length - 3);
+      return scopedVariants.map((question) => ({
+        questionKey: `${course.level}:${assessmentType}:${assessmentType === "lesson_quiz" ? lesson.lessonNumber : moduleNumber}:${assessmentType === "milestone_quiz" ? lesson.lessonNumber : "module"}:${question.id}`,
+        levelId: level.id,
+        moduleId,
+        lessonId: assessmentType === "lesson_quiz" ? lessonId : null,
+        assessmentType,
+        objectiveKey: question.reviewItemKey,
+        itemType: question.assessmentFocus,
+        difficulty: course.level === "A1" ? 1 : course.level === "A2" ? 2 : course.level === "B1" ? 3 : course.level === "B2" ? 4 : course.level === "C1" ? 5 : 6,
+        questionData: question as unknown as Record<string, unknown>,
+        reviewItemKey: question.reviewItemKey,
+        contentVersion: SYNC_VERSION,
+        active: 1,
+      }));
+    });
+  });
+
+  for (const batch of batches(vocabularyRows)) await db.insert(lessonVocabulary).values(batch);
+  for (const batch of batches(grammarRows)) await db.insert(lessonGrammar).values(batch);
+  for (const batch of batches(readingRows)) await db.insert(lessonReadings).values(batch);
+  for (const batch of batches(writingRows)) await db.insert(lessonWritingTasks).values(batch);
+  for (const batch of batches(questionRows)) await db.insert(assessmentQuestionBank).values(batch);
 }
 
 /** Populate the immutable course catalog when a managed database is available. */
-export async function ensureCurriculumCatalog() {
+export async function ensureCurriculumCatalog(courses: CourseDefinition[] = LEGACY_COURSES) {
   if (!syncPromise) {
-    syncPromise = Promise.all(LEGACY_COURSES.map(syncCourse)).then(() => undefined).catch((error) => {
-      syncPromise = null;
+    // A full curriculum refresh creates many normalized dependent rows.  Write
+    // one course at a time so a large A2 migration does not compete with every
+    // other level for the same managed-database connection.
+    const task = (async () => {
+      for (const course of courses) await syncCourse(course);
+    })().catch((error) => {
       console.error("[Curriculum] Catalog synchronization failed:", error);
       throw error;
     });
+    syncPromise = task.finally(() => { syncPromise = null; });
   }
   return syncPromise;
 }
@@ -307,16 +310,16 @@ export async function ensureCurrentCurriculumCatalog() {
   if (!db) return;
   const persistedLevels = await db.select().from(courseLevels);
   const levelByCode = new Map(persistedLevels.map((level) => [level.code, level]));
-  const needsSync = (await Promise.all(LEGACY_COURSES.map(async (course) => {
+  const coursesNeedingSynchronization = (await Promise.all(LEGACY_COURSES.map(async (course) => {
     const level = levelByCode.get(course.level);
-    if (!level) return true;
+    if (!level) return course;
     const [persistedModules, persistedLessons] = await Promise.all([
       db.select().from(courseModules).where(eq(courseModules.levelId, level.id)),
       db.select().from(courseLessons).where(eq(courseLessons.levelId, level.id)),
     ]);
-    return courseNeedsCatalogSynchronization(course, level, persistedModules.length, persistedLessons);
-  }))).some(Boolean);
-  if (needsSync) await ensureCurriculumCatalog();
+    return courseNeedsCatalogSynchronization(course, level, persistedModules.length, persistedLessons) ? course : null;
+  }))).filter((course): course is CourseDefinition => course !== null);
+  if (coursesNeedingSynchronization.length) await ensureCurriculumCatalog(coursesNeedingSynchronization);
 }
 
 /** Rebuild only persisted assessment questions after a question-bank policy change. */

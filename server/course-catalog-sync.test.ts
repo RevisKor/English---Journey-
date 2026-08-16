@@ -43,9 +43,11 @@ const fakeDb = {
   }),
   insert: (table: unknown) => ({
     values: (values: unknown) => {
-      const persistedValues = table === assessmentQuestionBank && typeof values === "object" && values !== null
-        ? { ...(values as Record<string, unknown>), active: 1 }
-        : values;
+      const persistedValues = table === assessmentQuestionBank && Array.isArray(values)
+        ? values.map((row) => ({ ...(row as Record<string, unknown>), active: 1 }))
+        : table === assessmentQuestionBank && typeof values === "object" && values !== null
+          ? { ...(values as Record<string, unknown>), active: 1 }
+          : values;
       state.inserts.push({ table, values: persistedValues });
       return {
         onDuplicateKeyUpdate: async ({ set }: { set: unknown }) => {
@@ -80,6 +82,10 @@ describe("curriculum catalog practice persistence", () => {
     state.lessonId = 100;
   });
 
+  const insertedRows = <T,>(table: unknown) => state.inserts
+    .filter((entry) => entry.table === table)
+    .flatMap((entry) => Array.isArray(entry.values) ? entry.values : [entry.values]) as T[];
+
   it("treats an interrupted versioned A2 refresh as incomplete until all nine modules and 135 current lessons exist", () => {
     const partialLessons = Array.from({ length: 20 }, () => ({ contentVersion: 3 }));
     const completeLessons = Array.from({ length: A2_COURSE.totalLessons }, () => ({ contentVersion: 3 }));
@@ -89,25 +95,31 @@ describe("curriculum catalog practice persistence", () => {
     expect(courseNeedsCatalogSynchronization(A2_COURSE, { contentVersion: 2 }, 9, completeLessons)).toBe(true);
   });
 
+  it("can resume only the incomplete A2 course without refreshing other levels", async () => {
+    await ensureCurriculumCatalog([A2_COURSE]);
+
+    expect(state.inserts.filter((entry) => entry.table === courseLessons)).toHaveLength(A2_COURSE.totalLessons);
+    expect(state.inserts.filter((entry) => entry.table === courseModules)).toHaveLength(9);
+    expect(state.inserts.filter((entry) => entry.table === lessonVocabulary).length).toBeGreaterThan(0);
+  });
+
   it("inserts reading and writing records for every integrated lesson, then updates those same rows on focused practice sync", async () => {
     await ensureCurriculumCatalog();
 
     const integratedCourses = [A1_COURSE, A2_COURSE, B1_COURSE, B2_COURSE, C1_COURSE, C2_COURSE];
     const integratedLessonCount = integratedCourses.reduce((total, course) => total + course.lessons.length, 0);
-    expect(state.inserts.filter((entry) => entry.table === lessonReadings)).toHaveLength(integratedLessonCount);
-    expect(state.inserts.filter((entry) => entry.table === lessonWritingTasks)).toHaveLength(integratedLessonCount);
+    expect(insertedRows(lessonReadings)).toHaveLength(integratedLessonCount);
+    expect(insertedRows(lessonWritingTasks)).toHaveLength(integratedLessonCount);
     const persistedC1Modules = state.inserts.filter((entry) => entry.table === courseModules && (entry.values as { levelId?: number }).levelId === 5);
     const persistedC1Lessons = state.inserts.filter((entry) => entry.table === courseLessons && (entry.values as { levelId?: number }).levelId === 5);
     expect(persistedC1Modules).toHaveLength(4);
     expect(persistedC1Lessons).toHaveLength(20);
     expect(state.inserts.some((entry) => entry.table === lessonVocabulary)).toBe(true);
-    expect(state.deletes.filter((table) => table === lessonVocabulary)).toHaveLength(integratedLessonCount);
+    expect(state.deletes.filter((table) => table === lessonVocabulary)).toHaveLength(integratedCourses.length);
     expect(state.inserts.some((entry) => entry.table === lessonGrammar)).toBe(true);
     expect(state.inserts.some((entry) => entry.table === assessmentQuestionBank)).toBe(true);
 
-    const milestoneRows = state.inserts
-      .filter((entry) => entry.table === assessmentQuestionBank)
-      .map((entry) => entry.values as { questionKey: string; levelId: number; moduleId: number; assessmentType: string; active?: number })
+    const milestoneRows = insertedRows<{ questionKey: string; levelId: number; moduleId: number; assessmentType: string; active?: number }>(assessmentQuestionBank)
       .filter((row) => row.assessmentType === "milestone_quiz");
     expect(milestoneRows.length).toBeGreaterThan(0);
     for (const [index, course] of integratedCourses.entries()) {
@@ -132,12 +144,6 @@ describe("curriculum catalog practice persistence", () => {
       expect(moduleIdsByNumber.size).toBe(checkpoints.length);
       expect(new Set(moduleIdsByNumber.values()).size).toBe(checkpoints.length);
     }
-    const restoredMilestoneLessonKeys = state.upserts
-      .filter((entry) => entry.table === assessmentQuestionBank)
-      .map((entry) => entry.values as { lessonId?: number | null })
-      .filter((values) => values.lessonId !== null && values.lessonId !== undefined);
-    expect(restoredMilestoneLessonKeys.length).toBeGreaterThanOrEqual(milestoneRows.length);
-
     state.practiceRowsExist = true;
     await syncStructuredPracticeCatalog();
 

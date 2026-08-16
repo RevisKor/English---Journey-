@@ -15,7 +15,11 @@ export function buildModuleWordBank(course: CourseDefinition, moduleNumber: numb
   // remain stable.
   const entriesByIdentity = new Map<string, ModuleWordBankEntry>();
   for (const entry of sourceEntries) {
-    const identity = entry.id;
+    // Catalog records use lesson-scoped IDs so a repeated word can be stored
+    // safely in every lesson that revisits it.  Learners should still see one
+    // cumulative row per word in a module, so aggregate by its display form
+    // and part of speech rather than the persistence key.
+    const identity = `${entry.word.trim().toLocaleLowerCase()}::${entry.partOfSpeech.trim().toLocaleLowerCase()}`;
     const existing = entriesByIdentity.get(identity);
     if (!existing) {
       entriesByIdentity.set(identity, entry);

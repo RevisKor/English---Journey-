@@ -78,7 +78,13 @@ function vocabularyForBlueprint(blueprint: ImmersiveLessonBlueprint) {
   const anchorWords = blueprint.vocabularyAnchors.map((anchor) => anchorVocabulary(anchor, blueprint));
   const rotationStart = ((blueprint.lessonNumber - 1) * 3) % SEEDED_VOCABULARY.length;
   const rotatedSeeds = Array.from({ length: 4 }, (_, index) => SEEDED_VOCABULARY[(rotationStart + index) % SEEDED_VOCABULARY.length]);
-  return uniqueVocabulary([...anchorWords, ...rotatedSeeds]);
+  // A seed intentionally appears again in later lessons for retrieval practice.
+  // Persisted vocabulary rows are lesson-owned, however, so every occurrence
+  // needs a lesson-scoped key even when its word and definition are shared.
+  return uniqueVocabulary([...anchorWords, ...rotatedSeeds]).map((word) => ({
+    ...word,
+    id: `a2-lesson-${blueprint.lessonNumber}-${word.id}`,
+  }));
 }
 
 function grammarForBlueprint(blueprint: ImmersiveLessonBlueprint): GrammarTopic {
