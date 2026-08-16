@@ -48,7 +48,7 @@ function asGrammarTopic(lesson: DraftLesson): GrammarTopic {
 }
 
 export const B1_LESSONS: LessonDefinition[] = (rawDraft as DraftLesson[]).map((draft) => ({
-  level: "B1" as const, lessonNumber: draft.lessonNumber, moduleNumber: Math.ceil(draft.lessonNumber / 6), title: draft.title, titleArabic: draft.titleArabic,
+  level: "B1" as const, lessonNumber: draft.lessonNumber, moduleNumber: Math.ceil(draft.lessonNumber / 15), title: draft.title, titleArabic: draft.titleArabic,
   words: draft.vocabulary.map((item, index) => asVocabularyItem(item, draft.lessonNumber, index)), grammar: asGrammarTopic(draft),
   learningPlan: { outcome: draft.outcome, steps: STEPS, retrieval: draft.retrieval.map((item) => ({ sourceLevel: "A2" as const, language: item.language, prompt: item.prompt, purpose: item.purpose })), englishFirst: true, studio: "Story & Society Studio" },
   lexicalNetworks: [{ id: `b1-network-${draft.lessonNumber}`, theme: draft.network.theme, themeArabic: draft.network.themeArabic, anchor: draft.network.anchor, wordFamilies: draft.network.wordFamilies, relatedWords: draft.network.relatedWords, chunks: draft.network.chunks, collocations: draft.network.collocations, register: draft.network.register, priorLevelLinks: draft.network.priorLevelLinks, learningNote: draft.network.learningNote, learningNoteArabic: draft.network.learningNoteArabic }],
@@ -57,5 +57,5 @@ export const B1_LESSONS: LessonDefinition[] = (rawDraft as DraftLesson[]).map((d
 
 export const B1_VOCABULARY = B1_LESSONS.flatMap((lesson) => lesson.words);
 export const B1_GRAMMAR = B1_LESSONS.map((lesson) => lesson.grammar);
-export const B1_COURSE: CourseDefinition = { level: "B1", title: "Connected lives and informed choices", titleArabic: "حياة مترابطة وخيارات واعية", totalLessons: 24, lessonsPerModule: 6, estimatedMinutes: 300 * 60, lessons: B1_LESSONS, modules: buildModuleDefinitions("B1", B1_LESSONS) };
+export const B1_COURSE: CourseDefinition = { level: "B1", title: "Connected lives and informed choices", titleArabic: "حياة مترابطة وخيارات واعية", totalLessons: 150, lessonsPerModule: 15, estimatedMinutes: 150 * 60, lessons: B1_LESSONS, modules: buildModuleDefinitions("B1", B1_LESSONS) };
 export function getB1Lesson(lessonNumber: number) { return B1_LESSONS.find((lesson) => lesson.lessonNumber === lessonNumber); }

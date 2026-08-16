@@ -29,9 +29,9 @@ import { buildAssessmentVariants } from "../shared/course/assessment-questions";
 import { moduleTheme } from "../shared/course/module-guidance";
 
 const LEGACY_COURSES: CourseDefinition[] = [A1_COURSE, A2_COURSE, B1_COURSE, B2_COURSE, C1_COURSE, C2_COURSE];
-// Version 3 promotes the approved A2 nine-module curriculum from review-only
-// source data into the normalized learner catalog.
-const SYNC_VERSION = 3;
+// Version 4 promotes the approved ten-module, 150-lesson B1 curriculum into
+// the normalized learner catalog while rebuilding all immutable course snapshots.
+const SYNC_VERSION = 4;
 let syncPromise: Promise<void> | null = null;
 
 type CatalogQuestion = QuizQuestion & { id: string };

@@ -253,3 +253,11 @@
 - [x] Stop the sticky word-bank column header from obscuring the first vocabulary row.
 - [x] Rebalance the word, Arabic, pronunciation, context, and source cells so bilingual content remains readable.
 - [x] Validate the corrected full table at desktop and mobile widths, then create a checkpoint.
+
+# B1 Expansion — Ten-Module Active Curriculum
+- [x] Audit the existing B1 contracts, seed inventory, CEFR progression helpers, assessment routing, and active catalog synchronization boundary.
+- [x] Define ten B1 modules of fifteen lessons each: work/study, relationships/society, travel/change, stories/opinions, health/choices, media/digital life, environment/community action, culture/identity, problem-solving/decisions, and future pathways/projects.
+- [x] Expand the bilingual B1 inventory to 150 lesson records with twelve lesson-scoped vocabulary records per lesson, grammar targets, A2 retrieval, lexical networks, reading briefs, and writing prompts.
+- [x] Promote B1 into the active catalog with catalog synchronization version 4 and explicit ten-module/150-lesson persistence regression coverage.
+- [x] Run the complete Vitest suite, TypeScript check, production build, and desktop/mobile learner-map preview checks before creating the B1 checkpoint.
+- [ ] Review B1 content quality and revise any lesson-family or CEFR-progression issues before beginning B2.

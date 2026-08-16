@@ -2,20 +2,21 @@ import { describe, expect, it } from "vitest";
 import { B1_COURSE, B1_LESSONS } from "./b1";
 
 describe("B1 cumulative curriculum", () => {
-  it("contains twenty-four complete lessons across four six-lesson modules", () => {
-    expect(B1_COURSE.totalLessons).toBe(24);
-    expect(B1_COURSE.lessonsPerModule).toBe(6);
-    expect(B1_LESSONS).toHaveLength(24);
-    expect(B1_LESSONS.map((lesson) => lesson.moduleNumber)).toEqual([
-      1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4,
-    ]);
+  it("contains 150 complete lessons across ten fifteen-lesson modules", () => {
+    expect(B1_COURSE.totalLessons).toBe(150);
+    expect(B1_COURSE.lessonsPerModule).toBe(15);
+    expect(B1_LESSONS).toHaveLength(150);
+    expect(B1_COURSE.modules).toHaveLength(10);
+    expect(B1_LESSONS.map((lesson) => lesson.moduleNumber)).toEqual(
+      Array.from({ length: 10 }, (_, moduleIndex) => Array.from({ length: 15 }, () => moduleIndex + 1)).flat(),
+    );
+    expect(B1_COURSE.modules.every((module) => module.lessonNumbers.length === 15)).toBe(true);
   });
 
-  it("provides unique, bilingual language targets with lexical depth", () => {
+  it("provides bilingual language targets with lexical depth and lesson-scoped identity", () => {
     const words = B1_LESSONS.flatMap((lesson) => lesson.words);
-    const uniqueTargets = new Set(words.map((word) => word.word.toLocaleLowerCase()));
-    expect(words).toHaveLength(288);
-    expect(uniqueTargets.size).toBe(words.length);
+    expect(words).toHaveLength(1800);
+    expect(new Set(words.map((word) => word.id)).size).toBe(words.length);
 
     for (const lesson of B1_LESSONS) {
       const network = lesson.lexicalNetworks?.[0];
@@ -24,6 +25,7 @@ describe("B1 cumulative curriculum", () => {
       expect(network?.chunks.length).toBeGreaterThanOrEqual(3);
       expect(network?.collocations.length).toBeGreaterThanOrEqual(3);
       expect(network?.wordFamilies.length).toBeGreaterThanOrEqual(2);
+      expect(network?.learningNoteArabic).toMatch(/[\u0600-\u06FF]/);
     }
   });
 
@@ -36,5 +38,14 @@ describe("B1 cumulative curriculum", () => {
       expect(lesson.practiceBrief?.readingBrief.length).toBeGreaterThan(70);
       expect(lesson.practiceBrief?.writingPrompt.length).toBeGreaterThan(70);
     }
+  });
+
+  it("increases communicative demand across the B1 sequence", () => {
+    const first = B1_LESSONS[0];
+    const final = B1_LESSONS.at(-1)!;
+    expect(final.lessonNumber).toBe(150);
+    expect(final.practiceBrief?.writingPrompt).toContain("160–220");
+    expect(final.learningPlan?.outcome.canDo).toContain("future pathways");
+    expect(first.learningPlan?.retrieval.every((item) => item.sourceLevel === "A2")).toBe(true);
   });
 });
