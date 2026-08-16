@@ -1,0 +1,191 @@
+import { beforeEach, describe, expect, it, vi } from "vitest";
+import {
+  assessmentQuestionBank,
+  courseLessons,
+  courseLevels,
+  courseModules,
+  courseTopics,
+  lessonGrammar,
+  lessonReadings,
+  lessonVocabulary,
+  lessonWritingTasks,
+} from "../drizzle/schema";
+import { A1_COURSE, A2_COURSE, B1_COURSE, B2_COURSE, C1_COURSE, C2_COURSE, milestoneLessonNumbers } from "../shared/course";
+
+const state = vi.hoisted(() => ({
+  inserts: [] as Array<{ table: unknown; values: unknown }>,
+  updates: [] as Array<{ table: unknown; values: unknown }>,
+  upserts: [] as Array<{ table: unknown; values: unknown }>,
+  deletes: [] as unknown[],
+  practiceRowsExist: false,
+  courseLevelLookups: 0,
+  moduleLookups: 0,
+  lessonId: 100,
+}));
+
+const fakeDb = {
+  select: () => ({
+    from: (table: unknown) => ({
+      where: () => ({
+        limit: async () => {
+          if (table === courseLevels) {
+            state.courseLevelLookups += 1;
+            return [{ id: state.courseLevelLookups }];
+          }
+          if (table === courseLessons) return [{ id: ++state.lessonId }];
+          if (table === courseModules) return [{ id: ++state.moduleLookups }];
+          if (table === courseTopics) return [{ id: 1 }];
+          if (table === lessonReadings || table === lessonWritingTasks) return state.practiceRowsExist ? [{ id: 1 }] : [];
+          return [];
+        },
+      }),
+    }),
+  }),
+  insert: (table: unknown) => ({
+    values: (values: unknown) => {
+      const persistedValues = table === assessmentQuestionBank && Array.isArray(values)
+        ? values.map((row) => ({ ...(row as Record<string, unknown>), active: 1 }))
+        : table === assessmentQuestionBank && typeof values === "object" && values !== null
+          ? { ...(values as Record<string, unknown>), active: 1 }
+          : values;
+      state.inserts.push({ table, values: persistedValues });
+      return {
+        onDuplicateKeyUpdate: async ({ set }: { set: unknown }) => {
+          state.upserts.push({ table, values: set });
+        },
+      };
+    },
+  }),
+  update: (table: unknown) => ({
+    set: (values: unknown) => ({
+      where: async () => { state.updates.push({ table, values }); },
+    }),
+  }),
+  delete: (table: unknown) => ({
+    where: async () => { state.deletes.push(table); },
+  }),
+};
+
+vi.mock("./db", () => ({ getDb: async () => fakeDb }));
+
+import { assessmentVariants, courseNeedsCatalogSynchronization, ensureCurriculumCatalog, structuredReading, structuredWriting, syncStructuredPracticeCatalog } from "./course-catalog";
+
+describe("curriculum catalog practice persistence", () => {
+  beforeEach(() => {
+    state.inserts.length = 0;
+    state.updates.length = 0;
+    state.upserts.length = 0;
+    state.deletes.length = 0;
+    state.practiceRowsExist = false;
+    state.courseLevelLookups = 0;
+    state.moduleLookups = 0;
+    state.lessonId = 100;
+  });
+
+  const insertedRows = <T,>(table: unknown) => state.inserts
+    .filter((entry) => entry.table === table)
+    .flatMap((entry) => Array.isArray(entry.values) ? entry.values : [entry.values]) as T[];
+
+  it("treats an interrupted versioned A2 refresh as incomplete until all nine modules and 135 current lessons exist", () => {
+    const partialLessons = Array.from({ length: 20 }, () => ({ contentVersion: 5 }));
+    const completeLessons = Array.from({ length: A2_COURSE.totalLessons }, () => ({ contentVersion: 5 }));
+    const expectedVocabularyCount = A2_COURSE.lessons.reduce((count, lesson) => count + lesson.words.length, 0);
+
+    expect(courseNeedsCatalogSynchronization(A2_COURSE, { contentVersion: 5 }, 4, partialLessons)).toBe(true);
+    expect(courseNeedsCatalogSynchronization(A2_COURSE, { contentVersion: 5 }, 9, completeLessons)).toBe(false);
+    expect(courseNeedsCatalogSynchronization(A2_COURSE, { contentVersion: 5 }, 9, completeLessons, expectedVocabularyCount - 1)).toBe(true);
+    expect(courseNeedsCatalogSynchronization(A2_COURSE, { contentVersion: 5 }, 9, completeLessons, expectedVocabularyCount)).toBe(false);
+    expect(courseNeedsCatalogSynchronization(A2_COURSE, { contentVersion: 4 }, 9, completeLessons)).toBe(true);
+  });
+
+  it("treats a partial structured-practice snapshot as incomplete even when its lessons and vocabulary are current", () => {
+    const completeLessons = Array.from({ length: B1_COURSE.totalLessons }, () => ({ contentVersion: 5 }));
+    const expectedVocabularyCount = B1_COURSE.lessons.reduce((count, lesson) => count + lesson.words.length, 0);
+
+    expect(courseNeedsCatalogSynchronization(
+      B1_COURSE,
+      { contentVersion: 5 },
+      10,
+      completeLessons,
+      expectedVocabularyCount,
+      { grammar: 150, readings: 149, writing: 150 },
+    )).toBe(true);
+    expect(courseNeedsCatalogSynchronization(
+      B1_COURSE,
+      { contentVersion: 5 },
+      10,
+      completeLessons,
+      expectedVocabularyCount,
+      { grammar: 150, readings: 150, writing: 150 },
+    )).toBe(false);
+  });
+
+  it("can resume only the incomplete A2 course without refreshing other levels", async () => {
+    await ensureCurriculumCatalog([A2_COURSE]);
+
+    expect(state.inserts.filter((entry) => entry.table === courseLessons)).toHaveLength(A2_COURSE.totalLessons);
+    expect(state.inserts.filter((entry) => entry.table === courseModules)).toHaveLength(9);
+    expect(state.inserts.filter((entry) => entry.table === lessonVocabulary).length).toBeGreaterThan(0);
+  });
+
+  it("inserts reading and writing records for every integrated lesson, then updates those same rows on focused practice sync", async () => {
+    await ensureCurriculumCatalog();
+
+    const integratedCourses = [A1_COURSE, A2_COURSE, B1_COURSE, B2_COURSE, C1_COURSE, C2_COURSE];
+    const integratedLessonCount = integratedCourses.reduce((total, course) => total + course.lessons.length, 0);
+    expect(insertedRows(lessonReadings)).toHaveLength(integratedLessonCount);
+    expect(insertedRows(lessonWritingTasks)).toHaveLength(integratedLessonCount);
+    const persistedB1Modules = state.inserts.filter((entry) => entry.table === courseModules && (entry.values as { levelId?: number }).levelId === 3);
+    const persistedB1Lessons = state.inserts.filter((entry) => entry.table === courseLessons && (entry.values as { levelId?: number }).levelId === 3);
+    expect(persistedB1Modules).toHaveLength(10);
+    expect(persistedB1Lessons).toHaveLength(150);
+    const persistedC1Modules = state.inserts.filter((entry) => entry.table === courseModules && (entry.values as { levelId?: number }).levelId === 5);
+    const persistedC1Lessons = state.inserts.filter((entry) => entry.table === courseLessons && (entry.values as { levelId?: number }).levelId === 5);
+    expect(persistedC1Modules).toHaveLength(10);
+    expect(persistedC1Lessons).toHaveLength(160);
+    expect(state.inserts.some((entry) => entry.table === lessonVocabulary)).toBe(true);
+    expect(state.deletes.filter((table) => table === lessonVocabulary)).toHaveLength(integratedCourses.length);
+    expect(state.inserts.some((entry) => entry.table === lessonGrammar)).toBe(true);
+    expect(state.inserts.some((entry) => entry.table === assessmentQuestionBank)).toBe(true);
+
+    const milestoneRows = insertedRows<{ questionKey: string; levelId: number; moduleId: number; assessmentType: string; active?: number }>(assessmentQuestionBank)
+      .filter((row) => row.assessmentType === "milestone_quiz");
+    expect(milestoneRows.length).toBeGreaterThan(0);
+    for (const [index, course] of integratedCourses.entries()) {
+      const levelRows = milestoneRows.filter((row) => row.levelId === index + 1);
+      const checkpoints = milestoneLessonNumbers(course);
+      const checkpointRows = new Map<number, typeof milestoneRows>();
+      for (const row of levelRows) {
+        const lessonNumber = Number(row.questionKey.split(":")[3]);
+        checkpointRows.set(lessonNumber, [...(checkpointRows.get(lessonNumber) ?? []), row]);
+      }
+      expect([...checkpointRows.keys()].sort((a, b) => a - b)).toEqual(checkpoints);
+      expect([...checkpointRows.values()].every((rows) => rows.length === assessmentVariants(course, course.lessons.find((lesson) => lesson.lessonNumber === Number(rows[0].questionKey.split(":")[3])))!.length)).toBe(true);
+      expect([...checkpointRows.values()].every((rows) => rows.every((row) => row.active === 1))).toBe(true);
+      const moduleIdsByNumber = new Map<number, number>();
+      for (const rows of checkpointRows.values()) {
+        const moduleNumber = Number(rows[0].questionKey.split(":")[2]);
+        const moduleIds = new Set(rows.map((row) => row.moduleId));
+        expect(moduleIds.size).toBe(1);
+        expect([...moduleIds][0]).toBeGreaterThan(0);
+        moduleIdsByNumber.set(moduleNumber, [...moduleIds][0]);
+      }
+      expect(moduleIdsByNumber.size).toBe(checkpoints.length);
+      expect(new Set(moduleIdsByNumber.values()).size).toBe(checkpoints.length);
+    }
+    state.practiceRowsExist = true;
+    await syncStructuredPracticeCatalog();
+
+    const expectedLessons = integratedCourses.flatMap((course) => course.lessons.map((lesson) => ({ course, lesson })));
+    const expectedReadingUpdates = expectedLessons.map(({ course, lesson }) => {
+      const reading = structuredReading(course, lesson);
+      return { titleArabic: reading.titleArabic, passage: reading.passage, questions: reading.questions, contentVersion: 5 };
+    });
+    const expectedWritingUpdates = expectedLessons.map(({ course, lesson }) => ({ ...structuredWriting(course, lesson), contentVersion: 5 }));
+    const readingUpdates = state.updates.filter((entry) => entry.table === lessonReadings).map((entry) => entry.values);
+    const writingUpdates = state.updates.filter((entry) => entry.table === lessonWritingTasks).map((entry) => entry.values);
+
+    expect(readingUpdates).toEqual(expectedReadingUpdates);
+    expect(writingUpdates).toEqual(expectedWritingUpdates);
+  });
+});

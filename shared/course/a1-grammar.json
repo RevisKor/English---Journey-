@@ -1,0 +1,2172 @@
+[
+  {
+    "id": "a1-grammar-01",
+    "lessonNumber": 1,
+    "topic": "Present Simple of 'To Be'",
+    "arabicName": "المضارع البسيط لفعل الكينونة (am, is, are)",
+    "concept": "The verb 'to be' is the most basic verb in English. It is used to describe states, qualities, identity, age, and locations of people or things in the present.",
+    "represents": "This structure represents: (1) Identity or name. (2) Age or characteristics. (3) Nationalities or professions. (4) Locations or states.",
+    "arabicComparison": "في اللغة العربية، لا نستخدم فعل كينونة في الجملة الاسمية في المضارع (مثلاً: 'أنا سعيد' وليس 'أنا أكون سعيد'). في الإنجليزية، لا بد من وجود فعل كينونة: 'I am happy'.",
+    "useWhen": [
+      "Describing feelings or states: I am happy.",
+      "Describing a person's job or identity: She is a teacher.",
+      "Describing nationality or origin: They are from Cairo.",
+      "Describing location: We are at the library."
+    ],
+    "doNotUseWhen": [
+      "Do not use 'am/is/are' with another base action verb. Say 'I write' NOT 'I am write'.",
+      "Do not use when talking about finished past events. Say 'I was happy' instead of 'I am happy yesterday'."
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "He teacher.",
+        "correct": "He is a teacher.",
+        "explanation": "لا تحذف فعل الكينونة (is) وأداة التنكير (a) قبل الأسماء المفردة."
+      },
+      {
+        "wrong": "They is happy.",
+        "correct": "They are happy.",
+        "explanation": "استخدم are مع ضمائر الجمع (they/we/you)."
+      },
+      {
+        "wrong": "I am speak English.",
+        "correct": "I speak English.",
+        "explanation": "لا تستخدم am مع أفعال الحركة في المضارع البسيط."
+      }
+    ],
+    "structure": {
+      "positive": "Subject + am/is/are + adjective/noun/place",
+      "negative": "Subject + am/is/are + not + adjective/noun/place",
+      "question": "Am/Is/Are + subject + adjective/noun/place?"
+    },
+    "examples": [
+      {
+        "en": "I am a student at the university.",
+        "ar": "أنا طالب في الجامعة."
+      },
+      {
+        "en": "She is very smart.",
+        "ar": "هي ذكية جداً."
+      },
+      {
+        "en": "We are in Alexandria today.",
+        "ar": "نحن في الإسكندرية اليوم."
+      },
+      {
+        "en": "He is not angry with you.",
+        "ar": "هو ليس غاضباً منك."
+      },
+      {
+        "en": "Are they from Egypt?",
+        "ar": "هل هم من مصر؟"
+      }
+    ],
+    "practice": [
+      {
+        "question": "She ___ a doctor. (be)",
+        "answer": "is",
+        "choices": [
+          "am",
+          "is",
+          "are"
+        ]
+      },
+      {
+        "question": "They ___ at home. (be / negative)",
+        "answer": "are not",
+        "choices": [
+          "is not",
+          "am not",
+          "are not"
+        ]
+      },
+      {
+        "question": "___ you happy today?",
+        "answer": "Are",
+        "choices": [
+          "Am",
+          "Is",
+          "Are"
+        ]
+      },
+      {
+        "question": "I ___ twenty years old.",
+        "answer": "am",
+        "choices": [
+          "am",
+          "is",
+          "are"
+        ]
+      },
+      {
+        "question": "It ___ a beautiful day.",
+        "answer": "is",
+        "choices": [
+          "am",
+          "is",
+          "are"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "a1-grammar-02",
+    "lessonNumber": 2,
+    "topic": "Present Simple (Action Verbs)",
+    "arabicName": "المضارع البسيط (الأفعال الحركية)",
+    "concept": "Used for habits, daily routines, general truths, and permanent situations that are not happening only at this exact moment.",
+    "represents": "This tense describes: (1) Habits and routines. (2) Facts and general truths. (3) Permanent states.",
+    "arabicComparison": "في الإنجليزية، نضيف s للفعل مع المفرد الغائب (he, she, it). في العربية، يتغير الفعل بالكامل ('هو يلعب'، 'هي تلعب'). تذكر أن تنسى إضافة الـ s في الإنجليزية.",
+    "useWhen": [
+      "Habits or routines: I drink tea every morning.",
+      "General facts: The sun rises in the east.",
+      "Permanent situations: My family lives in Cairo."
+    ],
+    "doNotUseWhen": [
+      "Do not use for actions happening right now at the moment of speaking. Use Present Continuous (I am studying now) instead."
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "He play football.",
+        "correct": "He plays football.",
+        "explanation": "أضف s للمفرد الغائب (he/she/it) في المضارع البسيط."
+      },
+      {
+        "wrong": "I am sleep at 10 PM.",
+        "correct": "I sleep at 10 PM.",
+        "explanation": "لا تضع am/is/are قبل الفعل العادي في المضارع البسيط."
+      },
+      {
+        "wrong": "She don't like coffee.",
+        "correct": "She doesn't like coffee.",
+        "explanation": "استخدم doesn't لنفي المفرد الغائب بدلاً من don't."
+      }
+    ],
+    "structure": {
+      "positive": "Subject + verb (+ s/es for he/she/it)",
+      "negative": "Subject + do/does + not + base verb",
+      "question": "Do/Does + subject + base verb?"
+    },
+    "examples": [
+      {
+        "en": "I eat breakfast every day.",
+        "ar": "أنا آكل الإفطار كل يوم."
+      },
+      {
+        "en": "She works at a hospital.",
+        "ar": "هي تعمل في مستشفى."
+      },
+      {
+        "en": "They speak Arabic.",
+        "ar": "هم يتكلمون العربية."
+      },
+      {
+        "en": "He doesn't like coffee.",
+        "ar": "هو لا يحب القهوة."
+      },
+      {
+        "en": "Do you study every night?",
+        "ar": "هل تدرس كل ليلة؟"
+      }
+    ],
+    "practice": [
+      {
+        "question": "She ___ (like) milk.",
+        "answer": "likes",
+        "choices": [
+          "like",
+          "likes",
+          "liking"
+        ]
+      },
+      {
+        "question": "We ___ (not / go) to school on Fridays.",
+        "answer": "do not go",
+        "choices": [
+          "don't goes",
+          "do not go",
+          "does not go"
+        ]
+      },
+      {
+        "question": "___ they speak English?",
+        "answer": "Do",
+        "choices": [
+          "Do",
+          "Does",
+          "Are"
+        ]
+      },
+      {
+        "question": "He ___ (work) in Cairo.",
+        "answer": "works",
+        "choices": [
+          "work",
+          "works",
+          "is work"
+        ]
+      },
+      {
+        "question": "Where ___ she live?",
+        "answer": "does",
+        "choices": [
+          "do",
+          "does",
+          "is"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "a1-grammar-03",
+    "lessonNumber": 3,
+    "topic": "Nouns: Singular & Plural",
+    "arabicName": "الأسماء: المفرد والجمع",
+    "concept": "Nouns represent people, places, or things. Singular refers to one, and plural refers to more than one. Most nouns add 's' or 'es' to become plural, while others are irregular.",
+    "represents": "Distinguishes between a single entity and multiple entities.",
+    "arabicComparison": "في العربية هناك مفرد ومثنى وجمع، لكن في الإنجليزية يوجد فقط مفرد وجمع. أي شيء أكثر من واحد هو جمع ويأخذ صيغة الجمع.",
+    "useWhen": [
+      "Talking about one item (singular): a car, an apple.",
+      "Talking about multiple items (plural): cars, apples, children."
+    ],
+    "doNotUseWhen": [
+      "Do not add 's' to irregular plurals. Say 'children' NOT 'childrens' or 'childs'.",
+      "Do not use 'a/an' before plural nouns (e.g. say 'books' NOT 'a books')."
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "There are three childs.",
+        "correct": "There are three children.",
+        "explanation": "كلمة child جمعها غير منتظم وهو children."
+      },
+      {
+        "wrong": "I have a books.",
+        "correct": "I have books.",
+        "explanation": "أدوات التنكير a/an لا تأتي مع الجمع."
+      },
+      {
+        "wrong": "Many person are here.",
+        "correct": "Many people are here.",
+        "explanation": "كلمة person جمعها غير منتظم وهو people."
+      }
+    ],
+    "structure": {
+      "positive": "Regular: Singular + s/es. Irregular: changes shape (man -> men, child -> children)",
+      "negative": "N/A",
+      "question": "How many + plural noun + are there?"
+    },
+    "examples": [
+      {
+        "en": "I have one brother and two sisters.",
+        "ar": "لدي أخ واحد وأختان."
+      },
+      {
+        "en": "The children are playing in the park.",
+        "ar": "الأطفال يلعبون في الحديقة."
+      },
+      {
+        "en": "These boxes are very heavy.",
+        "ar": "هذه الصناديق ثقيلة جداً."
+      },
+      {
+        "en": "There are five people in the office.",
+        "ar": "هناك خمسة أشخاص في المكتب."
+      },
+      {
+        "en": "We need some new tomatoes.",
+        "ar": "نحتاج إلى بعض الطماطم الجديدة."
+      }
+    ],
+    "practice": [
+      {
+        "question": "He has three ___ (child).",
+        "answer": "children",
+        "choices": [
+          "childs",
+          "children",
+          "childrens"
+        ]
+      },
+      {
+        "question": "I bought two new ___ (box).",
+        "answer": "boxes",
+        "choices": [
+          "boxs",
+          "boxes",
+          "box"
+        ]
+      },
+      {
+        "question": "Two ___ (man) are waiting for you.",
+        "answer": "men",
+        "choices": [
+          "mans",
+          "men",
+          "mens"
+        ]
+      },
+      {
+        "question": "There are many ___ (person) in the room.",
+        "answer": "people",
+        "choices": [
+          "persons",
+          "peoples",
+          "people"
+        ]
+      },
+      {
+        "question": "The ___ (leaf) are falling from the trees.",
+        "answer": "leaves",
+        "choices": [
+          "leafs",
+          "leaves",
+          "leafes"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "a1-grammar-04",
+    "lessonNumber": 4,
+    "topic": "Articles: A, An, The",
+    "arabicName": "أدوات التعريف والتنكير (A, An, The)",
+    "concept": "Use 'a' and 'an' for non-specific singular countable nouns (indefinite). Use 'the' when both the speaker and listener know which specific noun is being discussed.",
+    "represents": "Indicates specificity (general vs specific) and number.",
+    "arabicComparison": "في العربية نقوم بالتعريف بـ 'الـ' (مثال: الكتاب) والتنكير بحذفها (مثال: كتاب). في الإنجليزية نستخدم a/an للتنكير، و the للتعريف.",
+    "useWhen": [
+      "Use 'a' before consonant sounds: a university, a cat.",
+      "Use 'an' before vowel sounds (a, e, i, o, u): an hour, an apple.",
+      "Use 'the' for specific things: The sun is bright."
+    ],
+    "doNotUseWhen": [
+      "Do not use 'a/an' with plural nouns or uncountable nouns like water, milk, or money.",
+      "Do not use 'the' for general names of countries (e.g. say 'Egypt' NOT 'The Egypt')."
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "I want an apple. The apple is delicious.",
+        "correct": "I want an apple. The apple is delicious.",
+        "explanation": "نبدأ بالتنكير (an apple) ثم نستخدم التعريف (the apple) عند ذكره مرة أخرى."
+      },
+      {
+        "wrong": "He is a engineer.",
+        "correct": "He is an engineer.",
+        "explanation": "استخدم an قبل الكلمات التي تبدأ بصوت متحرك مثل engineer."
+      },
+      {
+        "wrong": "She lives in the Egypt.",
+        "correct": "She lives in Egypt.",
+        "explanation": "أسماء الدول لا تأخذ أداة التعريف general (باستثناء UK, USA, UAE)."
+      }
+    ],
+    "structure": {
+      "positive": "a/an + singular countable noun | the + any noun",
+      "negative": "N/A",
+      "question": "N/A"
+    },
+    "examples": [
+      {
+        "en": "I saw a car. The car was red.",
+        "ar": "رأيت سيارة. كانت السيارة حمراء."
+      },
+      {
+        "en": "She eats an egg every morning.",
+        "ar": "هي تأكل بيضة كل صباح."
+      },
+      {
+        "en": "The moon goes around the Earth.",
+        "ar": "يدور القمر حول الأرض."
+      },
+      {
+        "en": "He is an honest man.",
+        "ar": "هو رجل أمين."
+      },
+      {
+        "en": "Pass me the water bottle, please.",
+        "ar": "مرر لي زجاجة الماء من فضلك."
+      }
+    ],
+    "practice": [
+      {
+        "question": "I need ___ hour to finish my homework.",
+        "answer": "an",
+        "choices": [
+          "a",
+          "an",
+          "the"
+        ]
+      },
+      {
+        "question": "She bought ___ new dress yesterday.",
+        "answer": "a",
+        "choices": [
+          "a",
+          "an",
+          "the"
+        ]
+      },
+      {
+        "question": "___ sun rises in the morning.",
+        "answer": "The",
+        "choices": [
+          "A",
+          "An",
+          "The"
+        ]
+      },
+      {
+        "question": "He is studying at ___ university in Cairo.",
+        "answer": "a",
+        "choices": [
+          "a",
+          "an",
+          "the"
+        ]
+      },
+      {
+        "question": "Where is ___ book I gave you?",
+        "answer": "the",
+        "choices": [
+          "a",
+          "an",
+          "the"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "a1-grammar-05",
+    "lessonNumber": 5,
+    "topic": "Demonstratives: This, That, These, Those",
+    "arabicName": "أسماء الإشارة (This, That, These, Those)",
+    "concept": "Demonstratives point to specific things relative to distance (near or far) and number (singular or plural).",
+    "represents": "Points out location (spatial/temporal) and quantity.",
+    "arabicComparison": "تطابق أسماء الإشارة في العربية (هذا، ذلك، هؤلاء، أولئك). في الإنجليزية: Near singular = this (هذا)، Near plural = these (هؤلاء/هذه)، Far singular = that (ذلك)، Far plural = those (أولئك).",
+    "useWhen": [
+      "This: Near + Singular (This book in my hand).",
+      "These: Near + Plural (These keys on my desk).",
+      "That: Far + Singular (That star in the sky).",
+      "Those: Far + Plural (Those cars over there)."
+    ],
+    "doNotUseWhen": [
+      "Do not mix up singular and plural forms (e.g. do not say 'these book' or 'this books')."
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "Look at this cars.",
+        "correct": "Look at these cars.",
+        "explanation": "استخدم these مع الأسماء الجمع القريبة وليس this."
+      },
+      {
+        "wrong": "Who is those girl?",
+        "correct": "Who is that girl?",
+        "explanation": "استخدم that للمفرد البعيد وليس those للجمع."
+      },
+      {
+        "wrong": "This is my friends.",
+        "correct": "These are my friends.",
+        "explanation": "بما أن الأصدقاء جمع، نستخدم These are وليس This is."
+      }
+    ],
+    "structure": {
+      "positive": "This/That + is + singular | These/Those + are + plural",
+      "negative": "This/That + is not + singular | These/Those + are not + plural",
+      "question": "Is this/that + singular? | Are these/those + plural?"
+    },
+    "examples": [
+      {
+        "en": "This is my pen, and that is your pen on the table.",
+        "ar": "هذا قلمي، وذلك قلمك على الطاولة."
+      },
+      {
+        "en": "These apples are sweet, but those apples are sour.",
+        "ar": "هذا التفاح حلو، ولكن ذاك التفاح حامض."
+      },
+      {
+        "en": "Is this your car outside?",
+        "ar": "هل هذه سيارتك في الخارج؟"
+      },
+      {
+        "en": "Those clouds look like rain.",
+        "ar": "تلك الغيوم تبدو ماطرة."
+      },
+      {
+        "en": "Who are these people in the picture?",
+        "ar": "من هؤلاء الناس في الصورة؟"
+      }
+    ],
+    "practice": [
+      {
+        "question": "___ book here is mine.",
+        "answer": "This",
+        "choices": [
+          "This",
+          "That",
+          "These",
+          "Those"
+        ]
+      },
+      {
+        "question": "Look at ___ stars far up in the sky.",
+        "answer": "those",
+        "choices": [
+          "this",
+          "that",
+          "these",
+          "those"
+        ]
+      },
+      {
+        "question": "Are ___ your keys on my table?",
+        "answer": "these",
+        "choices": [
+          "this",
+          "that",
+          "these",
+          "those"
+        ]
+      },
+      {
+        "question": "___ building over there is the library.",
+        "answer": "That",
+        "choices": [
+          "This",
+          "That",
+          "these",
+          "those"
+        ]
+      },
+      {
+        "question": "Who are ___ children playing across the street?",
+        "answer": "those",
+        "choices": [
+          "this",
+          "that",
+          "these",
+          "those"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "a1-grammar-06",
+    "lessonNumber": 6,
+    "topic": "Possessive Adjectives & Pronouns",
+    "arabicName": "صفات وضمائر الملكية",
+    "concept": "Possessive adjectives (my, your, his, her, its, our, their) come before a noun. Possessive pronouns (mine, yours, his, hers, ours, theirs) stand alone and replace the noun.",
+    "represents": "Ownership and relationship.",
+    "arabicComparison": "في العربية، نعبر عن الملكية بضمائر متصلة بالاسم (مثلاً: كتابي، كتابك). في الإنجليزية نستخدم كلمات منفصلة: my book (صفة ملكية) أو this book is mine (ضمير ملكية).",
+    "useWhen": [
+      "Possessive Adjectives: My car is blue. (Before the noun 'car')",
+      "Possessive Pronouns: The blue car is mine. (No noun follows)"
+    ],
+    "doNotUseWhen": [
+      "Do not use possessive pronouns before a noun (e.g. say 'my book' NOT 'mine book').",
+      "Do not confuse 'its' (possessive) with 'it's' (it is)."
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "This is mine book.",
+        "correct": "This is my book.",
+        "explanation": "استخدم صفة الملكية (my) قبل الاسم وليس ضمير الملكية (mine)."
+      },
+      {
+        "wrong": "The book is my.",
+        "correct": "The book is mine.",
+        "explanation": "صفات الملكية (my) تحتاج لاسم بعدها، وإلا استخدم ضمير الملكية (mine)."
+      },
+      {
+        "wrong": "It's tail is long.",
+        "correct": "Its tail is long.",
+        "explanation": "الضمير its للملكية لا يحتوي على فاصلة علوية (apostrophe)."
+      }
+    ],
+    "structure": {
+      "positive": "Possessive Adjective + Noun | Noun + is + Possessive Pronoun",
+      "negative": "N/A",
+      "question": "Whose + noun + is this?"
+    },
+    "examples": [
+      {
+        "en": "This is my room. The room is mine.",
+        "ar": "هذه غرفتي. الغرفة ملكي."
+      },
+      {
+        "en": "Her phone is new, but yours is old.",
+        "ar": "هاتفها جديد، لكن هاتفك قديم."
+      },
+      {
+        "en": "Our house is big. Theirs is small.",
+        "ar": "منزلنا كبير. منزلهم صغير."
+      },
+      {
+        "en": "Is this his jacket?",
+        "ar": "هل هذا معطفه؟"
+      },
+      {
+        "en": "The cat licked its paws.",
+        "ar": "لعقت القطة كفوفها."
+      }
+    ],
+    "practice": [
+      {
+        "question": "This jacket is ___ (belonging to me).",
+        "answer": "mine",
+        "choices": [
+          "my",
+          "mine",
+          "me"
+        ]
+      },
+      {
+        "question": "Where is ___ (belonging to you) house?",
+        "answer": "your",
+        "choices": [
+          "your",
+          "yours",
+          "you"
+        ]
+      },
+      {
+        "question": "We have finished our breakfast. Have you finished ___?",
+        "answer": "yours",
+        "choices": [
+          "your",
+          "yours",
+          "you"
+        ]
+      },
+      {
+        "question": "The dog lost ___ (its) collar.",
+        "answer": "its",
+        "choices": [
+          "its",
+          "it's",
+          "his"
+        ]
+      },
+      {
+        "question": "They live in Cairo. ___ (belonging to them) house is beautiful.",
+        "answer": "Their",
+        "choices": [
+          "Their",
+          "Theirs",
+          "They"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "a1-grammar-07",
+    "lessonNumber": 7,
+    "topic": "Subject & Object Pronouns",
+    "arabicName": "ضمائر الفاعل والمفعول به",
+    "concept": "Subject pronouns (I, you, he, she, it, we, they) do the action. Object pronouns (me, you, him, her, it, us, them) receive the action and come after verbs or prepositions.",
+    "represents": "Identifies who performs and who receives actions.",
+    "arabicComparison": "في العربية، ضمير الفاعل قد يكون مستتراً أو متصلاً، وضمير المفعول به يكون متصلاً بالفعل (مثال: 'رأيته'). في الإنجليزية الضمائر منفصلة دائماً: 'I saw him'.",
+    "useWhen": [
+      "Subject pronoun: Before the verb (She loves reading).",
+      "Object pronoun: After the verb or preposition (We saw her / Give it to them)."
+    ],
+    "doNotUseWhen": [
+      "Do not use subject pronouns as objects (e.g. say 'He called me' NOT 'He called I').",
+      "Do not use object pronouns as subjects (e.g. say 'He and I went' NOT 'Him and me went')."
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "Ahmed saw she yesterday.",
+        "correct": "Ahmed saw her yesterday.",
+        "explanation": "استخدم ضمير المفعول (her) بعد الفعل وليس ضمير الفاعل (she)."
+      },
+      {
+        "wrong": "Me and my friend study together.",
+        "correct": "My friend and I study together.",
+        "explanation": "استخدم I كفاعل للجملة بالترافق مع اسم آخر وتجنب البدء بـ Me."
+      },
+      {
+        "wrong": "Please explain the rule to he.",
+        "correct": "Please explain the rule to him.",
+        "explanation": "بعد حرف الجر (to) نستخدم ضمير مفعول به (him) وليس فاعل (he)."
+      }
+    ],
+    "structure": {
+      "positive": "Subject Pronoun + Verb + Object Pronoun",
+      "negative": "Subject Pronoun + Verb + not + Object Pronoun",
+      "question": "Verb + subject pronoun + object pronoun?"
+    },
+    "examples": [
+      {
+        "en": "I love my mother, and she loves me.",
+        "ar": "أنا أحب أمي، وهي تحبني."
+      },
+      {
+        "en": "They called us to invite them.",
+        "ar": "اتصلوا بنا لدعوتهم."
+      },
+      {
+        "en": "He knows him from school.",
+        "ar": "هو يعرفه من المدرسة."
+      },
+      {
+        "en": "We saw you at the supermarket.",
+        "ar": "رأيناكم في السوبرماركت."
+      },
+      {
+        "en": "Can you help her with the bag?",
+        "ar": "هل يمكنك مساعدتها في الحقيبة؟"
+      }
+    ],
+    "practice": [
+      {
+        "question": "___ studies English every day. (she)",
+        "answer": "She",
+        "choices": [
+          "She",
+          "Her",
+          "Hers"
+        ]
+      },
+      {
+        "question": "My teacher helps ___. (I)",
+        "answer": "me",
+        "choices": [
+          "I",
+          "me",
+          "my"
+        ]
+      },
+      {
+        "question": "The boys are outside. Call ___ in. (they)",
+        "answer": "them",
+        "choices": [
+          "they",
+          "them",
+          "their"
+        ]
+      },
+      {
+        "question": "My mother gave ___ a nice book. (we)",
+        "answer": "us",
+        "choices": [
+          "we",
+          "us",
+          "our"
+        ]
+      },
+      {
+        "question": "Where is my pen? I can't find ___.",
+        "answer": "it",
+        "choices": [
+          "he",
+          "she",
+          "it"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "a1-grammar-08",
+    "lessonNumber": 8,
+    "topic": "Present Continuous",
+    "arabicName": "المضارع المستمر",
+    "concept": "Used to describe an action that is happening right now, at this very moment, or around the present time.",
+    "represents": "Temporary actions in progress.",
+    "arabicComparison": "في اللهجة العامية نعبر عنه بحرف الباء (بكتب) أو بـ (عم أكتب). في الإنجليزية يتكون من فعل الكينونة + الفعل مضافاً له ing (I am writing).",
+    "useWhen": [
+      "Actions happening right now: I am studying English.",
+      "Temporary situations: She is staying in London this week."
+    ],
+    "doNotUseWhen": [
+      "Do not use with state verbs that describe feelings or thinking, such as love, like, hate, want, know. Say 'I want' NOT 'I am wanting'."
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "I studying now.",
+        "correct": "I am studying now.",
+        "explanation": "لا تنسَ فعل الكينونة (am/is/are) قبل الفعل الحامل لـ -ing."
+      },
+      {
+        "wrong": "She is listen to music.",
+        "correct": "She is listening to music.",
+        "explanation": "أضف -ing للفعل بعد is للتعبير عن الاستمرار."
+      },
+      {
+        "wrong": "They are liking chocolate.",
+        "correct": "They like chocolate.",
+        "explanation": "أفعال المشاعر مثل like لا تأتي في صيغة المستمر."
+      }
+    ],
+    "structure": {
+      "positive": "Subject + am/is/are + verb-ing",
+      "negative": "Subject + am/is/are + not + verb-ing",
+      "question": "Am/Is/Are + subject + verb-ing?"
+    },
+    "examples": [
+      {
+        "en": "I am writing an email right now.",
+        "ar": "أنا أكتب رسالة بريد إلكتروني الآن."
+      },
+      {
+        "en": "He is sleeping in his bedroom.",
+        "ar": "هو نائم في غرفته."
+      },
+      {
+        "en": "They are playing football outside.",
+        "ar": "هم يلعبون كرة القدم في الخارج."
+      },
+      {
+        "en": "What are you doing at the moment?",
+        "ar": "ماذا تفعل في هذه اللحظة؟"
+      },
+      {
+        "en": "She is not watching television.",
+        "ar": "هي لا تشاهد التلفاز."
+      }
+    ],
+    "practice": [
+      {
+        "question": "She ___ (cook) dinner now.",
+        "answer": "is cooking",
+        "choices": [
+          "cooks",
+          "is cooking",
+          "are cooking"
+        ]
+      },
+      {
+        "question": "I ___ (study) at the moment.",
+        "answer": "am studying",
+        "choices": [
+          "study",
+          "am studying",
+          "is studying"
+        ]
+      },
+      {
+        "question": "They ___ (not / play) today.",
+        "answer": "are not play",
+        "choices": [
+          "are not playing",
+          "does not play",
+          "is not playing"
+        ]
+      },
+      {
+        "question": "___ you listening to the teacher?",
+        "answer": "Are",
+        "choices": [
+          "Do",
+          "Are",
+          "Is"
+        ]
+      },
+      {
+        "question": "The cat ___ (sleep) on the sofa.",
+        "answer": "is sleeping",
+        "choices": [
+          "sleeping",
+          "is sleeping",
+          "are sleeping"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "a1-grammar-09",
+    "lessonNumber": 9,
+    "topic": "Prepositions of Place",
+    "arabicName": "حروف الجر للمكان (in, on, at, under...)",
+    "concept": "Prepositions of place show the position of a noun relative to another noun.",
+    "represents": "Spatial relations.",
+    "arabicComparison": "حروف الجر تتشابه مع العربية (في = in، على = on، تحت = under). لكن استخدام at محدد جداً للمواقع العامة أو النقاط (at school, at home).",
+    "useWhen": [
+      "in: inside an enclosed space (in a box, in a room, in a country).",
+      "on: on a surface (on the table, on the wall).",
+      "at: at a specific point or location (at the door, at school).",
+      "under / next to / between: relative positions."
+    ],
+    "doNotUseWhen": [
+      "Do not confuse in (inside) with on (surface) (e.g. say 'on the desk' NOT 'in the desk')."
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "I am in school.",
+        "correct": "I am at school.",
+        "explanation": "للتعبير عن التواجد في مبنى أو مؤسسة تعليمية/عملية نستخدم at."
+      },
+      {
+        "wrong": "My keys are in the table.",
+        "correct": "My keys are on the table.",
+        "explanation": "المفاتيح توضع على سطح الطاولة، لذلك نستخدم on وليس in."
+      },
+      {
+        "wrong": "He sits next the window.",
+        "correct": "He sits next to the window.",
+        "explanation": "حرف الجر 'بجانب' هو next to بالكامل."
+      }
+    ],
+    "structure": {
+      "positive": "Noun + is/are + preposition + noun",
+      "negative": "N/A",
+      "question": "Where + is/are + noun?"
+    },
+    "examples": [
+      {
+        "en": "The book is on the desk.",
+        "ar": "الكتاب على المكتب."
+      },
+      {
+        "en": "She lives in Cairo.",
+        "ar": "هي تعيش في القاهرة."
+      },
+      {
+        "en": "We met at the airport.",
+        "ar": "التقينا في المطار."
+      },
+      {
+        "en": "The cat is hiding under the bed.",
+        "ar": "القطة تختبئ تحت السرير."
+      },
+      {
+        "en": "The bank is between the school and the supermarket.",
+        "ar": "البنك يقع بين المدرسة والسوبرماركت."
+      }
+    ],
+    "practice": [
+      {
+        "question": "The pen is ___ the cup. (inside)",
+        "answer": "in",
+        "choices": [
+          "in",
+          "on",
+          "at"
+        ]
+      },
+      {
+        "question": "My phone is ___ the table. (surface)",
+        "answer": "on",
+        "choices": [
+          "in",
+          "on",
+          "at"
+        ]
+      },
+      {
+        "question": "I am waiting for you ___ the bus station.",
+        "answer": "at",
+        "choices": [
+          "in",
+          "on",
+          "at"
+        ]
+      },
+      {
+        "question": "The dog is sleeping ___ the desk. (below)",
+        "answer": "under",
+        "choices": [
+          "under",
+          "between",
+          "on"
+        ]
+      },
+      {
+        "question": "He is sitting next ___ me.",
+        "answer": "to",
+        "choices": [
+          "to",
+          "at",
+          "in"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "a1-grammar-10",
+    "lessonNumber": 10,
+    "topic": "Prepositions of Time",
+    "arabicName": "حروف الجر للوقت (in, on, at)",
+    "concept": "Use 'in' for long periods (months, years, seasons). Use 'on' for specific days and dates. Use 'at' for precise times.",
+    "represents": "Temporal localization.",
+    "arabicComparison": "في العربية، نستخدم غالباً كلمة 'في' لكل الأوقات (في الصباح، في يوم الأحد، في الساعة 5). في الإنجليزية تختلف: at 5:00, on Sunday, in the morning.",
+    "useWhen": [
+      "at: times of day (at 6:00, at noon, at night).",
+      "on: days and dates (on Monday, on October 5th).",
+      "in: months, years, seasons, parts of day (in June, in 2026, in summer, in the morning)."
+    ],
+    "doNotUseWhen": [
+      "Do not use prepositions of time with 'next', 'last', or 'every'. Say 'I go every Sunday' NOT 'I go on every Sunday'."
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "The match is in Friday.",
+        "correct": "The match is on Friday.",
+        "explanation": "استخدم on مع أيام الأسبوع."
+      },
+      {
+        "wrong": "I wake up on 7:00.",
+        "correct": "I wake up at 7:00.",
+        "explanation": "استخدم at مع الساعات والوقت الدقيق."
+      },
+      {
+        "wrong": "He was born at 1999.",
+        "correct": "He was born in 1999.",
+        "explanation": "استخدم in مع السنوات والشهور والقرون."
+      }
+    ],
+    "structure": {
+      "positive": "Preposition + Time expression",
+      "negative": "N/A",
+      "question": "When + is/does + subject + verb?"
+    },
+    "examples": [
+      {
+        "en": "I study in the afternoon.",
+        "ar": "أنا أدرس في فترة بعد الظهر."
+      },
+      {
+        "en": "Our exams are in June.",
+        "ar": "امتحاناتنا في شهر يونيو."
+      },
+      {
+        "en": "The train leaves at 8:30 PM.",
+        "ar": "القطار يغادر في الساعة الثامنة والنصف مساءً."
+      },
+      {
+        "en": "She has a dentist appointment on Monday.",
+        "ar": "لديها موعد عند طبيب الأسنان يوم الاثنين."
+      },
+      {
+        "en": "We celebrate National Day on July 23rd.",
+        "ar": "نحتفل بالعيد الوطني في 23 يوليو."
+      }
+    ],
+    "practice": [
+      {
+        "question": "My birthday is ___ October.",
+        "answer": "in",
+        "choices": [
+          "in",
+          "on",
+          "at"
+        ]
+      },
+      {
+        "question": "I will meet you ___ Monday.",
+        "answer": "on",
+        "choices": [
+          "in",
+          "on",
+          "at"
+        ]
+      },
+      {
+        "question": "The library closes ___ 10:00 PM.",
+        "answer": "at",
+        "choices": [
+          "in",
+          "on",
+          "at"
+        ]
+      },
+      {
+        "question": "It is cold here ___ winter.",
+        "answer": "in",
+        "choices": [
+          "in",
+          "on",
+          "at"
+        ]
+      },
+      {
+        "question": "We arrived ___ night.",
+        "answer": "at",
+        "choices": [
+          "in",
+          "on",
+          "at"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "a1-grammar-11",
+    "lessonNumber": 11,
+    "topic": "There is / There are",
+    "arabicName": "التعبير عن الوجود والكمية (There is, There are)",
+    "concept": "Use 'there is' for singular countable nouns or uncountable nouns. Use 'there are' for plural nouns. Often used with 'some' (positive) and 'any' (questions/negatives).",
+    "represents": "Existence and quantity.",
+    "arabicComparison": "في العربية، كلمة 'هناك' أو 'يوجد' تصلح للمفرد والجمع. في الإنجليزية، نفرق بينهما: There is للمفرد، و There are للجمع.",
+    "useWhen": [
+      "Singular / Uncountable: There is an apple. There is some milk.",
+      "Plural: There are some apples in the basket."
+    ],
+    "doNotUseWhen": [
+      "Do not use 'some' in negative sentences or questions. Use 'any' instead (e.g. say 'There isn't any bread' NOT 'There isn't some bread')."
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "There are some sugar.",
+        "correct": "There is some sugar.",
+        "explanation": "كلمة sugar غير معدودة فتعامل معاملة المفرد وتأخذ there is."
+      },
+      {
+        "wrong": "Are there some books?",
+        "correct": "Are there any books?",
+        "explanation": "في الأسئلة نستخدم any بدلاً من some."
+      },
+      {
+        "wrong": "There is many people.",
+        "correct": "There are many people.",
+        "explanation": "كلمة people جمع، لذا نستخدم there are."
+      }
+    ],
+    "structure": {
+      "positive": "There is + singular/uncountable | There are + plural",
+      "negative": "There isn't + singular/uncountable | There aren't + plural",
+      "question": "Is there + singular/uncountable? | Are there + plural?"
+    },
+    "examples": [
+      {
+        "en": "There is a computer on my desk.",
+        "ar": "هناك جهاز كمبيوتر على مكتبي."
+      },
+      {
+        "en": "There are some students in the library.",
+        "ar": "هناك بعض الطلاب في المكتبة."
+      },
+      {
+        "en": "Is there any water in the fridge?",
+        "ar": "هل هناك أي ماء في الثلاجة؟"
+      },
+      {
+        "en": "There are not any cars in the garage.",
+        "ar": "لا توجد أي سيارات في المرآب."
+      },
+      {
+        "en": "There is some tea in the kitchen.",
+        "ar": "يوجد بعض الشاي في المطبخ."
+      }
+    ],
+    "practice": [
+      {
+        "question": "There ___ a book on the desk.",
+        "answer": "is",
+        "choices": [
+          "is",
+          "are",
+          "some"
+        ]
+      },
+      {
+        "question": "There ___ three cars outside.",
+        "answer": "are",
+        "choices": [
+          "is",
+          "are",
+          "any"
+        ]
+      },
+      {
+        "question": "Is there ___ milk left?",
+        "answer": "any",
+        "choices": [
+          "some",
+          "any",
+          "a"
+        ]
+      },
+      {
+        "question": "There aren't ___ students in the class.",
+        "answer": "any",
+        "choices": [
+          "some",
+          "any",
+          "a"
+        ]
+      },
+      {
+        "question": "There ___ some water in the cup.",
+        "answer": "is",
+        "choices": [
+          "is",
+          "are",
+          "am"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "a1-grammar-12",
+    "lessonNumber": 12,
+    "topic": "Adjectives & Word Order",
+    "arabicName": "الصفات وترتيبها في الجملة",
+    "concept": "Adjectives describe nouns. In English, adjectives always go BEFORE the noun, and they do not change form for plural nouns.",
+    "represents": "Noun descriptions.",
+    "arabicComparison": "في العربية، تأتي الصفة بَعْد الموصوف (سيارة حمراء). في الإنجليزية، تأتي الصفة قَبْل الموصوف (a red car). وتذكر أن الصفة بالإنجليزية لا تُجمع أبداً (cars are red وليس reds).",
+    "useWhen": [
+      "Placing an adjective before a noun: a tall man, a new laptop.",
+      "After link verbs (like, be, look, feel): She is happy. The food looks delicious."
+    ],
+    "doNotUseWhen": [
+      "Do not make adjectives plural. Say 'intelligent students' NOT 'intelligents students'."
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "This is a car new.",
+        "correct": "This is a new car.",
+        "explanation": "الصفة تأتي قبل الاسم الموصوف في الإنجليزية."
+      },
+      {
+        "wrong": "They are goods students.",
+        "correct": "They are good students.",
+        "explanation": "الصفات لا تجمع في اللغة الإنجليزية."
+      },
+      {
+        "wrong": "I bought a red big bag.",
+        "correct": "I bought a big red bag.",
+        "explanation": "ترتيب الصفات يضع الحجم (big) قبل اللون (red)."
+      }
+    ],
+    "structure": {
+      "positive": "Subject + verb + Adjective + Noun | Noun + is + Adjective",
+      "negative": "N/A",
+      "question": "Is it a + Adjective + noun?"
+    },
+    "examples": [
+      {
+        "en": "This is an expensive car.",
+        "ar": "هذه سيارة غالية الثمن."
+      },
+      {
+        "en": "She has blue eyes and black hair.",
+        "ar": "لديها عينان زرقاوان وشعر أسود."
+      },
+      {
+        "en": "They are smart students.",
+        "ar": "هم طلاب أذكياء."
+      },
+      {
+        "en": "The hot soup is on the table.",
+        "ar": "الحساء الساخن على الطاولة."
+      },
+      {
+        "en": "That movie is interesting.",
+        "ar": "ذلك الفيلم ممتع."
+      }
+    ],
+    "practice": [
+      {
+        "question": "He bought a ___ phone. (new / cheap)",
+        "answer": "cheap new",
+        "choices": [
+          "new cheap",
+          "cheap new",
+          "new and cheap"
+        ]
+      },
+      {
+        "question": "She is a ___ girl.",
+        "answer": "beautiful",
+        "choices": [
+          "beautiful",
+          "beautifuls",
+          "beautifully"
+        ]
+      },
+      {
+        "question": "They have three ___ (smart) dogs.",
+        "answer": "smart",
+        "choices": [
+          "smarts",
+          "smart",
+          "smartly"
+        ]
+      },
+      {
+        "question": "This is a ___ (bag / black).",
+        "answer": "black bag",
+        "choices": [
+          "bag black",
+          "black bag",
+          "blacks bag"
+        ]
+      },
+      {
+        "question": "The food smells ___.",
+        "answer": "good",
+        "choices": [
+          "good",
+          "well",
+          "goods"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "a1-grammar-13",
+    "lessonNumber": 13,
+    "topic": "Can & Can't",
+    "arabicName": "التعبير عن القدرة والاستطاعة (Can / Can't)",
+    "concept": "Use 'can' to talk about ability to do something in the present. Use 'cannot' or 'can't' to talk about lack of ability. The verb after 'can' is always in the base form.",
+    "represents": "Ability, possibility, or permission.",
+    "arabicComparison": "كلمة 'يستطيع' في العربية يتبعها فعل مضارع. في الإنجليزية نستخدم 'can' ويتبعها الفعل في المصدر بدون 'to' (I can speak وليس I can to speak).",
+    "useWhen": [
+      "Expressing ability: She can swim.",
+      "Asking for permission: Can I use your pen?",
+      "Expressing possibility: We can go to the beach tomorrow."
+    ],
+    "doNotUseWhen": [
+      "Do not add 'to' after can. Say 'I can swim' NOT 'I can to swim'.",
+      "Do not add -s to can for he/she/it (e.g. say 'He can run' NOT 'He cans run')."
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "He can speaks English.",
+        "correct": "He can speak English.",
+        "explanation": "الفعل بعد can يأتي في المصدر بدون s أو إضافات."
+      },
+      {
+        "wrong": "I can to play tennis.",
+        "correct": "I can play tennis.",
+        "explanation": "لا تستخدم to بعد can."
+      },
+      {
+        "wrong": "She doesn't can drive.",
+        "correct": "She can't drive.",
+        "explanation": "نفي can هو can't أو cannot ولا نستخدم doesn't."
+      }
+    ],
+    "structure": {
+      "positive": "Subject + can + base verb",
+      "negative": "Subject + can + not (can't) + base verb",
+      "question": "Can + subject + base verb?"
+    },
+    "examples": [
+      {
+        "en": "I can speak Arabic and English.",
+        "ar": "أستطيع التحدث باللغتين العربية والإنجليزية."
+      },
+      {
+        "en": "He can't swim in deep water.",
+        "ar": "لا يستطيع السباحة في المياه العميقة."
+      },
+      {
+        "en": "Can you help me with this box?",
+        "ar": "هل يمكنك مساعدتي في هذا الصندوق؟"
+      },
+      {
+        "en": "She can play the piano very well.",
+        "ar": "تستطيع عزف البيانو بشكل جيد جداً."
+      },
+      {
+        "en": "They can't come to the class today.",
+        "ar": "لا يمكنهم المجيء إلى الحصة اليوم."
+      }
+    ],
+    "practice": [
+      {
+        "question": "She can ___ (run) fast.",
+        "answer": "run",
+        "choices": [
+          "run",
+          "runs",
+          "running"
+        ]
+      },
+      {
+        "question": "I ___ (not / swim).",
+        "answer": "can't",
+        "choices": [
+          "don't can",
+          "can't",
+          "not can"
+        ]
+      },
+      {
+        "question": "___ you speak Spanish?",
+        "answer": "Can",
+        "choices": [
+          "Do",
+          "Can",
+          "Are"
+        ]
+      },
+      {
+        "question": "He can ___ (drive) a car.",
+        "answer": "drive",
+        "choices": [
+          "drive",
+          "drives",
+          "to drive"
+        ]
+      },
+      {
+        "question": "They ___ come tomorrow because they are busy.",
+        "answer": "can't",
+        "choices": [
+          "can",
+          "can't",
+          "don't"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "a1-grammar-14",
+    "lessonNumber": 14,
+    "topic": "Imperatives",
+    "arabicName": "صيغة الأمر (Instructions & Commands)",
+    "concept": "Use imperatives to give instructions, orders, directions, or warnings. You use the base form of the verb without a subject.",
+    "represents": "Direct orders or instructions.",
+    "arabicComparison": "في العربية، يتغير فعل الأمر حسب الجنس والعدد (اكتب، اكتبي، اكتبوا). في الإنجليزية نستخدم شكل الفعل الأساسي بدون أي تغيير للجميع: 'Write!'.",
+    "useWhen": [
+      "Giving directions: Turn left at the corner.",
+      "Giving instructions: Open your book on page 10.",
+      "Giving warnings: Be careful!",
+      "Making polite requests: Please sit down."
+    ],
+    "doNotUseWhen": [
+      "Do not use a subject pronoun (like 'you') when issuing an imperative command. Say 'Come here' NOT 'You come here'."
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "You write your name.",
+        "correct": "Write your name.",
+        "explanation": "صيغة الأمر لا تحتاج لذكر الفاعل you في البداية."
+      },
+      {
+        "wrong": "Don't playing here.",
+        "correct": "Don't play here.",
+        "explanation": "بعد Don't يأتي الفعل في المصدر بدون إضافات."
+      },
+      {
+        "wrong": "Not touch this machine.",
+        "correct": "Don't touch this machine.",
+        "explanation": "نفي الأمر يكون بـ Don't وليس Not."
+      }
+    ],
+    "structure": {
+      "positive": "Base verb + object/direction",
+      "negative": "Don't (Do not) + base verb + object/direction",
+      "question": "N/A"
+    },
+    "examples": [
+      {
+        "en": "Listen to the teacher, please.",
+        "ar": "استمع إلى المعلم من فضلك."
+      },
+      {
+        "en": "Don't open the window; it is cold.",
+        "ar": "لا تفتح النافذة؛ فالجو بارد."
+      },
+      {
+        "en": "Be quiet in the exam room.",
+        "ar": "كن هادئاً في قاعة الامتحان."
+      },
+      {
+        "en": "Turn off your phone during class.",
+        "ar": "أغلق هاتفك أثناء الحصة."
+      },
+      {
+        "en": "Eat your dinner.",
+        "ar": "تناول عشاءك."
+      }
+    ],
+    "practice": [
+      {
+        "question": "___ your books now. (open)",
+        "answer": "Open",
+        "choices": [
+          "Open",
+          "Opens",
+          "Opening"
+        ]
+      },
+      {
+        "question": "___ run in the corridor!",
+        "answer": "Don't",
+        "choices": [
+          "No",
+          "Not",
+          "Don't"
+        ]
+      },
+      {
+        "question": "Please ___ careful.",
+        "answer": "be",
+        "choices": [
+          "is",
+          "are",
+          "be"
+        ]
+      },
+      {
+        "question": "___ touch that wire. It is hot.",
+        "answer": "Don't",
+        "choices": [
+          "Don't",
+          "Doesn't",
+          "No"
+        ]
+      },
+      {
+        "question": "___ here, please.",
+        "answer": "Come",
+        "choices": [
+          "Come",
+          "Comes",
+          "To come"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "a1-grammar-15",
+    "lessonNumber": 15,
+    "topic": "Adverbs of Frequency",
+    "arabicName": "ظروف التكرار (always, usually, never...)",
+    "concept": "Adverbs of frequency show how often something happens. They usually go before main verbs, but after the verb 'to be'.",
+    "represents": "Frequency of habits or events.",
+    "arabicComparison": "في العربية، يمكن وضع ظرف التكرار في بداية الجملة أو نهايتها (أنا أذهب دائماً أو دائماً أذهب). في الإنجليزية، موقعه محدد جداً: قبل الفعل الرئيسي، أو بعد فعل الكينونة.",
+    "useWhen": [
+      "Before action verbs: I always eat breakfast.",
+      "After verb 'to be': She is usually late."
+    ],
+    "doNotUseWhen": [
+      "Do not use 'never' with a negative verb. Say 'I never smoke' NOT 'I don't never smoke' (double negative error)."
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "I go always to the gym.",
+        "correct": "I always go to the gym.",
+        "explanation": "ظرف التكرار يأتي قبل الفعل الرئيسي (go)."
+      },
+      {
+        "wrong": "She usually is happy.",
+        "correct": "She is usually happy.",
+        "explanation": "ظرف التكرار يأتي بعد فعل الكينونة (is)."
+      },
+      {
+        "wrong": "I don't never eat meat.",
+        "correct": "I never eat meat.",
+        "explanation": "كلمة never تعني النفي بمفردها، فلا نستخدم معها don't لمنع النفي المزدوج."
+      }
+    ],
+    "structure": {
+      "positive": "Subject + Adverb of Frequency + Main Verb | Subject + 'to be' + Adverb of Frequency",
+      "negative": "Subject + do/does + not + Adverb + Verb",
+      "question": "Do/Does + subject + Adverb + Verb?"
+    },
+    "examples": [
+      {
+        "en": "I always study at night.",
+        "ar": "أنا دائماً أدرس في الليل."
+      },
+      {
+        "en": "They are sometimes late for class.",
+        "ar": "هم متأخرون أحياناً عن الحصة."
+      },
+      {
+        "en": "He never drinks coffee.",
+        "ar": "هو لا يشرب القهوة أبداً."
+      },
+      {
+        "en": "She usually walks to work.",
+        "ar": "هي عادةً تمشي إلى العمل."
+      },
+      {
+        "en": "Do you often travel in summer?",
+        "ar": "هل تسافر غالباً في الصيف؟"
+      }
+    ],
+    "practice": [
+      {
+        "question": "I ___ (always / drink) milk in the morning.",
+        "answer": "always drink",
+        "choices": [
+          "drink always",
+          "always drink",
+          "am always drink"
+        ]
+      },
+      {
+        "question": "She ___ (is / usually) happy.",
+        "answer": "is usually",
+        "choices": [
+          "usually is",
+          "is usually",
+          "usually"
+        ]
+      },
+      {
+        "question": "We ___ (never / watch) TV.",
+        "answer": "never watch",
+        "choices": [
+          "don't never watch",
+          "never watch",
+          "never watches"
+        ]
+      },
+      {
+        "question": "They ___ (often / go) to Alexandria.",
+        "answer": "often go",
+        "choices": [
+          "go often",
+          "often go",
+          "often goes"
+        ]
+      },
+      {
+        "question": "He is ___ (late / sometimes).",
+        "answer": "sometimes late",
+        "choices": [
+          "sometimes late",
+          "late sometimes",
+          "is sometimes late"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "a1-grammar-16",
+    "lessonNumber": 16,
+    "topic": "Past Simple of 'To Be'",
+    "arabicName": "الماضي البسيط لفعل الكينونة (was, were)",
+    "concept": "Use 'was' (singular) and 'were' (plural) to talk about states, identities, or locations in the past.",
+    "represents": "Past states of being.",
+    "arabicComparison": "نستخدم كلمة 'كان' في العربية للمفرد و 'كانوا' للجمع. في الإنجليزية نستخدم 'was' مع (I, he, she, it) ونستخدم 'were' مع (we, you, they).",
+    "useWhen": [
+      "Talking about past location: I was at home yesterday.",
+      "Talking about past states: They were tired last night."
+    ],
+    "doNotUseWhen": [
+      "Do not use 'was/were' with the past form of action verbs (e.g. say 'I went' NOT 'I was went')."
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "We was busy yesterday.",
+        "correct": "We were busy yesterday.",
+        "explanation": "استخدم were مع ضمير الجمع we."
+      },
+      {
+        "wrong": "Where was you?",
+        "correct": "Where were you?",
+        "explanation": "الضمير you يأخذ were دائماً سواء كان للمفرد أو الجمع."
+      },
+      {
+        "wrong": "I was went to Alexandria.",
+        "correct": "I went to Alexandria.",
+        "explanation": "لا تستخدم was مع فعل حركي في الماضي البسيط."
+      }
+    ],
+    "structure": {
+      "positive": "Subject + was/were + adjective/noun/place",
+      "negative": "Subject + was/were + not (wasn't/weren't) + adjective/noun/place",
+      "question": "Was/Were + subject + adjective/noun/place?"
+    },
+    "examples": [
+      {
+        "en": "I was a child ten years ago.",
+        "ar": "كنت طفلاً قبل عشر سنوات."
+      },
+      {
+        "en": "They were happy with the food.",
+        "ar": "كانوا سعداء بالطعام."
+      },
+      {
+        "en": "She wasn't at school last Tuesday.",
+        "ar": "لم تكن في المدرسة الثلاثاء الماضي."
+      },
+      {
+        "en": "Were you in Cairo yesterday?",
+        "ar": "هل كنت في القاهرة بالأمس؟"
+      },
+      {
+        "en": "It was cold in winter.",
+        "ar": "كان الجو بارداً في الشتاء."
+      }
+    ],
+    "practice": [
+      {
+        "question": "I ___ at home yesterday.",
+        "answer": "was",
+        "choices": [
+          "was",
+          "were",
+          "am"
+        ]
+      },
+      {
+        "question": "They ___ tired after the long trip.",
+        "answer": "were",
+        "choices": [
+          "was",
+          "were",
+          "are"
+        ]
+      },
+      {
+        "question": "She ___ (not / be) at the meeting.",
+        "answer": "was not",
+        "choices": [
+          "was not",
+          "were not",
+          "is not"
+        ]
+      },
+      {
+        "question": "___ you in Alexandria last summer?",
+        "answer": "Were",
+        "choices": [
+          "Was",
+          "Were",
+          "Did"
+        ]
+      },
+      {
+        "question": "It ___ a dark night.",
+        "answer": "was",
+        "choices": [
+          "was",
+          "were",
+          "is"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "a1-grammar-17",
+    "lessonNumber": 17,
+    "topic": "Past Simple (Action Verbs)",
+    "arabicName": "الماضي البسيط (الأفعال الحركية)",
+    "concept": "Use the Past Simple to talk about completed actions in the past. Regular verbs end in -ed, while irregular verbs change forms. Use 'did' and 'didn't' for questions and negatives.",
+    "represents": "Completed past actions.",
+    "arabicComparison": "في الإنجليزية نستخدم فعل مساعد 'did / didn't' لنفي وسؤال الماضي، ويعود الفعل الرئيسي لشكل المصدر (I didn't play وليس I didn't played).",
+    "useWhen": [
+      "Actions completed in the past: I watched a movie yesterday.",
+      "With past time markers: ago, yesterday, last week."
+    ],
+    "doNotUseWhen": [
+      "Do not use Past Simple when talking about present habits or actions happening now."
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "I didn't played tennis.",
+        "correct": "I didn't play tennis.",
+        "explanation": "بعد didn't يعود الفعل إلى مصدره بدون -ed."
+      },
+      {
+        "wrong": "Did you went?",
+        "correct": "Did you go?",
+        "explanation": "في السؤال باستخدام Did، يعود الفعل الرئيسي إلى شكل المصدر (go)."
+      },
+      {
+        "wrong": "He writed a letter.",
+        "correct": "He wrote a letter.",
+        "explanation": "الفعل write غير منتظم (irregular) وماضيه wrote وليس writed."
+      }
+    ],
+    "structure": {
+      "positive": "Subject + past verb (regular -ed / irregular)",
+      "negative": "Subject + did + not + base verb",
+      "question": "Did + subject + base verb?"
+    },
+    "examples": [
+      {
+        "en": "I visited my family last week.",
+        "ar": "زرت عائلتي الأسبوع الماضي."
+      },
+      {
+        "en": "They bought a new house two days ago.",
+        "ar": "اشتروا منزلاً جديداً قبل يومين."
+      },
+      {
+        "en": "She didn't write the homework.",
+        "ar": "هي لم تكتب الواجب."
+      },
+      {
+        "en": "Did you see the teacher yesterday?",
+        "ar": "هل رأيت المعلم بالأمس؟"
+      },
+      {
+        "en": "We went to the beach on Friday.",
+        "ar": "ذهبنا إلى الشاطئ يوم الجمعة."
+      }
+    ],
+    "practice": [
+      {
+        "question": "He ___ (study) English last night.",
+        "answer": "studied",
+        "choices": [
+          "study",
+          "studied",
+          "studying"
+        ]
+      },
+      {
+        "question": "I ___ (not / see) him yesterday.",
+        "answer": "didn't see",
+        "choices": [
+          "didn't saw",
+          "didn't see",
+          "don't see"
+        ]
+      },
+      {
+        "question": "Where ___ you go last week?",
+        "answer": "did",
+        "choices": [
+          "do",
+          "did",
+          "were"
+        ]
+      },
+      {
+        "question": "She ___ (go) to Cairo yesterday.",
+        "answer": "went",
+        "choices": [
+          "goed",
+          "went",
+          "go"
+        ]
+      },
+      {
+        "question": "Did they ___ the match? (watch)",
+        "answer": "watch",
+        "choices": [
+          "watch",
+          "watched",
+          "watching"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "a1-grammar-18",
+    "lessonNumber": 18,
+    "topic": "Future with 'Going to'",
+    "arabicName": "المستقبل باستخدام Going to",
+    "concept": "Use 'be going to + verb' to talk about plans, intentions, or predictions based on current evidence.",
+    "represents": "Planned future actions.",
+    "arabicComparison": "يتطابق هذا مع استخدام السين أو سوف في العربية (سأفعل / سوف أفعل). نستخدم في الإنجليزية: am/is/are + going to + الفعل في المصدر.",
+    "useWhen": [
+      "Future plans decided before speaking: I am going to study tonight.",
+      "Predictions based on evidence: Look at the dark clouds! It is going to rain."
+    ],
+    "doNotUseWhen": [
+      "Do not forget to use the verb 'to be' (am/is/are) before 'going to'.",
+      "Do not use 'going to' for rapid, unplanned decisions at the moment of speaking (use 'will' instead)."
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "I going to travel.",
+        "correct": "I am going to travel.",
+        "explanation": "يجب كتابة فعل الكينونة am قبل going to."
+      },
+      {
+        "wrong": "She is going to buying a car.",
+        "correct": "She is going to buy a car.",
+        "explanation": "الفعل الذي يتبع to يأتي في المصدر بدون ing."
+      },
+      {
+        "wrong": "They are going to school tomorrow.",
+        "correct": "They are going to go to school tomorrow.",
+        "explanation": "للتعبير عن نية الذهاب لمكان، نقول going to go to."
+      }
+    ],
+    "structure": {
+      "positive": "Subject + am/is/are + going to + base verb",
+      "negative": "Subject + am/is/are + not + going to + base verb",
+      "question": "Am/Is/Are + subject + going to + base verb?"
+    },
+    "examples": [
+      {
+        "en": "I am going to visit Alexandria next month.",
+        "ar": "أنا سأزور الإسكندرية الشهر القادم."
+      },
+      {
+        "en": "He is going to study medicine at university.",
+        "ar": "هو سوف يدرس الطب في الجامعة."
+      },
+      {
+        "en": "They are not going to play football tomorrow.",
+        "ar": "هم لن يلعبوا كرة القدم غداً."
+      },
+      {
+        "en": "Are you going to attend the class?",
+        "ar": "هل ستحضر الحصة؟"
+      },
+      {
+        "en": "Watch out! The glass is going to fall.",
+        "ar": "احذر! الكوب سوف يسقط."
+      }
+    ],
+    "practice": [
+      {
+        "question": "I ___ (travel) to Saudi Arabia next week.",
+        "answer": "am going to travel",
+        "choices": [
+          "going to travel",
+          "am going to travel",
+          "will going to travel"
+        ]
+      },
+      {
+        "question": "She is going to ___ a new phone. (buy)",
+        "answer": "buy",
+        "choices": [
+          "buy",
+          "buys",
+          "buying"
+        ]
+      },
+      {
+        "question": "___ they going to build a new library?",
+        "answer": "Are",
+        "choices": [
+          "Do",
+          "Are",
+          "Is"
+        ]
+      },
+      {
+        "question": "It is very cloudy. It ___ rain. (be going to)",
+        "answer": "is going to",
+        "choices": [
+          "is going to",
+          "goes to",
+          "going to"
+        ]
+      },
+      {
+        "question": "We ___ (not / going to) watch the movie.",
+        "answer": "are not going to",
+        "choices": [
+          "are not going to",
+          "don't going to",
+          "is not going to"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "a1-grammar-19",
+    "lessonNumber": 19,
+    "topic": "Question Words",
+    "arabicName": "أدوات الاستفهام (Who, What, Where, When...)",
+    "concept": "Use question words to ask for specific information instead of a yes/no answer.",
+    "represents": "Information queries.",
+    "arabicComparison": "أدوات الاستفهام متطابقة: Who (من)، What (ماذا)، Where (أين)، When (متى)، Why (لماذا)، How (كيف). تذكر ترتيب السؤال بالإنجليزية حيث نضع الفعل المساعد قبل الفاعل.",
+    "useWhen": [
+      "Who: Asking about a person.",
+      "What: Asking about a thing or action.",
+      "Where: Asking about a place.",
+      "When: Asking about time.",
+      "Why: Asking about a reason.",
+      "How: Asking about manner or quantity/age (How old / How many)."
+    ],
+    "doNotUseWhen": [
+      "Do not forget the helping verb (do/does/is/are) when asking a question after the question word."
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "Where you live?",
+        "correct": "Where do you live?",
+        "explanation": "يجب وضع الفعل المساعد do قبل الفاعل you في السؤال."
+      },
+      {
+        "wrong": "What is your name?",
+        "correct": "What is your name?",
+        "explanation": "هذه الصيغة صحيحة تماماً."
+      },
+      {
+        "wrong": "Why you are late?",
+        "correct": "Why are you late?",
+        "explanation": "في السؤال، نضع فعل الكينونة are قبل الفاعل you."
+      }
+    ],
+    "structure": {
+      "positive": "Question Word + do/does/did/be + subject + main verb?",
+      "negative": "N/A",
+      "question": "N/A"
+    },
+    "examples": [
+      {
+        "en": "Where do you study English?",
+        "ar": "أين تدرس اللغة الإنجليزية؟"
+      },
+      {
+        "en": "Who is your English teacher?",
+        "ar": "من هو معلم اللغة الإنجليزية الخاص بك؟"
+      },
+      {
+        "en": "When does the train leave?",
+        "ar": "متى يغادر القطار؟"
+      },
+      {
+        "en": "Why are you studying?",
+        "ar": "لماذا تدرس؟"
+      },
+      {
+        "en": "How do you go to university?",
+        "ar": "كيف تذهب إلى الجامعة؟"
+      }
+    ],
+    "practice": [
+      {
+        "question": "___ is your name?",
+        "answer": "What",
+        "choices": [
+          "Who",
+          "What",
+          "Where"
+        ]
+      },
+      {
+        "question": "___ do you live? (Cairo)",
+        "answer": "Where",
+        "choices": [
+          "What",
+          "Where",
+          "When"
+        ]
+      },
+      {
+        "question": "___ is that man at the door?",
+        "answer": "Who",
+        "choices": [
+          "Who",
+          "What",
+          "Why"
+        ]
+      },
+      {
+        "question": "___ do you sleep? (At 10:00 PM)",
+        "answer": "When",
+        "choices": [
+          "Where",
+          "When",
+          "Why"
+        ]
+      },
+      {
+        "question": "___ are you sad?",
+        "answer": "Why",
+        "choices": [
+          "Why",
+          "How",
+          "Who"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "a1-grammar-20",
+    "lessonNumber": 20,
+    "topic": "Conjunctions: And, But, Or, Because",
+    "arabicName": "أدوات الربط (And, But, Or, Because)",
+    "concept": "Conjunctions connect words, phrases, or sentences to express relationships.",
+    "represents": "Logical connections (addition, contrast, alternative, reason).",
+    "arabicComparison": "تطابق أدوات الربط في العربية: And (و)، But (لكن)، Or (أو)، Because (لأن).",
+    "useWhen": [
+      "and: adding information (I like tea and coffee).",
+      "but: contrasting information (I like tea, but I don't like coffee).",
+      "or: offering a choice (Do you want tea or coffee?).",
+      "because: giving a reason (I drink water because I am thirsty)."
+    ],
+    "doNotUseWhen": [
+      "Do not start informal sentences with 'Because' when answering in a writing task; use it to join two sentences."
+    ],
+    "commonMistakes": [
+      {
+        "wrong": "I speak Arabic but English.",
+        "correct": "I speak Arabic and English.",
+        "explanation": "استخدم and للإضافة وليس but التي تدل على التعارض."
+      },
+      {
+        "wrong": "I went to sleep because I was busy.",
+        "correct": "I went to sleep because I was tired.",
+        "explanation": "اختر أداة الربط المناسبة للمعنى (السببية هنا تقتضي التعب)."
+      },
+      {
+        "wrong": "He studies hard but he failed the exam.",
+        "correct": "He studied hard but he failed the exam.",
+        "explanation": "هذه الجملة صحيحة قواعدياً وتوضح استخدام but للتعارض."
+      }
+    ],
+    "structure": {
+      "positive": "Clause 1 + conjunction + Clause 2",
+      "negative": "N/A",
+      "question": "N/A"
+    },
+    "examples": [
+      {
+        "en": "I study English and French at university.",
+        "ar": "أدرس الإنجليزية والفرنسية في الجامعة."
+      },
+      {
+        "en": "She wants to buy a phone, but she doesn't have money.",
+        "ar": "تريد شراء هاتف، ولكنها لا تملك نقوداً."
+      },
+      {
+        "en": "We can go by bus or take a taxi.",
+        "ar": "يمكننا الذهاب بالحافلة أو ركوب سيارة أجرة."
+      },
+      {
+        "en": "I didn't go to school because I was sick.",
+        "ar": "لم أذهب إلى المدرسة لأنني كنت مريضاً."
+      },
+      {
+        "en": "He is happy because he passed his exams.",
+        "ar": "هو سعيد لأنه اجتاز امتحاناته."
+      }
+    ],
+    "practice": [
+      {
+        "question": "I like apples ___ oranges. (addition)",
+        "answer": "and",
+        "choices": [
+          "and",
+          "but",
+          "or"
+        ]
+      },
+      {
+        "question": "I studied hard, ___ I failed the test. (contrast)",
+        "answer": "but",
+        "choices": [
+          "and",
+          "but",
+          "because"
+        ]
+      },
+      {
+        "question": "Do you want tea ___ coffee? (choice)",
+        "answer": "or",
+        "choices": [
+          "and",
+          "but",
+          "or"
+        ]
+      },
+      {
+        "question": "He goes home ___ he is tired. (reason)",
+        "answer": "because",
+        "choices": [
+          "and",
+          "but",
+          "because"
+        ]
+      },
+      {
+        "question": "She speaks English, ___ she doesn't speak French.",
+        "answer": "but",
+        "choices": [
+          "and",
+          "but",
+          "or"
+        ]
+      }
+    ]
+  }
+]
