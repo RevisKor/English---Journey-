@@ -354,4 +354,5 @@
 - [x] Reproduce and diagnose the production TypeScript type-resolution errors that prevent the Vercel function from starting.
 - [x] Repair the Vercel dependency, Express typing, and Vite plugin contracts without reintroducing Manus runtime dependencies.
 - [x] Validate the serverless build and regression coverage, then publish the recovery commit to GitHub.
+- [ ] Ensure Vercel recognizes the self-contained generated API handler as a serverless function rather than returning an API-route 404.
 - [ ] Confirm the redeployed Vercel function loads and completes Google sign-in with persisted learner progress.

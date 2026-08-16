@@ -38,6 +38,8 @@ describe("Vercel hosting adapter", () => {
       scripts: Record<string, string>;
     };
     const html = readFileSync("client/index.html", "utf8");
+    const ignoredFiles = readFileSync(".gitignore", "utf8");
+    const generatedHandler = readFileSync("api/index.js", "utf8");
 
     expect(packageJson.scripts.build).toBe("pnpm build:client && pnpm build:serverless");
     expect(packageJson.scripts["build:client"]).toBe("vite build");
@@ -45,6 +47,9 @@ describe("Vercel hosting adapter", () => {
     expect(packageJson.scripts.build).not.toContain("server/_core/index.ts");
     expect(html).not.toContain("%VITE_ANALYTICS_ENDPOINT%");
     expect(html).not.toContain("%VITE_ANALYTICS_WEBSITE_ID%");
+    expect(ignoredFiles).not.toMatch(/^api\/index\.js$/m);
+    expect(generatedHandler).not.toContain('from "../server/app"');
+    expect(generatedHandler).not.toContain("from '../server/app'");
   });
 
   it("keeps Vercel-checked source files in the local type-check scope", () => {
