@@ -87,15 +87,37 @@ describe("curriculum catalog practice persistence", () => {
     .flatMap((entry) => Array.isArray(entry.values) ? entry.values : [entry.values]) as T[];
 
   it("treats an interrupted versioned A2 refresh as incomplete until all nine modules and 135 current lessons exist", () => {
-    const partialLessons = Array.from({ length: 20 }, () => ({ contentVersion: 4 }));
-    const completeLessons = Array.from({ length: A2_COURSE.totalLessons }, () => ({ contentVersion: 4 }));
+    const partialLessons = Array.from({ length: 20 }, () => ({ contentVersion: 5 }));
+    const completeLessons = Array.from({ length: A2_COURSE.totalLessons }, () => ({ contentVersion: 5 }));
     const expectedVocabularyCount = A2_COURSE.lessons.reduce((count, lesson) => count + lesson.words.length, 0);
 
-    expect(courseNeedsCatalogSynchronization(A2_COURSE, { contentVersion: 4 }, 4, partialLessons)).toBe(true);
-    expect(courseNeedsCatalogSynchronization(A2_COURSE, { contentVersion: 4 }, 9, completeLessons)).toBe(false);
-    expect(courseNeedsCatalogSynchronization(A2_COURSE, { contentVersion: 4 }, 9, completeLessons, expectedVocabularyCount - 1)).toBe(true);
-    expect(courseNeedsCatalogSynchronization(A2_COURSE, { contentVersion: 4 }, 9, completeLessons, expectedVocabularyCount)).toBe(false);
-    expect(courseNeedsCatalogSynchronization(A2_COURSE, { contentVersion: 3 }, 9, completeLessons)).toBe(true);
+    expect(courseNeedsCatalogSynchronization(A2_COURSE, { contentVersion: 5 }, 4, partialLessons)).toBe(true);
+    expect(courseNeedsCatalogSynchronization(A2_COURSE, { contentVersion: 5 }, 9, completeLessons)).toBe(false);
+    expect(courseNeedsCatalogSynchronization(A2_COURSE, { contentVersion: 5 }, 9, completeLessons, expectedVocabularyCount - 1)).toBe(true);
+    expect(courseNeedsCatalogSynchronization(A2_COURSE, { contentVersion: 5 }, 9, completeLessons, expectedVocabularyCount)).toBe(false);
+    expect(courseNeedsCatalogSynchronization(A2_COURSE, { contentVersion: 4 }, 9, completeLessons)).toBe(true);
+  });
+
+  it("treats a partial structured-practice snapshot as incomplete even when its lessons and vocabulary are current", () => {
+    const completeLessons = Array.from({ length: B1_COURSE.totalLessons }, () => ({ contentVersion: 5 }));
+    const expectedVocabularyCount = B1_COURSE.lessons.reduce((count, lesson) => count + lesson.words.length, 0);
+
+    expect(courseNeedsCatalogSynchronization(
+      B1_COURSE,
+      { contentVersion: 5 },
+      10,
+      completeLessons,
+      expectedVocabularyCount,
+      { grammar: 150, readings: 149, writing: 150 },
+    )).toBe(true);
+    expect(courseNeedsCatalogSynchronization(
+      B1_COURSE,
+      { contentVersion: 5 },
+      10,
+      completeLessons,
+      expectedVocabularyCount,
+      { grammar: 150, readings: 150, writing: 150 },
+    )).toBe(false);
   });
 
   it("can resume only the incomplete A2 course without refreshing other levels", async () => {
@@ -157,9 +179,9 @@ describe("curriculum catalog practice persistence", () => {
     const expectedLessons = integratedCourses.flatMap((course) => course.lessons.map((lesson) => ({ course, lesson })));
     const expectedReadingUpdates = expectedLessons.map(({ course, lesson }) => {
       const reading = structuredReading(course, lesson);
-      return { titleArabic: reading.titleArabic, passage: reading.passage, questions: reading.questions, contentVersion: 4 };
+      return { titleArabic: reading.titleArabic, passage: reading.passage, questions: reading.questions, contentVersion: 5 };
     });
-    const expectedWritingUpdates = expectedLessons.map(({ course, lesson }) => ({ ...structuredWriting(course, lesson), contentVersion: 4 }));
+    const expectedWritingUpdates = expectedLessons.map(({ course, lesson }) => ({ ...structuredWriting(course, lesson), contentVersion: 5 }));
     const readingUpdates = state.updates.filter((entry) => entry.table === lessonReadings).map((entry) => entry.values);
     const writingUpdates = state.updates.filter((entry) => entry.table === lessonWritingTasks).map((entry) => entry.values);
 

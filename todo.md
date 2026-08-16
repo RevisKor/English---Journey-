@@ -202,11 +202,11 @@
 
 ## Locked post-A1 authoring roadmap — do not begin until A1 review is approved
 - [x] A2: author 9 modules × 15 lessons = 135 active lessons. Extend A1 foundations into daily problem-solving, connected speech, comparatives, past experiences, practical messages, paragraph writing, guided punctuation, phrase families, and longer dialogue/reading tasks.
-- [ ] B1: author 10 modules × 15 lessons = 150 active lessons. Build independent communication through opinion, narrative, travel/work/study scenarios, collocations, phrasal verbs, paragraph cohesion, formal/informal register, multi-paragraph writing, and evidence-based reading.
-- [ ] B2: author 10 modules × 15 lessons = 150 active lessons. Require nuanced comparison, argument, reports, presentations, idiomatic but appropriate phrasing, lexical precision, tone choices, source comparison, extended discussion, and revision of longer writing.
-- [ ] C1: author 10 modules × 16 lessons = 160 active lessons. Develop advanced academic/professional communication through complex syntax, rhetorical structure, collocation, implied meaning, mediation, critical reading, research-informed writing, and register control.
-- [ ] C2: author 12 modules × 15 lessons = 180 active lessons. Develop flexible, near-expert use through subtle connotation, genre transformation, critical synthesis, ambiguity, persuasive and creative discourse, high-level mediation, and substantial independent projects.
-- [ ] Across A2–C2: make lessons progressively longer and denser; add new communicative knowledge—not only additional word lists or grammar rules—through pictures, dialogues, pronunciation, punctuation, phrase comparison, synonyms/antonyms, collocation, reading, writing, speaking, review, and contextual assessment.
+- [x] B1: author 10 modules × 15 lessons = 150 active lessons. Build independent communication through opinion, narrative, travel/work/study scenarios, collocations, phrasal verbs, paragraph cohesion, formal/informal register, multi-paragraph writing, and evidence-based reading.
+- [x] B2: author 10 modules × 15 lessons = 150 active lessons. Require nuanced comparison, argument, reports, presentations, idiomatic but appropriate phrasing, lexical precision, tone choices, source comparison, extended discussion, and revision of longer writing.
+- [x] C1: author 10 modules × 16 lessons = 160 active lessons. Develop advanced academic/professional communication through complex syntax, rhetorical structure, collocation, implied meaning, mediation, critical reading, research-informed writing, and register control.
+- [x] C2: author 12 modules × 15 lessons = 180 active lessons. Develop flexible, near-expert use through subtle connotation, genre transformation, critical synthesis, ambiguity, persuasive and creative discourse, high-level mediation, and substantial independent projects.
+- [x] Across A2–C2: make lessons progressively longer and denser; add new communicative knowledge—not only additional word lists or grammar rules—through pictures, dialogues, pronunciation, punctuation, phrase comparison, synonyms/antonyms, collocation, reading, writing, speaking, review, and contextual assessment.
 # A2 Expansion — Authored Curriculum Phase
 - [x] Define the A2 9-module × 15-lesson architecture with CEFR-progressive goals and repeated-exposure requirements.
 - [x] Author the complete A2 135-lesson inventory with bilingual mentor guidance, vocabulary, grammar, dialogue, speaking, reading, writing, review, and assessment coverage.
@@ -272,9 +272,15 @@
 - [x] Complete editorial regression coverage for B1 and upper-level lesson arcs, lexical breadth, bilingual metadata, and activity contracts.
 - [x] Run the complete single-worker Vitest suite: 36 files and 128 tests passing.
 - [x] Run TypeScript validation and production build successfully; Vite reports only the existing bundle-size advisory.
-- [ ] Promote B2, C1, and C2 into the persistent active catalog snapshot after owner review of the generated upper-level content.
+- [x] Promote B2, C1, and C2 into the persistent active catalog snapshot after owner review of the generated upper-level content.
 
 # Vocabulary Word-Only Pronunciation Controls
 - [x] Add a dedicated accessible control that speaks the target word only, without playing its example sentence.
 - [x] Preserve a separate example-sentence playback control on shared vocabulary cards.
 - [x] Apply and verify the control across A1, A2, and B1 guided lesson routes with regression coverage.
+
+# Approved B2–C2 Active Catalog Promotion
+- [x] Promote the reviewed B2, C1, and C2 curriculum snapshots through versioned catalog synchronization.
+- [x] Verify persistent module, lesson, vocabulary, reading, writing, and assessment records for B2, C1, and C2.
+- [x] Validate the active B2/C1/C2 learner routes, complete regression suite, TypeScript check, and production build.
+- [x] Detect and safely recover any partial structured-practice snapshot where reading or writing records are incomplete after a restart.

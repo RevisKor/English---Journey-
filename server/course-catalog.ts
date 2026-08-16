@@ -29,9 +29,9 @@ import { buildAssessmentVariants } from "../shared/course/assessment-questions";
 import { moduleTheme } from "../shared/course/module-guidance";
 
 const LEGACY_COURSES: CourseDefinition[] = [A1_COURSE, A2_COURSE, B1_COURSE, B2_COURSE, C1_COURSE, C2_COURSE];
-// Version 4 promotes the approved ten-module, 150-lesson B1 curriculum into
+// Version 5 promotes the approved B2, C1, and C2 roadmap-sized curricula into
 // the normalized learner catalog while rebuilding all immutable course snapshots.
-const SYNC_VERSION = 4;
+const SYNC_VERSION = 5;
 let syncPromise: Promise<void> | null = null;
 
 type CatalogQuestion = QuizQuestion & { id: string };
@@ -42,6 +42,12 @@ type PersistedCourseLevelSnapshot = {
 
 type PersistedLessonSnapshot = {
   contentVersion: number;
+};
+
+type PersistedStructuredPracticeCounts = {
+  grammar: number;
+  readings: number;
+  writing: number;
 };
 
 /**
@@ -57,6 +63,7 @@ export function courseNeedsCatalogSynchronization(
   persistedModuleCount: number,
   persistedLessons: PersistedLessonSnapshot[],
   persistedVocabularyCount?: number,
+  persistedStructuredPractice?: PersistedStructuredPracticeCounts,
 ) {
   const expectedModuleCount = Math.ceil(course.totalLessons / course.lessonsPerModule);
   const expectedVocabularyCount = course.lessons.reduce((count, lesson) => count + lesson.words.length, 0);
@@ -65,7 +72,12 @@ export function courseNeedsCatalogSynchronization(
     || persistedModuleCount !== expectedModuleCount
     || persistedLessons.length !== course.totalLessons
     || persistedLessons.some((lesson) => lesson.contentVersion !== SYNC_VERSION)
-    || (persistedVocabularyCount !== undefined && persistedVocabularyCount !== expectedVocabularyCount);
+    || (persistedVocabularyCount !== undefined && persistedVocabularyCount !== expectedVocabularyCount)
+    || (persistedStructuredPractice !== undefined && (
+      persistedStructuredPractice.grammar !== course.totalLessons
+      || persistedStructuredPractice.readings !== course.totalLessons
+      || persistedStructuredPractice.writing !== course.totalLessons
+    ));
 }
 
 function rotate<T>(items: T[], offset: number) {
@@ -209,7 +221,7 @@ export async function syncCourse(course: CourseDefinition) {
 
   const lessonIds = savedLessonSources.map((source) => source.lessonId);
   if (!lessonIds.length) return;
-  const batches = <T,>(items: T[], size = 200) => Array.from(
+  const batches = <T,>(items: T[], size = 50) => Array.from(
     { length: Math.ceil(items.length / size) },
     (_, index) => items.slice(index * size, (index + 1) * size),
   );
@@ -321,18 +333,38 @@ export async function ensureCurrentCurriculumCatalog() {
       db.select().from(courseLessons).where(eq(courseLessons.levelId, level.id)),
     ]);
     const expectedVocabularyCount = course.lessons.reduce((count, lesson) => count + lesson.words.length, 0);
-    const persistedVocabulary = persistedLessons.length
-      ? await db.select({ lessonId: lessonVocabulary.lessonId })
-        .from(lessonVocabulary)
-        .where(inArray(lessonVocabulary.lessonId, persistedLessons.map((lesson) => lesson.id)))
-        .limit(expectedVocabularyCount + 1)
-      : [];
+    const persistedLessonIds = persistedLessons.map((lesson) => lesson.id);
+    const [persistedVocabulary, persistedGrammar, persistedReadings, persistedWriting] = persistedLessonIds.length
+      ? await Promise.all([
+        db.select({ lessonId: lessonVocabulary.lessonId })
+          .from(lessonVocabulary)
+          .where(inArray(lessonVocabulary.lessonId, persistedLessonIds))
+          .limit(expectedVocabularyCount + 1),
+        db.select({ lessonId: lessonGrammar.lessonId })
+          .from(lessonGrammar)
+          .where(inArray(lessonGrammar.lessonId, persistedLessonIds))
+          .limit(course.totalLessons + 1),
+        db.select({ lessonId: lessonReadings.lessonId })
+          .from(lessonReadings)
+          .where(inArray(lessonReadings.lessonId, persistedLessonIds))
+          .limit(course.totalLessons + 1),
+        db.select({ lessonId: lessonWritingTasks.lessonId })
+          .from(lessonWritingTasks)
+          .where(inArray(lessonWritingTasks.lessonId, persistedLessonIds))
+          .limit(course.totalLessons + 1),
+      ])
+      : [[], [], [], []];
     return courseNeedsCatalogSynchronization(
       course,
       level,
       persistedModules.length,
       persistedLessons,
       persistedVocabulary.length,
+      {
+        grammar: persistedGrammar.length,
+        readings: persistedReadings.length,
+        writing: persistedWriting.length,
+      },
     ) ? course : null;
   }))).filter((course): course is CourseDefinition => course !== null);
   if (coursesNeedingSynchronization.length) await ensureCurriculumCatalog(coursesNeedingSynchronization);
