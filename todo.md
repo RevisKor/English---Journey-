@@ -201,7 +201,7 @@
 - [x] Validate the active A1 migration and visual-system consistency across learner, word-bank, tutorial, and owner-review surfaces before beginning A2.
 
 ## Locked post-A1 authoring roadmap — do not begin until A1 review is approved
-- [ ] A2: author 9 modules × 15 lessons = 135 active lessons. Extend A1 foundations into daily problem-solving, connected speech, comparatives, past experiences, practical messages, paragraph writing, guided punctuation, phrase families, and longer dialogue/reading tasks.
+- [x] A2: author 9 modules × 15 lessons = 135 active lessons. Extend A1 foundations into daily problem-solving, connected speech, comparatives, past experiences, practical messages, paragraph writing, guided punctuation, phrase families, and longer dialogue/reading tasks.
 - [ ] B1: author 10 modules × 15 lessons = 150 active lessons. Build independent communication through opinion, narrative, travel/work/study scenarios, collocations, phrasal verbs, paragraph cohesion, formal/informal register, multi-paragraph writing, and evidence-based reading.
 - [ ] B2: author 10 modules × 15 lessons = 150 active lessons. Require nuanced comparison, argument, reports, presentations, idiomatic but appropriate phrasing, lexical precision, tone choices, source comparison, extended discussion, and revision of longer writing.
 - [ ] C1: author 10 modules × 16 lessons = 160 active lessons. Develop advanced academic/professional communication through complex syntax, rhetorical structure, collocation, implied meaning, mediation, critical reading, research-informed writing, and register control.
@@ -242,3 +242,9 @@
 - [x] Raise the course header slightly so nearby text does not overlap or visually compete with its content.
 - [x] Preserve responsive spacing and header readability on desktop and mobile.
 - [x] Validate the refinement and create a checkpoint.
+
+# Active Catalog Recovery: Repeated-Exposure Vocabulary
+- [x] Make repeated A1 and A2 vocabulary occurrences lesson-scoped so globally unique catalog keys never collide.
+- [x] Resume the interrupted A1 vocabulary snapshot and verify six modules, 90 lessons, and a complete vocabulary snapshot.
+- [x] Verify the active A2 catalog has nine modules, 135 lessons, and a complete vocabulary snapshot at content version 3.
+- [x] Add synchronization safeguards that treat incomplete vocabulary snapshots as stale, then validate automated contracts, TypeScript, production build, and desktop/mobile learner surfaces.

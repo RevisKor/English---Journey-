@@ -89,9 +89,12 @@ describe("curriculum catalog practice persistence", () => {
   it("treats an interrupted versioned A2 refresh as incomplete until all nine modules and 135 current lessons exist", () => {
     const partialLessons = Array.from({ length: 20 }, () => ({ contentVersion: 3 }));
     const completeLessons = Array.from({ length: A2_COURSE.totalLessons }, () => ({ contentVersion: 3 }));
+    const expectedVocabularyCount = A2_COURSE.lessons.reduce((count, lesson) => count + lesson.words.length, 0);
 
     expect(courseNeedsCatalogSynchronization(A2_COURSE, { contentVersion: 3 }, 4, partialLessons)).toBe(true);
     expect(courseNeedsCatalogSynchronization(A2_COURSE, { contentVersion: 3 }, 9, completeLessons)).toBe(false);
+    expect(courseNeedsCatalogSynchronization(A2_COURSE, { contentVersion: 3 }, 9, completeLessons, expectedVocabularyCount - 1)).toBe(true);
+    expect(courseNeedsCatalogSynchronization(A2_COURSE, { contentVersion: 3 }, 9, completeLessons, expectedVocabularyCount)).toBe(false);
     expect(courseNeedsCatalogSynchronization(A2_COURSE, { contentVersion: 2 }, 9, completeLessons)).toBe(true);
   });
 

@@ -56,13 +56,16 @@ export function courseNeedsCatalogSynchronization(
   level: PersistedCourseLevelSnapshot | undefined,
   persistedModuleCount: number,
   persistedLessons: PersistedLessonSnapshot[],
+  persistedVocabularyCount?: number,
 ) {
   const expectedModuleCount = Math.ceil(course.totalLessons / course.lessonsPerModule);
+  const expectedVocabularyCount = course.lessons.reduce((count, lesson) => count + lesson.words.length, 0);
   return !level
     || level.contentVersion !== SYNC_VERSION
     || persistedModuleCount !== expectedModuleCount
     || persistedLessons.length !== course.totalLessons
-    || persistedLessons.some((lesson) => lesson.contentVersion !== SYNC_VERSION);
+    || persistedLessons.some((lesson) => lesson.contentVersion !== SYNC_VERSION)
+    || (persistedVocabularyCount !== undefined && persistedVocabularyCount !== expectedVocabularyCount);
 }
 
 function rotate<T>(items: T[], offset: number) {
@@ -317,7 +320,20 @@ export async function ensureCurrentCurriculumCatalog() {
       db.select().from(courseModules).where(eq(courseModules.levelId, level.id)),
       db.select().from(courseLessons).where(eq(courseLessons.levelId, level.id)),
     ]);
-    return courseNeedsCatalogSynchronization(course, level, persistedModules.length, persistedLessons) ? course : null;
+    const expectedVocabularyCount = course.lessons.reduce((count, lesson) => count + lesson.words.length, 0);
+    const persistedVocabulary = persistedLessons.length
+      ? await db.select({ lessonId: lessonVocabulary.lessonId })
+        .from(lessonVocabulary)
+        .where(inArray(lessonVocabulary.lessonId, persistedLessons.map((lesson) => lesson.id)))
+        .limit(expectedVocabularyCount + 1)
+      : [];
+    return courseNeedsCatalogSynchronization(
+      course,
+      level,
+      persistedModules.length,
+      persistedLessons,
+      persistedVocabulary.length,
+    ) ? course : null;
   }))).filter((course): course is CourseDefinition => course !== null);
   if (coursesNeedingSynchronization.length) await ensureCurriculumCatalog(coursesNeedingSynchronization);
 }

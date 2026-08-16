@@ -55,13 +55,20 @@ function vocabularyForBlueprint(
   blueprint: ImmersiveLessonBlueprint,
   moduleVocabulary: VocabularyItem[],
   moduleTitle: string,
+  activeLessonNumber: number,
 ) {
   const localLesson = ((blueprint.lessonNumber - 1) % A1_LESSONS_PER_MODULE) + 1;
   const rotatingModuleSet = moduleVocabulary.slice((localLesson - 1) * 5, localLesson * 5);
   const anchors = blueprint.vocabularyAnchors.map(
     (word) => vocabularyByWord.get(word.toLocaleLowerCase()) ?? fallbackVocabulary(word, moduleTitle),
   );
-  return uniqueVocabulary([...anchors, ...rotatingModuleSet]);
+  // A word can return in later activities for retrieval practice.  The managed
+  // catalog uses a globally unique item key, so each lesson occurrence needs
+  // its own persistence identity even when the learner-facing word is shared.
+  return uniqueVocabulary([...anchors, ...rotatingModuleSet]).map((word) => ({
+    ...word,
+    id: `a1-lesson-${activeLessonNumber}-${word.id}`,
+  }));
 }
 
 function grammarForBlueprint(moduleIndex: number, localLesson: number, activeLessonNumber: number) {
@@ -85,7 +92,7 @@ export const A1_LESSONS: LessonDefinition[] = A1_IMMERSIVE_MODULES.flatMap((modu
       moduleNumber: module.moduleNumber,
       title: blueprint.title,
       titleArabic: blueprint.titleArabic,
-      words: vocabularyForBlueprint(blueprint, moduleVocabulary, module.title),
+      words: vocabularyForBlueprint(blueprint, moduleVocabulary, module.title, activeLessonNumber),
       grammar: grammarForBlueprint(moduleIndex, localLesson, activeLessonNumber),
       domainFocus: module.overview,
       domainFocusArabic: module.overviewArabic,

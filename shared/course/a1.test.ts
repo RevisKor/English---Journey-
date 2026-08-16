@@ -26,6 +26,12 @@ describe("A1 curriculum", () => {
     expect(A1_VOCABULARY.every((word) => word.arabic && word.ipa && word.phoneticRespelling && word.definition && word.definition !== genericDefinition && word.exampleEN && word.exampleAR)).toBe(true);
   });
 
+  it("uses a globally unique persistence identity for every repeated lesson exposure", () => {
+    const exposedWords = A1_LESSONS.flatMap((lesson) => lesson.words);
+    expect(new Set(exposedWords.map((word) => word.id)).size).toBe(exposedWords.length);
+    expect(exposedWords.every((word) => /^a1-lesson-\d+-/.test(word.id))).toBe(true);
+  });
+
   it("assigns one bilingual grammar topic to every lesson", () => {
     expect(A1_GRAMMAR).toHaveLength(20);
     expect(A1_LESSONS.every((lesson) => Boolean(lesson.grammar?.topic && lesson.grammar?.arabicName))).toBe(true);
