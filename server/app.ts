@@ -4,24 +4,14 @@ import { registerGoogleAuthRoutes } from "./_core/googleAuth";
 import { createContext } from "./_core/context";
 import { appRouter } from "./routers";
 
-export type CreateAppOptions = {
-  /** Mount Vite/static frontend handling. Vercel serves the frontend separately. */
-  serveFrontend?: boolean;
-  /** Provide the HTTP server only for local Vite HMR. */
-  httpServer?: import("http").Server;
-};
-
 /**
- * Builds the Express application without listening on a port.
+ * Builds the API-only Express application without listening on a port.
  *
- * Keeping construction separate from the local listener is important for
- * serverless runtimes: importing the Vercel entry point must not start a
- * second server or run the long-lived curriculum synchronizer.
+ * Local Vite/static wiring belongs in the local server entry, not here. This
+ * keeps the Vercel handler free of frontend build dependencies and their
+ * platform-specific native modules.
  */
-export async function createApp({
-  serveFrontend = process.env.NODE_ENV !== "production",
-  httpServer,
-}: CreateAppOptions = {}): Promise<Express> {
+export function createApp(): Express {
   const app = express();
 
   app.use(express.json({ limit: "50mb" }));
@@ -35,19 +25,6 @@ export async function createApp({
       createContext,
     }),
   );
-
-  if (serveFrontend) {
-    const { serveStatic, setupVite } = await import("./_core/vite");
-
-    if (process.env.NODE_ENV === "development") {
-      if (!httpServer) {
-        throw new Error("httpServer is required for Vite development middleware");
-      }
-      await setupVite(app, httpServer);
-    } else {
-      serveStatic(app);
-    }
-  }
 
   return app;
 }

@@ -355,4 +355,5 @@
 - [x] Repair the Vercel dependency, Express typing, and Vite plugin contracts without reintroducing Manus runtime dependencies.
 - [x] Validate the serverless build and regression coverage, then publish the recovery commit to GitHub.
 - [ ] Ensure Vercel recognizes the self-contained generated API handler as a serverless function rather than returning an API-route 404.
+- [x] Exclude Vite and its native CSS dependencies from the production API function bundle.
 - [ ] Confirm the redeployed Vercel function loads and completes Google sign-in with persisted learner progress.

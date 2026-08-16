@@ -3,11 +3,12 @@ import { describe, expect, it } from "vitest";
 import { createApp } from "./app";
 
 describe("Vercel hosting adapter", () => {
-  it("creates an Express app without starting a listener or mounting the frontend", async () => {
-    const app = await createApp({ serveFrontend: false });
+  it("creates an API-only Express app without starting a listener or mounting the frontend", () => {
+    const app = createApp();
 
     expect(typeof app).toBe("function");
     expect(readFileSync("server/app.ts", "utf8")).not.toContain("app.listen(");
+    expect(readFileSync("server/app.ts", "utf8")).not.toContain("./_core/vite");
   });
 
   it("keeps the API rewrite pointed at the single serverless entry point", () => {
@@ -28,7 +29,7 @@ describe("Vercel hosting adapter", () => {
   it("keeps catalog synchronization out of the Vercel bundle entry point", () => {
     const entry = readFileSync("server/vercel-entry.ts", "utf8");
 
-    expect(entry).toContain('createApp({ serveFrontend: false })');
+    expect(entry).toContain("const app = createApp()");
     expect(entry).not.toContain("ensureCurrentCurriculumCatalog");
     expect(entry).not.toContain("listen(");
   });
@@ -50,6 +51,8 @@ describe("Vercel hosting adapter", () => {
     expect(ignoredFiles).not.toMatch(/^api\/index\.js$/m);
     expect(generatedHandler).not.toContain('from "../server/app"');
     expect(generatedHandler).not.toContain("from '../server/app'");
+    expect(generatedHandler).not.toContain("lightningcss");
+    expect(generatedHandler).not.toContain("setupVite");
   });
 
   it("keeps Vercel-checked source files in the local type-check scope", () => {

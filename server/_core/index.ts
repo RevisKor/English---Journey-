@@ -2,6 +2,7 @@ import { createServer } from "http";
 import net from "net";
 import { ensureCurrentCurriculumCatalog } from "../course-catalog";
 import { createApp } from "../app";
+import { serveStatic, setupVite } from "./vite";
 
 function isPortAvailable(port: number): Promise<boolean> {
   return new Promise(resolve => {
@@ -24,10 +25,14 @@ async function findAvailablePort(startPort: number = 3000): Promise<number> {
 
 async function startServer() {
   const server = createServer();
-  const app = await createApp({
-    serveFrontend: true,
-    httpServer: server,
-  });
+  const app = createApp();
+
+  if (process.env.NODE_ENV === "development") {
+    await setupVite(app, server);
+  } else {
+    serveStatic(app);
+  }
+
   server.addListener("request", app);
 
   const preferredPort = parseInt(process.env.PORT || "3000");
