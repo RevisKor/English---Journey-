@@ -208,12 +208,12 @@
 - [ ] C2: author 12 modules × 15 lessons = 180 active lessons. Develop flexible, near-expert use through subtle connotation, genre transformation, critical synthesis, ambiguity, persuasive and creative discourse, high-level mediation, and substantial independent projects.
 - [ ] Across A2–C2: make lessons progressively longer and denser; add new communicative knowledge—not only additional word lists or grammar rules—through pictures, dialogues, pronunciation, punctuation, phrase comparison, synonyms/antonyms, collocation, reading, writing, speaking, review, and contextual assessment.
 # A2 Expansion — Authored Curriculum Phase
-- [ ] Define the A2 9-module × 15-lesson architecture with CEFR-progressive goals and repeated-exposure requirements.
-- [ ] Author the complete A2 135-lesson inventory with bilingual mentor guidance, vocabulary, grammar, dialogue, speaking, reading, writing, review, and assessment coverage.
-- [ ] Add A2 lesson-family and activity-plan regression coverage for the expanded inventory.
-- [ ] Expose the authored A2 inventory in owner review while preserving the active gated catalog until migration approval.
-- [ ] Validate the A2 expansion with TypeScript, Vitest, production build, and desktop/mobile learner preview checks.
-- [ ] Document the A2 migration plan and leave B1–C2 roadmap targets unchanged.
+- [x] Define the A2 9-module × 15-lesson architecture with CEFR-progressive goals and repeated-exposure requirements.
+- [x] Author the complete A2 135-lesson inventory with bilingual mentor guidance, vocabulary, grammar, dialogue, speaking, reading, writing, review, and assessment coverage.
+- [x] Add A2 lesson-family and activity-plan regression coverage for the expanded inventory.
+- [x] Expose the authored A2 inventory in owner review while preserving the active gated catalog until migration approval.
+- [x] Validate the A2 expansion with TypeScript, Vitest, production build, and desktop/mobile learner preview checks.
+- [x] Document the A2 migration plan and leave B1–C2 roadmap targets unchanged.
 
 # A1 Lesson Workspace Stability Follow-up
 - [x] Add regression coverage for missing or malformed activity metadata labels in the shared lesson workspace.
