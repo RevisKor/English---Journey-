@@ -1,0 +1,3 @@
+# Word-Bank Table Overlap Findings
+
+The user-provided desktop screenshot was inspected in ordered horizontal crops. The static table header remains visible, but the first vocabulary row begins immediately under it: the English definition wraps under the **Word** column, Arabic wraps over two lines under **Arabic**, and the short context text appears immediately below **Context**. The row is not obscured by a header layer; instead, the first row has insufficient vertical separation and column widths force an unnecessarily dense presentation. The correction should retain a single table header, increase row padding and effective column widths, and avoid a sticky `thead` inside the dialog’s already-scrollable content area.

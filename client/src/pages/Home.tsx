@@ -198,8 +198,9 @@ export function CourseDashboard({ level, lessons, modules, completedLessons, pro
 }
 
 export const WORD_BANK_DIALOG_LAYOUT_CLASS = "top-[5vh] max-h-[90vh] max-w-[min(1280px,calc(100%-1rem))] translate-y-0 overflow-hidden border-[#dfd4bf] bg-[#fffdf7] p-0 sm:top-[6vh] sm:max-w-[min(1280px,calc(100%-2rem))]";
-export const WORD_BANK_TABLE_SCROLL_CLASS = "max-h-[62vh] overflow-auto px-4 py-4 sm:px-8 sm:py-5 lg:px-10";
-export const WORD_BANK_TABLE_LAYOUT_CLASS = "w-full min-w-[1040px] border-separate border-spacing-0 text-left";
+export const WORD_BANK_TABLE_SCROLL_CLASS = "relative isolate max-h-[62vh] overflow-auto px-4 py-4 sm:px-8 sm:py-5 lg:px-10";
+export const WORD_BANK_TABLE_LAYOUT_CLASS = "w-full min-w-[1180px] table-fixed border-separate border-spacing-0 text-left";
+const WORD_BANK_HEADER_CELL_CLASS = "sticky top-0 z-20 border-b border-[#eadfce] bg-[#fffdf7] px-4 py-4 shadow-[0_1px_0_#eadfce,0_8px_12px_rgba(45,55,72,0.05)]";
 
 export function ModuleWordBankDialog({ open, onOpenChange, level, moduleNumber, entries, reviewedWordIds, onToggleReview }: { open: boolean; onOpenChange: (open: boolean) => void; level: ActiveLevel; moduleNumber: number; entries: ReturnType<typeof buildModuleWordBank>; reviewedWordIds: Set<string>; onToggleReview: (wordId: string, exampleEN: string) => void }) {
   return <Dialog open={open} onOpenChange={onOpenChange}>
@@ -212,21 +213,21 @@ export function ModuleWordBankDialog({ open, onOpenChange, level, moduleNumber, 
       </DialogHeader>
       <div aria-label="Module vocabulary table" className={WORD_BANK_TABLE_SCROLL_CLASS}>
         <table className={WORD_BANK_TABLE_LAYOUT_CLASS}>
-          <thead className="sticky top-0 z-10 bg-[#fffdf7] text-[10px] font-bold uppercase tracking-[.13em] text-[#8a6d45]">
+          <thead className="relative z-20 text-[10px] font-bold uppercase tracking-[.13em] text-[#8a6d45]">
             <tr>
-              <th className="w-[20%] border-b border-[#eadfce] px-4 py-4">Word</th>
-              <th className="w-[13%] border-b border-[#eadfce] px-4 py-4 text-right">Arabic</th>
-              <th className="w-[16%] border-b border-[#eadfce] px-4 py-4">Pronunciation</th>
-              <th className="w-[31%] border-b border-[#eadfce] px-4 py-4">Context</th>
-              <th className="w-[9%] border-b border-[#eadfce] px-4 py-4">Source</th>
-              <th className="w-[11%] border-b border-[#eadfce] px-4 py-4 text-right">Review</th>
+              <th className={cn(WORD_BANK_HEADER_CELL_CLASS, "w-[23%]")}>Word</th>
+              <th className={cn(WORD_BANK_HEADER_CELL_CLASS, "w-[17%] text-right")}>Arabic</th>
+              <th className={cn(WORD_BANK_HEADER_CELL_CLASS, "w-[15%]")}>Pronunciation</th>
+              <th className={cn(WORD_BANK_HEADER_CELL_CLASS, "w-[25%]")}>Context</th>
+              <th className={cn(WORD_BANK_HEADER_CELL_CLASS, "w-[9%]")}>Source</th>
+              <th className={cn(WORD_BANK_HEADER_CELL_CLASS, "w-[11%] text-right")}>Review</th>
             </tr>
           </thead>
           <tbody>{entries.map((word) => <tr key={`${word.id}:${word.introducedLessonNumber}`} className="align-top hover:bg-[#faf6ee]">
-            <td className="border-b border-[#f0e8dc] px-4 py-4"><p className="font-bold text-[#293751]">{word.word}</p><p className="mt-1 text-xs leading-5 text-[#68758a]">{word.partOfSpeech} · {word.definition}</p></td>
-            <td dir="rtl" className="arabic-support border-b border-[#f0e8dc] px-4 py-4 text-right text-sm">{word.arabic}</td>
+            <td className="break-words border-b border-[#f0e8dc] px-4 py-4"><p className="font-bold text-[#293751]">{word.word}</p><p className="mt-1 text-xs leading-5 text-[#68758a]">{word.partOfSpeech} · {word.definition}</p></td>
+            <td dir="rtl" className="arabic-support break-words border-b border-[#f0e8dc] px-4 py-4 text-right text-sm leading-7">{word.arabic}</td>
             <td className="border-b border-[#f0e8dc] px-4 py-4 text-xs leading-5 text-[#68758a]"><p className="font-semibold text-[#a2732c]">{word.ipa}</p><p className="mt-1">{word.phoneticRespelling}</p></td>
-            <td className="border-b border-[#f0e8dc] px-4 py-4 text-xs leading-5 text-[#526077]">{word.exampleEN}</td>
+            <td className="break-words border-b border-[#f0e8dc] px-4 py-4 text-xs leading-5 text-[#526077]">{word.exampleEN}</td>
             <td className="border-b border-[#f0e8dc] px-4 py-4 text-xs font-semibold text-[#68758a]">Lesson {String(word.introducedLessonNumber).padStart(2, "0")}</td>
             <td className="border-b border-[#f0e8dc] px-4 py-4 text-right"><button type="button" onClick={() => onToggleReview(word.id, word.exampleEN)} aria-pressed={reviewedWordIds.has(word.id)} className={cn("rounded-lg px-3 py-2 text-xs font-bold transition", reviewedWordIds.has(word.id) ? "bg-[#dcefe1] text-[#277350]" : "bg-[#fff0bd] text-[#765618] hover:bg-[#f9df8b]")}>{reviewedWordIds.has(word.id) ? "Reviewed" : "Review + play"}</button></td>
           </tr>)}</tbody>

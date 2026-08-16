@@ -134,8 +134,10 @@ describe("Home learner entry routing", () => {
 
   it("reserves a wider, scrollable word-bank table so vocabulary rows remain readable", () => {
     expect(WORD_BANK_DIALOG_LAYOUT_CLASS).toContain("1280px");
-    expect(WORD_BANK_TABLE_LAYOUT_CLASS).toContain("min-w-[1040px]");
+    expect(WORD_BANK_TABLE_LAYOUT_CLASS).toContain("min-w-[1180px]");
+    expect(WORD_BANK_TABLE_LAYOUT_CLASS).toContain("table-fixed");
     expect(WORD_BANK_TABLE_SCROLL_CLASS).toContain("overflow-auto");
+    expect(WORD_BANK_TABLE_SCROLL_CLASS).toContain("isolate");
   });
 
 });

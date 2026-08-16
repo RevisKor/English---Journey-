@@ -248,3 +248,8 @@
 - [x] Resume the interrupted A1 vocabulary snapshot and verify six modules, 90 lessons, and a complete vocabulary snapshot.
 - [x] Verify the active A2 catalog has nine modules, 135 lessons, and a complete vocabulary snapshot at content version 3.
 - [x] Add synchronization safeguards that treat incomplete vocabulary snapshots as stale, then validate automated contracts, TypeScript, production build, and desktop/mobile learner surfaces.
+
+# Word-Bank Sticky Header and Row Readability Recovery
+- [x] Stop the sticky word-bank column header from obscuring the first vocabulary row.
+- [x] Rebalance the word, Arabic, pronunciation, context, and source cells so bilingual content remains readable.
+- [x] Validate the corrected full table at desktop and mobile widths, then create a checkpoint.
