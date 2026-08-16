@@ -5,6 +5,8 @@
 # Build outputs
 dist/
 build/
+api/index.js
+api/index.js.map
 *.dist
 
 # Environment variables

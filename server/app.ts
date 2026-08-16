@@ -2,7 +2,6 @@ import express, { type Express } from "express";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
 import { registerGoogleAuthRoutes } from "./_core/googleAuth";
 import { createContext } from "./_core/context";
-import { serveStatic, setupVite } from "./_core/vite";
 import { appRouter } from "./routers";
 
 export type CreateAppOptions = {
@@ -38,6 +37,8 @@ export async function createApp({
   );
 
   if (serveFrontend) {
+    const { serveStatic, setupVite } = await import("./_core/vite");
+
     if (process.env.NODE_ENV === "development") {
       if (!httpServer) {
         throw new Error("httpServer is required for Vite development middleware");

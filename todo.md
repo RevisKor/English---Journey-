@@ -349,3 +349,9 @@
 - [x] Diagnose the Express type-resolution failure reported by Vercel.
 - [x] Repair the Vercel compilation contract and validate it locally.
 - [x] Push the verified repair to GitHub for redeployment.
+
+# Vercel Serverless Crash Recovery
+- [x] Reproduce and diagnose the production TypeScript type-resolution errors that prevent the Vercel function from starting.
+- [x] Repair the Vercel dependency, Express typing, and Vite plugin contracts without reintroducing Manus runtime dependencies.
+- [x] Validate the serverless build and regression coverage, then publish the recovery commit to GitHub.
+- [ ] Confirm the redeployed Vercel function loads and completes Google sign-in with persisted learner progress.
