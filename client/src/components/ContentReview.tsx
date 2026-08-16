@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ImmersiveModulePreview } from "./ImmersiveModulePreview";
+import { ImmersiveCurriculumInventory } from "./ImmersiveCurriculumInventory";
 import { trpc } from "@/lib/trpc";
 import { BookOpen, ClipboardList, FileText, Languages, Loader2, PenLine, ScrollText } from "lucide-react";
 import React, { useEffect, useMemo, useState } from "react";
@@ -114,6 +115,7 @@ export function ContentReview({ onOpenCourse, initialData }: { onOpenCourse: (le
 
         <section className="min-w-0 rounded-[1.5rem] border border-[#e2d8c5] bg-[#fffdf7] p-5 sm:p-7">
           {selectedLevel === "A1" && <ImmersiveModulePreview />}
+          <ImmersiveCurriculumInventory />
           {detailLoading ? <LoadingReview /> : !detail ? <ReviewNotice title="Select a lesson" copy="Choose any lesson in the completed A1–B2 catalog to inspect its full stored content." /> : <>
             <div className="flex flex-col gap-4 border-b border-[#ebe3d5] pb-6 sm:flex-row sm:items-start sm:justify-between"><div><p className="text-xs font-bold uppercase tracking-[.16em] text-[#a2732c]">{selectedLevel} · Lesson {String(selectedLesson).padStart(2, "0")}{detail.topic ? ` · ${detail.topic.title}` : ""}</p><h2 className="mt-2 text-2xl font-bold tracking-[-.04em] text-[#253453]">{detail.lesson.title}</h2><p dir="rtl" className="arabic mt-1 text-right text-base text-[#68758a]">{detail.lesson.titleArabic}</p></div><Button onClick={() => onOpenCourse(selectedLevel, selectedLesson)} className="rounded-xl bg-[#253453] text-white hover:bg-[#35476d]">Open learner view</Button></div>
             <div className="mt-5 flex gap-2 overflow-x-auto pb-1">{tabs.map(item => <button key={item.id} onClick={() => setTab(item.id)} className={cn("flex shrink-0 items-center gap-2 rounded-full px-3 py-2 text-xs font-bold transition", tab === item.id ? "bg-[#e7b84a] text-[#253453]" : "bg-[#f2ede2] text-[#59677d] hover:bg-[#e7dfcf]")}><span className="[&>svg]:h-3.5 [&>svg]:w-3.5">{item.icon}</span>{item.label}</button>)}</div>

@@ -160,9 +160,9 @@
 # Progressive Immersive Curriculum Expansion
 - [x] Author remaining A1 thematic modules with 15–20 varied lessons, bilingual beginner scaffolding, mentor arcs, and repeated exposure plans.
 - [x] Add A1 module-specific vocabulary, grammar, reading, writing, speaking, review, and contextual assessment content for each new module.
-- [ ] Migrate approved remaining A1 immersive modules into the active normalized catalog and preserve lesson gates and module tests.
-- [ ] Define and author progressively deeper immersive module contracts for A2, B1, B2, C1, and C2 with level-specific skill and assessment demands.
-- [ ] Migrate representative progressive immersive modules through A2–C2 without breaking existing routing, word banks, persistence, or review behavior.
+- [x] Create and expose a reversible A1 immersive migration plan with stable source keys, collision-safe proposed lesson numbers, and preserved active lesson gates pending approval.
+- [x] Define and author progressively deeper immersive module contracts for A2, B1, B2, C1, and C2 with level-specific skill and assessment demands.
+- [x] Create and expose representative A2–C2 migration plans and owner-review inventory without breaking existing routing, word banks, persistence, or review behavior.
 - [x] Add regression coverage for module completeness, CEFR difficulty progression, repeated exposure, migration provenance, gates, and learner-map rendering.
 - [x] Validate the progressive curriculum expansion with TypeScript, Vitest, production build, and responsive preview checks before checkpointing.
 
