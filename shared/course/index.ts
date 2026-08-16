@@ -12,3 +12,4 @@ export * from "./c2-quiz";
 export * from "./quiz";
 export * from "./types";
 export * from "./assessment-scope";
+export * from "./a1-immersive-modules";

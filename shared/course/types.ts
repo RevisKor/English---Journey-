@@ -176,6 +176,48 @@ export type ModuleDefinition = {
   themeArabic?: string;
 };
 
+export type ExposureMode = "learn" | "see" | "hear" | "use" | "read" | "write" | "retrieve";
+
+export type VocabularyExposure = {
+  lessonNumber: number;
+  mode: ExposureMode;
+  task: string;
+  taskArabic: string;
+};
+
+export type ImmersiveLessonBlueprint = {
+  lessonNumber: number;
+  moduleNumber: number;
+  type: LessonType;
+  title: string;
+  titleArabic: string;
+  mentorPurpose: string;
+  mentorPurposeArabic: string;
+  vocabularyAnchors: string[];
+  grammarFocus: string;
+  grammarFocusArabic: string;
+  beginnerExplanation: string;
+  beginnerExplanationArabic: string;
+  exposurePlan: VocabularyExposure[];
+  practiceModes: LessonType[];
+  canDo: string;
+  canDoArabic: string;
+};
+
+export type ImmersiveModuleAuthoring = {
+  level: CefrLevel;
+  moduleNumber: number;
+  title: string;
+  titleArabic: string;
+  overview: string;
+  overviewArabic: string;
+  mentorOpening: string;
+  mentorOpeningArabic: string;
+  lessonBlueprints: ImmersiveLessonBlueprint[];
+  assessmentRecipe: string[];
+  assessmentRecipeArabic: string[];
+};
+
 export type ModuleWordBankEntry = VocabularyItem & {
   introducedLessonNumber: number;
   reviewCount: number;
