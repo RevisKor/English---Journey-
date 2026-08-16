@@ -13,6 +13,11 @@ describe("LearnerCourseMap", () => {
     expect(html).toContain("هذه رحلتك النشطة الموجّهة");
     expect((html.match(/aria-label="Open lesson /g) ?? []).length).toBe(90);
     expect(html).toContain("Active 15-lesson journey");
+    expect((html.match(/<ol/g) ?? []).length).toBe(6);
+    expect((html.match(/Hide lessons/g) ?? []).length).toBe(6);
+    expect(html).toContain("aria-expanded=\"true\"");
+    expect(html).toContain("Module focus:");
+    expect(html).toContain("arabic-support");
   });
 
   it("renders named bilingual C1 modules and the first direct lesson entry", () => {
@@ -22,5 +27,6 @@ describe("LearnerCourseMap", () => {
     expect(html).toContain("Reading between the lines");
     expect(html).toContain("Module 4");
     expect((html.match(/aria-label="Open lesson /g) ?? []).length).toBe(20);
+    expect(html).toContain("Guided preview:");
   });
 });

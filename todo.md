@@ -207,3 +207,22 @@
 - [ ] C1: author 10 modules × 16 lessons = 160 active lessons. Develop advanced academic/professional communication through complex syntax, rhetorical structure, collocation, implied meaning, mediation, critical reading, research-informed writing, and register control.
 - [ ] C2: author 12 modules × 15 lessons = 180 active lessons. Develop flexible, near-expert use through subtle connotation, genre transformation, critical synthesis, ambiguity, persuasive and creative discourse, high-level mediation, and substantial independent projects.
 - [ ] Across A2–C2: make lessons progressively longer and denser; add new communicative knowledge—not only additional word lists or grammar rules—through pictures, dialogues, pronunciation, punctuation, phrase comparison, synonyms/antonyms, collocation, reading, writing, speaking, review, and contextual assessment.
+# A2 Expansion — Authored Curriculum Phase
+- [ ] Define the A2 9-module × 15-lesson architecture with CEFR-progressive goals and repeated-exposure requirements.
+- [ ] Author the complete A2 135-lesson inventory with bilingual mentor guidance, vocabulary, grammar, dialogue, speaking, reading, writing, review, and assessment coverage.
+- [ ] Add A2 lesson-family and activity-plan regression coverage for the expanded inventory.
+- [ ] Expose the authored A2 inventory in owner review while preserving the active gated catalog until migration approval.
+- [ ] Validate the A2 expansion with TypeScript, Vitest, production build, and desktop/mobile learner preview checks.
+- [ ] Document the A2 migration plan and leave B1–C2 roadmap targets unchanged.
+
+# A1 Lesson Workspace Stability Follow-up
+- [x] Add regression coverage for missing or malformed activity metadata labels in the shared lesson workspace.
+- [x] Re-run the complete Vitest suite, TypeScript check, and production build after the crash-guard fix.
+
+# Learner Interface Refinements Requested in Visual Review
+- [x] Give Arabic supporting text a distinct but accessible visual treatment so it is immediately recognisable without weakening English-first hierarchy.
+- [x] Replace the inline course-home word-bank panel with a compact navigation action that opens the full tabular word-bank experience.
+- [x] Make learner-course-map module sections collapsible with keyboard-accessible controls.
+- [x] Render learner-course-map lessons as an ordered vertical list rather than side-by-side tiles.
+- [x] Highlight meaningful keywords in learner-course-map explanatory copy without making the text noisy or inaccessible.
+- [x] Add regression coverage and validate the revised learner map and course-home layout at desktop and mobile breakpoints.

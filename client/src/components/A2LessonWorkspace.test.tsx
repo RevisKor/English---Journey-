@@ -19,9 +19,16 @@ vi.mock("@/components/QuizPractice", () => ({
   QuizPractice: () => React.createElement("div", null, "Quiz practice"),
 }));
 
-import { StructuredLessonWorkspace } from "./A2LessonWorkspace";
+import { formatActivityLabel, StructuredLessonWorkspace } from "./A2LessonWorkspace";
 
 describe("guided workspace Arabic scaffolding", () => {
+  it("falls back safely when activity metadata is missing or malformed", () => {
+    expect(formatActivityLabel("repeat-after-me", "activity")).toBe("repeat after me");
+    expect(formatActivityLabel(undefined, "practice")).toBe("practice");
+    expect(formatActivityLabel(null, "activity")).toBe("activity");
+    expect(formatActivityLabel({ value: "missing" }, "check")).toBe("check");
+    expect(formatActivityLabel("   ", "practice")).toBe("practice");
+  });
   it("renders Arabic mentor transitions for every route section in A1", () => {
     const lesson = A1_LESSONS[0];
     const guide = buildMentorGuide(lesson);

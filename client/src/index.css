@@ -140,6 +140,12 @@
     font-family: "Noto Sans Arabic", "DM Sans", sans-serif;
   }
 
+  .arabic-support {
+    color: #8b5e2c;
+    font-family: "Noto Sans Arabic", "DM Sans", sans-serif;
+    font-weight: 600;
+  }
+
   .course-grid {
     background-image: linear-gradient(to right, oklch(0.25 0.028 263 / 0.035) 1px, transparent 1px), linear-gradient(to bottom, oklch(0.25 0.028 263 / 0.035) 1px, transparent 1px);
     background-size: 28px 28px;

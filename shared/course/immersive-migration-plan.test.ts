@@ -14,10 +14,10 @@ describe("immersive migration plan", () => {
     expect(Math.min(...lessons.map((lesson) => lesson.proposedCatalogLessonNumber))).toBe(21);
   });
 
-  it("plans six progressively authored modules for every level from A2 through C2", () => {
-    for (const [level, existingLessonCount] of [["A2", 20], ["B1", 24], ["B2", 24], ["C1", 20], ["C2", 16]] as const) {
+  it("plans the approved authored-module counts without touching the active catalogs", () => {
+    for (const [level, existingLessonCount, expectedModules] of [["A2", 20, 9], ["B1", 24, 6], ["B2", 24, 6], ["C1", 20, 6], ["C2", 16, 6]] as const) {
       const modules = buildProgressiveImmersiveMigrationPlan(level, existingLessonCount);
-      expect(modules).toHaveLength(6);
+      expect(modules).toHaveLength(expectedModules);
       expect(modules.every((module) => module.status === "shadow-preview")).toBe(true);
       expect(modules.every((module) => module.lessons.length >= 15)).toBe(true);
     }

@@ -1,4 +1,5 @@
 import type { CefrLevel, ImmersiveLessonBlueprint, ImmersiveModuleAuthoring, LessonType } from "./types";
+import { A2_MODULE_ARCS } from "./a2-immersive-authoring";
 
 export type ImmersiveDifficultyProfile = {
   level: CefrLevel;
@@ -21,7 +22,7 @@ export type ProgressiveImmersiveModule = ImmersiveModuleAuthoring & {
 
 export const IMMERSIVE_DIFFICULTY_PROFILES: Record<Exclude<CefrLevel, "A1">, ImmersiveDifficultyProfile> = {
   A2: {
-    level: "A2", userBand: "basic", moduleCount: 6, lessonsPerModule: 15, expectedReadingWords: 180, expectedWritingWords: 80,
+    level: "A2", userBand: "basic", moduleCount: 9, lessonsPerModule: 15, expectedReadingWords: 180, expectedWritingWords: 80,
     grammarDemand: "Control high-frequency forms in connected everyday exchanges, with guided contrast and correction.",
     discourseDemand: "Link short clauses with time, reason, contrast, and sequence markers.",
     assessmentDemand: "Complete a practical interaction, short reading, supported paragraph, and contextual language review.",
@@ -65,6 +66,9 @@ const THEMES: Record<Exclude<CefrLevel, "A1">, Array<{ title: string; titleArabi
     { title: "Stories and Memories", titleArabic: "القصص والذكريات", focus: "narrate past events and describe reactions", focusArabic: "سرد أحداث الماضي ووصف ردود الفعل" },
     { title: "Nature and Community", titleArabic: "الطبيعة والمجتمع", focus: "describe places, rules, and simple change", focusArabic: "وصف الأماكن والقواعد والتغيير البسيط" },
     { title: "Choices and Plans", titleArabic: "الاختيارات والخطط", focus: "compare options and make supported plans", focusArabic: "مقارنة الاختيارات ووضع خطط مدعومة" },
+    { title: "Communication and Technology", titleArabic: "التواصل والتقنية", focus: "exchange messages, solve digital problems, and clarify meaning", focusArabic: "تبادل الرسائل وحل المشكلات الرقمية وتوضيح المعنى" },
+    { title: "Food, Shopping, and Services", titleArabic: "الطعام والتسوق والخدمات", focus: "make practical choices, compare products, and handle service conversations", focusArabic: "اتخاذ اختيارات عملية ومقارنة المنتجات والتعامل مع محادثات الخدمات" },
+    { title: "Celebrations and Culture", titleArabic: "الاحتفالات والثقافة", focus: "describe traditions, invitations, feelings, and respectful cultural differences", focusArabic: "وصف التقاليد والدعوات والمشاعر والاختلافات الثقافية باحترام" },
   ],
   B1: [
     { title: "Identity and Belonging", titleArabic: "الهوية والانتماء", focus: "explain personal experience and belonging", focusArabic: "شرح التجربة الشخصية والانتماء" },
@@ -102,8 +106,8 @@ const THEMES: Record<Exclude<CefrLevel, "A1">, Array<{ title: string; titleArabi
 
 const lessonTypes: LessonType[] = ["standard", "reading", "interaction", "speaking", "writing", "standard", "reading", "interaction", "speaking", "writing", "review", "standard", "reading", "writing", "review", "assessment", "reading", "writing", "speaking", "assessment"];
 
-function buildLesson(level: Exclude<CefrLevel, "A1">, moduleNumber: number, lessonNumber: number, theme: (typeof THEMES)[typeof level][number], profile: ImmersiveDifficultyProfile): ImmersiveLessonBlueprint {
-  const type = lessonTypes[(lessonNumber - 1) % profile.lessonsPerModule];
+function buildLesson(level: Exclude<CefrLevel, "A1">, moduleNumber: number, lessonNumber: number, theme: (typeof THEMES)[typeof level][number], profile: ImmersiveDifficultyProfile, a2Arc?: (typeof A2_MODULE_ARCS)[number]["lessons"][number]): ImmersiveLessonBlueprint {
+  const type = a2Arc?.type ?? lessonTypes[(lessonNumber - 1) % profile.lessonsPerModule];
   const isCheckpoint = type === "assessment" || lessonNumber === profile.lessonsPerModule;
   const advanced = level === "C1" || level === "C2";
   const readingTask = advanced ? "trace assumptions, stance, and implied meaning across the source" : "identify the main claim, useful language, and supporting detail";
@@ -112,13 +116,13 @@ function buildLesson(level: Exclude<CefrLevel, "A1">, moduleNumber: number, less
     lessonNumber,
     moduleNumber,
     type,
-    title: `${theme.title}: ${isCheckpoint ? "Synthesis and checkpoint" : `Studio ${lessonNumber}`}`,
-    titleArabic: `${theme.titleArabic}: ${isCheckpoint ? "التركيب والاختبار" : `مختبر ${lessonNumber}`}`,
+    title: a2Arc ? a2Arc.title : `${theme.title}: ${isCheckpoint ? "Synthesis and checkpoint" : `Studio ${lessonNumber}`}`,
+    titleArabic: a2Arc ? a2Arc.titleArabic : `${theme.titleArabic}: ${isCheckpoint ? "التركيب والاختبار" : `مختبر ${lessonNumber}`}`,
     mentorPurpose: `The mentor now expects you to connect ideas about ${theme.focus}. At ${level}, the important move is not only knowing language but choosing it for a purpose. ${profile.grammarDemand}`,
     mentorPurposeArabic: `يتوقع منك المرشد الآن ربط الأفكار حول ${theme.focusArabic}. في مستوى ${level} لا يقتصر التقدم على معرفة اللغة، بل يشمل اختيارها لغرض محدد. ${profile.grammarDemand}`,
-    vocabularyAnchors: [theme.title, theme.focus.split(" ").slice(0, 2).join(" "), "evidence", "purpose", "perspective"],
-    grammarFocus: profile.grammarDemand,
-    grammarFocusArabic: "استخدام القواعد بمرونة لخدمة المعنى والسياق.",
+    vocabularyAnchors: a2Arc?.anchors ?? [theme.title, theme.focus.split(" ").slice(0, 2).join(" "), "evidence", "purpose", "perspective"],
+    grammarFocus: a2Arc?.grammar ?? profile.grammarDemand,
+    grammarFocusArabic: a2Arc?.grammarArabic ?? "استخدام القواعد بمرونة لخدمة المعنى والسياق.",
     beginnerExplanation: `This is a level-aware explanation, not a list of labels. Notice how the language supports ${theme.focus}. Then retrieve it in a new context. Reading target: ${profile.expectedReadingWords} words. Writing target: ${profile.expectedWritingWords} words.`,
     beginnerExplanationArabic: `هذا شرح مناسب للمستوى وليس قائمة مصطلحات. لاحظ كيف تخدم اللغة موضوع ${theme.focusArabic}، ثم استرجعها في سياق جديد. هدف القراءة: ${profile.expectedReadingWords} كلمة. هدف الكتابة: ${profile.expectedWritingWords} كلمة.`,
     exposurePlan: [
@@ -138,14 +142,15 @@ export function buildProgressiveImmersiveModule(level: Exclude<CefrLevel, "A1">,
   const profile = IMMERSIVE_DIFFICULTY_PROFILES[level];
   const theme = THEMES[level][moduleNumber - 1];
   if (!theme) throw new Error(`No immersive theme for ${level} module ${moduleNumber}`);
-  const lessonBlueprints = Array.from({ length: profile.lessonsPerModule }, (_, index) => buildLesson(level, moduleNumber, index + 1, theme, profile));
+  const a2ModuleArc = level === "A2" ? A2_MODULE_ARCS[moduleNumber - 1] : undefined;
+  const lessonBlueprints = Array.from({ length: profile.lessonsPerModule }, (_, index) => buildLesson(level, moduleNumber, index + 1, theme, profile, a2ModuleArc?.lessons[index]));
   return {
     level,
     moduleNumber,
-    title: theme.title,
-    titleArabic: theme.titleArabic,
-    overview: `A ${level} immersive module about how to ${theme.focus}. ${profile.discourseDemand}`,
-    overviewArabic: `وحدة غامرة في مستوى ${level} حول كيفية ${theme.focusArabic}. ${profile.discourseDemand}`,
+    title: a2ModuleArc?.title ?? theme.title,
+    titleArabic: a2ModuleArc?.titleArabic ?? theme.titleArabic,
+    overview: `A ${level} immersive module about how to ${a2ModuleArc?.focus ?? theme.focus}. ${profile.discourseDemand}`,
+    overviewArabic: `وحدة غامرة في مستوى ${level} حول كيفية ${a2ModuleArc?.focusArabic ?? theme.focusArabic}. ${profile.discourseDemand}`,
     mentorOpening: `At this stage, the mentor will not give you every sentence. You will investigate, test, revise, and return to the same language through richer contexts. ${profile.assessmentDemand}`,
     mentorOpeningArabic: `في هذه المرحلة لن يقدم لك المرشد كل جملة. ستبحث وتجرب وتراجع وتعود إلى اللغة نفسها عبر سياقات أغنى. ${profile.assessmentDemand}`,
     lessonBlueprints,
