@@ -6,7 +6,7 @@ import { QuizPractice } from "@/components/QuizPractice";
 import { buildSentenceReviewPrompt } from "@/lib/external-ai-prompts";
 import { cn } from "@/lib/utils";
 import { buildMentorGuide } from "@shared/course/mentor-guidance";
-import type { LessonActivity, LessonDefinition, MentorMomentId } from "@shared/course";
+import type { CefrLevel, LessonActivity, LessonDefinition, MentorMomentId } from "@shared/course";
 import { ArrowLeft, BookOpen, CheckCircle2, Headphones, Languages, PenLine, Sparkles, Trophy } from "lucide-react";
 import React, { useMemo, useState } from "react";
 
@@ -93,7 +93,7 @@ export function StructuredLessonWorkspace({ lesson, accent, onBack }: { lesson: 
 
           <JourneySection id="reading" number={5} icon={<BookOpen />} moment={mentorMoment("reading")} next="writing"><p className="text-sm leading-7 text-[#58677d]">{mentorMoment("reading")?.message}</p><p dir="rtl" className="arabic mt-3 text-right text-sm leading-7 text-[#778399]">{mentorMoment("reading")?.messageArabic}</p><div className="mt-5"><CourseReadingPractice lesson={lesson} /></div></JourneySection>
           <JourneySection id="writing" number={6} icon={<PenLine />} moment={mentorMoment("writing")} next="check"><p className="text-sm leading-7 text-[#58677d]">{mentorMoment("writing")?.message}</p><p dir="rtl" className="arabic mt-3 text-right text-sm leading-7 text-[#778399]">{mentorMoment("writing")?.messageArabic}</p><div className="mt-5"><CourseWritingPractice lesson={lesson} /></div></JourneySection>
-          <JourneySection id="check" number={7} icon={<Trophy />} moment={mentorMoment("check")}><p className="text-sm leading-7 text-[#58677d]">{mentorMoment("check")?.message}</p><p dir="rtl" className="arabic mt-3 text-right text-sm leading-7 text-[#778399]">{mentorMoment("check")?.messageArabic}</p><div className="mt-5 border-t border-[#e7decf] pt-6"><QuizPractice lesson={lesson} /></div></JourneySection>
+          <JourneySection id="check" number={7} icon={<Trophy />} moment={mentorMoment("check")}><p className="text-sm leading-7 text-[#58677d]">{mentorMoment("check")?.message}</p><p dir="rtl" className="arabic mt-3 text-right text-sm leading-7 text-[#778399]">{mentorMoment("check")?.messageArabic}</p><div className="mt-5 border-t border-[#e7decf] pt-6"><QuizPractice lesson={lesson} level={lesson.level as CefrLevel} /></div></JourneySection>
 
           <div className="rounded-[1.5rem] bg-[#253453] p-6 text-center text-white"><CheckCircle2 className="mx-auto h-7 w-7 text-[#f2cf71]" /><h2 className="mt-3 text-xl font-bold">You have a route, not a pile of tasks.</h2><p className="mx-auto mt-2 max-w-2xl text-sm leading-7 text-[#d5dff0]">Return to any point when you need it. Each pass through the journey helps the language become easier to notice, choose, and use.</p></div>
         </div>

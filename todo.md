@@ -375,3 +375,8 @@
 - [x] Repair the exact quiz request or synchronization failure and add regression coverage.
 - [x] Validate representative quiz generation and publish the recovery.
 - [x] Bootstrap the catalog for the shared batched `/api/trpc` transport used by quiz queries.
+
+# Level-specific Quiz Routing Recovery
+- [x] Trace why quiz generation defaults every selected lesson to A1 Lesson 1.
+- [x] Preserve the selected CEFR level and lesson through the client, tRPC batch, and server quiz procedure with regression coverage.
+- [ ] Validate level-specific quiz generation and publish the recovery.

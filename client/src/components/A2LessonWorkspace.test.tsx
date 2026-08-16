@@ -17,7 +17,7 @@ vi.mock("@/components/ExternalAiPromptPanel", () => ({
   ExternalAiPromptPanel: () => React.createElement("div", null, "External feedback prompt"),
 }));
 vi.mock("@/components/QuizPractice", () => ({
-  QuizPractice: () => React.createElement("div", null, "Quiz practice"),
+  QuizPractice: ({ level }: { level?: string }) => React.createElement("div", { "data-quiz-level": level }, "Quiz practice"),
 }));
 
 import { formatActivityLabel, StructuredLessonWorkspace } from "./A2LessonWorkspace";
@@ -68,6 +68,7 @@ describe("guided workspace Arabic scaffolding", () => {
     expect(guide).not.toBeNull();
     expect(guide!.moments.every((moment) => moment.messageArabic.length > 12)).toBe(true);
     expect(html).toContain(guide!.moments[0].messageArabic);
+    expect(html).toContain('data-quiz-level="A2"');
     expect(buildSentenceReviewPrompt({ lesson, sentence: "I usually plan my week on Sunday." })).toContain("Arabic");
   });
 
