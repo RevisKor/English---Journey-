@@ -328,3 +328,19 @@
 - [x] Inspect the attached deployment log without exposing secret values.
 - [x] Identify the root cause against the prepared adapter and Vercel configuration.
 - [x] Apply and validate the minimal safe fix, or provide exact user-side remediation if the issue is account configuration.
+
+# Vercel-Only Runtime Migration
+- [x] Audit all Manus OAuth, Forge, and managed-database dependencies in the application runtime.
+- [x] Design a Vercel-compatible replacement for authentication and persisted learner progress.
+- [x] Convert the Drizzle schema and database access layer from MySQL to Vercel-connected Postgres.
+- [x] Replace Manus OAuth with Google OAuth and signed local sessions using secure runtime secrets.
+- [x] Remove Manus-specific runtime service calls while preserving browser-native pronunciation and external learner-owned AI prompts.
+- [x] Add migration-focused regression coverage and validate the Vercel-compatible production build.
+- [x] Provision and connect Vercel Postgres for Production and Preview environments.
+- [ ] Apply the generated Postgres initialization migration to the connected Vercel database.
+- [ ] Add the independent runtime secrets to Vercel and validate Google sign-in and persisted learner progress.
+- [x] Document the user-controlled Google OAuth, database migration, and redeployment steps.
+
+# Latest External GitHub Push
+- [ ] Push the latest Vercel-independent migration checkpoint to `RevisKor/English---Journey-`.
+- [ ] Verify the remote branch contains the Google OAuth replacement, Postgres migration, setup guide, and regression tests.

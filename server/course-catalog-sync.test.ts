@@ -50,7 +50,7 @@ const fakeDb = {
           : values;
       state.inserts.push({ table, values: persistedValues });
       return {
-        onDuplicateKeyUpdate: async ({ set }: { set: unknown }) => {
+        onConflictDoUpdate: async ({ set }: { set: unknown }) => {
           state.upserts.push({ table, values: set });
         },
       };

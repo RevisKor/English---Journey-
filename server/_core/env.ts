@@ -1,10 +1,21 @@
+const optional = (key: string) => process.env[key]?.trim() ?? "";
+
+/** Runtime configuration supplied by Vercel; no Manus platform values are used. */
 export const ENV = {
-  appId: process.env.VITE_APP_ID ?? "",
-  cookieSecret: process.env.JWT_SECRET ?? "",
-  databaseUrl: process.env.DATABASE_URL ?? "",
-  oAuthServerUrl: process.env.OAUTH_SERVER_URL ?? "",
-  ownerOpenId: process.env.OWNER_OPEN_ID ?? "",
+  databaseUrl: optional("DATABASE_URL"),
+  cookieSecret: optional("JWT_SECRET"),
+  googleClientId: optional("GOOGLE_CLIENT_ID"),
+  googleClientSecret: optional("GOOGLE_CLIENT_SECRET"),
+  ownerEmail: optional("OWNER_EMAIL").toLowerCase(),
   isProduction: process.env.NODE_ENV === "production",
-  forgeApiUrl: process.env.BUILT_IN_FORGE_API_URL ?? "",
-  forgeApiKey: process.env.BUILT_IN_FORGE_API_KEY ?? "",
-};
+} as const;
+
+export function requireGoogleOAuthConfig() {
+  if (!ENV.googleClientId || !ENV.googleClientSecret) {
+    throw new Error("Google OAuth is not configured. Set GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET.");
+  }
+  if (!ENV.cookieSecret || ENV.cookieSecret.length < 32) {
+    throw new Error("JWT_SECRET must be set to a private value of at least 32 characters.");
+  }
+  return ENV;
+}
