@@ -16,7 +16,7 @@ The root `vercel.json` rewrites `/api/*` to the function entry point. The Vite b
 | Authentication | `JWT_SECRET`, `OAUTH_SERVER_URL`, `VITE_APP_ID`, `VITE_OAUTH_PORTAL_URL` | Session signing and OAuth login/callback behavior. |
 | Server application | `BUILT_IN_FORGE_API_URL`, `BUILT_IN_FORGE_API_KEY` | Existing storage proxy and platform-provided server helpers. These are not new paid APIs. |
 | Browser application | `VITE_FRONTEND_FORGE_API_URL`, `VITE_FRONTEND_FORGE_API_KEY`, `VITE_APP_TITLE`, `VITE_APP_LOGO` | Existing client configuration supplied by the project environment. |
-| Ownership and analytics | `OWNER_OPEN_ID`, `OWNER_NAME`, `VITE_ANALYTICS_ENDPOINT`, `VITE_ANALYTICS_WEBSITE_ID` | Existing owner and optional analytics configuration. Disable analytics values if a no-tracking deployment is preferred. |
+| Ownership | `OWNER_OPEN_ID`, `OWNER_NAME` | Existing owner identity used by the application. Analytics is intentionally not loaded, so no analytics variables are required. |
 
 Production and preview values must be entered through the Vercel project’s environment-variable settings. Secrets must not be committed to the repository.
 

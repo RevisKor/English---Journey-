@@ -314,3 +314,17 @@
 - [x] Remove or ignore secrets, local logs, sandbox metadata, build output, archives, and machine-specific files from the pushable repository.
 - [x] Add a safe Git/Vercel setup guide and an environment-variable reference without real secret values.
 - [x] Run repository integrity and secret-scan validation, then provide manual push commands without pushing on the user’s behalf.
+
+# Vercel Deployment Configuration Guidance
+- [x] Prepare the imported Vercel project settings with the build command, output directory, and API routing; the user applies them manually in Vercel.
+- [x] Prepare the required encrypted Preview and Production environment-variable import; the user imports the filled values privately in Vercel.
+- [x] Document the OAuth callback URL and Preview verification checklist; the user completes the domain-specific checks after deployment.
+
+# Safe Vercel Environment Template
+- [x] Create a placeholder-only environment template with variable names but no real credentials.
+- [x] Explain private replacement and Vercel Import .env usage without committing the filled file.
+
+# Vercel Deployment Error Investigation
+- [x] Inspect the attached deployment log without exposing secret values.
+- [x] Identify the root cause against the prepared adapter and Vercel configuration.
+- [x] Apply and validate the minimal safe fix, or provide exact user-side remediation if the issue is account configuration.
