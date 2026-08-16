@@ -298,8 +298,8 @@
 - [x] Preserve the no-cost architecture: browser-native speech only, external learner-owned AI prompts only, and no paid external runtime API dependency.
 
 # Vercel Hosting Assessment
-- [ ] Confirm the linked Vercel project, deployment target, and production environment configuration without publishing automatically.
-- [ ] Audit Vercel compatibility for the Express/tRPC server, database connection, OAuth callback URLs, storage, and required environment variables.
+- [x] Confirmed that the linked Vercel team currently has no existing English Journey project; deployment target and production environment remain user-controlled.
+- [x] Audit Vercel compatibility for the Express/tRPC server, database connection, OAuth callback URLs, storage, and required environment variables.
 - [x] Validate the configured Vercel token with a read-only Vercel identity endpoint; no deployment was performed.
 - [x] Prepare user-controlled deployment instructions or compatibility changes only after the target Vercel project and environment are confirmed.
 
