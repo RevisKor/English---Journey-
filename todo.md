@@ -171,3 +171,19 @@
 - [x] Expose the authored A1 modules in the learner route or migrate them into the active catalog without breaking gates.
 - [x] Add regression coverage proving the learner can access the authored A1 module content and that legacy progression remains safe.
 - [x] Validate the A1 visibility fix with TypeScript, Vitest, production build, and responsive preview checks.
+
+# Corrected Immersive Curriculum Migration
+- [ ] Audit the active normalized catalog and identify every legacy five-lesson module path that must be replaced.
+- [ ] Research and document a CEFR-aligned 6–7 module architecture with 15–20 varied lessons per module and level-specific skill progression.
+- [ ] Redesign catalog synchronization so authored immersive lessons become active learner lessons rather than preview-only records.
+- [ ] Author six deeply detailed A1 modules with 15–20 lessons each, beginner-safe grammar, bilingual scaffolding, repeated word-bank exposure, and varied skill activities.
+- [ ] Migrate the authored A1 modules into the active catalog, preserving gates, milestone tests, cumulative tests, and lesson provenance.
+- [ ] Define progressive A2–C2 module counts, lesson counts, content depth, and assessment expectations based on the researched architecture.
+- [ ] Add regression coverage proving active module counts, lesson counts, migration provenance, word-bank continuity, and gated progression.
+- [ ] Validate the corrected catalog with TypeScript, full Vitest, production build, and desktop/mobile preview before checkpointing.
+
+# A1 Specification Review Pause
+- [x] Research authoritative A1 CEFR descriptors and reputable course-design references for the review specification.
+- [x] Design the exact A1 module and lesson architecture with 6–7 modules and 15–20 varied lessons per module.
+- [x] Write a complete A1-only curriculum specification covering vocabulary, grammar, activities, repeated exposure, word bank, bilingual scaffolding, and assessments.
+- [x] Deliver the A1 specification for user approval without migrating it into the active catalog yet.
