@@ -44,4 +44,18 @@ describe("Vercel hosting adapter", () => {
     expect(html).not.toContain("%VITE_ANALYTICS_ENDPOINT%");
     expect(html).not.toContain("%VITE_ANALYTICS_WEBSITE_ID%");
   });
+
+  it("keeps Vercel-checked source files in the local type-check scope", () => {
+    const tsconfig = JSON.parse(readFileSync("tsconfig.json", "utf8")) as {
+      include: string[];
+    };
+    const entry = readFileSync("api/index.ts", "utf8");
+    const viteConfig = readFileSync("vite.config.ts", "utf8");
+
+    expect(tsconfig.include).toContain("api/**/*");
+    expect(tsconfig.include).toContain("vite.config.ts");
+    expect(entry).toContain("ExpressRequestListener");
+    expect(entry).not.toContain("app.handle(");
+    expect(viteConfig).not.toContain("vitePluginManusRuntime");
+  });
 });

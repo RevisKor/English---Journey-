@@ -340,3 +340,12 @@
 - [ ] Apply the generated Postgres initialization migration to the connected Vercel database.
 - [ ] Add the independent runtime secrets to Vercel and validate Google sign-in and persisted learner progress.
 - [x] Document the user-controlled Google OAuth, database migration, and redeployment steps.
+
+# Latest External GitHub Push
+- [x] Push the latest Vercel-independent migration checkpoint to `RevisKor/English---Journey-`.
+- [x] Verify the remote branch contains the Google OAuth replacement, Postgres migration, setup guide, and regression tests.
+
+# Vercel TypeScript Deployment Repair
+- [x] Diagnose the Express type-resolution failure reported by Vercel.
+- [x] Repair the Vercel compilation contract and validate it locally.
+- [ ] Push the verified repair to GitHub for redeployment.

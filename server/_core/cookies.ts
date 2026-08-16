@@ -23,7 +23,9 @@ function isSecureRequest(req: Request) {
 
 export function getSessionCookieOptions(
   req: Request
-): Pick<CookieOptions, "domain" | "httpOnly" | "path" | "sameSite" | "secure"> {
+): Omit<Pick<CookieOptions, "domain" | "httpOnly" | "path" | "sameSite" | "secure">, "domain"> & {
+  domain?: string;
+} {
   // const hostname = req.hostname;
   // const shouldSetDomain =
   //   hostname &&
