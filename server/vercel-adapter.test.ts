@@ -26,11 +26,12 @@ describe("Vercel hosting adapter", () => {
     });
   });
 
-  it("keeps catalog synchronization out of the Vercel bundle entry point", () => {
+  it("bootstraps the catalog only for quiz routes in the Vercel entry point", () => {
     const entry = readFileSync("server/vercel-entry.ts", "utf8");
 
-    expect(entry).toContain("const app = createApp()");
-    expect(entry).not.toContain("ensureCurrentCurriculumCatalog");
+    expect(entry).toContain("ensureCurrentCurriculumCatalog");
+    expect(entry).toContain("/api/trpc/course.lessonQuiz");
+    expect(entry).toContain("/api/trpc/course.moduleTest");
     expect(entry).not.toContain("listen(");
   });
 

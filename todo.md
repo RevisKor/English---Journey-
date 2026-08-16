@@ -360,3 +360,8 @@
 
 # Production Administrator Access
 - [ ] Assign the administrator role only to the authenticated account with `revissskor@gmail.com` and verify the persisted role.
+
+# Quiz Catalog Synchronization Recovery
+- [x] Diagnose why production quizzes report that the requested course level has not been synchronized.
+- [x] Repair the shared curriculum catalog loading or synchronization path for all quiz levels.
+- [ ] Validate representative quizzes and publish the recovery.
