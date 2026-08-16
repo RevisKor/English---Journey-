@@ -307,6 +307,21 @@ This specification should not be considered implemented until the active catalog
 | Owner review | The owner can inspect every A1 lesson before or after migration and see its grammar, activities, vocabulary, and assessment content. |
 | Responsive behavior | The 15-lesson module structure remains navigable on mobile with independently scrolling navigation. |
 
+## 15. Visual-system consistency standard
+
+The expanded A1 curriculum must **feel like the same English Journey product**, not a separate curriculum bolted onto the existing site. The migration will reuse the established visual language: the deep navy learning-space shell, warm gold progression accents, paper-toned content cards, rounded learning surfaces, DM Sans and Noto Sans Arabic typography, visible focus rings, and the existing compact mobile navigation rhythm. New lesson types may introduce appropriate visual material, but they must compose from these existing tokens rather than invent a competing palette, spacing scale, button style, or icon language.
+
+| Surface | Required consistency rule | A1-specific addition |
+|---|---|---|
+| Learner map | Preserve the existing module-card hierarchy, progress state, locked/available treatment, and bilingual title layout. | Show all 15 active lesson cards in the same grid and use a compact type badge rather than a preview-only panel. |
+| Lesson workspace | Keep the mentor-led sequence, card rhythm, heading scale, primary action treatment, and Arabic support placement. | Change activity content by lesson type, not the surrounding page shell or navigation model. |
+| Word bank | Retain current review controls, card behavior, pronunciation affordance, and status language. | Add source lesson and exposure-history metadata as secondary information, never as clutter before the word itself. |
+| Tutorial and prompts | Preserve the guided modal/drawer format, bilingual hierarchy, and concise step framing. | Explain the 15-lesson rhythm and lesson-type badges using the same mentor voice and task cards. |
+| Owner review | Retain inspection-oriented tabs, neutral cards, and clear loaded/empty states. | Present authored source keys and migration status as compact metadata, not a second dashboard visual system. |
+| Mobile | Preserve independent sidebar scrolling, collapsible navigation, touch targets, and clear next-step calls to action. | Use one-column lesson cards and expandable details; do not rely on hover-only explanations or dense horizontal tables. |
+
+Before release, desktop and mobile screenshots must be reviewed together for the learner map, a visual-vocabulary lesson, a grammar lesson, a dialogue/speaking lesson, a reading/writing lesson, the module word bank, the tutorial, and owner review. A new A1 surface fails this standard if it uses unpaired background/text tokens, loses Arabic readability, creates a new navigation pattern, hides keyboard focus, or makes a 15-lesson module harder to scan than the current five-lesson card.
+
 ## Review questions for the owner
 
 Please approve or revise the following before implementation: whether six modules is the right A1 breadth; whether fifteen lessons per module is the right minimum; whether the six themes match the intended learner journey; whether the proposed 90-lesson volume is acceptable for an A1 track; whether the module test should require both an 80% objective score and completion of a short production task; and whether the Arabic support should reduce after Module 2 or remain equally visible throughout A1.

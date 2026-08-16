@@ -187,3 +187,8 @@
 - [x] Design the exact A1 module and lesson architecture with 6–7 modules and 15–20 varied lessons per module.
 - [x] Write a complete A1-only curriculum specification covering vocabulary, grammar, activities, repeated exposure, word bank, bilingual scaffolding, and assessments.
 - [x] Deliver the A1 specification for user approval without migrating it into the active catalog yet.
+
+# A1 Visual Consistency Requirements
+- [x] Define a shared A1 expansion visual checklist covering design tokens, mentor tone, bilingual hierarchy, cards, navigation, progress, and accessibility.
+- [ ] Keep expanded A1 learner-map, lesson, word-bank, tutorial, and owner-review surfaces visually consistent with the established English Journey design system.
+- [ ] Verify visual consistency at desktop and mobile breakpoints alongside functional catalog and progression validation.
