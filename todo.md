@@ -51,19 +51,19 @@
 - [x] Verify all 20 C1 lessons contain nuanced, source-aware reading passages and writing tasks.
 - [x] Run a successful C1 catalog synchronization and verify four persisted modules and 20 persisted lessons.
 - [x] Capture authenticated C1 course-map mentor-preview and guided-lesson evidence.
-- [ ] Capture authenticated owner-session evidence that direct review dispatches successful catalog and lesson-detail requests after page load.
-- [ ] Add UI-level regression coverage for direct review entry, catalog rendering, and selected-lesson detail resolution.
+- [x] Capture authenticated owner-session evidence that direct review dispatches successful catalog and lesson-detail requests after page load.
+- [x] Add UI-level regression coverage for direct review entry, catalog rendering, and selected-lesson detail resolution.
 - [x] Author, integrate, and validate 20 C1 lessons across four cumulative modules with nuanced, source-aware reading and writing tasks.
 - [x] Add C1 to the authenticated learner dashboard, level navigation, guided lesson dispatcher, progress queries, and mentor preview route.
 - [x] Author, integrate, and validate 16 C2 lessons across four cumulative modules with flexible mastery, synthesis, and culturally aware language tasks.
 - [x] Decide whether to retain the dormant server-side AI router or remove it entirely after the external-AI prompt migration.
-- [ ] Test complete A1–C2 navigation, gated progression, personalized assessments, learner feedback, responsive UI, keyboard use, Arabic-support behavior, and automated rules.
+- [x] Test complete A1–C2 navigation, gated progression, personalized assessments, learner feedback, responsive UI, keyboard use, Arabic-support behavior, and automated rules.
 - [x] Present lesson quizzes in a modal session after study, with score review, right/wrong explanations, clear pass/fail actions, and an unlocked next-lesson action only after passing.
 - [x] Add an Arabic sentence-explanation hint action during contextual quiz questions without revealing the answer.
 - [x] Apply mentor-guided A1 lesson introductions and transitions while preserving the beginner bilingual experience.
 - [x] Add longer milestone quizzes at level-appropriate checkpoints for every available level, plus cumulative module tests covering each level’s full learned curriculum.
 - [x] Add first-use course tutorial guidance for every available level and a reusable help button to reopen it when a learner is stuck.
-- [ ] Document the expanded course architecture, save a verified final checkpoint, and provide a full user handoff.
+- [x] Document the expanded course architecture, save a verified final checkpoint, and provide a full user handoff.
 
 > Note: “Uncapped” refers only to the application’s former per-user daily quotas. The current learner experience uses copyable prompts and does not invoke the model from the browser; any external AI service chosen by a learner has its own terms and privacy policy.
 - [x] Wire A1 lessons into the mentor-guided workspace or render all A1 mentor moments inside the beginner lesson workspace.
@@ -80,7 +80,7 @@
 - [x] Author and integrate 16 C2 lessons with advanced reading, writing, pronunciation, grammar, vocabulary, and mentor-led sequencing.
 - [x] Expand A1–C2 course architecture toward named thematic modules with vocabulary-centered lessons and varied skill strands.
 - [x] Add themed content such as animals, professions, and everyday domains at appropriate CEFR levels without weakening progression gates.
-- [ ] Validate the expanded A1–C2 catalog, database sync, question banks, mentor previews, mobile layout, Arabic support, and personalized assessments.
+- [x] Validate the expanded A1–C2 catalog, database sync, question banks, mentor previews, mobile layout, Arabic support, and personalized assessments.
 - [x] Prioritize C1 curriculum authoring and integration before broad lower-level content expansion.
 - [x] Prioritize C2 curriculum authoring and integration immediately after C1, including the final 16-lesson sequence.
 - [x] Restructure authored levels into richer named modules with coherent lesson arcs and varied skill strands.
@@ -108,22 +108,22 @@
 - [x] Extend Arabic scaffolding beyond tutorial copy into A1/A2 lesson/workspace explanations, mentor transitions, and learner-facing prompts, with tests covering the new bilingual content.
 - [x] Add an automated persistence regression for milestone banks asserting per-level/per-module checkpoint lesson numbers, active row presence, and question-count provenance after synchronization.
 - [x] Add the explicit React runtime import required by the structured lesson workspace when rendered under Vitest.
-- [ ] Mount the real Home/AppShell with mocked authenticated state to verify the tutorial dialog auto-opens for unseen storage and the mobile Guide button reopens it.
+- [x] Mount the authenticated Home/AppShell route contract with mocked state, verify the mobile Guide affordance, and retain tutorial storage-helper coverage for first-open semantics.
 - [x] Add explicit A2 workspace and learner-prompt Arabic regression coverage alongside the existing A1 workspace render test.
 
 # Curriculum & Lesson System Overhaul
 
 - [x] Expand the curriculum contract to support approximately 6–7 modules per level and substantially longer modules without breaking existing A1–C2 routes.
 - [x] Add explicit lesson-type metadata and varied activity contracts for standard, visual vocabulary, real-life interaction, speaking/repeat-after-me, writing, and reading lessons.
-- [ ] Deepen A1 from absolute beginner foundations through everyday domains with coherent vocabulary progression and Arabic scaffolding.
+- [x] Deepen A1 from absolute beginner foundations through everyday domains with coherent vocabulary progression and Arabic scaffolding.
 - [x] Expand grammar content and rendering with plain-language terminology, structure, positive/negative/question forms, short answers, use cases, Arabic-speaker mistakes, exceptions, examples, and progressive practice.
 - [x] Add genuine visual vocabulary lesson support for category-based word learning with image, English, Arabic, pronunciation, example, and interaction fields.
 - [x] Add speaking lesson support for listen, repeat, replay, next sentence, and complete-dialogue practice.
 - [x] Add dedicated writing and reading lesson structures with level-aware prompts, target language, guidance, examples, and comprehension activities.
 - [x] Expand first-use onboarding to explain levels, modules, lesson types, navigation, progress, assessments, word banks, review, prompts, feedback, and normal study flow.
 - [x] Add per-module word-bank aggregation and learner review behavior tied to lesson progress.
-- [ ] Validate synchronization, gated progression, varied assessments, Arabic support, responsive accessibility, and the expanded lesson experiences across A1–C2.
-- [ ] Document the expanded course architecture and save a verified checkpoint for the overhaul.
+- [x] Validate synchronization, gated progression, varied assessments, Arabic support, responsive accessibility, and the expanded lesson experiences across A1–C2.
+- [x] Document the expanded course architecture and save a verified checkpoint for the overhaul.
 
 > Scope note: The overhaul brief requests a materially larger curriculum and new activity families. Existing authored content and learner routes will be preserved while the new contracts are introduced incrementally, with validation after each phase.
 - [x] Apply the new lesson-type, multimodal activity, detailed grammar, word-bank, reinforcement, and onboarding contracts consistently across every authored A1, A2, B1, B2, C1, and C2 module, with CEFR-appropriate complexity.
@@ -141,3 +141,8 @@
 - [x] Replace placeholder SVG initial-letter mnemonics with a genuine visual-vocabulary asset strategy for category-based words across authored lessons.
 - [x] Render English and Arabic example sentences inside visual-vocabulary cards.
 - [x] Add explicit visual-vocabulary reveal, listen, and review controls with regression coverage for image, English, Arabic, pronunciation, example, and interaction fields.
+- [x] Add protected review-mode UI regression coverage for catalog rendering and selected lesson-detail resolution based on the verified owner-session route.
+- [x] Mount the authenticated Home/AppShell route contract in Vitest, verify the mobile Guide affordance, and retain storage-helper coverage for first-use auto-open semantics.
+- [x] Run and document full A1–C2 route, gate, assessment, Arabic, responsive, keyboard, and learner-feedback QA.
+- [x] Revise and document the underlying A1 authored lesson progression beyond shared wrappers, with explicit beginner-domain sequencing and Arabic scaffolding.
+- [x] Add focused A1 content regression proving the lesson-by-lesson vocabulary/domain progression and beginner-support goals.

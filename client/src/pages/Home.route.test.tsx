@@ -2,6 +2,8 @@ import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { C1_LESSONS } from "@shared/course/c1";
+import { A1_COURSE, A1_LESSONS, A2_COURSE, A2_LESSONS, B1_COURSE, B1_LESSONS, B2_COURSE, B2_LESSONS, C1_COURSE, C2_COURSE, C2_LESSONS } from "@shared/course";
+import { buildReviewRequestPlan, reviewDispatchStatus, ContentReview } from "@/components/ContentReview";
 
 const mockUseAuth = vi.hoisted(() => vi.fn());
 const mockUseQuery = vi.hoisted(() => vi.fn(() => ({ data: undefined, refetch: vi.fn() })));
@@ -10,7 +12,9 @@ const mockUseMutation = vi.hoisted(() => vi.fn(() => ({ mutate: vi.fn(), isPendi
 vi.mock("@/_core/hooks/useAuth", () => ({ useAuth: mockUseAuth }));
 vi.mock("@/lib/trpc", () => ({
   trpc: {
+    useUtils: () => ({ admin: { catalog: { fetch: vi.fn(() => Promise.resolve([])) }, lesson: { fetch: vi.fn(() => Promise.resolve(null)) } } }),
     course: {
+
       dashboard: { useQuery: mockUseQuery },
       progress: { useQuery: mockUseQuery },
       recordActivity: { useMutation: mockUseMutation },
@@ -25,6 +29,20 @@ vi.mock("@/components/A2LessonWorkspace", () => ({
 import { AppShell, CourseDashboard, resolveDirectLesson, resolveLearnerEntry, tutorialCopy } from "./Home";
 
 describe("Home learner entry routing", () => {
+  it("renders resolved owner-review catalog modules and selected lesson detail", () => {
+    const html = renderToStaticMarkup(<ContentReview onOpenCourse={() => undefined} initialData={{
+      selectedLevel: "A1",
+      selectedLesson: 1,
+      catalog: [{ code: "A1", title: "Beginner English", titleArabic: "الإنجليزية للمبتدئين", totalLessons: 20, modules: [{ id: 1, moduleNumber: 1, title: "Foundations", lessons: [{ id: 1, lessonNumber: 1, title: "Hello & introductions" }] }] }],
+      detail: { lesson: { title: "Hello & introductions", titleArabic: "التحية والتعارف", learningPlan: { outcome: { canDo: "Introduce yourself", canDoArabic: "قدّم نفسك" }, steps: [] } }, topic: { title: "Greetings" }, vocabulary: [], grammar: [], readings: [], writingTasks: [], assessments: [] } as any,
+    }} />);
+    expect(html).toContain("Inspect every completed lesson.");
+    expect(html).toContain("Module 1 · Foundations");
+    expect(html).toContain("Hello &amp; introductions");
+    expect(html).toContain("Introduce yourself");
+    expect(html).toContain("Open learner view");
+  });
+
   beforeEach(() => {
     mockUseAuth.mockReturnValue({
       user: { name: "Owner", role: "admin" },
@@ -61,15 +79,49 @@ describe("Home learner entry routing", () => {
   it("keeps the course guide reachable on mobile and provides Arabic beginner scaffolding", () => {
     const html = renderToStaticMarkup(<AppShell initialSearch="?level=A1" />);
     expect(html).toContain('aria-label="Open course guide"');
+    expect(html).toContain("Good to see you again");
     expect(tutorialCopy.A1.introArabic).toContain("رحلة الإنجليزية");
     expect(tutorialCopy.A1.steps.every((step) => step.bodyArabic)).toBe(true);
     expect(tutorialCopy.A2.steps.every((step) => step.bodyArabic)).toBe(true);
+  });
+
+  it("enters the protected review shell for an authenticated owner", () => {
+    const html = renderToStaticMarkup(<AppShell initialSearch="?review=1" />);
+    expect(html).toContain("Content review");
+    expect(html).toContain("Content review");
+    expect(html).toContain("Loading completed content");
+  });
+
+  it("defines and validates the catalog plus selected lesson-detail dispatch contract", () => {
+    expect(buildReviewRequestPlan("C1", 7)).toEqual({
+      catalog: { procedure: "admin.catalog", input: undefined },
+      lesson: { procedure: "admin.lesson", input: { level: "C1", lessonNumber: 7 } },
+    });
+    expect(reviewDispatchStatus([{ code: "C1", modules: [{ lessons: [{ lessonNumber: 7 }] }], totalLessons: 20 }], {
+      lesson: { title: "Reading between the lines" }, vocabulary: [], grammar: [], assessments: [],
+    })).toEqual({ catalogLoaded: true, lessonLoaded: true });
   });
 
   it("keeps a level-only course URL in the course-map state", () => {
     const entry = resolveLearnerEntry("?level=C1");
     expect(entry.level).toBe("C1");
     expect(entry.lesson).toBeUndefined();
+  });
+
+  it("validates the complete A1–C2 learner route and Arabic activity contract", () => {
+    const courses = [
+      [A1_COURSE, A1_LESSONS], [A2_COURSE, A2_LESSONS], [B1_COURSE, B1_LESSONS], [B2_COURSE, B2_LESSONS], [C1_COURSE, C1_COURSE.lessons], [C2_COURSE, C2_LESSONS],
+    ] as const;
+    for (const [course, lessons] of courses) {
+      expect(lessons).toHaveLength(course.totalLessons);
+      expect(course.modules!.length).toBeGreaterThanOrEqual(4);
+      expect(lessons[0].titleArabic).toBeTruthy();
+      expect(lessons.at(-1)?.titleArabic).toBeTruthy();
+      expect(lessons.every((lesson) => lesson.activities?.length && lesson.grammar?.teachingGuide?.whatItIs && lesson.grammar?.teachingGuide?.shortAnswerExamples.length)).toBe(true);
+      expect(resolveDirectLesson(`?level=${course.level}&lesson=${course.totalLessons}`, true, new Set())?.lessonNumber).toBe(course.totalLessons);
+      expect(resolveDirectLesson(`?level=${course.level}&lesson=${course.totalLessons}`, false, new Set())).toBeUndefined();
+    }
+    expect(A1_COURSE.modules!.map((module) => module.lessonNumbers)).toEqual(expect.arrayContaining([[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15], [16, 17, 18, 19, 20]]));
   });
 
   it("still renders the isolated dashboard contract used by the map component", () => {

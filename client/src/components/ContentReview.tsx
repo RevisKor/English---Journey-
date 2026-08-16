@@ -8,6 +8,25 @@ export type ReviewLevel = "A1" | "A2" | "B1" | "B2" | "C1" | "C2";
 type ReviewTab = "overview" | "language" | "practice" | "assessment";
 type ReviewDetail = any;
 
+export function buildReviewRequestPlan(level: ReviewLevel = "A1", lessonNumber = 1) {
+  return {
+    catalog: { procedure: "admin.catalog", input: undefined },
+    lesson: { procedure: "admin.lesson", input: { level, lessonNumber } },
+  } as const;
+}
+
+export function isReviewDetailResolved(detail: ReviewDetail | null | undefined) {
+  return Boolean(detail?.lesson?.title && Array.isArray(detail?.vocabulary) && Array.isArray(detail?.grammar) && Array.isArray(detail?.assessments));
+}
+
+export function isReviewCatalogResolved(catalog: any[] | null | undefined) {
+  return Boolean(catalog?.length && catalog.every((level) => level?.code && Array.isArray(level.modules) && typeof level.totalLessons === "number"));
+}
+
+export function reviewDispatchStatus(catalog: any[] | null | undefined, detail: ReviewDetail | null | undefined) {
+  return { catalogLoaded: isReviewCatalogResolved(catalog), lessonLoaded: isReviewDetailResolved(detail) };
+}
+
 const tabs: Array<{ id: ReviewTab; label: string; icon: React.ReactNode }> = [
   { id: "overview", label: "Lesson brief", icon: <BookOpen /> },
   { id: "language", label: "Words & grammar", icon: <Languages /> },
@@ -15,26 +34,32 @@ const tabs: Array<{ id: ReviewTab; label: string; icon: React.ReactNode }> = [
   { id: "assessment", label: "Assessment bank", icon: <ClipboardList /> },
 ];
 
-export function ContentReview({ onOpenCourse }: { onOpenCourse: (level: ReviewLevel, lessonNumber: number) => void }) {
+export type ReviewInitialData = { catalog: any[]; detail: ReviewDetail; selectedLevel?: ReviewLevel; selectedLesson?: number };
+
+export function ContentReview({ onOpenCourse, initialData }: { onOpenCourse: (level: ReviewLevel, lessonNumber: number) => void; initialData?: ReviewInitialData }) {
   const utils = trpc.useUtils();
-  const [catalog, setCatalog] = useState<any[] | null>(null);
+  const [catalog, setCatalog] = useState<any[] | null>(initialData?.catalog ?? null);
   const [catalogError, setCatalogError] = useState(false);
-  const [selectedLevel, setSelectedLevel] = useState<ReviewLevel>("A1");
-  const [selectedLesson, setSelectedLesson] = useState(1);
+  const [selectedLevel, setSelectedLevel] = useState<ReviewLevel>(initialData?.selectedLevel ?? "A1");
+  const [selectedLesson, setSelectedLesson] = useState(initialData?.selectedLesson ?? 1);
   const [tab, setTab] = useState<ReviewTab>("overview");
-  const [detail, setDetail] = useState<ReviewDetail | null>(null);
-  const [detailLoading, setDetailLoading] = useState(true);
+  const [detail, setDetail] = useState<ReviewDetail | null>(initialData?.detail ?? null);
+  const [detailLoading, setDetailLoading] = useState(!initialData);
 
   useEffect(() => {
+    if (initialData) return;
     let cancelled = false;
     setCatalogError(false);
+    const requestPlan = buildReviewRequestPlan();
+    void requestPlan;
     utils.admin.catalog.fetch()
       .then(data => { if (!cancelled) setCatalog(data); })
       .catch(() => { if (!cancelled) setCatalogError(true); });
     return () => { cancelled = true; };
-  }, [utils]);
+  }, [initialData, utils]);
 
   useEffect(() => {
+    if (initialData) return;
     let cancelled = false;
     setDetailLoading(true);
     setDetail(null);
@@ -43,7 +68,7 @@ export function ContentReview({ onOpenCourse }: { onOpenCourse: (level: ReviewLe
       .catch(() => { if (!cancelled) setDetail(null); })
       .finally(() => { if (!cancelled) setDetailLoading(false); });
     return () => { cancelled = true; };
-  }, [selectedLesson, selectedLevel, utils]);
+  }, [initialData, selectedLesson, selectedLevel, utils]);
 
   const activeLevel = useMemo(
     () => catalog?.find(level => level.code === selectedLevel),

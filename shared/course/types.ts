@@ -229,6 +229,10 @@ export type LessonDefinition = {
   learningPlan?: LessonLearningPlan;
   lexicalNetworks?: LexicalNetwork[];
   practiceBrief?: LessonPracticeBrief;
+  domainFocus?: string;
+  domainFocusArabic?: string;
+  beginnerScaffold?: string;
+  beginnerScaffoldArabic?: string;
   lessonType?: LessonType;
   activities?: LessonActivity[];
   progression?: LessonProgressionStage[];
