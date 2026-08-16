@@ -224,6 +224,11 @@ export type ModuleWordBankEntry = VocabularyItem & {
   familiarity: "introduced" | "recognized" | "understood" | "used" | "remembered";
 };
 
+export type ImmersiveWordBankEntry = ModuleWordBankEntry & {
+  sourceLessonNumbers: number[];
+  exposurePlan: VocabularyExposure[];
+};
+
 export type MentorMomentId = "welcome" | "vocabulary" | "grammar" | "practice" | "reading" | "writing" | "check";
 
 export type MentorMoment = {

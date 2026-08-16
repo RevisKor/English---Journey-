@@ -1,4 +1,5 @@
 import type { CefrLevel, LessonDefinition } from "./types";
+import { A1_MEETING_PEOPLE_IMMERSIVE } from "./a1-immersive-modules";
 import { moduleTheme } from "./module-guidance";
 import type { ModuleDefinition } from "./types";
 
@@ -9,6 +10,12 @@ export type LearnerCourseMapSection = {
   overview: string;
   overviewArabic: string;
   lessons: LessonDefinition[];
+  immersiveRoadmap?: {
+    plannedLessons: number;
+    lessonTypes: string[];
+    notice: string;
+    noticeArabic: string;
+  };
 };
 
 export function buildLearnerCourseMap(level: CefrLevel, lessons: LessonDefinition[], modules?: ModuleDefinition[]): LearnerCourseMapSection[] {
@@ -23,6 +30,12 @@ export function buildLearnerCourseMap(level: CefrLevel, lessons: LessonDefinitio
       overview: definition?.theme ?? fallback.overview,
       overviewArabic: definition?.themeArabic ?? fallback.overviewArabic,
       lessons: lessons.filter((lesson) => definition?.lessonNumbers.includes(lesson.lessonNumber) ?? lesson.moduleNumber === moduleNumber),
+      immersiveRoadmap: level === "A1" && moduleNumber === 1 ? {
+        plannedLessons: A1_MEETING_PEOPLE_IMMERSIVE.lessonBlueprints.length,
+        lessonTypes: Array.from(new Set(A1_MEETING_PEOPLE_IMMERSIVE.lessonBlueprints.map((lesson) => lesson.type))),
+        notice: "This module is being deepened into a 15-lesson guided journey. The current catalog lessons remain the active gated route while the new authoring is reviewed.",
+        noticeArabic: "يجري تعميق هذه الوحدة إلى رحلة موجّهة من ١٥ درساً. تبقى دروس الكتالوج الحالية هي المسار النشط ذي البوابات أثناء مراجعة التأليف الجديد.",
+      } : undefined,
     };
   });
 }

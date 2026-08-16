@@ -152,7 +152,7 @@
 - [x] Author the first expanded A1 thematic module with 15–20 varied lessons and explicit lesson-purpose arcs.
 - [x] Add repeated-exposure links so module vocabulary reappears in grammar, dialogue, speaking, reading, writing, quizzes, and review activities.
 - [x] Expand A1 grammar teaching guides with beginner-safe terminology, bilingual explanations, forms, use cases, Arabic-speaker mistakes, exceptions, guided practice, and real-world usage.
-- [ ] Add detailed module word-bank provenance and continuously updating review data for the new authored content.
-- [ ] Extend module-level learner map and lesson flow to present the new immersive sequence without breaking A1–C2 routing or gates.
+- [x] Add detailed module word-bank provenance and continuously updating review data for the new authored content.
+- [x] Extend module-level learner map and lesson flow to present the new immersive sequence without breaking A1–C2 routing or gates.
 - [x] Add regression coverage for the new module structure, repeated vocabulary exposure, word-bank provenance, and beginner guidance.
 - [x] Validate the authored milestone with TypeScript, Vitest, production build, and responsive preview checks before checkpointing.
