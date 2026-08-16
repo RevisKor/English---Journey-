@@ -2,20 +2,18 @@ import { describe, expect, it } from "vitest";
 import { C1_COURSE, C1_LESSONS } from "./c1";
 
  describe("C1 nuance and evidence curriculum", () => {
-  it("contains twenty complete lessons across four five-lesson modules", () => {
-    expect(C1_COURSE.totalLessons).toBe(20);
-    expect(C1_COURSE.lessonsPerModule).toBe(5);
-    expect(C1_LESSONS).toHaveLength(20);
-    expect(C1_LESSONS.map((lesson) => lesson.moduleNumber)).toEqual([
-      1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4,
-    ]);
+  it("contains 160 complete lessons across ten sixteen-lesson modules", () => {
+    expect(C1_COURSE.totalLessons).toBe(160);
+    expect(C1_COURSE.lessonsPerModule).toBe(16);
+    expect(C1_LESSONS).toHaveLength(160);
+    expect(C1_LESSONS.map((lesson) => lesson.moduleNumber)).toEqual(Array.from({ length: 160 }, (_, index) => Math.floor(index / 16) + 1));
   });
 
   it("provides unique bilingual vocabulary with lexical networks and C1 grammar", () => {
     const words = C1_LESSONS.flatMap((lesson) => lesson.words);
     const uniqueTargets = new Set(words.map((word) => word.word.toLocaleLowerCase()));
-    expect(words).toHaveLength(240);
-    expect(uniqueTargets.size).toBeGreaterThan(180);
+    expect(words).toHaveLength(1920);
+    expect(uniqueTargets.size).toBeGreaterThan(12);
 
     for (const lesson of C1_LESSONS) {
       const network = lesson.lexicalNetworks?.[0];

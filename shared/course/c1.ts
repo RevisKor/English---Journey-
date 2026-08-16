@@ -44,7 +44,7 @@ function asGrammarTopic(lesson: DraftLesson): GrammarTopic {
 }
 
 export const C1_LESSONS: LessonDefinition[] = (rawDraft as DraftLesson[]).map((draft) => ({
-  level: "C1" as const, lessonNumber: draft.lessonNumber, moduleNumber: Math.ceil(draft.lessonNumber / 5), title: draft.title, titleArabic: draft.titleArabic,
+  level: "C1" as const, lessonNumber: draft.lessonNumber, moduleNumber: Math.ceil(draft.lessonNumber / 16), title: draft.title, titleArabic: draft.titleArabic,
   words: draft.vocabulary.map((item, index) => asVocabularyItem(item, draft.lessonNumber, index)), grammar: asGrammarTopic(draft),
   learningPlan: { outcome: draft.outcome, steps: STEPS, retrieval: draft.retrieval.map((item) => ({ sourceLevel: "B2" as const, language: item.language, prompt: item.prompt, purpose: item.purpose })), englishFirst: true, studio: "Ideas & Evidence Studio" },
   lexicalNetworks: [{ id: `c1-network-${draft.lessonNumber}`, theme: draft.network.theme, themeArabic: draft.network.themeArabic, anchor: draft.network.anchor, wordFamilies: draft.network.wordFamilies, relatedWords: draft.network.relatedWords, chunks: draft.network.chunks, collocations: draft.network.collocations, register: draft.network.register, priorLevelLinks: draft.network.priorLevelLinks, learningNote: draft.network.learningNote, learningNoteArabic: draft.network.learningNoteArabic }],
@@ -53,7 +53,7 @@ export const C1_LESSONS: LessonDefinition[] = (rawDraft as DraftLesson[]).map((d
 
 export const C1_VOCABULARY = C1_LESSONS.flatMap((lesson) => lesson.words);
 export const C1_GRAMMAR = C1_LESSONS.map((lesson) => lesson.grammar);
-export const C1_COURSE: CourseDefinition = { level: "C1", title: "Nuance, evidence, and responsible judgement", titleArabic: "الدقة والأدلة والحكم المسؤول", totalLessons: 20, lessonsPerModule: 5, estimatedMinutes: 420 * 60, lessons: C1_LESSONS, modules: buildModuleDefinitions("C1", C1_LESSONS) };
+export const C1_COURSE: CourseDefinition = { level: "C1", title: "Nuance, evidence, and responsible judgement", titleArabic: "الدقة والأدلة والحكم المسؤول", totalLessons: 160, lessonsPerModule: 16, estimatedMinutes: 420 * 60, lessons: C1_LESSONS, modules: buildModuleDefinitions("C1", C1_LESSONS) };
 export function getC1Lesson(lessonNumber: number) { return C1_LESSONS.find((lesson) => lesson.lessonNumber === lessonNumber); }
 
 export default C1_COURSE;
@@ -68,7 +68,7 @@ export const C1_LESSON_COUNT = C1_LESSONS.length;
 
 void _c1CourseTypeCheck;
 
-export const C1_MODULE_COUNT = 4;
+export const C1_MODULE_COUNT = 10;
 
 export const C1_LEVEL = "C1" as const;
 
@@ -76,6 +76,6 @@ export const C1_LESSON_STEPS = STEPS;
 
 export const C1_AUTHORING_NOTE = "C1 develops source-aware reading, precise stance, and responsible synthesis.";
 
-export const C1_READY = C1_LESSONS.length === 20;
+export const C1_READY = C1_LESSONS.length === 160;
 
-if (!C1_READY) throw new Error(`C1 curriculum requires 20 lessons; found ${C1_LESSONS.length}`);
+if (!C1_READY) throw new Error(`C1 curriculum requires 160 lessons; found ${C1_LESSONS.length}`);

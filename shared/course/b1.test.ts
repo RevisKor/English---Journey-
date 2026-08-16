@@ -29,6 +29,22 @@ describe("B1 cumulative curriculum", () => {
     }
   });
 
+  it("keeps every module editorially varied rather than reducing B1 to word lists", () => {
+    for (let moduleNumber = 1; moduleNumber <= 10; moduleNumber += 1) {
+      const lessons = B1_LESSONS.filter((lesson) => lesson.moduleNumber === moduleNumber);
+      const titles = lessons.map((lesson) => lesson.title.toLowerCase());
+      expect(new Set(titles).size).toBe(15);
+      expect(lessons.every((lesson) => lesson.practiceBrief?.readingBrief && lesson.practiceBrief.writingPrompt)).toBe(true);
+      expect(lessons.every((lesson) => lesson.words.length === 12 && lesson.grammar.topic.length > 20)).toBe(true);
+    }
+    const allTitles = B1_LESSONS.map((lesson) => lesson.title.toLowerCase());
+    expect(allTitles.some((title) => title.includes("dialogue"))).toBe(true);
+    expect(allTitles.some((title) => title.includes("read"))).toBe(true);
+    expect(allTitles.some((title) => title.includes("write"))).toBe(true);
+    expect(allTitles.some((title) => title.includes("speak"))).toBe(true);
+    expect(allTitles.some((title) => title.includes("checkpoint"))).toBe(true);
+  });
+
   it("uses A2 retrieval and the six-step route to build supported B1 responses", () => {
     for (const lesson of B1_LESSONS) {
       expect(lesson.learningPlan?.englishFirst).toBe(true);

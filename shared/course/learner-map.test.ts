@@ -13,23 +13,23 @@ describe("learner-facing course map", () => {
     expect(sections.flatMap((section) => section.lessons)).toHaveLength(90);
   });
 
-  it("groups C1 lessons into four named bilingual arcs", () => {
+  it("groups C1 lessons into ten named bilingual arcs", () => {
     const sections = buildLearnerCourseMap("C1", C1_LESSONS);
-    expect(sections).toHaveLength(4);
-    expect(sections.map((section) => section.title)).toEqual(["Sources and Perspectives", "Systems and Change", "Culture and Identity", "Public Reasoning"]);
-    expect(sections.every((section) => section.lessons.length === 5 && section.titleArabic.length > 3)).toBe(true);
+    expect(sections).toHaveLength(10);
+    expect(sections[0].title).toBe("Sources and Perspectives");
+    expect(sections.every((section) => section.lessons.length === 16 && section.titleArabic.length > 3)).toBe(true);
   });
 
   it("uses first-class C1 module metadata when rendering the map", () => {
     const sections = buildLearnerCourseMap("C1", C1_LESSONS, C1_COURSE.modules);
     expect(sections[0]).toEqual(expect.objectContaining({ title: "Sources and Perspectives", titleArabic: "المصادر ووجهات النظر", lessons: expect.arrayContaining([expect.objectContaining({ lessonNumber: 1 })]) }));
-    expect(sections[0].lessons).toHaveLength(5);
+    expect(sections[0].lessons).toHaveLength(16);
   });
 
   it("keeps the C2 capstone sequence visible as a final mediation arc", () => {
     const sections = buildLearnerCourseMap("C2", C2_LESSONS);
-    expect(sections).toHaveLength(4);
-    expect(sections[3].title).toBe("Mediation and Synthesis");
-    expect(sections[3].lessons.map((lesson) => lesson.lessonNumber)).toEqual([13, 14, 15, 16]);
+    expect(sections).toHaveLength(12);
+    expect(sections.at(-1)?.title).toBe("Final Independent Studio");
+    expect(sections.at(-1)?.lessons.map((lesson) => lesson.lessonNumber)).toEqual([166, 167, 168, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180]);
   });
 });

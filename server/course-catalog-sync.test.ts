@@ -119,8 +119,8 @@ describe("curriculum catalog practice persistence", () => {
     expect(persistedB1Lessons).toHaveLength(150);
     const persistedC1Modules = state.inserts.filter((entry) => entry.table === courseModules && (entry.values as { levelId?: number }).levelId === 5);
     const persistedC1Lessons = state.inserts.filter((entry) => entry.table === courseLessons && (entry.values as { levelId?: number }).levelId === 5);
-    expect(persistedC1Modules).toHaveLength(4);
-    expect(persistedC1Lessons).toHaveLength(20);
+    expect(persistedC1Modules).toHaveLength(10);
+    expect(persistedC1Lessons).toHaveLength(160);
     expect(state.inserts.some((entry) => entry.table === lessonVocabulary)).toBe(true);
     expect(state.deletes.filter((table) => table === lessonVocabulary)).toHaveLength(integratedCourses.length);
     expect(state.inserts.some((entry) => entry.table === lessonGrammar)).toBe(true);

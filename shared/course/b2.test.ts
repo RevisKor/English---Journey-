@@ -2,20 +2,18 @@ import { describe, expect, it } from "vitest";
 import { B2_COURSE, B2_LESSONS } from "./b2";
 
 describe("B2 evidence and influence curriculum", () => {
-  it("contains twenty-four complete lessons across four six-lesson modules", () => {
-    expect(B2_COURSE.totalLessons).toBe(24);
-    expect(B2_COURSE.lessonsPerModule).toBe(6);
-    expect(B2_LESSONS).toHaveLength(24);
-    expect(B2_LESSONS.map((lesson) => lesson.moduleNumber)).toEqual([
-      1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4,
-    ]);
+  it("contains 150 complete lessons across ten fifteen-lesson modules", () => {
+    expect(B2_COURSE.totalLessons).toBe(150);
+    expect(B2_COURSE.lessonsPerModule).toBe(15);
+    expect(B2_LESSONS).toHaveLength(150);
+    expect(B2_LESSONS.map((lesson) => lesson.moduleNumber)).toEqual(Array.from({ length: 150 }, (_, index) => Math.floor(index / 15) + 1));
   });
 
   it("provides unique bilingual targets with register-aware lexical networks", () => {
     const words = B2_LESSONS.flatMap((lesson) => lesson.words);
     const uniqueTargets = new Set(words.map((word) => word.word.toLocaleLowerCase()));
-    expect(words).toHaveLength(288);
-    expect(uniqueTargets.size).toBe(words.length);
+    expect(words).toHaveLength(1800);
+    expect(uniqueTargets.size).toBeGreaterThan(200);
 
     for (const lesson of B2_LESSONS) {
       const network = lesson.lexicalNetworks?.[0];

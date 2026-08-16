@@ -26,7 +26,7 @@ describe("LearnerCourseMap", () => {
     expect(html).toContain("المصادر ووجهات النظر");
     expect(html).toContain("Reading between the lines");
     expect(html).toContain("Module 4");
-    expect((html.match(/aria-label="Open lesson /g) ?? []).length).toBe(20);
+    expect((html.match(/aria-label="Open lesson /g) ?? []).length).toBe(160);
     expect(html).toContain("Guided preview:");
   });
 });

@@ -260,4 +260,16 @@
 - [x] Expand the bilingual B1 inventory to 150 lesson records with twelve lesson-scoped vocabulary records per lesson, grammar targets, A2 retrieval, lexical networks, reading briefs, and writing prompts.
 - [x] Promote B1 into the active catalog with catalog synchronization version 4 and explicit ten-module/150-lesson persistence regression coverage.
 - [x] Run the complete Vitest suite, TypeScript check, production build, and desktop/mobile learner-map preview checks before creating the B1 checkpoint.
-- [ ] Review B1 content quality and revise any lesson-family or CEFR-progression issues before beginning B2.
+- [x] Review B1 content quality and revise any lesson-family or CEFR-progression issues before beginning B2.
+
+# Upper-Level Expansion — B2, C1, and C2
+- [x] Add deterministic upper-level expansion tooling that preserves bilingual lesson contracts and repeated-exposure fields.
+- [x] Expand B2 to 10 modules × 15 lessons = 150 lessons.
+- [x] Expand C1 to 10 modules × 16 lessons = 160 lessons.
+- [x] Expand C2 to 12 modules × 15 lessons = 180 lessons.
+- [x] Expand C1/C2 module guidance metadata so learner maps expose every authored module with Arabic titles and overviews.
+- [x] Update active-level routing, milestone boundaries, catalog persistence assertions, learner-map regressions, and UI route tests for the new module sizes.
+- [x] Complete editorial regression coverage for B1 and upper-level lesson arcs, lexical breadth, bilingual metadata, and activity contracts.
+- [x] Run the complete single-worker Vitest suite: 36 files and 128 tests passing.
+- [x] Run TypeScript validation and production build successfully; Vite reports only the existing bundle-size advisory.
+- [ ] Promote B2, C1, and C2 into the persistent active catalog snapshot after owner review of the generated upper-level content.

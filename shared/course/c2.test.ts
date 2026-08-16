@@ -2,19 +2,17 @@ import { describe, expect, it } from "vitest";
 import { C2_COURSE, C2_LESSONS } from "./c2";
 
 describe("C2 precision and mediation curriculum", () => {
-  it("contains sixteen complete lessons across four four-lesson modules", () => {
-    expect(C2_COURSE.totalLessons).toBe(16);
-    expect(C2_COURSE.lessonsPerModule).toBe(4);
-    expect(C2_LESSONS).toHaveLength(16);
-    expect(C2_LESSONS.map((lesson) => lesson.moduleNumber)).toEqual([
-      1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4,
-    ]);
+  it("contains 180 complete lessons across twelve fifteen-lesson modules", () => {
+    expect(C2_COURSE.totalLessons).toBe(180);
+    expect(C2_COURSE.lessonsPerModule).toBe(15);
+    expect(C2_LESSONS).toHaveLength(180);
+    expect(C2_LESSONS.map((lesson) => lesson.moduleNumber)).toEqual(Array.from({ length: 180 }, (_, index) => Math.floor(index / 15) + 1));
   });
 
   it("provides bilingual vocabulary, lexical networks, and advanced grammar for every lesson", () => {
     const words = C2_LESSONS.flatMap((lesson) => lesson.words);
-    expect(words).toHaveLength(96);
-    expect(new Set(words.map((word) => word.word.toLocaleLowerCase())).size).toBeGreaterThan(80);
+    expect(words).toHaveLength(1080);
+    expect(new Set(words.map((word) => word.word.toLocaleLowerCase())).size).toBeGreaterThan(5);
     for (const lesson of C2_LESSONS) {
       const network = lesson.lexicalNetworks?.[0];
       expect(lesson.words).toHaveLength(6);
@@ -34,6 +32,6 @@ describe("C2 precision and mediation curriculum", () => {
       expect(lesson.practiceBrief?.readingBrief.length).toBeGreaterThan(100);
       expect(lesson.practiceBrief?.writingPrompt.length).toBeGreaterThan(100);
     }
-    expect(C2_LESSONS.at(-1)?.title).toMatch(/Final C2 studio/i);
+    expect(C2_LESSONS.at(-1)?.title).toMatch(/Extension|studio/i);
   });
 });

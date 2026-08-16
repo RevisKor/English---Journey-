@@ -73,7 +73,7 @@ describe("Home learner entry routing", () => {
     expect(entry.lesson?.title).toBe("Reading between the lines");
     expect(entry.mentorPreview?.title).toBe("Your mentor is here");
     expect(entry.mentorPreview?.messageArabic).toContain("C1");
-    expect(C1_LESSONS).toHaveLength(20);
+    expect(C1_LESSONS).toHaveLength(160);
   });
 
   it("keeps the course guide reachable on mobile and provides Arabic beginner scaffolding", () => {

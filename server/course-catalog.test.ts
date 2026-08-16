@@ -30,16 +30,16 @@ describe("normalized practice catalog blueprints", () => {
 });
 
 describe("advanced catalog lesson contracts", () => {
-  it("keeps C1 at four modules and twenty lessons", () => {
-    expect(C1_COURSE.totalLessons).toBe(20);
-    expect(C1_COURSE.lessons).toHaveLength(20);
-    expect(C1_COURSE.lessons.filter((lesson) => lesson.moduleNumber === 1)).toHaveLength(5);
-    expect(new Set(C1_COURSE.lessons.map((lesson) => lesson.moduleNumber))).toEqual(new Set([1, 2, 3, 4]));
+  it("keeps C1 at ten modules and 160 lessons", () => {
+    expect(C1_COURSE.totalLessons).toBe(160);
+    expect(C1_COURSE.lessons).toHaveLength(160);
+    expect(C1_COURSE.lessons.filter((lesson) => lesson.moduleNumber === 1)).toHaveLength(16);
+    expect(new Set(C1_COURSE.lessons.map((lesson) => lesson.moduleNumber))).toEqual(new Set(Array.from({ length: 10 }, (_, index) => index + 1)));
   });
 
-  it("keeps C2 at four modules and sixteen lessons", () => {
-    expect(C2_COURSE.totalLessons).toBe(16);
-    expect(C2_COURSE.lessons).toHaveLength(16);
-    expect(new Set(C2_COURSE.lessons.map((lesson) => lesson.moduleNumber))).toEqual(new Set([1, 2, 3, 4]));
+  it("keeps C2 at twelve modules and 180 lessons", () => {
+    expect(C2_COURSE.totalLessons).toBe(180);
+    expect(C2_COURSE.lessons).toHaveLength(180);
+    expect(new Set(C2_COURSE.lessons.map((lesson) => lesson.moduleNumber))).toEqual(new Set(Array.from({ length: 12 }, (_, index) => index + 1)));
   });
 });
