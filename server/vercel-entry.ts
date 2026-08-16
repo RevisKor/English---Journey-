@@ -27,6 +27,20 @@ function ensureQuizCatalog() {
   return catalogBootstrap;
 }
 
+async function isQuizRequest(req: Request, path: string) {
+  if (QUIZ_ROUTES.has(path)) return true;
+  if (path !== "/api/trpc" && !path.endsWith("/api/trpc")) return false;
+
+  // httpBatchLink sends the procedure names in the shared tRPC request body.
+  // Clone the Web Request so Express can still consume the original body.
+  try {
+    const body = await req.clone().text();
+    return /course\.(lessonQuiz|milestoneQuiz|moduleTest)/.test(body);
+  } catch {
+    return false;
+  }
+}
+
 /**
  * Source entry point for the Vercel serverless bundle. The build script emits
  * this as api/index.js so Vercel executes one self-contained function rather
@@ -34,7 +48,7 @@ function ensureQuizCatalog() {
  */
 export default async function handler(req: Request, res: Response) {
   const path = req.url ? new URL(req.url, "http://localhost").pathname : "";
-  if (QUIZ_ROUTES.has(path)) {
+  if (await isQuizRequest(req, path)) {
     try {
       await ensureQuizCatalog();
     } catch (error) {

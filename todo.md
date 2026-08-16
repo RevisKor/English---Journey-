@@ -369,3 +369,9 @@
 # Multi-owner Authorization
 - [x] Support exact-match authorization for both configured owner email addresses, preserving the existing owner.
 - [x] Add regression coverage, update Vercel configuration guidance, and publish the multi-owner change.
+
+# Quiz Generation Follow-up
+- [x] Trace why production quiz generation still fails after curriculum bootstrap.
+- [x] Repair the exact quiz request or synchronization failure and add regression coverage.
+- [ ] Validate representative quiz generation and publish the recovery.
+- [x] Bootstrap the catalog for the shared batched `/api/trpc` transport used by quiz queries.

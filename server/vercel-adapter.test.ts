@@ -32,6 +32,9 @@ describe("Vercel hosting adapter", () => {
     expect(entry).toContain("ensureCurrentCurriculumCatalog");
     expect(entry).toContain("/api/trpc/course.lessonQuiz");
     expect(entry).toContain("/api/trpc/course.moduleTest");
+    expect(entry).toContain("/api/trpc");
+    expect(entry).toContain("req.clone().text()");
+    expect(entry).toContain("course\\.(lessonQuiz|milestoneQuiz|moduleTest)");
     expect(entry).not.toContain("listen(");
   });
 
