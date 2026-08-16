@@ -19,6 +19,9 @@ vi.mock("@/lib/trpc", () => ({
       progress: { useQuery: mockUseQuery },
       recordActivity: { useMutation: mockUseMutation },
       updateAccent: { useMutation: mockUseMutation },
+      updatePreferences: { useMutation: mockUseMutation },
+      warmup: { useQuery: mockUseQuery },
+      submitWarmup: { useMutation: mockUseMutation },
     },
   },
 }));
@@ -26,7 +29,7 @@ vi.mock("@/components/A2LessonWorkspace", () => ({
   StructuredLessonWorkspace: ({ lesson }: { lesson: { title: string } }) => React.createElement("div", null, `Guided lesson workspace: ${lesson.title}`),
 }));
 
-import { AppShell, CourseDashboard, resolveDirectLesson, resolveLearnerEntry, tutorialCopy, WORD_BANK_DIALOG_LAYOUT_CLASS, WORD_BANK_TABLE_LAYOUT_CLASS, WORD_BANK_TABLE_SCROLL_CLASS } from "./Home";
+import { AppShell, CourseDashboard, LEARNER_LEVELS, resolveDirectLesson, resolveLearnerEntry, tutorialCopy, WORD_BANK_DIALOG_LAYOUT_CLASS, WORD_BANK_TABLE_LAYOUT_CLASS, WORD_BANK_TABLE_SCROLL_CLASS } from "./Home";
 
 describe("Home learner entry routing", () => {
   it("renders resolved owner-review catalog modules and selected lesson detail", () => {
@@ -90,6 +93,18 @@ describe("Home learner entry routing", () => {
     expect(html).toContain("Content review");
     expect(html).toContain("Content review");
     expect(html).toContain("Loading completed content");
+  });
+
+  it("renders the no-cost daily review destination and keeps roadmap totals current", () => {
+    const html = renderToStaticMarkup(<AppShell initialSearch="?level=B1&dailyReview=1" />);
+    expect(html).toContain("Daily review");
+    expect(html).toContain("Your review queue is clear.");
+    expect(html).toContain("Your no-cost settings");
+    expect(html).toContain("No paid AI, speech, or tracking service is used here.");
+    expect(LEARNER_LEVELS.map((level) => level.detail)).toEqual([
+      "90 lessons · foundation", "135 lessons · independence", "150 lessons · real fluency",
+      "150 lessons · complex ideas", "160 lessons · nuance & evidence", "180 lessons · independent judgement",
+    ]);
   });
 
   it("defines and validates the catalog plus selected lesson-detail dispatch contract", () => {

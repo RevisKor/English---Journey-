@@ -284,3 +284,15 @@
 - [x] Verify persistent module, lesson, vocabulary, reading, writing, and assessment records for B2, C1, and C2.
 - [x] Validate the active B2/C1/C2 learner routes, complete regression suite, TypeScript check, and production build.
 - [x] Detect and safely recover any partial structured-practice snapshot where reading or writing records are incomplete after a restart.
+
+# Product-Completion Audit
+- [x] Audit learner flows, course content, accessibility, reliability, privacy, and launch readiness for remaining gaps.
+- [x] Prioritize identified gaps into now, pre-launch, and later work before beginning further feature implementation.
+- [x] Select the next completion milestone from the audited recommendations before implementation begins.
+
+# No-Cost Study Foundation Completion
+- [x] Replace legacy hard-coded level totals with live course-definition metadata in learner navigation.
+- [x] Add a persistent daily review workspace using the existing spaced-review queue, without external speech or AI services.
+- [x] Add learner settings for accent and interface preference using the existing profile data model.
+- [x] Add bilingual help, privacy, and data-use information without third-party tracking or paid APIs.
+- [x] Preserve the no-cost architecture: browser-native speech only, external learner-owned AI prompts only, and no paid external runtime API dependency.

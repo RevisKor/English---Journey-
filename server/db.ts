@@ -83,6 +83,20 @@ export async function updateLearnerAccent(userId: number, preferredAccent: "brit
   return getLearningProfile(userId);
 }
 
+export async function updateLearnerPreferences(
+  userId: number,
+  preferences: {
+    preferredAccent: "british" | "american";
+    interfaceLanguage: "bilingual" | "english" | "arabic";
+  },
+) {
+  const db = await getDb();
+  if (!db) throw new Error("Database unavailable");
+  await ensureLearningProfile(userId);
+  await db.update(learningProfiles).set(preferences).where(eq(learningProfiles.userId, userId));
+  return getLearningProfile(userId);
+}
+
 function utcDateKey(date = new Date()) {
   return date.toISOString().slice(0, 10);
 }

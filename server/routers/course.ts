@@ -8,6 +8,7 @@ import {
   recordLearnerActivity,
   submitLessonAssessment,
   updateLearnerAccent,
+  updateLearnerPreferences,
 } from "../db";
 import { getOrCreateAssessmentInstance, gradeAssessmentInstance } from "../assessment-instances";
 import {
@@ -61,6 +62,11 @@ export const courseRouter = router({
   updateAccent: protectedProcedure.input(z.object({
     preferredAccent: z.enum(["british", "american"]),
   })).mutation(({ ctx, input }) => updateLearnerAccent(ctx.user.id, input.preferredAccent)),
+
+  updatePreferences: protectedProcedure.input(z.object({
+    preferredAccent: z.enum(["british", "american"]),
+    interfaceLanguage: z.enum(["bilingual", "english", "arabic"]),
+  })).mutation(({ ctx, input }) => updateLearnerPreferences(ctx.user.id, input)),
 
   recordActivity: protectedProcedure.mutation(({ ctx }) => recordLearnerActivity(ctx.user.id)),
 
