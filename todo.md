@@ -379,4 +379,9 @@
 # Level-specific Quiz Routing Recovery
 - [x] Trace why quiz generation defaults every selected lesson to A1 Lesson 1.
 - [x] Preserve the selected CEFR level and lesson through the client, tRPC batch, and server quiz procedure with regression coverage.
-- [ ] Validate level-specific quiz generation and publish the recovery.
+- [x] Validate level-specific quiz generation and publish the recovery.
+
+# Non-default Lesson Quiz Recovery
+- [x] Trace why only A1 Lesson 1 resolves while other modules and CEFR levels fail to generate quizzes.
+- [x] Repair non-default lesson scope and quiz-bank resolution with cross-level regression coverage.
+- [ ] Validate representative non-default quizzes and publish the recovery.

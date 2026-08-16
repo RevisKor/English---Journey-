@@ -64,9 +64,15 @@ export function courseNeedsCatalogSynchronization(
   persistedLessons: PersistedLessonSnapshot[],
   persistedVocabularyCount?: number,
   persistedStructuredPractice?: PersistedStructuredPracticeCounts,
+  persistedAssessmentQuestionCount?: number,
 ) {
   const expectedModuleCount = Math.ceil(course.totalLessons / course.lessonsPerModule);
   const expectedVocabularyCount = course.lessons.reduce((count, lesson) => count + lesson.words.length, 0);
+  const expectedAssessmentQuestionCount = course.lessons.reduce((count, lesson) => {
+    const variants = assessmentVariants(course, lesson);
+    const moduleVariants = variants.filter((_, index) => index % 4 === 0 || index >= variants.length - 3);
+    return count + variants.length * (isMilestoneLesson(course, lesson.lessonNumber) ? 2 : 1) + moduleVariants.length;
+  }, 0);
   return !level
     || level.contentVersion !== SYNC_VERSION
     || persistedModuleCount !== expectedModuleCount
@@ -77,7 +83,8 @@ export function courseNeedsCatalogSynchronization(
       persistedStructuredPractice.grammar !== course.totalLessons
       || persistedStructuredPractice.readings !== course.totalLessons
       || persistedStructuredPractice.writing !== course.totalLessons
-    ));
+    ))
+    || (persistedAssessmentQuestionCount !== undefined && persistedAssessmentQuestionCount !== expectedAssessmentQuestionCount);
 }
 
 function rotate<T>(items: T[], offset: number) {
@@ -334,7 +341,7 @@ export async function ensureCurrentCurriculumCatalog() {
     ]);
     const expectedVocabularyCount = course.lessons.reduce((count, lesson) => count + lesson.words.length, 0);
     const persistedLessonIds = persistedLessons.map((lesson) => lesson.id);
-    const [persistedVocabulary, persistedGrammar, persistedReadings, persistedWriting] = persistedLessonIds.length
+    const [persistedVocabulary, persistedGrammar, persistedReadings, persistedWriting, persistedQuestions] = persistedLessonIds.length
       ? await Promise.all([
         db.select({ lessonId: lessonVocabulary.lessonId })
           .from(lessonVocabulary)
@@ -352,8 +359,11 @@ export async function ensureCurrentCurriculumCatalog() {
           .from(lessonWritingTasks)
           .where(inArray(lessonWritingTasks.lessonId, persistedLessonIds))
           .limit(course.totalLessons + 1),
+        db.select({ questionKey: assessmentQuestionBank.questionKey })
+          .from(assessmentQuestionBank)
+          .where(and(eq(assessmentQuestionBank.levelId, level.id), eq(assessmentQuestionBank.active, 1), eq(assessmentQuestionBank.contentVersion, SYNC_VERSION))),
       ])
-      : [[], [], [], []];
+      : [[], [], [], [], []];
     return courseNeedsCatalogSynchronization(
       course,
       level,
@@ -365,6 +375,7 @@ export async function ensureCurrentCurriculumCatalog() {
         readings: persistedReadings.length,
         writing: persistedWriting.length,
       },
+      persistedQuestions.length,
     ) ? course : null;
   }))).filter((course): course is CourseDefinition => course !== null);
   if (coursesNeedingSynchronization.length) await ensureCurriculumCatalog(coursesNeedingSynchronization);
