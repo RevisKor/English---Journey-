@@ -273,3 +273,8 @@
 - [x] Run the complete single-worker Vitest suite: 36 files and 128 tests passing.
 - [x] Run TypeScript validation and production build successfully; Vite reports only the existing bundle-size advisory.
 - [ ] Promote B2, C1, and C2 into the persistent active catalog snapshot after owner review of the generated upper-level content.
+
+# Vocabulary Word-Only Pronunciation Controls
+- [x] Add a dedicated accessible control that speaks the target word only, without playing its example sentence.
+- [x] Preserve a separate example-sentence playback control on shared vocabulary cards.
+- [x] Apply and verify the control across A1, A2, and B1 guided lesson routes with regression coverage.

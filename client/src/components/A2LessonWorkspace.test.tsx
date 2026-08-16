@@ -3,6 +3,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it, vi } from "vitest";
 import { A1_LESSONS } from "@shared/course/a1";
 import { A2_LESSONS } from "@shared/course/a2";
+import { B1_LESSONS } from "@shared/course/b1";
 import { buildSentenceReviewPrompt } from "@/lib/external-ai-prompts";
 import { buildMentorGuide } from "@shared/course/mentor-guidance";
 
@@ -68,6 +69,17 @@ describe("guided workspace Arabic scaffolding", () => {
     expect(guide!.moments.every((moment) => moment.messageArabic.length > 12)).toBe(true);
     expect(html).toContain(guide!.moments[0].messageArabic);
     expect(buildSentenceReviewPrompt({ lesson, sentence: "I usually plan my week on Sunday." })).toContain("Arabic");
+  });
+
+  it("provides separate word-only and example playback controls across A1, A2, and B1", () => {
+    for (const lesson of [A1_LESSONS[0], A2_LESSONS[0], B1_LESSONS[0]]) {
+      const word = lesson.words[0];
+      const html = renderToStaticMarkup(<StructuredLessonWorkspace lesson={lesson} accent="british" onBack={() => undefined} />);
+
+      expect(html).toContain(`aria-label="Listen to ${word.word}"`);
+      expect(html).toContain(`aria-label="Listen to example for ${word.word}"`);
+      expect(html).toContain(word.exampleEN);
+    }
   });
 });
 
