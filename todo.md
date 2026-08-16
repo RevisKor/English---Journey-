@@ -296,3 +296,15 @@
 - [x] Add learner settings for accent and interface preference using the existing profile data model.
 - [x] Add bilingual help, privacy, and data-use information without third-party tracking or paid APIs.
 - [x] Preserve the no-cost architecture: browser-native speech only, external learner-owned AI prompts only, and no paid external runtime API dependency.
+
+# Vercel Hosting Assessment
+- [ ] Confirm the linked Vercel project, deployment target, and production environment configuration without publishing automatically.
+- [ ] Audit Vercel compatibility for the Express/tRPC server, database connection, OAuth callback URLs, storage, and required environment variables.
+- [x] Validate the configured Vercel token with a read-only Vercel identity endpoint; no deployment was performed.
+- [x] Prepare user-controlled deployment instructions or compatibility changes only after the target Vercel project and environment are confirmed.
+
+# Vercel Express/tRPC Adapter Preparation
+- [x] Add a reusable Express app factory that can be imported by Vercel without starting a listening server or triggering long-lived startup synchronization.
+- [x] Add a Vercel function entry point and rewrites for the frontend, OAuth, storage proxy, and tRPC routes.
+- [x] Preserve the no-cost runtime architecture and document required database, OAuth, storage, and application environment variables.
+- [x] Add adapter tests and run TypeScript, production build, and deployment-readiness validation without deploying.
