@@ -337,7 +337,7 @@
 - [x] Remove Manus-specific runtime service calls while preserving browser-native pronunciation and external learner-owned AI prompts.
 - [x] Add migration-focused regression coverage and validate the Vercel-compatible production build.
 - [x] Provision and connect Vercel Postgres for Production and Preview environments.
-- [ ] Apply the generated Postgres initialization migration to the connected Vercel database.
+- [x] Apply the generated Postgres initialization migration to the connected Vercel database.
 - [ ] Add the independent runtime secrets to Vercel and validate Google sign-in and persisted learner progress.
 - [x] Document the user-controlled Google OAuth, database migration, and redeployment steps.
 
@@ -348,4 +348,4 @@
 # Vercel TypeScript Deployment Repair
 - [x] Diagnose the Express type-resolution failure reported by Vercel.
 - [x] Repair the Vercel compilation contract and validate it locally.
-- [ ] Push the verified repair to GitHub for redeployment.
+- [x] Push the verified repair to GitHub for redeployment.
