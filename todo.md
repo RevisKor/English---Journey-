@@ -373,5 +373,5 @@
 # Quiz Generation Follow-up
 - [x] Trace why production quiz generation still fails after curriculum bootstrap.
 - [x] Repair the exact quiz request or synchronization failure and add regression coverage.
-- [ ] Validate representative quiz generation and publish the recovery.
+- [x] Validate representative quiz generation and publish the recovery.
 - [x] Bootstrap the catalog for the shared batched `/api/trpc` transport used by quiz queries.
