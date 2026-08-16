@@ -13,3 +13,5 @@ export * from "./quiz";
 export * from "./types";
 export * from "./assessment-scope";
 export * from "./a1-immersive-modules";
+export * from "./progressive-immersive";
+export * from "./immersive-migration-plan";

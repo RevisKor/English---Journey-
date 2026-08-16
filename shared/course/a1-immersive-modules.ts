@@ -1,4 +1,5 @@
 import type { ImmersiveLessonBlueprint, ImmersiveModuleAuthoring, LessonType } from "./types";
+import { A1_REMAINING_IMMERSIVE_MODULES } from "./a1-immersive-modules-expanded";
 
 const exposure = (
   lessonNumber: number,
@@ -96,17 +97,20 @@ export const A1_MEETING_PEOPLE_IMMERSIVE: ImmersiveModuleAuthoring = {
   ],
 };
 
-export const A1_IMMERSIVE_MODULES: ImmersiveModuleAuthoring[] = [A1_MEETING_PEOPLE_IMMERSIVE];
+export const A1_IMMERSIVE_MODULES: ImmersiveModuleAuthoring[] = [A1_MEETING_PEOPLE_IMMERSIVE, ...A1_REMAINING_IMMERSIVE_MODULES];
 
 export function getA1ImmersiveModule(moduleNumber: number) {
   return A1_IMMERSIVE_MODULES.find((module) => module.moduleNumber === moduleNumber);
 }
 
-export function buildImmersiveExposureIndex(module: ImmersiveModuleAuthoring = A1_MEETING_PEOPLE_IMMERSIVE) {
+export function buildImmersiveExposureIndex(module?: ImmersiveModuleAuthoring) {
   const index: Record<string, ImmersiveLessonBlueprint["exposurePlan"]> = {};
-  for (const lesson of module.lessonBlueprints) {
-    for (const word of lesson.vocabularyAnchors) {
-      index[word] = [...(index[word] ?? []), ...lesson.exposurePlan];
+  const modules = module ? [module] : A1_IMMERSIVE_MODULES;
+  for (const authoredModule of modules) {
+    for (const lesson of authoredModule.lessonBlueprints) {
+      for (const word of lesson.vocabularyAnchors) {
+        index[word] = [...(index[word] ?? []), ...lesson.exposurePlan];
+      }
     }
   }
   return index;

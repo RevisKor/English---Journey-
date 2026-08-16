@@ -156,3 +156,18 @@
 - [x] Extend module-level learner map and lesson flow to present the new immersive sequence without breaking A1–C2 routing or gates.
 - [x] Add regression coverage for the new module structure, repeated vocabulary exposure, word-bank provenance, and beginner guidance.
 - [x] Validate the authored milestone with TypeScript, Vitest, production build, and responsive preview checks before checkpointing.
+
+# Progressive Immersive Curriculum Expansion
+- [x] Author remaining A1 thematic modules with 15–20 varied lessons, bilingual beginner scaffolding, mentor arcs, and repeated exposure plans.
+- [x] Add A1 module-specific vocabulary, grammar, reading, writing, speaking, review, and contextual assessment content for each new module.
+- [ ] Migrate approved remaining A1 immersive modules into the active normalized catalog and preserve lesson gates and module tests.
+- [ ] Define and author progressively deeper immersive module contracts for A2, B1, B2, C1, and C2 with level-specific skill and assessment demands.
+- [ ] Migrate representative progressive immersive modules through A2–C2 without breaking existing routing, word banks, persistence, or review behavior.
+- [x] Add regression coverage for module completeness, CEFR difficulty progression, repeated exposure, migration provenance, gates, and learner-map rendering.
+- [x] Validate the progressive curriculum expansion with TypeScript, Vitest, production build, and responsive preview checks before checkpointing.
+
+# A1 Immersive Visibility Follow-up
+- [x] Diagnose whether the learner-facing A1 route is intentionally showing the legacy active catalog or failing to render the authored immersive modules.
+- [x] Expose the authored A1 modules in the learner route or migrate them into the active catalog without breaking gates.
+- [x] Add regression coverage proving the learner can access the authored A1 module content and that legacy progression remains safe.
+- [x] Validate the A1 visibility fix with TypeScript, Vitest, production build, and responsive preview checks.

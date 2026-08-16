@@ -1,5 +1,5 @@
 import type { CourseDefinition, ImmersiveWordBankEntry, ModuleWordBankEntry } from "./types";
-import { buildImmersiveExposureIndex } from "./a1-immersive-modules";
+import { buildImmersiveExposureIndex, getA1ImmersiveModule } from "./a1-immersive-modules";
 
 export function buildModuleWordBank(course: CourseDefinition, moduleNumber: number, completedLessons: Set<number>): ModuleWordBankEntry[] {
   const lessonNumbers = course.modules?.find((module) => module.moduleNumber === moduleNumber)?.lessonNumbers ?? course.lessons.filter((lesson) => lesson.moduleNumber === moduleNumber).map((lesson) => lesson.lessonNumber);
@@ -14,8 +14,10 @@ export function buildModuleWordBank(course: CourseDefinition, moduleNumber: numb
 
 export function buildImmersiveModuleWordBank(course: CourseDefinition, moduleNumber: number, completedLessons: Set<number>): ImmersiveWordBankEntry[] {
   const baseEntries = buildModuleWordBank(course, moduleNumber, completedLessons);
-  if (course.level !== "A1" || moduleNumber !== 1) return [];
-  const exposureIndex = buildImmersiveExposureIndex();
+  if (course.level !== "A1") return [];
+  const authoredModule = getA1ImmersiveModule(moduleNumber);
+  if (!authoredModule) return [];
+  const exposureIndex = buildImmersiveExposureIndex(authoredModule);
   return baseEntries.flatMap((entry) => {
     const exposurePlan = exposureIndex[entry.word.toLowerCase()] ?? [];
     if (!exposurePlan.length) return [];

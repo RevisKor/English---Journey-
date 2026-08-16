@@ -1,9 +1,17 @@
 import { describe, expect, it } from "vitest";
+import { A1_COURSE, A1_LESSONS } from "./a1";
 import { C1_COURSE, C1_LESSONS } from "./c1";
 import { C2_LESSONS } from "./c2";
 import { buildLearnerCourseMap } from "./learner-map";
 
 describe("learner-facing course map", () => {
+  it("shows the authored immersive roadmap on each A1 module without changing active lesson routing", () => {
+    const sections = buildLearnerCourseMap("A1", A1_LESSONS, A1_COURSE.modules);
+    expect(sections).toHaveLength(4);
+    expect(sections.every((section) => section.immersiveRoadmap?.plannedLessons === 15)).toBe(true);
+    expect(sections.flatMap((section) => section.lessons)).toHaveLength(20);
+  });
+
   it("groups C1 lessons into four named bilingual arcs", () => {
     const sections = buildLearnerCourseMap("C1", C1_LESSONS);
     expect(sections).toHaveLength(4);

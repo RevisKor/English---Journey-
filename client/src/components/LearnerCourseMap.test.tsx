@@ -11,7 +11,8 @@ describe("LearnerCourseMap", () => {
     expect(html).toContain("Immersive roadmap");
     expect(html).toContain("15 planned lessons");
     expect(html).toContain("يجري تعميق هذه الوحدة");
-    expect((html.match(/<button/g) ?? []).length).toBe(20);
+    expect((html.match(/aria-label="Open lesson /g) ?? []).length).toBe(20);
+    expect(html).toContain("Preview authored lesson sequence");
   });
 
   it("renders named bilingual C1 modules and the first direct lesson entry", () => {
@@ -20,6 +21,6 @@ describe("LearnerCourseMap", () => {
     expect(html).toContain("المصادر ووجهات النظر");
     expect(html).toContain("Reading between the lines");
     expect(html).toContain("Module 4");
-    expect((html.match(/<button/g) ?? []).length).toBe(20);
+    expect((html.match(/aria-label="Open lesson /g) ?? []).length).toBe(20);
   });
 });
