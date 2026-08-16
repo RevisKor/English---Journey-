@@ -135,9 +135,9 @@ describe("curriculum catalog practice persistence", () => {
     const expectedLessons = integratedCourses.flatMap((course) => course.lessons.map((lesson) => ({ course, lesson })));
     const expectedReadingUpdates = expectedLessons.map(({ course, lesson }) => {
       const reading = structuredReading(course, lesson);
-      return { titleArabic: reading.titleArabic, passage: reading.passage, questions: reading.questions, contentVersion: 2 };
+      return { titleArabic: reading.titleArabic, passage: reading.passage, questions: reading.questions, contentVersion: 3 };
     });
-    const expectedWritingUpdates = expectedLessons.map(({ course, lesson }) => ({ ...structuredWriting(course, lesson), contentVersion: 2 }));
+    const expectedWritingUpdates = expectedLessons.map(({ course, lesson }) => ({ ...structuredWriting(course, lesson), contentVersion: 3 }));
     const readingUpdates = state.updates.filter((entry) => entry.table === lessonReadings).map((entry) => entry.values);
     const writingUpdates = state.updates.filter((entry) => entry.table === lessonWritingTasks).map((entry) => entry.values);
 

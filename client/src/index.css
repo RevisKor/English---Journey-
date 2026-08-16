@@ -212,6 +212,31 @@
     min-width: 0;
   }
 
+  /* The course header remains readable when a long lesson title or the mobile
+     navigation controls share one row. The word-bank control is intentionally
+     prominent because it is the main revision entry point from the course map. */
+  main > header {
+    min-height: 4.5rem;
+    height: auto;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .course-grid button:has(.lucide-book-open) {
+    min-height: 2.75rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    box-shadow: 0 2px 8px rgba(95, 74, 35, 0.08);
+  }
+
+  @media (max-width: 639px) {
+    .course-grid button:has(.lucide-book-open) {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
   @media (min-width: 640px) {
     .container {
       padding-left: 1.5rem; /* 24px - tablet padding */

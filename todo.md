@@ -226,3 +226,9 @@
 - [x] Render learner-course-map lessons as an ordered vertical list rather than side-by-side tiles.
 - [x] Highlight meaningful keywords in learner-course-map explanatory copy without making the text noisy or inaccessible.
 - [x] Add regression coverage and validate the revised learner map and course-home layout at desktop and mobile breakpoints.
+
+# Recovery: Duplicate Keys and Course Navigation
+- [x] Eliminate duplicate React keys in the A1 word-bank and immersive vocabulary render paths.
+- [x] Add a regression that proves rendered vocabulary identifiers are unique even when a word recurs across source lessons.
+- [x] Refine the course navigation layout and enlarge the word-bank action without causing desktop or mobile overflow.
+- [x] Run regression, type, build, desktop, and mobile checks for the recovery changes.

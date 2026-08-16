@@ -29,7 +29,9 @@ import { buildAssessmentVariants } from "../shared/course/assessment-questions";
 import { moduleTheme } from "../shared/course/module-guidance";
 
 const LEGACY_COURSES: CourseDefinition[] = [A1_COURSE, A2_COURSE, B1_COURSE, B2_COURSE, C1_COURSE, C2_COURSE];
-const SYNC_VERSION = 2;
+// Version 3 promotes the approved A2 nine-module curriculum from review-only
+// source data into the normalized learner catalog.
+const SYNC_VERSION = 3;
 let syncPromise: Promise<void> | null = null;
 
 type CatalogQuestion = QuizQuestion & { id: string };
@@ -265,6 +267,19 @@ export async function ensureCurriculumCatalog() {
     });
   }
   return syncPromise;
+}
+
+/**
+ * Start-up guard: only run the comparatively expensive idempotent synchronizer
+ * when a persisted level predates the current curriculum content version.
+ */
+export async function ensureCurrentCurriculumCatalog() {
+  const db = await getDb();
+  if (!db) return;
+  const persistedLevels = await db.select().from(courseLevels);
+  const versionByCode = new Map(persistedLevels.map((level) => [level.code, level.contentVersion]));
+  const needsSync = LEGACY_COURSES.some((course) => versionByCode.get(course.level) !== SYNC_VERSION);
+  if (needsSync) await ensureCurriculumCatalog();
 }
 
 /** Rebuild only persisted assessment questions after a question-bank policy change. */

@@ -2,19 +2,21 @@ import { describe, expect, it } from "vitest";
 import { A2_COURSE, A2_LESSONS } from "./a2";
 
 describe("A2 cumulative curriculum", () => {
-  it("contains twenty complete lessons across four paced modules", () => {
-    expect(A2_COURSE.totalLessons).toBe(20);
-    expect(A2_LESSONS).toHaveLength(20);
-    expect(A2_LESSONS.map((lesson) => lesson.moduleNumber)).toEqual([
-      1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4,
-    ]);
+  it("contains 135 globally ordered lessons across nine fifteen-lesson modules", () => {
+    expect(A2_COURSE.totalLessons).toBe(135);
+    expect(A2_COURSE.lessonsPerModule).toBe(15);
+    expect(A2_LESSONS).toHaveLength(135);
+    expect(A2_LESSONS.map((lesson) => lesson.lessonNumber)).toEqual(Array.from({ length: 135 }, (_, index) => index + 1));
+    expect(A2_COURSE.modules).toHaveLength(9);
+    for (let moduleNumber = 1; moduleNumber <= 9; moduleNumber += 1) {
+      expect(A2_LESSONS.filter((lesson) => lesson.moduleNumber === moduleNumber)).toHaveLength(15);
+    }
   });
 
-  it("provides varied lexical networks and three hundred usable target entries", () => {
+  it("provides bilingual lexical networks with repeated exposure across the expanded journey", () => {
     const words = A2_LESSONS.flatMap((lesson) => lesson.words);
-    const chunks = words.filter((word) => word.word.includes(" "));
-    expect(words).toHaveLength(300);
-    expect(chunks.length).toBeGreaterThanOrEqual(80);
+    expect(words.length).toBeGreaterThanOrEqual(900);
+    expect(new Set(A2_LESSONS.map((lesson) => lesson.title)).size).toBe(135);
     for (const word of words) {
       expect(word.arabic.trim().length).toBeGreaterThan(1);
       expect(word.definition.trim().split(/\s+/).length).toBeGreaterThanOrEqual(3);
@@ -33,6 +35,7 @@ describe("A2 cumulative curriculum", () => {
       expect(lesson.lexicalNetworks?.[0]?.chunks.length).toBeGreaterThanOrEqual(3);
       expect(lesson.practiceBrief?.readingBrief.length).toBeGreaterThan(70);
       expect(lesson.practiceBrief?.writingPrompt.length).toBeGreaterThan(70);
+      expect(lesson.activities?.some((activity) => activity.kind === lesson.lessonType)).toBe(true);
     }
   });
 });

@@ -3,13 +3,32 @@ import { buildImmersiveExposureIndex, getA1ImmersiveModule } from "./a1-immersiv
 
 export function buildModuleWordBank(course: CourseDefinition, moduleNumber: number, completedLessons: Set<number>): ModuleWordBankEntry[] {
   const lessonNumbers = course.modules?.find((module) => module.moduleNumber === moduleNumber)?.lessonNumbers ?? course.lessons.filter((lesson) => lesson.moduleNumber === moduleNumber).map((lesson) => lesson.lessonNumber);
-  const entries = course.lessons.filter((lesson) => lessonNumbers.includes(lesson.lessonNumber)).flatMap((lesson) => lesson.words.map((word) => ({
+  const sourceEntries = course.lessons.filter((lesson) => lessonNumbers.includes(lesson.lessonNumber)).flatMap((lesson) => lesson.words.map((word) => ({
     ...word,
     introducedLessonNumber: lesson.lessonNumber,
     reviewCount: completedLessons.has(lesson.lessonNumber) ? 1 : 0,
     familiarity: completedLessons.has(lesson.lessonNumber) ? "recognized" as const : "introduced" as const,
   })));
-  return entries;
+  // A word can deliberately recur across lessons as part of repeated exposure.
+  // The module table should present that word once, with its first source lesson
+  // and aggregate review state, so both the learner experience and React keys
+  // remain stable.
+  const entriesByIdentity = new Map<string, ModuleWordBankEntry>();
+  for (const entry of sourceEntries) {
+    const identity = entry.id;
+    const existing = entriesByIdentity.get(identity);
+    if (!existing) {
+      entriesByIdentity.set(identity, entry);
+      continue;
+    }
+    entriesByIdentity.set(identity, {
+      ...existing,
+      introducedLessonNumber: Math.min(existing.introducedLessonNumber, entry.introducedLessonNumber),
+      reviewCount: existing.reviewCount + entry.reviewCount,
+      familiarity: existing.reviewCount + entry.reviewCount > 0 ? "recognized" : "introduced",
+    });
+  }
+  return Array.from(entriesByIdentity.values());
 }
 
 export function buildImmersiveModuleWordBank(course: CourseDefinition, moduleNumber: number, completedLessons: Set<number>): ImmersiveWordBankEntry[] {

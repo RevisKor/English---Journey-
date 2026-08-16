@@ -11,6 +11,14 @@ describe("module word banks", () => {
     expect(entries.some((entry) => entry.introducedLessonNumber > 1 && entry.familiarity === "introduced")).toBe(true);
   });
 
+  it("returns stable unique identifiers for module word-bank rows", () => {
+    const entries = buildModuleWordBank(A1_COURSE, 1, new Set([1, 3, 6]));
+    const renderedIdentities = entries.map((entry) => entry.id);
+
+    expect(new Set(renderedIdentities).size).toBe(entries.length);
+    expect(entries.every((entry) => entry.introducedLessonNumber >= 1 && entry.introducedLessonNumber <= 15)).toBe(true);
+  });
+
   it("connects A1 Meeting People vocabulary to repeated immersive exposures", () => {
     const entries = buildImmersiveModuleWordBank(A1_COURSE, 1, new Set([1, 2]));
     expect(entries.length).toBeGreaterThan(0);

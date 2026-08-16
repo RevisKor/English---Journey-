@@ -118,7 +118,7 @@ describe("course assessment mutations", () => {
     const caller = courseRouter.createCaller(createContext());
 
     await expect(caller.moduleTest({ moduleNumber: 1 })).rejects.toThrow("Complete all 15 module lessons");
-    await expect(caller.moduleTest({ level: "A2", moduleNumber: 1 })).rejects.toThrow("Complete all 5 module lessons");
+    await expect(caller.moduleTest({ level: "A2", moduleNumber: 1 })).rejects.toThrow("Complete all 15 module lessons");
     await expect(caller.submitModuleTest({ moduleNumber: 1, assessmentInstanceId: 106, answers: {} })).rejects.toThrow("Complete all 15 module lessons");
   });
 
