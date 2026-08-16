@@ -316,9 +316,9 @@
 - [x] Run repository integrity and secret-scan validation, then provide manual push commands without pushing on the user’s behalf.
 
 # Vercel Deployment Configuration Guidance
-- [ ] Configure the imported Vercel project with the prepared build command, output directory, and API routing.
-- [ ] Add the required encrypted Preview and Production environment variables without exposing values in chat or Git.
-- [ ] Configure the OAuth callback URL and verify database, storage, tRPC, and authentication flows on Preview before Production.
+- [x] Prepare the imported Vercel project settings with the build command, output directory, and API routing; the user applies them manually in Vercel.
+- [x] Prepare the required encrypted Preview and Production environment-variable import; the user imports the filled values privately in Vercel.
+- [x] Document the OAuth callback URL and Preview verification checklist; the user completes the domain-specific checks after deployment.
 
 # Safe Vercel Environment Template
 - [x] Create a placeholder-only environment template with variable names but no real credentials.
