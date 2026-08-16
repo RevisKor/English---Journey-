@@ -308,3 +308,9 @@
 - [x] Add a Vercel function entry point and rewrites for the frontend, OAuth, storage proxy, and tRPC routes.
 - [x] Preserve the no-cost runtime architecture and document required database, OAuth, storage, and application environment variables.
 - [x] Add adapter tests and run TypeScript, production build, and deployment-readiness validation without deploying.
+
+# Clean Git Push Preparation
+- [x] Audit tracked files, ignored files, Git history, generated artifacts, and credential-like values.
+- [x] Remove or ignore secrets, local logs, sandbox metadata, build output, archives, and machine-specific files from the pushable repository.
+- [x] Add a safe Git/Vercel setup guide and an environment-variable reference without real secret values.
+- [x] Run repository integrity and secret-scan validation, then provide manual push commands without pushing on the user’s behalf.
