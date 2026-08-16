@@ -16,6 +16,7 @@ const state = vi.hoisted(() => ({
   inserts: [] as Array<{ table: unknown; values: unknown }>,
   updates: [] as Array<{ table: unknown; values: unknown }>,
   upserts: [] as Array<{ table: unknown; values: unknown }>,
+  deletes: [] as unknown[],
   practiceRowsExist: false,
   courseLevelLookups: 0,
   moduleLookups: 0,
@@ -58,6 +59,9 @@ const fakeDb = {
       where: async () => { state.updates.push({ table, values }); },
     }),
   }),
+  delete: (table: unknown) => ({
+    where: async () => { state.deletes.push(table); },
+  }),
 };
 
 vi.mock("./db", () => ({ getDb: async () => fakeDb }));
@@ -69,6 +73,7 @@ describe("curriculum catalog practice persistence", () => {
     state.inserts.length = 0;
     state.updates.length = 0;
     state.upserts.length = 0;
+    state.deletes.length = 0;
     state.practiceRowsExist = false;
     state.courseLevelLookups = 0;
     state.moduleLookups = 0;
@@ -87,6 +92,7 @@ describe("curriculum catalog practice persistence", () => {
     expect(persistedC1Modules).toHaveLength(4);
     expect(persistedC1Lessons).toHaveLength(20);
     expect(state.inserts.some((entry) => entry.table === lessonVocabulary)).toBe(true);
+    expect(state.deletes.filter((table) => table === lessonVocabulary)).toHaveLength(integratedLessonCount);
     expect(state.inserts.some((entry) => entry.table === lessonGrammar)).toBe(true);
     expect(state.inserts.some((entry) => entry.table === assessmentQuestionBank)).toBe(true);
 

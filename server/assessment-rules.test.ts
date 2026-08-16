@@ -8,11 +8,11 @@ describe("assessment progression rules", () => {
     expect(passesAssessment(80)).toBe(true);
   });
 
-  it("locks module 1 until every one of its five lessons is completed", () => {
-    const fourComplete = [1, 2, 3, 4].map((lessonNumber) => ({ lessonNumber, status: "completed" }));
-    const fiveComplete = [...fourComplete, { lessonNumber: 5, status: "completed" }];
-    expect(hasCompletedModuleLessons(fourComplete, 1)).toBe(false);
-    expect(hasCompletedModuleLessons(fiveComplete, 1)).toBe(true);
+  it("locks active A1 module 1 until every one of its fifteen lessons is completed", () => {
+    const fourteenComplete = Array.from({ length: 14 }, (_, index) => ({ lessonNumber: index + 1, status: "completed" }));
+    const fifteenComplete = [...fourteenComplete, { lessonNumber: 15, status: "completed" }];
+    expect(hasCompletedModuleLessons(fourteenComplete, 1, 15)).toBe(false);
+    expect(hasCompletedModuleLessons(fifteenComplete, 1, 15)).toBe(true);
   });
 
   it("continues a consecutive daily streak once and resets it after a gap", () => {

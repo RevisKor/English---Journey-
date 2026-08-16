@@ -173,14 +173,14 @@
 - [x] Validate the A1 visibility fix with TypeScript, Vitest, production build, and responsive preview checks.
 
 # Corrected Immersive Curriculum Migration
-- [ ] Audit the active normalized catalog and identify every legacy five-lesson module path that must be replaced.
-- [ ] Research and document a CEFR-aligned 6–7 module architecture with 15–20 varied lessons per module and level-specific skill progression.
-- [ ] Redesign catalog synchronization so authored immersive lessons become active learner lessons rather than preview-only records.
-- [ ] Author six deeply detailed A1 modules with 15–20 lessons each, beginner-safe grammar, bilingual scaffolding, repeated word-bank exposure, and varied skill activities.
-- [ ] Migrate the authored A1 modules into the active catalog, preserving gates, milestone tests, cumulative tests, and lesson provenance.
-- [ ] Define progressive A2–C2 module counts, lesson counts, content depth, and assessment expectations based on the researched architecture.
-- [ ] Add regression coverage proving active module counts, lesson counts, migration provenance, word-bank continuity, and gated progression.
-- [ ] Validate the corrected catalog with TypeScript, full Vitest, production build, and desktop/mobile preview before checkpointing.
+- [x] Audit the active normalized catalog and identify every legacy five-lesson module path that must be replaced.
+- [x] Research and document a CEFR-aligned 6–7 module architecture with 15–20 varied lessons per module and level-specific skill progression.
+- [x] Redesign catalog synchronization so authored immersive lessons become active learner lessons rather than preview-only records.
+- [x] Author six deeply detailed A1 modules with 15–20 lessons each, beginner-safe grammar, bilingual scaffolding, repeated word-bank exposure, and varied skill activities.
+- [x] Migrate the authored A1 modules into the active catalog, preserving gates, milestone tests, cumulative tests, and lesson provenance.
+- [x] Define progressive A2–C2 module counts, lesson counts, content depth, and assessment expectations based on the researched architecture.
+- [x] Add regression coverage proving active module counts, lesson counts, migration provenance, word-bank continuity, and gated progression.
+- [x] Validate the corrected catalog with TypeScript, full Vitest, production build, and desktop/mobile preview before checkpointing.
 
 # A1 Specification Review Pause
 - [x] Research authoritative A1 CEFR descriptors and reputable course-design references for the review specification.
@@ -190,5 +190,20 @@
 
 # A1 Visual Consistency Requirements
 - [x] Define a shared A1 expansion visual checklist covering design tokens, mentor tone, bilingual hierarchy, cards, navigation, progress, and accessibility.
-- [ ] Keep expanded A1 learner-map, lesson, word-bank, tutorial, and owner-review surfaces visually consistent with the established English Journey design system.
-- [ ] Verify visual consistency at desktop and mobile breakpoints alongside functional catalog and progression validation.
+- [x] Keep expanded A1 learner-map, lesson, word-bank, tutorial, and owner-review surfaces visually consistent with the established English Journey design system.
+- [x] Verify visual consistency at desktop and mobile breakpoints alongside functional catalog and progression validation.
+
+# Approved A1 Implementation and Future Curriculum Roadmap
+- [x] Implement the approved active A1 catalog with six named modules and fifteen dense, varied lessons per module (90 active lessons).
+- [x] Ensure every active A1 module interweaves vocabulary, visual identification, grammar, dialogue, speaking, reading, writing, punctuation, common phrases, word relationships, review, and contextual assessment where pedagogically appropriate.
+- [x] Preserve A1 word-bank provenance, repeated exposure, contextual quiz variation, milestone and module-test gates throughout the 90-lesson migration.
+- [x] Document the later curriculum targets: A2 at 135 lessons, B1 at 150 lessons, B2 at 150 lessons, and C1/C2 at approximately 160–180 lessons each with progressively denser, longer, more independent learning tasks.
+- [x] Validate the active A1 migration and visual-system consistency across learner, word-bank, tutorial, and owner-review surfaces before beginning A2.
+
+## Locked post-A1 authoring roadmap — do not begin until A1 review is approved
+- [ ] A2: author 9 modules × 15 lessons = 135 active lessons. Extend A1 foundations into daily problem-solving, connected speech, comparatives, past experiences, practical messages, paragraph writing, guided punctuation, phrase families, and longer dialogue/reading tasks.
+- [ ] B1: author 10 modules × 15 lessons = 150 active lessons. Build independent communication through opinion, narrative, travel/work/study scenarios, collocations, phrasal verbs, paragraph cohesion, formal/informal register, multi-paragraph writing, and evidence-based reading.
+- [ ] B2: author 10 modules × 15 lessons = 150 active lessons. Require nuanced comparison, argument, reports, presentations, idiomatic but appropriate phrasing, lexical precision, tone choices, source comparison, extended discussion, and revision of longer writing.
+- [ ] C1: author 10 modules × 16 lessons = 160 active lessons. Develop advanced academic/professional communication through complex syntax, rhetorical structure, collocation, implied meaning, mediation, critical reading, research-informed writing, and register control.
+- [ ] C2: author 12 modules × 15 lessons = 180 active lessons. Develop flexible, near-expert use through subtle connotation, genre transformation, critical synthesis, ambiguity, persuasive and creative discourse, high-level mediation, and substantial independent projects.
+- [ ] Across A2–C2: make lessons progressively longer and denser; add new communicative knowledge—not only additional word lists or grammar rules—through pictures, dialogues, pronunciation, punctuation, phrase comparison, synonyms/antonyms, collocation, reading, writing, speaking, review, and contextual assessment.

@@ -91,7 +91,7 @@ async function selectOne<T>(query: Promise<T[]>, message: string): Promise<T> {
   return item;
 }
 
-async function syncCourse(course: CourseDefinition) {
+export async function syncCourse(course: CourseDefinition) {
   const db = await getDb();
   if (!db) return;
 
@@ -174,6 +174,11 @@ async function syncCourse(course: CourseDefinition) {
         eq(assessmentQuestionBank.lessonId, savedLesson.id),
         eq(assessmentQuestionBank.assessmentType, "lesson_quiz"),
       ));
+
+      // A content refresh can replace or reorder a lesson's complete word set.
+      // The table protects both stable word IDs and per-lesson positions, so clear
+      // the old synchronized snapshot before storing the new ordered snapshot.
+      await db.delete(lessonVocabulary).where(eq(lessonVocabulary.lessonId, savedLesson.id));
 
       for (const [position, word] of Array.from(lesson.words.entries())) {
         await db.insert(lessonVocabulary).values({

@@ -9,10 +9,12 @@ export type CourseModuleTheme = {
 
 export const COURSE_MODULE_THEMES: Record<CefrLevel, CourseModuleTheme[]> = {
   A1: [
-    { title: "Meeting People", titleArabic: "التعرّف إلى الناس", overview: "Build a first survival toolkit for greetings, introductions, and simple personal information.", overviewArabic: "ابنِ أدواتك الأولى للتحية والتعارف والمعلومات الشخصية البسيطة." },
-    { title: "Home and Routines", titleArabic: "البيت والروتين", overview: "Connect everyday words to home life, time, habits, and short descriptions.", overviewArabic: "اربط كلمات الحياة اليومية بالبيت والوقت والعادات والأوصاف القصيرة." },
-    { title: "Around Town", titleArabic: "في أرجاء المدينة", overview: "Use practical English for places, food, directions, and simple services.", overviewArabic: "استخدم الإنجليزية العملية للأماكن والطعام والاتجاهات والخدمات البسيطة." },
-    { title: "Everyday Choices", titleArabic: "الاختيارات اليومية", overview: "Move from naming things to expressing needs, preferences, and simple plans.", overviewArabic: "انتقل من تسمية الأشياء إلى التعبير عن الاحتياجات والتفضيلات والخطط البسيطة." },
+    { title: "Meeting People: Your First English Community", titleArabic: "التعرّف إلى الناس: مجتمعك الأول باللغة الإنجليزية", overview: "Start almost from zero with greetings, names, people words, and a first supported conversation.", overviewArabic: "ابدأ من الصفر تقريباً مع التحيات والأسماء وكلمات الأشخاص وأول محادثة مدعومة." },
+    { title: "Family and Home: People and Places That Matter", titleArabic: "العائلة والمنزل: الأشخاص والأماكن المهمة", overview: "Use familiar people, rooms, objects, and possessions to make short personal descriptions.", overviewArabic: "استخدم الأشخاص والغرف والأشياء والملكية المألوفة لصنع أوصاف شخصية قصيرة." },
+    { title: "Food and Markets: Choosing What You Need", titleArabic: "الطعام والأسواق: اختيار ما تحتاج إليه", overview: "Identify food, ask for what you need, compare simple options, and handle a friendly market exchange.", overviewArabic: "تعرّف إلى الطعام واطلب ما تحتاج إليه وقارن الخيارات البسيطة وتعامل مع حوار ودّي في السوق." },
+    { title: "Daily Life: Time, Routines, and Responsibilities", titleArabic: "الحياة اليومية: الوقت والروتين والمسؤوليات", overview: "Connect time, routines, frequency, and responsibilities in a clear account of an ordinary day.", overviewArabic: "اربط الوقت والروتين والتكرار والمسؤوليات في وصف واضح ليوم عادي." },
+    { title: "Places and Getting Around: A Small World Outside", titleArabic: "الأماكن والتنقل: عالم صغير في الخارج", overview: "Read simple place information, ask for directions, travel locally, and solve small practical problems.", overviewArabic: "اقرأ معلومات بسيطة عن الأماكن واسأل عن الاتجاهات وتنقّل محلياً وحل مشكلات عملية صغيرة." },
+    { title: "Work, Hobbies, and Real Interactions", titleArabic: "العمل والهوايات والتفاعلات الحقيقية", overview: "Bring the course together through work, free time, invitations, opinions, and supported real-life exchanges.", overviewArabic: "اجمع مهارات الدورة من خلال العمل ووقت الفراغ والدعوات والآراء والتفاعلات الواقعية المدعومة." },
   ],
   A2: [
     { title: "People and Plans", titleArabic: "الناس والخطط", overview: "Describe people, relationships, invitations, and plans with connected language.", overviewArabic: "صف الناس والعلاقات والدعوات والخطط بلغة مترابطة." },

@@ -121,7 +121,8 @@ describe("Home learner entry routing", () => {
       expect(resolveDirectLesson(`?level=${course.level}&lesson=${course.totalLessons}`, true, new Set())?.lessonNumber).toBe(course.totalLessons);
       expect(resolveDirectLesson(`?level=${course.level}&lesson=${course.totalLessons}`, false, new Set())).toBeUndefined();
     }
-    expect(A1_COURSE.modules!.map((module) => module.lessonNumbers)).toEqual(expect.arrayContaining([[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [11, 12, 13, 14, 15], [16, 17, 18, 19, 20]]));
+    expect(A1_COURSE.modules).toHaveLength(6);
+    expect(A1_COURSE.modules?.every((module) => module.lessonNumbers.length === 15)).toBe(true);
   });
 
   it("still renders the isolated dashboard contract used by the map component", () => {

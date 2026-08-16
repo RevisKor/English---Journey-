@@ -1,74 +1,108 @@
 import rawGrammar from "./a1-grammar.json";
 import rawVocabulary from "./a1-vocabulary.json";
-import type { CourseDefinition, GrammarTopic, LessonDefinition, VocabularyItem } from "./types";
+import { A1_IMMERSIVE_MODULES } from "./a1-immersive-modules";
 import { enrichLesson } from "./activity-plan";
 import { buildModuleDefinitions } from "./module-definitions";
+import type {
+  CourseDefinition,
+  GrammarTopic,
+  ImmersiveLessonBlueprint,
+  LessonDefinition,
+  VocabularyItem,
+} from "./types";
 
 export const A1_VOCABULARY = rawVocabulary as VocabularyItem[];
 export const A1_GRAMMAR = rawGrammar as GrammarTopic[];
 
-const lessonTitles = [
-  ["Hello & introductions", "التحية والتعارف"], ["People & family", "الأشخاص والعائلة"],
-  ["Home & everyday objects", "المنزل والأشياء اليومية"], ["Daily routines", "الروتين اليومي"],
-  ["Food & drink", "الطعام والشراب"], ["Time & the week", "الوقت وأيام الأسبوع"],
-  ["Places in town", "أماكن في المدينة"], ["Study & work", "الدراسة والعمل"],
-  ["Shopping & money", "التسوق والمال"], ["Weather & clothes", "الطقس والملابس"],
-  ["Travel & transport", "السفر والمواصلات"], ["Health & the body", "الصحة والجسم"],
-  ["Free time", "وقت الفراغ"], ["Plans & invitations", "الخطط والدعوات"],
-  ["Past events", "أحداث في الماضي"], ["Directions & locations", "الاتجاهات والمواقع"],
-  ["Describing people", "وصف الأشخاص"], ["Nature & the world", "الطبيعة والعالم"],
-  ["Problems & solutions", "المشكلات والحلول"], ["A1 review & confidence", "مراجعة A1 والثقة"],
-] as const;
+/**
+ * The live A1 curriculum is intentionally authored as six fifteen-lesson
+ * journeys.  Each journey uses the same word and structure in different
+ * modalities rather than treating vocabulary and grammar as isolated lists.
+ */
+const A1_LESSONS_PER_MODULE = 15;
 
-const a1DomainProgression = [
-  ["greetings and identity", "التحية والهوية", "Start with names, greetings, and safe sentence frames.", "ابدأ بالأسماء والتحيات وقوالب الجمل الآمنة."],
-  ["family and people", "العائلة والأشخاص", "Reuse be and possessives to talk about people close to you.", "أعد استخدام be والملكية للحديث عن الأشخاص القريبين منك."],
-  ["home and objects", "المنزل والأشياء", "Point, name, and describe familiar objects with there is and there are.", "أشر إلى الأشياء المألوفة وسمّها وصفها باستخدام there is وthere are."],
-  ["daily routines", "الروتين اليومي", "Build short present-simple sentences about a normal day.", "كوّن جملاً قصيرة بالمضارع البسيط عن يوم عادي."],
-  ["food and drink", "الطعام والشراب", "Make simple choices and requests in a café or at home.", "تعلّم الاختيار والطلب بجمل بسيطة في المقهى أو المنزل."],
-  ["time and the week", "الوقت والأسبوع", "Connect routines to times, days, and simple frequency.", "اربط الروتين بالأوقات والأيام والتكرار البسيط."],
-  ["town and places", "المدينة والأماكن", "Ask where places are and understand short directions.", "اسأل عن أماكن الأشياء وافهم الإرشادات القصيرة."],
-  ["study and work", "الدراسة والعمل", "Introduce your role and ask practical classroom or work questions.", "قدّم دورك واسأل أسئلة عملية في الدراسة أو العمل."],
-  ["shopping and money", "التسوق والمال", "Use numbers, prices, and polite requests in a shop.", "استخدم الأرقام والأسعار والطلبات المهذبة في المتجر."],
-  ["weather and clothes", "الطقس والملابس", "Combine descriptions with choices about what to wear.", "اجمع بين الوصف والاختيار عند الحديث عما ترتديه."],
-  ["travel and transport", "السفر والمواصلات", "Handle a short journey with tickets, times, and destinations.", "تعامل مع رحلة قصيرة تشمل التذاكر والأوقات والوجهات."],
-  ["health and the body", "الصحة والجسم", "Describe a basic problem and understand a simple suggestion.", "صف مشكلة أساسية وافهم نصيحة بسيطة."],
-  ["free time", "وقت الفراغ", "Talk about likes, abilities, and simple weekend activities.", "تحدث عن الإعجاب والقدرات وأنشطة عطلة نهاية الأسبوع."],
-  ["plans and invitations", "الخطط والدعوات", "Invite someone, accept, refuse, and give a simple reason.", "ادعُ شخصاً واقبل الدعوة أو ارفضها مع سبب بسيط."],
-  ["past events", "الأحداث الماضية", "Tell a short sequence about yesterday or last weekend.", "احكِ تسلسلاً قصيراً عن الأمس أو عطلة نهاية الأسبوع الماضية."],
-  ["directions and locations", "الاتجاهات والمواقع", "Combine place words and imperatives to guide someone safely.", "اجمع كلمات المكان وصيغ الأمر لإرشاد شخص بأمان."],
-  ["describing people", "وصف الأشخاص", "Join adjectives, appearance, and familiar relationships.", "اربط الصفات والمظهر والعلاقات المألوفة."],
-  ["nature and the world", "الطبيعة والعالم", "Use simple facts and comparisons to describe the world around you.", "استخدم حقائق ومقارنات بسيطة لوصف العالم من حولك."],
-  ["problems and solutions", "المشكلات والحلول", "Explain a small everyday problem and ask for help.", "اشرح مشكلة يومية صغيرة واطلب المساعدة."],
-  ["A1 review and confidence", "مراجعة A1 والثقة", "Bring the course together in a supported real-life conversation.", "اجمع مهارات الدورة في محادثة واقعية مدعومة."],
-] as const;
+const moduleGrammarSchedule: number[][] = [
+  [0, 5, 0, 2, 3, 0, 11, 13, 19, 5, 6, 0, 3, 19, 0],
+  [5, 6, 4, 10, 8, 11, 2, 3, 10, 8, 19, 5, 11, 2, 10],
+  [2, 3, 1, 9, 19, 11, 4, 1, 2, 3, 13, 8, 19, 1, 9],
+  [1, 14, 9, 11, 19, 1, 7, 14, 9, 19, 15, 16, 17, 1, 19],
+  [8, 13, 12, 19, 10, 8, 13, 7, 19, 15, 16, 17, 8, 19, 13],
+  [1, 12, 6, 19, 7, 14, 11, 13, 19, 15, 16, 17, 18, 19, 0],
+];
 
-export const A1_LESSONS: LessonDefinition[] = Array.from({ length: 20 }, (_, index) => {
-  const [domainFocus, domainFocusArabic, beginnerScaffold, beginnerScaffoldArabic] = a1DomainProgression[index];
-  const lessonNumber = index + 1;
-  const [title, titleArabic] = lessonTitles[index];
+const vocabularyByWord = new Map(A1_VOCABULARY.map((item) => [item.word.toLocaleLowerCase(), item]));
+
+function uniqueVocabulary(items: VocabularyItem[]) {
+  return Array.from(new Map(items.map((item) => [item.id, item])).values());
+}
+
+function fallbackVocabulary(word: string, moduleTitle: string): VocabularyItem {
+  const id = `a1-immersive-${word.toLocaleLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
   return {
-    level: "A1" as const,
-    lessonNumber,
-    moduleNumber: Math.ceil(lessonNumber / 5),
-    title,
-    titleArabic,
-    words: A1_VOCABULARY.slice(index * 25, (index + 1) * 25),
-    grammar: A1_GRAMMAR[index],
-    domainFocus,
-    domainFocusArabic,
-    beginnerScaffold,
-    beginnerScaffoldArabic,
+    id,
+    word,
+    arabic: "كلمة أو عبارة أساسية لهذا الدرس",
+    ipa: "",
+    phoneticRespelling: word,
+    partOfSpeech: "useful word or phrase",
+    definition: `A useful English word or phrase in the ${moduleTitle} learning journey.`,
+    exampleEN: `Use “${word}” in the guided conversation for this lesson.`,
+    exampleAR: `استخدم «${word}» في المحادثة الموجّهة لهذا الدرس.`,
   };
-}).map(enrichLesson);
+}
+
+function vocabularyForBlueprint(
+  blueprint: ImmersiveLessonBlueprint,
+  moduleVocabulary: VocabularyItem[],
+  moduleTitle: string,
+) {
+  const localLesson = ((blueprint.lessonNumber - 1) % A1_LESSONS_PER_MODULE) + 1;
+  const rotatingModuleSet = moduleVocabulary.slice((localLesson - 1) * 5, localLesson * 5);
+  const anchors = blueprint.vocabularyAnchors.map(
+    (word) => vocabularyByWord.get(word.toLocaleLowerCase()) ?? fallbackVocabulary(word, moduleTitle),
+  );
+  return uniqueVocabulary([...anchors, ...rotatingModuleSet]);
+}
+
+function grammarForBlueprint(moduleIndex: number, localLesson: number, activeLessonNumber: number) {
+  const grammarIndex = moduleGrammarSchedule[moduleIndex][localLesson - 1];
+  const guide = A1_GRAMMAR[grammarIndex] ?? A1_GRAMMAR[0];
+  return {
+    ...guide,
+    id: `${guide.id}-m${moduleIndex + 1}-l${localLesson}`,
+    lessonNumber: activeLessonNumber,
+  };
+}
+
+export const A1_LESSONS: LessonDefinition[] = A1_IMMERSIVE_MODULES.flatMap((module, moduleIndex) => {
+  const moduleVocabulary = A1_VOCABULARY.slice(moduleIndex * 75, (moduleIndex + 1) * 75);
+  return module.lessonBlueprints.map((blueprint) => {
+    const localLesson = ((blueprint.lessonNumber - 1) % A1_LESSONS_PER_MODULE) + 1;
+    const activeLessonNumber = moduleIndex * A1_LESSONS_PER_MODULE + localLesson;
+    return enrichLesson({
+      level: "A1",
+      lessonNumber: activeLessonNumber,
+      moduleNumber: module.moduleNumber,
+      title: blueprint.title,
+      titleArabic: blueprint.titleArabic,
+      words: vocabularyForBlueprint(blueprint, moduleVocabulary, module.title),
+      grammar: grammarForBlueprint(moduleIndex, localLesson, activeLessonNumber),
+      domainFocus: module.overview,
+      domainFocusArabic: module.overviewArabic,
+      beginnerScaffold: blueprint.beginnerExplanation,
+      beginnerScaffoldArabic: blueprint.beginnerExplanationArabic,
+      lessonType: blueprint.type,
+    });
+  });
+});
 
 export const A1_COURSE: CourseDefinition = {
   level: "A1",
-  title: "Beginner foundations",
-  titleArabic: "أساسيات المبتدئ",
-  totalLessons: 20,
-  lessonsPerModule: 5,
-  estimatedMinutes: 100 * 60,
+  title: "A1: Everyday English from the first hello",
+  titleArabic: "A1: الإنجليزية اليومية من أول تحية",
+  totalLessons: 90,
+  lessonsPerModule: A1_LESSONS_PER_MODULE,
+  estimatedMinutes: 90 * 40,
   lessons: A1_LESSONS,
   modules: buildModuleDefinitions("A1", A1_LESSONS),
 };

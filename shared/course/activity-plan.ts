@@ -132,7 +132,7 @@ export function lessonTypeFor(lesson: Pick<LessonDefinition, "lessonNumber" | "m
 }
 
 export function buildLessonActivities(lesson: LessonDefinition): LessonActivity[] {
-  const focus = lessonTypeFor(lesson);
+  const focus = lesson.lessonType ?? lessonTypeFor(lesson);
   const focusIndex = lessonTypeByPosition.indexOf(focus);
   const kinds: LessonType[] = ["standard", focus, "review"];
   return kinds.map((kind, index) => activity(kind, lesson, progression[Math.min(focusIndex + index, progression.length - 1)], index));

@@ -31,7 +31,7 @@ export function buildModuleTest(moduleNumber: number): QuizQuestion[] {
     const questions = lessonQuestions(lesson.lessonNumber);
     const vocabulary = questions.filter((question) => question.reviewItemType === "vocabulary");
     const grammar = questions.filter((question) => question.reviewItemType === "grammar");
-    return [vocabulary[1], vocabulary[8], grammar[0]].filter(Boolean);
+    return [vocabulary[1], grammar[0]].filter(Boolean);
   });
 }
 

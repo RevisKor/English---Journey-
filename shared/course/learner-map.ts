@@ -36,8 +36,8 @@ export function buildLearnerCourseMap(level: CefrLevel, lessons: LessonDefinitio
       immersiveRoadmap: level === "A1" && getA1ImmersiveModule(moduleNumber) ? {
         plannedLessons: getA1ImmersiveModule(moduleNumber)!.lessonBlueprints.length,
         lessonTypes: Array.from(new Set(getA1ImmersiveModule(moduleNumber)!.lessonBlueprints.map((lesson) => lesson.type))),
-        notice: "This module is being deepened into a 15-lesson guided journey. The current catalog lessons remain the active gated route while the new authoring is reviewed.",
-        noticeArabic: "يجري تعميق هذه الوحدة إلى رحلة موجّهة من ١٥ درساً. تبقى دروس الكتالوج الحالية هي المسار النشط ذي البوابات أثناء مراجعة التأليف الجديد.",
+        notice: "This is your active 15-lesson guided journey. Meet a small set of language, return to it through pictures, dialogue, speaking, reading, writing, review, and then prove that you can use it.",
+        noticeArabic: "هذه رحلتك النشطة الموجّهة من ١٥ درساً. تعرّف إلى مجموعة صغيرة من اللغة، ثم عد إليها عبر الصور والحوار والكلام والقراءة والكتابة والمراجعة، ثم أثبت أنك تستطيع استخدامها.",
       } : level !== "A1" && getProgressiveImmersiveModules(level).find((module) => module.moduleNumber === moduleNumber) ? (() => {
         const authored = getProgressiveImmersiveModules(level).find((module) => module.moduleNumber === moduleNumber)!;
         return {

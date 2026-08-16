@@ -5,11 +5,12 @@ import { C2_LESSONS } from "./c2";
 import { buildLearnerCourseMap } from "./learner-map";
 
 describe("learner-facing course map", () => {
-  it("shows the authored immersive roadmap on each A1 module without changing active lesson routing", () => {
+  it("shows all six active fifteen-lesson A1 journeys in the learner map", () => {
     const sections = buildLearnerCourseMap("A1", A1_LESSONS, A1_COURSE.modules);
-    expect(sections).toHaveLength(4);
+    expect(sections).toHaveLength(6);
     expect(sections.every((section) => section.immersiveRoadmap?.plannedLessons === 15)).toBe(true);
-    expect(sections.flatMap((section) => section.lessons)).toHaveLength(20);
+    expect(sections.every((section) => section.lessons.length === 15)).toBe(true);
+    expect(sections.flatMap((section) => section.lessons)).toHaveLength(90);
   });
 
   it("groups C1 lessons into four named bilingual arcs", () => {

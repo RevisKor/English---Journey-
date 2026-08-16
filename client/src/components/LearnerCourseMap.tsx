@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import * as React from "react";
 import type { LessonDefinition, ModuleDefinition } from "@shared/course";
 import { buildLearnerCourseMap } from "@shared/course/learner-map";
-import { getA1ImmersiveModule } from "@shared/course/a1-immersive-modules";
 import { cn } from "@/lib/utils";
 import { CheckCircle2, ChevronRight, LockKeyhole } from "lucide-react";
 
@@ -16,6 +15,71 @@ type Props = {
 
 export function LearnerCourseMap({ level, lessons, modules, completedLessons, canEnter, openLesson }: Props) {
   const sections = buildLearnerCourseMap(level, lessons, modules);
-  const [expandedBlueprint, setExpandedBlueprint] = useState<number | null>(null);
-  return <div className="mt-5 space-y-6">{sections.map((section) => <section key={section.moduleNumber} aria-labelledby={`module-${level}-${section.moduleNumber}`} className="rounded-[1.35rem] border border-[#e2d8c5] bg-[#fbf8f0] p-4 sm:p-5"><div className="flex flex-col gap-2 border-b border-[#e8dfd0] pb-4 sm:flex-row sm:items-end sm:justify-between"><div><p className="text-[10px] font-bold uppercase tracking-[.15em] text-[#a2732c]">Module {section.moduleNumber}</p><h3 id={`module-${level}-${section.moduleNumber}`} className="mt-1 text-xl font-bold tracking-[-.03em] text-[#293751]">{section.title}</h3><p dir="rtl" className="arabic mt-1 text-right text-sm text-[#68758a]">{section.titleArabic}</p></div><p className="max-w-xl text-xs leading-5 text-[#68758a]">{section.overview}</p></div>{section.immersiveRoadmap && <div className="mt-4 rounded-xl border border-[#d9c58b] bg-[#fff9e8] p-4"><div className="flex flex-wrap items-center justify-between gap-2"><p className="text-xs font-bold uppercase tracking-[.14em] text-[#9a7743]">Immersive roadmap</p><span className="rounded-full bg-[#e7b84a] px-2.5 py-1 text-[10px] font-bold text-[#253453]">{section.immersiveRoadmap.plannedLessons} planned lessons</span></div><p className="mt-2 text-xs leading-5 text-[#56647a]">{section.immersiveRoadmap.notice}</p><p dir="rtl" className="arabic mt-2 text-right text-xs leading-5 text-[#68758a]">{section.immersiveRoadmap.noticeArabic}</p><p className="mt-3 text-[10px] font-semibold text-[#9a7743]">Learning modes: {section.immersiveRoadmap.lessonTypes.join(" · ")}</p>{level === "A1" && getA1ImmersiveModule(section.moduleNumber) && <><button type="button" onClick={() => setExpandedBlueprint((current) => current === section.moduleNumber ? null : section.moduleNumber)} className="mt-4 rounded-lg border border-[#d9c58b] bg-white px-3 py-2 text-xs font-bold text-[#765618] transition hover:bg-[#fffdf7] focus:outline-none focus:ring-2 focus:ring-[#e7b84a]">{expandedBlueprint === section.moduleNumber ? "Hide authored lesson preview" : "Preview authored lesson sequence"}</button>{expandedBlueprint === section.moduleNumber && <div className="mt-3 grid gap-2 md:grid-cols-2"><p className="md:col-span-2 text-xs leading-5 text-[#68758a]">These are the newly authored lesson blueprints. They are available for review now; the existing lesson buttons below remain the active gated catalog until migration is approved.</p>{getA1ImmersiveModule(section.moduleNumber)!.lessonBlueprints.map((blueprint) => <article key={blueprint.lessonNumber} className="rounded-lg border border-[#eadfbd] bg-white p-3"><div className="flex items-center justify-between gap-2"><span className="text-[10px] font-bold text-[#397558]">Blueprint {String(blueprint.lessonNumber).padStart(2, "0")}</span><span className="rounded-full bg-[#f2ede2] px-2 py-1 text-[9px] font-bold uppercase text-[#806b48]">{blueprint.type}</span></div><p className="mt-2 text-xs font-bold text-[#293751]">{blueprint.title}</p><p dir="rtl" className="arabic mt-1 text-right text-xs text-[#68758a]">{blueprint.titleArabic}</p><p className="mt-2 text-[10px] leading-4 text-[#65738a]">{blueprint.canDo}</p></article>)}</div>}</>}</div>}<div className="mt-4 grid gap-3 sm:grid-cols-2 2xl:grid-cols-3">{section.lessons.map((lesson) => { const completed = completedLessons.has(lesson.lessonNumber); const enter = canEnter(lesson.lessonNumber); return <button key={lesson.lessonNumber} aria-label={`Open lesson ${lesson.lessonNumber}: ${lesson.title}`} disabled={!enter} onClick={() => openLesson(lesson)} className={cn("group rounded-2xl border p-4 text-left transition", completed ? "border-[#b9d8c4] bg-[#f0f8f1]" : enter ? "border-[#e2d8c5] bg-[#fffdf7] shadow-sm hover:-translate-y-0.5 hover:shadow-md" : "cursor-not-allowed border-[#ebe4d9] bg-[#f5f1e9] text-[#99a2b1]")}><div className="flex items-start justify-between"><span className={cn("grid h-9 w-9 place-items-center rounded-xl text-xs font-bold", completed ? "bg-[#cdebd6] text-[#277350]" : enter ? "bg-[#fff0bd] text-[#765618]" : "bg-[#e8e4dd]")}>{completed ? <CheckCircle2 className="h-4 w-4" /> : enter ? String(lesson.lessonNumber).padStart(2, "0") : <LockKeyhole className="h-4 w-4" />}</span><span className="text-[10px] font-bold uppercase tracking-[.13em]">Module {lesson.moduleNumber}</span></div><p className="mt-5 text-sm font-bold text-[#293751]">{lesson.title}</p><p dir="rtl" className="arabic mt-1 text-right text-xs text-[#768399]">{lesson.titleArabic}</p><p className="mt-3 line-clamp-2 text-xs leading-5 text-[#65738a]">{lesson.learningPlan?.outcome.canDo}</p><ChevronRight className="mt-4 h-4 w-4 text-[#8390a5] transition group-hover:translate-x-1" /></button>; })}</div></section>)}</div>;
+
+  return (
+    <div className="mt-5 space-y-6">
+      {sections.map((section) => (
+        <section
+          key={section.moduleNumber}
+          aria-labelledby={`module-${level}-${section.moduleNumber}`}
+          className="rounded-[1.35rem] border border-[#e2d8c5] bg-[#fbf8f0] p-4 sm:p-5"
+        >
+          <div className="flex flex-col gap-2 border-b border-[#e8dfd0] pb-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-[10px] font-bold uppercase tracking-[.15em] text-[#a2732c]">Module {section.moduleNumber}</p>
+              <h3 id={`module-${level}-${section.moduleNumber}`} className="mt-1 text-xl font-bold tracking-[-.03em] text-[#293751]">{section.title}</h3>
+              <p dir="rtl" className="arabic mt-1 text-right text-sm text-[#68758a]">{section.titleArabic}</p>
+            </div>
+            <p className="max-w-xl text-xs leading-5 text-[#68758a]">{section.overview}</p>
+          </div>
+
+          {section.immersiveRoadmap && (
+            <div className="mt-4 rounded-xl border border-[#d9c58b] bg-[#fff9e8] p-4">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <p className="text-xs font-bold uppercase tracking-[.14em] text-[#9a7743]">{level === "A1" ? "Active 15-lesson journey" : "Immersive roadmap"}</p>
+                <span className="rounded-full bg-[#e7b84a] px-2.5 py-1 text-[10px] font-bold text-[#253453]">
+                  {section.immersiveRoadmap.plannedLessons} guided lessons
+                </span>
+              </div>
+              <p className="mt-2 text-xs leading-5 text-[#56647a]">{section.immersiveRoadmap.notice}</p>
+              <p dir="rtl" className="arabic mt-2 text-right text-xs leading-5 text-[#68758a]">{section.immersiveRoadmap.noticeArabic}</p>
+              <p className="mt-3 text-[10px] font-semibold text-[#9a7743]">Learning modes: {section.immersiveRoadmap.lessonTypes.join(" · ")}</p>
+            </div>
+          )}
+
+          <div className="mt-4 grid gap-3 sm:grid-cols-2 2xl:grid-cols-3">
+            {section.lessons.map((lesson) => {
+              const completed = completedLessons.has(lesson.lessonNumber);
+              const enter = canEnter(lesson.lessonNumber);
+              return (
+                <button
+                  key={lesson.lessonNumber}
+                  aria-label={`Open lesson ${lesson.lessonNumber}: ${lesson.title}`}
+                  disabled={!enter}
+                  onClick={() => openLesson(lesson)}
+                  className={cn(
+                    "group rounded-2xl border p-4 text-left transition",
+                    completed
+                      ? "border-[#b9d8c4] bg-[#f0f8f1]"
+                      : enter
+                        ? "border-[#e2d8c5] bg-[#fffdf7] shadow-sm hover:-translate-y-0.5 hover:shadow-md"
+                        : "cursor-not-allowed border-[#ebe4d9] bg-[#f5f1e9] text-[#99a2b1]",
+                  )}
+                >
+                  <div className="flex items-start justify-between">
+                    <span className={cn("grid h-9 w-9 place-items-center rounded-xl text-xs font-bold", completed ? "bg-[#cdebd6] text-[#277350]" : enter ? "bg-[#fff0bd] text-[#765618]" : "bg-[#e8e4dd]")}>{completed ? <CheckCircle2 className="h-4 w-4" /> : enter ? String(lesson.lessonNumber).padStart(2, "0") : <LockKeyhole className="h-4 w-4" />}</span>
+                    <span className="text-[10px] font-bold uppercase tracking-[.13em]">Module {lesson.moduleNumber}</span>
+                  </div>
+                  <p className="mt-5 text-sm font-bold text-[#293751]">{lesson.title}</p>
+                  <p dir="rtl" className="arabic mt-1 text-right text-xs text-[#768399]">{lesson.titleArabic}</p>
+                  <p className="mt-3 line-clamp-2 text-xs leading-5 text-[#65738a]">{lesson.learningPlan?.outcome.canDo}</p>
+                  <ChevronRight className="mt-4 h-4 w-4 text-[#8390a5] transition group-hover:translate-x-1" />
+                </button>
+              );
+            })}
+          </div>
+        </section>
+      ))}
+    </div>
+  );
 }

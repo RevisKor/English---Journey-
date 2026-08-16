@@ -101,7 +101,7 @@ describe("course assessment mutations", () => {
     const caller = courseRouter.createCaller(createContext());
     await caller.submitModuleTest({ moduleNumber: 1, assessmentInstanceId: 104, answers: { "question-1": "answer" } });
 
-    expect(mocks.submitLessonAssessment).toHaveBeenCalledWith(expect.objectContaining({ assessmentType: "module_test", assessmentInstanceId: 104, lessonNumber: 5, score: 100, missedItemKeys: [] }));
+    expect(mocks.submitLessonAssessment).toHaveBeenCalledWith(expect.objectContaining({ assessmentType: "module_test", assessmentInstanceId: 104, lessonNumber: 15, lessonsPerModule: 15, score: 100, missedItemKeys: [] }));
   });
 
   it("returns the active personalized instance when a learner reopens a lesson quiz", async () => {
@@ -117,9 +117,9 @@ describe("course assessment mutations", () => {
     mocks.hasCompletedModuleLessons.mockReturnValue(false);
     const caller = courseRouter.createCaller(createContext());
 
-    await expect(caller.moduleTest({ moduleNumber: 1 })).rejects.toThrow("Complete all 5 module lessons");
+    await expect(caller.moduleTest({ moduleNumber: 1 })).rejects.toThrow("Complete all 15 module lessons");
     await expect(caller.moduleTest({ level: "A2", moduleNumber: 1 })).rejects.toThrow("Complete all 5 module lessons");
-    await expect(caller.submitModuleTest({ moduleNumber: 1, assessmentInstanceId: 106, answers: {} })).rejects.toThrow("Complete all 5 module lessons");
+    await expect(caller.submitModuleTest({ moduleNumber: 1, assessmentInstanceId: 106, answers: {} })).rejects.toThrow("Complete all 15 module lessons");
   });
 
   it("persists warm-up review answers and records eligible daily activity", async () => {

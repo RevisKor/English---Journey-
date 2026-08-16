@@ -6,7 +6,7 @@ describe("module word banks", () => {
   it("aggregates only the selected module and preserves lesson provenance", () => {
     const entries = buildModuleWordBank(A1_COURSE, 1, new Set([1]));
     expect(entries.length).toBeGreaterThan(0);
-    expect(new Set(entries.map((entry) => entry.introducedLessonNumber))).toEqual(new Set([1, 2, 3, 4, 5]));
+    expect(new Set(entries.map((entry) => entry.introducedLessonNumber))).toEqual(new Set(Array.from({ length: 15 }, (_, index) => index + 1)));
     expect(entries.filter((entry) => entry.introducedLessonNumber === 1).every((entry) => entry.familiarity === "recognized")).toBe(true);
     expect(entries.some((entry) => entry.introducedLessonNumber > 1 && entry.familiarity === "introduced")).toBe(true);
   });

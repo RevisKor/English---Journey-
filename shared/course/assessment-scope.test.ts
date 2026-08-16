@@ -2,10 +2,11 @@ import { describe, expect, it } from "vitest";
 import { A1_COURSE, C1_COURSE, C2_COURSE, isMilestoneLesson, milestoneLessonNumbers, moduleNumberForLesson } from "./index";
 
 describe("milestone checkpoint scope", () => {
-  it("uses the final lesson of each five-lesson module for A1 and C1", () => {
-    expect(milestoneLessonNumbers(A1_COURSE)).toEqual([5, 10, 15, 20]);
+  it("uses the final lesson of each active module for A1 and C1", () => {
+    expect(milestoneLessonNumbers(A1_COURSE)).toEqual([15, 30, 45, 60, 75, 90]);
     expect(milestoneLessonNumbers(C1_COURSE)).toEqual([5, 10, 15, 20]);
-    expect(isMilestoneLesson(A1_COURSE, 10)).toBe(true);
+    expect(isMilestoneLesson(A1_COURSE, 15)).toBe(true);
+    expect(isMilestoneLesson(A1_COURSE, 14)).toBe(false);
     expect(isMilestoneLesson(C1_COURSE, 9)).toBe(false);
   });
 

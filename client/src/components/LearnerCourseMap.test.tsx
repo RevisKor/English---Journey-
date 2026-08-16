@@ -6,13 +6,13 @@ import { C1_LESSONS } from "@shared/course/c1";
 import { LearnerCourseMap } from "./LearnerCourseMap";
 
 describe("LearnerCourseMap", () => {
-  it("renders the A1 immersive roadmap without replacing active gated lessons", () => {
+  it("renders the six active A1 immersive journeys with gated lesson controls", () => {
     const html = renderToStaticMarkup(<LearnerCourseMap level="A1" lessons={A1_LESSONS} completedLessons={new Set()} canEnter={(lessonNumber) => lessonNumber === 1} openLesson={() => undefined} />);
-    expect(html).toContain("Immersive roadmap");
-    expect(html).toContain("15 planned lessons");
-    expect(html).toContain("يجري تعميق هذه الوحدة");
-    expect((html.match(/aria-label="Open lesson /g) ?? []).length).toBe(20);
-    expect(html).toContain("Preview authored lesson sequence");
+    expect(html).toContain("Active 15-lesson journey");
+    expect(html).toContain("15 guided lessons");
+    expect(html).toContain("هذه رحلتك النشطة الموجّهة");
+    expect((html.match(/aria-label="Open lesson /g) ?? []).length).toBe(90);
+    expect(html).toContain("Active 15-lesson journey");
   });
 
   it("renders named bilingual C1 modules and the first direct lesson entry", () => {

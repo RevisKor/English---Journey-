@@ -112,7 +112,8 @@ export function QuizPractice({ lesson, level = "A1" }: { lesson: LessonDefinitio
     }
   };
   const answeredAll = questions.length > 0 && questions.every((question) => answers[question.id]);
-  const isMilestone = lesson.lessonNumber % 5 === 0;
+  const lessonsPerModule = level === "A1" ? 15 : 5;
+  const isMilestone = lesson.lessonNumber % lessonsPerModule === 0;
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>

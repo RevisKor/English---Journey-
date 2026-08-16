@@ -10,9 +10,9 @@ describe("A1 gated assessments", () => {
     expect(questions.every((question) => question.choices.includes(question.answer))).toBe(true);
   });
 
-  it("builds a fifteen-question module test from all five lessons", () => {
+  it("builds a balanced thirty-question module test from all fifteen active lessons", () => {
     const questions = buildModuleTest(1);
-    expect(questions).toHaveLength(15);
+    expect(questions).toHaveLength(30);
     expect(new Set(questions.map((question) => A1_LESSONS.find((lesson) => (
       lesson.grammar.id === question.reviewItemKey || lesson.words.some((word) => word.id === question.reviewItemKey)
     ))?.lessonNumber))).toEqual(
