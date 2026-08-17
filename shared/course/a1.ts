@@ -8,6 +8,7 @@ import type {
   GrammarTopic,
   ImmersiveLessonBlueprint,
   LessonDefinition,
+  LessonStep,
   VocabularyItem,
 } from "./types";
 
@@ -28,6 +29,15 @@ const moduleGrammarSchedule: number[][] = [
   [1, 14, 9, 11, 19, 1, 7, 14, 9, 19, 15, 16, 17, 1, 19],
   [8, 13, 12, 19, 10, 8, 13, 7, 19, 15, 16, 17, 8, 19, 13],
   [1, 12, 6, 19, 7, 14, 11, 13, 19, 15, 16, 17, 18, 19, 0],
+];
+
+const A1_STEPS: LessonStep[] = [
+  { id: "start", title: "Start together", titleArabic: "ابدأ معنا", purpose: "Connect today's situation to a familiar word, picture, or phrase.", estimatedMinutes: 4 },
+  { id: "explore", title: "Meet the English", titleArabic: "تعرّف إلى الإنجليزية", purpose: "Hear and see a small set of useful words in a clear context.", estimatedMinutes: 8 },
+  { id: "notice", title: "Notice the pattern", titleArabic: "لاحظ النمط", purpose: "See how English arranges the words and how the meaning changes.", estimatedMinutes: 7 },
+  { id: "build", title: "Build a sentence", titleArabic: "ابنِ جملة", purpose: "Make one short, correct sentence with a model and helpful clues.", estimatedMinutes: 8 },
+  { id: "respond", title: "Use it in life", titleArabic: "استخدمها في الحياة", purpose: "Say or write a simple message for a real everyday purpose.", estimatedMinutes: 8 },
+  { id: "prove", title: "Check and remember", titleArabic: "تحقق وتذكّر", purpose: "Show what you can do, then bring one useful word back later.", estimatedMinutes: 5 },
 ];
 
 const vocabularyByWord = new Map(A1_VOCABULARY.map((item) => [item.word.toLocaleLowerCase(), item]));
@@ -81,6 +91,29 @@ function grammarForBlueprint(moduleIndex: number, localLesson: number, activeLes
   };
 }
 
+function learningPlanForBlueprint(
+  blueprint: ImmersiveLessonBlueprint,
+  module: (typeof A1_IMMERSIVE_MODULES)[number],
+) {
+  return {
+    outcome: {
+      canDo: blueprint.canDo,
+      canDoArabic: blueprint.canDoArabic,
+      scenario: module.overview,
+      scenarioArabic: module.overviewArabic,
+    },
+    steps: A1_STEPS,
+    retrieval: blueprint.exposurePlan.slice(0, 3).map((exposure) => ({
+      sourceLevel: "A1" as const,
+      language: exposure.task,
+      prompt: `Remember one word or phrase, then use it in the ${blueprint.title} situation.`,
+      purpose: exposure.taskArabic,
+    })),
+    englishFirst: false,
+    studio: "A1 First Steps Studio",
+  };
+}
+
 export const A1_LESSONS: LessonDefinition[] = A1_IMMERSIVE_MODULES.flatMap((module, moduleIndex) => {
   const moduleVocabulary = A1_VOCABULARY.slice(moduleIndex * 75, (moduleIndex + 1) * 75);
   return module.lessonBlueprints.map((blueprint) => {
@@ -94,6 +127,7 @@ export const A1_LESSONS: LessonDefinition[] = A1_IMMERSIVE_MODULES.flatMap((modu
       titleArabic: blueprint.titleArabic,
       words: vocabularyForBlueprint(blueprint, moduleVocabulary, module.title, activeLessonNumber),
       grammar: grammarForBlueprint(moduleIndex, localLesson, activeLessonNumber),
+      learningPlan: learningPlanForBlueprint(blueprint, module),
       domainFocus: module.overview,
       domainFocusArabic: module.overviewArabic,
       beginnerScaffold: blueprint.beginnerExplanation,

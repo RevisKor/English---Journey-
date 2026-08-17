@@ -1,0 +1,18 @@
+# English Journey Research Evidence Register
+
+This register records the external evidence used in the Curriculum Bible. It is deliberately concise: each finding must result in an explicit product decision or remain unadopted.
+
+| Source | Principle | Evidence or observation | English Journey application | Risk and mitigation | Priority |
+|---|---|---|---|---|---|
+| Council of Europe, CEFR Companion Volume (2020) [link](https://rm.coe.int/common-european-framework-of-reference-for-languages-learning-teaching/16809ea0d4) | Language development is broader than grammar and vocabulary. | The CEFR describes reception, production, interaction, mediation, linguistic competence, and pragmatic competence. | Use CEFR-oriented can-do outcomes and a balanced activity map; do not classify a level by word count alone. | Descriptors can become generic labels. Require observable lesson outcomes and evidence. | High |
+| Australian Education Research Organisation, *Managing cognitive load optimises learning* (2023) [link](https://www.edresearch.edu.au/summaries-explainers/explainers/managing-cognitive-load-optimises-learning) | New information should be chunked, scaffolded, and logically sequenced. | Working memory is limited; clear goals, worked examples, and simple-to-complex sequencing reduce overload. | Give each lesson one outcome, bounded novelty, visible steps, examples, and gradually fading scaffolds. | Over-scaffolding can block independence. Record scaffold-fade expectations by CEFR level. | High |
+| Australian Education Research Organisation (2023) [link](https://www.edresearch.edu.au/summaries-explainers/explainers/managing-cognitive-load-optimises-learning) | Spaced and varied retrieval strengthens memory. | Regular recall after a break, in varied forms, supports durable access and transfer. | Maintain retrieval targets and the daily-review queue; bring prior language back in relevant new contexts. | Mechanical recycling feels artificial. Require contextual relevance and audit recent reuse. | High |
+| Chartered College of Teaching, *Assessment as learning* (2017) [link](https://my.chartered.college/impact_article/assessment-as-learning-the-role-of-retrieval-practice-in-the-classroom/) | Retrieval should be active and successful enough to support learning. | Retrieval has a long-term advantage; novices benefit from guided/scaffolded recall before independent recall. | Use clue-supported A1 retrieval, then fade prompts; pair retrieval with feedback and correction. | Empty recall tasks can discourage beginners. Start with partial prompts, maps, and constrained choices. | High |
+| Cambridge English, *Quality and accountability* [link](https://www.cambridgeenglish.org/english-research-group/quality-and-accountability/) | Assessment should be fair, reliable, valid, meaningful, and fit for purpose. | Objective and performance components require different quality evidence and scoring approaches. | Keep objective quiz items for recognition/controlled use; use structured prompts and transparent criteria for productive skills. | Treating a quiz score as total proficiency. Report what the assessment does and does not measure. | High |
+
+## Decision protocol
+
+1. The Researcher adds evidence with a source, a precise principle, a proposed application, and a risk.
+2. The Curriculum Architect accepts, adapts, or rejects the application and records the reason in the Curriculum Bible.
+3. The Pedagogical Auditor checks whether authored lessons actually follow the adopted decision.
+4. Evidence is cited in curriculum documents; no source content, lesson text, branding, or proprietary materials are copied into English Journey.

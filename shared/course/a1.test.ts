@@ -36,4 +36,15 @@ describe("A1 curriculum", () => {
     expect(A1_GRAMMAR).toHaveLength(20);
     expect(A1_LESSONS.every((lesson) => Boolean(lesson.grammar?.topic && lesson.grammar?.arabicName))).toBe(true);
   });
+
+  it("normalises every A1 lesson onto the shared learner-facing plan contract", () => {
+    expect(A1_LESSONS.every((lesson) => (
+      lesson.learningPlan?.outcome.canDo
+      && lesson.learningPlan.outcome.canDoArabic
+      && lesson.learningPlan.outcome.scenario
+      && lesson.learningPlan.steps.length === 6
+      && lesson.learningPlan.studio === "A1 First Steps Studio"
+      && lesson.learningPlan.englishFirst === false
+    ))).toBe(true);
+  });
 });

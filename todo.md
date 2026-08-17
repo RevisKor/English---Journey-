@@ -385,3 +385,12 @@
 - [x] Trace why only A1 Lesson 1 resolves while other modules and CEFR levels fail to generate quizzes.
 - [x] Repair non-default lesson scope and quiz-bank resolution with cross-level regression coverage.
 - [ ] Validate representative non-default quizzes and publish the recovery.
+
+# Six-Agent Curriculum Production System
+- [x] Establish a versioned Curriculum Bible that records course philosophy, CEFR progression, shared rules, activity taxonomy, assessment hierarchy, accessibility, Arabic support, British English, and editorial quality gates.
+- [x] Create a research-evidence register that turns reputable pedagogy sources into traceable English Journey design decisions.
+- [x] Define lesson-blueprint, curriculum-graph, activity-library, and assessment-specification contracts that separate architecture from authored content.
+- [x] Build automated curriculum audit reports for lesson-type balance, skill distribution, retrieval coverage, activity repetition, assessment coverage, and level/module progression.
+- [x] Define a calm, accessible visual-language specification for all activity types without changing existing learner outcomes.
+- [x] Create the staged six-workstream operating procedure, including inputs, outputs, review gates, and hand-offs for the 865-lesson curriculum.
+- [x] Normalise A1 lessons onto the shared `learningPlan` contract so the audit applies the same structured-planning checks across A1–C2.
