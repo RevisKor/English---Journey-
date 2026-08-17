@@ -64,6 +64,31 @@ describe("A1 curriculum", () => {
     expect(firstFive.every((lesson) => lesson.experience?.firstView.whatItIs)).toBe(true);
   });
 
+  it("keeps the complete first module purposefully varied rather than extending a fixed lesson template", () => {
+    const moduleOne = A1_LESSONS.slice(0, 15);
+
+    expect(moduleOne.map((lesson) => lesson.experience?.archetype)).toEqual([
+      "discover",
+      "interaction",
+      "grammar",
+      "vocabulary",
+      "integration",
+      "discover",
+      "vocabulary",
+      "interaction",
+      "reading",
+      "writing",
+      "vocabulary",
+      "vocabulary",
+      "interaction",
+      "speaking",
+      "assessment",
+    ]);
+    expect(new Set(moduleOne.map((lesson) => lesson.experience?.archetype)).size).toBeGreaterThanOrEqual(8);
+    expect(moduleOne.every((lesson) => lesson.activities && lesson.activities.length >= 3)).toBe(true);
+    expect(moduleOne.every((lesson) => lesson.experience?.firstView.whatNext)).toBe(true);
+  });
+
   it("gives every A1 lesson a seven-moment bilingual mentor guide for the learner route", () => {
     expect(A1_LESSONS.every((lesson) => (
       lesson.mentorGuide?.level === "A1"

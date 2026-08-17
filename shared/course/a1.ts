@@ -1,6 +1,7 @@
 import rawGrammar from "./a1-grammar.json";
 import rawVocabulary from "./a1-vocabulary.json";
 import { A1_IMMERSIVE_MODULES } from "./a1-immersive-modules";
+import { authoredActivitiesForA1Module1 } from "./a1-module-1-authored-activities";
 import { enrichLesson } from "./activity-plan";
 import { createLessonExperience } from "./lesson-experience";
 import { buildModuleDefinitions } from "./module-definitions";
@@ -138,6 +139,187 @@ function experienceForBlueprint(blueprint: ImmersiveLessonBlueprint, moduleNumbe
           whatNext: "Carry this introduction into the numbers lesson.",
         },
         progressiveSupports: ["arabic-help", "worked-example", "transcript", "word-support"],
+      });
+    case 6:
+      return createLessonExperience({
+        archetype: "discover",
+        density: "light",
+        archetypeRationale: "Numbers enter through a useful personal meaning—age—without turning the lesson into an overloaded counting drill.",
+        selectedStages: ["encounter", "notice", "meaningful-use", "retrieval"],
+        intentionallyOmittedStages: [
+          { stage: "supported-practice", reason: "A small number-card and answer choice already provide enough support for this light discovery lesson." },
+          { stage: "evidence", reason: "A private or invented answer is purposeful practice, not a high-stakes performance." },
+        ],
+        firstView: {
+          whatItIs: "Numbers for a real question",
+          whatToDo: "Meet a few number words, then practise one age answer.",
+          whatMatters: "English uses I am for age.",
+          whatNext: "Add one age line to your introduction if you want to.",
+        },
+        progressiveSupports: ["arabic-help", "worked-example", "word-support", "tip"],
+      });
+    case 7:
+      return createLessonExperience({
+        archetype: "vocabulary",
+        density: "normal",
+        archetypeRationale: "Visible classroom objects invite a sound-image-phrase journey, with one concise grammar notice only where it helps the phrase work.",
+        selectedStages: ["encounter", "notice", "supported-practice", "meaningful-use"],
+        intentionallyOmittedStages: [
+          { stage: "orientation", reason: "The visual gallery immediately explains what the learner will do." },
+          { stage: "retrieval", reason: "This focused vocabulary lesson protects space for a new colour-object connection." },
+          { stage: "evidence", reason: "One chosen description is enough feedback at this point; assessment comes later in the module." },
+        ],
+        firstView: {
+          whatItIs: "Picture English: colours and classroom things",
+          whatToDo: "Listen, choose the matching phrase, then describe one object.",
+          whatMatters: "English puts the colour before the object.",
+          whatNext: "Use the phrases when you ask for help in class.",
+        },
+        progressiveSupports: ["arabic-help", "worked-example", "word-support", "tip"],
+      });
+    case 8:
+      return createLessonExperience({
+        archetype: "interaction",
+        density: "deep",
+        archetypeRationale: "A learner needs a repair phrase at the moment misunderstanding can happen; the social interaction, not a grammar list, is the lesson’s centre.",
+        selectedStages: ["retrieval", "notice", "supported-practice", "meaningful-use", "evidence"],
+        intentionallyOmittedStages: [
+          { stage: "orientation", reason: "The first classroom scenario provides an immediate, concrete orientation." },
+          { stage: "next-bridge", reason: "The confidence reflection supplies a natural closure before the reading lesson changes mode." },
+        ],
+        firstView: {
+          whatItIs: "A phrase for when you need help",
+          whatToDo: "Hear a classroom direction, then practise asking for a repeat politely.",
+          whatMatters: "Not understanding is normal; Can you repeat, please? keeps the conversation moving.",
+          whatNext: "Use familiar classroom words inside a short reading.",
+        },
+        progressiveSupports: ["arabic-help", "worked-example", "transcript", "word-support", "tip"],
+      });
+    case 9:
+      return createLessonExperience({
+        archetype: "reading",
+        density: "normal",
+        archetypeRationale: "A short, highly supported profile lets the learner experience reading for meaning before writing a profile of their own.",
+        selectedStages: ["encounter", "notice", "supported-practice", "retrieval"],
+        intentionallyOmittedStages: [
+          { stage: "meaningful-use", reason: "The next lesson deliberately owns the profile-writing task; this lesson protects reading attention." },
+          { stage: "evidence", reason: "Guided meaning checks provide sufficient low-stakes evidence for this first reading experience." },
+        ],
+        firstView: {
+          whatItIs: "Your first small English reading card",
+          whatToDo: "Read slowly, then find the name, place, and object in the card.",
+          whatMatters: "Return to the line that contains the answer; you do not need every word.",
+          whatNext: "Keep one useful line ready for your own short profile.",
+        },
+        progressiveSupports: ["arabic-help", "transcript", "word-support", "worked-example"],
+      });
+    case 10:
+      return createLessonExperience({
+        archetype: "writing",
+        density: "deep",
+        archetypeRationale: "The learner now has enough meaningful language to produce a private or invented profile with focused, beginner-safe writing support.",
+        selectedStages: ["retrieval", "notice", "supported-practice", "evidence"],
+        intentionallyOmittedStages: [
+          { stage: "encounter", reason: "The learner has just met a model profile in the preceding reading lesson." },
+          { stage: "meaningful-use", reason: "The supported writing itself is the meaningful use; adding a separate production stage would repeat the task." },
+        ],
+        firstView: {
+          whatItIs: "Your first short English profile",
+          whatToDo: "Choose only the details you want, then write three to five supported lines.",
+          whatMatters: "A capital I, a full stop, and one clear message are enough for today.",
+          whatNext: "Keep one line for a future conversation or improve it after a friendly check.",
+        },
+        progressiveSupports: ["arabic-help", "worked-example", "word-support", "external-ai-prompt", "tip"],
+      });
+    case 11:
+      return createLessonExperience({
+        archetype: "vocabulary",
+        density: "normal",
+        archetypeRationale: "Family language enters through a safe fictional picture story so new words and two useful patterns can be used without demanding personal disclosure.",
+        selectedStages: ["encounter", "notice", "meaningful-use", "retrieval"],
+        intentionallyOmittedStages: [
+          { stage: "supported-practice", reason: "The fictional family card supplies enough immediate contextual support before the learner chooses a personal or fictional line." },
+          { stage: "evidence", reason: "An optional, low-pressure profile addition is more appropriate than a graded family disclosure." },
+        ],
+        firstView: {
+          whatItIs: "Family words through a fictional story",
+          whatToDo: "Meet three picture words, then choose one short family sentence to use.",
+          whatMatters: "I have ... and This is my ... do different useful jobs.",
+          whatNext: "Use a fictional line or add an optional detail to your profile.",
+        },
+        progressiveSupports: ["arabic-help", "worked-example", "word-support", "tip"],
+      });
+    case 12:
+      return createLessonExperience({
+        archetype: "vocabulary",
+        density: "normal",
+        archetypeRationale: "Professions are most useful when learners connect a person, a role, and a short job sentence before a real meeting asks them to choose a relevant detail.",
+        selectedStages: ["encounter", "notice", "supported-practice", "retrieval"],
+        intentionallyOmittedStages: [
+          { stage: "meaningful-use", reason: "The next lesson gives job language a more natural communicative role inside a first meeting." },
+          { stage: "evidence", reason: "A concise scene choice is sufficient feedback before the interaction lesson." },
+        ],
+        firstView: {
+          whatItIs: "People and their jobs",
+          whatToDo: "Match a person to a job, then keep one useful sentence chunk.",
+          whatMatters: "A job word works best inside a whole short sentence.",
+          whatNext: "Decide whether one job detail belongs in a first meeting.",
+        },
+        progressiveSupports: ["arabic-help", "worked-example", "word-support", "tip"],
+      });
+    case 13:
+      return createLessonExperience({
+        archetype: "interaction",
+        density: "deep",
+        archetypeRationale: "A first meeting asks the learner to choose details and questions responsively, making interaction—not an isolated question-word worksheet—the right dominant experience.",
+        selectedStages: ["retrieval", "notice", "meaningful-use", "evidence"],
+        intentionallyOmittedStages: [
+          { stage: "encounter", reason: "The first-meeting decision task provides immediate context and retrieves only language the learner needs." },
+          { stage: "supported-practice", reason: "The conversation includes in-the-moment choices and transcript support rather than a separate mechanical drill." },
+        ],
+        firstView: {
+          whatItIs: "A first meeting with real choices",
+          whatToDo: "Choose a useful question, listen to the answer, then add one relevant detail.",
+          whatMatters: "Good conversation responds to what a person has already said.",
+          whatNext: "Hear the same meeting as a smooth, short conversation.",
+        },
+        progressiveSupports: ["arabic-help", "worked-example", "transcript", "word-support", "tip"],
+      });
+    case 14:
+      return createLessonExperience({
+        archetype: "speaking",
+        density: "normal",
+        archetypeRationale: "After several supported encounters, the learner benefits from choosing an introduction length they can say clearly rather than producing a longer scripted performance.",
+        selectedStages: ["encounter", "meaningful-use", "retrieval"],
+        intentionallyOmittedStages: [
+          { stage: "notice", reason: "The model transcript and pronunciation hints support speaking directly; a separate language analysis would dilute rehearsal time." },
+          { stage: "evidence", reason: "A self-chosen clarity target is safer and more useful than an accent-scored speaking test." },
+        ],
+        firstView: {
+          whatItIs: "A version you can say clearly",
+          whatToDo: "Listen once, choose a short, medium, or full introduction, then rehearse it calmly.",
+          whatMatters: "Being understood is more important than sounding like someone else.",
+          whatNext: "Use one clear version in the module check if you are ready.",
+        },
+        progressiveSupports: ["arabic-help", "transcript", "worked-example", "word-support", "tip"],
+      });
+    case 15:
+      return createLessonExperience({
+        archetype: "assessment",
+        density: "deep",
+        archetypeRationale: "A supportive module assessment can gather reading, writing, and speaking evidence while letting the learner choose one precise next review target.",
+        selectedStages: ["encounter", "supported-practice", "meaningful-use", "evidence", "next-bridge"],
+        intentionallyOmittedStages: [
+          { stage: "notice", reason: "The assessment checks application of previously noticed language rather than adding a new explanation." },
+          { stage: "retrieval", reason: "The final review decision identifies an intentional next target instead of forcing an extra recall task." },
+        ],
+        firstView: {
+          whatItIs: "Module 1: show what you can use",
+          whatToDo: "Read a short profile, make your own, say a small introduction, then choose one review target.",
+          whatMatters: "The check looks for usable messages and a helpful next step—not perfect recall or accent.",
+          whatNext: "Carry the one target you chose into the next module.",
+        },
+        progressiveSupports: ["arabic-help", "worked-example", "transcript", "word-support", "external-ai-prompt", "tip"],
       });
     default:
       return undefined;
@@ -311,6 +493,7 @@ export const A1_LESSONS: LessonDefinition[] = A1_IMMERSIVE_MODULES.flatMap((modu
       mentorGuide: mentorGuideForBlueprint(blueprint, module),
       lessonType: blueprint.type,
       experience: experienceForBlueprint(blueprint, module.moduleNumber),
+      activities: authoredActivitiesForA1Module1(activeLessonNumber),
     });
   });
 });

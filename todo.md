@@ -410,8 +410,12 @@
 - [x] Implement reusable semantic lesson components that render objectives, examples, tips, common mistakes, vocabulary, grammar, activities, retrieval, and assessments with labels, icons, and accessible non-colour cues.
 - [x] Extend the curriculum audit to flag possible archetype concentration, repeated openings, repeated activity sequences, dialogue-shape repetition, assessment monotony, and forced retrieval for human review.
 - [x] Update the tutorial, course map, and learner-facing route language so navigation is predictable while each lesson’s selected activity journey remains purposeful and variable.
-- [ ] Create the complete batch plan and acceptance criteria for reauthoring all 865 lessons, making the distinction between infrastructure and content production explicit.
+- [x] Create the complete batch plan and acceptance criteria for reauthoring all 865 lessons, making the distinction between infrastructure and content production explicit.
 - [x] Maintain a six-workstream A1 authoring ledger for curriculum mapping, pedagogy, activities, assessments, visual language, and independent audit evidence; pause unrelated deployment follow-ups.
+- [x] Reauthor and render the first five A1 Module 1 lessons as a live varied-archetype pilot with explicit bilingual activity data and learner evidence.
+- [x] Reauthor A1 Module 1 Lessons 6–8 with objective-led archetypes, natural retrieval, and varied assessment evidence.
+- [x] Reauthor A1 Module 1 Lessons 9–11 as distinct reading, writing, and interaction journeys with integrated evidence.
+- [x] Reauthor A1 Module 1 Lessons 12–15 as distinct visual, real-world, review, and module-assessment journeys.
 - [ ] Reauthor every A1 lesson and six module tests with beginner-safe explanations, repeated-exposure activity sequences, and authored mentor transitions.
 - [ ] Reauthor every A2 and B1 lesson and module assessment with progressively more independent reading, interaction, and writing evidence.
 - [ ] Reauthor every B2, C1, and C2 lesson and module assessment with advanced discourse, precision, register, and synthesis practice.

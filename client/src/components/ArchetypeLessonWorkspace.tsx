@@ -4,7 +4,7 @@ import { ExternalAiPromptPanel } from "@/components/ExternalAiPromptPanel";
 import { LessonSemanticCard } from "@/components/LessonSemanticCard";
 import { QuizPractice } from "@/components/QuizPractice";
 import { buildSentenceReviewPrompt, buildWordHelpPrompt } from "@/lib/external-ai-prompts";
-import type { CefrLevel, LessonDefinition, LessonExperienceStage, VocabularyItem } from "@shared/course";
+import type { CefrLevel, LessonActivity, LessonDefinition, LessonExperienceStage, LessonProgressionStage, VocabularyItem } from "@shared/course";
 import { ArrowLeft, CheckCircle2, Volume2 } from "lucide-react";
 import React, { useState } from "react";
 
@@ -19,6 +19,15 @@ const stageDetails: Record<LessonExperienceStage, { label: string; arabic: strin
   retrieval: { label: "Bring it back", arabic: "استدعِ ما تعلّمته", semantic: "retrieval" },
   evidence: { label: "Show what you can do", arabic: "أظهر ما تستطيع فعله", semantic: "assessment" },
   "next-bridge": { label: "Carry it forward", arabic: "خذه إلى الدرس القادم", semantic: "tip" },
+};
+
+const authoredStagesByExperienceStage: Partial<Record<LessonExperienceStage, LessonProgressionStage[]>> = {
+  encounter: ["introduction"],
+  notice: ["explanation"],
+  "supported-practice": ["guided-practice"],
+  "meaningful-use": ["independent-practice", "real-context"],
+  retrieval: ["review"],
+  evidence: ["assessment"],
 };
 
 function speak(text: string, accent: Accent, rate = 0.82) {
@@ -40,10 +49,27 @@ export function ArchetypeLessonWorkspace({ lesson, accent, onBack }: { lesson: L
 
   const scrollTo = (stage: LessonExperienceStage) => document.getElementById(`stage-${stage}`)?.scrollIntoView({ behavior: "smooth", block: "start" });
   const mentorWelcome = lesson.mentorGuide?.moments.find((moment) => moment.id === "welcome");
+  const authoredActivitiesFor = (stage: LessonExperienceStage) => {
+    const allowedStages = authoredStagesByExperienceStage[stage];
+    return allowedStages ? lesson.activities?.filter((activity) => allowedStages.includes(activity.stage)) ?? [] : [];
+  };
+
+  const renderAuthoredActivity = (activity: LessonActivity) => <div key={activity.id} className="rounded-xl border border-current/15 bg-white/60 p-4">
+    <div className="flex flex-wrap items-baseline justify-between gap-2"><h3 className="font-bold text-[#253453]">{activity.title}</h3><span dir="rtl" className="arabic text-xs text-[#526078]">{activity.titleArabic}</span></div>
+    <p className="mt-2 text-sm leading-6 text-[#45536a]">{activity.objective}</p>
+    <p dir="rtl" className="arabic mt-2 text-right text-sm leading-6 text-[#526078]">{activity.objectiveArabic}</p>
+    {activity.visualItems?.length ? <div className="mt-4 grid gap-3 sm:grid-cols-2">{activity.visualItems.map((item) => <article key={item.id} className="rounded-xl border border-[#d9e5da] bg-white p-3"><div className="flex items-start justify-between gap-3"><div><p className="font-bold text-[#253453]">{item.word}</p><p dir="rtl" className="arabic mt-1 text-right text-sm font-semibold text-[#397558]">{item.arabic}</p></div><button type="button" aria-label={`Play only the word ${item.word}`} onClick={() => speak(item.word, accent)} className="grid h-9 w-9 place-items-center rounded-full border border-[#c5d9ca] bg-[#f7fbf7] text-[#316647]"><Volume2 className="h-4 w-4" /></button></div><p className="mt-3 text-sm text-[#45536a]">{item.exampleEN}</p><p dir="rtl" className="arabic mt-1 text-right text-xs text-[#526078]">{item.exampleAR}</p><p className="mt-3 text-xs leading-5 text-[#63718a]">{item.interactionHint}</p></article>)}</div> : null}
+    {activity.interactionTurns?.length ? <div className="mt-4 space-y-3">{activity.interactionTurns.map((turn) => <div key={turn.id} className="rounded-lg border border-[#d9e5da] bg-white p-3"><p className="text-xs font-bold uppercase tracking-[.12em] text-[#397558]">{turn.speaker}</p><p className="mt-1 font-semibold text-[#253453]">{turn.text}</p><p dir="rtl" className="arabic mt-1 text-right text-sm text-[#526078]">{turn.textArabic}</p><p className="mt-2 text-xs text-[#63718a]">{turn.purpose}</p></div>)}</div> : null}
+    {activity.speakingLines?.length ? <div className="mt-4 space-y-3">{activity.speakingLines.map((line) => <div key={line.id} className="flex items-start justify-between gap-4 rounded-lg border border-[#d9e5da] bg-white p-3"><div><p className="font-semibold text-[#253453]">{line.text}</p><p dir="rtl" className="arabic mt-1 text-right text-sm text-[#526078]">{line.textArabic}</p><p className="mt-2 text-xs text-[#63718a]">{line.pronunciationHint}</p></div><button type="button" aria-label={`Play ${line.text}`} onClick={() => speak(line.audioText ?? line.text, accent)} className="grid h-9 w-9 shrink-0 place-items-center rounded-full border border-[#c5d9ca] bg-[#f7fbf7] text-[#316647]"><Volume2 className="h-4 w-4" /></button></div>)}</div> : null}
+    {activity.writingPrompt ? <div className="mt-4 rounded-lg border border-[#d9e5da] bg-white p-3"><p className="text-xs font-bold uppercase tracking-[.12em] text-[#397558]">Try it</p><p className="mt-2 text-sm leading-6 text-[#253453]">{activity.writingPrompt}</p><p dir="rtl" className="arabic mt-2 text-right text-sm leading-6 text-[#526078]">{activity.writingPromptArabic}</p>{activity.sentencePatterns?.length ? <div className="mt-3 flex flex-wrap gap-2">{activity.sentencePatterns.map((pattern) => <span key={pattern} className="rounded-full border border-[#c5d9ca] bg-[#f7fbf7] px-3 py-1 text-xs font-semibold text-[#316647]">{pattern}</span>)}</div> : null}</div> : null}
+  </div>;
 
   const renderStage = (stage: LessonExperienceStage) => {
     const detail = stageDetails[stage];
     const common = { semantic: detail.semantic, title: detail.label, titleArabic: detail.arabic } as const;
+    const authored = authoredActivitiesFor(stage);
+
+    if (authored.length) return <LessonSemanticCard {...common}>{authored.map(renderAuthoredActivity)}</LessonSemanticCard>;
 
     switch (stage) {
       case "orientation":
