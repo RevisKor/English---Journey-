@@ -86,6 +86,21 @@ describe("B1 cumulative curriculum", () => {
     expect(moduleTwo.every((lesson) => lesson.experience?.selectedStages.length)).toBe(true);
   });
 
+  it("gives B1 Module 3 explicit, varied Travel and Change routes with source-aware practical transfer", () => {
+    const moduleThree = B1_LESSONS.filter((lesson) => lesson.moduleNumber === 3);
+    const expectedArchetypes = new Set(["discover", "grammar", "notice", "interaction", "listening", "reading", "writing", "real-world", "speaking", "review", "assessment"]);
+
+    expect(moduleThree).toHaveLength(15);
+    expect(moduleThree.every((lesson) => lesson.experience && lesson.activities?.length)).toBe(true);
+    expect(new Set(moduleThree.map((lesson) => lesson.experience?.archetype)).size).toBeGreaterThanOrEqual(11);
+    expect(moduleThree.map((lesson) => lesson.experience?.archetype).every((archetype) => expectedArchetypes.has(archetype ?? ""))).toBe(true);
+    expect(moduleThree.some((lesson) => lesson.activities?.some((item) => item.kind === "visual-vocabulary" && item.visualItems?.every((visual) => Boolean(visual.imageUrl && visual.altText))))).toBe(true);
+    expect(moduleThree.some((lesson) => lesson.activities?.some((item) => item.readingChecks?.some((check) => check.type === "inference")))).toBe(true);
+    expect(moduleThree.some((lesson) => lesson.activities?.some((item) => item.writingPrompt?.includes("130–160 words")))).toBe(true);
+    expect(moduleThree.some((lesson) => lesson.activities?.some((item) => item.kind === "assessment" && item.stage === "assessment"))).toBe(true);
+    expect(moduleThree.every((lesson) => lesson.experience?.selectedStages.length)).toBe(true);
+  });
+
   it("increases communicative demand across the B1 sequence", () => {
     const first = B1_LESSONS[0];
     const final = B1_LESSONS.at(-1)!;
