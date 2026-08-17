@@ -117,6 +117,20 @@ describe("ExternalLessonWorkspace", () => {
     expect(html).toContain("Trace the earlier event");
   });
 
+  it("renders the authored A2 Module 3 delayed-journey update as its selected deep reading route", () => {
+    const lesson = A2_LESSONS[33];
+    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={lesson} accent="british" onBack={() => undefined} />);
+
+    expect(html).toContain("reading lesson");
+    expect(html).toContain("Meet the English");
+    expect(html).toContain("Notice one pattern");
+    expect(html).toContain("Try with support");
+    expect(html).toContain("Show what you can do");
+    expect(html).not.toContain("Use it for a reason");
+    expect(html).toContain("Read a delayed-journey update");
+    expect(html).toContain("Read once for the problem");
+  });
+
   it("preserves the established tabbed workspace for un-authored later levels during the staged rollout", () => {
     const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={B1_LESSONS[0]} accent="british" onBack={() => undefined} />);
 

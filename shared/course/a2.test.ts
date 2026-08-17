@@ -74,4 +74,19 @@ describe("A2 cumulative curriculum", () => {
     expect(moduleTwo.some((lesson) => lesson.activities?.some((activity) => activity.kind === "assessment" && activity.stage === "assessment"))).toBe(true);
     expect(moduleTwo.every((lesson) => lesson.experience?.selectedStages.length)).toBe(true);
   });
+
+  it("gives A2 Module 3 explicit, varied travel-and-services routes with practical connected evidence", () => {
+    const moduleThree = A2_LESSONS.filter((lesson) => lesson.moduleNumber === 3);
+    const expectedArchetypes = new Set(["grammar", "vocabulary", "interaction", "reading", "speaking", "real-world", "notice", "writing", "listening", "review", "integration", "assessment"]);
+
+    expect(moduleThree).toHaveLength(15);
+    expect(moduleThree.every((lesson) => lesson.experience && lesson.activities?.length)).toBe(true);
+    expect(new Set(moduleThree.map((lesson) => lesson.experience?.archetype)).size).toBeGreaterThanOrEqual(10);
+    expect(moduleThree.map((lesson) => lesson.experience?.archetype).every((archetype) => expectedArchetypes.has(archetype ?? ""))).toBe(true);
+    expect(moduleThree.some((lesson) => lesson.activities?.some((activity) => activity.kind === "visual-vocabulary" && activity.visualItems?.every((item) => Boolean(item.imageUrl && item.altText))))).toBe(true);
+    expect(moduleThree.some((lesson) => lesson.activities?.some((activity) => activity.readingChecks?.some((check) => check.type === "inference")))).toBe(true);
+    expect(moduleThree.some((lesson) => lesson.activities?.some((activity) => activity.progressiveSupports?.includes("external-ai-prompt")))).toBe(true);
+    expect(moduleThree.some((lesson) => lesson.activities?.some((activity) => activity.kind === "assessment" && activity.stage === "assessment"))).toBe(true);
+    expect(moduleThree.every((lesson) => lesson.experience?.selectedStages.length)).toBe(true);
+  });
 });

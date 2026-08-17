@@ -430,3 +430,4 @@
 - [x] Validate the complete authored A1 level through controlled UI/API and course-content batches, TypeScript, production build, curriculum audit, and preview inspection.
 - [x] Reauthor A2 Module 1 Lessons 1–15 as varied, high-scaffold health-and-habits learner journeys with explicit bilingual activity data, connected A1 retrieval, and learner evidence.
 - [x] Reauthor A2 Module 2 Lessons 16–30 as varied, connected learning-and-work learner journeys with explicit bilingual activity data, purposeful A1/A2 retrieval, and learner evidence.
+- [x] Reauthor A2 Module 3 Lessons 31–45 as varied, practical travel-and-services learner journeys with explicit bilingual activity data, polite problem-solving language, and learner evidence.
