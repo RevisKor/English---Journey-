@@ -305,8 +305,22 @@ describe("ExternalLessonWorkspace", () => {
     expect(html).toContain("Trace advice, reasons, and practical limits in a short digital-safety guide");
   });
 
+  it("renders the authored B1 Module 7 community-energy proposal as its selected Environment and Community Action reading route", () => {
+    const lesson = B1_LESSONS[95];
+    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={lesson} accent="british" onBack={() => undefined} />);
+
+    expect(html).toContain("reading lesson");
+    expect(html).toContain("Know the purpose");
+    expect(html).toContain("Meet the English");
+    expect(html).toContain("Notice one pattern");
+    expect(html).toContain("Show what you can do");
+    expect(html).not.toContain('aria-label="Lesson sections"');
+    expect(html).toContain("Read a community-energy proposal");
+    expect(html).toContain("Identify the proposal, its evidence, its trade-off, and one unanswered question");
+  });
+
   it("preserves the established tabbed workspace for un-authored later levels during the staged rollout", () => {
-    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={B1_LESSONS[90]} accent="british" onBack={() => undefined} />);
+    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={B1_LESSONS[105]} accent="british" onBack={() => undefined} />);
 
     expect(html).toContain('aria-label="Lesson sections"');
     expect(html).toContain("Words");

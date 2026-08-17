@@ -228,6 +228,7 @@
 - [x] Author, wire, test, validate, and checkpoint B1 Module 4 (Lessons 46–60) as varied bilingual stories, opinions, narrative framing, and evidence-based discussion journeys aligned to the authoritative lesson arc.
 - [x] Author, wire, test, validate, and checkpoint B1 Module 5 (Lessons 61–75) as varied bilingual health, wellbeing, choices, advice, and self-management journeys aligned to the authoritative lesson arc.
 - [x] Author, wire, test, validate, and checkpoint B1 Module 6 (Lessons 76–90) as varied bilingual media, digital life, online safety, source awareness, and communication journeys aligned to the authoritative lesson arc.
+- [x] Author, wire, test, validate, and checkpoint B1 Module 7 (Lessons 91–105) as varied bilingual environment, community action, evidence, participation, and practical-change journeys aligned to the authoritative lesson arc.
 
 # A1 Lesson Workspace Stability Follow-up
 - [x] Add regression coverage for missing or malformed activity metadata labels in the shared lesson workspace.

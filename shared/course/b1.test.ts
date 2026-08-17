@@ -146,6 +146,23 @@ describe("B1 cumulative curriculum", () => {
     expect(moduleSix.every((lesson) => lesson.experience?.selectedStages.length)).toBe(true);
   });
 
+  it("gives B1 Module 7 explicit, varied Environment and Community Action routes with evidence-aware civic transfer", () => {
+    const moduleSeven = B1_LESSONS.filter((lesson) => lesson.moduleNumber === 7);
+    const expectedArchetypes = new Set(["discover", "grammar", "reading", "interaction", "speaking", "writing", "real-world", "review", "assessment"]);
+
+    expect(moduleSeven).toHaveLength(15);
+    expect(moduleSeven.every((lesson) => lesson.experience && lesson.activities?.length)).toBe(true);
+    expect(new Set(moduleSeven.map((lesson) => lesson.experience?.archetype)).size).toBeGreaterThanOrEqual(9);
+    expect(moduleSeven.map((lesson) => lesson.experience?.archetype).every((archetype) => expectedArchetypes.has(archetype ?? ""))).toBe(true);
+    expect(moduleSeven.some((lesson) => lesson.activities?.some((item) => item.kind === "visual-vocabulary" && item.visualItems?.every((visual) => Boolean(visual.imageUrl && visual.altText))))).toBe(true);
+    expect(moduleSeven.some((lesson) => lesson.activities?.some((item) => item.readingChecks?.some((check) => check.type === "inference")))).toBe(true);
+    expect(moduleSeven.some((lesson) => lesson.activities?.some((item) => item.title === "Read a community-energy proposal"))).toBe(true);
+    expect(moduleSeven.some((lesson) => lesson.activities?.some((item) => item.title === "Interpret a short local source"))).toBe(true);
+    expect(moduleSeven.some((lesson) => lesson.activities?.some((item) => item.writingPrompt?.includes("120–150 words to a local association")))).toBe(true);
+    expect(moduleSeven.some((lesson) => lesson.activities?.some((item) => item.kind === "assessment" && item.stage === "assessment"))).toBe(true);
+    expect(moduleSeven.every((lesson) => lesson.experience?.selectedStages.length)).toBe(true);
+  });
+
   it("increases communicative demand across the B1 sequence", () => {
     const first = B1_LESSONS[0];
     const final = B1_LESSONS.at(-1)!;
