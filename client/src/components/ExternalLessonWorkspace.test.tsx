@@ -362,8 +362,19 @@ describe("ExternalLessonWorkspace", () => {
     expect(html).toContain("Identify who can apply, what commitment is required, and what you still need to ask");
   });
 
+  it("renders the authored B2 Module 1 source investigation as its selected evidence-reading route", () => {
+    const lesson = B2_LESSONS[0];
+    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={lesson} accent="british" onBack={() => undefined} />);
+
+    expect(html).toContain("reading lesson");
+    expect(html).toContain("A source-reading investigation");
+    expect(html).toContain("Read information under pressure");
+    expect(html).toContain("Separate fact, attribution, and uncertainty");
+    expect(html).not.toContain('aria-label="Lesson sections"');
+  });
+
   it("preserves the established tabbed workspace for un-authored later levels during the staged rollout", () => {
-    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={B2_LESSONS[0]} accent="british" onBack={() => undefined} />);
+    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={B2_LESSONS[15]} accent="british" onBack={() => undefined} />);
 
     expect(html).toContain('aria-label="Lesson sections"');
     expect(html).toContain("Words");

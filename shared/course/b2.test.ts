@@ -36,4 +36,15 @@ describe("B2 evidence and influence curriculum", () => {
       expect(lesson.practiceBrief?.writingPrompt.length).toBeGreaterThan(90);
     }
   });
+
+  it("authors Module 1 as varied bilingual evidence-and-judgement journeys rather than retaining generated fallback activities", () => {
+    const moduleOne = B2_LESSONS.slice(0, 15);
+    expect(moduleOne.every((lesson) => lesson.experience && lesson.activities.length > 0)).toBe(true);
+    expect(new Set(moduleOne.map((lesson) => lesson.experience?.archetype)).size).toBeGreaterThanOrEqual(7);
+    expect(B2_LESSONS[0].activities.some((activity) => activity.title === "Read information under pressure")).toBe(true);
+    expect(B2_LESSONS[8].activities.some((activity) => activity.title === "Build the case for change" && activity.kind === "writing")).toBe(true);
+    expect(B2_LESSONS[11].activities.some((activity) => activity.title === "Negotiate a fair compromise")).toBe(true);
+    expect(B2_LESSONS[14].activities.some((activity) => activity.kind === "assessment")).toBe(true);
+    expect(B2_LESSONS[15].experience).toBeUndefined();
+  });
 });
