@@ -186,6 +186,20 @@ describe("ExternalLessonWorkspace", () => {
     expect(html).toContain("Separate the rule, the advice, and the condition before answering the checks");
   });
 
+  it("renders the authored A2 Module 8 shop review as its selected Food, Shopping, and Services reading route", () => {
+    const lesson = A2_LESSONS[108];
+    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={lesson} accent="british" onBack={() => undefined} />);
+
+    expect(html).toContain("reading lesson");
+    expect(html).toContain("Meet the English");
+    expect(html).toContain("Notice one pattern");
+    expect(html).toContain("Try with support");
+    expect(html).toContain("Show what you can do");
+    expect(html).not.toContain("Use it for a reason");
+    expect(html).toContain("Read a shop review");
+    expect(html).toContain("Find the opening-time fact, the writer’s opinion, and the evidence offered for it");
+  });
+
   it("preserves the established tabbed workspace for un-authored later levels during the staged rollout", () => {
     const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={B1_LESSONS[0]} accent="british" onBack={() => undefined} />);
 
