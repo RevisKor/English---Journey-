@@ -450,3 +450,5 @@
 - [x] Reauthor A2 Module 5 Lessons 61–75 as varied, connected Nature and Community learner journeys with explicit bilingual activity data, practical problem-solving, and learner evidence.
 - [x] Reauthor A2 Module 6 Lessons 76–90 as varied, connected Choices and Plans learner journeys with explicit bilingual activity data, comparison, future planning, and learner evidence.
 - [x] Reauthor A2 Module 7 Lessons 91–105 as varied, connected Communication and Technology learner journeys with explicit bilingual activity data, message clarity, safe digital communication, and learner evidence.
+
+- [x] Reauthor, wire, test, validate, and checkpoint B1 Module 8 (Lessons 106–120) as varied bilingual culture, identity, belonging, perspective, and mediation journeys aligned to the authoritative lesson arc.
