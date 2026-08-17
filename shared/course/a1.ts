@@ -3,6 +3,7 @@ import rawVocabulary from "./a1-vocabulary.json";
 import { A1_IMMERSIVE_MODULES } from "./a1-immersive-modules";
 import { authoredActivitiesForA1Module1 } from "./a1-module-1-authored-activities";
 import { authoredActivitiesForA1Module2 } from "./a1-module-2-authored-activities";
+import { authoredActivitiesForA1Module3 } from "./a1-module-3-authored-activities";
 import { enrichLesson } from "./activity-plan";
 import { createLessonExperience } from "./lesson-experience";
 import { buildModuleDefinitions } from "./module-definitions";
@@ -58,6 +59,9 @@ const EXPERIENCE_STEPS: Record<NonNullable<ReturnType<typeof experienceForBluepr
 function experienceForBlueprint(blueprint: ImmersiveLessonBlueprint, moduleNumber = 1) {
   if (moduleNumber === 2) {
     return experienceForModule2(blueprint.lessonNumber);
+  }
+  if (moduleNumber === 3) {
+    return experienceForModule3(blueprint.lessonNumber);
   }
   if (moduleNumber !== 1) return undefined;
 
@@ -491,6 +495,152 @@ function experienceForModule2(localLessonNumber: number) {
   }
 }
 
+function experienceForModule3(localLessonNumber: number) {
+  const shared: { progressiveSupports: ProgressiveSupport[] } = {
+    progressiveSupports: ["arabic-help", "worked-example", "word-support"],
+  };
+
+  switch (localLessonNumber) {
+    case 1:
+      return createLessonExperience({
+        archetype: "vocabulary", density: "normal",
+        archetypeRationale: "A small picture basket makes first food words concrete before learners need to make a preference sentence.",
+        selectedStages: ["encounter", "supported-practice", "retrieval"],
+        intentionallyOmittedStages: [{ stage: "notice", reason: "Grammar would distract from the sound-picture-meaning connection." }],
+        firstView: { whatItIs: "A small basket of food words", whatToDo: "Hear four words, choose one basket item, then name one before looking again.", whatMatters: "Connect the English sound, image, and useful meaning.", whatNext: "Use a food word to say what you like." },
+        ...shared,
+      });
+    case 2:
+      return createLessonExperience({
+        archetype: "notice", density: "normal",
+        archetypeRationale: "Like and do not like work best when learners see contrasting choices in a friendly café scene.",
+        selectedStages: ["notice", "supported-practice", "meaningful-use"],
+        intentionallyOmittedStages: [{ stage: "retrieval", reason: "The short contrast lesson reserves final attention for one clear preference." }],
+        firstView: { whatItIs: "Two useful ways to share a preference", whatToDo: "Compare two café cards, then rehearse one preference line.", whatMatters: "Like and do not like can both be calm, useful answers.", whatNext: "Meet more meal words in a breakfast scene." },
+        progressiveSupports: ["arabic-help", "worked-example", "transcript", "word-support", "tip"],
+      });
+    case 3:
+      return createLessonExperience({
+        archetype: "discover", density: "light",
+        archetypeRationale: "A breakfast table lets learners sort food and drink through meaning before more language work.",
+        selectedStages: ["encounter", "meaningful-use", "next-bridge"],
+        intentionallyOmittedStages: [{ stage: "evidence", reason: "This lexical discovery deliberately carries only two words into the reading lesson." }],
+        firstView: { whatItIs: "A breakfast table to explore", whatToDo: "Sort food and drinks, then say one simple breakfast line.", whatMatters: "You need only a few words for today’s small scene.", whatNext: "Look for two of your words in a breakfast reading." },
+        ...shared,
+      });
+    case 4:
+      return createLessonExperience({
+        archetype: "reading", density: "normal",
+        archetypeRationale: "A short breakfast card gives new readers a clear purpose: find a person’s food choice in familiar text.",
+        selectedStages: ["encounter", "supported-practice", "evidence"],
+        intentionallyOmittedStages: [{ stage: "meaningful-use", reason: "The next lesson owns the production demand; this one protects attention for reading evidence." }],
+        firstView: { whatItIs: "A short breakfast reading card", whatToDo: "Read slowly, find what each person has, then return to the answer line.", whatMatters: "Reading is finding meaning in the text, not knowing every word first.", whatNext: "Notice a practical quantity difference through food." },
+        progressiveSupports: ["arabic-help", "word-support", "worked-example", "tip"],
+      });
+    case 5:
+      return createLessonExperience({
+        archetype: "grammar", density: "deep",
+        archetypeRationale: "Countable pieces and shared amounts need a slow, visual market explanation before learners request them naturally.",
+        selectedStages: ["orientation", "notice", "supported-practice", "meaningful-use"],
+        intentionallyOmittedStages: [{ stage: "retrieval", reason: "New quantity language deserves patient supported use before recall." }],
+        firstView: { whatItIs: "A market idea about pieces and amounts", whatToDo: "Compare eggs with rice, build a basket, then say one request.", whatMatters: "Count visible pieces; use some for an amount such as rice or water.", whatNext: "Use the idea in a friendly market exchange." },
+        progressiveSupports: ["arabic-help", "worked-example", "word-support", "tip"],
+      });
+    case 6:
+      return createLessonExperience({
+        archetype: "interaction", density: "normal",
+        archetypeRationale: "A seller and customer exchange gives quantities a real communicative job without demanding a long memorised script.",
+        selectedStages: ["encounter", "supported-practice", "evidence"],
+        intentionallyOmittedStages: [{ stage: "notice", reason: "Can I have is practised as a useful whole request, not an abstract formula." }],
+        firstView: { whatItIs: "Your first short practice-market exchange", whatToDo: "Follow the greeting, build one polite request, then choose the line that fits.", whatMatters: "Can I have ... please? is a friendly way to ask.", whatNext: "Listen for prices and use a simple price question." },
+        progressiveSupports: ["arabic-help", "worked-example", "transcript", "word-support", "tip"],
+      });
+    case 7:
+      return createLessonExperience({
+        archetype: "listening", density: "light",
+        archetypeRationale: "A compact price-listening task builds confidence with a repeatable question before vocabulary grows again.",
+        selectedStages: ["encounter", "supported-practice", "meaningful-use"],
+        intentionallyOmittedStages: [{ stage: "evidence", reason: "The outcome is a small rehearsal, not a scored listening performance." }],
+        firstView: { whatItIs: "A question for a market price", whatToDo: "Listen to one price, pair it with a question, then ask about one item.", whatMatters: "How much is it? is one useful listening-and-speaking chunk.", whatNext: "Open a new vegetable crate using the same market confidence." },
+        progressiveSupports: ["arabic-help", "transcript", "worked-example", "tip"],
+      });
+    case 8:
+      return createLessonExperience({
+        archetype: "vocabulary", density: "normal",
+        archetypeRationale: "Vegetables arrive through colour and shape clues, anchoring labels in a visible market scene.",
+        selectedStages: ["encounter", "supported-practice", "next-bridge"],
+        intentionallyOmittedStages: [{ stage: "meaningful-use", reason: "The shopping-list reading gives vegetables a more natural use than an extra isolated sentence." }],
+        firstView: { whatItIs: "A vegetable crate with picture clues", whatToDo: "Hear four labels, use colour clues, and keep two words for the next list.", whatMatters: "Use the picture to help the word stay in your memory.", whatNext: "Find two vegetables inside a real-world shopping list." },
+        ...shared,
+      });
+    case 9:
+      return createLessonExperience({
+        archetype: "reading", density: "normal",
+        archetypeRationale: "A shopping list is bounded real-world text that rewards scanning quantities and needs.",
+        selectedStages: ["encounter", "supported-practice", "next-bridge"],
+        intentionallyOmittedStages: [{ stage: "evidence", reason: "Low-stakes detail checks prepare learners for tomorrow’s contextual meaning check." }],
+        firstView: { whatItIs: "A short real-world shopping list", whatToDo: "Read for what is needed, ticking an item only when the whole text supports it.", whatMatters: "A familiar word may still be absent from the list—check the line.", whatNext: "Use the list’s eggs and rice to choose meaning in a compact check." },
+        progressiveSupports: ["arabic-help", "word-support", "worked-example", "tip"],
+      });
+    case 10:
+      return createLessonExperience({
+        archetype: "assessment", density: "light",
+        archetypeRationale: "Three contextual choices give useful feedback about food quantities without making a mid-module check a barrier.",
+        selectedStages: ["notice", "evidence", "retrieval"],
+        intentionallyOmittedStages: [{ stage: "meaningful-use", reason: "The next lesson deliberately owns connected written production." }],
+        firstView: { whatItIs: "A short food-meaning check", whatToDo: "Complete three useful choices, then select one review target.", whatMatters: "Choose from the food situation—not from a spelling trick.", whatNext: "Use familiar food language to write a tiny meal card." },
+        progressiveSupports: ["arabic-help", "worked-example", "word-support", "tip"],
+      });
+    case 11:
+      return createLessonExperience({
+        archetype: "writing", density: "deep",
+        archetypeRationale: "A fictional or real meal card permits connected beginner writing with an achievable scope.",
+        selectedStages: ["retrieval", "supported-practice", "meaningful-use", "evidence"],
+        intentionallyOmittedStages: [{ stage: "encounter", reason: "The module has already supplied concise meal and preference models." }],
+        firstView: { whatItIs: "A tiny meal-writing task", whatToDo: "Choose three words, write two or three lines, and check one sentence at a time.", whatMatters: "A fictional meal is welcome; a capital I and a clear full stop are enough.", whatNext: "Use food language in a flexible market role-play." },
+        progressiveSupports: ["arabic-help", "worked-example", "word-support", "tip"],
+      });
+    case 12:
+      return createLessonExperience({
+        archetype: "real-world", density: "deep",
+        archetypeRationale: "A choose-your-mission market role-play lets learners decide which familiar language matters, avoiding one fixed dialogue.",
+        selectedStages: ["orientation", "meaningful-use", "evidence"],
+        intentionallyOmittedStages: [{ stage: "notice", reason: "The role-play reuses language already explained elsewhere and centres responsive communication." }],
+        firstView: { whatItIs: "A choose-your-own market role-play", whatToDo: "Select a mission, take a role, and use a repair line if needed.", whatMatters: "Choose a meaningful line for your mission; you do not need every line.", whatNext: "Listen for food-and-quantity language without seeing the basket first." },
+        progressiveSupports: ["arabic-help", "worked-example", "transcript", "word-support", "tip"],
+      });
+    case 13:
+      return createLessonExperience({
+        archetype: "listening", density: "normal",
+        archetypeRationale: "A listen-first basket task moves attention from visible labels to catching one item and quantity in speech.",
+        selectedStages: ["encounter", "supported-practice", "meaningful-use"],
+        intentionallyOmittedStages: [{ stage: "retrieval", reason: "Heard details are immediately reused as a helpful market response." }],
+        firstView: { whatItIs: "A market basket to hear first", whatToDo: "Listen once, choose the basket, then give the next helpful response.", whatMatters: "Listen for one item and one quantity; use the transcript after your first try.", whatNext: "Collect useful paths in a short review." },
+        progressiveSupports: ["arabic-help", "transcript", "worked-example", "word-support", "tip"],
+      });
+    case 14:
+      return createLessonExperience({
+        archetype: "review", density: "light",
+        archetypeRationale: "A selective tray review asks learners for language that serves a preference or market path, not every word in a dense list.",
+        selectedStages: ["retrieval", "supported-practice", "next-bridge"],
+        intentionallyOmittedStages: [{ stage: "encounter", reason: "This deliberately introduces no additional food words before the checkpoint." }],
+        firstView: { whatItIs: "A selective food-and-market review", whatToDo: "Name useful chunks, follow two meaning paths, then choose one checkpoint helper.", whatMatters: "Choose language that serves the situation; you do not need every module word.", whatNext: "Show what you can use in a calm contextual checkpoint." },
+        progressiveSupports: ["worked-example", "word-support", "tip"],
+      });
+    case 15:
+      return createLessonExperience({
+        archetype: "assessment", density: "normal",
+        archetypeRationale: "A modular checkpoint checks usable food and market language while ending with a learner-selected next step.",
+        selectedStages: ["retrieval", "evidence", "next-bridge"],
+        intentionallyOmittedStages: [{ stage: "encounter", reason: "The checkpoint adds no new language; it makes visible what the learner can use." }],
+        firstView: { whatItIs: "A supportive food-and-market checkpoint", whatToDo: "Complete four small contextual tasks, then select one useful next review.", whatMatters: "The result points to practice; it is not a judgement of your ability.", whatNext: "Carry one confident routine into the next daily-life module." },
+        progressiveSupports: ["worked-example", "word-support", "transcript", "tip"],
+      });
+    default:
+      return undefined;
+  }
+}
+
 function stepsForBlueprint(blueprint: ImmersiveLessonBlueprint, moduleNumber: number) {
   const experience = experienceForBlueprint(blueprint, moduleNumber);
   if (!experience) return A1_STEPS;
@@ -660,7 +810,8 @@ export const A1_LESSONS: LessonDefinition[] = A1_IMMERSIVE_MODULES.flatMap((modu
       experience: experienceForBlueprint(blueprint, module.moduleNumber),
       activities:
         authoredActivitiesForA1Module1(activeLessonNumber) ??
-        authoredActivitiesForA1Module2(activeLessonNumber),
+        authoredActivitiesForA1Module2(activeLessonNumber) ??
+        authoredActivitiesForA1Module3(activeLessonNumber),
     });
   });
 });

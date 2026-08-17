@@ -35,6 +35,20 @@ describe("ExternalLessonWorkspace", () => {
     expect(html).not.toContain('aria-label="Lesson sections"');
   });
 
+  it("renders the Module 3 quantity lesson as its selected deep grammar route with authored market practice", () => {
+    const lesson = A1_LESSONS[34];
+    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={lesson} accent="british" onBack={() => undefined} />);
+
+    expect(html).toContain("grammar lesson");
+    expect(html).toContain("Know the purpose");
+    expect(html).toContain("Notice one pattern");
+    expect(html).toContain("Try with support");
+    expect(html).toContain("Use it for a reason");
+    expect(html).not.toContain("Bring it back");
+    expect(html).toContain("See food as pieces or a shared amount");
+    expect(html).toContain("Build a basket with the right amount");
+  });
+
   it("preserves the established tabbed workspace for non-A1 levels during the staged rollout", () => {
     const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={B1_LESSONS[0]} accent="british" onBack={() => undefined} />);
 

@@ -423,3 +423,4 @@
 - [ ] Reauthor every A2 and B1 lesson and module assessment with progressively more independent reading, interaction, and writing evidence.
 - [ ] Reauthor every B2, C1, and C2 lesson and module assessment with advanced discourse, precision, register, and synthesis practice.
 - [ ] Verify every reauthored lesson against the curriculum graph, assessment specification, and learner workspace, then release audited level-by-level checkpoints.
+- [x] Reauthor A1 Module 3 Lessons 31–45 as varied, beginner-safe food-and-market learner journeys with explicit bilingual activity data and learner evidence.
