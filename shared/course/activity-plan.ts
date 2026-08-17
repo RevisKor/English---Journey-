@@ -96,6 +96,7 @@ function activity(kind: LessonType, lesson: LessonDefinition, stage: LessonProgr
     "visual-vocabulary": ["See and name it", "شاهد وسمِّ الكلمة"],
     interaction: ["Use it in a real situation", "استخدمها في موقف حقيقي"],
     speaking: ["Listen, repeat, and speak", "استمع وكرّر وتحدّث"],
+    listening: ["Listen for meaning", "استمع من أجل المعنى"],
     reading: ["Read for meaning", "اقرأ من أجل المعنى"],
     writing: ["Write something meaningful", "اكتب شيئاً ذا معنى"],
     review: ["Retrieve and reconnect", "استرجع واربط"],

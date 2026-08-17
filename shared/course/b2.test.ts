@@ -55,7 +55,7 @@ describe("B2 evidence and influence curriculum", () => {
     expect(B2_LESSONS[20].activities.some((activity) => activity.title === "Plan for consequences" && activity.kind === "writing")).toBe(true);
     expect(B2_LESSONS[24].activities.some((activity) => activity.title === "Test information under pressure")).toBe(true);
     expect(B2_LESSONS[29].activities.some((activity) => activity.kind === "assessment")).toBe(true);
-    expect(B2_LESSONS[45].experience).toBeUndefined();
+    expect(B2_LESSONS[60].experience).toBeUndefined();
   });
 
   it("authors Module 3 as varied public-decision, representation, and consequence journeys", () => {
@@ -66,6 +66,19 @@ describe("B2 evidence and influence curriculum", () => {
     expect(B2_LESSONS[32].activities.some((activity) => activity.title === "Map the case for change" && activity.kind === "reading")).toBe(true);
     expect(B2_LESSONS[41].activities.some((activity) => activity.title === "Frame an automated decision ethically")).toBe(true);
     expect(B2_LESSONS[44].activities.some((activity) => activity.kind === "assessment" && activity.title === "Proposal with consequences")).toBe(true);
-    expect(B2_LESSONS[45].experience).toBeUndefined();
+    expect(B2_LESSONS[60].experience).toBeUndefined();
+  });
+
+  it("authors Module 4 as varied evidence, responsibility, and negotiated public-choice journeys", () => {
+    const moduleFour = B2_LESSONS.slice(45, 60);
+    expect(moduleFour.every((lesson) => lesson.experience && lesson.activities.length > 0)).toBe(true);
+    expect(new Set(moduleFour.map((lesson) => lesson.experience?.archetype)).size).toBeGreaterThanOrEqual(9);
+    expect(B2_LESSONS[45].activities.some((activity) => activity.title === "Repair the recommendation" && activity.kind === "standard")).toBe(true);
+    expect(B2_LESSONS[45].activities.every((activity) => activity.retrievalCheck?.prompt && activity.retrievalCheck.expectedEvidence)).toBe(true);
+    expect(B2_LESSONS[51].activities.some((activity) => activity.title === "Listen for responsibility" && activity.kind === "listening" && activity.progressiveSupports?.includes("transcript"))).toBe(true);
+    expect(B2_LESSONS[48].activities.some((activity) => activity.title === "Rank claims before publishing" && activity.kind === "reading")).toBe(true);
+    expect(B2_LESSONS[54].activities.some((activity) => activity.title === "Propose access before decoration" && activity.kind === "writing")).toBe(true);
+    expect(B2_LESSONS[59].activities.some((activity) => activity.kind === "assessment" && activity.title === "A compromise that can be reviewed")).toBe(true);
+    expect(B2_LESSONS[60].experience).toBeUndefined();
   });
 });

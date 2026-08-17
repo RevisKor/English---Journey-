@@ -76,6 +76,7 @@ export type LessonType =
   | "visual-vocabulary"
   | "interaction"
   | "speaking"
+  | "listening"
   | "writing"
   | "reading"
   | "review"
@@ -196,6 +197,13 @@ export type ReadingCheck = {
   explanation?: string;
 };
 
+export type LessonRetrievalCheck = {
+  prompt: string;
+  promptArabic: string;
+  expectedEvidence: string;
+  expectedEvidenceArabic: string;
+};
+
 export type LessonActivity = {
   id: string;
   kind: LessonType;
@@ -219,6 +227,7 @@ export type LessonActivity = {
   sentencePatterns?: string[];
   semantic?: LessonVisualSemantic;
   progressiveSupports?: ProgressiveSupport[];
+  retrievalCheck?: LessonRetrievalCheck;
 };
 
 export type GrammarTeachingGuide = {

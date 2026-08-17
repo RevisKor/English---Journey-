@@ -374,7 +374,7 @@ describe("ExternalLessonWorkspace", () => {
   });
 
   it("preserves the established tabbed workspace for un-authored later levels during the staged rollout", () => {
-    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={B2_LESSONS[45]} accent="british" onBack={() => undefined} />);
+    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={B2_LESSONS[60]} accent="british" onBack={() => undefined} />);
 
     expect(html).toContain('aria-label="Lesson sections"');
     expect(html).toContain("Words");
@@ -405,5 +405,27 @@ describe("ExternalLessonWorkspace", () => {
     expect(html).not.toContain('aria-label="Lesson sections"');
     expect(html).toContain("Read culture in translation");
     expect(html).toContain("Distinguish a source’s representation from a broad claim about a culture");
+  });
+
+  it("renders the authored B2 Module 4 responsibility listening route with transcript disclosure", () => {
+    const lesson = B2_LESSONS[51];
+    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={lesson} accent="british" onBack={() => undefined} />);
+
+    expect(html).toContain("Listen for responsibility");
+    expect(html).toContain("Listen first. The transcript is hidden");
+    expect(html).toContain("Reveal transcript / أظهر النص");
+    expect(html).toContain("Quick check · تحقق سريع");
+    expect(html).not.toContain("The inspection found that the procedure had not been followed");
+  });
+
+  it("renders the authored B2 Module 4 statistic investigation as its selected evidence-reading route", () => {
+    const lesson = B2_LESSONS[52];
+    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={lesson} accent="british" onBack={() => undefined} />);
+
+    expect(html).toContain("reading lesson");
+    expect(html).toContain("A data-bound reading");
+    expect(html).toContain("Read beyond the headline");
+    expect(html).toContain("Map what the statistic supports and limits");
+    expect(html).not.toContain('aria-label="Lesson sections"');
   });
 });
