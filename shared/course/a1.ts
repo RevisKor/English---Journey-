@@ -4,6 +4,7 @@ import { A1_IMMERSIVE_MODULES } from "./a1-immersive-modules";
 import { authoredActivitiesForA1Module1 } from "./a1-module-1-authored-activities";
 import { authoredActivitiesForA1Module2 } from "./a1-module-2-authored-activities";
 import { authoredActivitiesForA1Module3 } from "./a1-module-3-authored-activities";
+import { A1_MODULE_4_AUTHORED_ACTIVITIES } from "./a1-module-4-authored-activities";
 import { enrichLesson } from "./activity-plan";
 import { createLessonExperience } from "./lesson-experience";
 import { buildModuleDefinitions } from "./module-definitions";
@@ -62,6 +63,9 @@ function experienceForBlueprint(blueprint: ImmersiveLessonBlueprint, moduleNumbe
   }
   if (moduleNumber === 3) {
     return experienceForModule3(blueprint.lessonNumber);
+  }
+  if (moduleNumber === 4) {
+    return experienceForModule4(blueprint.lessonNumber);
   }
   if (moduleNumber !== 1) return undefined;
 
@@ -641,6 +645,47 @@ function experienceForModule3(localLessonNumber: number) {
   }
 }
 
+function experienceForModule4(localLessonNumber: number) {
+  const shared: { progressiveSupports: ProgressiveSupport[] } = {
+    progressiveSupports: ["arabic-help", "worked-example", "word-support"],
+  };
+
+  switch (localLessonNumber) {
+    case 1:
+      return createLessonExperience({ archetype: "vocabulary", density: "normal", archetypeRationale: "Time-of-day words become concrete through light and place clues before learners build a full daily routine.", selectedStages: ["encounter", "supported-practice", "retrieval"], intentionallyOmittedStages: [{ stage: "notice", reason: "Grammar would distract from the first sound-picture-meaning connection." }], firstView: { whatItIs: "Four parts of one day", whatToDo: "Match the light clue, hear the word, then say one small time sentence.", whatMatters: "A time word helps a listener place an action in your day.", whatNext: "Put two actions into a calm morning sequence." }, ...shared });
+    case 2:
+      return createLessonExperience({ archetype: "discover", density: "normal", archetypeRationale: "A ready-made morning sequence lets beginners feel what a routine is before attending to a language pattern.", selectedStages: ["orientation", "notice", "meaningful-use"], intentionallyOmittedStages: [{ stage: "evidence", reason: "A first-person pattern needs patient use, not an early score." }], firstView: { whatItIs: "A small morning story to build", whatToDo: "Order three actions, notice the I + verb pattern, then make two gentle lines.", whatMatters: "A routine is a sequence; each short English line tells one step.", whatNext: "Meet more action words through sound and picture." }, progressiveSupports: ["arabic-help", "worked-example", "word-support", "tip"] });
+    case 3:
+      return createLessonExperience({ archetype: "vocabulary", density: "light", archetypeRationale: "Four action pictures create a compact sound-and-meaning lesson with a natural routine chain as its only use demand.", selectedStages: ["encounter", "supported-practice"], intentionallyOmittedStages: [{ stage: "retrieval", reason: "The following contrast lesson reuses the actions immediately with another person." }], firstView: { whatItIs: "Four actions that move a day forward", whatToDo: "Hear each action, find its picture, then add one action to a short chain.", whatMatters: "Learn useful phrases as whole actions, not isolated translations.", whatNext: "See what changes when the routine belongs to he or she." }, ...shared });
+    case 4:
+      return createLessonExperience({ archetype: "grammar", density: "deep", archetypeRationale: "A two-person contrast makes the small he/she verb change visible and speakable without overloading a new learner.", selectedStages: ["notice", "supported-practice", "meaningful-use"], intentionallyOmittedStages: [{ stage: "retrieval", reason: "The learner benefits more from a clear visual contrast before recall is expected." }], firstView: { whatItIs: "One small verb change for another person", whatToDo: "Compare I with he or she, give each person a routine, then say the pair aloud.", whatMatters: "He and she usually need a small ending on the action word here.", whatNext: "Use familiar actions with a clock time." }, progressiveSupports: ["arabic-help", "worked-example", "word-support", "tip"] });
+    case 5:
+      return createLessonExperience({ archetype: "interaction", density: "normal", archetypeRationale: "Clock matching and a short exchange introduce time as a practical conversation rather than a list of numbers.", selectedStages: ["encounter", "supported-practice"], intentionallyOmittedStages: [{ stage: "evidence", reason: "The goal is a low-pressure rehearsal with o'clock times, not a time-telling test." }], firstView: { whatItIs: "A clock and one useful question", whatToDo: "Match two clocks, then practise asking and answering about one time.", whatMatters: "Use at before a clock time when an action happens then.", whatNext: "Find these actions and times in a short school-day reading." }, progressiveSupports: ["arabic-help", "worked-example", "transcript", "word-support"] });
+    case 6:
+      return createLessonExperience({ archetype: "reading", density: "normal", archetypeRationale: "A one-person school-day postcard makes new routine language readable with familiar time and action anchors.", selectedStages: ["meaningful-use", "supported-practice"], intentionallyOmittedStages: [{ stage: "notice", reason: "The reading task preserves attention for finding a few useful details." }], firstView: { whatItIs: "A short school-day postcard", whatToDo: "Read slowly, locate two actions and their times, then echo one useful sentence.", whatMatters: "You can understand a text by finding the words you know first.", whatNext: "Choose how often a routine action happens." }, progressiveSupports: ["arabic-help", "word-support", "transcript", "tip"] });
+    case 7:
+      return createLessonExperience({ archetype: "notice", density: "normal", archetypeRationale: "A simple frequency line conveys always, sometimes, and never as meaning choices before learners write their own examples.", selectedStages: ["notice", "meaningful-use", "retrieval"], intentionallyOmittedStages: [{ stage: "evidence", reason: "Frequency language is first used as an expressive choice, not a scored rule." }], firstView: { whatItIs: "Three words that change how often", whatToDo: "Place the words on a frequency line, then complete two routine cards.", whatMatters: "Always, sometimes, and never tell a listener how often something happens.", whatNext: "Use a short question to ask about a routine." }, progressiveSupports: ["arabic-help", "worked-example", "word-support", "tip"] });
+    case 8:
+      return createLessonExperience({ archetype: "speaking", density: "normal", archetypeRationale: "A fictional routine interview creates a safe purpose for do questions and short answers without requiring personal disclosure.", selectedStages: ["supported-practice", "meaningful-use"], intentionallyOmittedStages: [{ stage: "encounter", reason: "The lesson begins with the ready-to-say exchange rather than more vocabulary introduction." }], firstView: { whatItIs: "A short routine interview", whatToDo: "Listen to the model, take one speaking turn, then choose the question that fits an answer.", whatMatters: "Do starts a question with I or you; Yes, I do and No, I do not are useful replies.", whatNext: "Compare two daily lives in a reading." }, progressiveSupports: ["arabic-help", "worked-example", "transcript", "tip"] });
+    case 9:
+      return createLessonExperience({ archetype: "reading", density: "deep", archetypeRationale: "Two contrasting daily lives give the learner a reason to read for a difference and reuse but naturally.", selectedStages: ["meaningful-use", "supported-practice"], intentionallyOmittedStages: [{ stage: "retrieval", reason: "The comparison task already calls for focused meaning use from the text." }], firstView: { whatItIs: "Two people, two daily lives", whatToDo: "Read both short profiles, find one difference, then choose a comparison line.", whatMatters: "Read for what changes between people, not every word all at once.", whatNext: "Check routine choices in real situations." }, progressiveSupports: ["arabic-help", "word-support", "worked-example", "tip"] });
+    case 10:
+      return createLessonExperience({ archetype: "assessment", density: "light", archetypeRationale: "A compact context check gives feedback on routine meaning and a single repair task without interrupting the growing day story.", selectedStages: ["evidence", "retrieval"], intentionallyOmittedStages: [{ stage: "encounter", reason: "This is an evidence lesson; it deliberately introduces no further language." }], firstView: { whatItIs: "A short routine-in-context check", whatToDo: "Choose the line that fits each clue, then repair one small line with a model.", whatMatters: "The context helps you choose; this is not a spelling-trick test.", whatNext: "Write a gentle weekday postcard." }, progressiveSupports: ["arabic-help", "worked-example", "tip"] });
+    case 11:
+      return createLessonExperience({ archetype: "writing", density: "deep", archetypeRationale: "A short weekday postcard supports connected beginner writing while giving learners the privacy of an invented person or typical day.", selectedStages: ["orientation", "meaningful-use"], intentionallyOmittedStages: [{ stage: "evidence", reason: "The value is in drafting with support; any self-check remains learner-paced." }], firstView: { whatItIs: "A four-line weekday postcard", whatToDo: "Choose a person or typical day, borrow the structure, then change two details.", whatMatters: "Four clear, short sentences can tell a whole weekday story.", whatNext: "Use time words to plan a simple tomorrow." }, progressiveSupports: ["arabic-help", "worked-example", "word-support", "tip"] });
+    case 12:
+      return createLessonExperience({ archetype: "real-world", density: "normal", archetypeRationale: "A small plan board gives at and on a practical job in a message that another person could understand.", selectedStages: ["meaningful-use", "supported-practice"], intentionallyOmittedStages: [{ stage: "notice", reason: "The necessary prepositions are learned through purposeful cards, not isolated explanation." }], firstView: { whatItIs: "A tiny plan for tomorrow", whatToDo: "Combine a day, time, and action card, then write one planning message.", whatMatters: "Use on with a day and at with a clock time.", whatNext: "Listen to the rhythm of a connected routine." }, ...shared });
+    case 13:
+      return createLessonExperience({ archetype: "listening", density: "normal", archetypeRationale: "Rhythmic repetition shifts routine language from visible text to short connected phrases learners can hear and say.", selectedStages: ["encounter", "supported-practice"], intentionallyOmittedStages: [{ stage: "evidence", reason: "The learner’s outcome is a supported listening-and-speaking rehearsal, not a score." }], firstView: { whatItIs: "A routine to hear in short chunks", whatToDo: "Listen, repeat with a natural pause, then choose the next action after one heard line.", whatMatters: "Listen for a useful chunk; the transcript appears after your first try.", whatNext: "Collect the module’s most useful routine tools." }, progressiveSupports: ["arabic-help", "transcript", "worked-example", "tip"] });
+    case 14:
+      return createLessonExperience({ archetype: "review", density: "light", archetypeRationale: "A selective tool board invites retrieval of language that helps a learner describe or ask about a daily routine.", selectedStages: ["retrieval", "meaningful-use"], intentionallyOmittedStages: [{ stage: "encounter", reason: "This review deliberately adds no new words before the checkpoint." }], firstView: { whatItIs: "Four useful routine tools to collect", whatToDo: "Choose a time, action, frequency word, and question; then repair a tiny dialogue.", whatMatters: "Keep language that helps your own routine story; you do not need every word.", whatNext: "Show what you can use in a supportive daily-life checkpoint." }, progressiveSupports: ["worked-example", "word-support", "transcript", "tip"] });
+    case 15:
+      return createLessonExperience({ archetype: "assessment", density: "normal", archetypeRationale: "A varied daily-life checkpoint checks usable time, routine, person, reading, and planning language before the course moves outside the home.", selectedStages: ["evidence", "next-bridge"], intentionallyOmittedStages: [{ stage: "encounter", reason: "The checkpoint adds no new content; it makes learners’ usable language visible." }], firstView: { whatItIs: "A supportive daily-life checkpoint", whatToDo: "Complete four small contextual tasks, then take one routine line into the town module.", whatMatters: "The result shows a next practice step, not a judgement of your ability.", whatNext: "Use familiar routine language as you begin moving around town." }, progressiveSupports: ["arabic-help", "worked-example", "word-support", "tip"] });
+    default:
+      return undefined;
+  }
+}
+
 function stepsForBlueprint(blueprint: ImmersiveLessonBlueprint, moduleNumber: number) {
   const experience = experienceForBlueprint(blueprint, moduleNumber);
   if (!experience) return A1_STEPS;
@@ -811,7 +856,8 @@ export const A1_LESSONS: LessonDefinition[] = A1_IMMERSIVE_MODULES.flatMap((modu
       activities:
         authoredActivitiesForA1Module1(activeLessonNumber) ??
         authoredActivitiesForA1Module2(activeLessonNumber) ??
-        authoredActivitiesForA1Module3(activeLessonNumber),
+        authoredActivitiesForA1Module3(activeLessonNumber) ??
+        A1_MODULE_4_AUTHORED_ACTIVITIES[activeLessonNumber],
     });
   });
 });

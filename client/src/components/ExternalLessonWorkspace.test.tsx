@@ -49,6 +49,19 @@ describe("ExternalLessonWorkspace", () => {
     expect(html).toContain("Build a basket with the right amount");
   });
 
+  it("renders the Module 4 he/she routine lesson as its selected grammar route with its own daily-life activities", () => {
+    const lesson = A1_LESSONS[48];
+    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={lesson} accent="british" onBack={() => undefined} />);
+
+    expect(html).toContain("grammar lesson");
+    expect(html).toContain("Notice one pattern");
+    expect(html).toContain("Try with support");
+    expect(html).toContain("Use it for a reason");
+    expect(html).not.toContain("Bring it back");
+    expect(html).toContain("See the small change for he and she");
+    expect(html).toContain("Give each person one routine");
+  });
+
   it("preserves the established tabbed workspace for non-A1 levels during the staged rollout", () => {
     const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={B1_LESSONS[0]} accent="british" onBack={() => undefined} />);
 
