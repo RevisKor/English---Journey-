@@ -51,9 +51,11 @@ describe("guided workspace Arabic scaffolding", () => {
     expect(interactionLesson).toBeDefined();
     expect(readingLesson).toBeDefined();
     expect(visualLesson).toBeDefined();
+    const visualActivity = visualLesson!.activities!.find((activity) => activity.kind === "visual-vocabulary");
+    expect(visualActivity?.visualItems?.[0]?.word).toBeDefined();
     expect(renderToStaticMarkup(<StructuredLessonWorkspace lesson={visualLesson!} accent="british" onBack={() => undefined} />)).toContain("Reveal example");
     expect(renderToStaticMarkup(<StructuredLessonWorkspace lesson={visualLesson!} accent="british" onBack={() => undefined} />)).toContain("Mark reviewed");
-    expect(renderToStaticMarkup(<StructuredLessonWorkspace lesson={visualLesson!} accent="british" onBack={() => undefined} />)).toContain(visualLesson!.words[0].exampleEN);
+    expect(renderToStaticMarkup(<StructuredLessonWorkspace lesson={visualLesson!} accent="british" onBack={() => undefined} />)).toContain(visualActivity!.visualItems![0].word);
     expect(renderToStaticMarkup(<StructuredLessonWorkspace lesson={speakingLesson!} accent="british" onBack={() => undefined} />)).toContain("Next sentence");
     expect(renderToStaticMarkup(<StructuredLessonWorkspace lesson={speakingLesson!} accent="british" onBack={() => undefined} />)).toContain("Replay sentence");
     expect(renderToStaticMarkup(<StructuredLessonWorkspace lesson={interactionLesson!} accent="british" onBack={() => undefined} />)).toContain("Play complete dialogue");

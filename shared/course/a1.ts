@@ -5,6 +5,7 @@ import { authoredActivitiesForA1Module1 } from "./a1-module-1-authored-activitie
 import { authoredActivitiesForA1Module2 } from "./a1-module-2-authored-activities";
 import { authoredActivitiesForA1Module3 } from "./a1-module-3-authored-activities";
 import { A1_MODULE_4_AUTHORED_ACTIVITIES } from "./a1-module-4-authored-activities";
+import { A1_MODULE_5_AUTHORED_ACTIVITIES } from "./a1-module-5-authored-activities";
 import { enrichLesson } from "./activity-plan";
 import { createLessonExperience } from "./lesson-experience";
 import { buildModuleDefinitions } from "./module-definitions";
@@ -66,6 +67,9 @@ function experienceForBlueprint(blueprint: ImmersiveLessonBlueprint, moduleNumbe
   }
   if (moduleNumber === 4) {
     return experienceForModule4(blueprint.lessonNumber);
+  }
+  if (moduleNumber === 5) {
+    return experienceForModule5(blueprint.lessonNumber);
   }
   if (moduleNumber !== 1) return undefined;
 
@@ -686,6 +690,47 @@ function experienceForModule4(localLessonNumber: number) {
   }
 }
 
+function experienceForModule5(localLessonNumber: number) {
+  const shared: { progressiveSupports: ProgressiveSupport[] } = {
+    progressiveSupports: ["arabic-help", "worked-example", "word-support"],
+  };
+
+  switch (localLessonNumber) {
+    case 1:
+      return createLessonExperience({ archetype: "vocabulary", density: "normal", archetypeRationale: "A compact picture town turns four useful locations into recognisable places before directions or grammar appear.", selectedStages: ["encounter", "supported-practice", "retrieval"], intentionallyOmittedStages: [{ stage: "notice", reason: "Location grammar would interrupt the first sound-picture-meaning connection." }], firstView: { whatItIs: "Four useful places outside the home", whatToDo: "Find each place from its picture, then say two short place phrases.", whatMatters: "A place word gives your question or route a clear destination.", whatNext: "Ask where one of those places is." }, ...shared });
+    case 2:
+      return createLessonExperience({ archetype: "interaction", density: "normal", archetypeRationale: "A short help exchange gives Where is ...? an immediate human purpose before it is treated as a pattern.", selectedStages: ["orientation", "notice", "meaningful-use"], intentionallyOmittedStages: [{ stage: "evidence", reason: "The learner is rehearsing a helpful question, not taking a grammar test." }], firstView: { whatItIs: "One location question that helps", whatToDo: "Follow a polite exchange, notice where at the front, then ask about one picture place.", whatMatters: "Where is the ...? is a complete question; the place completes its meaning.", whatNext: "Hear three compact direction words." }, progressiveSupports: ["arabic-help", "worked-example", "transcript", "tip"] });
+    case 3:
+      return createLessonExperience({ archetype: "speaking", density: "light", archetypeRationale: "Direction words are most useful when heard and spoken in small physical chunks before a full route is expected.", selectedStages: ["encounter", "supported-practice"], intentionallyOmittedStages: [{ stage: "retrieval", reason: "The next map lesson immediately reuses the new route vocabulary." }], firstView: { whatItIs: "Three words that move a route", whatToDo: "Listen to left, right, and straight, then follow two arrows on a small map.", whatMatters: "A direction word tells someone how to move from one point to the next.", whatNext: "Put transport and places together on a town map." }, progressiveSupports: ["arabic-help", "transcript", "worked-example", "word-support"] });
+    case 4:
+      return createLessonExperience({ archetype: "vocabulary", density: "normal", archetypeRationale: "A visual town map makes transport and street words parts of one connected world, not another isolated list.", selectedStages: ["encounter", "supported-practice", "retrieval"], intentionallyOmittedStages: [{ stage: "notice", reason: "The map task keeps focus on recognition and relationships rather than an early grammar explanation." }], firstView: { whatItIs: "A small town map with transport", whatToDo: "Match the bus, car, train, and street to the map, then add one place by the route.", whatMatters: "Transport, streets, and places belong together when you describe where you are going.", whatNext: "Use a polite question when you need help." }, ...shared });
+    case 5:
+      return createLessonExperience({ archetype: "interaction", density: "light", archetypeRationale: "Can you help me? gives a beginner a safe communicative tool even before they can explain every route detail.", selectedStages: ["orientation", "meaningful-use"], intentionallyOmittedStages: [{ stage: "notice", reason: "The short exchange is learnt as a useful whole before any modal-verb terminology is needed." }], firstView: { whatItIs: "A polite way to ask for help", whatToDo: "Take two speaking turns: ask for help, then close the exchange kindly.", whatMatters: "A clear polite opener gives you time to ask the next location question.", whatNext: "Turn the spoken route words into map instructions." }, progressiveSupports: ["arabic-help", "worked-example", "transcript", "tip"] });
+    case 6:
+      return createLessonExperience({ archetype: "grammar", density: "deep", archetypeRationale: "Map actions make Go and Turn understandable as useful instructions rather than abstract command terminology.", selectedStages: ["notice", "supported-practice", "meaningful-use"], intentionallyOmittedStages: [{ stage: "retrieval", reason: "The learner benefits most from constructing and saying a route while the map remains visible." }], firstView: { whatItIs: "A small route-building workshop", whatToDo: "Notice the action at the start, arrange three route cards, then say one instruction.", whatMatters: "Go and turn start simple directions; landmarks tell a listener where to act.", whatNext: "Compare places that are near and far on a map." }, progressiveSupports: ["arabic-help", "worked-example", "word-support", "tip"] });
+    case 7:
+      return createLessonExperience({ archetype: "notice", density: "normal", archetypeRationale: "A visual distance line lets near and far remain useful meaning choices while writing stays safely fictional.", selectedStages: ["notice", "meaningful-use"], intentionallyOmittedStages: [{ stage: "evidence", reason: "The goal is to express map relationships, not demonstrate exact distance knowledge." }], firstView: { whatItIs: "Near and far on one practice map", whatToDo: "Place picture cards on a distance line, then write two map facts.", whatMatters: "Near and far describe a broad relationship; they do not need an exact number.", whatNext: "Read a short journey that joins places and directions." }, progressiveSupports: ["arabic-help", "worked-example", "word-support", "tip"] });
+    case 8:
+      return createLessonExperience({ archetype: "reading", density: "normal", archetypeRationale: "A small bus journey rewards reading for a start, a movement word, and a destination—three meaningful anchors.", selectedStages: ["meaningful-use", "supported-practice"], intentionallyOmittedStages: [{ stage: "notice", reason: "The reading task keeps attention on route meaning instead of pausing for a grammar label." }], firstView: { whatItIs: "A short bus journey to follow", whatToDo: "Read slowly, find the start, direction, and destination, then arrange the journey steps.", whatMatters: "Known place words and one route word can unlock the main story of a short text.", whatNext: "Read what people are doing in a town message." }, progressiveSupports: ["arabic-help", "word-support", "transcript", "tip"] });
+    case 9:
+      return createLessonExperience({ archetype: "reading", density: "deep", archetypeRationale: "A friendly city message joins familiar places, distance words, hobbies, and actions happening now in one comprehensible text.", selectedStages: ["meaningful-use", "notice"], intentionallyOmittedStages: [{ stage: "retrieval", reason: "The reading itself provides enough focused reuse before the next contextual check." }], firstView: { whatItIs: "A message from the park", whatToDo: "Read for where the people are, what they are doing, and what is near or far.", whatMatters: "You do not need every word; use place and action clues to understand the message.", whatNext: "Check which direction and location phrases fit a map context." }, progressiveSupports: ["arabic-help", "word-support", "transcript", "worked-example"] });
+    case 10:
+      return createLessonExperience({ archetype: "assessment", density: "light", archetypeRationale: "A compact map-context check gives useful feedback on routes without turning recognition into a spelling trick.", selectedStages: ["evidence", "retrieval"], intentionallyOmittedStages: [{ stage: "encounter", reason: "This lesson deliberately adds no language before route writing." }], firstView: { whatItIs: "A short directions-in-context check", whatToDo: "Choose the line that fits each map clue, then repair one answer with the word bank.", whatMatters: "The map context helps you choose; the task checks usable meaning, not perfect memory.", whatNext: "Write a route on a fictional practice map." }, progressiveSupports: ["arabic-help", "worked-example", "word-support", "tip"] });
+    case 11:
+      return createLessonExperience({ archetype: "writing", density: "deep", archetypeRationale: "A fictional map makes connected route writing purposeful while keeping every learner’s location private.", selectedStages: ["orientation", "meaningful-use"], intentionallyOmittedStages: [{ stage: "evidence", reason: "The outcome is a supported route draft that learners can revise at their own pace." }], firstView: { whatItIs: "A four-line route on a practice map", whatToDo: "Read the model, choose a fictional start and destination, then write the route in small lines.", whatMatters: "Clear short sentences can guide someone from one map point to another.", whatNext: "Use the same language in a lost-and-found help exchange." }, progressiveSupports: ["arabic-help", "worked-example", "word-support", "tip"] });
+    case 12:
+      return createLessonExperience({ archetype: "real-world", density: "normal", archetypeRationale: "A flexible lost-and-found exchange lets learners choose a destination and practise navigation as a humane social task.", selectedStages: ["meaningful-use", "supported-practice"], intentionallyOmittedStages: [{ stage: "notice", reason: "The target language is carried by the purposeful exchange rather than isolated grammar analysis." }], firstView: { whatItIs: "A polite help exchange for finding a place", whatToDo: "Choose a destination, ask for help, then give or follow one calm direction.", whatMatters: "A helpful conversation has a beginning, a clear destination, and a kind close.", whatNext: "Listen for landmarks in a short spoken route." }, progressiveSupports: ["arabic-help", "worked-example", "transcript", "word-support"] });
+    case 13:
+      return createLessonExperience({ archetype: "listening", density: "normal", archetypeRationale: "A two-step route lets learners hear a landmark twice and respond for meaning before relying on the transcript.", selectedStages: ["encounter", "supported-practice"], intentionallyOmittedStages: [{ stage: "evidence", reason: "The listening rehearsal is deliberately supported and unscored." }], firstView: { whatItIs: "A route to hear in two steps", whatToDo: "Listen once without reading, open the transcript if needed, then choose the next landmark.", whatMatters: "Listen for the place word that repeats; it anchors the route.", whatNext: "Collect the town tools that are most useful to keep." }, progressiveSupports: ["arabic-help", "transcript", "worked-example", "tip"] });
+    case 14:
+      return createLessonExperience({ archetype: "review", density: "light", archetypeRationale: "A selective town-tool review calls for a place, question, direction, and location phrase without adding more content before the checkpoint.", selectedStages: ["retrieval", "meaningful-use"], intentionallyOmittedStages: [{ stage: "encounter", reason: "This review intentionally introduces no new town words." }], firstView: { whatItIs: "Four route tools to collect", whatToDo: "Recall a place, question, direction, and location phrase, then repair a tiny map dialogue.", whatMatters: "Keep the language that helps you ask, understand, and respond in a small town situation.", whatNext: "Show which getting-around tools you can use in context." }, progressiveSupports: ["worked-example", "word-support", "tip"] });
+    case 15:
+      return createLessonExperience({ archetype: "assessment", density: "normal", archetypeRationale: "A varied checkpoint makes usable town language visible and carries one practical exchange forward to the final A1 module.", selectedStages: ["evidence", "next-bridge"], intentionallyOmittedStages: [{ stage: "encounter", reason: "The checkpoint adds no language; it shows what learners can already do with town tools." }], firstView: { whatItIs: "A supportive getting-around checkpoint", whatToDo: "Complete four small place-and-route tasks, then choose one exchange to keep.", whatMatters: "The result points to a next practice step; it is not a judgement of your ability.", whatNext: "Use connected everyday language for work, hobbies, and invitations in the final A1 module." }, progressiveSupports: ["arabic-help", "worked-example", "word-support", "tip"] });
+    default:
+      return undefined;
+  }
+}
+
 function stepsForBlueprint(blueprint: ImmersiveLessonBlueprint, moduleNumber: number) {
   const experience = experienceForBlueprint(blueprint, moduleNumber);
   if (!experience) return A1_STEPS;
@@ -857,7 +902,8 @@ export const A1_LESSONS: LessonDefinition[] = A1_IMMERSIVE_MODULES.flatMap((modu
         authoredActivitiesForA1Module1(activeLessonNumber) ??
         authoredActivitiesForA1Module2(activeLessonNumber) ??
         authoredActivitiesForA1Module3(activeLessonNumber) ??
-        A1_MODULE_4_AUTHORED_ACTIVITIES[activeLessonNumber],
+        A1_MODULE_4_AUTHORED_ACTIVITIES[activeLessonNumber] ??
+        A1_MODULE_5_AUTHORED_ACTIVITIES[activeLessonNumber],
     });
   });
 });

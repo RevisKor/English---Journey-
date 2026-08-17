@@ -62,6 +62,19 @@ describe("ExternalLessonWorkspace", () => {
     expect(html).toContain("Give each person one routine");
   });
 
+  it("renders the Module 5 directions workshop as its selected grammar route with authored town-map activities", () => {
+    const lesson = A1_LESSONS[65];
+    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={lesson} accent="british" onBack={() => undefined} />);
+
+    expect(html).toContain("grammar lesson");
+    expect(html).toContain("Notice one pattern");
+    expect(html).toContain("Try with support");
+    expect(html).toContain("Use it for a reason");
+    expect(html).not.toContain("Bring it back");
+    expect(html).toContain("Use a direction action");
+    expect(html).toContain("Build a three-step route");
+  });
+
   it("preserves the established tabbed workspace for non-A1 levels during the staged rollout", () => {
     const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={B1_LESSONS[0]} accent="british" onBack={() => undefined} />);
 
