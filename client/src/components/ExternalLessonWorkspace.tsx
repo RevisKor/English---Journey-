@@ -6,7 +6,7 @@ import { QuizPractice } from "@/components/QuizPractice";
 import { buildSentenceReviewPrompt, buildWordHelpPrompt } from "@/lib/external-ai-prompts";
 import { cn } from "@/lib/utils";
 import type { CefrLevel, LessonDefinition, VocabularyItem } from "@shared/course";
-import { ArrowLeft, BookOpen, Headphones, Languages, PenLine, Trophy, Volume2 } from "lucide-react";
+import { ArrowLeft, BookOpen, CheckCircle2, Headphones, Languages, PenLine, Trophy, Volume2 } from "lucide-react";
 import React, { useState } from "react";
 
 type Accent = "british" | "american";
@@ -30,7 +30,56 @@ function speak(text: string, accent: Accent, rate = 0.82) {
   window.speechSynthesis.speak(utterance);
 }
 
-export function ExternalLessonWorkspace({ lesson, accent, onBack }: { lesson: LessonDefinition; accent: Accent; onBack: () => void }) {
+function GuidedA1LessonWorkspace({ lesson, accent, onBack }: { lesson: LessonDefinition; accent: Accent; onBack: () => void }) {
+  const [selectedWord, setSelectedWord] = useState<VocabularyItem>(lesson.words[0]);
+  const [question, setQuestion] = useState("");
+  const [sentence, setSentence] = useState("");
+  const [rate, setRate] = useState(0.82);
+  const mentor = (id: NonNullable<LessonDefinition["mentorGuide"]>["moments"][number]["id"]) => lesson.mentorGuide?.moments.find((moment) => moment.id === id);
+  const scrollTo = (id: string) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  const steps = lesson.learningPlan?.steps ?? [];
+
+  const MentorNote = ({ id }: { id: NonNullable<LessonDefinition["mentorGuide"]>["moments"][number]["id"] }) => {
+    const note = mentor(id);
+    if (!note) return null;
+    return <div className="mb-5 rounded-2xl border border-[#eadcaf] bg-[#fff7df] p-4"><p className="text-xs font-bold uppercase tracking-[.13em] text-[#9a6c24]">{note.title}</p><p className="mt-2 text-sm leading-6 text-[#594416]">{note.message}</p><p dir="rtl" className="arabic mt-3 border-t border-[#eedba4] pt-3 text-right text-sm leading-6 text-[#755b22]">{note.messageArabic}</p></div>;
+  };
+
+  return (
+    <main className="mx-auto max-w-[1420px] px-5 py-7 lg:px-9 lg:py-9">
+      <button onClick={onBack} className="mb-6 inline-flex items-center gap-2 text-sm font-semibold text-[#63718a] hover:text-[#253453]"><ArrowLeft className="h-4 w-4" /> Back to course</button>
+      <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_300px]">
+        <section className="min-w-0 space-y-6">
+          <header className="overflow-hidden rounded-[1.8rem] border border-[#e2d8c5] bg-[#fffdf7]">
+            <div className="border-b border-[#eee6d9] bg-[radial-gradient(circle_at_top_right,_#fff0bd,transparent_38%),#fffdf7] px-5 py-7 sm:px-8">
+              <p className="text-xs font-bold uppercase tracking-[.16em] text-[#a2732c]">Module {lesson.moduleNumber} · lesson {String(lesson.lessonNumber).padStart(2, "0")} · guided route</p>
+              <div className="mt-3 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between"><div><h1 className="text-3xl font-bold tracking-[-.045em] text-[#253453]">{lesson.title}</h1><p dir="rtl" className="arabic mt-1 text-right text-sm text-[#708098]">{lesson.titleArabic}</p></div><div className="rounded-full bg-[#e9f2ec] px-3 py-1.5 text-xs font-bold text-[#38755b]">{lesson.words.length} words · one clear route</div></div>
+              <p className="mt-5 max-w-3xl text-sm leading-6 text-[#526078]">{lesson.learningPlan?.outcome.canDo}</p>
+              <p dir="rtl" className="arabic mt-2 max-w-3xl text-right text-sm leading-6 text-[#708098]">{lesson.learningPlan?.outcome.canDoArabic}</p>
+            </div>
+            <div className="px-5 py-5 sm:px-8"><MentorNote id="welcome" /></div>
+          </header>
+
+          <section id="words" className="scroll-mt-8 rounded-[1.6rem] border border-[#e2d8c5] bg-[#fffdf7] p-5 sm:p-7">
+            <div className="flex items-start gap-3"><span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#e9f2ec] text-[#38755b]"><Languages className="h-5 w-5" /></span><div><p className="text-xs font-bold uppercase tracking-[.14em] text-[#a2732c]">Step 1 · Meet and hear the language</p><h2 className="mt-1 text-2xl font-bold text-[#253453]">Useful words first</h2><p dir="rtl" className="arabic mt-1 text-right text-sm text-[#708098]">الكلمات المفيدة أولاً</p></div></div>
+            <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_300px]"><div className="grid gap-3 sm:grid-cols-2">{lesson.words.map((word) => <article key={word.id} className={cn("rounded-2xl border p-4 transition", selectedWord.id === word.id ? "border-[#d3b36a] bg-[#fff8e9] ring-2 ring-[#e7b84a]/35" : "border-[#e6ddcc] bg-[#fffdf7]")}><div className="flex items-start justify-between gap-3"><span className="text-[10px] font-bold uppercase tracking-[.13em] text-[#a2732c]">{word.partOfSpeech}</span><button type="button" aria-label={`Play ${word.word}`} onClick={() => speak(word.word, accent, rate)} className="grid h-8 w-8 place-items-center rounded-full bg-[#edf1e7] text-[#38755b] hover:bg-[#dcecdf]"><Volume2 className="h-4 w-4" /></button></div><button type="button" onClick={() => setSelectedWord(word)} className="mt-5 block w-full text-left"><p className="text-xl font-bold text-[#253453]">{word.word}</p><p className="mt-1 text-xs text-[#748198]">{word.ipa} · {word.phoneticRespelling}</p><p dir="rtl" className="arabic mt-4 text-right text-base font-bold text-[#397558]">{word.arabic}</p><p className="mt-3 text-xs leading-5 text-[#526078]">{word.definition}</p></button></article>)}</div><aside className="h-fit space-y-4 lg:sticky lg:top-24"><div className="rounded-2xl bg-[#253453] p-5 text-white"><p className="text-xs font-bold uppercase tracking-[.14em] text-[#e7b84a]">Choose one word</p><p className="mt-3 text-2xl font-bold">{selectedWord.word}</p><p dir="rtl" className="arabic mt-1 text-right text-sm text-[#cbd6eb]">{selectedWord.arabic}</p><textarea value={question} onChange={(event) => setQuestion(event.target.value)} placeholder="Ask about meaning, spelling, synonyms, or examples…" className="mt-5 min-h-24 w-full rounded-xl border border-white/10 bg-white/10 p-3 text-sm text-white placeholder:text-[#b7c2d8] outline-none focus:border-[#e7b84a]" /></div><ExternalAiPromptPanel title="Ask your chosen AI about this word" description="Copy a focused bilingual explanation prompt. The site does not send your question to any model." descriptionArabic="انسخ طلباً ثنائي اللغة للكلمة المحددة. لا يرسل الموقع سؤالك إلى أي نموذج." prompt={buildWordHelpPrompt({ lesson, word: selectedWord, question })} /></aside></div>
+          </section>
+
+          <section id="pattern" className="scroll-mt-8 rounded-[1.6rem] border border-[#e2d8c5] bg-[#fffdf7] p-5 sm:p-7"><div className="flex items-start gap-3"><span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#eef4eb] text-[#38755b]"><BookOpen className="h-5 w-5" /></span><div><p className="text-xs font-bold uppercase tracking-[.14em] text-[#a2732c]">Step 2 · Notice the pattern</p><h2 className="mt-1 text-2xl font-bold text-[#253453]">One small grammar tool</h2></div></div><div className="mt-6"><MentorNote id="grammar" /><div className="rounded-2xl bg-[#eef4eb] p-5"><p className="text-xs font-bold uppercase tracking-[.14em] text-[#38755b]">Today’s grammar</p><h3 className="mt-2 text-2xl font-bold text-[#253453]">{lesson.grammar.topic}</h3><p dir="rtl" className="arabic mt-2 text-right font-semibold text-[#416b54]">{lesson.grammar.arabicName}</p><p className="mt-4 leading-7 text-[#526078]">{lesson.grammar.concept}</p><p dir="rtl" className="arabic mt-3 border-t border-[#d5e6d8] pt-3 text-right text-sm leading-7 text-[#52715c]">{lesson.grammar.arabicComparison}</p></div><div className="mt-5 grid gap-4 sm:grid-cols-3">{(["positive", "negative", "question"] as const).map((form) => <div key={form} className="rounded-xl border border-[#e5ddcf] bg-[#fffdf7] p-4"><p className="text-[10px] font-bold uppercase tracking-[.14em] text-[#a2732c]">{form}</p><p className="mt-3 text-sm font-bold text-[#34425b]">{lesson.grammar.structure[form]}</p></div>)}</div></div></section>
+
+          <section id="speak" className="scroll-mt-8 rounded-[1.6rem] border border-[#e2d8c5] bg-[#fffdf7] p-5 sm:p-7"><div className="flex items-start gap-3"><span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#253453] text-[#e7b84a]"><Headphones className="h-5 w-5" /></span><div><p className="text-xs font-bold uppercase tracking-[.14em] text-[#a2732c]">Step 3 · Listen and repeat</p><h2 className="mt-1 text-2xl font-bold text-[#253453]">Say it with courage, not perfection</h2></div></div><div className="mt-6"><MentorNote id="practice" /><div className="rounded-2xl bg-[#253453] p-5 text-white"><div className="flex flex-wrap items-center justify-between gap-4"><div><p className="text-xs font-bold uppercase tracking-[.14em] text-[#e7b84a]">{accent === "british" ? "British" : "American"} pronunciation</p><p className="mt-2 text-xl font-bold">Listen to {selectedWord.word}, then repeat it.</p></div><button type="button" onClick={() => speak(selectedWord.word, accent, rate)} className="grid h-12 w-12 place-items-center rounded-full bg-[#e7b84a] text-[#253453] active:scale-95"><Volume2 className="h-5 w-5" /></button></div><div className="mt-5"><div className="flex justify-between text-xs text-[#bdcae0]"><span>Slow</span><span>{Math.round(rate * 100)}% speed</span><span>Natural</span></div><input aria-label="Pronunciation speed" type="range" min="0.55" max="1" step="0.05" value={rate} onChange={(event) => setRate(Number(event.target.value))} className="mt-2 w-full accent-[#e7b84a]" /></div></div></div></section>
+
+          <section id="read" className="scroll-mt-8 rounded-[1.6rem] border border-[#e2d8c5] bg-[#fffdf7] p-5 sm:p-7"><p className="text-xs font-bold uppercase tracking-[.14em] text-[#a2732c]">Step 4 · Read for one purpose</p><h2 className="mt-1 text-2xl font-bold text-[#253453]">Meet the words again in context</h2><div className="mt-5"><MentorNote id="reading" /><CourseReadingPractice lesson={lesson} /></div></section>
+          <section id="write" className="scroll-mt-8 rounded-[1.6rem] border border-[#e2d8c5] bg-[#fffdf7] p-5 sm:p-7"><p className="text-xs font-bold uppercase tracking-[.14em] text-[#a2732c]">Step 5 · Build a small message</p><h2 className="mt-1 text-2xl font-bold text-[#253453]">Write one true thing</h2><div className="mt-5"><MentorNote id="writing" /><CourseWritingPractice lesson={lesson} /><div className="mt-5 rounded-2xl border border-[#e5ddcf] bg-[#fffdf7] p-5"><p className="text-xs font-bold uppercase tracking-[.14em] text-[#a2732c]">Try a sentence</p><textarea value={sentence} onChange={(event) => setSentence(event.target.value)} placeholder="Write one sentence with today’s grammar…" className="mt-4 min-h-24 w-full rounded-xl border border-[#ddd4c3] bg-[#fffdfa] p-3 text-sm outline-none focus:border-[#bf7f2f]" /><div className="mt-4"><ExternalAiPromptPanel title="Ask an external AI to review your sentence" description="Copy the bilingual formative-feedback prompt when you are ready." descriptionArabic="انسخ طلب الملاحظات التعليمية ثنائي اللغة عندما تكون مستعداً." prompt={buildSentenceReviewPrompt({ lesson, sentence })} /></div></div></div></section>
+          <section id="check" className="scroll-mt-8 rounded-[1.6rem] border border-[#d7c58e] bg-[#fff9e9] p-5 sm:p-7"><div className="flex items-start gap-3"><span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#253453] text-[#e7b84a]"><Trophy className="h-5 w-5" /></span><div><p className="text-xs font-bold uppercase tracking-[.14em] text-[#a2732c]">Step 6 · Check and remember</p><h2 className="mt-1 text-2xl font-bold text-[#253453]">Show what you can do</h2></div></div><div className="mt-5"><MentorNote id="check" /><QuizPractice lesson={lesson} level={lesson.level as CefrLevel} /></div></section>
+        </section>
+        <aside className="h-fit space-y-5 xl:sticky xl:top-24"><div className="rounded-2xl border border-[#e4dbca] bg-[#fffdf7] p-5"><p className="text-xs font-bold uppercase tracking-[.14em] text-[#a2732c]">Your route today</p><p dir="rtl" className="arabic mt-1 text-right text-xs text-[#708098]">طريقك في هذا الدرس</p><div className="mt-4 space-y-2">{steps.map((step, index) => <button type="button" key={step.id} onClick={() => scrollTo(["words", "words", "pattern", "pattern", "write", "check"][index] ?? "words")} className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left text-[#63718a] hover:bg-[#f7f3e9] hover:text-[#253453]"><CheckCircle2 className="h-4 w-4 shrink-0 text-[#79a887]" /><span><span className="block text-sm font-bold">{step.title}</span><span dir="rtl" className="arabic mt-0.5 block text-xs">{step.titleArabic}</span></span></button>)}</div></div><div className="rounded-2xl bg-[#e9f2ec] p-5"><p className="text-xs font-bold uppercase tracking-[.14em] text-[#38755b]">A calm reminder</p><p className="mt-3 text-sm leading-6 text-[#52715c]">You do not need to master every word immediately. Hear it, use it once, and return to it later.</p><p dir="rtl" className="arabic mt-3 border-t border-[#cce1d2] pt-3 text-right text-xs leading-6 text-[#52715c]">لا تحتاج إلى إتقان كل كلمة فوراً. استمع إليها، واستخدمها مرة، ثم ارجع إليها لاحقاً.</p></div></aside>
+      </div>
+    </main>
+  );
+}
+
+function TabbedLessonWorkspace({ lesson, accent, onBack }: { lesson: LessonDefinition; accent: Accent; onBack: () => void }) {
   const [tab, setTab] = useState<Tab>("words");
   const [selectedWord, setSelectedWord] = useState<VocabularyItem>(lesson.words[0]);
   const [question, setQuestion] = useState("");
@@ -60,4 +109,8 @@ export function ExternalLessonWorkspace({ lesson, accent, onBack }: { lesson: Le
       </div>
     </main>
   );
+}
+
+export function ExternalLessonWorkspace(props: { lesson: LessonDefinition; accent: Accent; onBack: () => void }) {
+  return props.lesson.level === "A1" ? <GuidedA1LessonWorkspace {...props} /> : <TabbedLessonWorkspace {...props} />;
 }

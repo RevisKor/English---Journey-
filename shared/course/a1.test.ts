@@ -47,4 +47,14 @@ describe("A1 curriculum", () => {
       && lesson.learningPlan.englishFirst === false
     ))).toBe(true);
   });
+
+  it("gives every A1 lesson a seven-moment bilingual mentor guide for the learner route", () => {
+    expect(A1_LESSONS.every((lesson) => (
+      lesson.mentorGuide?.level === "A1"
+      && lesson.mentorGuide.lessonTitle === lesson.title
+      && lesson.mentorGuide.moments.length === 7
+      && lesson.mentorGuide.moments.every((moment) => moment.message && moment.messageArabic)
+    ))).toBe(true);
+    expect(A1_LESSONS[0].mentorGuide?.moments[0].message).toContain("You do not need to know grammar");
+  });
 });

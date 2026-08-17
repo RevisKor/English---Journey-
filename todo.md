@@ -394,3 +394,9 @@
 - [x] Define a calm, accessible visual-language specification for all activity types without changing existing learner outcomes.
 - [x] Create the staged six-workstream operating procedure, including inputs, outputs, review gates, and hand-offs for the 865-lesson curriculum.
 - [x] Normalise A1 lessons onto the shared `learningPlan` contract so the audit applies the same structured-planning checks across A1–C2.
+
+# Six-Workstream Curriculum Restructuring Execution
+- [x] Launch the first A1 restructuring batch, turning the shared graph, lesson blueprint, activity, assessment, visual, and quality contracts into concrete learner-facing content.
+- [x] Rebuild the active A1 module journeys with deeper mentor guidance, repeated vocabulary exposure, varied activities, and level-appropriate assessment evidence.
+- [x] Audit and validate the restructured A1 curriculum before using the same method to author A2, B1, B2, C1, and C2.
+- [ ] Apply the verified restructuring method to all remaining CEFR levels in staged, versioned, quality-gated authoring batches.

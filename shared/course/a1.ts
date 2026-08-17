@@ -114,6 +114,70 @@ function learningPlanForBlueprint(
   };
 }
 
+function mentorGuideForBlueprint(
+  blueprint: ImmersiveLessonBlueprint,
+  module: (typeof A1_IMMERSIVE_MODULES)[number],
+) {
+  const firstRetrieval = blueprint.exposurePlan.find((exposure) => exposure.mode === "retrieve") ?? blueprint.exposurePlan.at(-1);
+  const firstPractice = blueprint.exposurePlan.find((exposure) => exposure.mode === "use" || exposure.mode === "write" || exposure.mode === "hear") ?? blueprint.exposurePlan[0];
+
+  return {
+    level: "A1" as const,
+    lessonTitle: blueprint.title,
+    moments: [
+      {
+        id: "welcome" as const,
+        title: "Your guide for today",
+        titleArabic: "دليلك اليوم",
+        message: blueprint.lessonNumber === 1 ? module.mentorOpening : `You are continuing ${module.title}. Small steps count: today you will add one useful piece to the English you already know.`,
+        messageArabic: blueprint.lessonNumber === 1 ? module.mentorOpeningArabic : `أنت تتابع الآن وحدة ${module.titleArabic}. الخطوات الصغيرة مهمة: اليوم ستضيف جزءاً مفيداً إلى الإنجليزية التي تعرفها بالفعل.`,
+      },
+      {
+        id: "vocabulary" as const,
+        title: "First, meet the useful words",
+        titleArabic: "أولاً: تعرّف إلى الكلمات المفيدة",
+        message: `Do not try to memorise every word at once. Notice the key words, listen to them, and use one in the ${blueprint.title} situation.`,
+        messageArabic: `لا تحاول حفظ كل كلمة دفعة واحدة. لاحظ الكلمات الأساسية، واستمع إليها، ثم استخدم كلمة واحدة في موقف ${blueprint.titleArabic}.`,
+      },
+      {
+        id: "grammar" as const,
+        title: "Then, notice one small pattern",
+        titleArabic: "ثم لاحظ نمطاً صغيراً واحداً",
+        message: blueprint.beginnerExplanation,
+        messageArabic: blueprint.beginnerExplanationArabic,
+      },
+      {
+        id: "practice" as const,
+        title: "Now make it your own",
+        titleArabic: "الآن اجعلها لغتك أنت",
+        message: firstPractice?.task ?? "Use one of today’s words in a short sentence. A clear attempt is enough.",
+        messageArabic: firstPractice?.taskArabic ?? "استخدم كلمة واحدة من كلمات اليوم في جملة قصيرة. محاولة واضحة تكفي.",
+      },
+      {
+        id: "reading" as const,
+        title: "See the language in context",
+        titleArabic: "شاهد اللغة في سياق",
+        message: `When you read or listen today, look for the words and pattern you have just met. Repeated encounters help the language stay with you.`,
+        messageArabic: `عندما تقرأ أو تستمع اليوم، ابحث عن الكلمات والنمط اللذين قابلتهما للتو. التعرّض المتكرر يساعد اللغة على البقاء في ذاكرتك.`,
+      },
+      {
+        id: "writing" as const,
+        title: "Use a short model, then choose your words",
+        titleArabic: "استخدم نموذجاً قصيراً ثم اختر كلماتك",
+        message: `Start with one sentence frame. Then change one detail so the sentence says something true about you or your world.`,
+        messageArabic: `ابدأ بقالب جملة واحد، ثم غيّر تفصيلاً واحداً لتقول الجملة شيئاً حقيقياً عنك أو عن عالمك.`,
+      },
+      {
+        id: "check" as const,
+        title: "Finish by remembering, not guessing",
+        titleArabic: "اختم بالتذكر لا بالتخمين",
+        message: firstRetrieval?.task ?? "Before you finish, say one useful word or sentence without looking at the page.",
+        messageArabic: firstRetrieval?.taskArabic ?? "قبل أن تنهي الدرس، قل كلمة أو جملة مفيدة واحدة من دون النظر إلى الصفحة.",
+      },
+    ],
+  };
+}
+
 export const A1_LESSONS: LessonDefinition[] = A1_IMMERSIVE_MODULES.flatMap((module, moduleIndex) => {
   const moduleVocabulary = A1_VOCABULARY.slice(moduleIndex * 75, (moduleIndex + 1) * 75);
   return module.lessonBlueprints.map((blueprint) => {
@@ -132,6 +196,7 @@ export const A1_LESSONS: LessonDefinition[] = A1_IMMERSIVE_MODULES.flatMap((modu
       domainFocusArabic: module.overviewArabic,
       beginnerScaffold: blueprint.beginnerExplanation,
       beginnerScaffoldArabic: blueprint.beginnerExplanationArabic,
+      mentorGuide: mentorGuideForBlueprint(blueprint, module),
       lessonType: blueprint.type,
     });
   });

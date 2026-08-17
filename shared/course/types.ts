@@ -280,6 +280,7 @@ export type LessonDefinition = {
   domainFocusArabic?: string;
   beginnerScaffold?: string;
   beginnerScaffoldArabic?: string;
+  mentorGuide?: LessonMentorGuide;
   lessonType?: LessonType;
   activities?: LessonActivity[];
   progression?: LessonProgressionStage[];
