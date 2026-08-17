@@ -158,6 +158,20 @@ describe("ExternalLessonWorkspace", () => {
     expect(html).toContain("Read a cleaner-neighbourhood plan");
   });
 
+  it("renders the authored A2 Module 6 difficult decision as its selected Choices and Plans reading route", () => {
+    const lesson = A2_LESSONS[81];
+    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={lesson} accent="british" onBack={() => undefined} />);
+
+    expect(html).toContain("reading lesson");
+    expect(html).toContain("Meet the English");
+    expect(html).toContain("Notice one pattern");
+    expect(html).toContain("Try with support");
+    expect(html).toContain("Show what you can do");
+    expect(html).not.toContain("Use it for a reason");
+    expect(html).toContain("Read a difficult decision");
+    expect(html).toContain("Find the choice, trace its reasons, and explain one result");
+  });
+
   it("preserves the established tabbed workspace for un-authored later levels during the staged rollout", () => {
     const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={B1_LESSONS[0]} accent="british" onBack={() => undefined} />);
 
