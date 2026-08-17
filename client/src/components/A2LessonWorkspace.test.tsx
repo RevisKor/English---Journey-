@@ -43,10 +43,11 @@ describe("guided workspace Arabic scaffolding", () => {
   });
 
   it("renders explicit multimodal controls for speaking, interaction, and reading activities", () => {
-    const speakingLesson = A2_LESSONS.find((lesson) => lesson.activities?.some((activity) => activity.kind === "speaking"));
-    const interactionLesson = A2_LESSONS.find((lesson) => lesson.activities?.some((activity) => activity.kind === "interaction"));
-    const readingLesson = A2_LESSONS.find((lesson) => lesson.activities?.some((activity) => activity.kind === "reading"));
-    const visualLesson = A2_LESSONS.find((lesson) => lesson.activities?.some((activity) => activity.kind === "visual-vocabulary"));
+    const structuredLessons = A2_LESSONS.filter((lesson) => !lesson.experience);
+    const speakingLesson = structuredLessons.find((lesson) => lesson.activities?.some((activity) => activity.kind === "speaking"));
+    const interactionLesson = structuredLessons.find((lesson) => lesson.activities?.some((activity) => activity.kind === "interaction"));
+    const readingLesson = structuredLessons.find((lesson) => lesson.activities?.some((activity) => activity.kind === "reading"));
+    const visualLesson = structuredLessons.find((lesson) => lesson.activities?.some((activity) => activity.kind === "visual-vocabulary"));
     expect(speakingLesson).toBeDefined();
     expect(interactionLesson).toBeDefined();
     expect(readingLesson).toBeDefined();

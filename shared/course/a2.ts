@@ -1,11 +1,14 @@
 import rawDraft from "./a2-draft.json";
 import { enrichLesson } from "./activity-plan";
+import { A2_MODULE_1_AUTHORED_ACTIVITIES } from "./a2-module-1-authored-activities";
+import { createLessonExperience } from "./lesson-experience";
 import { buildModuleDefinitions } from "./module-definitions";
 import { getProgressiveImmersiveModules } from "./progressive-immersive";
 import type {
   CourseDefinition,
   GrammarTopic,
   ImmersiveLessonBlueprint,
+  LessonExperience,
   LessonDefinition,
   LessonStep,
   VocabularyItem,
@@ -120,9 +123,27 @@ function grammarForBlueprint(blueprint: ImmersiveLessonBlueprint): GrammarTopic 
   };
 }
 
+const A2_MODULE_1_EXPERIENCES: Record<number, LessonExperience> = {
+  1: createLessonExperience({ archetype: "discover", density: "light", archetypeRationale: "Frequency language begins with familiar morning routines.", selectedStages: ["orientation", "encounter", "retrieval", "next-bridge"], firstView: { whatItIs: "A routine-language discovery", whatToDo: "Map one morning and choose one frequency phrase.", whatMatters: "Usually and sometimes change how true a routine is.", whatNext: "Carry one time phrase forward." }, progressiveSupports: ["arabic-help", "worked-example", "word-support"] }),
+  2: createLessonExperience({ archetype: "reading", density: "normal", archetypeRationale: "A connected note gives reasons and results a clear purpose.", selectedStages: ["encounter", "notice", "supported-practice", "retrieval"], firstView: { whatItIs: "A reason-and-result reading", whatToDo: "Read for the reason, then sort because and so.", whatMatters: "The connector changes the relationship between ideas.", whatNext: "Use one connector with food language." }, progressiveSupports: ["arabic-help", "transcript", "worked-example"] }),
+  3: createLessonExperience({ archetype: "vocabulary", density: "normal", archetypeRationale: "Visual food language gives some and any concrete meaning.", selectedStages: ["encounter", "notice", "supported-practice", "meaningful-use"], firstView: { whatItIs: "A visual food-and-energy lesson", whatToDo: "Explore three cards, then open the kitchen task.", whatMatters: "Some and any depend on the message you make.", whatNext: "Use the words in a weekly routine." }, progressiveSupports: ["arabic-help", "word-support", "worked-example"] }),
+  4: createLessonExperience({ archetype: "interaction", density: "normal", archetypeRationale: "Frequency becomes useful in a supportive interview.", selectedStages: ["orientation", "encounter", "supported-practice", "meaningful-use"], firstView: { whatItIs: "A weekly-routine interview", whatToDo: "Ask one question and give one supported answer.", whatMatters: "How often asks about a pattern, not a single event.", whatNext: "Use frequency to make advice specific." }, progressiveSupports: ["arabic-help", "worked-example", "transcript"] }),
+  5: createLessonExperience({ archetype: "speaking", density: "normal", archetypeRationale: "Advice needs a calm spoken model before extended feedback.", selectedStages: ["notice", "supported-practice", "meaningful-use", "evidence"], firstView: { whatItIs: "A gentle-advice rehearsal", whatToDo: "Hear two models, then write for a character.", whatMatters: "Should suggests; it does not command.", whatNext: "Use respectful tone in a pharmacy exchange." }, progressiveSupports: ["arabic-help", "worked-example", "word-support", "external-ai-prompt"] }),
+  6: createLessonExperience({ archetype: "real-world", density: "deep", archetypeRationale: "A pharmacy interaction gives polite requests a real listener and purpose.", selectedStages: ["orientation", "encounter", "notice", "meaningful-use", "retrieval"], firstView: { whatItIs: "A practical pharmacy conversation", whatToDo: "Follow the dialogue and choose the softer request.", whatMatters: "Could you helps you sound clear and respectful.", whatNext: "Describe a simple symptom safely." }, progressiveSupports: ["arabic-help", "transcript", "worked-example"] }),
+  7: createLessonExperience({ archetype: "writing", density: "normal", archetypeRationale: "Description language is practised in a privacy-safe fictional message.", selectedStages: ["notice", "supported-practice", "meaningful-use", "next-bridge"], firstView: { whatItIs: "A safe description-and-message lesson", whatToDo: "Match descriptions, then write for a fictional person.", whatMatters: "Describe what you notice; do not diagnose.", whatNext: "Place one event on yesterday's timeline." }, progressiveSupports: ["arabic-help", "worked-example", "word-support", "external-ai-prompt"] }),
+  8: createLessonExperience({ archetype: "grammar", density: "normal", archetypeRationale: "A visual time line makes past forms meaningful.", selectedStages: ["encounter", "notice", "supported-practice", "meaningful-use"], firstView: { whatItIs: "A yesterday time-line lesson", whatToDo: "Order three moments, then retell a calm day.", whatMatters: "Past forms locate an event before now.", whatNext: "Read a fuller week of small changes." }, progressiveSupports: ["arabic-help", "worked-example", "transcript"] }),
+  9: createLessonExperience({ archetype: "reading", density: "deep", archetypeRationale: "A connected diary checks sequence, detail, and inference at A2.", selectedStages: ["orientation", "encounter", "notice", "supported-practice", "evidence"], firstView: { whatItIs: "A connected weekly diary", whatToDo: "Read once for the main idea, then trace time markers.", whatMatters: "Before, after, and then organise a story.", whatNext: "Use that structure in a paragraph." }, progressiveSupports: ["arabic-help", "transcript", "word-support"] }),
+  10: createLessonExperience({ archetype: "writing", density: "deep", archetypeRationale: "The learner can now plan, draft, and review a short paragraph.", selectedStages: ["orientation", "supported-practice", "meaningful-use", "evidence", "next-bridge"], firstView: { whatItIs: "A guided healthy-choice paragraph", whatToDo: "Plan three linked actions for a character.", whatMatters: "Clear order and one reason guide the reader.", whatNext: "Turn the same ideas into questions." }, progressiveSupports: ["arabic-help", "worked-example", "word-support", "external-ai-prompt"] }),
+  11: createLessonExperience({ archetype: "grammar", density: "normal", archetypeRationale: "Question helpers are compared through a useful information task.", selectedStages: ["notice", "supported-practice", "meaningful-use", "retrieval"], firstView: { whatItIs: "A practical question workshop", whatToDo: "Sort current and past questions, then choose two.", whatMatters: "The helper shows whether a question is about now or before.", whatNext: "Ask for clarification with confidence." }, progressiveSupports: ["arabic-help", "worked-example", "tip"] }),
+  12: createLessonExperience({ archetype: "listening", density: "light", archetypeRationale: "Clarification phrases are short heard-and-repeated tools.", selectedStages: ["orientation", "encounter", "supported-practice", "meaningful-use"], firstView: { whatItIs: "A listening-and-clarifying practice", whatToDo: "Hear an instruction and choose a follow-up.", whatMatters: "Clarifying is active communication, not failure.", whatNext: "Reconnect the module's key choices." }, progressiveSupports: ["arabic-help", "transcript", "worked-example"] }),
+  13: createLessonExperience({ archetype: "review", density: "normal", archetypeRationale: "This lesson retrieves and lets the learner choose a gap to revisit.", selectedStages: ["retrieval", "evidence", "next-bridge"], firstView: { whatItIs: "A choice-based health map", whatToDo: "Connect four cards, then select one gap.", whatMatters: "Retrieval makes final writing more independent.", whatNext: "Reopen only the card you chose." }, progressiveSupports: ["arabic-help", "word-support", "tip"] }),
+  14: createLessonExperience({ archetype: "writing", density: "deep", archetypeRationale: "A practical message joins routines, advice, reasons, and punctuation.", selectedStages: ["orientation", "meaningful-use", "evidence", "next-bridge"], firstView: { whatItIs: "A practical supportive message", whatToDo: "Write for a fictional reader, then revise for clarity.", whatMatters: "Tone and punctuation help a reader trust you.", whatNext: "Use the connected language in the checkpoint." }, progressiveSupports: ["arabic-help", "worked-example", "word-support", "external-ai-prompt"] }),
+  15: createLessonExperience({ archetype: "assessment", density: "deep", archetypeRationale: "A checkpoint gathers connected evidence before broader independent-life topics.", selectedStages: ["orientation", "retrieval", "evidence", "next-bridge"], firstView: { whatItIs: "A health-and-habits checkpoint", whatToDo: "Complete four short scenario tasks.", whatMatters: "You are connecting ideas, not reciting perfectly.", whatNext: "Carry one strong pattern to the next module." }, progressiveSupports: ["arabic-help", "worked-example", "tip"] }),
+};
+
 function lessonFromBlueprint(blueprint: ImmersiveLessonBlueprint, module: ReturnType<typeof getProgressiveImmersiveModules>[number]): LessonDefinition {
   const words = vocabularyForBlueprint(blueprint);
-  return enrichLesson({
+  const generatedLesson = enrichLesson({
     level: "A2",
     lessonNumber: blueprint.lessonNumber,
     moduleNumber: blueprint.moduleNumber,
@@ -171,6 +192,12 @@ function lessonFromBlueprint(blueprint: ImmersiveLessonBlueprint, module: Return
     beginnerScaffoldArabic: blueprint.beginnerExplanationArabic,
     lessonType: blueprint.type,
   });
+
+  const authoredActivities = A2_MODULE_1_AUTHORED_ACTIVITIES[blueprint.lessonNumber];
+  const experience = A2_MODULE_1_EXPERIENCES[blueprint.lessonNumber];
+  return authoredActivities || experience
+    ? { ...generatedLesson, activities: authoredActivities ?? generatedLesson.activities, experience: experience ?? generatedLesson.experience }
+    : generatedLesson;
 }
 
 const A2_MODULES = getProgressiveImmersiveModules("A2");

@@ -45,4 +45,18 @@ describe("A2 cumulative curriculum", () => {
       expect(lesson.activities?.some((activity) => activity.kind === lesson.lessonType)).toBe(true);
     }
   });
+
+  it("gives A2 Module 1 explicit, varied health-and-habits routes with retrieval and learner evidence", () => {
+    const moduleOne = A2_LESSONS.filter((lesson) => lesson.moduleNumber === 1);
+    const expectedArchetypes = new Set(["discover", "reading", "vocabulary", "interaction", "speaking", "real-world", "writing", "grammar", "listening", "review", "assessment"]);
+
+    expect(moduleOne).toHaveLength(15);
+    expect(moduleOne.every((lesson) => lesson.experience && lesson.activities?.length)).toBe(true);
+    expect(new Set(moduleOne.map((lesson) => lesson.experience?.archetype)).size).toBeGreaterThanOrEqual(10);
+    expect(moduleOne.map((lesson) => lesson.experience?.archetype).every((archetype) => expectedArchetypes.has(archetype ?? ""))).toBe(true);
+    expect(moduleOne.some((lesson) => lesson.activities?.some((activity) => activity.kind === "visual-vocabulary" && activity.visualItems?.every((item) => Boolean(item.imageUrl && item.altText))))).toBe(true);
+    expect(moduleOne.some((lesson) => lesson.activities?.some((activity) => activity.readingChecks?.some((check) => check.type === "inference")))).toBe(true);
+    expect(moduleOne.some((lesson) => lesson.activities?.some((activity) => activity.progressiveSupports?.includes("external-ai-prompt")))).toBe(true);
+    expect(moduleOne.every((lesson) => lesson.experience?.selectedStages.length)).toBe(true);
+  });
 });

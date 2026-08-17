@@ -2,6 +2,7 @@ import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { describe, expect, it, vi } from "vitest";
 import { A1_LESSONS } from "@shared/course/a1";
+import { A2_LESSONS } from "@shared/course/a2";
 import { B1_LESSONS } from "@shared/course/b1";
 
 vi.mock("@/components/CourseReadingPractice", () => ({
@@ -88,7 +89,21 @@ describe("ExternalLessonWorkspace", () => {
     expect(html).toContain("Rehearse one chosen turn");
   });
 
-  it("preserves the established tabbed workspace for non-A1 levels during the staged rollout", () => {
+  it("renders the authored A2 Module 1 diary as its selected deep reading route with explicit health activities", () => {
+    const lesson = A2_LESSONS[8];
+    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={lesson} accent="british" onBack={() => undefined} />);
+
+    expect(html).toContain("reading lesson");
+    expect(html).toContain("Meet the English");
+    expect(html).toContain("Notice one pattern");
+    expect(html).toContain("Try with support");
+    expect(html).toContain("Show what you can do");
+    expect(html).not.toContain('aria-label="Lesson sections"');
+    expect(html).toContain("Read a week of changes");
+    expect(html).toContain("Keep the order visible");
+  });
+
+  it("preserves the established tabbed workspace for un-authored later levels during the staged rollout", () => {
     const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={B1_LESSONS[0]} accent="british" onBack={() => undefined} />);
 
     expect(html).toContain('aria-label="Lesson sections"');
