@@ -2,6 +2,7 @@ import rawGrammar from "./a1-grammar.json";
 import rawVocabulary from "./a1-vocabulary.json";
 import { A1_IMMERSIVE_MODULES } from "./a1-immersive-modules";
 import { enrichLesson } from "./activity-plan";
+import { createLessonExperience } from "./lesson-experience";
 import { buildModuleDefinitions } from "./module-definitions";
 import type {
   CourseDefinition,
@@ -9,6 +10,7 @@ import type {
   ImmersiveLessonBlueprint,
   LessonDefinition,
   LessonStep,
+  ProgressiveSupport,
   VocabularyItem,
 } from "./types";
 
@@ -39,6 +41,116 @@ const A1_STEPS: LessonStep[] = [
   { id: "respond", title: "Use it in life", titleArabic: "استخدمها في الحياة", purpose: "Say or write a simple message for a real everyday purpose.", estimatedMinutes: 8 },
   { id: "prove", title: "Check and remember", titleArabic: "تحقق وتذكّر", purpose: "Show what you can do, then bring one useful word back later.", estimatedMinutes: 5 },
 ];
+
+const EXPERIENCE_STEPS: Record<NonNullable<ReturnType<typeof experienceForBlueprint>>["selectedStages"][number], LessonStep["id"]> = {
+  orientation: "start",
+  encounter: "explore",
+  notice: "notice",
+  "supported-practice": "build",
+  "meaningful-use": "respond",
+  retrieval: "prove",
+  evidence: "prove",
+  "next-bridge": "respond",
+};
+
+function experienceForBlueprint(blueprint: ImmersiveLessonBlueprint, moduleNumber = 1) {
+  if (moduleNumber !== 1) return undefined;
+
+  const shared: { progressiveSupports: ProgressiveSupport[] } = {
+    progressiveSupports: ["arabic-help", "worked-example", "word-support"],
+  };
+
+  switch (blueprint.lessonNumber) {
+    case 1:
+      return createLessonExperience({
+        archetype: "discover",
+        density: "normal",
+        archetypeRationale: "The learner needs a safe social encounter before a formal language explanation.",
+        selectedStages: ["encounter", "supported-practice", "meaningful-use", "retrieval"],
+        intentionallyOmittedStages: [
+          { stage: "notice", reason: "A full grammar explanation would distract from the first communicative success." },
+          { stage: "evidence", reason: "A short, supported social response is sufficient first-lesson evidence." },
+        ],
+        firstView: {
+          whatItIs: "Your first English social moment",
+          whatToDo: "Listen to a tiny class exchange and choose a greeting.",
+          whatMatters: "Use a greeting that fits the moment.",
+          whatNext: "Try one short hello-and-goodbye exchange.",
+        },
+        ...shared,
+      });
+    case 2:
+      return createLessonExperience({
+        archetype: "interaction",
+        density: "light",
+        archetypeRationale: "Turn-taking and meaning are more useful here than a detached possessive-word lecture.",
+        selectedStages: ["retrieval", "encounter", "meaningful-use", "evidence"],
+        intentionallyOmittedStages: [{ stage: "notice", reason: "My and your are noticed within conversation turns." }],
+        firstView: {
+          whatItIs: "A name exchange",
+          whatToDo: "Answer Noor’s question, then ask one back.",
+          whatMatters: "Choose my or your for the correct speaker.",
+          whatNext: "Use the exchange in a short role-play.",
+        },
+        ...shared,
+      });
+    case 3:
+      return createLessonExperience({
+        archetype: "grammar",
+        density: "deep",
+        archetypeRationale: "English identity sentences need a careful Arabic-English contrast before learners use them independently.",
+        selectedStages: ["orientation", "notice", "supported-practice", "meaningful-use", "evidence"],
+        intentionallyOmittedStages: [{ stage: "retrieval", reason: "The lesson protects depth for a new structural hinge." }],
+        firstView: {
+          whatItIs: "A small pattern workshop",
+          whatToDo: "Compare two identity sentences and build one.",
+          whatMatters: "I needs am; you needs are.",
+          whatNext: "Use the pattern to describe a person.",
+        },
+        progressiveSupports: ["arabic-help", "worked-example", "tip"],
+      });
+    case 4:
+      return createLessonExperience({
+        archetype: "vocabulary",
+        density: "light",
+        archetypeRationale: "Image, sound, and a useful caption make people words concrete without overloading the learner.",
+        selectedStages: ["encounter", "supported-practice", "meaningful-use", "retrieval"],
+        intentionallyOmittedStages: [{ stage: "orientation", reason: "The picture-and-audio task provides the orientation directly." }],
+        firstView: {
+          whatItIs: "Picture English: people around you",
+          whatToDo: "Hear a word and choose the matching person.",
+          whatMatters: "Connect the sound, picture, and English label.",
+          whatNext: "Make one simple picture caption.",
+        },
+        ...shared,
+      });
+    case 5:
+      return createLessonExperience({
+        archetype: "integration",
+        density: "normal",
+        archetypeRationale: "A supported mini-conversation shows the learner that earlier language can work together in one real exchange.",
+        selectedStages: ["orientation", "retrieval", "supported-practice", "meaningful-use", "evidence", "next-bridge"],
+        intentionallyOmittedStages: [{ stage: "notice", reason: "This lesson integrates existing language instead of introducing another grammar rule." }],
+        firstView: {
+          whatItIs: "Your first complete mini-conversation",
+          whatToDo: "Choose a role-play mode and rehearse four lines.",
+          whatMatters: "Help the other person understand you, not perfection.",
+          whatNext: "Carry this introduction into the numbers lesson.",
+        },
+        progressiveSupports: ["arabic-help", "worked-example", "transcript", "word-support"],
+      });
+    default:
+      return undefined;
+  }
+}
+
+function stepsForBlueprint(blueprint: ImmersiveLessonBlueprint, moduleNumber: number) {
+  const experience = experienceForBlueprint(blueprint, moduleNumber);
+  if (!experience) return A1_STEPS;
+
+  const selectedIds = new Set(experience.selectedStages.map((stage) => EXPERIENCE_STEPS[stage]));
+  return A1_STEPS.filter((step) => selectedIds.has(step.id));
+}
 
 const vocabularyByWord = new Map(A1_VOCABULARY.map((item) => [item.word.toLocaleLowerCase(), item]));
 
@@ -102,7 +214,7 @@ function learningPlanForBlueprint(
       scenario: module.overview,
       scenarioArabic: module.overviewArabic,
     },
-    steps: A1_STEPS,
+    steps: stepsForBlueprint(blueprint, module.moduleNumber),
     retrieval: blueprint.exposurePlan.slice(0, 3).map((exposure) => ({
       sourceLevel: "A1" as const,
       language: exposure.task,
@@ -198,6 +310,7 @@ export const A1_LESSONS: LessonDefinition[] = A1_IMMERSIVE_MODULES.flatMap((modu
       beginnerScaffoldArabic: blueprint.beginnerExplanationArabic,
       mentorGuide: mentorGuideForBlueprint(blueprint, module),
       lessonType: blueprint.type,
+      experience: experienceForBlueprint(blueprint, module.moduleNumber),
     });
   });
 });

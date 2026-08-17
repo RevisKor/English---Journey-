@@ -81,6 +81,71 @@ export type LessonType =
   | "review"
   | "assessment";
 
+/** The dominant learner experience selected by the curriculum architect. */
+export type LessonArchetype =
+  | "discover"
+  | "notice"
+  | "reading"
+  | "writing"
+  | "speaking"
+  | "listening"
+  | "grammar"
+  | "vocabulary"
+  | "interaction"
+  | "real-world"
+  | "integration"
+  | "review"
+  | "assessment";
+
+export type LessonDensity = "light" | "normal" | "deep";
+
+/** Stages are selected for the objective, never imposed as a fixed template. */
+export type LessonExperienceStage =
+  | "orientation"
+  | "encounter"
+  | "notice"
+  | "supported-practice"
+  | "meaningful-use"
+  | "retrieval"
+  | "evidence"
+  | "next-bridge";
+
+/** Semantic roles are rendered with label and icon as well as restrained colour. */
+export type LessonVisualSemantic =
+  | "objective"
+  | "example"
+  | "tip"
+  | "common-mistake"
+  | "vocabulary"
+  | "grammar"
+  | "activity"
+  | "retrieval"
+  | "assessment";
+
+export type ProgressiveSupport =
+  | "arabic-help"
+  | "worked-example"
+  | "tip"
+  | "transcript"
+  | "word-support"
+  | "extended-rationale"
+  | "external-ai-prompt";
+
+export type LessonExperience = {
+  archetype: LessonArchetype;
+  density: LessonDensity;
+  archetypeRationale: string;
+  selectedStages: LessonExperienceStage[];
+  intentionallyOmittedStages?: Array<{ stage: LessonExperienceStage; reason: string }>;
+  firstView: {
+    whatItIs: string;
+    whatToDo: string;
+    whatMatters: string;
+    whatNext: string;
+  };
+  progressiveSupports: ProgressiveSupport[];
+};
+
 export type LessonProgressionStage =
   | "introduction"
   | "explanation"
@@ -152,6 +217,8 @@ export type LessonActivity = {
   writingPromptArabic?: string;
   suggestedVocabulary?: string[];
   sentencePatterns?: string[];
+  semantic?: LessonVisualSemantic;
+  progressiveSupports?: ProgressiveSupport[];
 };
 
 export type GrammarTeachingGuide = {
@@ -202,6 +269,7 @@ export type ImmersiveLessonBlueprint = {
   practiceModes: LessonType[];
   canDo: string;
   canDoArabic: string;
+  experience?: LessonExperience;
 };
 
 export type ImmersiveModuleAuthoring = {
@@ -284,6 +352,7 @@ export type LessonDefinition = {
   lessonType?: LessonType;
   activities?: LessonActivity[];
   progression?: LessonProgressionStage[];
+  experience?: LessonExperience;
 };
 
 export type CourseDefinition = {

@@ -19,6 +19,40 @@ describe("curriculum audit", () => {
     }
   });
 
+  it("raises non-prescriptive variation-review signals for concentrated authored experiences", () => {
+    const course = {
+      ...ACTIVE_COURSES[0],
+      totalLessons: 3,
+      lessonsPerModule: 3,
+      lessons: ACTIVE_COURSES[0].lessons.slice(0, 3).map((lesson) => ({
+        ...lesson,
+        experience: {
+          archetype: "discover" as const,
+          density: "light" as const,
+          archetypeRationale: "A concrete encounter is appropriate for early beginner language.",
+          selectedStages: ["encounter", "evidence"] as const,
+          firstView: {
+            whatItIs: "A first English moment",
+            whatToDo: "Listen and choose",
+            whatMatters: "The phrase must fit the situation",
+            whatNext: "Use it in a short response",
+          },
+          progressiveSupports: [],
+        },
+      })),
+    };
+
+    const audit = auditCourse(course);
+    const review = audit.variationReview.join(" ");
+
+    expect(audit.lessonArchetypeDistribution).toEqual({ discover: 3 });
+    expect(audit.missingLessonExperience).toEqual([]);
+    expect(audit.longestRepeatedArchetypeRun).toBe(3);
+    expect(review).toContain("concentrated");
+    expect(review).toContain("adjacent authored lessons");
+    expect(review).toContain("repeat the same opening");
+  });
+
   it("renders a concise human-readable audit table", () => {
     const report = buildCurriculumAuditReport(new Date("2026-08-17T00:00:00.000Z"));
     const markdown = formatCurriculumAudit(report);

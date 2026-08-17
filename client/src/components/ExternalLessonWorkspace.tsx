@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import { CourseReadingPractice } from "@/components/CourseReadingPractice";
 import { CourseWritingPractice } from "@/components/CourseWritingPractice";
 import { ExternalAiPromptPanel } from "@/components/ExternalAiPromptPanel";
+import { ArchetypeLessonWorkspace } from "@/components/ArchetypeLessonWorkspace";
+import { LessonSemanticCard } from "@/components/LessonSemanticCard";
 import { QuizPractice } from "@/components/QuizPractice";
 import { buildSentenceReviewPrompt, buildWordHelpPrompt } from "@/lib/external-ai-prompts";
 import { cn } from "@/lib/utils";
@@ -54,8 +56,7 @@ function GuidedA1LessonWorkspace({ lesson, accent, onBack }: { lesson: LessonDef
             <div className="border-b border-[#eee6d9] bg-[radial-gradient(circle_at_top_right,_#fff0bd,transparent_38%),#fffdf7] px-5 py-7 sm:px-8">
               <p className="text-xs font-bold uppercase tracking-[.16em] text-[#a2732c]">Module {lesson.moduleNumber} · lesson {String(lesson.lessonNumber).padStart(2, "0")} · guided route</p>
               <div className="mt-3 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between"><div><h1 className="text-3xl font-bold tracking-[-.045em] text-[#253453]">{lesson.title}</h1><p dir="rtl" className="arabic mt-1 text-right text-sm text-[#708098]">{lesson.titleArabic}</p></div><div className="rounded-full bg-[#e9f2ec] px-3 py-1.5 text-xs font-bold text-[#38755b]">{lesson.words.length} words · one clear route</div></div>
-              <p className="mt-5 max-w-3xl text-sm leading-6 text-[#526078]">{lesson.learningPlan?.outcome.canDo}</p>
-              <p dir="rtl" className="arabic mt-2 max-w-3xl text-right text-sm leading-6 text-[#708098]">{lesson.learningPlan?.outcome.canDoArabic}</p>
+              {lesson.learningPlan ? <LessonSemanticCard semantic="objective" className="mt-5 max-w-3xl" title="What you will be able to do" titleArabic="ما الذي ستستطيع فعله؟"><p>{lesson.learningPlan.outcome.canDo}</p><p dir="rtl" className="arabic mt-2 text-right text-sm text-[#526078]">{lesson.learningPlan.outcome.canDoArabic}</p></LessonSemanticCard> : null}
             </div>
             <div className="px-5 py-5 sm:px-8"><MentorNote id="welcome" /></div>
           </header>
@@ -112,5 +113,6 @@ function TabbedLessonWorkspace({ lesson, accent, onBack }: { lesson: LessonDefin
 }
 
 export function ExternalLessonWorkspace(props: { lesson: LessonDefinition; accent: Accent; onBack: () => void }) {
+  if (props.lesson.experience) return <ArchetypeLessonWorkspace {...props} />;
   return props.lesson.level === "A1" ? <GuidedA1LessonWorkspace {...props} /> : <TabbedLessonWorkspace {...props} />;
 }

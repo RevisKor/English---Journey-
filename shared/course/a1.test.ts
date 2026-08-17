@@ -42,10 +42,26 @@ describe("A1 curriculum", () => {
       lesson.learningPlan?.outcome.canDo
       && lesson.learningPlan.outcome.canDoArabic
       && lesson.learningPlan.outcome.scenario
-      && lesson.learningPlan.steps.length === 6
+      && lesson.learningPlan.steps.length > 0
+      && new Set(lesson.learningPlan.steps.map((step) => step.id)).size === lesson.learningPlan.steps.length
       && lesson.learningPlan.studio === "A1 First Steps Studio"
       && lesson.learningPlan.englishFirst === false
     ))).toBe(true);
+  });
+
+  it("uses author-selected experiences and adaptive stage counts for the first five lessons", () => {
+    const firstFive = A1_LESSONS.slice(0, 5);
+    expect(firstFive.map((lesson) => lesson.experience?.archetype)).toEqual([
+      "discover",
+      "interaction",
+      "grammar",
+      "vocabulary",
+      "integration",
+    ]);
+    const stageCounts = firstFive.map((lesson) => lesson.learningPlan?.steps.length ?? 0);
+    expect(new Set(stageCounts).size).toBeGreaterThan(1);
+    expect(stageCounts.every((count) => count >= 3 && count <= 5)).toBe(true);
+    expect(firstFive.every((lesson) => lesson.experience?.firstView.whatItIs)).toBe(true);
   });
 
   it("gives every A1 lesson a seven-moment bilingual mentor guide for the learner route", () => {

@@ -403,8 +403,15 @@
 
 # Full Lesson-by-Lesson Curriculum Reauthoring
 - [x] Produce a review-ready Markdown sample showing the fully reauthored A1 Lessons 1–5 before applying the approved style to the remaining curriculum.
+- [x] Replace any universal lesson-template assumption with objective-led lesson archetypes, varied density, and adaptive stage selection across the 865-lesson authoring system.
+- [ ] Define and enforce the calm shared visual language for objectives, examples, tips, common mistakes, vocabulary, grammar, activities, retrieval, and assessment without using colour as the only cue.
+- [x] Revise the A1 Lessons 1–5 review sample to demonstrate genuinely varied lesson experiences, activity patterns, introductions, dialogue structures, and assessment formats.
+- [x] Add lesson-archetype, density, selected-stage, progressive-support, and visual-semantic metadata to the structured authoring data.
+- [x] Implement reusable semantic lesson components that render objectives, examples, tips, common mistakes, vocabulary, grammar, activities, retrieval, and assessments with labels, icons, and accessible non-colour cues.
+- [x] Extend the curriculum audit to flag possible archetype concentration, repeated openings, repeated activity sequences, dialogue-shape repetition, assessment monotony, and forced retrieval for human review.
+- [x] Update the tutorial, course map, and learner-facing route language so navigation is predictable while each lesson’s selected activity journey remains purposeful and variable.
 - [ ] Create the complete batch plan and acceptance criteria for reauthoring all 865 lessons, making the distinction between infrastructure and content production explicit.
-- [ ] Maintain a six-workstream A1 authoring ledger for curriculum mapping, pedagogy, activities, assessments, visual language, and independent audit evidence; pause unrelated deployment follow-ups.
+- [x] Maintain a six-workstream A1 authoring ledger for curriculum mapping, pedagogy, activities, assessments, visual language, and independent audit evidence; pause unrelated deployment follow-ups.
 - [ ] Reauthor every A1 lesson and six module tests with beginner-safe explanations, repeated-exposure activity sequences, and authored mentor transitions.
 - [ ] Reauthor every A2 and B1 lesson and module assessment with progressively more independent reading, interaction, and writing evidence.
 - [ ] Reauthor every B2, C1, and C2 lesson and module assessment with advanced discourse, precision, register, and synthesis practice.

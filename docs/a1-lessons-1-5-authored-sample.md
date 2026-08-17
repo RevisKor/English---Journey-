@@ -1,6 +1,6 @@
 # English Journey — Fully Authored Sample: A1 Lessons 1–5
 
-**Purpose.** This is a review draft showing the intended **lesson-level depth and learner experience** for the first five A1 lessons. It is not a claim that the remaining 85 A1 lessons have already been rewritten. Each lesson is designed as one guided route: meet useful language, notice one small pattern, hear it, say it, use it, retrieve it, and check it in context.
+**Purpose.** This is a review draft showing the intended **lesson-level depth and learner experience** for the first five A1 lessons. It is not a claim that the remaining 85 A1 lessons have already been rewritten. It is also **not a universal lesson template**. Each lesson chooses the smallest set of learning stages that serves its objective: a first greeting can be discovered through a short social moment, a grammar hinge can need deeper contrast and construction, and an integration lesson can deliberately introduce nothing new.
 
 The sample deliberately keeps new language small and useful, because early learners need clear goals, worked models, and manageable novelty.[1] The same language then returns in a new task rather than appearing only once, so that retrieval becomes meaningful rather than a disconnected memory test.[2] Each lesson ends with observable A1-style evidence: the learner can understand, produce, or interact with a short message for a real everyday purpose.[3]
 
@@ -8,18 +8,19 @@ The sample deliberately keeps new language small and useful, because early learn
 >
 > لا تحتاج إلى فهم كل الإنجليزية اليوم. تحتاج فقط إلى فهم واستخدام **جزء صغير واحد** بشكل جيد. سنقابله مرة أخرى لاحقاً.
 
-## How this sample should feel in the product
+## Predictable navigation, varied lesson experiences
 
-The learner does not choose disconnected tabs called “vocabulary”, “grammar”, or “quiz”. Instead, the page moves them through a visible sequence. Every word card has a **word-only British pronunciation button**, an Arabic meaning, a short example, and a reason for meeting the word now. A learner can optionally copy a prepared prompt to an external AI service for extra explanation or writing feedback; English Journey itself makes no paid AI request.
+The learner does not choose disconnected tabs called “vocabulary”, “grammar”, or “quiz”. Every lesson opens with a stable four-part orientation: **what this is, what to do, why it matters, and what comes next**. What changes is the actual learning experience. Every word card has a **word-only British pronunciation button**, an Arabic meaning, a short example, and a reason for meeting the word now. A learner can optionally copy a prepared prompt to an external AI service for extra explanation or writing feedback; English Journey itself makes no paid AI request.
 
-| Repeating route | What the learner sees | Why it is here |
+| Lesson | Archetype and density | Chosen experience | Stages intentionally not forced |
 |---|---|---|
-| 1. Start together | A friendly mentor message and one tiny success target. | Reduces uncertainty for a learner beginning from almost zero. |
-| 2. Meet the English | Five or fewer high-value words, meaning, sound, and a situation. | Introduces language in a bounded, useful set. |
-| 3. Notice the pattern | One plain-language grammar idea with English and Arabic explanation. | Shows how the words work without assuming grammar vocabulary. |
-| 4. Hear and say | A model, pauses, repeat-after-me directions, and a word-only pronunciation control. | Connects recognition with spoken production. |
-| 5. Use it in life | A controlled dialogue, reading, or short writing action. | Gives the words a communicative purpose. |
-| 6. Remember and check | Guided retrieval plus contextual questions and feedback. | Helps the learner retrieve rather than only reread. |
+| 1. A First Hello | **Discover** · Normal | A first social encounter, word exploration, listen-and-repeat, and short choice. | No formal grammar lesson and no writing task. |
+| 2. My Name Is… | **Interaction** · Light | A name exchange begins immediately; vocabulary and my/your are noticed inside turns. | No long grammar explanation or separate reading passage. |
+| 3. I Am / You Are | **Grammar** · Deep | A contrast with Arabic, worked model, construction practice, and one personal sentence ladder. | No extra topic vocabulary or full dialogue performance. |
+| 4. People Around Us | **Visual Vocabulary** · Light | Picture-led noticing, audio-to-image matching, and a small caption-building task. | No extended mentor preface or independent writing. |
+| 5. Listen, Repeat, Meet | **Speaking Integration** · Normal | A supported role-play that reuses the previous four lessons, with self-check evidence. | No major new grammar, word list, or multiple-choice end quiz. |
+
+The same semantic activity markers appear throughout: **Your goal**, **Example**, **Helpful tip**, **Watch out**, **Words to use**, **Notice the pattern**, **Try it**, **Remember**, and **Check your progress**. Each marker combines a text label, an icon, and a restrained accent; no learner has to infer meaning from colour alone.
 
 ---
 

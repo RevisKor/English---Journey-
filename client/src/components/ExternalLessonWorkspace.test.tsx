@@ -20,18 +20,18 @@ vi.mock("@/components/QuizPractice", () => ({
 import { ExternalLessonWorkspace } from "./ExternalLessonWorkspace";
 
 describe("ExternalLessonWorkspace", () => {
-  it("renders A1 as a single bilingual mentor-led route instead of isolated lesson tabs", () => {
+  it("renders an author-selected A1 archetype route instead of tabs or a fixed universal stage sequence", () => {
     const lesson = A1_LESSONS[0];
     const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={lesson} accent="british" onBack={() => undefined} />);
 
-    expect(html).toContain("guided route");
-    expect(html).toContain("Useful words first");
-    expect(html).toContain("One small grammar tool");
-    expect(html).toContain("Say it with courage, not perfection");
-    expect(html).toContain("Meet the words again in context");
-    expect(html).toContain("Show what you can do");
+    expect(html).toContain("discover lesson");
+    expect(html).toContain("This lesson’s route");
+    expect(html).toContain("Meet the English");
+    expect(html).toContain("Try with support");
+    expect(html).toContain("Bring it back");
+    expect(html).not.toContain("Notice one pattern");
+    expect(html).not.toContain("Show what you can do");
     expect(html).toContain(lesson.mentorGuide!.moments[0].messageArabic);
-    expect(html).toContain('data-quiz-level="A1"');
     expect(html).not.toContain('aria-label="Lesson sections"');
   });
 
