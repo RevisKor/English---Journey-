@@ -399,4 +399,13 @@
 - [x] Launch the first A1 restructuring batch, turning the shared graph, lesson blueprint, activity, assessment, visual, and quality contracts into concrete learner-facing content.
 - [x] Rebuild the active A1 module journeys with deeper mentor guidance, repeated vocabulary exposure, varied activities, and level-appropriate assessment evidence.
 - [x] Audit and validate the restructured A1 curriculum before using the same method to author A2, B1, B2, C1, and C2.
-- [ ] Apply the verified restructuring method to all remaining CEFR levels in staged, versioned, quality-gated authoring batches.
+- [x] Apply the verified restructuring method to all remaining CEFR levels in staged, versioned, quality-gated authoring batches.
+
+# Full Lesson-by-Lesson Curriculum Reauthoring
+- [x] Produce a review-ready Markdown sample showing the fully reauthored A1 Lessons 1–5 before applying the approved style to the remaining curriculum.
+- [ ] Create the complete batch plan and acceptance criteria for reauthoring all 865 lessons, making the distinction between infrastructure and content production explicit.
+- [ ] Maintain a six-workstream A1 authoring ledger for curriculum mapping, pedagogy, activities, assessments, visual language, and independent audit evidence; pause unrelated deployment follow-ups.
+- [ ] Reauthor every A1 lesson and six module tests with beginner-safe explanations, repeated-exposure activity sequences, and authored mentor transitions.
+- [ ] Reauthor every A2 and B1 lesson and module assessment with progressively more independent reading, interaction, and writing evidence.
+- [ ] Reauthor every B2, C1, and C2 lesson and module assessment with advanced discourse, precision, register, and synthesis practice.
+- [ ] Verify every reauthored lesson against the curriculum graph, assessment specification, and learner workspace, then release audited level-by-level checkpoints.
