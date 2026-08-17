@@ -222,6 +222,7 @@
 - [x] Author, wire, test, and validate A2 Module 8 (Lessons 106–120) as Food, Shopping, and Services journeys aligned to the authoritative arc.
 - [x] Save the validated A2 Module 8 Food, Shopping, and Services curriculum checkpoint.
 - [x] Author, wire, test, validate, and checkpoint A2 Module 9 (Lessons 121–135) as Celebrations and Culture journeys aligned to the authoritative arc.
+- [x] Author, wire, test, validate, and checkpoint B1 Module 1 (Lessons 1–15) as varied bilingual narrative, decision, community, workplace, and media-literacy journeys aligned to the authoritative lesson arc.
 
 # A1 Lesson Workspace Stability Follow-up
 - [x] Add regression coverage for missing or malformed activity metadata labels in the shared lesson workspace.

@@ -56,6 +56,21 @@ describe("B1 cumulative curriculum", () => {
     }
   });
 
+  it("gives B1 Module 1 explicit, varied narrative, community, workplace, and media-literacy routes", () => {
+    const moduleOne = B1_LESSONS.filter((lesson) => lesson.moduleNumber === 1);
+    const expectedArchetypes = new Set(["speaking", "interaction", "notice", "reading", "writing", "vocabulary", "real-world", "discover", "assessment"]);
+
+    expect(moduleOne).toHaveLength(15);
+    expect(moduleOne.every((lesson) => lesson.experience && lesson.activities?.length)).toBe(true);
+    expect(new Set(moduleOne.map((lesson) => lesson.experience?.archetype)).size).toBeGreaterThanOrEqual(9);
+    expect(moduleOne.map((lesson) => lesson.experience?.archetype).every((archetype) => expectedArchetypes.has(archetype ?? ""))).toBe(true);
+    expect(moduleOne.some((lesson) => lesson.activities?.some((item) => item.kind === "visual-vocabulary" && item.visualItems?.every((visual) => Boolean(visual.imageUrl && visual.altText))))).toBe(true);
+    expect(moduleOne.some((lesson) => lesson.activities?.some((item) => item.readingChecks?.some((check) => check.type === "inference")))).toBe(true);
+    expect(moduleOne.some((lesson) => lesson.activities?.some((item) => item.writingPrompt?.includes("more car-free streets")))).toBe(true);
+    expect(moduleOne.some((lesson) => lesson.activities?.some((item) => item.kind === "assessment" && item.stage === "assessment"))).toBe(true);
+    expect(moduleOne.every((lesson) => lesson.experience?.selectedStages.length)).toBe(true);
+  });
+
   it("increases communicative demand across the B1 sequence", () => {
     const first = B1_LESSONS[0];
     const final = B1_LESSONS.at(-1)!;

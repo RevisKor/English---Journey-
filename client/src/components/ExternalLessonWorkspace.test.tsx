@@ -214,8 +214,23 @@ describe("ExternalLessonWorkspace", () => {
     expect(html).toContain("Find one shared feature, one difference, and the sentence that avoids calling either event better");
   });
 
+  it("renders the authored B1 Module 1 source-check investigation as its selected media-literacy route", () => {
+    const lesson = B1_LESSONS[12];
+    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={lesson} accent="british" onBack={() => undefined} />);
+
+    expect(html).toContain("reading lesson");
+    expect(html).toContain("Know the purpose");
+    expect(html).toContain("Meet the English");
+    expect(html).toContain("Notice one pattern");
+    expect(html).toContain("Bring it back");
+    expect(html).toContain("Show what you can do");
+    expect(html).not.toContain('aria-label="Lesson sections"');
+    expect(html).toContain("Trace a story to its source");
+    expect(html).toContain("Compare a claim with direct and reported sources");
+  });
+
   it("preserves the established tabbed workspace for un-authored later levels during the staged rollout", () => {
-    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={B1_LESSONS[0]} accent="british" onBack={() => undefined} />);
+    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={B1_LESSONS[15]} accent="british" onBack={() => undefined} />);
 
     expect(html).toContain('aria-label="Lesson sections"');
     expect(html).toContain("Words");
