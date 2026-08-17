@@ -164,4 +164,19 @@ describe("A2 cumulative curriculum", () => {
     expect(moduleEight.some((lesson) => lesson.activities?.some((item) => item.kind === "assessment" && item.stage === "assessment"))).toBe(true);
     expect(moduleEight.every((lesson) => lesson.experience?.selectedStages.length)).toBe(true);
   });
+
+  it("gives A2 Module 9 explicit, varied Celebrations and Culture routes with respectful cultural evidence", () => {
+    const moduleNine = A2_LESSONS.filter((lesson) => lesson.moduleNumber === 9);
+    const expectedArchetypes = new Set(["vocabulary", "interaction", "speaking", "reading", "grammar", "notice", "discover", "writing", "review", "integration", "assessment"]);
+
+    expect(moduleNine).toHaveLength(15);
+    expect(moduleNine.every((lesson) => lesson.experience && lesson.activities?.length)).toBe(true);
+    expect(new Set(moduleNine.map((lesson) => lesson.experience?.archetype)).size).toBeGreaterThanOrEqual(11);
+    expect(moduleNine.map((lesson) => lesson.experience?.archetype).every((archetype) => expectedArchetypes.has(archetype ?? ""))).toBe(true);
+    expect(moduleNine.some((lesson) => lesson.activities?.some((item) => item.kind === "visual-vocabulary" && item.visualItems?.every((visual) => Boolean(visual.imageUrl && visual.altText))))).toBe(true);
+    expect(moduleNine.some((lesson) => lesson.activities?.some((item) => item.readingChecks?.some((check) => check.type === "inference")))).toBe(true);
+    expect(moduleNine.some((lesson) => lesson.activities?.some((item) => item.writingPrompt?.includes("Do not claim one way of celebrating is better")))).toBe(true);
+    expect(moduleNine.some((lesson) => lesson.activities?.some((item) => item.kind === "assessment" && item.stage === "assessment"))).toBe(true);
+    expect(moduleNine.every((lesson) => lesson.experience?.selectedStages.length)).toBe(true);
+  });
 });

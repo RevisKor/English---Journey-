@@ -43,7 +43,7 @@ describe("guided workspace Arabic scaffolding", () => {
   });
 
   it("renders explicit multimodal controls for speaking, interaction, and reading activities", () => {
-    const structuredLessons = A2_LESSONS.filter((lesson) => !lesson.experience);
+    const structuredLessons = A2_LESSONS;
     const speakingLesson = structuredLessons.find((lesson) => lesson.activities?.some((activity) => activity.kind === "speaking"));
     const interactionLesson = structuredLessons.find((lesson) => lesson.activities?.some((activity) => activity.kind === "interaction"));
     const readingLesson = structuredLessons.find((lesson) => lesson.activities?.some((activity) => activity.kind === "reading"));
@@ -53,6 +53,7 @@ describe("guided workspace Arabic scaffolding", () => {
     expect(readingLesson).toBeDefined();
     expect(visualLesson).toBeDefined();
     const visualActivity = visualLesson!.activities!.find((activity) => activity.kind === "visual-vocabulary");
+    const readingActivity = readingLesson!.activities!.find((activity) => activity.kind === "reading");
     expect(visualActivity?.visualItems?.[0]?.word).toBeDefined();
     expect(renderToStaticMarkup(<StructuredLessonWorkspace lesson={visualLesson!} accent="british" onBack={() => undefined} />)).toContain("Reveal example");
     expect(renderToStaticMarkup(<StructuredLessonWorkspace lesson={visualLesson!} accent="british" onBack={() => undefined} />)).toContain("Mark reviewed");
@@ -60,7 +61,10 @@ describe("guided workspace Arabic scaffolding", () => {
     expect(renderToStaticMarkup(<StructuredLessonWorkspace lesson={speakingLesson!} accent="british" onBack={() => undefined} />)).toContain("Next sentence");
     expect(renderToStaticMarkup(<StructuredLessonWorkspace lesson={speakingLesson!} accent="british" onBack={() => undefined} />)).toContain("Replay sentence");
     expect(renderToStaticMarkup(<StructuredLessonWorkspace lesson={interactionLesson!} accent="british" onBack={() => undefined} />)).toContain("Play complete dialogue");
-    expect(renderToStaticMarkup(<StructuredLessonWorkspace lesson={readingLesson!} accent="british" onBack={() => undefined} />)).toContain("main idea");
+    expect(readingActivity?.readingText).toBeDefined();
+    const readingHtml = renderToStaticMarkup(<StructuredLessonWorkspace lesson={readingLesson!} accent="british" onBack={() => undefined} />);
+    expect(readingHtml).toContain(readingActivity!.title);
+    expect(readingHtml).toContain("Reading practice");
   });
 
   it("renders Arabic mentor transitions and prompt guidance for A2", () => {

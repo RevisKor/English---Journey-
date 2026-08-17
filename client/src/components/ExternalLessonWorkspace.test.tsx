@@ -200,6 +200,20 @@ describe("ExternalLessonWorkspace", () => {
     expect(html).toContain("Find the opening-time fact, the writer’s opinion, and the evidence offered for it");
   });
 
+  it("renders the authored A2 Module 9 celebration comparison as its selected respectful reading route", () => {
+    const lesson = A2_LESSONS[123];
+    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={lesson} accent="british" onBack={() => undefined} />);
+
+    expect(html).toContain("reading lesson");
+    expect(html).toContain("Meet the English");
+    expect(html).toContain("Notice one pattern");
+    expect(html).toContain("Try with support");
+    expect(html).toContain("Show what you can do");
+    expect(html).not.toContain("Use it for a reason");
+    expect(html).toContain("Read two celebrations respectfully");
+    expect(html).toContain("Find one shared feature, one difference, and the sentence that avoids calling either event better");
+  });
+
   it("preserves the established tabbed workspace for un-authored later levels during the staged rollout", () => {
     const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={B1_LESSONS[0]} accent="british" onBack={() => undefined} />);
 
