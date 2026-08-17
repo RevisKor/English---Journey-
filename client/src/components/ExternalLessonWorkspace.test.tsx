@@ -374,7 +374,7 @@ describe("ExternalLessonWorkspace", () => {
   });
 
   it("preserves the established tabbed workspace for un-authored later levels during the staged rollout", () => {
-    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={B2_LESSONS[30]} accent="british" onBack={() => undefined} />);
+    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={B2_LESSONS[45]} accent="british" onBack={() => undefined} />);
 
     expect(html).toContain('aria-label="Lesson sections"');
     expect(html).toContain("Words");
@@ -392,5 +392,18 @@ describe("ExternalLessonWorkspace", () => {
     expect(html).not.toContain('aria-label="Lesson sections"');
     expect(html).toContain("Read the business of belonging");
     expect(html).toContain("Separate claim from evidence");
+  });
+
+  it("renders the authored B2 Module 3 culture-in-translation source as its selected critical-reading route", () => {
+    const lesson = B2_LESSONS[38];
+    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={lesson} accent="british" onBack={() => undefined} />);
+
+    expect(html).toContain("reading lesson");
+    expect(html).toContain("Meet the English");
+    expect(html).toContain("Notice one pattern");
+    expect(html).toContain("Show what you can do");
+    expect(html).not.toContain('aria-label="Lesson sections"');
+    expect(html).toContain("Read culture in translation");
+    expect(html).toContain("Distinguish a source’s representation from a broad claim about a culture");
   });
 });

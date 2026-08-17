@@ -55,6 +55,17 @@ describe("B2 evidence and influence curriculum", () => {
     expect(B2_LESSONS[20].activities.some((activity) => activity.title === "Plan for consequences" && activity.kind === "writing")).toBe(true);
     expect(B2_LESSONS[24].activities.some((activity) => activity.title === "Test information under pressure")).toBe(true);
     expect(B2_LESSONS[29].activities.some((activity) => activity.kind === "assessment")).toBe(true);
-    expect(B2_LESSONS[30].experience).toBeUndefined();
+    expect(B2_LESSONS[45].experience).toBeUndefined();
+  });
+
+  it("authors Module 3 as varied public-decision, representation, and consequence journeys", () => {
+    const moduleThree = B2_LESSONS.slice(30, 45);
+    expect(moduleThree.every((lesson) => lesson.experience && lesson.activities.length > 0)).toBe(true);
+    expect(new Set(moduleThree.map((lesson) => lesson.experience?.archetype)).size).toBeGreaterThanOrEqual(8);
+    expect(B2_LESSONS[30].activities.some((activity) => activity.title === "Design access before appearance" && activity.kind === "interaction")).toBe(true);
+    expect(B2_LESSONS[32].activities.some((activity) => activity.title === "Map the case for change" && activity.kind === "reading")).toBe(true);
+    expect(B2_LESSONS[41].activities.some((activity) => activity.title === "Frame an automated decision ethically")).toBe(true);
+    expect(B2_LESSONS[44].activities.some((activity) => activity.kind === "assessment" && activity.title === "Proposal with consequences")).toBe(true);
+    expect(B2_LESSONS[45].experience).toBeUndefined();
   });
 });
