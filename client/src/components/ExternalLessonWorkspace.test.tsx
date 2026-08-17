@@ -131,6 +131,20 @@ describe("ExternalLessonWorkspace", () => {
     expect(html).toContain("Read once for the problem");
   });
 
+  it("renders the corrected A2 Module 4 opening scene as its selected Stories and Memories reading route", () => {
+    const lesson = A2_LESSONS[46];
+    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={lesson} accent="british" onBack={() => undefined} />);
+
+    expect(html).toContain("reading lesson");
+    expect(html).toContain("Meet the English");
+    expect(html).toContain("Notice one pattern");
+    expect(html).toContain("Try with support");
+    expect(html).toContain("Show what you can do");
+    expect(html).not.toContain("Use it for a reason");
+    expect(html).toContain("Read the opening scene");
+    expect(html).toContain("Find the place and the words that create its mood");
+  });
+
   it("preserves the established tabbed workspace for un-authored later levels during the staged rollout", () => {
     const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={B1_LESSONS[0]} accent="british" onBack={() => undefined} />);
 

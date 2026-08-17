@@ -89,4 +89,19 @@ describe("A2 cumulative curriculum", () => {
     expect(moduleThree.some((lesson) => lesson.activities?.some((activity) => activity.kind === "assessment" && activity.stage === "assessment"))).toBe(true);
     expect(moduleThree.every((lesson) => lesson.experience?.selectedStages.length)).toBe(true);
   });
+
+  it("gives A2 Module 4 explicit, varied Stories and Memories routes with connected narrative evidence", () => {
+    const moduleFour = A2_LESSONS.filter((lesson) => lesson.moduleNumber === 4);
+    const expectedArchetypes = new Set(["notice", "grammar", "vocabulary", "writing", "interaction", "speaking", "reading", "review", "assessment"]);
+
+    expect(moduleFour).toHaveLength(15);
+    expect(moduleFour.every((lesson) => lesson.experience && lesson.activities?.length)).toBe(true);
+    expect(new Set(moduleFour.map((lesson) => lesson.experience?.archetype)).size).toBeGreaterThanOrEqual(9);
+    expect(moduleFour.map((lesson) => lesson.experience?.archetype).every((archetype) => expectedArchetypes.has(archetype ?? ""))).toBe(true);
+    expect(moduleFour.some((lesson) => lesson.activities?.some((item) => item.kind === "visual-vocabulary" && item.visualItems?.every((visual) => Boolean(visual.imageUrl && visual.altText))))).toBe(true);
+    expect(moduleFour.some((lesson) => lesson.activities?.some((item) => item.readingText?.includes("small café") && item.readingText.includes("river")))).toBe(true);
+    expect(moduleFour.some((lesson) => lesson.activities?.some((item) => item.kind === "interaction" && item.interactionTurns && item.interactionTurns.length >= 3))).toBe(true);
+    expect(moduleFour.some((lesson) => lesson.activities?.some((item) => item.kind === "assessment" && item.writingPrompt?.includes("fictional prompt")))).toBe(true);
+    expect(moduleFour.every((lesson) => lesson.experience?.selectedStages.length)).toBe(true);
+  });
 });
