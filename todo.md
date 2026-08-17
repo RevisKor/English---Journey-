@@ -463,4 +463,4 @@
 
 - [ ] Reauthor, wire, test, validate, and checkpoint B2 Module 3 (Lessons 31–45) as varied bilingual systems, pressure, media, professional judgement, and nuanced recommendation journeys aligned to the authoritative lesson arc.
 
-- [ ] Audit the current curriculum work against the supplied six-agent protocol; create the shared Curriculum Bible, specialist handoff records, corpus-level pedagogical QA gates, visual-experience review criteria, and assessment-architecture validation before any further lesson authoring.
+- [x] Audit the current curriculum work against the supplied six-agent protocol; create the shared Curriculum Bible, specialist handoff records, corpus-level pedagogical QA gates, visual-experience review criteria, and assessment-architecture validation before any further lesson authoring.

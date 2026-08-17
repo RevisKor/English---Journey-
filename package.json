@@ -13,6 +13,7 @@
     "format": "prettier --write .",
     "test": "vitest run",
     "audit:curriculum": "tsx scripts/audit-curriculum.ts",
+    "audit:rearchitecture": "tsx scripts/audit-rearchitecture.ts",
     "db:push": "drizzle-kit generate && drizzle-kit migrate"
   },
   "dependencies": {
