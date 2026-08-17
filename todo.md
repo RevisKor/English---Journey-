@@ -458,3 +458,5 @@
 - [x] Reauthor, wire, test, validate, and checkpoint B1 Module 10 (Lessons 136–150) as varied bilingual future pathways, personal goals, choices, applications, and reflective-transfer journeys aligned to the authoritative lesson arc.
 
 - [x] Reauthor, wire, test, validate, and checkpoint B2 Module 1 (Lessons 1–15) as varied bilingual advanced routines, work, study, argument, and evidence-led learner journeys aligned to the authoritative lesson arc.
+
+- [x] Reauthor, wire, test, validate, and checkpoint B2 Module 2 (Lessons 16–30) as varied bilingual social change, institutions, collaboration, explanation, and critical-response journeys aligned to the authoritative lesson arc.

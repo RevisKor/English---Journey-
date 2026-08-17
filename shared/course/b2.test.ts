@@ -45,6 +45,16 @@ describe("B2 evidence and influence curriculum", () => {
     expect(B2_LESSONS[8].activities.some((activity) => activity.title === "Build the case for change" && activity.kind === "writing")).toBe(true);
     expect(B2_LESSONS[11].activities.some((activity) => activity.title === "Negotiate a fair compromise")).toBe(true);
     expect(B2_LESSONS[14].activities.some((activity) => activity.kind === "assessment")).toBe(true);
-    expect(B2_LESSONS[15].experience).toBeUndefined();
+  });
+
+  it("authors Module 2 as varied bilingual public-argument and consequential-choice journeys", () => {
+    const moduleTwo = B2_LESSONS.slice(15, 30);
+    expect(moduleTwo.every((lesson) => lesson.experience && lesson.activities.length > 0)).toBe(true);
+    expect(new Set(moduleTwo.map((lesson) => lesson.experience?.archetype)).size).toBeGreaterThanOrEqual(6);
+    expect(B2_LESSONS[15].activities.some((activity) => activity.title === "Read the business of belonging" && activity.kind === "reading")).toBe(true);
+    expect(B2_LESSONS[20].activities.some((activity) => activity.title === "Plan for consequences" && activity.kind === "writing")).toBe(true);
+    expect(B2_LESSONS[24].activities.some((activity) => activity.title === "Test information under pressure")).toBe(true);
+    expect(B2_LESSONS[29].activities.some((activity) => activity.kind === "assessment")).toBe(true);
+    expect(B2_LESSONS[30].experience).toBeUndefined();
   });
 });

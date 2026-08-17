@@ -374,10 +374,23 @@ describe("ExternalLessonWorkspace", () => {
   });
 
   it("preserves the established tabbed workspace for un-authored later levels during the staged rollout", () => {
-    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={B2_LESSONS[15]} accent="british" onBack={() => undefined} />);
+    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={B2_LESSONS[30]} accent="british" onBack={() => undefined} />);
 
     expect(html).toContain('aria-label="Lesson sections"');
     expect(html).toContain("Words");
     expect(html).not.toContain("guided route");
+  });
+
+  it("renders the authored B2 Module 2 belonging investigation as its selected critical-reading route", () => {
+    const lesson = B2_LESSONS[15];
+    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={lesson} accent="british" onBack={() => undefined} />);
+
+    expect(html).toContain("reading lesson");
+    expect(html).toContain("Meet the English");
+    expect(html).toContain("Notice one pattern");
+    expect(html).toContain("Show what you can do");
+    expect(html).not.toContain('aria-label="Lesson sections"');
+    expect(html).toContain("Read the business of belonging");
+    expect(html).toContain("Separate claim from evidence");
   });
 });
