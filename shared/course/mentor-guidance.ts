@@ -58,20 +58,26 @@ function guideForLevel(lesson: LessonDefinition) {
 }
 
 export function buildMentorGuide(lesson: LessonDefinition): LessonMentorGuide | null {
+  if (lesson.mentorGuide) return lesson.mentorGuide;
   const voice = guideForLevel(lesson);
   if (!voice) return null;
   const outcome = lesson.learningPlan?.outcome.canDo ?? "use today’s language in a connected response";
   const outcomeArabic = lesson.learningPlan?.outcome.canDoArabic ?? "استخدم لغة اليوم في استجابة مترابطة";
+  const scenario = lesson.learningPlan?.outcome.scenario ?? lesson.domainFocus ?? lesson.title;
+  const scenarioArabic = lesson.learningPlan?.outcome.scenarioArabic ?? lesson.domainFocusArabic ?? lesson.titleArabic;
+  const retrieval = lesson.learningPlan?.retrieval[0];
   const network = lesson.lexicalNetworks?.[0];
   const theme = network?.theme ?? lesson.title;
   const chunks = network?.chunks.slice(0, 2).join(" · ") ?? lesson.words.slice(0, 2).map((word) => word.word).join(" · ");
+  const readingBrief = lesson.practiceBrief?.readingBrief ?? `Read for the situation first, then notice how ${lesson.title} is used to make the meaning clear.`;
+  const writingPrompt = lesson.practiceBrief?.writingPrompt ?? `Write a short response for ${scenario} using one idea from ${lesson.title}.`;
   const moments: MentorMoment[] = [
     {
       id: "welcome",
       title: "Your mentor is here",
       titleArabic: "مرشدك معك",
-      message: `${voice.opening} Today’s focus is ${lesson.title}. By the end, you can ${outcome}.`,
-      messageArabic: `${voice.openingArabic} تركيز اليوم هو «${lesson.titleArabic}». في النهاية ستتمكن من: ${outcomeArabic}.`,
+      message: `${voice.opening} Today’s focus is ${lesson.title}. You will use it in ${scenario}. By the end, you can ${outcome}.`,
+      messageArabic: `${voice.openingArabic} تركيز اليوم هو «${lesson.titleArabic}»، وستستخدمه في «${scenarioArabic}». في النهاية ستتمكن من: ${outcomeArabic}.`,
     },
     {
       id: "vocabulary",
@@ -91,22 +97,26 @@ export function buildMentorGuide(lesson: LessonDefinition): LessonMentorGuide | 
       id: "practice",
       title: "Try one small decision",
       titleArabic: "جرّب قراراً صغيراً",
-      message: `Before you move on, make one sentence of your own. Use one expression from today and the grammar pattern to say something true, useful, or interesting to you.`,
-      messageArabic: "قبل أن تنتقل، اكتب جملة من عندك. استخدم تعبيراً من اليوم ونمط القاعدة لقول شيء حقيقي أو مفيد أو مثير للاهتمام بالنسبة لك.",
+      message: retrieval
+        ? `Before you move on, connect today’s language to ${retrieval.language} from ${retrieval.sourceLevel}: ${retrieval.prompt} Then make one sentence of your own for ${scenario}.`
+        : `Before you move on, make one sentence of your own for ${scenario}. Use one expression from today and the grammar pattern to say something true, useful, or interesting to you.`,
+      messageArabic: retrieval
+        ? `قبل أن تنتقل، صِل لغة اليوم بـ «${retrieval.language}» من مستوى ${retrieval.sourceLevel}: ${retrieval.prompt} ثم اكتب جملة من عندك تناسب «${scenarioArabic}».`
+        : `قبل أن تنتقل، اكتب جملة من عندك تناسب «${scenarioArabic}». استخدم تعبيراً من اليوم ونمط القاعدة لقول شيء حقيقي أو مفيد أو مثير للاهتمام بالنسبة لك.`,
     },
     {
       id: "reading",
       title: "See it working in a real text",
       titleArabic: "شاهده يعمل في نص حقيقي",
-      message: `Now the language leaves the list. Read for the message first, then return to notice how the writer uses today’s choices to make that message clear.`,
-      messageArabic: "الآن تخرج اللغة من القائمة. اقرأ الرسالة أولاً، ثم ارجع ولاحظ كيف يستخدم الكاتب اختيارات اليوم لجعل الرسالة واضحة.",
+      message: `Now the language leaves the list. ${readingBrief} Read for the message first, then return to notice how the writer uses today’s choices to make that message clear.`,
+      messageArabic: `الآن تخرج اللغة من القائمة. اقرأ أولاً من أجل المعنى، ثم ارجع ولاحظ كيف يستخدم الكاتب اختيارات اليوم لجعل الرسالة واضحة في «${scenarioArabic}».`,
     },
     {
       id: "writing",
       title: "Make the language yours",
       titleArabic: "اجعل اللغة لغتك",
-      message: `Your response does not need to be perfect before it is useful. Write with a real purpose, then use the feedback prompt to notice one strength and one next improvement.`,
-      messageArabic: "لا تحتاج إجابتك إلى أن تكون مثالية حتى تكون مفيدة. اكتب لهدف حقيقي، ثم استخدم طلب التغذية الراجعة لملاحظة نقطة قوة وخطوة تحسين تالية.",
+      message: `Your response does not need to be perfect before it is useful. ${writingPrompt} Then use the feedback prompt to notice one strength and one next improvement.`,
+      messageArabic: `لا تحتاج إجابتك إلى أن تكون مثالية حتى تكون مفيدة. اكتب استجابة لها هدف حقيقي في «${scenarioArabic}»، ثم استخدم طلب التغذية الراجعة لملاحظة نقطة قوة وخطوة تحسين تالية.`,
     },
     {
       id: "check",
