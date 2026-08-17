@@ -463,7 +463,9 @@
 
 - [x] Reauthor, wire, test, validate, and checkpoint B2 Module 3 (Lessons 31–45) as varied bilingual systems, pressure, media, professional judgement, and nuanced recommendation journeys aligned to the authoritative lesson arc.
 
-- [ ] Reauthor, wire, test, validate, and checkpoint B2 Module 4 (Lessons 46–60) as varied bilingual work, heritage, verification, institutional trust, data interpretation, and negotiated public-choice journeys aligned to the authoritative lesson arc.
+- [x] Reauthor, wire, test, validate, and checkpoint B2 Module 4 (Lessons 46–60) as varied bilingual work, heritage, verification, institutional trust, data interpretation, and negotiated public-choice journeys aligned to the authoritative lesson arc.
+
+- [x] Prepare, author, review, validate, and checkpoint B2 Module 5 (Lessons 61–75) through the six-agent operating system, preserving compact objective-led lessons and the owner-defined skill cadence.
 
 - [x] Apply and audit the owner-defined programme-level skill cadence, explicit per-lesson retrieval/check, and checkpoint/assessment rhythm across the active B2 Module 4 packet before validation, then use it as a mandatory architecture control for all subsequent modules.
 
