@@ -432,3 +432,4 @@
 - [x] Reauthor A2 Module 2 Lessons 16–30 as varied, connected learning-and-work learner journeys with explicit bilingual activity data, purposeful A1/A2 retrieval, and learner evidence.
 - [x] Reauthor A2 Module 3 Lessons 31–45 as varied, practical travel-and-services learner journeys with explicit bilingual activity data, polite problem-solving language, and learner evidence.
 - [x] Reauthor A2 Module 4 Lessons 46–60 as varied, connected Stories and Memories learner journeys with explicit bilingual activity data, narrative sequencing, reflection, and learner evidence.
+- [x] Reauthor A2 Module 5 Lessons 61–75 as varied, connected Nature and Community learner journeys with explicit bilingual activity data, practical problem-solving, and learner evidence.

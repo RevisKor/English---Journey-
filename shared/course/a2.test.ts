@@ -104,4 +104,19 @@ describe("A2 cumulative curriculum", () => {
     expect(moduleFour.some((lesson) => lesson.activities?.some((item) => item.kind === "assessment" && item.writingPrompt?.includes("fictional prompt")))).toBe(true);
     expect(moduleFour.every((lesson) => lesson.experience?.selectedStages.length)).toBe(true);
   });
+
+  it("gives A2 Module 5 explicit, varied Nature and Community routes with practical connected evidence", () => {
+    const moduleFive = A2_LESSONS.filter((lesson) => lesson.moduleNumber === 5);
+    const expectedArchetypes = new Set(["vocabulary", "notice", "reading", "interaction", "speaking", "real-world", "grammar", "writing", "review", "assessment"]);
+
+    expect(moduleFive).toHaveLength(15);
+    expect(moduleFive.every((lesson) => lesson.experience && lesson.activities?.length)).toBe(true);
+    expect(new Set(moduleFive.map((lesson) => lesson.experience?.archetype)).size).toBeGreaterThanOrEqual(10);
+    expect(moduleFive.map((lesson) => lesson.experience?.archetype).every((archetype) => expectedArchetypes.has(archetype ?? ""))).toBe(true);
+    expect(moduleFive.some((lesson) => lesson.activities?.some((item) => item.kind === "visual-vocabulary" && item.visualItems?.every((visual) => Boolean(visual.imageUrl && visual.altText))))).toBe(true);
+    expect(moduleFive.some((lesson) => lesson.activities?.some((item) => item.readingText?.includes("The east street is cleaner than it was last year")))).toBe(true);
+    expect(moduleFive.some((lesson) => lesson.activities?.some((item) => item.writingPrompt?.includes("fictional community improvement")))).toBe(true);
+    expect(moduleFive.some((lesson) => lesson.activities?.some((item) => item.kind === "assessment" && item.stage === "assessment"))).toBe(true);
+    expect(moduleFive.every((lesson) => lesson.experience?.selectedStages.length)).toBe(true);
+  });
 });
