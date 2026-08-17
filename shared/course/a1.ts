@@ -6,6 +6,7 @@ import { authoredActivitiesForA1Module2 } from "./a1-module-2-authored-activitie
 import { authoredActivitiesForA1Module3 } from "./a1-module-3-authored-activities";
 import { A1_MODULE_4_AUTHORED_ACTIVITIES } from "./a1-module-4-authored-activities";
 import { A1_MODULE_5_AUTHORED_ACTIVITIES } from "./a1-module-5-authored-activities";
+import { A1_MODULE_6_AUTHORED_ACTIVITIES } from "./a1-module-6-authored-activities";
 import { enrichLesson } from "./activity-plan";
 import { createLessonExperience } from "./lesson-experience";
 import { buildModuleDefinitions } from "./module-definitions";
@@ -70,6 +71,9 @@ function experienceForBlueprint(blueprint: ImmersiveLessonBlueprint, moduleNumbe
   }
   if (moduleNumber === 5) {
     return experienceForModule5(blueprint.lessonNumber);
+  }
+  if (moduleNumber === 6) {
+    return experienceForModule6(blueprint.lessonNumber);
   }
   if (moduleNumber !== 1) return undefined;
 
@@ -731,6 +735,47 @@ function experienceForModule5(localLessonNumber: number) {
   }
 }
 
+function experienceForModule6(localLessonNumber: number) {
+  const shared: { progressiveSupports: ProgressiveSupport[] } = {
+    progressiveSupports: ["arabic-help", "worked-example", "word-support"],
+  };
+
+  switch (localLessonNumber) {
+    case 1:
+      return createLessonExperience({ archetype: "vocabulary", density: "normal", archetypeRationale: "A compact visual set makes familiar work and study roles recognisable before personal-information language is introduced.", selectedStages: ["encounter", "supported-practice", "retrieval"], intentionallyOmittedStages: [{ stage: "notice", reason: "The opening priority is sound, picture, and meaning—not job grammar." }], firstView: { whatItIs: "Four people and useful jobs", whatToDo: "Match each person to a picture, then say two job-and-place phrases.", whatMatters: "A job word helps you understand and share a basic fact about a person.", whatNext: "Ask one friendly question about work or study." }, ...shared });
+    case 2:
+      return createLessonExperience({ archetype: "interaction", density: "normal", archetypeRationale: "A respectful What do you do? exchange gives the new job words a human purpose before grammar labels appear.", selectedStages: ["orientation", "notice"], intentionallyOmittedStages: [{ stage: "evidence", reason: "The learner is rehearsing one practical question, not taking a test." }], firstView: { whatItIs: "A friendly work-or-study question", whatToDo: "Follow the short exchange, notice do in the question, and choose a simple answer.", whatMatters: "What do you do? asks about usual work or study; a short answer is enough.", whatNext: "Meet hobbies as things people enjoy after work or study." }, progressiveSupports: ["arabic-help", "worked-example", "transcript", "tip"] });
+    case 3:
+      return createLessonExperience({ archetype: "vocabulary", density: "light", archetypeRationale: "A calm hobby-choice board introduces useful activity chunks without overwhelming beginners with a long leisure list.", selectedStages: ["encounter", "supported-practice"], intentionallyOmittedStages: [{ stage: "retrieval", reason: "The next ability lesson immediately reuses play, read, and watch." }], firstView: { whatItIs: "A few hobbies you can say", whatToDo: "Choose a hobby from the board, then repeat two short activity chunks.", whatMatters: "English keeps some activity words together: read books and play football.", whatNext: "Use can and cannot to talk about an ability." }, progressiveSupports: ["arabic-help", "word-support", "worked-example", "transcript"] });
+    case 4:
+      return createLessonExperience({ archetype: "grammar", density: "normal", archetypeRationale: "Contrasting can and cannot with fictional character cards makes ability meaning clear without asking learners to disclose a personal skill.", selectedStages: ["notice", "meaningful-use", "retrieval"], intentionallyOmittedStages: [{ stage: "orientation", reason: "The visible sentence pairs are sufficient orientation for this compact grammar focus." }], firstView: { whatItIs: "Can and cannot for ability", whatToDo: "Compare two sentence cards, say one character ability, then keep one pattern.", whatMatters: "Can changes what someone is able to do; the activity word stays the same.", whatNext: "Add a reason to a preference." }, progressiveSupports: ["arabic-help", "worked-example", "word-support", "tip"] });
+    case 5:
+      return createLessonExperience({ archetype: "notice", density: "normal", archetypeRationale: "A two-part ladder makes because understandable as a reason bridge before a learner writes a supported preference.", selectedStages: ["notice", "meaningful-use"], intentionallyOmittedStages: [{ stage: "evidence", reason: "The intended outcome is one understandable reason, not formal connector mastery." }], firstView: { whatItIs: "A preference with a reason", whatToDo: "Put two idea cards together, then write one line for a fictional character.", whatMatters: "Because gives the reason for a like or choice.", whatNext: "Use a hobby in a friendly weekend invitation." }, progressiveSupports: ["arabic-help", "worked-example", "word-support", "tip"] });
+    case 6:
+      return createLessonExperience({ archetype: "interaction", density: "normal", archetypeRationale: "An invitation with both acceptance and kind refusal shows that useful conversation is flexible, not a fixed correct script.", selectedStages: ["orientation", "meaningful-use"], intentionallyOmittedStages: [{ stage: "notice", reason: "Social language is first practised as a helpful whole exchange." }], firstView: { whatItIs: "A weekend invitation with choices", whatToDo: "Read the invitation, then try either a warm acceptance or a polite refusal.", whatMatters: "Both yes and no can be friendly when the answer is clear and kind.", whatNext: "Make a simple plan for tomorrow." }, progressiveSupports: ["arabic-help", "worked-example", "transcript", "tip"] });
+    case 7:
+      return createLessonExperience({ archetype: "writing", density: "deep", archetypeRationale: "A two-line plan card gives going to a clear future purpose while letting learners use a fictional plan if they prefer privacy.", selectedStages: ["orientation", "meaningful-use"], intentionallyOmittedStages: [{ stage: "evidence", reason: "The learner is drafting supported plan lines rather than being assessed on a new tense label." }], firstView: { whatItIs: "A small plan for tomorrow", whatToDo: "Read the three-line model, then write two plan lines using a card or your own safe choice.", whatMatters: "Going to helps you say what you plan to do, one small action at a time.", whatNext: "Read how work, hobbies, reasons, and plans connect in a short week." }, progressiveSupports: ["arabic-help", "worked-example", "word-support", "tip"] });
+    case 8:
+      return createLessonExperience({ archetype: "reading", density: "deep", archetypeRationale: "A busy but happy week lets learners use already familiar routine language to follow a person’s work, hobby, reason, and plan.", selectedStages: ["meaningful-use", "supported-practice"], intentionallyOmittedStages: [{ stage: "notice", reason: "The text is read for connected meaning rather than paused for a separate grammar explanation." }], firstView: { whatItIs: "One person’s busy but happy week", whatToDo: "Read for Maya’s job, hobby reason, and Saturday plan, then collect the four story threads.", whatMatters: "Known words can help you understand a longer story without translating every line.", whatNext: "Read how small words point back to people at work." }, progressiveSupports: ["arabic-help", "word-support", "transcript", "worked-example"] });
+    case 9:
+      return createLessonExperience({ archetype: "reading", density: "normal", archetypeRationale: "A workplace text turns her, him, and them into useful reading shortcuts connected to named people, not a pronoun chart to memorise.", selectedStages: ["meaningful-use", "notice"], intentionallyOmittedStages: [{ stage: "retrieval", reason: "The following contextual check revisits the language immediately in a new social situation." }], firstView: { whatItIs: "People helping people at work", whatToDo: "Read for who helps whom, then match her, him, and them to the people in the story.", whatMatters: "Small words can point back to a known person and make a text shorter.", whatNext: "Choose useful lines for short everyday conversation situations." }, progressiveSupports: ["arabic-help", "word-support", "transcript", "worked-example"] });
+    case 10:
+      return createLessonExperience({ archetype: "assessment", density: "light", archetypeRationale: "A compact contextual check tests usable conversation choices instead of isolated spelling or a high-pressure cumulative quiz.", selectedStages: ["evidence", "retrieval"], intentionallyOmittedStages: [{ stage: "encounter", reason: "This lesson deliberately introduces no new language before the connected-day writing task." }], firstView: { whatItIs: "A short real-interaction check", whatToDo: "Choose the helpful line for each small situation, then keep one conversation tool.", whatMatters: "The situation gives clues; the check asks what you can use, not what you can guess.", whatNext: "Write a connected work-or-study day for a character." }, progressiveSupports: ["arabic-help", "worked-example", "word-support", "tip"] });
+    case 11:
+      return createLessonExperience({ archetype: "writing", density: "deep", archetypeRationale: "A fictional character day lets learners combine A1 language into a connected paragraph without requiring private life details.", selectedStages: ["orientation", "meaningful-use"], intentionallyOmittedStages: [{ stage: "evidence", reason: "The draft is a supported language-building task, not a judgement of personal writing." }], firstView: { whatItIs: "A small connected day for a character", whatToDo: "Read the model, then draft three or four guided lines with work or study, a hobby, and a plan.", whatMatters: "Several clear short sentences can make a real paragraph.", whatNext: "Practise friendly invitations, acceptance, and refusal aloud." }, progressiveSupports: ["arabic-help", "worked-example", "word-support", "tip"] });
+    case 12:
+      return createLessonExperience({ archetype: "speaking", density: "normal", archetypeRationale: "Selectable invitation, acceptance, and refusal lines make social speaking manageable before a learner builds a full conversation.", selectedStages: ["encounter", "supported-practice"], intentionallyOmittedStages: [{ stage: "evidence", reason: "This is a rehearsal space; no learner has to perform every role for a score." }], firstView: { whatItIs: "Three friendly speaking moves", whatToDo: "Listen to an invitation, acceptance, and refusal, then match one reply to its moment.", whatMatters: "A friendly conversation can include an invitation, a yes, or a polite no.", whatNext: "Connect your A1 tools in one complete everyday conversation." }, progressiveSupports: ["arabic-help", "transcript", "worked-example", "tip"] });
+    case 13:
+      return createLessonExperience({ archetype: "integration", density: "deep", archetypeRationale: "A flexible complete conversation connects greeting, work or study, hobby, invitation, and closing without pretending every learner needs the same script.", selectedStages: ["meaningful-use", "supported-practice"], intentionallyOmittedStages: [{ stage: "notice", reason: "The goal is connected communication; the exchange itself carries the language patterns." }], firstView: { whatItIs: "A full everyday conversation", whatToDo: "Follow four connected turns, then rehearse one turn you choose.", whatMatters: "You can connect small A1 ideas into a conversation that has a beginning, middle, and kind close.", whatNext: "Collect the conversation tools you want to keep from A1." }, progressiveSupports: ["arabic-help", "worked-example", "transcript", "word-support"] });
+    case 14:
+      return createLessonExperience({ archetype: "review", density: "normal", archetypeRationale: "A selective toolbox review retrieves the highest-value A1 communication tools without adding content immediately before the final checkpoint.", selectedStages: ["retrieval", "meaningful-use"], intentionallyOmittedStages: [{ stage: "encounter", reason: "This review deliberately introduces no new vocabulary or grammar." }], firstView: { whatItIs: "Your A1 conversation toolbox", whatToDo: "Choose a greeting, fact, question, preference, plan, and close, then repair a short dialogue.", whatMatters: "A small set of remembered tools can help you begin and continue a real conversation.", whatNext: "Show what you can do with those tools in a supportive final checkpoint." }, progressiveSupports: ["worked-example", "word-support", "tip"] });
+    case 15:
+      return createLessonExperience({ archetype: "assessment", density: "normal", archetypeRationale: "A varied final checkpoint makes usable A1 communication visible and frames the result as a bridge into longer A2 conversations and readings.", selectedStages: ["evidence", "next-bridge"], intentionallyOmittedStages: [{ stage: "encounter", reason: "The final checkpoint adds no language; it helps learners recognise what they can already do." }], firstView: { whatItIs: "A supportive A1 real-world checkpoint", whatToDo: "Complete four small language choices, then choose one A1 strength and one A2 goal.", whatMatters: "The result is evidence of your next step, not a label for your ability.", whatNext: "In A2, you will extend these tools into longer conversations and richer reading." }, progressiveSupports: ["arabic-help", "worked-example", "word-support", "tip"] });
+    default:
+      return undefined;
+  }
+}
+
 function stepsForBlueprint(blueprint: ImmersiveLessonBlueprint, moduleNumber: number) {
   const experience = experienceForBlueprint(blueprint, moduleNumber);
   if (!experience) return A1_STEPS;
@@ -903,7 +948,8 @@ export const A1_LESSONS: LessonDefinition[] = A1_IMMERSIVE_MODULES.flatMap((modu
         authoredActivitiesForA1Module2(activeLessonNumber) ??
         authoredActivitiesForA1Module3(activeLessonNumber) ??
         A1_MODULE_4_AUTHORED_ACTIVITIES[activeLessonNumber] ??
-        A1_MODULE_5_AUTHORED_ACTIVITIES[activeLessonNumber],
+        A1_MODULE_5_AUTHORED_ACTIVITIES[activeLessonNumber] ??
+        A1_MODULE_6_AUTHORED_ACTIVITIES[activeLessonNumber],
     });
   });
 });

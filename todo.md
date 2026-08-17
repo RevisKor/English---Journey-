@@ -419,11 +419,12 @@
 - [x] Reauthor A1 Module 2 Lessons 16–20 as varied family-and-home journeys with voluntary personal disclosure, natural vocabulary reuse, and distinct learner evidence.
 - [x] Reauthor A1 Module 2 Lessons 21–25 as varied home, pet, and descriptive-language journeys with purposeful listening and interaction.
 - [x] Reauthor A1 Module 2 Lessons 26–30 as varied writing, real-world, review, and supportive module-assessment journeys.
-- [ ] Reauthor every A1 lesson and six module tests with beginner-safe explanations, repeated-exposure activity sequences, and authored mentor transitions.
+- [x] Reauthor every A1 lesson and six module tests with beginner-safe explanations, repeated-exposure activity sequences, and authored mentor transitions.
 - [ ] Reauthor every A2 and B1 lesson and module assessment with progressively more independent reading, interaction, and writing evidence.
 - [ ] Reauthor every B2, C1, and C2 lesson and module assessment with advanced discourse, precision, register, and synthesis practice.
 - [ ] Verify every reauthored lesson against the curriculum graph, assessment specification, and learner workspace, then release audited level-by-level checkpoints.
 - [x] Reauthor A1 Module 3 Lessons 31–45 as varied, beginner-safe food-and-market learner journeys with explicit bilingual activity data and learner evidence.
 - [x] Reauthor A1 Module 4 Lessons 46–60 as varied, beginner-safe daily-life learner journeys with explicit bilingual activity data and learner evidence.
 - [x] Reauthor A1 Module 5 Lessons 61–75 as varied, beginner-safe places-and-getting-around learner journeys with explicit bilingual activity data and learner evidence.
-- [ ] Reauthor A1 Module 6 Lessons 76–90 as varied, beginner-safe work-hobbies-and-connected-life learner journeys with explicit bilingual activity data and learner evidence.
+- [x] Reauthor A1 Module 6 Lessons 76–90 as varied, beginner-safe work-hobbies-and-connected-life learner journeys with explicit bilingual activity data and learner evidence.
+- [x] Validate the complete authored A1 level through controlled UI/API and course-content batches, TypeScript, production build, curriculum audit, and preview inspection.
