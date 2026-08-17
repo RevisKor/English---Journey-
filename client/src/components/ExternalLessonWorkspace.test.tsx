@@ -333,8 +333,22 @@ describe("ExternalLessonWorkspace", () => {
     expect(html).toContain("Trace the sources, the voices included, and one record the exhibition still lacks");
   });
 
+  it("renders the authored B1 Module 9 proposal reading as its selected Problem-solving and Decisions route", () => {
+    const lesson = B1_LESSONS[125];
+    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={lesson} accent="british" onBack={() => undefined} />);
+
+    expect(html).toContain("reading lesson");
+    expect(html).toContain("Know the purpose");
+    expect(html).toContain("Meet the English");
+    expect(html).toContain("Notice one pattern");
+    expect(html).toContain("Show what you can do");
+    expect(html).not.toContain('aria-label="Lesson sections"');
+    expect(html).toContain("Read a proposal for useful detail");
+    expect(html).toContain("Identify who a solution is for, which details explain it, and what needs testing");
+  });
+
   it("preserves the established tabbed workspace for un-authored later levels during the staged rollout", () => {
-    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={B1_LESSONS[120]} accent="british" onBack={() => undefined} />);
+    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={B1_LESSONS[135]} accent="british" onBack={() => undefined} />);
 
     expect(html).toContain('aria-label="Lesson sections"');
     expect(html).toContain("Words");

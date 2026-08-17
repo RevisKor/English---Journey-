@@ -452,3 +452,5 @@
 - [x] Reauthor A2 Module 7 Lessons 91–105 as varied, connected Communication and Technology learner journeys with explicit bilingual activity data, message clarity, safe digital communication, and learner evidence.
 
 - [x] Reauthor, wire, test, validate, and checkpoint B1 Module 8 (Lessons 106–120) as varied bilingual culture, identity, belonging, perspective, and mediation journeys aligned to the authoritative lesson arc.
+
+- [x] Reauthor, wire, test, validate, and checkpoint B1 Module 9 (Lessons 121–135) as varied bilingual Problem-solving and Decisions journeys aligned to the authoritative lesson arc.
