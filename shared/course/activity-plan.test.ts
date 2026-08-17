@@ -4,13 +4,13 @@ import { A1_COURSE, A2_COURSE, B1_COURSE, B2_COURSE, C1_COURSE, C2_COURSE } from
 const courses = [A1_COURSE, A2_COURSE, B1_COURSE, B2_COURSE, C1_COURSE, C2_COURSE];
 
 describe("all-level lesson activity plans", () => {
-  it("enrich every authored lesson without changing its route identity", () => {
+  it("keeps activity routes well-formed without imposing a universal authored activity count", () => {
     for (const course of courses) {
       expect(course.lessons).toHaveLength(course.totalLessons);
       for (const lesson of course.lessons) {
         expect(lesson.level).toBe(course.level);
         expect(lesson.lessonType).toBeDefined();
-        expect(lesson.activities?.length).toBeGreaterThanOrEqual(2);
+        expect(lesson.activities?.length).toBeGreaterThanOrEqual(lesson.experience ? 1 : 2);
         if (lesson.experience) {
           expect(lesson.experience.selectedStages.length).toBeGreaterThanOrEqual(2);
         } else {

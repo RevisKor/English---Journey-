@@ -429,4 +429,4 @@
 - [x] Reauthor A1 Module 6 Lessons 76–90 as varied, beginner-safe work-hobbies-and-connected-life learner journeys with explicit bilingual activity data and learner evidence.
 - [x] Validate the complete authored A1 level through controlled UI/API and course-content batches, TypeScript, production build, curriculum audit, and preview inspection.
 - [x] Reauthor A2 Module 1 Lessons 1–15 as varied, high-scaffold health-and-habits learner journeys with explicit bilingual activity data, connected A1 retrieval, and learner evidence.
-- [ ] Reauthor A2 Module 2 Lessons 16–30 as varied, connected community-and-services learner journeys with explicit bilingual activity data, purposeful A1/A2 retrieval, and learner evidence.
+- [x] Reauthor A2 Module 2 Lessons 16–30 as varied, connected learning-and-work learner journeys with explicit bilingual activity data, purposeful A1/A2 retrieval, and learner evidence.
