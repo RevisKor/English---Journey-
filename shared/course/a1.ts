@@ -2,6 +2,7 @@ import rawGrammar from "./a1-grammar.json";
 import rawVocabulary from "./a1-vocabulary.json";
 import { A1_IMMERSIVE_MODULES } from "./a1-immersive-modules";
 import { authoredActivitiesForA1Module1 } from "./a1-module-1-authored-activities";
+import { authoredActivitiesForA1Module2 } from "./a1-module-2-authored-activities";
 import { enrichLesson } from "./activity-plan";
 import { createLessonExperience } from "./lesson-experience";
 import { buildModuleDefinitions } from "./module-definitions";
@@ -55,6 +56,9 @@ const EXPERIENCE_STEPS: Record<NonNullable<ReturnType<typeof experienceForBluepr
 };
 
 function experienceForBlueprint(blueprint: ImmersiveLessonBlueprint, moduleNumber = 1) {
+  if (moduleNumber === 2) {
+    return experienceForModule2(blueprint.lessonNumber);
+  }
   if (moduleNumber !== 1) return undefined;
 
   const shared: { progressiveSupports: ProgressiveSupport[] } = {
@@ -326,6 +330,167 @@ function experienceForBlueprint(blueprint: ImmersiveLessonBlueprint, moduleNumbe
   }
 }
 
+function experienceForModule2(localLessonNumber: number) {
+  const shared: { progressiveSupports: ProgressiveSupport[] } = {
+    progressiveSupports: ["arabic-help", "worked-example", "word-support"],
+  };
+
+  switch (localLessonNumber) {
+    case 1:
+      return createLessonExperience({
+        archetype: "discover",
+        density: "normal",
+        archetypeRationale: "A family picture makes new people words meaningful while protecting the learner’s privacy.",
+        selectedStages: ["encounter", "supported-practice", "retrieval"],
+        intentionallyOmittedStages: [{ stage: "evidence", reason: "Recognition and one safe sentence are the appropriate first evidence for this new family vocabulary." }],
+        firstView: { whatItIs: "A family picture, not a personal questionnaire", whatToDo: "Meet four people, point, and use one sentence frame.", whatMatters: "You can always use the practice family instead of your own.", whatNext: "Use one person in a short picture conversation." },
+        ...shared,
+      });
+    case 2:
+      return createLessonExperience({
+        archetype: "interaction",
+        density: "light",
+        archetypeRationale: "Family vocabulary becomes useful when the learner can take a small conversational turn.",
+        selectedStages: ["retrieval", "encounter", "meaningful-use", "evidence"],
+        intentionallyOmittedStages: [{ stage: "notice", reason: "This is a communication lesson; the sentence frame can remain implicit." }],
+        firstView: { whatItIs: "A two-turn family picture conversation", whatToDo: "Ask Who is this? and give one answer.", whatMatters: "Use the picture or a fictional person if you prefer.", whatNext: "Notice how have and has add information about people." },
+        progressiveSupports: ["arabic-help", "worked-example", "transcript", "word-support"],
+      });
+    case 3:
+      return createLessonExperience({
+        archetype: "grammar",
+        density: "normal",
+        archetypeRationale: "The learner now needs one small form contrast to describe familiar people and possessions.",
+        selectedStages: ["notice", "supported-practice", "meaningful-use", "retrieval"],
+        intentionallyOmittedStages: [{ stage: "encounter", reason: "The family vocabulary is already established and returns naturally in the grammar examples." }],
+        firstView: { whatItIs: "A small have / has pattern", whatToDo: "Match the person to have or has, then write two fictional lines.", whatMatters: "Notice who the sentence is about before choosing the word.", whatNext: "Use the same ideas to explore rooms at home." },
+        progressiveSupports: ["arabic-help", "worked-example", "word-support", "external-ai-prompt", "tip"],
+      });
+    case 4:
+      return createLessonExperience({
+        archetype: "vocabulary",
+        density: "normal",
+        archetypeRationale: "A linked home scene supports meaningful room vocabulary without a long disconnected list.",
+        selectedStages: ["encounter", "supported-practice", "retrieval"],
+        intentionallyOmittedStages: [{ stage: "evidence", reason: "Pointing, hearing, and one room choice are enough before the location-question lesson." }],
+        firstView: { whatItIs: "A small home you can walk through", whatToDo: "Find four room words, hear two tour lines, and choose a room for a purpose.", whatMatters: "Room is the general word; kitchen and bedroom are specific places.", whatNext: "Ask where an object is in one of these rooms." },
+        progressiveSupports: ["arabic-help", "transcript", "word-support", "tip"],
+      });
+    case 5:
+      return createLessonExperience({
+        archetype: "interaction",
+        density: "normal",
+        archetypeRationale: "A location question turns new home vocabulary into an immediately useful exchange.",
+        selectedStages: ["encounter", "notice", "meaningful-use", "evidence"],
+        intentionallyOmittedStages: [{ stage: "retrieval", reason: "The lesson’s final room mission already requires a natural recall-and-use moment." }],
+        firstView: { whatItIs: "Find an object in a room", whatToDo: "Ask Where is the book? and give one location answer.", whatMatters: "Say the whole useful answer, not only the word on.", whatNext: "Use room words with furniture and belongings." },
+        progressiveSupports: ["arabic-help", "worked-example", "transcript", "word-support", "tip"],
+      });
+    case 6:
+      return createLessonExperience({
+        archetype: "vocabulary",
+        density: "normal",
+        archetypeRationale: "A single furniture scene lets new words join the existing location language without becoming a disconnected list.",
+        selectedStages: ["encounter", "supported-practice", "meaningful-use"],
+        intentionallyOmittedStages: [{ stage: "evidence", reason: "Two meaningful placement choices provide sufficient light evidence while the vocabulary is new." }],
+        firstView: { whatItIs: "A room with useful furniture and belongings", whatToDo: "Find four things, make one caption, then place a book or bag.", whatMatters: "Use earlier on only when the picture gives it a real job.", whatNext: "Describe what exists in a room with there is." },
+        progressiveSupports: ["arabic-help", "worked-example", "word-support", "tip"],
+      });
+    case 7:
+      return createLessonExperience({
+        archetype: "grammar",
+        density: "normal",
+        archetypeRationale: "There is is introduced as one useful meaning chunk inside a familiar room rather than as an abstract rule.",
+        selectedStages: ["notice", "supported-practice", "meaningful-use"],
+        intentionallyOmittedStages: [{ stage: "retrieval", reason: "The lesson stays deliberately focused on one new construction before a later home-tour reuse." }],
+        firstView: { whatItIs: "One small pattern for saying something is present", whatToDo: "Notice there is, choose it from a room picture, and write two fictional lines.", whatMatters: "Use there is for one thing today; accuracy matters more than a long description.", whatNext: "Hear the pattern inside a guided home tour." },
+        progressiveSupports: ["arabic-help", "worked-example", "word-support", "external-ai-prompt", "extended-rationale"],
+      });
+    case 8:
+      return createLessonExperience({
+        archetype: "speaking",
+        density: "light",
+        archetypeRationale: "A short home tour builds spoken confidence through a small, optional picture-led performance rather than a heavy grammar task.",
+        selectedStages: ["retrieval", "encounter", "supported-practice", "meaningful-use"],
+        intentionallyOmittedStages: [{ stage: "evidence", reason: "A two-line low-pressure tour is practice, not a scored speaking performance." }],
+        firstView: { whatItIs: "A two-room home tour", whatToDo: "Hear three short lines, then guide a visitor through a practice picture.", whatMatters: "A fictional house, a diagram, or quiet rehearsal all count.", whatNext: "Read a short home description with the same familiar anchors." },
+        progressiveSupports: ["arabic-help", "transcript", "worked-example", "word-support", "tip"],
+      });
+    case 9:
+      return createLessonExperience({
+        archetype: "reading",
+        density: "normal",
+        archetypeRationale: "The learner can now read a compact meaningful description using names, room words, and familiar patterns as anchors.",
+        selectedStages: ["encounter", "supported-practice", "evidence"],
+        intentionallyOmittedStages: [{ stage: "meaningful-use", reason: "This lesson protects reading attention; its evidence comes from returning to the text." }],
+        firstView: { whatItIs: "A short text about a small home", whatToDo: "Read once for anchors, answer three checks, and find the proving sentence.", whatMatters: "You do not have to translate every word to understand the main details.", whatNext: "Meet home animals through a visual scene and a short dialogue." },
+        progressiveSupports: ["arabic-help", "transcript", "word-support", "worked-example", "tip"],
+      });
+    case 10:
+      return createLessonExperience({
+        archetype: "real-world",
+        density: "light",
+        archetypeRationale: "Animal vocabulary becomes a calm contextual interaction while personal pet ownership remains entirely optional.",
+        selectedStages: ["encounter", "meaningful-use", "retrieval"],
+        intentionallyOmittedStages: [{ stage: "notice", reason: "Has returns naturally in the dialogue but is not treated as a second grammar lesson." }],
+        firstView: { whatItIs: "Four animals near a home", whatToDo: "Meet the words, name one animal in a fictional picture, and recall one natural home sentence.", whatMatters: "Use the practice scene; you never need to discuss your own home or pets.", whatNext: "Move into the module’s next carefully chosen topic with the home language secure." },
+        progressiveSupports: ["arabic-help", "transcript", "worked-example", "word-support", "tip"],
+      });
+    case 11:
+      return createLessonExperience({
+        archetype: "writing",
+        density: "deep",
+        archetypeRationale: "A slow, fictional room description lets the learner turn the module’s useful language into connected writing without personal disclosure pressure.",
+        selectedStages: ["retrieval", "supported-practice", "meaningful-use", "next-bridge"],
+        intentionallyOmittedStages: [{ stage: "evidence", reason: "A supportive self-check is more appropriate than a scored product at this early writing stage." }],
+        firstView: { whatItIs: "A small fictional room-writing task", whatToDo: "Choose a room, use three model lines, then check one thing at a time.", whatMatters: "A fictional room is enough; clear sentences matter more than personal detail.", whatNext: "Turn a picture into a true sentence during a short review." },
+        progressiveSupports: ["arabic-help", "worked-example", "word-support", "external-ai-prompt", "tip"],
+      });
+    case 12:
+      return createLessonExperience({
+        archetype: "review",
+        density: "light",
+        archetypeRationale: "A picture-to-sentence review deliberately uses what the learner already knows rather than adding a new topic.",
+        selectedStages: ["encounter", "supported-practice", "evidence"],
+        intentionallyOmittedStages: [{ stage: "meaningful-use", reason: "The lesson protects a short, retrieval-led review experience before the family visit interaction." }],
+        firstView: { whatItIs: "A picture-to-sentence review", whatToDo: "Spot the clues, build one true sentence, and choose meaning from context.", whatMatters: "Read the whole option; the goal is meaning, not catching a strange misspelling.", whatNext: "Use familiar greetings and family words in a fictional visit." },
+        progressiveSupports: ["arabic-help", "worked-example", "word-support"],
+      });
+    case 13:
+      return createLessonExperience({
+        archetype: "interaction",
+        density: "normal",
+        archetypeRationale: "A fictional family visit gives greeting and introduction language a realistic social purpose while keeping privacy choices explicit.",
+        selectedStages: ["encounter", "supported-practice", "meaningful-use"],
+        intentionallyOmittedStages: [{ stage: "retrieval", reason: "The existing greeting and family language is embedded naturally in the interaction itself." }],
+        firstView: { whatItIs: "A short family-visit exchange", whatToDo: "Follow the greeting, choose a friendly reply, then rehearse two lines your way.", whatMatters: "Use the fictional family card; speech, quiet rehearsal, and writing all count.", whatNext: "Listen for key details and describe a new room picture." },
+        progressiveSupports: ["arabic-help", "transcript", "worked-example", "word-support", "tip"],
+      });
+    case 14:
+      return createLessonExperience({
+        archetype: "listening",
+        density: "normal",
+        archetypeRationale: "A compact listen-and-describe experience builds listening confidence from language the learner can already recognise in print.",
+        selectedStages: ["encounter", "supported-practice", "meaningful-use"],
+        intentionallyOmittedStages: [{ stage: "retrieval", reason: "The listened-for details are immediately reused in a new picture rather than tested out of context." }],
+        firstView: { whatItIs: "A short room description to hear and reuse", whatToDo: "Listen for two details, choose them, then describe one new picture.", whatMatters: "Use the transcript only after a first try if you need it.", whatNext: "Show what you can do in a kind family-and-home checkpoint." },
+        progressiveSupports: ["arabic-help", "transcript", "worked-example", "word-support", "external-ai-prompt"],
+      });
+    case 15:
+      return createLessonExperience({
+        archetype: "assessment",
+        density: "normal",
+        archetypeRationale: "The module closes with small contextual evidence and a clear review choice, not a single intimidating high-stakes test.",
+        selectedStages: ["retrieval", "evidence", "next-bridge"],
+        intentionallyOmittedStages: [{ stage: "encounter", reason: "The checkpoint deliberately introduces no new content." }],
+        firstView: { whatItIs: "A supportive family-and-home checkpoint", whatToDo: "Complete four small context tasks, then choose one useful next review.", whatMatters: "A result shows what to practise next; it is not a judgement of your ability.", whatNext: "Carry the useful people-and-place language into the next module." },
+        progressiveSupports: ["worked-example", "word-support", "tip"],
+      });
+    default:
+      return undefined;
+  }
+}
+
 function stepsForBlueprint(blueprint: ImmersiveLessonBlueprint, moduleNumber: number) {
   const experience = experienceForBlueprint(blueprint, moduleNumber);
   if (!experience) return A1_STEPS;
@@ -493,7 +658,9 @@ export const A1_LESSONS: LessonDefinition[] = A1_IMMERSIVE_MODULES.flatMap((modu
       mentorGuide: mentorGuideForBlueprint(blueprint, module),
       lessonType: blueprint.type,
       experience: experienceForBlueprint(blueprint, module.moduleNumber),
-      activities: authoredActivitiesForA1Module1(activeLessonNumber),
+      activities:
+        authoredActivitiesForA1Module1(activeLessonNumber) ??
+        authoredActivitiesForA1Module2(activeLessonNumber),
     });
   });
 });

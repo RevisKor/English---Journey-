@@ -416,6 +416,9 @@
 - [x] Reauthor A1 Module 1 Lessons 6–8 with objective-led archetypes, natural retrieval, and varied assessment evidence.
 - [x] Reauthor A1 Module 1 Lessons 9–11 as distinct reading, writing, and interaction journeys with integrated evidence.
 - [x] Reauthor A1 Module 1 Lessons 12–15 as distinct visual, real-world, review, and module-assessment journeys.
+- [x] Reauthor A1 Module 2 Lessons 16–20 as varied family-and-home journeys with voluntary personal disclosure, natural vocabulary reuse, and distinct learner evidence.
+- [x] Reauthor A1 Module 2 Lessons 21–25 as varied home, pet, and descriptive-language journeys with purposeful listening and interaction.
+- [x] Reauthor A1 Module 2 Lessons 26–30 as varied writing, real-world, review, and supportive module-assessment journeys.
 - [ ] Reauthor every A1 lesson and six module tests with beginner-safe explanations, repeated-exposure activity sequences, and authored mentor transitions.
 - [ ] Reauthor every A2 and B1 lesson and module assessment with progressively more independent reading, interaction, and writing evidence.
 - [ ] Reauthor every B2, C1, and C2 lesson and module assessment with advanced discourse, precision, register, and synthesis practice.

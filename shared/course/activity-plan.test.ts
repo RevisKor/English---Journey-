@@ -10,18 +10,32 @@ describe("all-level lesson activity plans", () => {
       for (const lesson of course.lessons) {
         expect(lesson.level).toBe(course.level);
         expect(lesson.lessonType).toBeDefined();
-        expect(lesson.activities).toHaveLength(3);
-        expect(lesson.progression).toEqual([
-          "introduction",
-          "explanation",
-          "guided-practice",
-          "independent-practice",
-          "real-context",
-          "review",
-          "assessment",
-        ]);
-        expect(lesson.activities?.every((activity) => activity.vocabularyIds?.length)).toBe(true);
-        expect(lesson.activities?.every((activity) => activity.grammarIds?.length)).toBe(true);
+        expect(lesson.activities?.length).toBeGreaterThanOrEqual(2);
+        if (lesson.experience) {
+          expect(lesson.experience.selectedStages.length).toBeGreaterThanOrEqual(2);
+        } else {
+          expect(lesson.progression).toEqual([
+            "introduction",
+            "explanation",
+            "guided-practice",
+            "independent-practice",
+            "real-context",
+            "review",
+            "assessment",
+          ]);
+        }
+        expect(lesson.activities?.every((activity) => Boolean(activity.id && activity.kind && activity.title && activity.titleArabic && activity.objective && activity.objectiveArabic && activity.estimatedMinutes > 0))).toBe(true);
+        expect(lesson.activities?.some((activity) => Boolean(
+          activity.vocabularyIds?.length
+          || activity.grammarIds?.length
+          || activity.visualItems?.length
+          || activity.interactionTurns?.length
+          || activity.speakingLines?.length
+          || activity.readingText
+          || activity.writingPrompt
+          || activity.suggestedVocabulary?.length
+          || activity.sentencePatterns?.length,
+        ))).toBe(true);
         expect(lesson.grammar.teachingGuide).toEqual(expect.objectContaining({ whatItIs: expect.any(String), whyWeUseIt: expect.any(String), positiveExamples: expect.any(Array), negativeExamples: expect.any(Array), questionExamples: expect.any(Array), shortAnswerExamples: expect.any(Array), whenToUse: expect.any(Array), arabicSpeakerNotes: expect.any(Array) }));
       }
     }
