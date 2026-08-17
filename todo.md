@@ -217,6 +217,10 @@
 - [x] Author and wire A2 Module 6 (Lessons 76–90) as explicit bilingual Choices and Plans journeys with varied activities and selected learner-experience stages.
 - [x] Add focused A2 Module 6 curriculum and adaptive-workspace regressions.
 - [x] Run controlled A2 Module 6 validation batches, production checks, and curriculum audit; then save a checkpoint.
+- [x] Author, wire, test, and validate A2 Module 7 (Lessons 91–105) as Communication and Technology journeys aligned to the authoritative arc.
+- [x] Save the validated A2 Module 7 Communication and Technology curriculum checkpoint.
+- [ ] Author, wire, test, validate, and checkpoint A2 Module 8 (Lessons 106–120) as Food, Shopping, and Services journeys aligned to the authoritative arc.
+- [ ] Author, wire, test, validate, and checkpoint A2 Module 9 (Lessons 121–135) as Celebrations and Culture journeys aligned to the authoritative arc.
 
 # A1 Lesson Workspace Stability Follow-up
 - [x] Add regression coverage for missing or malformed activity metadata labels in the shared lesson workspace.
@@ -436,4 +440,5 @@
 - [x] Reauthor A2 Module 3 Lessons 31–45 as varied, practical travel-and-services learner journeys with explicit bilingual activity data, polite problem-solving language, and learner evidence.
 - [x] Reauthor A2 Module 4 Lessons 46–60 as varied, connected Stories and Memories learner journeys with explicit bilingual activity data, narrative sequencing, reflection, and learner evidence.
 - [x] Reauthor A2 Module 5 Lessons 61–75 as varied, connected Nature and Community learner journeys with explicit bilingual activity data, practical problem-solving, and learner evidence.
-- [ ] Reauthor A2 Module 6 Lessons 76–90 as varied, connected Choices and Plans learner journeys with explicit bilingual activity data, comparison, future planning, and learner evidence.
+- [x] Reauthor A2 Module 6 Lessons 76–90 as varied, connected Choices and Plans learner journeys with explicit bilingual activity data, comparison, future planning, and learner evidence.
+- [x] Reauthor A2 Module 7 Lessons 91–105 as varied, connected Communication and Technology learner journeys with explicit bilingual activity data, message clarity, safe digital communication, and learner evidence.
