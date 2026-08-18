@@ -567,4 +567,4 @@
 - [ ] Add the independent runtime secrets to Vercel and validate Google sign-in and persisted learner progress.
 - [ ] Confirm the redeployed Vercel function loads and completes Google sign-in with persisted learner progress.
 - [ ] Assign the administrator role only to the authenticated account with `revissskor@gmail.com` and verify the persisted role.
-- [ ] Push the latest validated English Journey project state to the selected GitHub repository without committing secrets or generated deployment artifacts.
+- [x] Push the latest validated English Journey project state to the selected GitHub repository without committing secrets or generated deployment artifacts.
