@@ -76,6 +76,20 @@ import { C1_COURSE, C1_LESSONS } from "./c1";
     expect(moduleSix.some((lesson) => lesson.activities?.some((activity) => activity.kind === "assessment"))).toBe(true);
   });
 
+  it("authors C1 Module 7 as varied public-reasoning journeys with explicit retrieval and adaptive experiences", () => {
+    const moduleSeven = C1_LESSONS.filter((lesson) => lesson.moduleNumber === 7);
+    expect(moduleSeven).toHaveLength(16);
+    expect(moduleSeven.every((lesson) => lesson.activities && lesson.activities.length > 0)).toBe(true);
+    expect(moduleSeven.every((lesson) => lesson.experience?.firstView.whatItIs && lesson.experience.firstView.whatToDo && lesson.experience.firstView.whatMatters && lesson.experience.firstView.whatNext)).toBe(true);
+    expect(new Set(moduleSeven.map((lesson) => lesson.experience?.archetype)).size).toBeGreaterThanOrEqual(8);
+    expect(moduleSeven.every((lesson) => lesson.activities?.some((activity) => activity.retrievalCheck?.prompt && activity.retrievalCheck.promptArabic && activity.retrievalCheck.expectedEvidenceArabic))).toBe(true);
+    expect(moduleSeven.some((lesson) => lesson.activities?.some((activity) => activity.kind === "reading" && activity.readingText && activity.readingChecks?.length))).toBe(true);
+    expect(moduleSeven.some((lesson) => lesson.activities?.some((activity) => activity.kind === "writing" && activity.writingPrompt && activity.writingPromptArabic && activity.progressiveSupports?.includes("external-ai-prompt")))).toBe(true);
+    expect(moduleSeven.some((lesson) => lesson.activities?.some((activity) => activity.kind === "listening" && activity.speakingLines?.some((line) => line.text.trim()) && activity.progressiveSupports?.includes("transcript")))).toBe(true);
+    expect(moduleSeven.some((lesson) => lesson.activities?.some((activity) => activity.kind === "speaking"))).toBe(true);
+    expect(moduleSeven.some((lesson) => lesson.activities?.some((activity) => activity.kind === "assessment"))).toBe(true);
+  });
+
   it("uses B2 retrieval and six-step source-aware performance routes", () => {
     for (const lesson of C1_LESSONS) {
       expect(lesson.learningPlan?.englishFirst).toBe(true);

@@ -507,11 +507,14 @@
 
 - [x] Advance the staged learner-workspace fallback to C1 Lesson 81 after C1 Module 5 is integrated and validated.
 
-- [ ] Prepare, author, review, validate, and checkpoint C1 Module 6 (Lessons 81–96) through the six-agent operating system, preserving compact objective-led lessons, explicit retrieval checks, and C1’s frequent source-reading, writing, listening, speaking, interaction, and synthesis cadence.
+- [x] Prepare, author, review, validate, and checkpoint C1 Module 6 (Lessons 81–96) through the six-agent operating system, preserving compact objective-led lessons, explicit retrieval checks, and C1’s frequent source-reading, writing, listening, speaking, interaction, and synthesis cadence.
 
-- [ ] Advance the staged learner-workspace fallback to C1 Lesson 97 after C1 Module 6 is integrated and validated.
+- [x] Advance the staged learner-workspace fallback to C1 Lesson 97 after C1 Module 6 is integrated and validated.
 
 - [x] Author, integrate, and validate C1 Module 6 (Lessons 81–96) as compact bilingual stewardship-and-futures journeys with varied archetypes, explicit retrieval, listening disclosure, source-aware reading, formal writing, interaction, speaking, review, and assessment.
 - [x] Create the C1 Module 6 pedagogical, visual/disclosure, assessment, and engineering quality review packet.
 - [x] Advance the staged learner-workspace fallback to the first un-authored C1 lesson, Lesson 97, and update the stale section-label regression.
-- [ ] Author, integrate, test, and validate C1 Module 7 (Lessons 97–112) as varied bilingual learner journeys aligned to its authoritative architecture packet.
+- [x] Author, integrate, test, and validate C1 Module 7 (Lessons 97–112) as varied bilingual learner journeys aligned to its authoritative architecture packet.
+- [x] Create the C1 Module 7 pedagogical, visual/disclosure, assessment, and engineering quality review packet.
+- [x] Advance the staged learner-workspace fallback to Lesson 113, the first un-authored C1 lesson after Module 7.
+- [ ] Prepare, author, review, validate, and checkpoint C1 Module 8 (Lessons 113–128) through the six-agent operating system.
