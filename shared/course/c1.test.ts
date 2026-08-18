@@ -63,6 +63,19 @@ import { C1_COURSE, C1_LESSONS } from "./c1";
     expect(moduleFive.some((lesson) => lesson.activities?.some((activity) => activity.kind === "assessment"))).toBe(true);
   });
 
+  it("authors C1 Module 6 as varied stewardship-and-futures journeys with explicit retrieval and adaptive experiences", () => {
+    const moduleSix = C1_LESSONS.filter((lesson) => lesson.moduleNumber === 6);
+    expect(moduleSix).toHaveLength(16);
+    expect(moduleSix.every((lesson) => lesson.activities && lesson.activities.length > 0)).toBe(true);
+    expect(moduleSix.every((lesson) => lesson.experience?.firstView.whatItIs && lesson.experience.firstView.whatToDo && lesson.experience.firstView.whatMatters && lesson.experience.firstView.whatNext)).toBe(true);
+    expect(new Set(moduleSix.map((lesson) => lesson.experience?.archetype)).size).toBeGreaterThanOrEqual(8);
+    expect(moduleSix.every((lesson) => lesson.activities?.some((activity) => activity.retrievalCheck?.prompt && activity.retrievalCheck.promptArabic))).toBe(true);
+    expect(moduleSix.some((lesson) => lesson.activities?.some((activity) => activity.kind === "reading"))).toBe(true);
+    expect(moduleSix.some((lesson) => lesson.activities?.some((activity) => activity.kind === "writing"))).toBe(true);
+    expect(moduleSix.some((lesson) => lesson.activities?.some((activity) => activity.kind === "listening" && activity.speakingLines?.some((line) => line.text.trim())))).toBe(true);
+    expect(moduleSix.some((lesson) => lesson.activities?.some((activity) => activity.kind === "assessment"))).toBe(true);
+  });
+
   it("uses B2 retrieval and six-step source-aware performance routes", () => {
     for (const lesson of C1_LESSONS) {
       expect(lesson.learningPlan?.englishFirst).toBe(true);
