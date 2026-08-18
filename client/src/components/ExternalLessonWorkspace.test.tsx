@@ -374,7 +374,7 @@ describe("ExternalLessonWorkspace", () => {
   });
 
   it("preserves the established tabbed workspace for un-authored later levels during the staged rollout", () => {
-    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={B2_LESSONS[75]} accent="british" onBack={() => undefined} />);
+    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={B2_LESSONS[90]} accent="british" onBack={() => undefined} />);
 
     expect(html).toContain('aria-label="Lesson sections"');
     expect(html).toContain("Words");
@@ -445,6 +445,26 @@ describe("ExternalLessonWorkspace", () => {
     const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={lesson} accent="british" onBack={() => undefined} />);
 
     expect(html).toContain("Listen for what is avoided");
+    expect(html).toContain("Listen first. The transcript is hidden");
+    expect(html).toContain("Reveal transcript / أظهر النص");
+    expect(html).toContain("Quick check · تحقق سريع");
+  });
+
+  it("renders the authored B2 Module 6 statistic route as a compact evidence-reading lesson", () => {
+    const lesson = B2_LESSONS[76];
+    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={lesson} accent="british" onBack={() => undefined} />);
+
+    expect(html).toContain("reading lesson");
+    expect(html).toContain("Read the story behind a statistic");
+    expect(html).toContain("Quick check · تحقق سريع");
+    expect(html).not.toContain('aria-label="Lesson sections"');
+  });
+
+  it("renders the authored B2 Module 6 calibrated-risk route with transcript disclosure", () => {
+    const lesson = B2_LESSONS[81];
+    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={lesson} accent="british" onBack={() => undefined} />);
+
+    expect(html).toContain("Listen for calibrated risk");
     expect(html).toContain("Listen first. The transcript is hidden");
     expect(html).toContain("Reveal transcript / أظهر النص");
     expect(html).toContain("Quick check · تحقق سريع");

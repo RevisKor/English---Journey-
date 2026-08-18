@@ -55,7 +55,7 @@ describe("B2 evidence and influence curriculum", () => {
     expect(B2_LESSONS[20].activities.some((activity) => activity.title === "Plan for consequences" && activity.kind === "writing")).toBe(true);
     expect(B2_LESSONS[24].activities.some((activity) => activity.title === "Test information under pressure")).toBe(true);
     expect(B2_LESSONS[29].activities.some((activity) => activity.kind === "assessment")).toBe(true);
-    expect(B2_LESSONS[75].experience).toBeUndefined();
+    expect(B2_LESSONS[90].experience).toBeUndefined();
   });
 
   it("authors Module 3 as varied public-decision, representation, and consequence journeys", () => {
@@ -66,7 +66,7 @@ describe("B2 evidence and influence curriculum", () => {
     expect(B2_LESSONS[32].activities.some((activity) => activity.title === "Map the case for change" && activity.kind === "reading")).toBe(true);
     expect(B2_LESSONS[41].activities.some((activity) => activity.title === "Frame an automated decision ethically")).toBe(true);
     expect(B2_LESSONS[44].activities.some((activity) => activity.kind === "assessment" && activity.title === "Proposal with consequences")).toBe(true);
-    expect(B2_LESSONS[75].experience).toBeUndefined();
+    expect(B2_LESSONS[90].experience).toBeUndefined();
   });
 
   it("authors Module 4 as varied evidence, responsibility, and negotiated public-choice journeys", () => {
@@ -79,7 +79,7 @@ describe("B2 evidence and influence curriculum", () => {
     expect(B2_LESSONS[48].activities.some((activity) => activity.title === "Rank claims before publishing" && activity.kind === "reading")).toBe(true);
     expect(B2_LESSONS[54].activities.some((activity) => activity.title === "Propose access before decoration" && activity.kind === "writing")).toBe(true);
     expect(B2_LESSONS[59].activities.some((activity) => activity.kind === "assessment" && activity.title === "A compromise that can be reviewed")).toBe(true);
-    expect(B2_LESSONS[75].experience).toBeUndefined();
+    expect(B2_LESSONS[90].experience).toBeUndefined();
   });
 
   it("authors Module 5 as compact, varied work-and-public-choice journeys", () => {
@@ -90,5 +90,17 @@ describe("B2 evidence and influence curriculum", () => {
     expect(B2_LESSONS[62].activities.some((activity) => activity.kind === "listening" && activity.progressiveSupports?.includes("transcript"))).toBe(true);
     expect(B2_LESSONS[64].activities.some((activity) => activity.kind === "assessment")).toBe(true);
     expect(B2_LESSONS[74].activities.some((activity) => activity.kind === "assessment")).toBe(true);
+  });
+
+  it("authors Module 6 as compact, varied technology, fairness, and responsible-judgement journeys", () => {
+    const moduleSix = B2_LESSONS.slice(75, 90);
+    expect(moduleSix.every((lesson) => lesson.experience && lesson.activities.length > 0)).toBe(true);
+    expect(new Set(moduleSix.map((lesson) => lesson.experience?.archetype)).size).toBeGreaterThanOrEqual(7);
+    expect(moduleSix.every((lesson) => lesson.activities.every((activity) => activity.retrievalCheck?.prompt && activity.retrievalCheck.expectedEvidence))).toBe(true);
+    expect(B2_LESSONS[81].activities.some((activity) => activity.kind === "listening" && activity.progressiveSupports?.includes("transcript"))).toBe(true);
+    expect(B2_LESSONS[86].activities.some((activity) => activity.kind === "listening" && activity.progressiveSupports?.includes("transcript"))).toBe(true);
+    expect(B2_LESSONS[88].activities.some((activity) => activity.kind === "assessment")).toBe(true);
+    expect(B2_LESSONS[89].activities.some((activity) => activity.kind === "assessment")).toBe(true);
+    expect(B2_LESSONS[105].experience).toBeUndefined();
   });
 });

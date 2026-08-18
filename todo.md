@@ -472,3 +472,5 @@
 - [x] Encode and audit staged skill layering: early A1 may introduce a short supported reading or writing route by roughly Lesson 5 using familiar language, while no lesson is packed with every skill by default.
 
 - [x] Audit the current curriculum work against the supplied six-agent protocol; create the shared Curriculum Bible, specialist handoff records, corpus-level pedagogical QA gates, visual-experience review criteria, and assessment-architecture validation before any further lesson authoring.
+
+- [x] Prepare, author, review, validate, and checkpoint B2 Module 6 (Lessons 76–90) through the six-agent operating system, preserving compact objective-led lessons, explicit retrieval checks, and the owner-defined skill cadence.

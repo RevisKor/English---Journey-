@@ -8,6 +8,8 @@ import { B2_MODULE_2_ACTIVITIES } from "./b2-module-2-authored-activities";
 import { B2_MODULE_3_ACTIVITIES } from "./b2-module-3-authored-activities";
 import { B2_MODULE_4_ACTIVITIES } from "./b2-module-4-authored-activities";
 import { B2_MODULE_5_ACTIVITIES } from "./b2-module-5-authored-activities";
+import { B2_MODULE_6_ACTIVITIES } from "./b2-module-6-authored-activities";
+import { B2_MODULE_6_EXPERIENCES } from "./b2-module-6-experiences";
 
 type DraftVocabulary = { word: string; arabic: string; partOfSpeech: string; definition: string; exampleEN: string; exampleAR: string };
 type DraftLesson = {
@@ -143,8 +145,8 @@ export const B2_LESSONS: LessonDefinition[] = (rawDraft as DraftLesson[]).map((d
   practiceBrief: { readingBrief: draft.readingBrief, writingPrompt: draft.writingPrompt },
 })).map(enrichLesson).map((lesson) => ({
   ...lesson,
-  activities: B2_MODULE_1_ACTIVITIES[lesson.lessonNumber] ?? B2_MODULE_2_ACTIVITIES[lesson.lessonNumber] ?? B2_MODULE_3_ACTIVITIES[lesson.lessonNumber] ?? B2_MODULE_4_ACTIVITIES[lesson.lessonNumber] ?? B2_MODULE_5_ACTIVITIES[lesson.lessonNumber] ?? lesson.activities,
-  experience: B2_MODULE_1_EXPERIENCES[lesson.lessonNumber] ?? B2_MODULE_2_EXPERIENCES[lesson.lessonNumber] ?? B2_MODULE_3_EXPERIENCES[lesson.lessonNumber] ?? B2_MODULE_4_EXPERIENCES[lesson.lessonNumber] ?? B2_MODULE_5_EXPERIENCES[lesson.lessonNumber] ?? lesson.experience,
+  activities: B2_MODULE_1_ACTIVITIES[lesson.lessonNumber] ?? B2_MODULE_2_ACTIVITIES[lesson.lessonNumber] ?? B2_MODULE_3_ACTIVITIES[lesson.lessonNumber] ?? B2_MODULE_4_ACTIVITIES[lesson.lessonNumber] ?? B2_MODULE_5_ACTIVITIES[lesson.lessonNumber] ?? B2_MODULE_6_ACTIVITIES[lesson.lessonNumber] ?? lesson.activities,
+  experience: B2_MODULE_1_EXPERIENCES[lesson.lessonNumber] ?? B2_MODULE_2_EXPERIENCES[lesson.lessonNumber] ?? B2_MODULE_3_EXPERIENCES[lesson.lessonNumber] ?? B2_MODULE_4_EXPERIENCES[lesson.lessonNumber] ?? B2_MODULE_5_EXPERIENCES[lesson.lessonNumber] ?? B2_MODULE_6_EXPERIENCES[lesson.lessonNumber] ?? lesson.experience,
 }));
 
 export const B2_VOCABULARY = B2_LESSONS.flatMap((lesson) => lesson.words);
