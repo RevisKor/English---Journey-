@@ -119,6 +119,25 @@ describe("C2 precision and mediation curriculum", () => {
     expect(moduleFive.at(-1)?.experience?.archetype).toBe("assessment");
   });
 
+  it("authors the sixth C2 module as risk, discourse-power, and adaptation journeys", () => {
+    const moduleSix = C2_LESSONS.slice(75, 90);
+    expect(moduleSix).toHaveLength(15);
+    expect(moduleSix.every((lesson) => lesson.activities?.length === 1)).toBe(true);
+    expect(new Set(moduleSix.map((lesson) => lesson.activities?.[0]?.kind)).size).toBeGreaterThanOrEqual(7);
+    expect(moduleSix.every((lesson) => {
+      const retrieval = lesson.activities?.[0]?.retrievalCheck;
+      return Boolean(retrieval?.prompt && retrieval?.promptArabic && retrieval?.expectedEvidence && /[\u0600-\u06FF]/.test(retrieval.promptArabic));
+    })).toBe(true);
+    expect(moduleSix.every((lesson) => lesson.experience?.firstView.whatItIs && lesson.experience?.firstView.whatToDo && lesson.experience?.firstView.whatMatters && lesson.experience?.firstView.whatNext)).toBe(true);
+    expect(moduleSix.filter((lesson) => lesson.activities?.[0]?.readingText && lesson.activities?.[0]?.readingChecks?.length).length).toBeGreaterThanOrEqual(3);
+    expect(moduleSix.filter((lesson) => lesson.activities?.[0]?.writingPrompt && lesson.activities?.[0]?.writingPromptArabic).length).toBeGreaterThanOrEqual(3);
+    const listening = moduleSix.filter((lesson) => lesson.activities?.[0]?.kind === "listening");
+    expect(listening.length).toBeGreaterThanOrEqual(2);
+    expect(listening.every((lesson) => lesson.activities?.[0]?.progressiveSupports?.includes("transcript"))).toBe(true);
+    expect(moduleSix.at(-1)?.activities?.[0]?.semantic).toBe("assessment");
+    expect(moduleSix.at(-1)?.experience?.archetype).toBe("assessment");
+  });
+
   it("uses C1 retrieval and six-step mediation and independent-judgement routes", () => {
     for (const lesson of C2_LESSONS) {
       expect(lesson.learningPlan?.englishFirst).toBe(true);
