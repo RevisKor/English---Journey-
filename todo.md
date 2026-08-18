@@ -523,4 +523,7 @@
 - [x] Prepare, author, review, validate, and checkpoint C1 Module 9 (Lessons 129–144) through the six-agent operating system.
 - [x] Create the C1 Module 9 pedagogical, visual/disclosure, assessment, and engineering quality review packet.
 - [x] Advance the staged learner-workspace fallback to Lesson 145, the first un-authored C1 lesson after Module 9.
-- [ ] Prepare, author, review, validate, and checkpoint C1 Module 10 (Lessons 145–160) through the six-agent operating system.
+- [x] Prepare, author, review, validate, and checkpoint C1 Module 10 (Lessons 145–160) through the six-agent operating system.
+- [x] Create the C1 Module 10 pedagogical, visual/disclosure, assessment, and engineering quality review packet.
+- [x] Preserve legacy tabbed-workspace coverage with an explicit non-authored C1 fixture after the final C1 module.
+- [ ] Prepare, author, review, validate, and checkpoint C2 Module 1 through the six-agent operating system.

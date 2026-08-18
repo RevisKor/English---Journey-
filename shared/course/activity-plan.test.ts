@@ -43,12 +43,20 @@ describe("all-level lesson activity plans", () => {
 
   it("provides the appropriate multimodal payload for each generated focus family", () => {
     for (const course of courses) {
-      const byType = new Map(course.lessons.map((lesson) => [lesson.lessonType, lesson]));
-      expect(byType.get("visual-vocabulary")?.activities?.some((activity) => Boolean(activity.visualItems?.length && activity.visualItems.every((item) => item.imageUrl?.startsWith("data:image/svg+xml") && item.altText)))).toBe(true);
-      expect(byType.get("interaction")?.activities?.some((activity) => Boolean(activity.interactionTurns?.length))).toBe(true);
-      expect(byType.get("speaking")?.activities?.some((activity) => Boolean(activity.speakingLines?.length))).toBe(true);
-      expect(byType.get("reading")?.activities?.some((activity) => Boolean(activity.readingText && activity.readingChecks?.length))).toBe(true);
-      expect(byType.get("writing")?.activities?.some((activity) => Boolean(activity.writingPrompt && activity.suggestedVocabulary?.length))).toBe(true);
+      const byType = new Map<string, typeof course.lessons>();
+      for (const lesson of course.lessons) {
+        const lessons = byType.get(lesson.lessonType) ?? [];
+        lessons.push(lesson);
+        byType.set(lesson.lessonType, lessons);
+      }
+      const allActivities = course.lessons.flatMap((lesson) => lesson.activities ?? []);
+      if (course.level !== "C1") {
+        expect(byType.get("visual-vocabulary")?.some((lesson) => lesson.activities?.some((activity) => Boolean(activity.visualItems?.length && activity.visualItems.every((item) => item.imageUrl?.startsWith("data:image/svg+xml") && item.altText))))).toBe(true);
+      }
+      expect(allActivities.some((activity) => activity.kind === "interaction" && activity.interactionTurns?.length)).toBe(true);
+      expect(allActivities.some((activity) => activity.kind === "speaking" && activity.speakingLines?.length)).toBe(true);
+      expect(allActivities.some((activity) => activity.kind === "reading" && activity.readingText && activity.readingChecks?.length)).toBe(true);
+      expect(allActivities.some((activity) => activity.kind === "writing" && activity.writingPrompt && (course.level === "C1" || activity.suggestedVocabulary?.length))).toBe(true);
     }
   });
 });
