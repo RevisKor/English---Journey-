@@ -211,6 +211,29 @@ describe("C2 precision and mediation curriculum", () => {
     expect(moduleTen.at(-1)?.activities?.[0]?.semantic).toBe("assessment");
     expect(moduleTen.at(-1)?.experience?.archetype).toBe("assessment");
   });
+  it("authors Modules 11 and 12 as distinct public-memory and lifelong-practice extensions", () => {
+    const moduleEleven = C2_LESSONS.slice(150, 165);
+    const moduleTwelve = C2_LESSONS.slice(165, 180);
+    for (const module of [moduleEleven, moduleTwelve]) {
+      expect(module).toHaveLength(15);
+      expect(module.every((lesson) => lesson.activities?.length === 1)).toBe(true);
+      expect(new Set(module.map((lesson) => lesson.activities?.[0]?.kind)).size).toBeGreaterThanOrEqual(7);
+      expect(module.every((lesson) => {
+        const retrieval = lesson.activities?.[0]?.retrievalCheck;
+        return Boolean(retrieval?.prompt && retrieval?.promptArabic && retrieval?.expectedEvidence && /[\\u0600-\\u06FF]/.test(retrieval.promptArabic));
+      })).toBe(true);
+      expect(module.every((lesson) => lesson.experience?.archetypeRationale && lesson.experience?.selectedStages.length)).toBe(true);
+      expect(module.some((lesson) => lesson.activities?.[0]?.kind === "visual-vocabulary" && lesson.activities?.[0]?.visualItems?.every((item) => item.imageUrl?.startsWith("data:image/svg+xml") && item.altText))).toBe(true);
+      expect(module.filter((lesson) => lesson.activities?.[0]?.readingText && lesson.activities?.[0]?.readingChecks?.length).length).toBeGreaterThanOrEqual(2);
+      expect(module.filter((lesson) => lesson.activities?.[0]?.writingPrompt && lesson.activities?.[0]?.writingPromptArabic).length).toBeGreaterThanOrEqual(3);
+      const listening = module.filter((lesson) => lesson.activities?.[0]?.kind === "listening");
+      expect(listening.length).toBeGreaterThanOrEqual(2);
+      expect(listening.every((lesson) => lesson.activities?.[0]?.progressiveSupports?.includes("transcript"))).toBe(true);
+    }
+    expect(moduleEleven.at(-1)?.activities?.[0]?.semantic).toBe("assessment");
+    expect(moduleTwelve.at(-1)?.activities?.[0]?.semantic).toBe("assessment");
+    expect(moduleTwelve.at(-1)?.title).toMatch(/lifelong|plan|welcome|belonging/i);
+  });
   it("uses C1 retrieval and six-step mediation and independent-judgement routes", () => {
     for (const lesson of C2_LESSONS) {
       expect(lesson.learningPlan?.englishFirst).toBe(true);

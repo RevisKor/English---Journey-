@@ -1,4 +1,4 @@
-import type { CourseDefinition, GrammarTopic, LessonDefinition, LessonStep, VocabularyItem } from "./types";
+import type { CourseDefinition, GrammarTopic, LessonActivity, LessonDefinition, LessonExperience, LessonStep, VocabularyItem } from "./types";
 import { enrichLesson } from "./activity-plan";
 import { buildModuleDefinitions } from "./module-definitions";
 import { C2_MODULE_1_AUTHORED_ACTIVITIES } from "./c2-module-1-authored-activities";
@@ -21,6 +21,10 @@ import { C2_MODULE_9_AUTHORED_ACTIVITIES } from "./c2-module-9-authored-activiti
 import { C2_MODULE_9_EXPERIENCES } from "./c2-module-9-experiences";
 import { C2_MODULE_10_AUTHORED_ACTIVITIES } from "./c2-module-10-authored-activities";
 import { C2_MODULE_10_EXPERIENCES } from "./c2-module-10-experiences";
+import { C2_MODULE_11_AUTHORED_ACTIVITIES } from "./c2-module-11-authored-activities";
+import { C2_MODULE_11_EXPERIENCES } from "./c2-module-11-experiences";
+import { C2_MODULE_12_AUTHORED_ACTIVITIES } from "./c2-module-12-authored-activities";
+import { C2_MODULE_12_EXPERIENCES } from "./c2-module-12-experiences";
 
 const STEPS: LessonStep[] = [
   { id: "start", title: "Enter the question", titleArabic: "ادخل إلى السؤال", purpose: "Connect the theme to a real decision, tension, or intellectual problem.", estimatedMinutes: 10 },
@@ -148,15 +152,21 @@ function grammar(spec: Spec, lessonNumber: number): GrammarTopic {
 
 const CURRICULUM_SPECS = Array.from({ length: 180 }, (_, index) => { const seed = SPECS[index % SPECS.length]; const cycle = Math.floor(index / SPECS.length) + 1; return cycle === 1 ? seed : { ...seed, title: `${seed.title} — Extension ${cycle}`, titleArabic: `${seed.titleArabic} — توسعة ${cycle}` }; });
 
-export const C2_LESSONS: LessonDefinition[] = CURRICULUM_SPECS.map((spec, index) => {
+const BASE_C2_LESSONS: LessonDefinition[] = CURRICULUM_SPECS.map((spec, index) => {
   const lessonNumber = index + 1;
   const moduleNumber = Math.ceil(lessonNumber / 15);
   const prior = "C1" as const;
   return { level: "C2" as const, lessonNumber, moduleNumber, title: spec.title, titleArabic: spec.titleArabic, words: vocabulary(spec, lessonNumber), grammar: grammar(spec, lessonNumber), learningPlan: { outcome: { canDo: spec.outcome[0], canDoArabic: spec.outcome[1], scenario: spec.outcome[2], scenarioArabic: spec.outcome[3] }, steps: STEPS, retrieval: [{ sourceLevel: prior, language: "English", prompt: `Retrieve a C1 idea that helps you enter the theme of ${spec.theme}.`, purpose: `استدعِ فكرة من C1 تساعدك على دخول موضوع ${spec.themeArabic}.` }], englishFirst: true, studio: "Precision & Mediation Studio" }, lexicalNetworks: [{ id: `c2-network-${lessonNumber}`, theme: spec.theme, themeArabic: spec.themeArabic, anchor: spec.anchor, wordFamilies: spec.words.slice(0, 3).map(([word]) => ({ headword: word, forms: [word], note: `Use ${word} precisely in this theme.`, noteArabic: `استخدم ${word} بدقة في هذا الموضوع.` })), relatedWords: spec.related, chunks: spec.chunks, collocations: spec.collocations, register: spec.register, priorLevelLinks: ["evidence", "perspective", "consequence", "evaluation"], learningNote: "At C2, lexical knowledge becomes a choice about precision, audience, and effect.", learningNoteArabic: "في C2 تصبح المعرفة المعجمية اختياراً يتعلق بالدقة والجمهور والأثر." }], practiceBrief: { readingBrief: `${spec.reading} Track the writer's assumptions, evidence, and uncertainty before you respond.`, writingPrompt: `${spec.writing} Address a defined audience, make your evidence and qualifications visible, and revise once for precision, coherence, and reader effort.` } };
-}).map(enrichLesson).map((lesson) => ({
+});
+const c2Module11Activities = C2_MODULE_11_AUTHORED_ACTIVITIES as unknown as Record<number, LessonActivity>;
+const c2Module12Activities = C2_MODULE_12_AUTHORED_ACTIVITIES as unknown as Record<number, LessonActivity>;
+const c2Module11Experiences = C2_MODULE_11_EXPERIENCES as unknown as Record<number, LessonExperience>;
+const c2Module12Experiences = C2_MODULE_12_EXPERIENCES as unknown as Record<number, LessonExperience>;
+const enrichedC2Lessons = BASE_C2_LESSONS.map(enrichLesson);
+export const C2_LESSONS: LessonDefinition[] = enrichedC2Lessons.map((lesson) => ({
   ...lesson,
-  activities: C2_MODULE_10_AUTHORED_ACTIVITIES[lesson.lessonNumber] ?? C2_MODULE_9_AUTHORED_ACTIVITIES[lesson.lessonNumber] ?? C2_MODULE_8_AUTHORED_ACTIVITIES[lesson.lessonNumber] ?? C2_MODULE_7_AUTHORED_ACTIVITIES[lesson.lessonNumber] ?? C2_MODULE_6_AUTHORED_ACTIVITIES[lesson.lessonNumber] ?? C2_MODULE_5_AUTHORED_ACTIVITIES[lesson.lessonNumber] ?? C2_MODULE_4_AUTHORED_ACTIVITIES[lesson.lessonNumber] ?? C2_MODULE_3_AUTHORED_ACTIVITIES[lesson.lessonNumber] ?? C2_MODULE_2_AUTHORED_ACTIVITIES[lesson.lessonNumber] ?? C2_MODULE_1_AUTHORED_ACTIVITIES[lesson.lessonNumber] ?? lesson.activities,
-  experience: C2_MODULE_10_EXPERIENCES[lesson.lessonNumber] ?? C2_MODULE_9_EXPERIENCES[lesson.lessonNumber] ?? C2_MODULE_8_EXPERIENCES[lesson.lessonNumber] ?? C2_MODULE_7_EXPERIENCES[lesson.lessonNumber] ?? C2_MODULE_6_EXPERIENCES[lesson.lessonNumber] ?? C2_MODULE_5_EXPERIENCES[lesson.lessonNumber] ?? C2_MODULE_4_EXPERIENCES[lesson.lessonNumber] ?? C2_MODULE_3_EXPERIENCES[lesson.lessonNumber] ?? C2_MODULE_2_EXPERIENCES[lesson.lessonNumber] ?? C2_MODULE_1_EXPERIENCES[lesson.lessonNumber] ?? lesson.experience,
+  activities: c2Module12Activities[lesson.lessonNumber] ? [c2Module12Activities[lesson.lessonNumber]] : c2Module11Activities[lesson.lessonNumber] ? [c2Module11Activities[lesson.lessonNumber]] : C2_MODULE_10_AUTHORED_ACTIVITIES[lesson.lessonNumber] ?? C2_MODULE_9_AUTHORED_ACTIVITIES[lesson.lessonNumber] ?? C2_MODULE_8_AUTHORED_ACTIVITIES[lesson.lessonNumber] ?? C2_MODULE_7_AUTHORED_ACTIVITIES[lesson.lessonNumber] ?? C2_MODULE_6_AUTHORED_ACTIVITIES[lesson.lessonNumber] ?? C2_MODULE_5_AUTHORED_ACTIVITIES[lesson.lessonNumber] ?? C2_MODULE_4_AUTHORED_ACTIVITIES[lesson.lessonNumber] ?? C2_MODULE_3_AUTHORED_ACTIVITIES[lesson.lessonNumber] ?? C2_MODULE_2_AUTHORED_ACTIVITIES[lesson.lessonNumber] ?? C2_MODULE_1_AUTHORED_ACTIVITIES[lesson.lessonNumber] ?? lesson.activities,
+  experience: c2Module12Experiences[lesson.lessonNumber] ?? c2Module11Experiences[lesson.lessonNumber] ?? C2_MODULE_10_EXPERIENCES[lesson.lessonNumber] ?? C2_MODULE_9_EXPERIENCES[lesson.lessonNumber] ?? C2_MODULE_8_EXPERIENCES[lesson.lessonNumber] ?? C2_MODULE_7_EXPERIENCES[lesson.lessonNumber] ?? C2_MODULE_6_EXPERIENCES[lesson.lessonNumber] ?? C2_MODULE_5_EXPERIENCES[lesson.lessonNumber] ?? C2_MODULE_4_EXPERIENCES[lesson.lessonNumber] ?? C2_MODULE_3_EXPERIENCES[lesson.lessonNumber] ?? C2_MODULE_2_EXPERIENCES[lesson.lessonNumber] ?? C2_MODULE_1_EXPERIENCES[lesson.lessonNumber] ?? lesson.experience,
 }));
 
 export const C2_VOCABULARY = C2_LESSONS.flatMap((lesson) => lesson.words);
