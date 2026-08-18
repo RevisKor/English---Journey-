@@ -374,7 +374,7 @@ describe("ExternalLessonWorkspace", () => {
   });
 
   it("preserves the established tabbed workspace for un-authored later levels during the staged rollout", () => {
-    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={B2_LESSONS[90]} accent="british" onBack={() => undefined} />);
+    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={B2_LESSONS[120]} accent="british" onBack={() => undefined} />);
 
     expect(html).toContain('aria-label="Lesson sections"');
     expect(html).toContain("Words");
@@ -465,6 +465,27 @@ describe("ExternalLessonWorkspace", () => {
     const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={lesson} accent="british" onBack={() => undefined} />);
 
     expect(html).toContain("Listen for calibrated risk");
+    expect(html).toContain("Listen first. The transcript is hidden");
+    expect(html).toContain("Reveal transcript / أظهر النص");
+    expect(html).toContain("Quick check · تحقق سريع");
+  });
+
+  it("renders the authored B2 Module 7 balanced-review route as a compact reading lesson", () => {
+    const lesson = B2_LESSONS[90];
+    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={lesson} accent="british" onBack={() => undefined} />);
+
+    expect(html).toContain("reading lesson");
+    expect(html).toContain("A balanced-review reading");
+    expect(html).toContain("Separate praise, criticism, and qualification");
+    expect(html).toContain("Quick check · تحقق سريع");
+    expect(html).not.toContain('aria-label="Lesson sections"');
+  });
+
+  it("renders the authored B2 Module 7 pressured-briefing route with transcript disclosure", () => {
+    const lesson = B2_LESSONS[93];
+    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={lesson} accent="british" onBack={() => undefined} />);
+
+    expect(html).toContain("Listen for emphasis and expected responsibility");
     expect(html).toContain("Listen first. The transcript is hidden");
     expect(html).toContain("Reveal transcript / أظهر النص");
     expect(html).toContain("Quick check · تحقق سريع");
