@@ -55,7 +55,7 @@ describe("B2 evidence and influence curriculum", () => {
     expect(B2_LESSONS[20].activities.some((activity) => activity.title === "Plan for consequences" && activity.kind === "writing")).toBe(true);
     expect(B2_LESSONS[24].activities.some((activity) => activity.title === "Test information under pressure")).toBe(true);
     expect(B2_LESSONS[29].activities.some((activity) => activity.kind === "assessment")).toBe(true);
-    expect(B2_LESSONS[135].experience).toBeUndefined();
+    expect(B2_LESSONS[135].experience).toBeDefined();
   });
 
   it("authors Module 3 as varied public-decision, representation, and consequence journeys", () => {
@@ -66,7 +66,7 @@ describe("B2 evidence and influence curriculum", () => {
     expect(B2_LESSONS[32].activities.some((activity) => activity.title === "Map the case for change" && activity.kind === "reading")).toBe(true);
     expect(B2_LESSONS[41].activities.some((activity) => activity.title === "Frame an automated decision ethically")).toBe(true);
     expect(B2_LESSONS[44].activities.some((activity) => activity.kind === "assessment" && activity.title === "Proposal with consequences")).toBe(true);
-    expect(B2_LESSONS[135].experience).toBeUndefined();
+    expect(B2_LESSONS[135].experience).toBeDefined();
   });
 
   it("authors Module 4 as varied evidence, responsibility, and negotiated public-choice journeys", () => {
@@ -79,7 +79,7 @@ describe("B2 evidence and influence curriculum", () => {
     expect(B2_LESSONS[48].activities.some((activity) => activity.title === "Rank claims before publishing" && activity.kind === "reading")).toBe(true);
     expect(B2_LESSONS[54].activities.some((activity) => activity.title === "Propose access before decoration" && activity.kind === "writing")).toBe(true);
     expect(B2_LESSONS[59].activities.some((activity) => activity.kind === "assessment" && activity.title === "A compromise that can be reviewed")).toBe(true);
-    expect(B2_LESSONS[135].experience).toBeUndefined();
+    expect(B2_LESSONS[135].experience).toBeDefined();
   });
 
   it("authors Module 5 as compact, varied work-and-public-choice journeys", () => {
@@ -101,7 +101,7 @@ describe("B2 evidence and influence curriculum", () => {
     expect(B2_LESSONS[86].activities.some((activity) => activity.kind === "listening" && activity.progressiveSupports?.includes("transcript"))).toBe(true);
     expect(B2_LESSONS[88].activities.some((activity) => activity.kind === "assessment")).toBe(true);
     expect(B2_LESSONS[89].activities.some((activity) => activity.kind === "assessment")).toBe(true);
-    expect(B2_LESSONS[135].experience).toBeUndefined();
+    expect(B2_LESSONS[135].experience).toBeDefined();
   });
 
   it("authors Module 7 as compact, varied judgement, evidence, and public-change journeys", () => {
@@ -113,7 +113,7 @@ describe("B2 evidence and influence curriculum", () => {
     expect(B2_LESSONS[96].activities.some((activity) => activity.kind === "listening" && activity.progressiveSupports?.includes("transcript"))).toBe(true);
     expect(B2_LESSONS[97].activities.some((activity) => activity.kind === "writing")).toBe(true);
     expect(B2_LESSONS[104].activities.some((activity) => activity.kind === "assessment")).toBe(true);
-    expect(B2_LESSONS[135].experience).toBeUndefined();
+    expect(B2_LESSONS[135].experience).toBeDefined();
   });
 
   it("authors Module 8 as compact, varied context, perspective, and responsible-participation journeys", () => {
@@ -136,6 +136,17 @@ describe("B2 evidence and influence curriculum", () => {
     expect(B2_LESSONS[130].activities.some((activity) => activity.kind === "listening" && activity.progressiveSupports?.includes("transcript"))).toBe(true);
     expect(B2_LESSONS[125].activities.some((activity) => activity.kind === "writing")).toBe(true);
     expect(B2_LESSONS[134].activities.some((activity) => activity.kind === "assessment")).toBe(true);
-    expect(B2_LESSONS[135].experience).toBeUndefined();
+    expect(B2_LESSONS[135].experience).toBeDefined();
+  });
+
+  it("authors Module 10 as the final compact ethics-and-counterfactual decision journey", () => {
+    const moduleTen = B2_LESSONS.slice(135, 150);
+    expect(moduleTen.every((lesson) => lesson.experience && lesson.activities.length > 0)).toBe(true);
+    expect(new Set(moduleTen.map((lesson) => lesson.experience?.archetype)).size).toBeGreaterThanOrEqual(7);
+    expect(moduleTen.every((lesson) => lesson.activities.every((activity) => activity.retrievalCheck?.prompt && activity.retrievalCheck.expectedEvidence))).toBe(true);
+    expect(moduleTen.some((lesson) => lesson.activities.some((activity) => activity.kind === "reading"))).toBe(true);
+    expect(moduleTen.some((lesson) => lesson.activities.some((activity) => activity.kind === "writing"))).toBe(true);
+    expect(moduleTen.some((lesson) => lesson.activities.some((activity) => activity.kind === "listening" && activity.progressiveSupports?.includes("transcript")))).toBe(true);
+    expect(B2_LESSONS[149].activities.some((activity) => activity.kind === "assessment" && activity.title === "Make a difficult decision")).toBe(true);
   });
 });

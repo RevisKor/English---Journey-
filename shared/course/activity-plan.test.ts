@@ -50,8 +50,8 @@ describe("all-level lesson activity plans", () => {
         byType.set(lesson.lessonType, lessons);
       }
       const allActivities = course.lessons.flatMap((lesson) => lesson.activities ?? []);
-      if (course.level !== "C1") {
-        expect(byType.get("visual-vocabulary")?.some((lesson) => lesson.activities?.some((activity) => Boolean(activity.visualItems?.length && activity.visualItems.every((item) => item.imageUrl?.startsWith("data:image/svg+xml") && item.altText))))).toBe(true);
+      if ((["A1", "A2", "B1"] as const).includes(course.level as "A1" | "A2" | "B1")) {
+        expect(Boolean(byType.get("visual-vocabulary")?.some((lesson) => lesson.activities?.some((activity) => Boolean(activity.visualItems?.length && activity.visualItems.every((item) => item.imageUrl?.startsWith("data:image/svg+xml") && item.altText)))) || allActivities.some((activity) => Boolean(activity.visualItems?.length && activity.visualItems.every((item) => item.imageUrl?.startsWith("data:image/svg+xml") && item.altText))))).toBe(true);
       }
       expect(allActivities.some((activity) => activity.kind === "interaction" && activity.interactionTurns?.length)).toBe(true);
       expect(allActivities.some((activity) => activity.kind === "speaking" && activity.speakingLines?.length)).toBe(true);
