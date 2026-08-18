@@ -115,4 +115,16 @@ describe("B2 evidence and influence curriculum", () => {
     expect(B2_LESSONS[104].activities.some((activity) => activity.kind === "assessment")).toBe(true);
     expect(B2_LESSONS[120].experience).toBeUndefined();
   });
+
+  it("authors Module 8 as compact, varied context, perspective, and responsible-participation journeys", () => {
+    const moduleEight = B2_LESSONS.slice(105, 120);
+    expect(moduleEight.every((lesson) => lesson.experience && lesson.activities.length > 0)).toBe(true);
+    expect(new Set(moduleEight.map((lesson) => lesson.experience?.archetype)).size).toBeGreaterThanOrEqual(8);
+    expect(moduleEight.every((lesson) => lesson.activities.every((activity) => activity.retrievalCheck?.prompt && activity.retrievalCheck.expectedEvidence))).toBe(true);
+    expect(B2_LESSONS[111].activities.some((activity) => activity.kind === "listening" && activity.progressiveSupports?.includes("transcript"))).toBe(true);
+    expect(B2_LESSONS[109].activities.some((activity) => activity.kind === "reading")).toBe(true);
+    expect(B2_LESSONS[114].activities.some((activity) => activity.kind === "writing")).toBe(true);
+    expect(B2_LESSONS[119].activities.some((activity) => activity.kind === "assessment")).toBe(true);
+    expect(B2_LESSONS[120].experience).toBeUndefined();
+  });
 });
