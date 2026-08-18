@@ -10,6 +10,8 @@ import { c1Module3AuthoredActivities } from "./c1-module-3-authored-activities";
 import { C1_MODULE_3_EXPERIENCES } from "./c1-module-3-experiences";
 import { c1Module4AuthoredActivities } from "./c1-module-4-authored-activities";
 import { C1_MODULE_4_EXPERIENCES } from "./c1-module-4-experiences";
+import c1Module5AuthoredActivities from "./c1-module-5-authored-activities";
+import { C1_MODULE_5_EXPERIENCES } from "./c1-module-5-experiences";
 
 type DraftVocabulary = { word: string; arabic: string; partOfSpeech: string; definition: string; exampleEN: string; exampleAR: string };
 type DraftLesson = {
@@ -59,10 +61,10 @@ export const C1_LESSONS: LessonDefinition[] = (rawDraft as DraftLesson[]).map((d
   practiceBrief: { readingBrief: draft.readingBrief, writingPrompt: draft.writingPrompt },
 })).map(enrichLesson).map((lesson) => ({
   ...lesson,
-  activities: c1Module4AuthoredActivities[lesson.lessonNumber]
+  activities: c1Module5AuthoredActivities[lesson.lessonNumber] ?? (c1Module4AuthoredActivities[lesson.lessonNumber]
     ? [c1Module4AuthoredActivities[lesson.lessonNumber]]
-    : c1Module3AuthoredActivities[lesson.lessonNumber] ?? C1_MODULE_2_ACTIVITIES[lesson.lessonNumber] ?? C1_MODULE_1_ACTIVITIES[lesson.lessonNumber] ?? lesson.activities,
-  experience: C1_MODULE_4_EXPERIENCES[lesson.lessonNumber] ?? C1_MODULE_3_EXPERIENCES[lesson.lessonNumber] ?? C1_MODULE_2_EXPERIENCES[lesson.lessonNumber] ?? C1_MODULE_1_EXPERIENCES[lesson.lessonNumber] ?? lesson.experience,
+    : c1Module3AuthoredActivities[lesson.lessonNumber] ?? C1_MODULE_2_ACTIVITIES[lesson.lessonNumber] ?? C1_MODULE_1_ACTIVITIES[lesson.lessonNumber] ?? lesson.activities),
+  experience: C1_MODULE_5_EXPERIENCES[lesson.lessonNumber] ?? C1_MODULE_4_EXPERIENCES[lesson.lessonNumber] ?? C1_MODULE_3_EXPERIENCES[lesson.lessonNumber] ?? C1_MODULE_2_EXPERIENCES[lesson.lessonNumber] ?? C1_MODULE_1_EXPERIENCES[lesson.lessonNumber] ?? lesson.experience,
 }));
 
 export const C1_VOCABULARY = C1_LESSONS.flatMap((lesson) => lesson.words);

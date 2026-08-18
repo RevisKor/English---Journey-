@@ -384,8 +384,8 @@ describe("ExternalLessonWorkspace", () => {
     expect(html).not.toContain('aria-label="Lesson sections"');
   });
 
-  it("preserves the tabbed workspace for the first un-authored C1 lesson after Module 4", () => {
-    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={C1_LESSONS[64]} accent="british" onBack={() => undefined} />);
+  it("preserves the tabbed workspace for the first un-authored C1 lesson after Module 5", () => {
+    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={C1_LESSONS[80]} accent="british" onBack={() => undefined} />);
 
     expect(html).toContain('aria-label="Lesson sections"');
     expect(html).toContain("Words");
