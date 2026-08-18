@@ -156,6 +156,24 @@ describe("C2 precision and mediation curriculum", () => {
     expect(moduleSeven.at(-1)?.activities?.[0]?.semantic).toBe("assessment");
     expect(moduleSeven.at(-1)?.experience?.archetype).toBe("assessment");
   });
+  it("authors the eighth C2 module as narrative-reliability, repair, and ethical-persuasion journeys", () => {
+    const moduleEight = C2_LESSONS.slice(105, 120);
+    expect(moduleEight).toHaveLength(15);
+    expect(moduleEight.every((lesson) => lesson.activities?.length === 1)).toBe(true);
+    expect(new Set(moduleEight.map((lesson) => lesson.activities?.[0]?.kind)).size).toBeGreaterThanOrEqual(7);
+    expect(moduleEight.every((lesson) => {
+      const retrieval = lesson.activities?.[0]?.retrievalCheck;
+      return Boolean(retrieval?.prompt && retrieval?.promptArabic && retrieval?.expectedEvidence && /[\u0600-\u06FF]/.test(retrieval.promptArabic));
+    })).toBe(true);
+    expect(moduleEight.every((lesson) => lesson.experience?.firstView.whatItIs && lesson.experience?.firstView.whatToDo && lesson.experience?.firstView.whatMatters && lesson.experience?.firstView.whatNext)).toBe(true);
+    expect(moduleEight.filter((lesson) => lesson.activities?.[0]?.readingText && lesson.activities?.[0]?.readingChecks?.length).length).toBeGreaterThanOrEqual(3);
+    expect(moduleEight.filter((lesson) => lesson.activities?.[0]?.writingPrompt && lesson.activities?.[0]?.writingPromptArabic).length).toBeGreaterThanOrEqual(3);
+    const listening = moduleEight.filter((lesson) => lesson.activities?.[0]?.kind === "listening");
+    expect(listening.length).toBeGreaterThanOrEqual(3);
+    expect(listening.every((lesson) => lesson.activities?.[0]?.progressiveSupports?.includes("transcript"))).toBe(true);
+    expect(moduleEight.at(-1)?.activities?.[0]?.semantic).toBe("assessment");
+    expect(moduleEight.at(-1)?.experience?.archetype).toBe("assessment");
+  });
   it("uses C1 retrieval and six-step mediation and independent-judgement routes", () => {
     for (const lesson of C2_LESSONS) {
       expect(lesson.learningPlan?.englishFirst).toBe(true);

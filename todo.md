@@ -547,4 +547,7 @@
 - [x] Prepare, author, review, validate, and checkpoint C2 Module 7 through the six-agent operating system.
 - [x] Create the C2 Module 7 pedagogical, visual/disclosure, assessment, and engineering quality review packet.
 - [x] Add focused C2 Module 7 regressions for authored variety, bilingual retrieval, reading and writing cadence, listening disclosure, and transfer assessment.
-- [ ] Prepare, author, review, validate, and checkpoint C2 Module 8 through the six-agent operating system.
+- [x] Prepare, author, review, validate, and checkpoint C2 Module 8 through the six-agent operating system.
+- [x] Create the C2 Module 8 pedagogical, visual/disclosure, assessment, and engineering quality review packet.
+- [x] Add focused C2 Module 8 regressions for authored variety, bilingual retrieval, reading and writing cadence, listening disclosure, and transfer assessment.
+- [ ] Prepare, author, review, validate, and checkpoint C2 Module 9 through the six-agent operating system.
