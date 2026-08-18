@@ -374,8 +374,18 @@ describe("ExternalLessonWorkspace", () => {
     expect(html).not.toContain('aria-label="Lesson sections"');
   });
 
-  it("preserves the established tabbed workspace for the first un-authored C1 lesson after Module 1", () => {
+  it("renders the authored C1 Module 2 opening route at the Lesson 17 rollout boundary", () => {
     const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={C1_LESSONS[16]} accent="british" onBack={() => undefined} />);
+
+    expect(html).toContain("institutional position");
+    expect(html).toContain("Know the purpose");
+    expect(html).toContain("Meet the English");
+    expect(html).toContain("Notice one pattern");
+    expect(html).not.toContain('aria-label="Lesson sections"');
+  });
+
+  it("preserves the tabbed workspace for the first un-authored C1 lesson after Module 2", () => {
+    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={C1_LESSONS[32]} accent="british" onBack={() => undefined} />);
 
     expect(html).toContain('aria-label="Lesson sections"');
     expect(html).toContain("Words");

@@ -4,6 +4,8 @@ import { enrichLesson } from "./activity-plan";
 import { buildModuleDefinitions } from "./module-definitions";
 import { C1_MODULE_1_ACTIVITIES } from "./c1-module-1-authored-activities";
 import { C1_MODULE_1_EXPERIENCES } from "./c1-module-1-experiences";
+import { C1_MODULE_2_ACTIVITIES } from "./c1-module-2-authored-activities";
+import { C1_MODULE_2_EXPERIENCES } from "./c1-module-2-experiences";
 
 type DraftVocabulary = { word: string; arabic: string; partOfSpeech: string; definition: string; exampleEN: string; exampleAR: string };
 type DraftLesson = {
@@ -53,8 +55,8 @@ export const C1_LESSONS: LessonDefinition[] = (rawDraft as DraftLesson[]).map((d
   practiceBrief: { readingBrief: draft.readingBrief, writingPrompt: draft.writingPrompt },
 })).map(enrichLesson).map((lesson) => ({
   ...lesson,
-  activities: C1_MODULE_1_ACTIVITIES[lesson.lessonNumber] ?? lesson.activities,
-  experience: C1_MODULE_1_EXPERIENCES[lesson.lessonNumber] ?? lesson.experience,
+  activities: C1_MODULE_2_ACTIVITIES[lesson.lessonNumber] ?? C1_MODULE_1_ACTIVITIES[lesson.lessonNumber] ?? lesson.activities,
+  experience: C1_MODULE_2_EXPERIENCES[lesson.lessonNumber] ?? C1_MODULE_1_EXPERIENCES[lesson.lessonNumber] ?? lesson.experience,
 }));
 
 export const C1_VOCABULARY = C1_LESSONS.flatMap((lesson) => lesson.words);
