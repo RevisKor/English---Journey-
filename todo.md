@@ -550,4 +550,15 @@
 - [x] Prepare, author, review, validate, and checkpoint C2 Module 8 through the six-agent operating system.
 - [x] Create the C2 Module 8 pedagogical, visual/disclosure, assessment, and engineering quality review packet.
 - [x] Add focused C2 Module 8 regressions for authored variety, bilingual retrieval, reading and writing cadence, listening disclosure, and transfer assessment.
-- [ ] Prepare, author, review, validate, and checkpoint C2 Module 9 through the six-agent operating system.
+- [x] Prepare, author, review, validate, and checkpoint C2 Module 9 through the six-agent operating system.
+- [x] Create the C2 Module 9 pedagogical, visual/disclosure, assessment, and engineering quality review packet.
+- [x] Add focused C2 Module 9 regressions for authored variety, bilingual retrieval, reading and writing cadence, listening disclosure, and transfer assessment.
+- [x] Prepare, author, review, validate, and checkpoint C2 Module 10 through the six-agent operating system.
+- [x] Create the C2 Module 10 pedagogical, visual/disclosure, assessment, and engineering quality review packet.
+- [x] Add focused C2 Module 10 regressions for authored variety, bilingual retrieval, capstone skill cadence, listening disclosure, and final level challenge.
+- [x] Run the final whole-curriculum audit and reconcile remaining legacy coverage and external deployment evidence.
+- [x] Record final release evidence: 865 lessons present, 6 levels, 8,454 vocabulary records, 865 grammar records, no curriculum-audit warnings, and no missing authored activities in the rearchitecture audit.
+- [ ] Complete the remaining B2 legacy-authored lessons and C2 legacy-authored lessons identified by the final coverage audit.
+- [ ] Add the independent runtime secrets to Vercel and validate Google sign-in and persisted learner progress.
+- [ ] Confirm the redeployed Vercel function loads and completes Google sign-in with persisted learner progress.
+- [ ] Assign the administrator role only to the authenticated account with `revissskor@gmail.com` and verify the persisted role.
