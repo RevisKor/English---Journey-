@@ -489,4 +489,4 @@
 
 - [x] Prepare, author, review, validate, and checkpoint C1 Module 1 (Lessons 1–16) through the six-agent operating system, preserving compact objective-led lessons, explicit retrieval checks, and the C1 cadence of frequent reading, writing, listening, speaking, interaction, and synthesis.
 
-- [ ] Advance the staged learner-workspace fallback to C1 Lesson 17 after C1 Module 1 is integrated and validated.
+- [x] Advance the staged learner-workspace fallback to C1 Lesson 17 after C1 Module 1 is integrated and validated.

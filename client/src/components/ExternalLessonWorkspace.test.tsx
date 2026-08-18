@@ -5,6 +5,7 @@ import { A1_LESSONS } from "@shared/course/a1";
 import { A2_LESSONS } from "@shared/course/a2";
 import { B1_LESSONS } from "@shared/course/b1";
 import { B2_LESSONS } from "@shared/course/b2";
+import { C1_LESSONS } from "@shared/course/c1";
 
 vi.mock("@/components/CourseReadingPractice", () => ({
   CourseReadingPractice: () => React.createElement("div", null, "Reading practice"),
@@ -373,8 +374,8 @@ describe("ExternalLessonWorkspace", () => {
     expect(html).not.toContain('aria-label="Lesson sections"');
   });
 
-  it("preserves the established tabbed workspace for the first un-authored lesson after Module 9", () => {
-    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={B2_LESSONS[135]} accent="british" onBack={() => undefined} />);
+  it("preserves the established tabbed workspace for the first un-authored C1 lesson after Module 1", () => {
+    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={C1_LESSONS[16]} accent="british" onBack={() => undefined} />);
 
     expect(html).toContain('aria-label="Lesson sections"');
     expect(html).toContain("Words");
