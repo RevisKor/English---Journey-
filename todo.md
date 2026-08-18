@@ -399,7 +399,7 @@
 # Non-default Lesson Quiz Recovery
 - [x] Trace why only A1 Lesson 1 resolves while other modules and CEFR levels fail to generate quizzes.
 - [x] Repair non-default lesson scope and quiz-bank resolution with cross-level regression coverage.
-- [ ] Validate representative non-default quizzes and publish the recovery.
+- [x] Validate representative non-default quizzes and publish the recovery.
 
 # Six-Agent Curriculum Production System
 - [x] Establish a versioned Curriculum Bible that records course philosophy, CEFR progression, shared rules, activity taxonomy, assessment hierarchy, accessibility, Arabic support, British English, and editorial quality gates.
@@ -419,7 +419,7 @@
 # Full Lesson-by-Lesson Curriculum Reauthoring
 - [x] Produce a review-ready Markdown sample showing the fully reauthored A1 Lessons 1–5 before applying the approved style to the remaining curriculum.
 - [x] Replace any universal lesson-template assumption with objective-led lesson archetypes, varied density, and adaptive stage selection across the 865-lesson authoring system.
-- [ ] Define and enforce the calm shared visual language for objectives, examples, tips, common mistakes, vocabulary, grammar, activities, retrieval, and assessment without using colour as the only cue.
+- [x] Define and enforce the calm shared visual language for objectives, examples, tips, common mistakes, vocabulary, grammar, activities, retrieval, and assessment without using colour as the only cue.
 - [x] Revise the A1 Lessons 1–5 review sample to demonstrate genuinely varied lesson experiences, activity patterns, introductions, dialogue structures, and assessment formats.
 - [x] Add lesson-archetype, density, selected-stage, progressive-support, and visual-semantic metadata to the structured authoring data.
 - [x] Implement reusable semantic lesson components that render objectives, examples, tips, common mistakes, vocabulary, grammar, activities, retrieval, and assessments with labels, icons, and accessible non-colour cues.
@@ -486,3 +486,7 @@
 - [x] Prepare, author, review, validate, and checkpoint B2 Module 10 (Lessons 136–150) through the six-agent operating system, preserving compact objective-led lessons, explicit retrieval checks, and the owner-defined skill cadence.
 
 - [x] Advance the staged learner-workspace fallback to Lesson 151 after B2 Module 10 is integrated and validated.
+
+- [x] Prepare, author, review, validate, and checkpoint C1 Module 1 (Lessons 1–16) through the six-agent operating system, preserving compact objective-led lessons, explicit retrieval checks, and the C1 cadence of frequent reading, writing, listening, speaking, interaction, and synthesis.
+
+- [ ] Advance the staged learner-workspace fallback to C1 Lesson 17 after C1 Module 1 is integrated and validated.

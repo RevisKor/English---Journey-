@@ -26,6 +26,17 @@ import { C1_COURSE, C1_LESSONS } from "./c1";
     }
   });
 
+  it("authors C1 Module 1 as varied bilingual learner journeys with explicit retrieval and adaptive experiences", () => {
+    const moduleOne = C1_LESSONS.filter((lesson) => lesson.moduleNumber === 1);
+    expect(moduleOne).toHaveLength(16);
+    expect(moduleOne.every((lesson) => lesson.activities && lesson.activities.length > 0)).toBe(true);
+    expect(moduleOne.every((lesson) => lesson.experience?.firstView.whatItIs && lesson.experience.firstView.whatToDo && lesson.experience.firstView.whatMatters && lesson.experience.firstView.whatNext)).toBe(true);
+    expect(new Set(moduleOne.map((lesson) => lesson.experience?.archetype)).size).toBeGreaterThanOrEqual(7);
+    expect(moduleOne.every((lesson) => lesson.activities?.some((activity) => activity.retrievalCheck?.prompt && activity.retrievalCheck.promptArabic))).toBe(true);
+    const listening = moduleOne.find((lesson) => lesson.lessonNumber === 3);
+    expect(listening?.activities?.some((activity) => activity.kind === "listening" && activity.speakingLines?.some((line) => line.text.trim()))).toBe(true);
+  });
+
   it("uses B2 retrieval and six-step source-aware performance routes", () => {
     for (const lesson of C1_LESSONS) {
       expect(lesson.learningPlan?.englishFirst).toBe(true);

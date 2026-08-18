@@ -2,6 +2,8 @@ import rawDraft from "./c1-draft.json";
 import type { CourseDefinition, GrammarTopic, LessonDefinition, LessonStep, VocabularyItem } from "./types";
 import { enrichLesson } from "./activity-plan";
 import { buildModuleDefinitions } from "./module-definitions";
+import { C1_MODULE_1_ACTIVITIES } from "./c1-module-1-authored-activities";
+import { C1_MODULE_1_EXPERIENCES } from "./c1-module-1-experiences";
 
 type DraftVocabulary = { word: string; arabic: string; partOfSpeech: string; definition: string; exampleEN: string; exampleAR: string };
 type DraftLesson = {
@@ -49,7 +51,11 @@ export const C1_LESSONS: LessonDefinition[] = (rawDraft as DraftLesson[]).map((d
   learningPlan: { outcome: draft.outcome, steps: STEPS, retrieval: draft.retrieval.map((item) => ({ sourceLevel: "B2" as const, language: item.language, prompt: item.prompt, purpose: item.purpose })), englishFirst: true, studio: "Ideas & Evidence Studio" },
   lexicalNetworks: [{ id: `c1-network-${draft.lessonNumber}`, theme: draft.network.theme, themeArabic: draft.network.themeArabic, anchor: draft.network.anchor, wordFamilies: draft.network.wordFamilies, relatedWords: draft.network.relatedWords, chunks: draft.network.chunks, collocations: draft.network.collocations, register: draft.network.register, priorLevelLinks: draft.network.priorLevelLinks, learningNote: draft.network.learningNote, learningNoteArabic: draft.network.learningNoteArabic }],
   practiceBrief: { readingBrief: draft.readingBrief, writingPrompt: draft.writingPrompt },
-})).map(enrichLesson);
+})).map(enrichLesson).map((lesson) => ({
+  ...lesson,
+  activities: C1_MODULE_1_ACTIVITIES[lesson.lessonNumber] ?? lesson.activities,
+  experience: C1_MODULE_1_EXPERIENCES[lesson.lessonNumber] ?? lesson.experience,
+}));
 
 export const C1_VOCABULARY = C1_LESSONS.flatMap((lesson) => lesson.words);
 export const C1_GRAMMAR = C1_LESSONS.map((lesson) => lesson.grammar);
