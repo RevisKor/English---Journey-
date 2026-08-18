@@ -1,6 +1,8 @@
 import type { CourseDefinition, GrammarTopic, LessonDefinition, LessonStep, VocabularyItem } from "./types";
 import { enrichLesson } from "./activity-plan";
 import { buildModuleDefinitions } from "./module-definitions";
+import { C2_MODULE_1_AUTHORED_ACTIVITIES } from "./c2-module-1-authored-activities";
+import { C2_MODULE_1_EXPERIENCES } from "./c2-module-1-experiences";
 
 const STEPS: LessonStep[] = [
   { id: "start", title: "Enter the question", titleArabic: "ادخل إلى السؤال", purpose: "Connect the theme to a real decision, tension, or intellectual problem.", estimatedMinutes: 10 },
@@ -133,7 +135,11 @@ export const C2_LESSONS: LessonDefinition[] = CURRICULUM_SPECS.map((spec, index)
   const moduleNumber = Math.ceil(lessonNumber / 15);
   const prior = "C1" as const;
   return { level: "C2" as const, lessonNumber, moduleNumber, title: spec.title, titleArabic: spec.titleArabic, words: vocabulary(spec, lessonNumber), grammar: grammar(spec, lessonNumber), learningPlan: { outcome: { canDo: spec.outcome[0], canDoArabic: spec.outcome[1], scenario: spec.outcome[2], scenarioArabic: spec.outcome[3] }, steps: STEPS, retrieval: [{ sourceLevel: prior, language: "English", prompt: `Retrieve a C1 idea that helps you enter the theme of ${spec.theme}.`, purpose: `استدعِ فكرة من C1 تساعدك على دخول موضوع ${spec.themeArabic}.` }], englishFirst: true, studio: "Precision & Mediation Studio" }, lexicalNetworks: [{ id: `c2-network-${lessonNumber}`, theme: spec.theme, themeArabic: spec.themeArabic, anchor: spec.anchor, wordFamilies: spec.words.slice(0, 3).map(([word]) => ({ headword: word, forms: [word], note: `Use ${word} precisely in this theme.`, noteArabic: `استخدم ${word} بدقة في هذا الموضوع.` })), relatedWords: spec.related, chunks: spec.chunks, collocations: spec.collocations, register: spec.register, priorLevelLinks: ["evidence", "perspective", "consequence", "evaluation"], learningNote: "At C2, lexical knowledge becomes a choice about precision, audience, and effect.", learningNoteArabic: "في C2 تصبح المعرفة المعجمية اختياراً يتعلق بالدقة والجمهور والأثر." }], practiceBrief: { readingBrief: `${spec.reading} Track the writer's assumptions, evidence, and uncertainty before you respond.`, writingPrompt: `${spec.writing} Address a defined audience, make your evidence and qualifications visible, and revise once for precision, coherence, and reader effort.` } };
-}).map(enrichLesson);
+}).map(enrichLesson).map((lesson) => ({
+  ...lesson,
+  activities: C2_MODULE_1_AUTHORED_ACTIVITIES[lesson.lessonNumber] ?? lesson.activities,
+  experience: C2_MODULE_1_EXPERIENCES[lesson.lessonNumber] ?? lesson.experience,
+}));
 
 export const C2_VOCABULARY = C2_LESSONS.flatMap((lesson) => lesson.words);
 export const C2_GRAMMAR = C2_LESSONS.map((lesson) => lesson.grammar);
