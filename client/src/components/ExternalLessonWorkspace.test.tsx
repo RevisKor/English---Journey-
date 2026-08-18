@@ -373,12 +373,23 @@ describe("ExternalLessonWorkspace", () => {
     expect(html).not.toContain('aria-label="Lesson sections"');
   });
 
-  it("preserves the established tabbed workspace for un-authored later levels during the staged rollout", () => {
-    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={B2_LESSONS[120]} accent="british" onBack={() => undefined} />);
+  it("preserves the established tabbed workspace for the first un-authored lesson after Module 9", () => {
+    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={B2_LESSONS[135]} accent="british" onBack={() => undefined} />);
 
     expect(html).toContain('aria-label="Lesson sections"');
     expect(html).toContain("Words");
     expect(html).not.toContain("guided route");
+  });
+
+  it("renders the authored B2 Module 9 incident listening route with transcript disclosure", () => {
+    const lesson = B2_LESSONS[123];
+    const html = renderToStaticMarkup(<ExternalLessonWorkspace lesson={lesson} accent="british" onBack={() => undefined} />);
+
+    expect(html).toContain("Follow a system failure");
+    expect(html).toContain("Listen first. The transcript is hidden");
+    expect(html).toContain("Reveal transcript / أظهر النص");
+    expect(html).toContain("Quick check · تحقق سريع");
+    expect(html).not.toContain("At 8:10 the payment system slowed");
   });
 
   it("renders the authored B2 Module 2 belonging investigation as its selected critical-reading route", () => {

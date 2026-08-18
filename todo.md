@@ -478,3 +478,7 @@
 - [x] Prepare, author, review, validate, and checkpoint B2 Module 7 (Lessons 91–105) through the six-agent operating system, preserving compact objective-led lessons, explicit retrieval checks, and the owner-defined skill cadence.
 
 - [x] Prepare, author, review, validate, and checkpoint B2 Module 8 (Lessons 106–120) through the six-agent operating system, preserving compact objective-led lessons, explicit retrieval checks, and the owner-defined skill cadence.
+
+- [x] Prepare, author, review, validate, and checkpoint B2 Module 9 (Lessons 121–135) through the six-agent operating system, preserving compact objective-led lessons, explicit retrieval checks, and the owner-defined skill cadence.
+
+- [x] Advance the staged learner-workspace fallback to Lesson 136 after B2 Module 9 is integrated and validated.
