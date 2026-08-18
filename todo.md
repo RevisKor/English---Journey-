@@ -517,4 +517,7 @@
 - [x] Author, integrate, test, and validate C1 Module 7 (Lessons 97–112) as varied bilingual learner journeys aligned to its authoritative architecture packet.
 - [x] Create the C1 Module 7 pedagogical, visual/disclosure, assessment, and engineering quality review packet.
 - [x] Advance the staged learner-workspace fallback to Lesson 113, the first un-authored C1 lesson after Module 7.
-- [ ] Prepare, author, review, validate, and checkpoint C1 Module 8 (Lessons 113–128) through the six-agent operating system.
+- [x] Prepare, author, review, validate, and checkpoint C1 Module 8 (Lessons 113–128) through the six-agent operating system.
+- [x] Create the C1 Module 8 pedagogical, visual/disclosure, assessment, and engineering quality review packet.
+- [x] Advance the staged learner-workspace fallback to Lesson 129, the first un-authored C1 lesson after Module 8.
+- [ ] Prepare, author, review, validate, and checkpoint C1 Module 9 (Lessons 129–144) through the six-agent operating system.
