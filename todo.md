@@ -520,4 +520,7 @@
 - [x] Prepare, author, review, validate, and checkpoint C1 Module 8 (Lessons 113–128) through the six-agent operating system.
 - [x] Create the C1 Module 8 pedagogical, visual/disclosure, assessment, and engineering quality review packet.
 - [x] Advance the staged learner-workspace fallback to Lesson 129, the first un-authored C1 lesson after Module 8.
-- [ ] Prepare, author, review, validate, and checkpoint C1 Module 9 (Lessons 129–144) through the six-agent operating system.
+- [x] Prepare, author, review, validate, and checkpoint C1 Module 9 (Lessons 129–144) through the six-agent operating system.
+- [x] Create the C1 Module 9 pedagogical, visual/disclosure, assessment, and engineering quality review packet.
+- [x] Advance the staged learner-workspace fallback to Lesson 145, the first un-authored C1 lesson after Module 9.
+- [ ] Prepare, author, review, validate, and checkpoint C1 Module 10 (Lessons 145–160) through the six-agent operating system.

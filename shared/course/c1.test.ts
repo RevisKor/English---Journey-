@@ -104,6 +104,20 @@ import { C1_COURSE, C1_LESSONS } from "./c1";
     expect(moduleEight.some((lesson) => lesson.activities?.some((activity) => activity.kind === "assessment" && activity.writingPrompt?.length && activity.readingChecks?.length))).toBe(true);
   });
 
+  it("authors C1 Module 9 as varied measurement-and-accountability journeys with explicit retrieval and adaptive experiences", () => {
+    const moduleNine = C1_LESSONS.filter((lesson) => lesson.moduleNumber === 9);
+    expect(moduleNine).toHaveLength(16);
+    expect(moduleNine.every((lesson) => lesson.activities && lesson.activities.length > 0)).toBe(true);
+    expect(moduleNine.every((lesson) => lesson.experience?.firstView.whatItIs && lesson.experience.firstView.whatToDo && lesson.experience.firstView.whatMatters && lesson.experience.firstView.whatNext)).toBe(true);
+    expect(new Set(moduleNine.map((lesson) => lesson.experience?.archetype)).size).toBeGreaterThanOrEqual(8);
+    expect(moduleNine.every((lesson) => lesson.activities?.some((activity) => activity.retrievalCheck?.prompt && activity.retrievalCheck.promptArabic && activity.retrievalCheck.expectedEvidenceArabic))).toBe(true);
+    expect(moduleNine.some((lesson) => lesson.activities?.some((activity) => activity.kind === "reading" && activity.readingText && activity.readingChecks?.length))).toBe(true);
+    expect(moduleNine.some((lesson) => lesson.activities?.some((activity) => activity.kind === "writing" && activity.writingPrompt && activity.writingPromptArabic && activity.progressiveSupports?.includes("external-ai-prompt")))).toBe(true);
+    expect(moduleNine.some((lesson) => lesson.activities?.some((activity) => activity.kind === "listening" && activity.speakingLines?.some((line) => line.text.trim()) && activity.progressiveSupports?.includes("transcript")))).toBe(true);
+    expect(moduleNine.some((lesson) => lesson.activities?.some((activity) => activity.kind === "interaction" && activity.interactionTurns?.every((turn) => turn.purpose)))).toBe(true);
+    expect(moduleNine.some((lesson) => lesson.activities?.some((activity) => activity.kind === "assessment" && activity.writingPrompt?.length && activity.readingChecks?.length))).toBe(true);
+  });
+
   it("uses B2 retrieval and six-step source-aware performance routes", () => {
     for (const lesson of C1_LESSONS) {
       expect(lesson.learningPlan?.englishFirst).toBe(true);
